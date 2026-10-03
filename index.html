@@ -80,105 +80,538 @@
   }
   </script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
   <style>
-    :root { color-scheme: dark; }
+    :root {
+      color-scheme: dark;
+      --primary: #3b82f6;
+      --primary-light: #60a5fa;
+      --primary-soft: #93c5fd;
+      --bg: #0f1014;
+      --card: #171a21;
+      --elevated: #141820;
+      --text: #f7f8fc;
+      --body: #d8dee9;
+      --muted: #a9b2c0;
+      --border: rgba(255,255,255,.08);
+      --border-accent: rgba(59,130,246,.28);
+    }
+
     * { box-sizing: border-box; }
+    html { min-width: 320px; }
     body {
       margin: 0;
       min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 32px 20px;
+      color: var(--body);
       background:
-        radial-gradient(circle at 20% 20%, rgba(44,124,255,.18), transparent 35%),
-        linear-gradient(145deg, #08111f 0%, #0d1728 55%, #101d31 100%);
-      color: #eef5ff;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        radial-gradient(circle at 12% 12%, rgba(59,130,246,.13), transparent 30%),
+        radial-gradient(circle at 88% 80%, rgba(16,26,107,.22), transparent 32%),
+        linear-gradient(rgba(255,255,255,.017) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.017) 1px, transparent 1px),
+        var(--bg);
+      background-size: auto, auto, 34px 34px, 34px 34px, auto;
+      font-family: "Poppins", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
-    main {
-      width: min(760px, 100%);
-      text-align: center;
-      padding: 42px 28px;
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 28px;
-      background: rgba(8,17,31,.72);
-      box-shadow: 0 24px 80px rgba(0,0,0,.35);
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(15,16,20,.06), rgba(15,16,20,.34));
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(1040px, calc(100% - 40px));
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 34px 0;
+      display: grid;
+      align-content: center;
+      gap: 14px;
+    }
+
+    .root-bar {
+      min-height: 46px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(20,24,32,.7);
       backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
-    .avatar {
-      width: 112px;
-      height: 112px;
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 30px;
+      height: 30px;
+      display: block;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 1px;
+      line-height: 1.1;
+    }
+
+    .brand-copy strong {
+      color: var(--text);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+
+    .brand-copy span,
+    .root-domain {
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: .68rem;
+      letter-spacing: .03em;
+    }
+
+    .root-domain { white-space: nowrap; }
+
+    .identity-card {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(290px, .82fr) minmax(0, 1.35fr);
+      grid-template-areas:
+        "identity content"
+        "profiles profiles";
+      border: 1px solid var(--border-accent);
       border-radius: 24px;
-      object-fit: cover;
-      margin-bottom: 20px;
+      background: linear-gradient(145deg, rgba(23,26,33,.96), rgba(17,20,27,.94));
+      box-shadow: 0 24px 70px rgba(0,0,0,.32), 0 0 42px rgba(59,130,246,.06);
     }
+
+    .identity-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 3px;
+      background: linear-gradient(180deg, transparent, var(--primary-light) 24%, var(--primary) 68%, transparent);
+      opacity: .9;
+    }
+
+    .identity {
+      grid-area: identity;
+      padding: 42px 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--border);
+      background: linear-gradient(160deg, rgba(59,130,246,.07), transparent 48%);
+    }
+
+    .root-label {
+      width: fit-content;
+      margin: 0 0 22px;
+      padding: 6px 9px;
+      border: 1px solid rgba(96,165,250,.22);
+      border-radius: 999px;
+      background: rgba(59,130,246,.06);
+      color: var(--primary-soft);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: .67rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: fit-content;
+      margin-bottom: 22px;
+    }
+
+    .avatar {
+      width: 138px;
+      height: 138px;
+      display: block;
+      border-radius: 22px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 16px 36px rgba(0,0,0,.28);
+      background: var(--elevated);
+    }
+
+    .avatar-mark {
+      position: absolute;
+      right: -7px;
+      bottom: 10px;
+      width: 18px;
+      height: 18px;
+      border: 4px solid var(--card);
+      border-radius: 50%;
+      background: var(--primary-light);
+      box-shadow: 0 0 18px rgba(96,165,250,.58);
+    }
+
     h1 {
       margin: 0;
-      font-size: clamp(2.1rem, 6vw, 4rem);
-      letter-spacing: -.04em;
+      color: var(--text);
+      font-size: clamp(2.05rem, 4.2vw, 3.35rem);
+      line-height: 1.03;
+      letter-spacing: -.045em;
     }
+
     .handle {
-      margin: 8px 0 22px;
-      font-size: 1.05rem;
-      color: #9dc5ff;
+      margin: 8px 0 20px;
+      color: var(--primary-light);
+      font-size: .98rem;
+      font-weight: 500;
     }
-    .focus {
-      margin: 0 auto 28px;
-      max-width: 650px;
-      color: #c9d8eb;
-      line-height: 1.65;
+
+    .role {
+      margin: 0;
+      color: var(--text);
       font-size: 1.02rem;
+      font-weight: 600;
     }
-    .links {
+
+    .content {
+      grid-area: content;
+      padding: 44px 46px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .focus {
+      margin: 0 0 22px;
+      color: var(--primary-soft);
+      font-size: .75rem;
+      font-weight: 600;
+      line-height: 1.65;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .intro {
+      max-width: 610px;
+      margin: 0;
+      color: var(--body);
+      font-size: 1rem;
+      line-height: 1.78;
+    }
+
+    .research {
+      margin-top: 22px;
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    .research a {
+      color: var(--text);
+      font-weight: 600;
+      transition: color .2s ease;
+    }
+
+    .research a:hover { color: var(--primary-light); }
+
+    .actions {
+      margin-top: 30px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
+      gap: 10px;
     }
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-    .primary, .secondary {
+
+    .button {
+      min-height: 46px;
+      padding: 0 17px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 46px;
-      padding: 0 18px;
-      border-radius: 14px;
-      font-weight: 650;
+      gap: 10px;
+      border-radius: 11px;
+      font-size: .86rem;
+      font-weight: 600;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
     }
-    .primary {
-      background: #eaf3ff;
-      color: #091426;
+
+    .button::after {
+      content: "↗";
+      font-size: .92em;
+      opacity: .74;
     }
-    .secondary {
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.04);
+
+    .button-primary {
+      border: 1px solid rgba(96,165,250,.76);
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: #fff;
+      box-shadow: 0 10px 28px rgba(37,99,235,.2);
     }
-    .note {
-      margin-top: 28px;
-      color: #8ea2bc;
-      font-size: .9rem;
+
+    .button-secondary {
+      border: 1px solid rgba(255,255,255,.13);
+      background: rgba(255,255,255,.035);
+      color: var(--text);
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button-secondary:hover {
+      border-color: rgba(96,165,250,.44);
+      background: rgba(59,130,246,.08);
+    }
+
+    .profiles {
+      grid-area: profiles;
+      padding: 17px 24px 18px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 18px;
+      border-top: 1px solid var(--border);
+      background: rgba(9,12,17,.42);
+    }
+
+    .profiles-label,
+    .canonical {
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: .67rem;
+      letter-spacing: .04em;
+    }
+
+    .profile-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 7px 15px;
+    }
+
+    .profile-links a {
+      position: relative;
+      color: #dce5f2;
+      font-size: .76rem;
+      font-weight: 500;
+      transition: color .2s ease;
+    }
+
+    .profile-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: -3px;
+      height: 1px;
+      background: var(--primary-light);
+      transition: right .2s ease;
+    }
+
+    .profile-links a:hover { color: #fff; }
+    .profile-links a:hover::after { right: 0; }
+    .canonical { text-align: right; white-space: nowrap; }
+
+    a:focus-visible {
+      outline: 2px solid var(--primary-light);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 820px) {
+      .page {
+        width: min(680px, calc(100% - 28px));
+        padding: 20px 0 24px;
+        align-content: start;
+      }
+
+      .identity-card {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "identity"
+          "content"
+          "profiles";
+      }
+
+      .identity {
+        padding: 30px 28px 26px;
+        display: grid;
+        grid-template-columns: auto minmax(0,1fr);
+        grid-template-areas:
+          "label label"
+          "avatar name";
+        column-gap: 22px;
+        align-items: center;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .root-label { grid-area: label; margin-bottom: 18px; }
+      .avatar-wrap { grid-area: avatar; margin: 0; }
+      .identity-copy { grid-area: name; min-width: 0; }
+      .avatar { width: 116px; height: 116px; border-radius: 20px; }
+
+      .content { padding: 30px 28px 32px; }
+
+      .profiles {
+        grid-template-columns: 1fr;
+        gap: 11px;
+        padding: 18px 28px 20px;
+      }
+
+      .canonical { text-align: left; white-space: normal; }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        width: min(100% - 20px, 520px);
+        padding: 10px 0 16px;
+        gap: 10px;
+      }
+
+      .root-bar {
+        min-height: 42px;
+        padding: 7px 9px;
+        border-radius: 12px;
+      }
+
+      .brand img { width: 27px; height: 27px; }
+      .brand-copy strong { font-size: .76rem; }
+      .brand-copy span, .root-domain { font-size: .61rem; }
+      .root-domain { display: none; }
+      .identity-card { border-radius: 18px; }
+
+      .identity {
+        padding: 24px 20px 22px;
+        grid-template-columns: 88px minmax(0,1fr);
+        column-gap: 16px;
+      }
+
+      .root-label {
+        margin-bottom: 16px;
+        padding: 5px 8px;
+        font-size: .61rem;
+      }
+
+      .avatar {
+        width: 88px;
+        height: 88px;
+        border-radius: 16px;
+      }
+
+      .avatar-mark {
+        width: 15px;
+        height: 15px;
+        border-width: 3px;
+        right: -5px;
+        bottom: 7px;
+      }
+
+      h1 { font-size: clamp(1.65rem, 8vw, 2.15rem); }
+      .handle { margin: 5px 0 12px; font-size: .83rem; }
+      .role { font-size: .9rem; }
+
+      .content { padding: 25px 20px 28px; }
+
+      .focus {
+        margin-bottom: 17px;
+        font-size: .65rem;
+        line-height: 1.6;
+        letter-spacing: .09em;
+      }
+
+      .intro {
+        font-size: .89rem;
+        line-height: 1.68;
+      }
+
+      .research {
+        margin-top: 18px;
+        font-size: .78rem;
+      }
+
+      .actions {
+        margin-top: 23px;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .button {
+        width: 100%;
+        min-height: 45px;
+      }
+
+      .profiles { padding: 17px 20px 19px; }
+      .profile-links { gap: 9px 16px; }
+      .profile-links a { font-size: .74rem; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <img class="avatar" src="https://falker47.github.io/Nexus-portfolio/assets/profile/maurizio-falconi-falker47.webp" alt="Maurizio Falconi (falker47)" width="112" height="112" />
-    <h1>Maurizio Falconi</h1>
-    <p class="handle">@falker47</p>
-    <p class="focus">Data Engineering · Applied AI &amp; Automation · Algorithms · Computational Research</p>
-    <p class="focus">I’m Maurizio Falconi, known online as falker47. I work in data engineering and build software across applied AI, automation and algorithms, alongside independent computational research including the Ringmin project. This page is the canonical hub connecting my portfolio, open-source work and research profiles.</p>
-    <div class="links">
-      <a class="primary" href="https://falker47.github.io/Nexus-portfolio/">Open Nexus Portfolio</a>
-      <a class="secondary" href="https://falker47.github.io/Nexus-portfolio/research.html">Research</a>
-      <a class="secondary" href="https://github.com/falker47">GitHub</a>
-      <a class="secondary" href="https://www.linkedin.com/in/mauriziofalconi/">LinkedIn</a>
-      <a class="secondary" href="https://orcid.org/0009-0005-3162-3651">ORCID</a>
-      <a class="secondary" href="https://scholar.google.com/citations?user=5xHRNvoAAAAJ">Google Scholar</a>
-    </div>
-    <p class="note">Canonical identity page for Maurizio Falconi / falker47.</p>
+  <main class="page">
+    <header class="root-bar">
+      <a class="brand" href="https://falker47.github.io/" aria-label="Maurizio Falconi identity root">
+        <img src="https://falker47.github.io/Nexus-portfolio/assets/branding/falkerlogo.png" alt="" width="30" height="30" />
+        <span class="brand-copy">
+          <strong>falker47</strong>
+          <span>identity root</span>
+        </span>
+      </a>
+      <span class="root-domain">falker47.github.io</span>
+    </header>
+
+    <section class="identity-card" aria-labelledby="identity-name">
+      <div class="identity">
+        <p class="root-label">Public identity · canonical root</p>
+        <div class="avatar-wrap">
+          <img class="avatar" src="https://falker47.github.io/Nexus-portfolio/assets/profile/maurizio-falconi-falker47.webp" alt="Maurizio Falconi (falker47)" width="138" height="138" />
+          <span class="avatar-mark" aria-hidden="true"></span>
+        </div>
+        <div class="identity-copy">
+          <h1 id="identity-name">Maurizio Falconi</h1>
+          <p class="handle">@falker47</p>
+          <p class="role">Data Engineer</p>
+        </div>
+      </div>
+
+      <div class="content">
+        <p class="focus">Data Engineering · Applied AI &amp; Automation · Algorithms · Computational Research</p>
+        <p class="intro">I’m Maurizio Falconi, known online as falker47. I work in data engineering and build software across applied AI, automation and algorithms, alongside independent computational research including the Ringmin project. This page is the canonical hub connecting my portfolio, open-source work and research profiles.</p>
+        <p class="research"><span>Independent research</span><a href="https://falker47.github.io/Nexus-portfolio/research.html">Ringmin ↗</a></p>
+
+        <div class="actions">
+          <a class="button button-primary" href="https://falker47.github.io/Nexus-portfolio/">Explore Nexus Portfolio</a>
+          <a class="button button-secondary" href="https://falker47.github.io/Nexus-portfolio/research.html">Research</a>
+        </div>
+      </div>
+
+      <footer class="profiles">
+        <span class="profiles-label">Identity profiles</span>
+        <nav class="profile-links" aria-label="Identity profiles">
+          <a href="https://github.com/falker47">GitHub</a>
+          <a href="https://www.linkedin.com/in/mauriziofalconi/">LinkedIn</a>
+          <a href="https://orcid.org/0009-0005-3162-3651">ORCID</a>
+          <a href="https://scholar.google.com/citations?user=5xHRNvoAAAAJ">Google Scholar</a>
+          <a href="https://oeis.org/wiki/User:Maurizio_Falconi">OEIS</a>
+        </nav>
+        <span class="canonical">Maurizio Falconi ↔ falker47</span>
+      </footer>
+    </section>
   </main>
 </body>
 </html>
