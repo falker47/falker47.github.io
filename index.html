@@ -133,36 +133,6 @@
       background: linear-gradient(180deg, rgba(15,16,20,.03), rgba(15,16,20,.3));
     }
 
-    /* Reuse Nexus' lightweight video only on the identity homepage. */
-    .ambient-media {
-      position: fixed;
-      z-index: 0;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-      background: #0f1014 url("https://falker47.github.io/Nexus-portfolio/assets/hero/poster.webp") center / cover no-repeat;
-    }
-
-    .ambient-media::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(10, 13, 20, .64), rgba(10, 14, 23, .83)),
-        linear-gradient(90deg, rgba(12, 20, 38, .36), rgba(9, 11, 17, .1));
-    }
-
-    .ambient-video {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity .6s ease;
-    }
-
-    .ambient-video.is-playing { opacity: .86; }
-
     a { color: inherit; text-decoration: none; }
 
     .page {
@@ -180,10 +150,10 @@
     .root-bar {
       min-height: 46px;
       padding: 8px 12px;
-      display: grid;
-      grid-template-columns: minmax(150px, 1fr) auto minmax(150px, 1fr);
+      display: flex;
       align-items: center;
-      gap: 14px;
+      justify-content: space-between;
+      gap: 16px;
       border: 1px solid var(--border);
       border-radius: 14px;
       background: rgba(20,24,32,.72);
@@ -231,47 +201,10 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      justify-self: end;
       gap: 12px;
     }
 
     .root-domain { white-space: nowrap; }
-
-    /* Consistent three-destination navigation across the personal website and Nexus. */
-    .primary-tabs {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      min-width: 0;
-    }
-
-    .primary-tabs a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      padding: 0 13px;
-      color: var(--body);
-      border: 1px solid transparent;
-      border-radius: 10px;
-      font-size: .84rem;
-      font-weight: 500;
-      white-space: nowrap;
-      transition: color .2s ease, border-color .2s ease, background .2s ease;
-    }
-
-    .primary-tabs a:hover,
-    .primary-tabs a[aria-current="page"] {
-      color: var(--text);
-      border-color: rgba(96,165,250,.25);
-      background: rgba(59,130,246,.13);
-    }
-
-    .primary-tabs a:focus-visible {
-      outline: 2px solid var(--primary-soft);
-      outline-offset: 2px;
-    }
 
     /* Same language selector used by Nexus Portfolio. */
     .language-toggle {
@@ -344,9 +277,7 @@
       overflow: hidden;
       border: 1px solid var(--border-accent);
       border-radius: 22px;
-      background: linear-gradient(145deg, rgba(22,25,32,.87), rgba(14,17,23,.91));
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
+      background: linear-gradient(145deg, rgba(22,25,32,.96), rgba(14,17,23,.95));
       box-shadow: var(--shadow), 0 0 40px rgba(59,130,246,.055);
     }
 
@@ -360,7 +291,7 @@
     }
 
     .hero-main {
-      padding: 26px 42px 26px;
+      padding: 38px 42px 26px;
       display: grid;
       grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
       gap: clamp(28px, 3.6vw, 46px);
@@ -499,35 +430,16 @@
       background: rgba(59,130,246,.08);
     }
 
-    .skill-tags {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 7px;
+    .hero-kicker {
       margin: 0;
-      padding: 24px 24px 0;
-      list-style: none;
-    }
-
-    .skill-tags li {
-      padding: 5px 10px;
-      color: #b9d8ff;
-      border: 1px solid rgba(96,165,250,.3);
-      border-radius: 999px;
-      background: rgba(59,130,246,.1);
-      font-size: .68rem;
+      padding: 0 42px 28px;
+      color: var(--primary-light);
+      font-size: clamp(.65rem, .72vw, .73rem);
       font-weight: 600;
-      line-height: 1.35;
+      line-height: 1.45;
+      letter-spacing: .135em;
       text-align: center;
-    }
-
-    .personal-motto {
-      margin: 9px 0 0;
-      color: #dbeafe;
-      font-size: .79rem;
-      line-height: 1.4;
-      font-style: italic;
+      text-transform: uppercase;
     }
 
     .profiles {
@@ -635,18 +547,9 @@
         margin: 0 auto;
       }
 
-      .root-bar { grid-template-columns: minmax(0, 1fr) auto; }
-
-      .primary-tabs {
-        grid-column: 1 / -1;
-        grid-row: 2;
-        width: 100%;
-      }
-
-      .primary-tabs a {
-        flex: 1 1 0;
-        min-width: 0;
-        padding: 0 8px;
+      .hero-kicker {
+        padding: 0 28px 25px;
+        font-size: .67rem;
       }
     }
 
@@ -718,23 +621,11 @@
         font-size: .76rem;
       }
 
-      .skill-tags {
-        gap: 6px;
-        padding: 18px 12px 0;
-      }
-
-      .skill-tags li {
-        padding: 4px 8px;
-        font-size: .63rem;
-      }
-
-      .personal-motto {
-        font-size: .73rem;
-        margin-top: 7px;
-      }
-
-      .hero-main {
-        padding-top: 20px;
+      .hero-kicker {
+        padding: 0 20px 22px;
+        font-size: .61rem;
+        line-height: 1.5;
+        letter-spacing: .105em;
       }
 
       .profiles { padding: 14px 18px 15px; }
@@ -750,23 +641,10 @@
 
     @media (max-width: 365px) {
       .actions { grid-template-columns: 1fr; }
-      .primary-tabs a { font-size: .76rem; }
-      .skill-tags li { font-size: .6rem; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .ambient-video { display: none; transition: none; }
-      .profile-link, .button, .primary-tabs a { transition: none; }
     }
   </style>
 </head>
 <body>
-  <div class="ambient-media" aria-hidden="true">
-    <video id="ambient-video" class="ambient-video" muted loop playsinline poster="https://falker47.github.io/Nexus-portfolio/assets/hero/poster.webp">
-      <source data-src="https://falker47.github.io/Nexus-portfolio/assets/hero/video.webm" type="video/webm" />
-      <source data-src="https://falker47.github.io/Nexus-portfolio/assets/hero/video.mp4" type="video/mp4" />
-    </video>
-  </div>
   <main class="page">
     <header class="root-bar">
       <a class="brand" href="https://falker47.github.io/" aria-label="Maurizio Falconi home">
@@ -776,12 +654,6 @@
           <span>Maurizio Falconi</span>
         </span>
       </a>
-
-      <nav class="primary-tabs" aria-label="Primary navigation">
-        <a href="https://falker47.github.io/" aria-current="page" data-root-i18n="navHome">Home</a>
-        <a href="https://falker47.github.io/Nexus-portfolio/" data-root-i18n="navPortfolio">Portfolio</a>
-        <a href="https://falker47.github.io/Nexus-portfolio/research.html" data-root-i18n="navResearch">Research</a>
-      </nav>
 
       <div class="root-actions">
         <span class="root-domain">falker47.github.io</span>
@@ -797,12 +669,6 @@
     </header>
 
     <section class="identity-card" aria-labelledby="identity-name">
-      <ul class="skill-tags" aria-label="Areas of expertise">
-        <li data-root-i18n="skillData">Data Engineering</li>
-        <li data-root-i18n="skillAI">Applied AI &amp; Automation</li>
-        <li data-root-i18n="skillAlgorithms">Algorithms</li>
-        <li data-root-i18n="skillResearch">Computational Research</li>
-      </ul>
       <div class="hero-main">
         <div class="hero-post">
           <div class="avatar-wrap">
@@ -813,7 +679,6 @@
             <h1 id="identity-name">Maurizio Falconi</h1>
             <p class="handle">@falker47</p>
             <p class="role">Data Engineer</p>
-            <p class="personal-motto" data-root-i18n="motto">“If it doesn’t exist yet, I’ll build it.”</p>
           </div>
         </div>
 
@@ -838,6 +703,10 @@
           </div>
         </div>
       </div>
+
+      <p class="hero-kicker" data-root-i18n="heroKicker">
+        Data Engineering · Applied AI &amp; Automation · Algorithms · Computational Research
+      </p>
 
       <footer class="profiles">
         <nav class="profile-links" aria-label="Identity profiles">
@@ -866,28 +735,14 @@
 
     const rootTranslations = {
       it: {
-        navHome: "Home",
-        navPortfolio: "Portfolio",
-        navResearch: "Ricerca",
-        skillData: "Ingegneria dei dati",
-        skillAI: "AI applicata e automazione",
-        skillAlgorithms: "Algoritmi",
-        skillResearch: "Ricerca computazionale",
-        motto: "“Se ancora non esiste, allora lo costruisco.”",
+        heroKicker: "Ingegneria dei dati · Automazione e AI applicata · Algoritmi · Ricerca computazionale",
         intro: 'Costruisco sistemi dati e software, con particolare attenzione ad AI applicata, automazione e algoritmi. In parallelo, porto avanti ricerca computazionale indipendente con <a href="https://falker47.github.io/Nexus-portfolio/research.html">Ringmin</a>.',
         portfolio: "Nexus Portfolio",
         research: "Ricerca",
         description: "Maurizio Falconi (falker47), Data Engineer. Costruisce sistemi dati e software, con particolare attenzione ad AI applicata, automazione e algoritmi, e porta avanti ricerca computazionale indipendente con Ringmin."
       },
       en: {
-        navHome: "Home",
-        navPortfolio: "Portfolio",
-        navResearch: "Research",
-        skillData: "Data Engineering",
-        skillAI: "Applied AI & Automation",
-        skillAlgorithms: "Algorithms",
-        skillResearch: "Computational Research",
-        motto: "“If it doesn’t exist yet, I’ll build it.”",
+        heroKicker: "Data Engineering · Applied AI & Automation · Algorithms · Computational Research",
         intro: 'I build data systems and software across applied AI, automation, and algorithms. In parallel, I conduct independent computational research through <a href="https://falker47.github.io/Nexus-portfolio/research.html">Ringmin</a>.',
         portfolio: "Nexus Portfolio",
         research: "Research",
@@ -930,11 +785,6 @@
 
       document.documentElement.lang = lang;
 
-      const mainNavigation = document.querySelector(".primary-tabs");
-      if (mainNavigation) mainNavigation.setAttribute("aria-label", lang === "it" ? "Navigazione principale" : "Primary navigation");
-      const expertise = document.querySelector(".skill-tags");
-      if (expertise) expertise.setAttribute("aria-label", lang === "it" ? "Aree di competenza" : "Areas of expertise");
-
       const description = document.querySelector('meta[name="description"]');
       if (description) description.setAttribute("content", rootTranslations[lang].description);
 
@@ -956,36 +806,6 @@
         switchRootLanguage(event.newValue, false);
       }
     });
-
-    // Defer video sources until motion is allowed; the lightweight poster is always available.
-    const ambientVideo = document.getElementById("ambient-video");
-    const motionPreference = window.matchMedia?.("(prefers-reduced-motion: reduce)");
-    function syncAmbientVideo() {
-      if (!ambientVideo) return;
-      if (motionPreference?.matches || document.hidden) {
-        ambientVideo.pause();
-        return;
-      }
-      if (!ambientVideo.dataset.loaded) {
-        ambientVideo.querySelectorAll("source[data-src]").forEach((source) => {
-          source.src = source.dataset.src;
-          source.removeAttribute("data-src");
-        });
-        ambientVideo.dataset.loaded = "true";
-        ambientVideo.load();
-      }
-      const playback = ambientVideo.play();
-      if (playback && typeof playback.catch === "function") playback.catch(() => {});
-    }
-
-    if (ambientVideo) {
-      ambientVideo.addEventListener("playing", () => ambientVideo.classList.add("is-playing"));
-      ambientVideo.addEventListener("pause", () => ambientVideo.classList.remove("is-playing"));
-      syncAmbientVideo();
-      document.addEventListener("visibilitychange", syncAmbientVideo);
-      if (motionPreference?.addEventListener) motionPreference.addEventListener("change", syncAmbientVideo);
-      else if (motionPreference?.addListener) motionPreference.addListener(syncAmbientVideo);
-    }
   </script>
 </body>
 </html>
