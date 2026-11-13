@@ -1,0 +1,40 @@
+name: Mobile visual QA preview (temporary)
+on:
+  push:
+    branches:
+      - codex/mobile-single-screen-20261113
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Capture mobile screenshots and viewport metrics
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          echo "Chrome: $CHROME"
+          node <<'NODE'
+          const fs=require('node:fs');
+          let html=fs.readFileSync('index.html','utf8');
+          const injection='<script>document.addEventListener("DOMContentLoaded",()=>{const e=document.documentElement;e.setAttribute("data-viewport-qa",JSON.stringify({width:innerWidth,height:innerHeight,scrollWidth:e.scrollWidth,scrollHeight:e.scrollHeight}));});</script>';
+          if(!html.includes('</body>'))throw new Error('Missing body close');
+          fs.writeFileSync('qa-index.html',html.replace('</body>',injection+'</body>'));
+          NODE
+          for metrics in "390 844" "360 740" "320 640"; do
+            read -r w h <<<"$metrics"
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --hide-scrollbars --window-size="$w,$h" --virtual-time-budget=6000 --screenshot="mobile-$w-$h.png" "file://$PWD/index.html" >/dev/null 2>/dev/null
+            "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --window-size="$w,$h" --virtual-time-budget=6000 --dump-dom "file://$PWD/qa-index.html" 2>/dev/null | grep -o 'data-viewport-qa="[^"]*"' | head -1 | sed "s/^/$w x $h: /" >>mobile-metrics.txt || true
+            test -s "mobile-$w-$h.png"
+          done
+          cat mobile-metrics.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: master-mobile-preview-shots
+          path: |
+            mobile-*.png
+            mobile-metrics.txt
+            index.html
+          retention-days: 1
