@@ -33,9 +33,9 @@ assert.match(html, /\.page\{height:100svh/);
 assert.match(html, /\.hero-lead h1>span>br\{display:none\}/);
 assert.match(html, /\.page:has\(\.about\[open\],\.work\[open\]\)\{height:auto/);
 
-const phase = Number(html.match(/--phase-glow:([\\d.]+)s/)[1]);
-const bulb = Number(html.match(/--bulb-glow:([\\d.]+)s/)[1]);
-const model = Number(html.match(/--model-glow:([\\d.]+)s/)[1]);
+const phase = Number(html.match(/--phase-glow:([\d.]+)s/)[1]);
+const bulb = Number(html.match(/--bulb-glow:([\d.]+)s/)[1]);
+const model = Number(html.match(/--model-glow:([\d.]+)s/)[1]);
 assert.ok(Math.abs(bulb / phase - 1.3) < 1e-9, 'Bulb illumination is 30% longer');
 assert.ok(Math.abs(model / phase - .85) < 1e-9, 'Cube illumination is 15% shorter');
 assert.equal((html.match(/var\(--bulb-glow\)/g) || []).length, 3, 'Bulb and filament/light stay in sync');
