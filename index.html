@@ -497,6 +497,40 @@ body{background-color:var(--bg);background-image:linear-gradient(rgba(255,255,25
 }
 
 </style>
+
+<style id="desktop-visual-sizing">
+/* Enlarge only the artwork row: lead text/CTA and grid tracks stay unchanged. */
+@media (min-width: 1000px) {
+  .identity {
+    max-width: min(100%, 520px);
+    padding: 30px 34px;
+    transform: translateY(22px);
+  }
+  .person { grid-template-columns: 88px minmax(0, 1fr); gap: 18px; }
+  .person .person-name { font-size: 26px; }
+  .person .person-handle,
+  .person .person-role { font-size: 13px; }
+  .identity-intro { font-size: 15px; line-height: 1.55; }
+  .contacts .contact { min-height: 48px; font-size: 13px; }
+
+  /* Grow inside the existing fixed-height art slot, without moving the lead. */
+  .desktop-engine {
+    height: 116%;
+    transform: translate(14px, -9%);
+  }
+}
+@media (min-width: 1600px) {
+  .identity { max-width: min(100%, 570px); padding: 32px 36px; }
+  .person { grid-template-columns: 94px minmax(0, 1fr); gap: 20px; }
+  .desktop-engine { height: 120%; transform: translate(20px, -10%); }
+}
+/* Very short desktops keep their compact first-screen composition. */
+@media (min-width: 1000px) and (max-height: 620px) {
+  .identity { padding: 20px 24px; transform: translateY(8px); }
+  .person { grid-template-columns: 72px minmax(0, 1fr); }
+  .desktop-engine { height: 106%; transform: translate(5px, -4%); }
+}
+</style>
 </head>
 <body>
 <a class="skip" href="#main" data-i18n="skip">Vai al contenuto</a>
