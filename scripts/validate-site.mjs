@@ -38,6 +38,8 @@ assert.match(desktopRules,/\.identity\s*\{[^}]*padding:\s*0;[^}]*background:\s*n
 assert.match(desktopRules,/\.identity-core\s*\{[^}]*width:\s*100%;[^}]*padding:\s*30px 34px;[^}]*border-radius:\s*inherit;/,'Inner card fills its container');
 assert.match(desktopRules,/@media\s*\(min-width:\s*1600px\)\s*\{[\s\S]*?\.identity-core\s*\{\s*padding:\s*32px 36px;/,'Large desktop uses inner padding');
 assert.match(desktopRules,/@media\s*\(min-width:\s*1000px\)\s*and\s*\(max-height:\s*620px\)[\s\S]*?\.identity-core\s*\{\s*padding:\s*20px 24px;/,'Short viewport uses inner padding');
+assert.match(desktopRules,/\.person \.portrait-frame\s*\{[^}]*width:\s*100%;[^}]*aspect-ratio:\s*1 \/ 1;[^}]*align-self:\s*start;/,'Desktop portrait frame must remain square and not stretch with text');
+assert.match(html,/\.person \.portrait\{[^}]*width:100%;height:100%;[^}]*object-fit:cover/,'Portrait image must fill the square frame without distortion');
 assert.match(desktopRules,/\.desktop-engine\s*\{[^}]*height:\s*116%/);
 assert.match(desktopRules,/\.desktop-engine\s*\{[^}]*transform:\s*translate\(14px,\s*-15%\)/);
 assert.match(desktopRules,/\.desktop-engine\s*\{[^}]*height:\s*120%;[^}]*transform:\s*translate\(20px,\s*-16%\)/,'Wide desktop research lifted');
