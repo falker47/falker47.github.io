@@ -516,6 +516,12 @@ body{background-color:var(--bg);background-image:linear-gradient(rgba(255,255,25
     border-radius: inherit;
   }
   .person { grid-template-columns: 88px minmax(0, 1fr); gap: 18px; }
+  /* The original square portrait must not stretch to the text row height. */
+  .person .portrait-frame {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    align-self: start;
+  }
   .person .person-name { font-size: 26px; }
   .person .person-handle,
   .person .person-role { font-size: 13px; }
