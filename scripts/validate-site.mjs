@@ -34,8 +34,14 @@ assert.ok(desktopSizing,'Dedicated desktop artwork sizing must exist');
 const desktopRules=desktopSizing.replace(/\/\*[\s\S]*?\*\//g,'');
 assert.match(desktopRules,/^\s*@media\s*\(min-width:\s*1000px\)/);
 assert.match(desktopRules,/\.identity\s*\{[^}]*max-width:\s*min\(100%,\s*520px\)/);
+assert.match(desktopRules,/\.identity\s*\{[^}]*padding:\s*0;[^}]*background:\s*none;[^}]*border:\s*0;[^}]*box-shadow:\s*none;/,'No gradient frame around the card');
+assert.match(desktopRules,/\.identity-core\s*\{[^}]*width:\s*100%;[^}]*padding:\s*30px 34px;[^}]*border-radius:\s*inherit;/,'Inner card fills its container');
+assert.match(desktopRules,/@media\s*\(min-width:\s*1600px\)\s*\{[\s\S]*?\.identity-core\s*\{\s*padding:\s*32px 36px;/,'Large desktop uses inner padding');
+assert.match(desktopRules,/@media\s*\(min-width:\s*1000px\)\s*and\s*\(max-height:\s*620px\)[\s\S]*?\.identity-core\s*\{\s*padding:\s*20px 24px;/,'Short viewport uses inner padding');
 assert.match(desktopRules,/\.desktop-engine\s*\{[^}]*height:\s*116%/);
-assert.match(desktopRules,/\.desktop-engine\s*\{[^}]*transform:\s*translate\(14px,\s*-9%\)/);
+assert.match(desktopRules,/\.desktop-engine\s*\{[^}]*transform:\s*translate\(14px,\s*-15%\)/);
+assert.match(desktopRules,/\.desktop-engine\s*\{[^}]*height:\s*120%;[^}]*transform:\s*translate\(20px,\s*-16%\)/,'Wide desktop research lifted');
+assert.match(desktopRules,/\.desktop-engine\s*\{[^}]*height:\s*106%;[^}]*transform:\s*translate\(5px,\s*-12%\)/,'Short desktop research lifted');
 assert.doesNotMatch(desktopRules,/\.hero(?:-lead)?(?:\s|\{|\.)|\.cta(?:\s|\{)|\bh1\s*\{/,'Artwork sizing must not change the headline, CTA or hero grid');
 assert.match(html,/<div class="hero-lead"><h1>/,'Existing independent lead stays in place');
 
