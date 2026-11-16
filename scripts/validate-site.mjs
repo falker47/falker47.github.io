@@ -27,4 +27,16 @@ assert.match(html,/prefers-reduced-motion:\s*reduce/);
 assert.match(html,/<a class="skip"[^>]*href="#main"|<a[^>]*href="#main"[^>]*class="skip"/);
 assert.match(readFileSync(new URL('../robots.txt',import.meta.url),'utf8'),/Sitemap: https:\/\/falker47\.github\.io\/sitemap\.xml/);
 assert.match(readFileSync(new URL('../sitemap.xml',import.meta.url),'utf8'),/<loc>https:\/\/falker47\.github\.io\/<\/loc>/);
+
+/* Guard the desktop artwork iteration against accidentally shifting the lead or mobile layout. */
+const desktopSizing=html.match(/<style id="desktop-visual-sizing">([\s\S]*?)<\/style>/)?.[1];
+assert.ok(desktopSizing,'Dedicated desktop artwork sizing must exist');
+const desktopRules=desktopSizing.replace(/\/\*[\s\S]*?\*\//g,'');
+assert.match(desktopRules,/^\s*@media\s*\(min-width:\s*1000px\)/);
+assert.match(desktopRules,/\.identity\s*\{[^}]*max-width:\s*min\(100%,\s*520px\)/);
+assert.match(desktopRules,/\.desktop-engine\s*\{[^}]*height:\s*116%/);
+assert.match(desktopRules,/\.desktop-engine\s*\{[^}]*transform:\s*translate\(14px,\s*-9%\)/);
+assert.doesNotMatch(desktopRules,/\.hero(?:-lead)?(?:\s|\{|\.)|\.cta(?:\s|\{)|\bh1\s*\{/,'Artwork sizing must not change the headline, CTA or hero grid');
+assert.match(html,/<div class="hero-lead"><h1>/,'Existing independent lead stays in place');
+
 console.log('Site checks passed: production metadata, links, SVG/ARIA references, translations and JavaScript syntax.');
