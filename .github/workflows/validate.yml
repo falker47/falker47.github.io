@@ -24,3 +24,5 @@ jobs:
           node-version: '22'
       - run: node scripts/validate-site.mjs
       - run: node --test scripts/test-disclosures.mjs
+      - run: node --test scripts/test-nexus-downloads.mjs
+      - run: node --check scripts/nexus-downloads.mjs
