@@ -1,101 +1,101 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { collectTotalDownloads } from './update-nexus-downloads.mjs';
-import { formatStats } from './nexus-downloads.mjs';
+import { collectProfileDownloads } from './update-nexus-downloads.mjs';
+import { formatStats, loadStats } from './nexus-downloads.mjs';
 
 function response(body, status = 200) {
-  return { ok: status >= 200 && status < 300, status, json: async () => body };
+  return { ok: status >= 200 && status < 300, json: async () => body };
 }
 
-function mod(uid, downloads, memberId = 42) {
-  return { uid, downloads, uploader: { memberId } };
+function profile(overrides = {}) {
+  return {
+    memberId: 42,
+    name: 'falker47',
+    modCount: 27,
+    uniqueModDownloads: 10699,
+    uniqueCollectionDownloads: 9,
+    ...overrides
+  };
 }
 
-test('sums all mods across pages, without confusing unique and total downloads', async () => {
+test('uses the exact Nexus Mods profile uniqueModDownloads metric, not all downloads or collections', async () => {
   const calls = [];
   const fetcher = async (_url, options) => {
-    const payload = JSON.parse(options.body);
-    calls.push(payload);
-    if (payload.query.includes('userByName')) {
-      return response({ data: { userByName: { memberId: 42, name: 'falker47' } } });
-    }
-    assert.equal(payload.variables.filter.uploaderId[0].value, '42');
-    assert.equal(payload.variables.filter.uploaderId[0].op, 'EQUALS');
-    assert.equal(payload.variables.count, 2);
-    if (payload.variables.offset === 0) {
-      return response({ data: { mods: { totalCount: 3, nodes: [mod('A', 110), mod('B', 220)] } } });
-    }
-    if (payload.variables.offset === 2) {
-      return response({ data: { mods: { totalCount: 3, nodes: [mod('C', 330)] } } });
-    }
-    throw new Error('Unexpected page');
+    const request = JSON.parse(options.body);
+    calls.push(request);
+    assert.match(request.query, /userByName/);
+    assert.match(request.query, /\buniqueModDownloads\b/);
+    assert.match(request.query, /\bmodCount\b/);
+    assert.doesNotMatch(request.query, /\bmods\s*\(/);
+    assert.equal(request.variables.name, 'falker47');
+    return response({ data: { userByName: profile() } });
   };
-  const stats = await collectTotalDownloads({ fetcher, username: 'falker47', pageSize: 2 });
-  assert.deepEqual(stats, { username: 'falker47', modCount: 3, totalDownloads: 660 });
-  assert.equal(calls.length, 3);
-});
-
-test('fails closed on API GraphQL errors', async () => {
-  const fetcher = async () => response({ errors: [{ message: 'Unauthorized' }] });
-  await assert.rejects(collectTotalDownloads({ fetcher }), /Unauthorized/);
-});
-
-test('fails closed if the user cannot be resolved', async () => {
-  const fetcher = async () => response({ data: { userByName: null } });
-  await assert.rejects(collectTotalDownloads({ fetcher }), /user/i);
-});
-
-test('rejects downloads attributed to another uploader', async () => {
-  const fetcher = async (_url, options) => {
-    const { query } = JSON.parse(options.body);
-    return query.includes('userByName')
-      ? response({ data: { userByName: { memberId: 42, name: 'falker47' } } })
-      : response({ data: { mods: { totalCount: 1, nodes: [mod('A', 100, 999)] } } });
-  };
-  await assert.rejects(collectTotalDownloads({ fetcher }), /uploader/i);
-});
-
-test('rejects duplicate and incomplete mod pages', async () => {
-  let page = 0;
-  const fetcher = async (_url, options) => {
-    const { query } = JSON.parse(options.body);
-    if (query.includes('userByName')) return response({ data: { userByName: { memberId: 42, name: 'falker47' } } });
-    page++;
-    return response({ data: { mods: { totalCount: 3, nodes: page === 1
-      ? [mod('A', 10), mod('B', 20)]
-      : [mod('B', 20)] } } });
-  };
-  await assert.rejects(collectTotalDownloads({ fetcher, pageSize: 2 }), /duplicate/i);
-});
-
-test('rejects non-integer download counts and incomplete responses', async () => {
-  const fetcher = async (_url, options) => {
-    const { query } = JSON.parse(options.body);
-    return query.includes('userByName')
-      ? response({ data: { userByName: { memberId: 42, name: 'falker47' } } })
-      : response({ data: { mods: { totalCount: 1, nodes: [mod('A', 2.5)] } } });
-  };
-  await assert.rejects(collectTotalDownloads({ fetcher }), /download/i);
-});
-
-test('renders exact localized totals for Italian and English', () => {
-  assert.deepEqual(formatStats(12345, 'it'), {
-    counter: '12.345',
-    proof: '12.345 download su Nexus Mods ↗'
+  assert.deepEqual(await collectProfileDownloads({ fetcher }), {
+    username: 'falker47', modCount: 27, uniqueModDownloads: 10699
   });
-  assert.deepEqual(formatStats(12345, 'en'), {
-    counter: '12,345',
-    proof: '12,345 downloads on Nexus Mods ↗'
+  assert.equal(calls.length, 1, 'The profile metric should need one request, not paginated mod totals');
+});
+
+test('rejects API errors without overwriting the prior snapshot', async () => {
+  await assert.rejects(
+    collectProfileDownloads({ fetcher: async () => response({ errors: [{ message: 'Unauthorized' }] }) }),
+    /Unauthorized/
+  );
+  await assert.rejects(
+    collectProfileDownloads({ fetcher: async () => response({ data: { userByName: null } }) }),
+    /user/i
+  );
+});
+
+test('rejects wrong profile identity and malformed unique-download counts', async () => {
+  for (const invalid of [
+    profile({ name: 'someone-else' }),
+    profile({ memberId: 0 }),
+    profile({ uniqueModDownloads: -1 }),
+    profile({ uniqueModDownloads: null }),
+    profile({ uniqueModDownloads: 22.5 }),
+    profile({ modCount: -1 }),
+    profile({ modCount: null })
+  ]) {
+    await assert.rejects(
+      collectProfileDownloads({ fetcher: async () => response({ data: { userByName: invalid } }) }),
+      /user|count|download|mod/i
+    );
+  }
+});
+
+test('renders unique downloads exactly in Italian and English', () => {
+  assert.deepEqual(formatStats(10699, 'it'), {
+    counter: '10.699',
+    proof: '10.699 download su Nexus Mods ↗'
+  });
+  assert.deepEqual(formatStats(10699, 'en'), {
+    counter: '10,699',
+    proof: '10,699 downloads on Nexus Mods ↗'
   });
   assert.throws(() => formatStats(-1, 'it'), /downloads/i);
 });
 
+test('loads the uniqueModDownloads snapshot and rejects totalDownloads-only data', async () => {
+  const expected = {
+    username: 'falker47', uniqueModDownloads: 10699,
+    modCount: 27, checkedOn: '2026-11-17'
+  };
+  assert.deepEqual(await loadStats(async () => response(expected)), expected);
+  await assert.rejects(
+    loadStats(async () => response({
+      username: 'falker47', totalDownloads: 12447,
+      modCount: 27, checkedOn: '2026-11-17'
+    })),
+    /Invalid Nexus Mods stats snapshot/
+  );
+});
 
-test('reapplies live totals after switching the page language', async () => {
+test('updates the download counter after changing language, without changing to the total-download metric', async () => {
   const originalDocument = globalThis.document;
   const originalFetch = globalThis.fetch;
-  const counter = { textContent: '12k+' };
-  const proof = { textContent: '12k+ download su Nexus Mods ↗' };
+  const counter = { textContent: '10k+' };
+  const proof = { textContent: '10k+ download su Nexus Mods ↗' };
   const listeners = {};
   const fakeDocument = {
     documentElement: { lang: 'it' },
@@ -109,27 +109,19 @@ test('reapplies live totals after switching the page language', async () => {
   globalThis.document = fakeDocument;
   globalThis.fetch = async (_url, options) => {
     assert.equal(options.cache, 'no-store');
-    return response({ username: 'falker47', totalDownloads: 12447, checkedOn: '2026-11-17' });
+    return response({ username: 'falker47', uniqueModDownloads: 10699, checkedOn: '2026-11-17' });
   };
   try {
-    await import('./nexus-downloads.mjs?test=language-switch');
+    await import('./nexus-downloads.mjs?test=unique-downloads-language-change');
     await new Promise(resolve => setImmediate(resolve));
-    assert.equal(counter.textContent, '12.447');
-    assert.equal(proof.textContent, '12.447 download su Nexus Mods ↗');
+    assert.equal(counter.textContent, '10.699');
+    assert.equal(proof.textContent, '10.699 download su Nexus Mods ↗');
     fakeDocument.documentElement.lang = 'en';
     listeners['portfolio:languagechange']();
-    assert.equal(counter.textContent, '12,447');
-    assert.equal(proof.textContent, '12,447 downloads on Nexus Mods ↗');
+    assert.equal(counter.textContent, '10,699');
+    assert.equal(proof.textContent, '10,699 downloads on Nexus Mods ↗');
   } finally {
     globalThis.document = originalDocument;
     globalThis.fetch = originalFetch;
   }
-});
-
-test('rejects malformed public snapshots instead of showing an incorrect counter', async () => {
-  const { loadStats } = await import('./nexus-downloads.mjs');
-  await assert.rejects(
-    loadStats(async () => response({ username: 'falker47', totalDownloads: null, checkedOn: null })),
-    /Invalid Nexus Mods stats snapshot/
-  );
 });
