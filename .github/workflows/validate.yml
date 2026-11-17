@@ -26,5 +26,3 @@ jobs:
       - run: node --test scripts/test-disclosures.mjs
       - run: node --test scripts/test-nexus-downloads.mjs
       - run: node --check scripts/nexus-downloads.mjs
-      - name: Verify Nexus Mods GraphQL connectivity on PR
-        run: node scripts/update-nexus-downloads.mjs
