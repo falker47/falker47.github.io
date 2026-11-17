@@ -89,3 +89,47 @@ test('renders exact localized totals for Italian and English', () => {
   });
   assert.throws(() => formatStats(-1, 'it'), /downloads/i);
 });
+
+
+test('reapplies live totals after switching the page language', async () => {
+  const originalDocument = globalThis.document;
+  const originalFetch = globalThis.fetch;
+  const counter = { textContent: '12k+' };
+  const proof = { textContent: '12k+ download su Nexus Mods ↗' };
+  const listeners = {};
+  const fakeDocument = {
+    documentElement: { lang: 'it' },
+    addEventListener(event, fn) { listeners[event] = fn; },
+    querySelectorAll(selector) {
+      if (selector === '[data-i18n="moddingNumber"]') return [counter];
+      if (selector === '[data-i18n="modProof"]') return [proof];
+      return [];
+    }
+  };
+  globalThis.document = fakeDocument;
+  globalThis.fetch = async (_url, options) => {
+    assert.equal(options.cache, 'no-store');
+    return response({ username: 'falker47', totalDownloads: 12447, checkedOn: '2026-11-17' });
+  };
+  try {
+    await import('./nexus-downloads.mjs?test=language-switch');
+    await new Promise(resolve => setImmediate(resolve));
+    assert.equal(counter.textContent, '12.447');
+    assert.equal(proof.textContent, '12.447 download su Nexus Mods ↗');
+    fakeDocument.documentElement.lang = 'en';
+    listeners['portfolio:languagechange']();
+    assert.equal(counter.textContent, '12,447');
+    assert.equal(proof.textContent, '12,447 downloads on Nexus Mods ↗');
+  } finally {
+    globalThis.document = originalDocument;
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test('rejects malformed public snapshots instead of showing an incorrect counter', async () => {
+  const { loadStats } = await import('./nexus-downloads.mjs');
+  await assert.rejects(
+    loadStats(async () => response({ username: 'falker47', totalDownloads: null, checkedOn: null })),
+    /Invalid Nexus Mods stats snapshot/
+  );
+});
