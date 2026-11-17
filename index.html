@@ -712,7 +712,7 @@ function preparePlay(){if(started||document.hidden)return;if(reduced.matches){st
 function motionChanged(){if(reduced.matches){started=true;finish()}}
 function visibilityChanged(){if(document.hidden){if(started)finish()}else preparePlay()}
 function viewportChanged(){if(started)finish();else preparePlay()}
-function setLanguage(value){lang=value;root.lang=lang;document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;if(key==='headlineStart')el.innerHTML=copy[lang][key];else el.textContent=copy[lang][key]});document.querySelectorAll('[data-label]').forEach(el=>el.setAttribute('aria-label',copy[lang][el.dataset.label]));document.querySelectorAll('[data-lang]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.lang===lang)));document.querySelector('meta[name=description]').content=copy[lang].intro;try{localStorage.setItem('nexus-language',lang)}catch{}try{const url=new URL(location.href);url.searchParams.set('lang',lang);url.searchParams.delete('mode');history.replaceState(null,'',url)}catch{}}
+function setLanguage(value){lang=value;root.lang=lang;document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;if(key==='headlineStart')el.innerHTML=copy[lang][key];else el.textContent=copy[lang][key]});document.querySelectorAll('[data-label]').forEach(el=>el.setAttribute('aria-label',copy[lang][el.dataset.label]));document.querySelectorAll('[data-lang]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.lang===lang)));document.querySelector('meta[name=description]').content=copy[lang].intro;try{localStorage.setItem('nexus-language',lang)}catch{}try{const url=new URL(location.href);url.searchParams.set('lang',lang);url.searchParams.delete('mode');history.replaceState(null,'',url)}catch{}document.dispatchEvent(new Event('portfolio:languagechange'))}
 
 
 // Native disclosure + progressively enhanced, keyboard-operated activity tabs.
@@ -728,6 +728,7 @@ reduced.addEventListener('change',motionChanged);document.addEventListener('visi
 })();
 </script>
 
+<script type="module" src="scripts/nexus-downloads.mjs"></script>
 <script src="scripts/animated-disclosures.js" defer></script>
 </body>
 </html>
