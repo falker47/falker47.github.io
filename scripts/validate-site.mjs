@@ -24,6 +24,7 @@ for(const [,attrs,source] of html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/
  }else new vm.Script(source);
 }
 assert.match(html,/prefers-reduced-motion:\s*reduce/);
+assert.doesNotMatch(html,/12k\+/, 'Do not ship stale 12k+ totals as the unique-download fallback');
 assert.match(html,/<script type="module" src="scripts\/nexus-downloads\.mjs"><\/script>/,'Live Nexus totals must load without exposing a key');
 assert.match(html,/document\.dispatchEvent\(new Event\('portfolio:languagechange'\)\)/,'Language toggle must preserve fetched Nexus totals');
 assert.match(html,/<a class="skip"[^>]*href="#main"|<a[^>]*href="#main"[^>]*class="skip"/);
