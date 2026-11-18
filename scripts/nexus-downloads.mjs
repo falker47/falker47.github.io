@@ -35,6 +35,9 @@ if (typeof document !== 'undefined') {
     document.querySelectorAll('[data-i18n="moddingNumber"]').forEach(node => {
       node.textContent = localized.counter;
     });
+    if (Number.isSafeInteger(stats.modCount) && stats.modCount >= 0) document.querySelectorAll('[data-nexus-stat="modCount"]').forEach(node => {
+      node.textContent = new Intl.NumberFormat(document.documentElement.lang === 'en' ? 'en-US' : 'it-IT').format(stats.modCount);
+    });
     document.querySelectorAll('[data-i18n="modProof"]').forEach(node => {
       node.textContent = localized.proof;
     });
