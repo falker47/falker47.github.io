@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api -X PUT repos/falker47/falker47.github.io/pulls/*/merge *)",
+      "Bash(gh api -X POST repos/falker47/falker47.github.io/actions/workflows/*/dispatches *)",
+      "Bash(gh api repos/falker47/falker47.github.io/pulls *)",
+      "Bash(gh run list *)",
+      "Bash(gh run view *)"
+    ]
+  }
+}
