@@ -2,7 +2,7 @@ name: Validate homepage
 
 on:
   push:
-    branches: [main, 'codex/**']
+    branches: [main]
   pull_request:
 
 permissions:
@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node scripts/validate-site.mjs
+      - run: node scripts/validate-site.mjs # includes: en/index.html and sitemap.xml are in sync with the build
       - run: node --test scripts/test-disclosures.mjs
       - run: node --test scripts/test-nexus-downloads.mjs
       - run: node --check scripts/nexus-downloads.mjs
