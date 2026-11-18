@@ -69,9 +69,9 @@ export async function updateDownloads() {
   }
   if (old && old.username === snapshot.username &&
       old.uniqueModDownloads === snapshot.uniqueModDownloads &&
-      old.modCount === snapshot.modCount &&
-      old.checkedOn === snapshot.checkedOn) {
-    console.log('Nexus Mods unique downloads unchanged today:', snapshot.uniqueModDownloads);
+      old.modCount === snapshot.modCount) {
+    // Totals unchanged: keep the file as is, so the daily job does not add a commit with only a new date.
+    console.log('Nexus Mods unique downloads unchanged:', snapshot.uniqueModDownloads);
     return snapshot;
   }
   writeFileSync(OUTPUT, JSON.stringify(snapshot, null, 2) + '\n');

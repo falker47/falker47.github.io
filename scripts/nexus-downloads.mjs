@@ -49,6 +49,6 @@ if (typeof document !== 'undefined') {
     stats = value;
     render();
   }).catch(() => {
-    // Keep the existing 12k+ fallback; never show a fabricated zero after an API error.
+    // Keep the static totals already in the HTML; never show a fabricated zero after an API error.
   });
 }
