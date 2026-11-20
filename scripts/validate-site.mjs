@@ -5,7 +5,8 @@ import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import vm from 'node:vm';
 import { createHash } from 'node:crypto';
-import { openSite, origin, references, siteRoot, walk } from './qa/site.mjs';
+import { checkText, designChecks } from './design-checks.mjs';
+import { decode, openSite, origin, references, siteRoot, walk } from './qa/site.mjs';
 
 const site = await openSite();
 const checkedScripts = new Set();
@@ -22,6 +23,7 @@ function checkScript(source, filename, module = false) {
   assert.equal(result.status, 0, `${filename}: ${result.stderr}`);
 }
 
+const inlineCss = [];
 let count = 0;
 for await (const file of walk(siteRoot)) {
   if (!file.endsWith('.html')) continue;
@@ -37,8 +39,21 @@ for await (const file of walk(siteRoot)) {
   }
 
   const translations = JSON.parse(elements.find(e => e.name === 'script' && e.attrs.id === 'page-i18n')?.body || '{}');
+  const visibleText = source.replace(/<!--[^]*?-->|<(script|style)\b[^>]*>[^]*?<\/\1>/gi, '').replace(/<(?:[^>"']|"[^"]*"|'[^']*')*>/g, ' ');
+  checkText(decode(visibleText), route);
+  for (const [lang, copy] of Object.entries(translations)) for (const [key, value] of Object.entries(copy)) checkText(value, route + ' ' + lang + ' ' + key);
+  const preloads = elements.filter(e => e.name === 'link' && e.attrs.rel === 'preload' && e.attrs.as === 'font').map(e => e.attrs.href).sort();
+  assert.deepEqual(preloads, route === '/' ? ['/assets/fonts/gelasio-latin-400-italic.woff2', '/assets/fonts/gelasio-latin-400-normal.woff2'] : []);
+  if (route === '/styleguide/') assert.ok(elements.some(e => e.name === 'meta' && e.attrs.name === 'robots' && e.attrs.content.includes('noindex')), 'QA route must be noindex');
   const used = new Set();
   for (const { name, attrs, body } of elements) {
+    if (name === 'style') inlineCss.push(body);
+    if (attrs.style) inlineCss.push(`inline { ${attrs.style} }`);
+    for (const attr of ['alt', 'aria-label', 'title']) if (attrs[attr]) checkText(attrs[attr], route + ' ' + attr);
+    if (attrs.style && ['a','button'].includes(name)) {
+      const height = attrs.style.match(/min-height:\s*([\d.]+)px/i);
+      if (height) assert.ok(Number(height[1]) >= 44, route + ': undersized inline target');
+    }
     for (const key of idRefs) if (attrs[key]) {
       for (const id of attrs[key].trim().split(/\s+/)) assert.ok(ids.includes(id), `${route}: missing ${key} target ${id}`);
     }
@@ -77,6 +92,9 @@ for await (const file of walk(siteRoot)) {
 assert.ok(count > 0, 'Build at least one page');
 
 const html = await readFile(join(siteRoot, 'index.html'), 'utf8');
+await designChecks(siteRoot, inlineCss);
+assert.doesNotMatch(html, /href=["']\/styleguide\//, 'QA route in public navigation');
+assert.doesNotMatch(await readFile(join(siteRoot,'sitemap.xml'),'utf8'), /\/styleguide\//);
 const css = await readFile(join(siteRoot, 'styles/home.css'), 'utf8');
 const i18n = await readFile(join(siteRoot, 'scripts/i18n.js'), 'utf8');
 assert.ok(Buffer.byteLength(html) <= 120000, 'Home exceeds 120 KB');

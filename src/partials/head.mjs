@@ -11,6 +11,7 @@ export function head({ route, copy, desktopSizing }) {
 <meta name="theme-color" content="#071525">
 <title>${route.title}</title>
 <meta name="description" content="${description}" data-meta-i18n="${route.descriptionKey}">
+${route.noindex ? raw('<meta name="robots" content="noindex">') : ''}
 <meta name="author" content="Maurizio Falconi (falker47)">
 <link rel="canonical" href="${canonical}">
 <meta name="google-site-verification" content="ZOWij9OnT_HZBDPG4FcCeEwF5m7MvFjqJuK53YtkCWw">
@@ -27,7 +28,8 @@ export function head({ route, copy, desktopSizing }) {
 <meta name="twitter:description" content="${description}">
 <meta name="twitter:image" content="${image}">
 ${route.graph ? raw(html`<script type="application/ld+json">${jsonScript({ '@context': 'https://schema.org', '@graph': route.graph })}</script>`) : ''}
-${raw(route.styles.map(href => html`<link rel="stylesheet" href="${href}">`).join('\n'))}
+${route.path === '/' ? raw(['normal', 'italic'].map(style => html`<link rel="preload" href="/assets/fonts/gelasio-latin-400-${style}.woff2" as="font" type="font/woff2" crossorigin>`).join('\n')) : ''}
+${raw(['/styles/tokens.css', '/styles/base.css', ...route.styles, '/styles/components.css'].map(href => html`<link rel="stylesheet" href="${href}">`).join('\n'))}
 ${route.path === '/' ? raw(html`<style id="desktop-visual-sizing">${raw(desktopSizing)}</style>`) : ''}
 </head>`;
 }

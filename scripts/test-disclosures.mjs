@@ -61,7 +61,7 @@ function setup({ reduced = false, noAnimation = false } = {}) {
   }
   const document = {
     querySelectorAll(selector) {
-      assert.equal(selector, 'details.about, details.work');
+      assert.equal(selector, 'details.about, details.work, details.disclosure');
       return [about, work];
     },
   };

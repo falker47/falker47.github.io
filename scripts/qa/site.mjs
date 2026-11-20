@@ -5,7 +5,7 @@ import { fileStat, localPath, siteRoot } from './serve.mjs';
 
 export { origin, siteRoot };
 
-function decode(value) {
+export function decode(value) {
   return value.replace(/&(?:amp|quot|apos|lt|gt|#\d+|#x[\da-f]+);/gi, entity => {
     const name = entity.slice(1, -1);
     if (name[0] === '#') return String.fromCodePoint(name[1].toLowerCase() === 'x' ? parseInt(name.slice(2), 16) : Number(name.slice(1)));
