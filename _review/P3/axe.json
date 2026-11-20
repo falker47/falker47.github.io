@@ -1,0 +1,122 @@
+[
+  {
+    "route": "/projects/social-viewer/",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/test/",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/test/",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/test/",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/test/",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/test/#returning",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/test/#returning",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/test/#returning",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/test/#returning",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/test/#first-time",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/test/#first-time",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/test/#first-time",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/test/#first-time",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/privacy/",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/privacy/",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/privacy/",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/privacy/",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  }
+]

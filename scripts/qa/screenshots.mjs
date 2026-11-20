@@ -35,7 +35,7 @@ try {
         const verifyNetwork = await isolateNetwork(context, origin, requests);
         const page = await context.newPage();
         await visit(page, origin, route, lang);
-        const slug = route === '/' ? 'home' : route.replace(/^\/|\/$/g, '').replaceAll('/', '-');
+        const slug = route === '/' ? 'home' : route.replace(/^\/|\/(?=#|$)/g, '').replace(/[/#]/g, '-');
         // Capture the pair back-to-back, before compression can affect offscreen image painting.
         const captures = [];
         for (const fullPage of [false, true]) {
