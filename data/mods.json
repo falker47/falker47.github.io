@@ -15,6 +15,7 @@
         "src": "/assets/mods/hogwarts-legacy-save-editor-480.webp",
         "width": 480,
         "height": 270,
+        "nativeWidth": 1672,
         "alt": {
           "it": "Una pergamena e una piuma sulla copertina dell’editor di salvataggi di Hogwarts Legacy.",
           "en": "A scroll and quill on the Hogwarts Legacy Save Editor cover."
@@ -47,6 +48,7 @@
         "src": "/assets/mods/giant-shockwaves-480.webp",
         "width": 480,
         "height": 270,
+        "nativeWidth": 1672,
         "alt": {
           "it": "Un’onda d’urto si propaga fra i combattenti in un paesaggio innevato di Skyrim.",
           "en": "A shockwave spreads among combatants in a snowy Skyrim landscape."
@@ -79,6 +81,7 @@
         "src": "/assets/mods/respect-the-chief-480.webp",
         "width": 480,
         "height": 270,
+        "nativeWidth": 1672,
         "alt": {
           "it": "Il capo di Thirsk circondato dai Riekling nel loro accampamento.",
           "en": "The Chief of Thirsk surrounded by Rieklings in their camp."

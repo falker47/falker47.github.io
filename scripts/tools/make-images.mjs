@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import { homedir } from 'node:os';
 import { dirname, join } from 'node:path';
@@ -46,12 +46,20 @@ for (const name of ['projects', 'mods', 'certifications', 'profile']) {
   data[name] = JSON.parse(await readFile(join(root, 'data', name + '.json'), 'utf8'));
 }
 
-async function rendition(input, directory, filename, width, cropPosition) {
+const generatedPrefixes = new Map();
+
+async function sourceFrame(input, cropPosition) {
   const meta = await sharp(input).metadata();
   const original = meta.autoOrient ?? meta;
   const crop = cropPosition && Math.abs(original.width / original.height / (16 / 9) - 1) > 0.05;
-  const resize = crop ? { width, height: Math.round(width * 9 / 16), fit: 'cover', position: cropPosition } : { width };
-  const { data: bytes, info } = await sharp(input).rotate().resize(resize)
+  // Cropping a wide source to 16:9 also limits the available horizontal pixels.
+  const nativeWidth = crop ? Math.min(original.width, Math.floor(original.height * 16 / 9)) : original.width;
+  return { nativeWidth, crop: crop && cropPosition };
+}
+
+async function rendition(input, directory, filename, width, crop) {
+  const resize = crop ? { width, height: Math.round(width * 9 / 16), fit: 'cover', position: crop } : { width };
+  const { data: bytes, info } = await sharp(input).rotate().resize({ ...resize, withoutEnlargement: true })
     .webp({ quality: 80, effort: 6 }).toBuffer({ resolveWithObject: true });
   const src = '/assets/' + directory + '/' + filename + '.webp';
   if (bytes.length > 300_000) throw Error(src + ' exceeds 300 KB');
@@ -60,11 +68,14 @@ async function rendition(input, directory, filename, width, cropPosition) {
 }
 
 async function responsive(input, directory, id, alt, widths, cropPosition) {
+  const { nativeWidth, crop } = await sourceFrame(input, cropPosition);
   const variants = [];
-  for (const width of widths) {
-    variants.push(await rendition(input, directory, id + '-' + width, width, cropPosition));
+  for (const width of new Set(widths.map(target => Math.min(target, nativeWidth)))) {
+    variants.push(await rendition(input, directory, id + '-' + width, width, crop));
   }
-  return { ...variants[0], alt, variants };
+  if (!generatedPrefixes.has(directory)) generatedPrefixes.set(directory, new Set());
+  generatedPrefixes.get(directory).add(id);
+  return { ...variants[0], nativeWidth, alt, variants };
 }
 
 for (const project of data.projects) {
@@ -84,8 +95,9 @@ for (const mod of data.mods.items) {
 for (const cert of data.certifications) {
   // Use the same complete document for the thumbnail and the legible full view.
   const input = join(portfolio, certificateSources[cert.id]);
-  cert.thumbnail = await rendition(input, 'certifications', cert.id + '-thumb', 480);
-  cert.full = await rendition(input, 'certifications', cert.id + '-full', 960);
+  const { nativeWidth } = await sourceFrame(input);
+  cert.thumbnail = await rendition(input, 'certifications', cert.id + '-thumb', Math.min(480, nativeWidth));
+  cert.full = await rendition(input, 'certifications', cert.id + '-full', Math.min(960, nativeWidth));
 }
 
 const portrait = join(portfolio, 'profile', 'maurizio-falconi-falker47.webp');
@@ -94,6 +106,9 @@ data.profile.photo = await responsive(portrait, 'profile', 'maurizio-falconi', d
 const total = [...assets.values()].reduce((sum, bytes) => sum + bytes.length, 0);
 if (total > 4_000_000) throw Error('Images exceed the 4 MB budget: ' + total);
 const outputs = new Map([...assets].map(([src, bytes]) => [join(root, src.slice(1)), bytes]));
+const icon = await sharp(join(root, 'assets/images/falkerlogo-native.webp')).resize(32, 32, { withoutEnlargement: true })
+  .webp({ quality: 80, effort: 6 }).toBuffer();
+outputs.set(join(root, 'assets/images/favicon-32.webp'), icon);
 for (const [name, value] of Object.entries(data)) {
   outputs.set(join(root, 'data', name + '.json'), Buffer.from(JSON.stringify(value, null, 2) + '\n'));
 }
@@ -114,5 +129,15 @@ for (const [path, bytes] of outputs) {
     await rm(temporary, { force: true });
   }
   changed++;
+}
+// Retire only numbered renditions owned by this generator, after publishing all references.
+for (const [directory, ids] of generatedPrefixes) {
+  for (const file of await readdir(join(root, 'assets', directory))) {
+    const match = /^(.*)-\d+\.webp$/.exec(file);
+    if (match && ids.has(match[1]) && !assets.has(`/assets/${directory}/${file}`)) {
+      await rm(join(root, 'assets', directory, file));
+      changed++;
+    }
+  }
 }
 console.log(`${assets.size} WebPs, ${total} bytes, ${changed} files updated.`);

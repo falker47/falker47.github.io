@@ -25,6 +25,7 @@
       "src": "/assets/projects/prof-gecko-480.webp",
       "width": 480,
       "height": 270,
+      "nativeWidth": 1672,
       "alt": {
         "it": "Un geco in camice accanto al nome Prof. Gecko.",
         "en": "A gecko in a lab coat beside the Prof. Gecko name."
@@ -87,6 +88,7 @@
       "src": "/assets/projects/camaleonte-480.webp",
       "width": 480,
       "height": 270,
+      "nativeWidth": 1672,
       "alt": {
         "it": "Un camaleonte verde tra foglie e bandierine.",
         "en": "A green chameleon among leaves and party bunting."
@@ -164,6 +166,7 @@
       "src": "/assets/projects/social-viewer-480.webp",
       "width": 480,
       "height": 270,
+      "nativeWidth": 556,
       "alt": {
         "it": "Un telefono mostra un singolo post accanto al marchio Social Viewer.",
         "en": "A phone displaying a single post beside the Social Viewer logo."
@@ -175,14 +178,9 @@
           "height": 270
         },
         {
-          "src": "/assets/projects/social-viewer-960.webp",
-          "width": 960,
-          "height": 540
-        },
-        {
-          "src": "/assets/projects/social-viewer-1440.webp",
-          "width": 1440,
-          "height": 810
+          "src": "/assets/projects/social-viewer-556.webp",
+          "width": 556,
+          "height": 313
         }
       ]
     },
@@ -243,6 +241,7 @@
       "src": "/assets/projects/chi-l-ha-detto-480.webp",
       "width": 480,
       "height": 270,
+      "nativeWidth": 1200,
       "alt": {
         "it": "Ritratti illustrati di personaggi storici sulla copertina del quiz.",
         "en": "Illustrated portraits of historical figures on the quiz cover."
@@ -308,6 +307,7 @@
       "src": "/assets/projects/diario-di-bordo-480.webp",
       "width": 480,
       "height": 270,
+      "nativeWidth": 960,
       "alt": {
         "it": "Due calendari sovrapposti accanto al titolo Diario di Bordo.",
         "en": "Two overlapping calendars beside the Diario di Bordo title."
@@ -372,6 +372,7 @@
       "src": "/assets/projects/easy-contract-480.webp",
       "width": 480,
       "height": 270,
+      "nativeWidth": 1269,
       "alt": {
         "it": "Uno scudo con documento e lente accanto al nome Easy Contract.",
         "en": "A shield with a document and magnifying glass beside the Easy Contract name."
@@ -436,6 +437,7 @@
       "src": "/assets/projects/zerofilez-480.webp",
       "width": 480,
       "height": 270,
+      "nativeWidth": 800,
       "alt": {
         "it": "Cartelle scure con un lucchetto e il marchio ZEROfilez.",
         "en": "Dark folders with a padlock and the ZEROfilez wordmark."
@@ -447,9 +449,9 @@
           "height": 270
         },
         {
-          "src": "/assets/projects/zerofilez-960.webp",
-          "width": 960,
-          "height": 540
+          "src": "/assets/projects/zerofilez-800.webp",
+          "width": 800,
+          "height": 450
         }
       ]
     },
@@ -499,6 +501,7 @@
       "src": "/assets/projects/pokemon-mystery-dungeon-tools-480.webp",
       "width": 480,
       "height": 270,
+      "nativeWidth": 1672,
       "alt": {
         "it": "Un file di salvataggio con una matita nella copertina di Pokémon Mystery Dungeon Tools.",
         "en": "A save file and pencil on the Pokémon Mystery Dungeon Tools cover."
@@ -564,6 +567,7 @@
       "src": "/assets/projects/carte-senza-umanita-480.webp",
       "width": 480,
       "height": 270,
+      "nativeWidth": 1672,
       "alt": {
         "it": "Carte bianche e nere sotto il titolo Carte senza Umanità.",
         "en": "Black and white cards below the Carte senza Umanità title."
@@ -628,6 +632,7 @@
       "src": "/assets/projects/panacea-480.webp",
       "width": 480,
       "height": 270,
+      "nativeWidth": 1536,
       "alt": {
         "it": "Un calice dorato accanto al nome Panacea.",
         "en": "A gold chalice beside the Panacea name."
@@ -683,6 +688,7 @@
       "src": "/assets/projects/iban-checker-480.webp",
       "width": 480,
       "height": 270,
+      "nativeWidth": 800,
       "alt": {
         "it": "Un IBAN di esempio con l’ultima cifra evidenziata in verde.",
         "en": "A sample IBAN with its final digit highlighted in green."
@@ -694,9 +700,9 @@
           "height": 270
         },
         {
-          "src": "/assets/projects/iban-checker-960.webp",
-          "width": 960,
-          "height": 540
+          "src": "/assets/projects/iban-checker-800.webp",
+          "width": 800,
+          "height": 450
         }
       ]
     },
@@ -746,6 +752,7 @@
       "src": "/assets/projects/codice-fiscale-480.webp",
       "width": 480,
       "height": 270,
+      "nativeWidth": 960,
       "alt": {
         "it": "L’interfaccia di Codice Fiscale con le schede Calcola e Decodifica.",
         "en": "The Codice Fiscale interface with calculation and decoding tabs."
@@ -809,6 +816,7 @@
       "src": "/assets/projects/sommatrix-480.webp",
       "width": 480,
       "height": 270,
+      "nativeWidth": 1672,
       "alt": {
         "it": "Una griglia numerica con alcune caselle evidenziate in verde.",
         "en": "A number grid with selected cells highlighted in green."
@@ -872,6 +880,7 @@
       "src": "/assets/projects/crack-the-code-480.webp",
       "width": 480,
       "height": 270,
+      "nativeWidth": 1024,
       "alt": {
         "it": "Quattro posizioni nascoste sopra il tastierino di Crack the Code.",
         "en": "Four hidden positions above the Crack the Code keypad."
@@ -935,6 +944,7 @@
       "src": "/assets/projects/ringmin-480.webp",
       "width": 480,
       "height": 270,
+      "nativeWidth": 1672,
       "alt": {
         "it": "Cerchi numerati di raggi diversi disposti attorno a un cerchio centrale.",
         "en": "Numbered circles of different radii arranged around a central circle."
@@ -1011,6 +1021,7 @@
       "src": "/assets/projects/ringmin-480.webp",
       "width": 480,
       "height": 270,
+      "nativeWidth": 1672,
       "alt": {
         "it": "Il diagramma del problema del cerchio centrale da cui deriva Power-Ringmin.",
         "en": "The central-circle diagram for the problem that Power-Ringmin extends."

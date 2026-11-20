@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { runOffline, runReflow } from './shared-a11y.mjs';
 import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { options, viewports, visit, withBrowser } from './browser.mjs';
@@ -26,7 +27,16 @@ async function guide(page) {
   assert.ok(await active(tabs.last()));
   assert.equal(await tabs.last().getAttribute('aria-selected'), 'true');
   assert.ok(await minTargets(page) >= 44);
+  await page.keyboard.press('End');
+  assert.ok(await active(tabs.last()));
+  await page.keyboard.press('ArrowRight');
+  assert.ok(await active(tabs.first()));
+  await page.keyboard.press('ArrowLeft');
+  assert.ok(await active(tabs.last()));
   await page.keyboard.press('Home');
+  assert.ok(await active(tabs.first()));
+  await page.keyboard.press('Tab');
+  assert.equal(await page.locator(':focus').getAttribute('role'), 'tabpanel');
   const chip = page.locator('[data-filter="game"]');
   await chip.focus();
   await page.keyboard.press('Space');
@@ -48,6 +58,10 @@ async function guide(page) {
   const dialog = page.getByRole('dialog');
   await dialog.waitFor();
   assert.ok(await dialog.locator('img').evaluate(img => img.decode().then(() => img.naturalWidth > 0)));
+  assert.ok(await active(dialog.getByRole('button')));
+  await page.keyboard.press('Tab');
+  assert.ok(await active(dialog.getByRole('button')));
+  await page.keyboard.press('Shift+Tab');
   assert.ok(await active(dialog.getByRole('button')));
   await page.keyboard.press('Escape');
   await dialog.waitFor({ state: 'hidden' });
@@ -110,4 +124,6 @@ await withBrowser(async (browser, origin) => {
     } finally { await context.close(); }
   }
 });
+checks.push(...await runReflow(pages, langs));
+if (pages.includes('/')) checks.push(...await runOffline(langs));
 await writeFile(join(out, 'interactions.json'), JSON.stringify(checks, null, 2) + '\n');

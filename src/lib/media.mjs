@@ -2,7 +2,9 @@ import { html, raw } from './html.mjs';
 
 // The fallback and each width descriptor come from the encoded files' metadata.
 function responsiveAttributes(media, sizes) {
-  const srcset = media.variants.map(variant => `${variant.src} ${variant.width}w`).join(', ');
+  const variants = media.variants.filter(variant => variant.width <= (media.nativeWidth ?? Infinity));
+  if (!variants.length) throw Error('No native rendition for ' + media.src);
+  const srcset = variants.map(variant => `${variant.src} ${variant.width}w`).join(', ');
   return html` srcset="${srcset}" sizes="${sizes}"`;
 }
 

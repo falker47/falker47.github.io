@@ -1,6 +1,7 @@
-import { cp, mkdir, mkdtemp, readFile, rename, rm, writeFile } from 'node:fs/promises';
+import { cp, mkdir, mkdtemp, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildAssets, minifyHtml, minifyJs } from './build-assets.mjs';
 import { routes } from '../src/routes.mjs';
 import { layout } from '../src/partials/layout.mjs';
 import { translatedText } from '../src/lib/html.mjs';
@@ -10,6 +11,7 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const json = async name => JSON.parse(await readFile(join(root, 'data', name), 'utf8'));
 const snapshot = await json('nexus-downloads.json');
 const desktopSizing = await readFile(join(root, 'src/styles/desktop-visual-sizing.css'), 'utf8');
+const favicon = 'data:image/webp;base64,' + (await readFile(join(root, 'assets/images/favicon-32.webp'))).toString('base64');
 const copy = {};
 for (const lang of ['it', 'en']) {
   const dictionary = await json(`i18n/${lang}.json`);
@@ -32,20 +34,20 @@ try {
   await mkdir(next);
   await cp(join(root, 'assets'), join(next, 'assets'), { recursive: true });
   await cp(join(root, 'data'), join(next, 'data'), { recursive: true });
-  await cp(join(root, 'src/client'), join(next, 'scripts'), { recursive: true });
-  for (const file of ['nexus-downloads.mjs', 'animated-disclosures.js']) {
-    await cp(join(root, 'scripts', file), join(next, 'scripts', file));
+  const assets = buildAssets(root, next);
+  async function copyScript(from, to) {
+    const target = join(next, to);
+    await mkdir(dirname(target), { recursive: true });
+    await writeFile(target, minifyJs(await readFile(join(root, from), 'utf8')));
   }
-  const inlineStyle = join(root, 'src/styles/desktop-visual-sizing.css');
-  await cp(join(root, 'src/styles'), join(next, 'styles'), {
-    recursive: true, filter: source => source !== inlineStyle,
-  });
+  for (const file of await readdir(join(root, 'src/client'))) await copyScript('src/client/' + file, 'scripts/' + file);
+  for (const file of ['nexus-downloads.mjs', 'animated-disclosures.js']) await copyScript('scripts/' + file, 'scripts/' + file);
   for (const file of ['robots.txt', 'sitemap.xml']) await cp(join(root, file), join(next, file));
   const pages = new Set();
   if (includeStyleguide) {
     const guide = join(next, 'styleguide');
     await mkdir(guide);
-    for (const file of ['guide.css', 'guide.js']) await cp(join(root, 'src/styleguide', file), join(guide, file));
+    await copyScript('src/styleguide/guide.js', 'styleguide/guide.js');
   }
   for (const route of buildRoutes) {
     if (!/^\/(?:[\w-]+\/)*(?:[\w-]+\.html)?$/.test(route.path)) throw Error(`Invalid route ${route.path}`);
@@ -54,7 +56,9 @@ try {
     pages.add(page);
     await mkdir(dirname(page), { recursive: true });
     const t = key => translatedText(copy.it[key]);
-    await writeFile(page, layout({ route, copy, t, desktopSizing }));
+    const styles = await assets.styles(route, desktopSizing);
+    const document = await layout({ route, copy, t, desktopSizing, styles, favicon }, assets.scripts);
+    await writeFile(page, minifyHtml(document));
   }
   // Publish only complete builds. Keep the last good tree if the final rename fails.
   try { await rename(output, prior); priorNeedsRestore = true; }

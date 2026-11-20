@@ -66,15 +66,18 @@ export async function designChecks(siteRoot, inlineCss = []) {
   }
   const pairs = new Set();
   const darkSurfaces = ['--bg','--surface','--surface-raised','--header-bg'];
-  function contrast(foreground, background) {
-    const pair = foreground + '/' + background;
+  function contrast(foreground, background, minimum = 4.5) {
+    const pair = foreground + '/' + background + ' ' + minimum;
     if (pairs.has(pair)) return;
     const backdrop = rgb(resolve('var(' + background + ')', tokens), rgb(tokens.get('--bg')));
     const fg = luminance(rgb(resolve('var(' + foreground + ')', tokens), backdrop));
     const bg = luminance(backdrop);
     const ratio = (Math.max(fg, bg) + .05) / (Math.min(fg, bg) + .05);
-    assert.ok(ratio >= 4.5, `${pair}: ${ratio.toFixed(2)}:1 is below 4.5:1`);
+    assert.ok(ratio >= minimum, `${pair}: ${ratio.toFixed(2)}:1 is below ${minimum}:1`);
     pairs.add(pair);
+  }
+  if (tokens.has('--control-line')) for (const background of darkSurfaces) {
+    for (const border of ['--control-line', '--blue', '--stroke']) contrast(border, background, 3);
   }
   const covered = new Set();
   for (const { selector, values } of all) {
@@ -95,7 +98,7 @@ export async function designChecks(siteRoot, inlineCss = []) {
     }
     if (!values.has('min-height')) continue;
     const min = resolve(values.get('min-height'), tokens);
-    if (selector.endsWith(' :is(a, button)')) for (const root of roots) {
+    if (/ :is\(a,\s*button\)$/.test(selector)) for (const root of roots) {
       if (selector.split(/[^.\w-]+/).includes(root)) {
         assert.ok(/^\d+(?:\.\d+)?px$/.test(min) && parseFloat(min) >= 44, `${root}: min-height ${min}`);
         covered.add(root);
@@ -106,5 +109,5 @@ export async function designChecks(siteRoot, inlineCss = []) {
     }
   }
   assert.deepEqual(covered, new Set(roots), '44px rule must cover every shared control group');
-  console.log(`Validated font families, ${bytes}/120000 WOFF2 bytes, ${pairs.size} text contrast pairs and 44px control rules.`);
+  console.log(`Validated font families, ${bytes}/120000 WOFF2 bytes, ${pairs.size} contrast pairs and 44px control rules.`);
 }

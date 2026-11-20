@@ -7,14 +7,15 @@ import { startServer } from './serve.mjs';
 
 const { values, langs, out } = await options({
   baseline: { type: 'string' }, 'baseline-task': { type: 'string', default: 'F1' },
-  format: { type: 'string', default: 'png' }, exact: { type: 'boolean', default: false },
+  format: { type: 'string', default: 'png' }, 'baseline-format': { type: 'string', default: 'png' },
+  exact: { type: 'boolean', default: false }, 'exact-hero': { type: 'boolean', default: false },
 });
 if (!values.baseline) throw Error('Provide --baseline PATH to the built reference checkout');
 if (!/^[a-z0-9][a-z0-9_-]*$/i.test(values['baseline-task'])) throw Error('Invalid baseline task');
-if (!['png', 'webp'].includes(values.format)) throw Error('Use --format png or webp');
+if (![values.format, values['baseline-format']].every(format => ['png', 'webp'].includes(format))) throw Error('Use --format png or webp');
 const reference = join(values.baseline, '_review', values['baseline-task']);
 const sharp = qaRequire('sharp');
-const areas = { headline: '.hero-lead h1', cta: '.hero-lead .cta', diagram: '.engine-figure', identity: '.identity', portrait: '.portrait' };
+const areas = { ...(values['exact-hero'] ? { hero: '.hero' } : {}), headline: '.hero-lead h1', cta: '.hero-lead .cta', diagram: '.engine-figure', identity: '.identity', portrait: '.portrait' };
 
 async function measure(page) {
   return page.evaluate(areas => {
@@ -94,12 +95,13 @@ try {
       }
       const [before, after] = renders;
       const stem = `home-${lang}-${viewport.width}`;
-      const name = stem + '-full.png';
+      const baselineShot = stem + '.' + values['baseline-format'];
+      const name = stem + '-full.' + values['baseline-format'];
       const viewportPath = join(out, stem + '.' + values.format);
       const fullPath = join(out, stem + '-full.' + values.format);
       const areasCompared = {};
       const captures = values.exact ? {
-        viewport: await compareCapture(join(reference, stem + '.png'), viewportPath),
+        viewport: await compareCapture(join(reference, baselineShot), viewportPath),
         full: await compareCapture(join(reference, name), fullPath),
       } : undefined;
       assert.equal(before.lines, after.lines, name + ': headline wraps');
@@ -109,13 +111,17 @@ try {
         assert.ok(maxBoxDelta <= .25, name + ' ' + key + ': moved by ' + maxBoxDelta + 'px');
         const visibleBox = { ...box, height: Math.min(box.height, viewport.height - box.y) };
         const [visible, full, isolated] = await Promise.all([
-          difference(join(reference, stem + '.png'), viewportPath, visibleBox),
+          difference(join(reference, baselineShot), viewportPath, visibleBox),
           difference(join(reference, name), fullPath, box),
           difference(before.inkless, after.inkless, box),
         ]);
         // Report a non-text regression only at coordinates that also differ in
         // the delivered PNGs. The separate diagnostic paint can rasterize a
         // curved border slightly differently even when the real captures agree.
+        if (values['exact-hero']) {
+          assert.equal(maxBoxDelta, 0, name + ' ' + key + ': geometry changed');
+          assert.ok(!full.some(delta => delta !== 0) && !visible.some(delta => delta !== 0), name + ' ' + key + ': pixels changed');
+        }
         const nonText = isolated.map((delta, i) => full[i] > 2 || visible[i] > 2 ? delta : 0);
         areasCompared[key] = { box, maxBoxDelta, viewportCapture: stats(visible), fullCapture: stats(full),
           withoutTextAndGrid: stats(isolated), confirmedNonText: stats(nonText) };
@@ -130,6 +136,7 @@ if (results.some(r => Object.values(r.areas).some(a => a.confirmedNonText.pixels
   throw Error('Non-text hero differences remain; inspect hero-comparison.json');
 }
 
+if (values['exact-hero']) console.log('All four hero comparisons: 0 px shifts, 0 changed pixels in viewport and full-page hero crops.');
 if (values.exact) {
   for (const row of results) {
     for (const shot of Object.values(row.captures)) assert.equal(shot.differentPixels, 0, 'Home screenshot pixels changed');

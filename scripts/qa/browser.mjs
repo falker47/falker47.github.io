@@ -6,9 +6,9 @@ import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 import { startServer } from './serve.mjs';
 
-const qaDir = join(homedir(), 'qa-tools');
+const qaDir = process.env.QA_TOOLS_DIR || join(homedir(), 'qa-tools');
 export const qaRequire = createRequire(join(qaDir, 'package.json'));
-export const chromePath = async () => (await readFile(join(qaDir, 'chrome-path.txt'), 'utf8')).trim();
+export const chromePath = async () => process.env.QA_CHROME_PATH || (await readFile(join(qaDir, 'chrome-path.txt'), 'utf8')).trim();
 export const viewports = [{ width: 1440, height: 900 }, { width: 390, height: 844 }];
 
 export async function options(extra = {}) {
@@ -26,9 +26,9 @@ export async function options(extra = {}) {
   return { values, pages, langs, out };
 }
 
-export async function withBrowser(callback) {
+export async function withBrowser(callback, serverOptions) {
   const executablePath = await chromePath();
-  const server = await startServer();
+  const server = await startServer(serverOptions);
   try {
     const browser = await qaRequire('playwright').chromium.launch({ executablePath, headless: true });
     try { return await callback(browser, server.origin); }
@@ -36,11 +36,12 @@ export async function withBrowser(callback) {
   } finally { await server.close(); }
 }
 
-export async function visit(page, origin, route, lang) {
+export async function visit(page, origin, route, lang, { stub = false } = {}) {
   const url = new URL(route, origin);
   url.searchParams.set('lang', lang);
   const response = await page.goto(url.href, { waitUntil: 'networkidle' });
   if (response?.status() !== 200) throw Error(`${url.pathname} HTTP ${response?.status()}`);
   await page.evaluate(() => document.fonts.ready);
-  if (await page.locator('html').getAttribute('lang') !== lang) throw Error(`Language did not switch to ${lang}`);
+  if (new URL(page.url()).pathname !== route) throw Error('Navigation left ' + route + ': ' + page.url());
+  if (!stub && await page.locator('html').getAttribute('lang') !== lang) throw Error(`Language did not switch to ${lang}`);
 }
