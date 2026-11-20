@@ -45,7 +45,6 @@ try {
   if (includeStyleguide) {
     const guide = join(next, 'styleguide');
     await mkdir(guide);
-    await cp(join(root, 'src/styleguide/assets'), join(guide, 'assets'), { recursive: true });
     for (const file of ['guide.css', 'guide.js']) await cp(join(root, 'src/styleguide', file), join(guide, file));
   }
   for (const route of buildRoutes) {

@@ -16,6 +16,8 @@ ${raw(route.render(ctx))}
 ${raw(footer(ctx))}
 </div>`;
   const keys = new Set(Array.from(content.matchAll(/\bdata-(?:i18n|label|meta-i18n)="([^"]+)"/g), match => match[1]));
+  const catalogueScript = /\bdata-(?:alt|text)-it="/.test(content)
+    ? '<script src="/scripts/catalogue.js" defer></script>\n' : '';
   const translations = {};
   for (const [lang, dictionary] of Object.entries(copy)) {
     translations[lang] = {};
@@ -28,7 +30,7 @@ ${raw(footer(ctx))}
 <html lang="it"${raw(route.path === '/' ? ' data-mode="pulse"' : '')}>
 ${raw(content)}
 <script type="application/json" id="page-i18n">${jsonScript(translations)}</script>
-<script src="/scripts/i18n.js" defer></script>
+${raw(catalogueScript)}<script src="/scripts/i18n.js" defer></script>
 <script src="/scripts/components.js" defer></script>
 <script src="/scripts/animated-disclosures.js" defer></script>
 ${route.qaScript ? raw(html`<script src="${route.qaScript}" defer></script>`) : ''}

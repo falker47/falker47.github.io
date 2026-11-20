@@ -1,10 +1,29 @@
 import assert from 'node:assert/strict';
 import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { options, viewports, visit, withBrowser } from './browser.mjs';
+import { options, qaRequire, viewports, visit, withBrowser } from './browser.mjs';
 import { isolateNetwork } from './network.mjs';
 
-const { pages, langs, out } = await options();
+const { pages, langs, out, values } = await options({ format: { type: 'string', default: 'png' } });
+if (!['png', 'webp'].includes(values.format)) throw Error('Use --format png or webp');
+const sharp = values.format === 'webp' ? qaRequire('sharp') : null;
+
+async function saveWebp(png, name, route, fullPage) {
+  const limit = route !== '/' && fullPage ? 200 * 1024 : 300_000;
+  const qualities = route === '/' ? [100] : [80, 70, 60, 50, 40, 35, 30, 25, 20];
+  for (const quality of qualities) {
+    const bytes = await sharp(png).webp({ lossless: route === '/', quality, effort: 6 }).toBuffer();
+    if (bytes.length <= limit) return writeFile(join(out, name), bytes);
+  }
+  throw Error('Screenshot exceeds its byte budget: ' + name);
+}
+
+async function loadCatalogueImages(page) {
+  await page.locator('img[src]').evaluateAll(async images => {
+    for (const image of images) image.loading = 'eager';
+    await Promise.all(images.map(image => image.decode()));
+  });
+}
 const sessions = [];
 try {
   await withBrowser(async (browser, origin) => {
@@ -17,11 +36,16 @@ try {
         const page = await context.newPage();
         await visit(page, origin, route, lang);
         const slug = route === '/' ? 'home' : route.replace(/^\/|\/$/g, '').replaceAll('/', '-');
+        // Capture the pair back-to-back, before compression can affect offscreen image painting.
+        const captures = [];
         for (const fullPage of [false, true]) {
-          const name = `${slug}-${lang}-${viewport.width}${fullPage ? '-full' : ''}.png`;
-          await page.screenshot({ path: join(out, name), fullPage });
+          if (fullPage && route === '/styleguide/') await loadCatalogueImages(page);
+          const name = `${slug}-${lang}-${viewport.width}${fullPage ? '-full' : ''}.${values.format}`;
+          const png = await page.screenshot({ fullPage, path: sharp ? undefined : join(out, name) });
+          if (sharp) captures.push({ png, name, fullPage });
           console.log(name);
         }
+        for (const { png, name, fullPage } of captures) await saveWebp(png, name, route, fullPage);
         verifyNetwork();
         if (route === '/') assert.ok(requests.some(r => r.disposition.startsWith('fulfilled')), 'Home must fetch the intercepted production snapshot');
       } finally { await context.close(); }

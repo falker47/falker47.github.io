@@ -10,6 +10,15 @@ const active = locator => locator.evaluate(el => el === document.activeElement);
 const minTargets = page => page.locator(':is(.site-header,.register-tabs,.filter-chips,.register-row,.mod-row) :is(a[href],button):visible').evaluateAll(nodes =>
   Math.min(...nodes.map(el => el.getBoundingClientRect().height)));
 
+async function verifyCatalogueLanguage(page, lang) {
+  const data = page.locator('#data');
+  const images = data.locator('picture img');
+  assert.ok(await images.count() > 0);
+  assert.ok(await images.evaluateAll((nodes, lang) => nodes.every(img => img.alt === img.getAttribute('data-alt-' + lang)), lang));
+  assert.ok(await data.locator('[data-text-it]').evaluateAll((nodes, lang) =>
+    nodes.length > 0 && nodes.every(node => node.textContent === node.getAttribute('data-text-' + lang)), lang));
+}
+
 async function guide(page) {
   const tabs = page.getByRole('tab');
   await tabs.first().focus();
@@ -89,7 +98,9 @@ await withBrowser(async (browser, origin) => {
       await page.locator('[data-lang="' + other + '"]').click();
       assert.equal(await page.locator('html').getAttribute('lang'), other);
       assert.equal(await page.evaluate(() => localStorage.getItem('nexus-language')), other);
+      if (route === '/styleguide/') await verifyCatalogueLanguage(page, other);
       await page.locator('[data-lang="' + lang + '"]').click();
+      if (route === '/styleguide/') await verifyCatalogueLanguage(page, lang);
       if (route === '/') await home(page);
       else if (route === '/styleguide/') await guide(page);
       verifyNetwork();

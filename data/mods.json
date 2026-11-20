@@ -1,0 +1,101 @@
+{
+  "profile": "https://www.nexusmods.com/profile/falker47/mods",
+  "items": [
+    {
+      "id": "hogwarts-legacy-save-editor",
+      "title": "Hogwarts Legacy Save Editor",
+      "game": "Hogwarts Legacy",
+      "url": "https://www.nexusmods.com/hogwartslegacy/mods/2414",
+      "repo": "https://github.com/falker47/HogwartsLegacy-SaveEditor",
+      "description": {
+        "it": "Modifica i salvataggi, crea backup, esporta da Game Pass.",
+        "en": "Edit saves, create backups, export from Game Pass."
+      },
+      "cover": {
+        "src": "/assets/mods/hogwarts-legacy-save-editor-480.webp",
+        "width": 480,
+        "height": 270,
+        "alt": {
+          "it": "Una pergamena e una piuma sulla copertina dell’editor di salvataggi di Hogwarts Legacy.",
+          "en": "A scroll and quill on the Hogwarts Legacy Save Editor cover."
+        },
+        "variants": [
+          {
+            "src": "/assets/mods/hogwarts-legacy-save-editor-480.webp",
+            "width": 480,
+            "height": 270
+          },
+          {
+            "src": "/assets/mods/hogwarts-legacy-save-editor-960.webp",
+            "width": 960,
+            "height": 540
+          }
+        ]
+      }
+    },
+    {
+      "id": "giant-shockwaves",
+      "title": "Giant Shockwaves",
+      "game": "Skyrim Special Edition",
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/198756",
+      "repo": null,
+      "description": {
+        "it": "Un potere che genera un'onda d'urto intorno a te e sbilancia i nemici nel raggio d'azione.",
+        "en": "A power that sends a shockwave around you, staggering enemies within range."
+      },
+      "cover": {
+        "src": "/assets/mods/giant-shockwaves-480.webp",
+        "width": 480,
+        "height": 270,
+        "alt": {
+          "it": "Un’onda d’urto si propaga fra i combattenti in un paesaggio innevato di Skyrim.",
+          "en": "A shockwave spreads among combatants in a snowy Skyrim landscape."
+        },
+        "variants": [
+          {
+            "src": "/assets/mods/giant-shockwaves-480.webp",
+            "width": 480,
+            "height": 270
+          },
+          {
+            "src": "/assets/mods/giant-shockwaves-960.webp",
+            "width": 960,
+            "height": 540
+          }
+        ]
+      }
+    },
+    {
+      "id": "respect-the-chief",
+      "title": "Respect the Chief",
+      "game": "Skyrim Special Edition",
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/193883",
+      "repo": null,
+      "description": {
+        "it": "Diventato capo di Thirsk dalla parte dei Riekling, i Riekling di Solstheim smettono di attaccarti e ti trattano da amico.",
+        "en": "Once you become Chief of Thirsk on the Riekling side, Rieklings across Solstheim stop attacking you and treat you as a friend."
+      },
+      "cover": {
+        "src": "/assets/mods/respect-the-chief-480.webp",
+        "width": 480,
+        "height": 270,
+        "alt": {
+          "it": "Il capo di Thirsk circondato dai Riekling nel loro accampamento.",
+          "en": "The Chief of Thirsk surrounded by Rieklings in their camp."
+        },
+        "variants": [
+          {
+            "src": "/assets/mods/respect-the-chief-480.webp",
+            "width": 480,
+            "height": 270
+          },
+          {
+            "src": "/assets/mods/respect-the-chief-960.webp",
+            "width": 960,
+            "height": 540
+          }
+        ]
+      }
+    }
+  ]
+}

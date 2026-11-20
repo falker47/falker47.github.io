@@ -1,0 +1,56 @@
+{
+  "id": "ringmin",
+  "title": "Ringmin",
+  "summary": {
+    "it": "Ringmin studia il problema del cerchio centrale minimo. I due paper affrontano rispettivamente i casi finiti certificati e la teoria asintotica globale.",
+    "en": "Ringmin studies the minimum central-circle problem. The two papers address certified finite cases and the global asymptotic theory, respectively."
+  },
+  "papers": [
+    {
+      "number": "I",
+      "arxiv": "2607.28654",
+      "title": "Arranging circles of radii 1,2,…,n around a central circle: a Supnick TSP and certified finite optima",
+      "url": "https://arxiv.org/abs/2607.28654",
+      "summary": {
+        "it": "Riduce il problema di ordinamento a un TSP Supnick/anti-Monge; certificati espliciti e un verificatore indipendente rendono i risultati riproducibili. Per n maggiori i candidati restano euristici.",
+        "en": "Reduces the ordering problem to a Supnick/anti-Monge TSP; explicit certificates and an independent verifier make the results reproducible. Larger-n candidate optima remain heuristic."
+      },
+      "highlight": {
+        "it": "Ottimi globali certificati per n = 3,…,14.",
+        "en": "Certified global optima for n = 3,…,14."
+      }
+    },
+    {
+      "number": "II",
+      "arxiv": "2609.13630",
+      "title": "Minimum central circles: an effective characterization of the global asymptotic constant",
+      "url": "https://arxiv.org/abs/2609.13630",
+      "summary": {
+        "it": "Caratterizza C* tramite programmi lineari finiti su parole bilanciate con un bound d’errore rigoroso che tende a zero. Restano aperti una forma chiusa elementare e un algoritmo di valutazione efficiente.",
+        "en": "Characterizes C* through finite balanced-word linear programs with a rigorous error bound that vanishes. An elementary closed form and an efficient evaluation algorithm remain open."
+      },
+      "highlight": {
+        "it": "Limite globale: R*(n) = C* n² + o(n²).",
+        "en": "Global limit: R*(n) = C* n² + o(n²)."
+      }
+    }
+  ],
+  "repositories": [
+    {
+      "project": "ringmin",
+      "url": "https://github.com/falker47/ringmin"
+    },
+    {
+      "project": "power-ringmin",
+      "url": "https://github.com/falker47/ringmin-squared"
+    }
+  ],
+  "zenodo": {
+    "doi": "10.5281/zenodo.22849826",
+    "url": "https://doi.org/10.5281/zenodo.22849826",
+    "description": {
+      "it": "Release software citabile con DOI.",
+      "en": "Citable software release with DOI."
+    }
+  }
+}

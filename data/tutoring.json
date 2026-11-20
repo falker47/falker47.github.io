@@ -1,0 +1,55 @@
+{
+  "since": "2023-01",
+  "subjects": [
+    {
+      "it": "Matematica",
+      "en": "Mathematics"
+    },
+    {
+      "it": "Fisica",
+      "en": "Physics"
+    }
+  ],
+  "services": [
+    {
+      "it": "Lezioni individuali",
+      "en": "One-to-one lessons"
+    },
+    {
+      "it": "Appunti digitali",
+      "en": "Digital notes"
+    },
+    {
+      "it": "Esercizi guidati",
+      "en": "Guided exercises"
+    }
+  ],
+  "formats": [
+    {
+      "it": "In presenza",
+      "en": "In person"
+    },
+    {
+      "it": "Online",
+      "en": "Online"
+    }
+  ],
+  "ratings": [
+    {
+      "source": "Letuelezioni",
+      "score": 5,
+      "scale": 5,
+      "ratings": 10,
+      "url": "https://www.letuelezioni.it/insegnanti/maurizio-falconi.htm"
+    },
+    {
+      "source": "Superprof",
+      "score": 5,
+      "scale": 5,
+      "ratings": 2,
+      "recommendations": 3,
+      "url": "https://www.superprof.it/studente-fisica-propone-lezioni-matematica-fisica-per-scuola-media-liceo-parma-presenza-remoto.html"
+    }
+  ],
+  "portal": "https://falker47.github.io/mauriziofalconi-ripetizioni/"
+}

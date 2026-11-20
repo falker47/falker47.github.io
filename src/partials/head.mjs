@@ -1,3 +1,4 @@
+import profile from '../../data/profile.json' with { type: 'json' };
 import { html, jsonScript, raw } from '../lib/html.mjs';
 import { origin } from '../routes.mjs';
 
@@ -12,13 +13,13 @@ export function head({ route, copy, desktopSizing }) {
 <title>${route.title}</title>
 <meta name="description" content="${description}" data-meta-i18n="${route.descriptionKey}">
 ${route.noindex ? raw('<meta name="robots" content="noindex">') : ''}
-<meta name="author" content="Maurizio Falconi (falker47)">
+<meta name="author" content="${profile.name} (${profile.handle})">
 <link rel="canonical" href="${canonical}">
 <meta name="google-site-verification" content="ZOWij9OnT_HZBDPG4FcCeEwF5m7MvFjqJuK53YtkCWw">
 <link rel="icon" type="image/png" href="/assets/images/falkerlogo.png">
 <link rel="apple-touch-icon" href="/assets/images/falkerlogo.png">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Maurizio Falconi">
+<meta property="og:site_name" content="${profile.name}">
 <meta property="og:title" content="${route.title}">
 <meta property="og:description" content="${description}">
 <meta property="og:url" content="${canonical}">

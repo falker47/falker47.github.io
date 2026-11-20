@@ -11,7 +11,24 @@
 .guide-columns .mod-row { grid-template-columns: 3ch 128px minmax(0,1fr); }
 .guide-columns .mod-action, .guide-columns .mod-row .row-kind { display: none; }
 .guide .sheet { margin-bottom: 16px; }
-.guide .certificate-grid { max-width: 680px; }
+.data-section h3 { margin: 20px 0 12px; font-size: var(--h3); }
+.data-gallery, .guide .certificate-grid {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px 16px;
+}
+.data-gallery { list-style: none; padding: 0; margin: 0 0 28px; }
+.data-gallery img { display: block; width: 100%; height: auto; border-radius: 4px; }
+.data-gallery strong, .certificate small { display: block; margin-top: 6px; }
+.data-gallery p, .certificate small { margin-bottom: 0; color: var(--secondary); font-size: 14px; line-height: 1.4; }
+.data-gallery p { margin-top: 4px; }
+.data-gallery [data-i18n="guideHidden"] { color: var(--muted); font-size: var(--label); }
+.guide :is(.register-row, .mod-row) > picture { display: contents; }
+@media (max-width: 999px) {
+  .data-gallery, .guide .certificate-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 699px) {
+  .data-gallery, .guide .certificate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 12px; }
+  .guide .certificate img { height: 108px; }
+}
 .icon-list { list-style: none; display: flex; flex-wrap: wrap; gap: 12px 24px; padding: 0; }
 .icon-list li { display: flex; align-items: center; gap: 8px; }
 .icon-list code { font: var(--label)/1.4 var(--mono); color: var(--muted); }
