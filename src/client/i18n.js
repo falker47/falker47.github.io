@@ -39,6 +39,6 @@
   }
 
   setLanguage(initialLanguage());
-  document.querySelectorAll('.language').forEach(nav => { nav.hidden = false; });
+  document.querySelectorAll('.language-switch').forEach(nav => { nav.hidden = false; });
   buttons.forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
 })();

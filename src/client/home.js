@@ -57,33 +57,6 @@
     observer.observe(art);
   }
 
-  const work = document.querySelector('.work');
-  const tablist = work.querySelector('.work-tabs');
-  const tabs = [...tablist.querySelectorAll('[role=tab]')];
-  const panels = work.querySelectorAll('.work-panel');
-  function select(tab) {
-    tabs.forEach(item => {
-      item.setAttribute('aria-selected', String(item === tab));
-      item.tabIndex = item === tab ? 0 : -1;
-    });
-    panels.forEach(panel => { panel.hidden = panel.id !== tab.getAttribute('aria-controls'); });
-  }
-
-  tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => select(tab));
-    tab.addEventListener('keydown', event => {
-      const next = { ArrowRight: (index + 1) % tabs.length, ArrowLeft: (index + tabs.length - 1) % tabs.length,
-        Home: 0, End: tabs.length - 1 }[event.key];
-      if (next === undefined) return;
-      event.preventDefault();
-      select(tabs[next]);
-      tabs[next].focus();
-    });
-  });
-  work.classList.add('work-enhanced');
-  tablist.hidden = false;
-  select(tabs[0]);
-
   motion.addEventListener('change', () => { if (motion.matches) { started = true; finish(); } });
   document.addEventListener('visibilitychange', () => { if (document.hidden && started) finish(); else prepare(); });
   window.addEventListener('resize', () => { if (started) finish(); else prepare(); });

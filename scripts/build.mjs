@@ -21,6 +21,8 @@ for (const lang of ['it', 'en']) {
   copy[lang] = dictionary;
 }
 
+const includeStyleguide = process.argv.slice(2).includes('--styleguide');
+const buildRoutes = includeStyleguide ? [...routes, (await import('../src/styleguide/page.mjs')).styleguide] : routes;
 const output = join(root, '_site');
 const staging = await mkdtemp(join(root, '.site-build-'));
 const next = join(staging, 'next');
@@ -40,7 +42,13 @@ try {
   });
   for (const file of ['robots.txt', 'sitemap.xml']) await cp(join(root, file), join(next, file));
   const pages = new Set();
-  for (const route of routes) {
+  if (includeStyleguide) {
+    const guide = join(next, 'styleguide');
+    await mkdir(guide);
+    await cp(join(root, 'src/styleguide/assets'), join(guide, 'assets'), { recursive: true });
+    for (const file of ['guide.css', 'guide.js']) await cp(join(root, 'src/styleguide', file), join(guide, file));
+  }
+  for (const route of buildRoutes) {
     if (!/^\/(?:[\w-]+\/)*(?:[\w-]+\.html)?$/.test(route.path)) throw Error(`Invalid route ${route.path}`);
     const page = resolve(next, '.' + route.path, ...(route.path.endsWith('/') ? ['index.html'] : []));
     if (pages.has(page)) throw Error(`Duplicate route ${route.path}`);

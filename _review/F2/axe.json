@@ -1,0 +1,50 @@
+[
+  {
+    "route": "/",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  }
+]
