@@ -1,0 +1,49 @@
+
+/* Desktop-only visual sizing. The headline/CTA and grid tracks are unchanged. */
+@media (min-width: 1000px) {
+  /* No outer gradient frame: the actual card fills the entire surface. */
+  .identity {
+    max-width: min(100%, 520px);
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    transform: translateY(22px);
+  }
+  .identity-core {
+    width: 100%;
+    padding: 30px 34px;
+    border-radius: inherit;
+  }
+  .person { grid-template-columns: 88px minmax(0, 1fr); gap: 18px; }
+  /* The original square portrait must not stretch to the text row height. */
+  .person .portrait-frame {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    align-self: start;
+  }
+  .person .person-name { font-size: 26px; }
+  .person .person-handle,
+  .person .person-role { font-size: 13px; }
+  .identity-intro { font-size: 15px; line-height: 1.55; }
+  .contacts .contact { min-height: 48px; font-size: 13px; }
+
+  /* Lift research away from the section below while preserving the grid. */
+  .desktop-engine {
+    height: 116%;
+    transform: translate(14px, -15%);
+  }
+}
+@media (min-width: 1600px) {
+  .identity { max-width: min(100%, 570px); }
+  .identity-core { padding: 32px 36px; }
+  .person { grid-template-columns: 94px minmax(0, 1fr); gap: 20px; }
+  .desktop-engine { height: 120%; transform: translate(20px, -16%); }
+}
+/* Very short desktops keep the compact composition. */
+@media (min-width: 1000px) and (max-height: 620px) {
+  .identity { transform: translateY(8px); }
+  .identity-core { padding: 20px 24px; }
+  .person { grid-template-columns: 72px minmax(0, 1fr); }
+  .desktop-engine { height: 106%; transform: translate(5px, -12%); }
+}

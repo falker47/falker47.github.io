@@ -1,0 +1,16 @@
+# Sheets & Register
+
+- Direction "Sheets & Register": keep the master's blueprint identity and hero exactly. Below it, an always-open Projects section whose catalogue is a dense register (one row per project, 16:9 thumbnail). Large framed "sheets" (thin frame, 2 px corner ticks, mono caption such as "TAV. 01 · APP WEB") only as hero images on project pages and for Ringmin.
+- Audience and first task: in one screen, recruiters, colleagues and users understand who Maurizio is (AI & Digital Innovation Specialist; software, modding, research, tutoring) and reach any project in at most 2 interactions.
+- Tokens: bg #071525 with a 32 px grid (#9bdcff08 lines); surfaces #0b1d30 and #0d2338; text #f1f4f5, secondary #c9d7e2, muted #adbfce; accent #9bdcff; drawing stroke #81bfe5; rules #304d65 and #1d3a52; Social Viewer product accent #49c7bb (its pages only).
+- Type, self-hosted woff2 latin: Gelasio 400 and 400 italic for headings (metric-compatible with Georgia, so the hero keeps its metrics), IBM Plex Mono 400 for uppercase labels and numbers, Poppins 600/700 for the person's name only, system sans for body. Scale: display 54/40 (desktop/mobile), h2 30/24, h3 21/19, body 16/15, labels 12–13 uppercase with +0.08em tracking. 4 px spacing grid. Card radius ≤ 18 px; 999 px only for the single primary CTA.
+- Motion: the hero pulse once per load; disclosure height animation; 150 ms opacity on tab change; all off with prefers-reduced-motion.
+- Forbidden: emoji, decorative gradients or glow, headings over 32 px outside the hero, more than one primary CTA per view, CDNs, third-party requests, video.
+- Home "/": sticky compact header (brand · Progetti · Chi sono · Contatti · IT|EN) → hero (unchanged; single CTA "Esplora i progetti" → #progetti) → #progetti "Progetti" with tabs #software · #modding · #ricerca · #tutoring (the hash selects the tab) → #chi-sono (collapsible: about text, profile links, #certificazioni with 4 visible + "Mostra tutte (11)" + <dialog> viewer) → #contatti in the footer (email, GitHub, LinkedIn, ORCID, link to /uses/).
+- Software tab: all 14 projects, filters Tutti/App/Giochi/Strumenti with counts computed from data; register rows (thumbnail, title, one-line summary, kind, stack on desktop only, actions: "Scheda" when a project page exists, otherwise "Apri ↗" to demo, store or repo, plus a GitHub icon button). No "show more".
+- Modding tab: live Nexus totals (unique downloads, mod count) with the snapshot as fallback; 3 featured mods; a link to all mods on Nexus.
+- Ricerca tab: Ringmin sheet, the 2 arXiv papers, links to /research/, GitHub and Zenodo.
+- Tutoring tab: maths and physics since January 2023; individual lessons, digital notes, guided exercises, in person and online; Letuelezioni 5/5 (10 ratings), Superprof 5/5 (2 ratings · 3 recommendations); link to https://falker47.github.io/mauriziofalconi-ripetizioni/.
+- Pages: /research/, /projects/prof-gecko/, /projects/camaleonte/, /projects/social-viewer/ (+ /test/ and /privacy/), /uses/, /404.html. The same header and footer partials everywhere.
+- Languages: IT rendered by default, EN through the toggle on the same URL.
+- Data: data/projects.json, data/mods.json, data/certifications.json, data/tutoring.json, data/research.json, data/i18n/{it,en}.json. Counts are always computed, never typed.
