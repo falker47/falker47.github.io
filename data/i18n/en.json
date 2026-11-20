@@ -114,6 +114,7 @@
   "moved": "Page moved",
   "visitDestination": "Go to destination",
   "missingPage": "Page not found",
+  "missingReason": "The link may have changed or been mistyped.",
   "backHome": "Back to home",
   "guideIcons": "Icons",
   "guideDisclosure": "Research details",

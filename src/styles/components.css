@@ -100,15 +100,15 @@
 :is(.register-row, .mod-row):is(:hover, :focus-within, [data-preview="hover"]) { background: var(--surface-raised); }
 :is(.row-title, .text-link):is(:hover, [data-preview="hover"]) { text-decoration: underline; }
 .sheet { margin: 0; }
-.sheet-frame { position: relative; border: 1px solid var(--rule); background: var(--surface); padding: 12px; }
-.sheet-frame::before, .sheet-frame::after {
+.sheet-frame, .status-panel { position: relative; border: 1px solid var(--rule); background: var(--surface); padding: 12px; }
+:is(.sheet-frame, .status-panel)::before, :is(.sheet-frame, .status-panel)::after {
   content: ""; position: absolute; height: 12px; pointer-events: none;
   inset-inline: -1px; border-inline: 2px solid var(--stroke);
   background: linear-gradient(var(--stroke),var(--stroke)) left var(--edge) / 12px 2px no-repeat,
               linear-gradient(var(--stroke),var(--stroke)) right var(--edge) / 12px 2px no-repeat;
 }
-.sheet-frame::before { --edge: top; top: -1px; }
-.sheet-frame::after { --edge: bottom; bottom: -1px; }
+:is(.sheet-frame, .status-panel)::before { --edge: top; top: -1px; }
+:is(.sheet-frame, .status-panel)::after { --edge: bottom; bottom: -1px; }
 .sheet-frame img { display: block; width: 100%; height: auto; }
 .sheet figcaption { padding-top: 8px; }
 .stat-tile, .rating-card {
@@ -137,9 +137,9 @@
 .disclosure > summary::after, .disclosure > summary::-webkit-details-marker { display: none; }
 .disclosure[open] > summary .icon { transform: rotate(180deg); }
 .disclosure-body { padding: 8px 0 24px; }
-.status-panel { padding: 16px; border-left: 2px solid var(--stroke); background: var(--surface); }
+.status-panel { padding: 24px; text-align: center; }
 .status-panel h3 { margin: 8px 0; }
-.status-code { color: var(--blue); }
+.status-code { color: var(--blue); letter-spacing: var(--tracking); text-transform: uppercase; }
 .text-link { min-height: var(--target); color: var(--blue); }
 :is(.certificate, .stat-tile, .rating-card, .disclosure > summary):is(:hover, [data-preview="hover"]) { background: var(--surface-raised); }
 @media (max-width: 699px) {

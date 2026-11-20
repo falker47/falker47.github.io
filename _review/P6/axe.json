@@ -1,0 +1,218 @@
+[
+  {
+    "route": "/404.html",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/404.html",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/404.html",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/404.html",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/index.html",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/index.html",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/index.html",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/index.html",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/research.html",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/research.html",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/research.html",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/research.html",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/prof-gecko.html",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/prof-gecko.html",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/prof-gecko.html",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/prof-gecko.html",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/consigli.html",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/consigli.html",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/consigli.html",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/consigli.html",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/testers.html",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/testers.html",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/testers.html",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/testers.html",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/socialviewer-privacy.html",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/socialviewer-privacy.html",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/socialviewer-privacy.html",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/socialviewer-privacy.html",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  }
+]

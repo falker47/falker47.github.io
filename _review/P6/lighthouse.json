@@ -1,0 +1,362 @@
+[
+  {
+    "route": "/404.html",
+    "lang": "it",
+    "device": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/404.html",
+    "lang": "it",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/404.html",
+    "lang": "en",
+    "device": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/404.html",
+    "lang": "en",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/",
+    "lang": "it",
+    "device": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/",
+    "lang": "it",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/",
+    "lang": "en",
+    "device": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/",
+    "lang": "en",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/index.html",
+    "lang": "it",
+    "device": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/index.html",
+    "lang": "it",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/index.html",
+    "lang": "en",
+    "device": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/index.html",
+    "lang": "en",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/research.html",
+    "lang": "it",
+    "device": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/research.html",
+    "lang": "it",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/research.html",
+    "lang": "en",
+    "device": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/research.html",
+    "lang": "en",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/prof-gecko.html",
+    "lang": "it",
+    "device": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/prof-gecko.html",
+    "lang": "it",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/prof-gecko.html",
+    "lang": "en",
+    "device": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/prof-gecko.html",
+    "lang": "en",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/consigli.html",
+    "lang": "it",
+    "device": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/consigli.html",
+    "lang": "it",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/consigli.html",
+    "lang": "en",
+    "device": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/consigli.html",
+    "lang": "en",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/testers.html",
+    "lang": "it",
+    "device": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/testers.html",
+    "lang": "it",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/testers.html",
+    "lang": "en",
+    "device": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/testers.html",
+    "lang": "en",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/socialviewer-privacy.html",
+    "lang": "it",
+    "device": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/socialviewer-privacy.html",
+    "lang": "it",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/socialviewer-privacy.html",
+    "lang": "en",
+    "device": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/Nexus-portfolio/socialviewer-privacy.html",
+    "lang": "en",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "it",
+    "device": "mobile",
+    "scores": {
+      "performance": 98,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "it",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "en",
+    "device": "mobile",
+    "scores": {
+      "performance": 97,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "en",
+    "device": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100
+    }
+  }
+]

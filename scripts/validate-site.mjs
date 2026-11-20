@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import vm from 'node:vm';
 import { createHash } from 'node:crypto';
+import { validateCanonical, validateMigration } from './validate-migration.mjs';
 import { checkText, designChecks } from './design-checks.mjs';
 import { decode, openSite, origin, references, siteRoot, walk } from './qa/site.mjs';
 
@@ -31,9 +31,7 @@ for await (const file of walk(siteRoot)) {
   const { source, elements, ids, route } = await site.document(file);
   assert.equal(new Set(ids).size, ids.length, `${route}: unique HTML and SVG IDs`);
   assert.equal(elements.filter(e => e.name === 'h1').length, 1, `${route}: one primary heading`);
-  const canonical = elements.filter(e => e.name === 'link' && e.attrs.rel?.split(/\s+/).includes('canonical'));
-  assert.equal(canonical.length, 1, `${route}: one canonical`);
-  assert.equal(canonical[0].attrs.href, origin + route, `${route}: self-referencing canonical`);
+  validateCanonical(elements, route, site.redirects.get(route));
   for (const match of source.matchAll(/\bdata:[^"')\s<>]+/gi)) {
     assert.ok(Buffer.byteLength(match[0]) <= 2048, `${route}: data URI exceeds 2 KB`);
   }
@@ -90,6 +88,7 @@ for await (const file of walk(siteRoot)) {
   assert.ok(!/(?:href|src)=["'](?:https?:\/\/(?:localhost|127\.0\.0\.1)|file:)/i.test(source), `${route}: no local URLs`);
 }
 assert.ok(count > 0, 'Build at least one page');
+await validateMigration(site);
 
 const html = await readFile(join(siteRoot, 'index.html'), 'utf8');
 await designChecks(siteRoot, inlineCss);
@@ -110,8 +109,6 @@ assert.doesNotMatch(html, /12k\+/, 'Do not ship stale 12k+ totals as the unique-
 assert.match(html, /<script type="module" src="scripts\/nexus-downloads\.mjs"><\/script>/, 'Live Nexus totals must load without exposing a key');
 assert.match(i18n, /document\.dispatchEvent\(new Event\('portfolio:languagechange'\)\)/, 'Language toggle must preserve fetched Nexus totals');
 assert.match(html, /<a class="skip"[^>]*href="#main"|<a[^>]*href="#main"[^>]*class="skip"/);
-assert.match(readFileSync(join(siteRoot, 'robots.txt'), 'utf8'), /Sitemap: https:\/\/falker47\.github\.io\/sitemap\.xml/);
-assert.match(readFileSync(join(siteRoot, 'sitemap.xml'), 'utf8'), /<loc>https:\/\/falker47\.github\.io\/<\/loc>/);
 const styleBlock = html.match(/<style id="desktop-visual-sizing">[\s\S]*?<\/style>/)?.[0];
 assert.ok(styleBlock, 'Inline desktop artwork sizing is required');
 assert.equal(createHash('sha256').update(styleBlock).digest('hex'),

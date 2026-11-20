@@ -4,6 +4,7 @@ import { homedir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
+import redirectMap from '../../data/redirects.json' with { type: 'json' };
 import { startServer } from './serve.mjs';
 
 const qaDir = join(homedir(), 'qa-tools');
@@ -23,12 +24,13 @@ export async function options(extra = {}) {
   if (langs.some(lang => !['it','en'].includes(lang))) throw Error('Use it or en for --langs');
   const out = fileURLToPath(new URL(`../../_review/${values.task}/`, import.meta.url));
   await mkdir(out, { recursive: true });
-  return { values, pages, langs, out };
+  const stubPages = new Set(redirectMap.redirects.map(entry => entry.from).filter(path => pages.includes(path)));
+  return { values, pages, langs, out, stubPages };
 }
 
-export async function withBrowser(callback) {
+export async function withBrowser(callback, serverOptions) {
   const executablePath = await chromePath();
-  const server = await startServer();
+  const server = await startServer(serverOptions);
   try {
     const browser = await qaRequire('playwright').chromium.launch({ executablePath, headless: true });
     try { return await callback(browser, server.origin); }
@@ -36,11 +38,18 @@ export async function withBrowser(callback) {
   } finally { await server.close(); }
 }
 
-export async function visit(page, origin, route, lang) {
+export async function visit(page, origin, route, lang, bilingualFallback = false) {
   const url = new URL(route, origin);
   url.searchParams.set('lang', lang);
   const response = await page.goto(url.href, { waitUntil: 'networkidle' });
   if (response?.status() !== 200) throw Error(`${url.pathname} HTTP ${response?.status()}`);
   await page.evaluate(() => document.fonts.ready);
+  if (new URL(page.url()).pathname !== route) throw Error('Visual audit left ' + route);
+  if (bilingualFallback) {
+    for (const language of ['it', 'en']) {
+      if (!await page.locator('.redirect-stub a[lang="' + language + '"]').isVisible()) throw Error('Missing ' + language + ' fallback');
+    }
+    return;
+  }
   if (await page.locator('html').getAttribute('lang') !== lang) throw Error(`Language did not switch to ${lang}`);
 }
