@@ -13,7 +13,7 @@
   "services": [
     {
       "it": "Lezioni individuali",
-      "en": "One-to-one lessons"
+      "en": "One-on-one lessons"
     },
     {
       "it": "Appunti digitali",
@@ -21,7 +21,7 @@
     },
     {
       "it": "Esercizi guidati",
-      "en": "Guided exercises"
+      "en": "Guided practice"
     }
   ],
   "formats": [

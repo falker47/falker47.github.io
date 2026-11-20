@@ -1,0 +1,1726 @@
+[
+  {
+    "route": "/",
+    "lang": "it",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "requests": [
+      {
+        "method": "GET",
+        "type": "document",
+        "url": "http://127.0.0.1:54395/?lang=it",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/gelasio-latin-400-normal.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/gelasio-latin-400-italic.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/tokens.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/base.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/home.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/components.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/maurizio-falconi-native.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/nexus-downloads.mjs",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/falkerlogo-native.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/i18n.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/components.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/animated-disclosures.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/home.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/poppins-600.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/poppins-700.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "fetch",
+        "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
+        "disposition": "fulfilled from committed data/nexus-downloads.json before network"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-social-viewer.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-panacea.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-camaleonte.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "other",
+        "url": "http://127.0.0.1:54395/assets/images/falkerlogo.png",
+        "disposition": "loopback"
+      }
+    ]
+  },
+  {
+    "route": "/",
+    "lang": "it",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "requests": [
+      {
+        "method": "GET",
+        "type": "document",
+        "url": "http://127.0.0.1:54395/?lang=it",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/gelasio-latin-400-normal.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/gelasio-latin-400-italic.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/tokens.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/base.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/home.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/components.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/maurizio-falconi-native.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/nexus-downloads.mjs",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/falkerlogo-native.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/i18n.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/components.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/animated-disclosures.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/home.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/poppins-700.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/poppins-600.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-social-viewer.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-panacea.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-camaleonte.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-save-editor.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-giant-shockwaves.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "fetch",
+        "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
+        "disposition": "fulfilled from committed data/nexus-downloads.json before network"
+      },
+      {
+        "method": "GET",
+        "type": "other",
+        "url": "http://127.0.0.1:54395/assets/images/falkerlogo.png",
+        "disposition": "loopback"
+      }
+    ]
+  },
+  {
+    "route": "/",
+    "lang": "en",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "requests": [
+      {
+        "method": "GET",
+        "type": "document",
+        "url": "http://127.0.0.1:54395/?lang=en",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/gelasio-latin-400-normal.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/gelasio-latin-400-italic.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/tokens.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/base.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/home.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/components.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/maurizio-falconi-native.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/nexus-downloads.mjs",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/falkerlogo-native.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/i18n.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/components.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/animated-disclosures.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/home.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/poppins-600.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/poppins-700.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-social-viewer.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-panacea.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-camaleonte.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-save-editor.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-giant-shockwaves.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/letuelezioni.png",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/superprof.png",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "fetch",
+        "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
+        "disposition": "fulfilled from committed data/nexus-downloads.json before network"
+      },
+      {
+        "method": "GET",
+        "type": "other",
+        "url": "http://127.0.0.1:54395/assets/images/falkerlogo.png",
+        "disposition": "loopback"
+      }
+    ]
+  },
+  {
+    "route": "/",
+    "lang": "en",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "requests": [
+      {
+        "method": "GET",
+        "type": "document",
+        "url": "http://127.0.0.1:54395/?lang=en",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/gelasio-latin-400-normal.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/gelasio-latin-400-italic.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/tokens.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/base.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/home.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/components.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/maurizio-falconi-native.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/nexus-downloads.mjs",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/falkerlogo-native.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/i18n.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/components.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/animated-disclosures.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/home.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/poppins-700.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/poppins-600.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-social-viewer.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-panacea.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-camaleonte.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-save-editor.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/register-giant-shockwaves.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "fetch",
+        "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
+        "disposition": "fulfilled from committed data/nexus-downloads.json before network"
+      },
+      {
+        "method": "GET",
+        "type": "other",
+        "url": "http://127.0.0.1:54395/assets/images/falkerlogo.png",
+        "disposition": "loopback"
+      }
+    ]
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "it",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "requests": [
+      {
+        "method": "GET",
+        "type": "document",
+        "url": "http://127.0.0.1:54395/styleguide/?lang=it",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/tokens.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/base.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styleguide/guide.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/components.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/prof-gecko-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/falkerlogo-native.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/catalogue.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/i18n.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/components.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/animated-disclosures.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/styleguide/guide.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/poppins-600.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/gelasio-latin-400-normal.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/camaleonte-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/social-viewer-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/chi-l-ha-detto-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/diario-di-bordo-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/easy-contract-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/zerofilez-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/pokemon-mystery-dungeon-tools-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/carte-senza-umanita-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/panacea-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/iban-checker-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/codice-fiscale-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/sommatrix-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/crack-the-code-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/ringmin-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/mods/hogwarts-legacy-save-editor-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/mods/giant-shockwaves-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/mods/respect-the-chief-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/data-science-professional-course-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/sas-programming-course-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/data-structures-and-algorithms-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/financial-technology-specialization-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/cybersecurity-professional-course-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "other",
+        "url": "http://127.0.0.1:54395/assets/images/falkerlogo.png",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/french-b2-2-certificate-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/fullstack-developer-certification-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/ringmin-960.webp",
+        "disposition": "loopback"
+      }
+    ]
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "it",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "requests": [
+      {
+        "method": "GET",
+        "type": "document",
+        "url": "http://127.0.0.1:54395/styleguide/?lang=it",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/tokens.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/base.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styleguide/guide.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/components.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/prof-gecko-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/falkerlogo-native.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/catalogue.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/i18n.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/components.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/animated-disclosures.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/styleguide/guide.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/gelasio-latin-400-normal.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/poppins-600.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/camaleonte-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/social-viewer-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/chi-l-ha-detto-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/diario-di-bordo-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/easy-contract-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/zerofilez-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/pokemon-mystery-dungeon-tools-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/carte-senza-umanita-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/panacea-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/iban-checker-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/codice-fiscale-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/sommatrix-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/crack-the-code-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/ringmin-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "other",
+        "url": "http://127.0.0.1:54395/assets/images/falkerlogo.png",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/mods/hogwarts-legacy-save-editor-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/mods/giant-shockwaves-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/mods/respect-the-chief-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/data-science-professional-course-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/sas-programming-course-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/data-structures-and-algorithms-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/financial-technology-specialization-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/cybersecurity-professional-course-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/french-b2-2-certificate-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/fullstack-developer-certification-thumb.webp",
+        "disposition": "loopback"
+      }
+    ]
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "en",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "requests": [
+      {
+        "method": "GET",
+        "type": "document",
+        "url": "http://127.0.0.1:54395/styleguide/?lang=en",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/tokens.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/base.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styleguide/guide.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/components.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/prof-gecko-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/falkerlogo-native.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/catalogue.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/i18n.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/components.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/animated-disclosures.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/styleguide/guide.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/poppins-600.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/gelasio-latin-400-normal.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/camaleonte-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/social-viewer-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/chi-l-ha-detto-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/diario-di-bordo-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/easy-contract-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/zerofilez-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/pokemon-mystery-dungeon-tools-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/carte-senza-umanita-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/panacea-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/iban-checker-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/codice-fiscale-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/sommatrix-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/crack-the-code-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/ringmin-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/mods/hogwarts-legacy-save-editor-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/mods/giant-shockwaves-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/mods/respect-the-chief-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/data-science-professional-course-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/sas-programming-course-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/data-structures-and-algorithms-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/financial-technology-specialization-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/cybersecurity-professional-course-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "other",
+        "url": "http://127.0.0.1:54395/assets/images/falkerlogo.png",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/french-b2-2-certificate-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/fullstack-developer-certification-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/ringmin-960.webp",
+        "disposition": "loopback"
+      }
+    ]
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "en",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "requests": [
+      {
+        "method": "GET",
+        "type": "document",
+        "url": "http://127.0.0.1:54395/styleguide/?lang=en",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/tokens.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/base.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styleguide/guide.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "stylesheet",
+        "url": "http://127.0.0.1:54395/styles/components.css",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/prof-gecko-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/images/falkerlogo-native.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/catalogue.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/i18n.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/components.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/scripts/animated-disclosures.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "script",
+        "url": "http://127.0.0.1:54395/styleguide/guide.js",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/gelasio-latin-400-normal.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "font",
+        "url": "http://127.0.0.1:54395/assets/fonts/poppins-600.woff2",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/camaleonte-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/social-viewer-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/chi-l-ha-detto-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/diario-di-bordo-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/easy-contract-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/zerofilez-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/pokemon-mystery-dungeon-tools-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/carte-senza-umanita-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/panacea-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/iban-checker-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/codice-fiscale-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/sommatrix-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/crack-the-code-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/projects/ringmin-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "other",
+        "url": "http://127.0.0.1:54395/assets/images/falkerlogo.png",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/mods/hogwarts-legacy-save-editor-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/mods/giant-shockwaves-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/mods/respect-the-chief-480.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/data-science-professional-course-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/sas-programming-course-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/data-structures-and-algorithms-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/financial-technology-specialization-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/cybersecurity-professional-course-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/french-b2-2-certificate-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+        "disposition": "loopback"
+      },
+      {
+        "method": "GET",
+        "type": "image",
+        "url": "http://127.0.0.1:54395/assets/certifications/fullstack-developer-certification-thumb.webp",
+        "disposition": "loopback"
+      }
+    ]
+  }
+]
