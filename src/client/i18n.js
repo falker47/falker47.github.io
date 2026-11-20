@@ -16,8 +16,9 @@
   }
 
   function setLanguage(lang) {
+    const changeText = document.documentElement.lang !== lang;
     document.documentElement.lang = lang;
-    document.querySelectorAll('[data-i18n]').forEach(node => {
+    if (changeText) document.querySelectorAll('[data-i18n]').forEach(node => {
       const value = copy[lang][node.dataset.i18n];
       const lines = value.split('<br>');
       node.textContent = lines.shift();

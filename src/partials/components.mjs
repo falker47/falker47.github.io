@@ -54,7 +54,7 @@ export function modRow(t, item, index) {
 }
 
 export function sheetFrame(t, { image, caption }) {
-  return html`<figure class="sheet"><div class="sheet-frame">${raw(img(image, { sizes: '(min-width: 840px) 560px, 90vw' }))}</div><figcaption>${label(t, caption)}</figcaption></figure>`;
+  return html`<figure class="sheet"><div class="sheet-frame">${raw(img(image, { sizes: 'auto, (min-width: 1296px) 564px, (min-width: 1000px) calc((100vw - 168px) / 2), (min-width: 840px) calc((100vw - 152px) / 2), (min-width: 600px) calc(100vw - 106px), calc(100vw - 58px)' }))}</div><figcaption>${label(t, caption)}</figcaption></figure>`;
 }
 
 export function statTile(t, { value, key, valueKey, iconName, href, nexusStat }) {
@@ -67,9 +67,9 @@ export function ratingCard(t, { source, score, scale, detail, href, logo }) {
 
 export function certificates({ t }, entries, id) {
   return html`<div class="certificate-grid">
-  ${group(entries.map(({ thumbnail, full, alt, title, issuer, year }) => html`<a class="certificate" href="${full.src}" data-viewer="${id}">${raw(picture({ ...thumbnail, alt, variants: [thumbnail, full] }, { sizes: '(min-width: 700px) 235px, 45vw' }))}<span>${title}</span> ${icon('external')} <small>${issuer} · ${year}</small></a>`))}
+  ${group(entries.map(({ thumbnail, full, alt, title, issuer, year }) => html`<a class="certificate" href="${full.src}" data-viewer="${id}" data-width="${full.width}" data-height="${full.height}" aria-haspopup="dialog" aria-controls="${id}">${raw(picture({ ...thumbnail, alt, variants: [thumbnail, full] }, { sizes: 'auto, (min-width: 1296px) 272px, (min-width: 1000px) calc((100vw - 208px) / 4), (min-width: 700px) calc((100vw - 160px) / 3), (min-width: 600px) calc((100vw - 124px) / 2), calc((100vw - 76px) / 2)' }))}<span>${title}</span> ${icon('external')} <small>${issuer} · ${year}</small></a>`))}
 </div>
-<dialog class="certificate-viewer" id="${id}" aria-labelledby="${id}-title"><div class="viewer-bar"><h3 id="${id}-title"></h3><form method="dialog"><button class="text-button" autofocus>${label(t, 'closeViewer')}</button></form></div><img alt=""></dialog>`;
+<dialog class="certificate-viewer" id="${id}" aria-modal="true" aria-labelledby="${id}-title"><div class="viewer-bar"><h3 id="${id}-title"></h3><form method="dialog"><button class="text-button" autofocus>${label(t, 'closeViewer')}</button></form></div></dialog>`;
 }
 
 export function disclosure(t, { id, key, content, className = '' }) {

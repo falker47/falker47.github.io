@@ -56,11 +56,13 @@
   for (const viewer of document.querySelectorAll('.certificate-viewer')) {
     let trigger;
     const title = viewer.querySelector('h3');
-    const image = viewer.querySelector('img');
+    const image = document.createElement('img');
+    image.loading = 'lazy';
+    image.decoding = 'async';
     const updateTitle = () => {
       if (!trigger) return;
       title.textContent = trigger.textContent.trim();
-      image.alt = title.textContent;
+      image.alt = trigger.querySelector('img').getAttribute('data-alt-' + document.documentElement.lang) || title.textContent;
     };
     for (const link of document.querySelectorAll('[data-viewer]')) {
       if (link.dataset.viewer !== viewer.id) continue;
@@ -69,11 +71,21 @@
         event.preventDefault();
         trigger = link;
         updateTitle();
+        image.width = Number(link.dataset.width);
+        image.height = Number(link.dataset.height);
         image.src = link.href;
+        viewer.append(image);
         viewer.showModal();
       });
     }
-    viewer.addEventListener('close', () => { image.removeAttribute('src'); trigger?.focus(); });
+    viewer.addEventListener('keydown', event => {
+      // The close button is the only stop in this image viewer.
+      if (event.key === 'Tab') {
+        event.preventDefault();
+        viewer.querySelector('button').focus();
+      }
+    });
+    viewer.addEventListener('close', () => { image.remove(); image.removeAttribute('src'); trigger?.focus(); });
     document.addEventListener('portfolio:languagechange', updateTitle);
   }
 

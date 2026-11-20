@@ -11,23 +11,19 @@
     "scholar": "https://scholar.google.com/citations?user=5xHRNvoAAAAJ"
   },
   "photo": {
-    "src": "/assets/profile/maurizio-falconi-480.webp",
-    "width": 480,
-    "height": 480,
+    "src": "/assets/profile/maurizio-falconi-256.webp",
+    "width": 256,
+    "height": 256,
+    "nativeWidth": 256,
     "alt": {
       "it": "Ritratto di Maurizio Falconi.",
       "en": "Portrait of Maurizio Falconi."
     },
     "variants": [
       {
-        "src": "/assets/profile/maurizio-falconi-480.webp",
-        "width": 480,
-        "height": 480
-      },
-      {
-        "src": "/assets/profile/maurizio-falconi-960.webp",
-        "width": 960,
-        "height": 960
+        "src": "/assets/profile/maurizio-falconi-256.webp",
+        "width": 256,
+        "height": 256
       }
     ]
   }

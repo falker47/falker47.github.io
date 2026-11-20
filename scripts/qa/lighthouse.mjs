@@ -1,45 +1,82 @@
 import { writeFile } from 'node:fs/promises';
-import { join } from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { join, resolve } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { chromePath, options, qaRequire } from './browser.mjs';
 import { startServer } from './serve.mjs';
+import { auditRoutes } from './audit-routes.mjs';
+import { checkLoad, snapshotUrl } from '../budgets.mjs';
 
 const load = name => import(pathToFileURL(qaRequire.resolve(name)));
-const { default: lighthouse } = await load('lighthouse');
-const { default: desktopConfig } = await load('lighthouse/core/config/desktop-config.js');
-const { launch } = await load('chrome-launcher');
-const limits = { 'min-perf-mobile': 90, 'min-perf-desktop': 95, 'min-a11y': 95, 'min-bp': 95 };
-const flags = Object.fromEntries(Object.entries(limits).map(([key, value]) => [key, { type: 'string', default: String(value) }]));
-const { pages, out, values } = await options(flags);
-for (const key of Object.keys(limits)) {
-  limits[key] = Number(values[key]);
-  if (!Number.isFinite(limits[key]) || limits[key] < 0 || limits[key] > 100) throw Error(`Invalid --${key}`);
-}
-const executable = await chromePath();
-process.env.CHROME_PATH = executable;
-const server = await startServer();
-const results = [];
-try {
-  for (const route of pages) for (const device of ['mobile','desktop']) {
-    const chrome = await launch({ chromePath: executable, chromeFlags: ['--headless=new','--no-sandbox'] });
+export const gates = { 'min-perf-mobile': 95, 'min-perf-desktop': 98, 'min-a11y': 100, 'min-bp': 95 };
+
+export async function runLighthouse(pages, langs, thresholds = gates, root) {
+  const { default: lighthouse } = await load('lighthouse');
+  const { default: desktopConfig } = await load('lighthouse/core/config/desktop-config.js');
+  const { launch } = await load('chrome-launcher');
+  const executable = await chromePath();
+  process.env.CHROME_PATH = executable;
+  const results = [];
+  for (const { path: route, stub } of pages) {
+    const server = await startServer({ root, holdDocument: stub ? route : undefined });
     try {
-      const { lhr } = await lighthouse(new URL(route, server.origin).href, {
-        port: chrome.port, output: 'json', logLevel: 'error',
-        onlyCategories: ['performance','accessibility','best-practices'],
-      }, device === 'desktop' ? desktopConfig : undefined);
-      if (lhr.runtimeError) throw Error(lhr.runtimeError.message);
-      const scores = {};
-      for (const [key, category] of Object.entries(lhr.categories)) {
-        if (typeof category.score !== 'number') throw Error(`Missing score for ${key}`);
-        scores[key] = Math.round(category.score * 100);
+      for (const lang of langs) for (const device of ['mobile', 'desktop']) {
+        const row = { route, lang: lang || 'default', device, pass: false };
+        results.push(row);
+        let chrome;
+        try {
+          chrome = await launch({ chromePath: executable, chromeFlags: ['--headless=new', '--no-sandbox'] });
+          const url = new URL(route, server.origin);
+          if (lang) url.searchParams.set('lang', lang);
+          const { lhr } = await lighthouse(url.href, {
+            port: chrome.port, output: 'json', logLevel: 'error',
+            onlyCategories: ['performance', 'accessibility', 'best-practices'],
+          }, device === 'desktop' ? desktopConfig : undefined);
+          if (lhr.runtimeError) throw Error(lhr.runtimeError.message);
+          if (new URL(lhr.finalDisplayedUrl).pathname !== route) throw Error('Audited another document: ' + lhr.finalDisplayedUrl);
+          row.scores = {};
+          for (const key of ['performance', 'accessibility', 'best-practices']) {
+            const score = lhr.categories[key]?.score;
+            if (typeof score !== 'number') throw Error('Missing score: ' + key);
+            row.scores[key] = Math.round(score * 100);
+          }
+          const audits = lhr.audits;
+          const requests = audits['network-requests'].details.items.filter(item => /^https?:/.test(item.url));
+          row.metrics = {
+            bytes: requests.reduce((total, item) => total + item.transferSize, 0), requests: requests.length,
+            lcpMs: audits['largest-contentful-paint'].numericValue, cls: audits['cumulative-layout-shift'].numericValue,
+            fcpMs: audits['first-contentful-paint'].numericValue, tbtMs: audits['total-blocking-time'].numericValue,
+            speedIndexMs: audits['speed-index'].numericValue,
+            lcpElement: audits['largest-contentful-paint-element']?.details?.items?.[0]?.items?.[0]?.node?.selector,
+          };
+          row.resources = requests.map(item => ({
+            url: new URL(item.url).origin === server.origin ? new URL(item.url).pathname : item.url,
+            bytes: item.transferSize,
+          }));
+          row.version = lhr.lighthouseVersion;
+          const bad = requests.find(item => new URL(item.url).origin !== server.origin && item.url !== snapshotUrl);
+          if (bad) throw Error('Unexpected request: ' + bad.url);
+          if (route === '/') checkLoad(row.metrics, device + ' home');
+          row.pass = row.scores.performance >= thresholds['min-perf-' + device] &&
+            row.scores.accessibility >= thresholds['min-a11y'] && row.scores['best-practices'] >= thresholds['min-bp'];
+        } catch (error) { row.error = error.message; }
+        finally { if (chrome) await chrome.kill(); }
+        console.log(route, row.lang, device, row.scores || {}, row.pass ? 'PASS' : 'FAIL', row.error || '');
       }
-      results.push({ route, device, scores });
-      console.log(route, device, scores);
-      if (scores.performance < limits['min-perf-' + device] || scores.accessibility < limits['min-a11y']
-          || scores['best-practices'] < limits['min-bp']) process.exitCode = 1;
-    } finally { await chrome.kill(); }
+    } finally { await server.close(); }
   }
-} finally {
-  await server.close();
+  return results;
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const flags = Object.fromEntries(Object.entries(gates).map(([key, value]) => [key, { type: 'string', default: String(value) }]));
+  const { pages, langs, out, values } = await options(flags);
+  const thresholds = {};
+  for (const key of Object.keys(gates)) {
+    thresholds[key] = Number(values[key]);
+    if (!Number.isFinite(thresholds[key]) || thresholds[key] < 0 || thresholds[key] > 100) throw Error('Invalid --' + key);
+  }
+  const available = (await auditRoutes()).routes;
+  const results = await runLighthouse(pages.map(path => available.find(r => r.path === path) || { path }), langs, thresholds);
   await writeFile(join(out, 'lighthouse.json'), JSON.stringify(results, null, 2) + '\n');
+  if (results.some(row => !row.pass)) process.exitCode = 1;
 }
