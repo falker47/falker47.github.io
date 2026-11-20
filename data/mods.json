@@ -9,7 +9,7 @@
       "repo": "https://github.com/falker47/HogwartsLegacy-SaveEditor",
       "description": {
         "it": "Modifica i salvataggi, crea backup, esporta da Game Pass.",
-        "en": "Edit saves, create backups, export from Game Pass."
+        "en": "Edit saves, back them up or export them from Game Pass."
       },
       "cover": {
         "src": "/assets/mods/hogwarts-legacy-save-editor-480.webp",
@@ -17,7 +17,7 @@
         "height": 270,
         "alt": {
           "it": "Una pergamena e una piuma sulla copertina dell’editor di salvataggi di Hogwarts Legacy.",
-          "en": "A scroll and quill on the Hogwarts Legacy Save Editor cover."
+          "en": "A scroll and a quill on the cover of Hogwarts Legacy Save Editor."
         },
         "variants": [
           {
@@ -41,7 +41,7 @@
       "repo": null,
       "description": {
         "it": "Un potere che genera un'onda d'urto intorno a te e sbilancia i nemici nel raggio d'azione.",
-        "en": "A power that sends a shockwave around you, staggering enemies within range."
+        "en": "Send out a shockwave that staggers nearby enemies."
       },
       "cover": {
         "src": "/assets/mods/giant-shockwaves-480.webp",
@@ -49,7 +49,7 @@
         "height": 270,
         "alt": {
           "it": "Un’onda d’urto si propaga fra i combattenti in un paesaggio innevato di Skyrim.",
-          "en": "A shockwave spreads among combatants in a snowy Skyrim landscape."
+          "en": "A shockwave sweeps through a fight in a snowy Skyrim landscape."
         },
         "variants": [
           {
@@ -73,7 +73,7 @@
       "repo": null,
       "description": {
         "it": "Diventato capo di Thirsk dalla parte dei Riekling, i Riekling di Solstheim smettono di attaccarti e ti trattano da amico.",
-        "en": "Once you become Chief of Thirsk on the Riekling side, Rieklings across Solstheim stop attacking you and treat you as a friend."
+        "en": "Side with the Rieklings and become Chief of Thirsk. Rieklings across Solstheim will then treat you as a friend."
       },
       "cover": {
         "src": "/assets/mods/respect-the-chief-480.webp",
@@ -81,7 +81,7 @@
         "height": 270,
         "alt": {
           "it": "Il capo di Thirsk circondato dai Riekling nel loro accampamento.",
-          "en": "The Chief of Thirsk surrounded by Rieklings in their camp."
+          "en": "Rieklings gather around the Chief of Thirsk at their camp."
         },
         "variants": [
           {

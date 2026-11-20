@@ -1,0 +1,130 @@
+{
+  "route": "/",
+  "device": "mobile",
+  "base": "d010a5d8fe360991530806d80d9e0e4a18b9aeb9",
+  "measurements": [
+    {
+      "round": 1,
+      "revision": "F3",
+      "scores": {
+        "performance": 94,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1959.804,
+        "largest-contentful-paint": 2859.804,
+        "speed-index": 2076.433,
+        "total-blocking-time": 39,
+        "cumulative-layout-shift": 0
+      }
+    },
+    {
+      "round": 1,
+      "revision": "P4 before the rendering change",
+      "scores": {
+        "performance": 92,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1953.71,
+        "largest-contentful-paint": 3157.42,
+        "speed-index": 1953.71,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0.004
+      }
+    },
+    {
+      "round": 2,
+      "revision": "P4 before the rendering change",
+      "scores": {
+        "performance": 92,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1957.387,
+        "largest-contentful-paint": 2910.723,
+        "speed-index": 2576.08,
+        "total-blocking-time": 123,
+        "cumulative-layout-shift": 0
+      }
+    },
+    {
+      "round": 2,
+      "revision": "F3",
+      "scores": {
+        "performance": 94,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1955.796,
+        "largest-contentful-paint": 2855.796,
+        "speed-index": 2005.135,
+        "total-blocking-time": 83,
+        "cumulative-layout-shift": 0
+      }
+    },
+    {
+      "round": 3,
+      "revision": "F3",
+      "scores": {
+        "performance": 85,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1953.272,
+        "largest-contentful-paint": 2859.329,
+        "speed-index": 2776.214,
+        "total-blocking-time": 363.364,
+        "cumulative-layout-shift": 0.004
+      }
+    },
+    {
+      "round": 3,
+      "revision": "P4 before the rendering change",
+      "scores": {
+        "performance": 93,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1954.802,
+        "largest-contentful-paint": 2854.802,
+        "speed-index": 2411.762,
+        "total-blocking-time": 99,
+        "cumulative-layout-shift": 0
+      }
+    }
+  ],
+  "method": "Three alternating cold mobile runs of F3 and the initial P4 implementation on the same host. Times are milliseconds; layout shift is unitless.",
+  "finalP4": [
+    {
+      "performance": 94,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    {
+      "performance": 94,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    {
+      "performance": 94,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    }
+  ]
+}
