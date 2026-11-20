@@ -145,3 +145,13 @@ test('without Web Animations the disclosure remains natively usable', () => {
   assert.equal(click(about), false);
   assert.equal(about.open, false);
 });
+
+test('a disclosure opened by a deep link closes on its first summary click', () => {
+  const { about, click } = setup();
+  about.open = true;
+  click(about);
+  const closing = about.animations.at(-1);
+  assert.equal(closing.keyframes[1].height, '58px');
+  closing.finish();
+  assert.equal(about.open, false);
+});
