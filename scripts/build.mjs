@@ -2,6 +2,8 @@ import { cp, mkdir, mkdtemp, readFile, rename, rm, writeFile } from 'node:fs/pro
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { routes } from '../src/routes.mjs';
+import { redirectPage } from '../src/pages/redirect.mjs';
+import { contentDate, sitemap } from '../src/lib/sitemap.mjs';
 import { layout } from '../src/partials/layout.mjs';
 import { translatedText } from '../src/lib/html.mjs';
 import { formatStats } from './nexus-downloads.mjs';
@@ -19,6 +21,11 @@ for (const lang of ['it', 'en']) {
   const mods = new Intl.NumberFormat(lang === 'it' ? 'it-IT' : 'en-US').format(snapshot.modCount);
   dictionary.nexusModCount = dictionary.nexusModCount.replace('{count}', mods);
   copy[lang] = dictionary;
+}
+
+function pageFile(dir, path) {
+  if (!/^\/(?:[\w-]+\/)*(?:[\w-]+\.html)?$/.test(path)) throw Error(`Invalid route ${path}`);
+  return resolve(dir, '.' + path, ...(path.endsWith('/') ? ['index.html'] : []));
 }
 
 const includeStyleguide = process.argv.slice(2).includes('--styleguide');
@@ -40,7 +47,10 @@ try {
   await cp(join(root, 'src/styles'), join(next, 'styles'), {
     recursive: true, filter: source => source !== inlineStyle,
   });
-  for (const file of ['robots.txt', 'sitemap.xml']) await cp(join(root, file), join(next, file));
+  await cp(join(root, 'robots.txt'), join(next, 'robots.txt'));
+  const template = await readFile(join(root, 'sitemap.xml'), 'utf8');
+  await writeFile(join(next, 'sitemap.xml'), sitemap(template, routes, await contentDate(root)));
+  await cp(join(root, 'legacy/Nexus-portfolio/assets'), join(next, 'Nexus-portfolio/assets'), { recursive: true });
   const pages = new Set();
   if (includeStyleguide) {
     const guide = join(next, 'styleguide');
@@ -48,13 +58,28 @@ try {
     for (const file of ['guide.css', 'guide.js']) await cp(join(root, 'src/styleguide', file), join(guide, file));
   }
   for (const route of buildRoutes) {
-    if (!/^\/(?:[\w-]+\/)*(?:[\w-]+\.html)?$/.test(route.path)) throw Error(`Invalid route ${route.path}`);
-    const page = resolve(next, '.' + route.path, ...(route.path.endsWith('/') ? ['index.html'] : []));
+    const page = pageFile(next, route.path);
     if (pages.has(page)) throw Error(`Duplicate route ${route.path}`);
     pages.add(page);
     await mkdir(dirname(page), { recursive: true });
     const t = key => translatedText(copy.it[key]);
     await writeFile(page, layout({ route, copy, t, desktopSizing }));
+  }
+  const stubs = new Map();
+  for (const entry of (await json('redirects.json')).redirects) {
+    if (!entry.from.startsWith('/Nexus-portfolio/') || entry.to.startsWith('/Nexus-portfolio/')) {
+      throw Error(`Unexpected legacy mapping ${entry.from} → ${entry.to}`);
+    }
+    pageFile(next, entry.to);
+    const file = pageFile(next, entry.from);
+    const markup = redirectPage(entry, copy);
+    if (stubs.has(file) && stubs.get(file) !== markup) throw Error(`Conflicting legacy aliases: ${entry.from}`);
+    stubs.set(file, markup);
+  }
+  for (const [file, markup] of stubs) {
+    await mkdir(dirname(file), { recursive: true });
+    await writeFile(file, markup, { flag: 'wx' });
+    pages.add(file);
   }
   // Publish only complete builds. Keep the last good tree if the final rename fails.
   try { await rename(output, prior); priorNeedsRestore = true; }

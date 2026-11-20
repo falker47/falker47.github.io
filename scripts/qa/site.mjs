@@ -1,6 +1,6 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { join, relative, sep } from 'node:path';
-import { origin } from '../../src/routes.mjs';
+import { origin, routes } from '../../src/routes.mjs';
 import { fileStat, localPath, siteRoot } from './serve.mjs';
 
 export { origin, siteRoot };
@@ -49,7 +49,8 @@ export function references(elements) {
   const refs = [];
   for (const { name, attrs, body } of elements) {
     for (const key of ['href', 'xlink:href', 'src', 'poster', 'action']) {
-      if (key in attrs) refs.push({ value: attrs[key], navigation: name === 'a' && key === 'href' });
+      if (key in attrs) refs.push({ value: attrs[key], navigation: name === 'a' && key === 'href',
+        canonical: name === 'link' && attrs.rel?.split(/\s+/).includes('canonical') });
     }
     if (attrs.srcset) {
       // A data URL may itself contain a comma. The descriptor separates candidates.
@@ -77,9 +78,10 @@ export async function* walk(dir) {
 const siblingSites = new Set(['camaleonte','SOMMATRIX','ZEROfilez','IBAN-Checker','Codice-Fiscale',
   'Crack-the-Code','our-soundtrack','mauriziofalconi-ripetizioni']);
 
-export async function openSite(root = siteRoot) {
+export async function openSite(root = siteRoot, declaredRoutes = routes) {
   const map = JSON.parse(await readFile(join(root, 'data/redirects.json'), 'utf8'));
-  const planned = new Set(map.redirects.map(item => item.from));
+  const redirects = new Map(map.redirects.map(entry => [entry.from, entry]));
+  const declared = new Set(declaredRoutes.map(route => route.path));
   const legacyDeployed = map.status !== 'planned' || (await fileStat(join(root, 'Nexus-portfolio')))?.isDirectory();
   const documents = new Map();
 
@@ -89,7 +91,7 @@ export async function openSite(root = siteRoot) {
     if (url.origin !== origin) return { url, kind: 'external' };
     if (navigation && /^https?:\/\//i.test(value)) {
       if (siblingSites.has(url.pathname.split('/')[1])) return { url, kind: 'external' };
-      if (!legacyDeployed && planned.has(url.pathname)) return { url, kind: 'planned' };
+      if (!legacyDeployed && redirects.has(url.pathname)) return { url, kind: 'planned' };
     }
     return { url, kind: 'internal' };
   }
@@ -118,12 +120,20 @@ export async function openSite(root = siteRoot) {
   async function check(ref, base) {
     const result = classify(ref.value, base, ref.navigation);
     if (result.kind !== 'internal') return result;
+    const outgoing = redirects.get(new URL(base, origin).pathname);
+    if (outgoing?.to === result.url.pathname && (ref.navigation || ref.canonical) && !declared.has(outgoing.to)) {
+      return { ...result, kind: 'undeclared' };
+    }
     const file = await resolveFile(result.url);
     const fragment = decodeURIComponent(result.url.hash.slice(1)).split(':~:text=')[0];
-    if (fragment && file.endsWith('.html') && !(await document(file)).ids.includes(fragment)) {
+    const redirect = redirects.get(result.url.pathname);
+    if (fragment && redirect && declared.has(redirect.to)) {
+      const hash = redirect.hashMap?.[result.url.hash] ?? result.url.hash;
+      await check({ value: redirect.to + hash, navigation: true }, '/');
+    } else if (fragment && !redirect && file.endsWith('.html') && !(await document(file)).ids.includes(fragment)) {
       throw Error(`${base}: missing anchor ${result.url.pathname}#${fragment}`);
     }
     return { ...result, file };
   }
-  return { root, map, classify, check, resolveFile, document };
+  return { root, map, redirects, classify, check, resolveFile, document };
 }
