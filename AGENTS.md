@@ -27,6 +27,8 @@ Keep the approved home blueprint, including the inline `desktop-visual-sizing` b
 
 Use static HTML, CSS and vanilla browser JavaScript with self-hosted assets. The public Nexus snapshot is the sole external runtime fetch. Its scheduled updater owns `data/nexus-downloads.json`. Preserve its metric, parser tests and restricted commit scope.
 
+`Deploy Pages` checks out `main` for pushes, manual runs and successful completions of `Refresh Nexus Mods downloads` on `main`. A successful refresh also rebuilds Pages when the snapshot is already current.
+
 Project Pages sites have their own repositories. Keep their top-level paths reserved. F1 records the seven legacy redirect sources as a migration plan. P6 owns the `Nexus-portfolio/` stubs and legacy assets. P6 sets the redirect manifest status to `active`. An active manifest or a local legacy mount makes the crawler require every redirect source locally.
 
 Work on the task branch in its dedicated worktree and deliver a draft PR to the assigned base. Production deployment belongs to `main`. Keep build output, dependencies and reference clones out of commits.
