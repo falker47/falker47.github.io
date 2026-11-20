@@ -5,8 +5,14 @@ import { options, qaRequire, viewports, visit, withBrowser } from './browser.mjs
 import { isolateNetwork } from './network.mjs';
 import { startServer } from './serve.mjs';
 
-const { values, langs, out } = await options({ baseline: { type: 'string' } });
-if (!values.baseline) throw Error('Provide --baseline PATH to the built F1 checkout');
+const { values, langs, out } = await options({
+  baseline: { type: 'string' }, 'baseline-task': { type: 'string', default: 'F1' },
+  format: { type: 'string', default: 'png' }, exact: { type: 'boolean', default: false },
+});
+if (!values.baseline) throw Error('Provide --baseline PATH to the built reference checkout');
+if (!/^[a-z0-9][a-z0-9_-]*$/i.test(values['baseline-task'])) throw Error('Invalid baseline task');
+if (!['png', 'webp'].includes(values.format)) throw Error('Use --format png or webp');
+const reference = join(values.baseline, '_review', values['baseline-task']);
 const sharp = qaRequire('sharp');
 const areas = { headline: '.hero-lead h1', cta: '.hero-lead .cta', diagram: '.engine-figure', identity: '.identity', portrait: '.portrait' };
 
@@ -42,6 +48,18 @@ async function difference(a, b, rect) {
   return deltas;
 }
 
+async function compareCapture(before, after) {
+  const decode = path => sharp(path).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const [a, b] = await Promise.all([decode(before), decode(after)]);
+  assert.equal(a.info.width, b.info.width, before + ' width');
+  assert.equal(a.info.height, b.info.height, before + ' height');
+  let differentPixels = 0;
+  for (let i = 0; i < a.data.length; i += 4) {
+    if (a.data.readUInt32LE(i) !== b.data.readUInt32LE(i)) differentPixels++;
+  }
+  return { width: a.info.width, height: a.info.height, differentPixels };
+}
+
 function stats(deltas) {
   let pixelsOver2 = 0, maxChannelDelta = 0;
   for (const delta of deltas) {
@@ -74,20 +92,26 @@ try {
           verify();
         } finally { await page.close(); }
       }
-      const [f1,f2] = renders;
+      const [before, after] = renders;
       const stem = `home-${lang}-${viewport.width}`;
       const name = stem + '-full.png';
+      const viewportPath = join(out, stem + '.' + values.format);
+      const fullPath = join(out, stem + '-full.' + values.format);
       const areasCompared = {};
-      assert.equal(f1.lines, f2.lines, name + ': headline wraps');
+      const captures = values.exact ? {
+        viewport: await compareCapture(join(reference, stem + '.png'), viewportPath),
+        full: await compareCapture(join(reference, name), fullPath),
+      } : undefined;
+      assert.equal(before.lines, after.lines, name + ': headline wraps');
       for (const key of Object.keys(areas)) {
-        const box = f1.boxes[key], next = f2.boxes[key];
+        const box = before.boxes[key], next = after.boxes[key];
         const maxBoxDelta = Math.max(...Object.keys(box).map(k => Math.abs(box[k] - next[k])));
         assert.ok(maxBoxDelta <= .25, name + ' ' + key + ': moved by ' + maxBoxDelta + 'px');
         const visibleBox = { ...box, height: Math.min(box.height, viewport.height - box.y) };
         const [visible, full, isolated] = await Promise.all([
-          difference(join(values.baseline, '_review/F1', stem + '.png'), join(out, stem + '.png'), visibleBox),
-          difference(join(values.baseline, '_review/F1', name), join(out, name), box),
-          difference(f1.inkless, f2.inkless, box),
+          difference(join(reference, stem + '.png'), viewportPath, visibleBox),
+          difference(join(reference, name), fullPath, box),
+          difference(before.inkless, after.inkless, box),
         ]);
         // Report a non-text regression only at coordinates that also differ in
         // the delivered PNGs. The separate diagnostic paint can rasterize a
@@ -96,7 +120,7 @@ try {
         areasCompared[key] = { box, maxBoxDelta, viewportCapture: stats(visible), fullCapture: stats(full),
           withoutTextAndGrid: stats(isolated), confirmedNonText: stats(nonText) };
       }
-      results.push({ lang, width: viewport.width, headlineLines: f1.lines, areas: areasCompared });
+      results.push({ lang, width: viewport.width, headlineLines: before.lines, captures, areas: areasCompared });
       console.log(lang, viewport.width, Object.fromEntries(Object.entries(areasCompared).map(([k,v]) => [k, v.confirmedNonText.pixelsOver2])));
     }
   });
@@ -104,4 +128,12 @@ try {
 await writeFile(join(out, 'hero-comparison.json'), JSON.stringify(results, null, 2) + '\n');
 if (results.some(r => Object.values(r.areas).some(a => a.confirmedNonText.pixelsOver2))) {
   throw Error('Non-text hero differences remain; inspect hero-comparison.json');
+}
+
+if (values.exact) {
+  for (const row of results) {
+    for (const shot of Object.values(row.captures)) assert.equal(shot.differentPixels, 0, 'Home screenshot pixels changed');
+    for (const area of Object.values(row.areas)) assert.equal(area.maxBoxDelta, 0, 'Hero geometry changed');
+  }
+  console.log('All viewport and full-page captures match exactly; every hero box moved 0 px.');
 }

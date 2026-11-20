@@ -1,0 +1,34 @@
+{
+  "name": "Maurizio Falconi",
+  "handle": "falker47",
+  "role": "AI & Digital Innovation Specialist",
+  "email": "maurizio.falconi47@gmail.com",
+  "links": {
+    "github": "https://github.com/falker47",
+    "linkedin": "https://www.linkedin.com/in/mauriziofalconi/",
+    "orcid": "https://orcid.org/0009-0005-3162-3651",
+    "oeis": "https://oeis.org/wiki/User:Maurizio_Falconi",
+    "scholar": "https://scholar.google.com/citations?user=5xHRNvoAAAAJ"
+  },
+  "photo": {
+    "src": "/assets/profile/maurizio-falconi-480.webp",
+    "width": 480,
+    "height": 480,
+    "alt": {
+      "it": "Ritratto di Maurizio Falconi.",
+      "en": "Portrait of Maurizio Falconi."
+    },
+    "variants": [
+      {
+        "src": "/assets/profile/maurizio-falconi-480.webp",
+        "width": 480,
+        "height": 480
+      },
+      {
+        "src": "/assets/profile/maurizio-falconi-960.webp",
+        "width": 960,
+        "height": 960
+      }
+    ]
+  }
+}

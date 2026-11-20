@@ -1,10 +1,11 @@
-import { graph, jobTitle, render } from './pages/home.mjs';
+import profile from '../data/profile.json' with { type: 'json' };
+import { graph, render } from './pages/home.mjs';
 
 export const origin = 'https://falker47.github.io';
 export const routes = [
   {
     path: '/',
-    title: `Maurizio Falconi (falker47) — ${jobTitle}`,
+    title: `${profile.name} (${profile.handle}) — ${profile.role}`,
     descriptionKey: 'intro',
     styles: ['/styles/home.css'],
     image: '/assets/images/maurizio-falconi.webp',
