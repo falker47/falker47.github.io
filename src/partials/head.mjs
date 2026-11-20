@@ -12,7 +12,7 @@ export function head({ route, copy, desktopSizing }) {
 <meta name="theme-color" content="#071525">
 <title>${route.title}</title>
 <meta name="description" content="${description}" data-meta-i18n="${route.descriptionKey}">
-${route.noindex ? raw('<meta name="robots" content="noindex">') : ''}
+${route.robots || route.noindex ? raw(html`<meta name="robots" content="${route.robots ?? 'noindex'}">`) : ''}
 <meta name="author" content="${profile.name} (${profile.handle})">
 <link rel="canonical" href="${canonical}">
 <meta name="google-site-verification" content="ZOWij9OnT_HZBDPG4FcCeEwF5m7MvFjqJuK53YtkCWw">

@@ -19,7 +19,7 @@ export async function options(extra = {}) {
   if (!/^[a-z0-9][a-z0-9_-]*$/i.test(values.task || '')) throw Error('Provide --task ID');
   const pages = values.pages.split(',');
   const langs = values.langs.split(',');
-  if (pages.some(page => !/^\/(?:[\w-]+\/)*(?:[\w-]+\.html)?$/.test(page))) throw Error('Use comma-separated site routes');
+  if (pages.some(page => !/^\/(?:[\w-]+\/)*(?:[\w-]+\.html)?(?:#[\w-]+)?$/.test(page))) throw Error('Use comma-separated site routes');
   if (langs.some(lang => !['it','en'].includes(lang))) throw Error('Use it or en for --langs');
   const out = fileURLToPath(new URL(`../../_review/${values.task}/`, import.meta.url));
   await mkdir(out, { recursive: true });

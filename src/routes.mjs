@@ -1,5 +1,6 @@
 import profile from '../data/profile.json' with { type: 'json' };
 import { graph, render } from './pages/home.mjs';
+import { socialViewerRoutes } from './pages/social-viewer/index.mjs';
 
 export const origin = 'https://falker47.github.io';
 export const routes = [
@@ -12,4 +13,5 @@ export const routes = [
     graph,
     render,
   },
+  ...socialViewerRoutes,
 ];
