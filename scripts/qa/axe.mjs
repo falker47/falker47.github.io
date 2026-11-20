@@ -1,7 +1,7 @@
 import { isolateNetwork } from './network.mjs';
 import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { options, qaRequire, viewports, visit, withBrowser } from './browser.mjs';
+import { options, qaRequire, viewports, visitReviewState, withBrowser } from './browser.mjs';
 
 const { pages, langs, out } = await options();
 const results = [];
@@ -10,7 +10,7 @@ await withBrowser(async (browser, origin) => {
     const page = await browser.newPage({ viewport, locale: lang, reducedMotion: 'reduce', serviceWorkers: 'block' });
     try {
       const verifyNetwork = await isolateNetwork(page.context(), origin);
-      await visit(page, origin, route, lang);
+      await visitReviewState(page, origin, route, lang);
       await page.addScriptTag({ path: qaRequire.resolve('axe-core/axe.min.js') });
       const violations = await page.evaluate(async () => {
         const { violations } = await window.axe.run(document);

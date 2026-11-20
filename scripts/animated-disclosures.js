@@ -22,7 +22,7 @@
       }
 
       event.preventDefault();
-      const opening = !expanded;
+      const opening = !(animation ? expanded : details.open);
       const startHeight = details.getBoundingClientRect().height;
       if (animation) animation.cancel();
 

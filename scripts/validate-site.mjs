@@ -6,6 +6,7 @@ import { spawnSync } from 'node:child_process';
 import vm from 'node:vm';
 import { createHash } from 'node:crypto';
 import { checkText, designChecks } from './design-checks.mjs';
+import { validateHomeCatalogue } from './validate-home.mjs';
 import { decode, openSite, origin, references, siteRoot, walk } from './qa/site.mjs';
 
 const site = await openSite();
@@ -92,6 +93,7 @@ for await (const file of walk(siteRoot)) {
 assert.ok(count > 0, 'Build at least one page');
 
 const html = await readFile(join(siteRoot, 'index.html'), 'utf8');
+validateHomeCatalogue(html);
 await designChecks(siteRoot, inlineCss);
 assert.doesNotMatch(html, /href=["']\/styleguide\//, 'QA route in public navigation');
 assert.doesNotMatch(await readFile(join(siteRoot,'sitemap.xml'),'utf8'), /\/styleguide\//);

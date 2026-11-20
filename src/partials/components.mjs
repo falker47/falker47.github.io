@@ -65,11 +65,16 @@ export function ratingCard(t, { source, score, scale, detail, href, logo }) {
   return html`<a class="rating-card" href="${href}"><span>${logo ? raw(html`<img src="${logo}" width="24" height="24" alt="" loading="lazy">`) : ''}${source} ${icon('arrow-ne')}</span><strong>${score}<small>/${scale}</small></strong>${typeof detail === 'string' ? label(t, detail) : localized(detail)}</a>`;
 }
 
-export function certificates({ t }, entries, id) {
-  return html`<div class="certificate-grid">
-  ${group(entries.map(({ thumbnail, full, alt, title, issuer, year }) => html`<a class="certificate" href="${full.src}" data-viewer="${id}">${raw(picture({ ...thumbnail, alt, variants: [thumbnail, full] }, { sizes: '(min-width: 700px) 235px, 45vw' }))}<span>${title}</span> ${icon('external')} <small>${issuer} · ${year}</small></a>`))}
-</div>
-<dialog class="certificate-viewer" id="${id}" aria-labelledby="${id}-title"><div class="viewer-bar"><h3 id="${id}-title"></h3><form method="dialog"><button class="text-button" autofocus>${label(t, 'closeViewer')}</button></form></div><img alt=""></dialog>`;
+export function certificates({ t }, entries, id, previewCount = entries.length) {
+  const grid = items => html`<div class="certificate-grid">
+  ${group(items.map(({ thumbnail, full, alt, title, issuer, year }) => html`<a class="certificate" href="${full.src}" data-viewer="${id}">${raw(picture({ ...thumbnail, alt, variants: [thumbnail, full] }, { sizes: '(min-width: 700px) 235px, 45vw' }))}<span>${title}</span> ${icon('external')} <small>${issuer} · ${year}</small></a>`))}
+  </div>`;
+  return html`${raw(grid(entries.slice(0, previewCount)))}
+  ${entries.length > previewCount ? raw(html`<details class="more-certificates"><summary>
+  <span class="when-closed">${label(t, 'showCertificates')} (${entries.length})</span>
+  <span class="when-open">${label(t, 'fewerCertificates')}</span> ${icon('chevron')}</summary>
+  ${raw(grid(entries.slice(previewCount)))}</details>`) : ''}
+  <dialog class="certificate-viewer" id="${id}" aria-labelledby="${id}-title"><div class="viewer-bar"><h3 id="${id}-title"></h3><form method="dialog"><button class="text-button" autofocus>${label(t, 'closeViewer')}</button></form></div><img alt=""></dialog>`;
 }
 
 export function disclosure(t, { id, key, content, className = '' }) {

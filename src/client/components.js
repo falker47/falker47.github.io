@@ -59,8 +59,8 @@
     const image = viewer.querySelector('img');
     const updateTitle = () => {
       if (!trigger) return;
-      title.textContent = trigger.textContent.trim();
-      image.alt = title.textContent;
+      title.textContent = trigger.querySelector(':scope > span').textContent;
+      image.alt = trigger.querySelector('img').alt;
     };
     for (const link of document.querySelectorAll('[data-viewer]')) {
       if (link.dataset.viewer !== viewer.id) continue;
@@ -73,6 +73,13 @@
         viewer.showModal();
       });
     }
+    // The native modal makes the document inert. Keep Tab on its sole control at both boundaries.
+    viewer.addEventListener('keydown', event => {
+      if (event.key === 'Tab') {
+        event.preventDefault();
+        viewer.querySelector('button').focus();
+      }
+    });
     viewer.addEventListener('close', () => { image.removeAttribute('src'); trigger?.focus(); });
     document.addEventListener('portfolio:languagechange', updateTitle);
   }
@@ -81,7 +88,8 @@
   if (!links.length) return;
   const sections = links.map(link => document.getElementById(link.hash.slice(1)));
   function current() {
-    const top = document.querySelector('.site-header').getBoundingClientRect().bottom + 16;
+    const top = document.querySelector('.site-header').getBoundingClientRect().bottom;
+    const reached = section => Math.floor(section.getBoundingClientRect().top) <= top;
     const visible = sections.filter(section => {
       const rect = section.getBoundingClientRect();
       return rect.top < innerHeight && rect.bottom > top;
@@ -94,7 +102,8 @@
       return Math.abs(destination - scrollY) <= 2;
     });
     const last = scrollY >= maxScroll - 2;
-    const active = linked || (last ? visible.at(-1) : visible.find(section => section.getBoundingClientRect().top <= top) || visible[0]);
+    const atProjects = reached(sections[0]);
+    const active = atProjects && (linked || (last ? visible.at(-1) : visible.find(reached)));
     links.forEach((link, i) => {
       if (sections[i] === active) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
@@ -102,9 +111,9 @@
   }
   function followFragment() {
     const about = document.getElementById('chi-sono');
-    if (location.hash === '#chi-sono' && !about.open) {
+    if (['#chi-sono', '#certificazioni'].includes(location.hash) && !about.open) {
       about.open = true;
-      about.scrollIntoView({ block: 'start' });
+      document.getElementById(location.hash.slice(1)).scrollIntoView({ block: 'start' });
     }
     current();
   }
