@@ -2,17 +2,32 @@
 
 The static site builds with Node 22 and its standard library. Run commands from the checkout root.
 
-## Commands
+## Routes and data
 
-- `node scripts/build.mjs` renders the routes into `_site/`.
-- `node scripts/check.mjs` rebuilds, validates every HTML file, runs every `scripts/**/test-*.mjs` file and crawls local links and assets. CI uses the same command.
-- `node scripts/qa/serve.mjs` prints a free loopback URL. Directory routes redirect to their trailing slash. Missing paths serve `404.html` with status 404 when the file exists.
-- `node scripts/qa/screenshots.mjs --task F1 --pages / --langs it,en` captures both viewports at reduced motion.
-- `node scripts/qa/lighthouse.mjs --task P5 --pages /` records cold mobile and desktop scores, transferred bytes, requests, LCP and CLS in Italian and English.
-- `node scripts/qa/axe.mjs --task P5 --pages /` checks both languages and viewports. Any violation fails the run.
-- `node scripts/qa/audit.mjs --task R1` audits the current `_site/`, including every declared route, every existing redirect stub and the styleguide if built. `_review/R1/audit.json` records each result and exits nonzero on a missing gate. The thresholds are 95 mobile, 98 desktop, 100 Accessibility, 95 Best Practices and zero axe violations.
+`src/routes.mjs` declares the public pages. Directory routes build to `index.html` and `/404.html` supplies the error document. Shared head, header, language switch and footer live in `src/partials/`.
 
-Browser QA reads Playwright, Lighthouse and axe from `~/qa-tools` and the Chromium executable from `~/qa-tools/chrome-path.txt`. Review artifacts belong in `_review/<task>/`. The static budgets, tests and link crawl work with Node alone. With Chromium configured, the validator also checks actual cold home requests at both viewports and in both languages. CI uses its installed Chrome and a temporary copy of Playwright.
+| Pages | Routes |
+| --- | --- |
+| Portfolio and recommendations | `/`, `/research/`, `/uses/` |
+| Project details | `/projects/prof-gecko/`, `/projects/camaleonte/`, `/projects/social-viewer/` |
+| Social Viewer testing and privacy | `/projects/social-viewer/test/`, `/projects/social-viewer/privacy/` |
+| Error recovery | `/404.html` |
+
+The home tabs use `#software`, `#modding`, `#ricerca` and `#tutoring`. Derive register rows, filter counts and destinations from `data/projects.json` and featured mods from `data/mods.json`. Use `data/research.json` for papers and repositories, `data/tutoring.json` for lessons and ratings, `data/profile.json` for identity and contacts, and `data/certifications.json` for credentials. Keep visible strings and accessible labels paired in `data/i18n/it.json` and `data/i18n/en.json`. The Social Viewer privacy text has a comparison fixture in `docs/unify/privacy-snapshot.txt`.
+
+`data/redirects.json` is active. The seven `/Nexus-portfolio/` source URLs include two aliases for one index file. The build publishes the stubs and copies the assets in `legacy/Nexus-portfolio/assets/` to their original paths. Preserve the exact paths and hashes in `legacy/sha256.json`. Other project Pages sites use their own repositories and reserved top-level paths. [URL map](docs/unify/URL-MAP.md)
+
+## Commands and release gates
+
+- `node scripts/build.mjs` renders the release into `_site/`. Add `--styleguide` for the QA-only `/styleguide/`. `node scripts/qa/serve.mjs` prints the loopback URL and serves unknown paths with HTTP 404.
+- `node scripts/check.mjs` rebuilds, validates all generated HTML and budgets, runs every `scripts/**/test-*.mjs` file and crawls links and assets with `scripts/qa/links.mjs`. CI runs the same command, including the cold-browser check on its installed Chrome.
+- `node scripts/qa/audit.mjs --task local` runs Lighthouse and axe on all declared pages, active stubs and the styleguide if built. Each Italian and English run must reach Performance ≥95 mobile and ≥98 desktop, Accessibility 100 and Best Practices ≥95, with zero axe violations. SEO is recorded. For an individual page, run `lighthouse.mjs` or `axe.mjs` in `scripts/qa/` with `--task local --pages /uses/`.
+- `node scripts/qa/legacy.mjs --task local` follows redirects in Chromium, checks translated links, native refresh and 404 recovery, and verifies every original asset against its SHA-256. Each mapped source and final destination must return HTTP 200.
+- `node scripts/qa/i18n-check.mjs --task local` checks both languages at 390 and 1440 px. Every scanned page and interaction state must have zero language leaks and zero scan errors.
+- `node scripts/qa/interactions.mjs --task local` exercises home navigation, filters and certificates. `node scripts/qa/social-viewer.mjs --task local` checks the product, tester and legal pages. `node scripts/qa/release-layout.mjs --task local` checks layout and native image bounds. Keep the 390 px Software panel within 1,500 px, headings outside the hero at most 32 px, and one primary action at most per view.
+- `node scripts/qa/screenshots.mjs --task local --pages / --langs it,en` captures viewport and full-page images at reduced motion. After capturing both languages, use `node scripts/qa/compare-hero.mjs --baseline PATH --baseline-task F3 --task local --exact-geometry` with a built F3 reference and its PNGs to check hero geometry.
+
+Build before browser QA. Use `--task` to select the evidence folder `_review/<task>/`. Browser tools resolve Playwright, Lighthouse, chrome-launcher, axe-core and Sharp from `~/qa-tools` and read the Chromium executable from `~/qa-tools/chrome-path.txt`. The static budgets, tests and link crawl run with Node alone. With Chromium configured, the validator also checks actual cold home requests at both viewports in both languages.
 
 ## Catalogue images
 
@@ -20,26 +35,20 @@ Run `node scripts/tools/make-images.mjs` from the worktree to rebuild the commit
 
 Project and mod covers target 480 and 960 px at quality 80. The hero target is 1440 px for Ringmin, Prof. Gecko, Camaleonte and Social Viewer. The source dimensions after orientation and cropping cap every target. Duplicate widths collapse to one rendition. Covers outside the 5% tolerance are cropped to 16:9. Keep the Social Viewer wordmark in frame with a left-aligned crop. Certificates retain the complete page at both widths, and the portrait keeps its square frame. Power-Ringmin shares Ringmin’s diagram. Each catalogue WebP is at most 300,000 bytes and their combined budget is 4,000,000 bytes.
 
-Use `picture(media, { sizes, lang })` or `img(media, options)` from `src/lib/media.mjs`. The helpers read localized alt text and actual image dimensions from the data. Set `fetchpriority: 'high'` only for an image that supplies the page's LCP. Text supplies the home LCP. Inspect the complete catalogue on the QA-only `/styleguide/` after `node scripts/build.mjs --styleguide`. For size-limited review evidence, add `--format webp` to the screenshots command. Home captures use lossless encoding. `compare-hero.mjs --baseline PATH --baseline-task F2 --task F3 --format webp --exact` checks every pixel against the archived F2 PNGs as well as the hero geometry.
+Use `picture(media, { sizes, lang })` or `img(media, options)` from `src/lib/media.mjs`. The helpers read localized alt text and actual image dimensions from the data. Set `fetchpriority: 'high'` only for an image that supplies the page's LCP. Text supplies the home LCP. Inspect the complete catalogue on the QA-only `/styleguide/` after `node scripts/build.mjs --styleguide`. For size-limited review evidence, add `--format webp` to the screenshots command. Home captures use lossless encoding.
 
 ## Layout and rendering
 
-`src/routes.mjs` declares public URLs and page metadata. Each module in `src/pages/` exports `render(ctx)`. The build maps a directory route to its `index.html` and a file route to its filename. Shared head, header, language switch and footer live in `src/partials/`.
-
-The build inlines up to 14,000 bytes of CSS. Larger pages inline the shared first-paint styles and preload one content-addressed stylesheet, with a native stylesheet fallback for disabled JavaScript. The desktop sizing block stays byte-identical. The validator counts delivered HTML, CSS and JS (160,000 bytes per page) and initial home assets. The audit also enforces 450,000 transferred bytes and 15 actual requests for each cold home load.
+Keep the approved home blueprint and its inline `desktop-visual-sizing` block. The build inlines up to 14,000 bytes of CSS. Larger pages use shared first-paint styles and one content-addressed stylesheet with a native fallback. Limit the delivered HTML, CSS and JS to 160,000 bytes per page and cold home loads to 450,000 bytes and 15 requests. [Design brief](docs/unify/BRIEF.md)
 
 Use the escaping `html` template from `src/lib/html.mjs`. Wrap trusted rendered components in `raw()`. Put styles in `src/styles/`, browser scripts in `src/client/`, self-hosted assets in `assets/` and structured data in `data/`. The two original browser scripts retain their public URLs under `scripts/`.
 
 The Italian HTML is readable with JavaScript disabled. Use keys from both `data/i18n/` dictionaries in page text, accessible labels and descriptions. The layout embeds the keys used on the route. Keep the `portfolio:languagechange` event for live Nexus totals. The snapshot supplies the initial localized numbers.
 
-## Project boundaries
+## Nexus and release
 
-Keep the approved home blueprint, including the inline `desktop-visual-sizing` block. Follow [the design brief](docs/unify/BRIEF.md) and [URL map](docs/unify/URL-MAP.md) for later tasks.
+The scheduled Nexus updater owns `data/nexus-downloads.json`. Preserve the profile’s `uniqueModDownloads` and `modCount` fields, parser tests and snapshot-only commit scope. The public snapshot on `main` is the sole external runtime fetch.
 
-Use static HTML, CSS and vanilla browser JavaScript with self-hosted assets. The public Nexus snapshot is the sole external runtime fetch. Its scheduled updater owns `data/nexus-downloads.json`. Preserve its metric, parser tests and restricted commit scope.
+`Deploy Pages` checks out `main` for pushes to `main`, manual runs and successful completions of `Refresh Nexus Mods downloads` on `main`. The `workflow_run` path also rebuilds Pages when the snapshot is already current.
 
-`Deploy Pages` checks out `main` for pushes, manual runs and successful completions of `Refresh Nexus Mods downloads` on `main`. A successful refresh also rebuilds Pages when the snapshot is already current.
-
-Project Pages sites have their own repositories. Keep their top-level paths reserved. F1 records the seven legacy redirect sources as a migration plan. P6 owns the `Nexus-portfolio/` stubs and legacy assets. P6 sets the redirect manifest status to `active`. An active manifest or a local legacy mount makes the crawler require every redirect source locally.
-
-Work on the task branch in its dedicated worktree and deliver a draft PR to the assigned base. Production deployment belongs to `main`. Keep build output, dependencies and reference clones out of commits.
+Work on the task branch in its dedicated worktree and deliver a draft PR to the assigned base. Production deployment belongs to `main`. Keep build output, dependencies and reference clones out of commits. Use the R1 measurements for release evidence and the go-live runbook for the production cutover. [Release results](docs/unify/RELEASE.md) · [Go-live runbook](docs/unify/GO-LIVE.md)
