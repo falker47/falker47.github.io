@@ -1,0 +1,56 @@
+{
+  "id": "ringmin",
+  "title": "Ringmin",
+  "summary": {
+    "it": "Ringmin studia il problema del cerchio centrale minimo. I due paper affrontano rispettivamente i casi finiti certificati e la teoria asintotica globale.",
+    "en": "Ringmin asks how small the central circle can be. The first paper certifies solutions for finite cases. The second describes what happens as the number of circles grows."
+  },
+  "papers": [
+    {
+      "number": "I",
+      "arxiv": "2607.28654",
+      "title": "Arranging circles of radii 1,2,…,n around a central circle: a Supnick TSP and certified finite optima",
+      "url": "https://arxiv.org/abs/2607.28654",
+      "summary": {
+        "it": "Riduce il problema di ordinamento a un TSP Supnick/anti-Monge; certificati espliciti e un verificatore indipendente rendono i risultati riproducibili. Per n maggiori i candidati restano euristici.",
+        "en": "The paper reduces circle ordering to a Supnick/anti-Monge traveling salesman problem. Explicit certificates and an independent verifier let readers reproduce the results. For larger n, the candidates are heuristic."
+      },
+      "highlight": {
+        "it": "Ottimi globali certificati per n = 3,…,14.",
+        "en": "Certified global optima for every n from 3 to 14."
+      }
+    },
+    {
+      "number": "II",
+      "arxiv": "2609.13630",
+      "title": "Minimum central circles: an effective characterization of the global asymptotic constant",
+      "url": "https://arxiv.org/abs/2609.13630",
+      "summary": {
+        "it": "Caratterizza C* tramite programmi lineari finiti su parole bilanciate con un bound d’errore rigoroso che tende a zero. Restano aperti una forma chiusa elementare e un algoritmo di valutazione efficiente.",
+        "en": "Finite linear programs on balanced words characterize C* with a rigorous error bound that tends to zero. Finding an elementary closed form or an efficient way to evaluate C* remains open."
+      },
+      "highlight": {
+        "it": "Limite globale: R*(n) = C* n² + o(n²).",
+        "en": "As n grows, R*(n) = C* n² + o(n²)."
+      }
+    }
+  ],
+  "repositories": [
+    {
+      "project": "ringmin",
+      "url": "https://github.com/falker47/ringmin"
+    },
+    {
+      "project": "power-ringmin",
+      "url": "https://github.com/falker47/ringmin-squared"
+    }
+  ],
+  "zenodo": {
+    "doi": "10.5281/zenodo.22849826",
+    "url": "https://doi.org/10.5281/zenodo.22849826",
+    "description": {
+      "it": "Release software citabile con DOI.",
+      "en": "Cite the software release using its DOI."
+    }
+  }
+}

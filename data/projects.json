@@ -1,0 +1,1056 @@
+[
+  {
+    "id": "prof-gecko",
+    "slug": "prof-gecko",
+    "title": "Prof. Gecko",
+    "category": "app",
+    "kind": {
+      "it": "Applicazione web",
+      "en": "Web app"
+    },
+    "stack": [
+      "Next.js",
+      "FastAPI",
+      "RAG"
+    ],
+    "summary": {
+      "it": "Un chatbot distingue giochi e generazioni Pokémon, con Pokédex e strumenti per comporre la squadra.",
+      "en": "Ask about a particular Pokémon game or generation, look up Pokémon in the Pokédex and build your team."
+    },
+    "description": {
+      "it": "Hub Pokémon bilingue con chatbot RAG che distingue giochi e generazioni, affiancato da Pokédex, Team Builder e strumenti di confronto. Recupera il contesto da circa 83 mila documenti.",
+      "en": "Prof. Gecko draws on about 83,000 documents to answer questions about specific Pokémon games and generations. The bilingual site also includes a Pokédex, Team Builder and comparison tools."
+    },
+    "cover": {
+      "src": "/assets/projects/prof-gecko-480.webp",
+      "width": 480,
+      "height": 270,
+      "nativeWidth": 1672,
+      "alt": {
+        "it": "Un geco in camice accanto al nome Prof. Gecko.",
+        "en": "A gecko in a lab coat next to the words Prof. Gecko."
+      },
+      "variants": [
+        {
+          "src": "/assets/projects/prof-gecko-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/assets/projects/prof-gecko-960.webp",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "src": "/assets/projects/prof-gecko-1440.webp",
+          "width": 1440,
+          "height": 810
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "demo",
+        "url": "https://profgecko.vercel.app/",
+        "label": {
+          "it": "Apri",
+          "en": "Open Prof. Gecko"
+        }
+      }
+    ],
+    "page": "/projects/prof-gecko/",
+    "hidden": false,
+    "order": 1
+  },
+  {
+    "id": "camaleonte",
+    "slug": "camaleonte",
+    "title": "Camaleonte",
+    "category": "game",
+    "kind": {
+      "it": "Party game",
+      "en": "Party game"
+    },
+    "stack": [
+      "React",
+      "TypeScript",
+      "Zustand"
+    ],
+    "summary": {
+      "it": "Un party game di deduzione per 3–12 giocatori su un solo telefono, anche offline.",
+      "en": "Bluff and spot the odd player out as 3–12 people share one phone. You can play offline."
+    },
+    "description": {
+      "it": "Party game di deduzione per 3–12 giocatori su un solo dispositivo, giocabile anche offline. Ruoli speciali e punteggio persistente; disponibile come PWA e su Play Store.",
+      "en": "Camaleonte is a social deduction game for 3–12 people on one device. It works offline, includes special roles and saves your scores between games. Play it as a web app or get it on Google Play."
+    },
+    "cover": {
+      "src": "/assets/projects/camaleonte-480.webp",
+      "width": 480,
+      "height": 270,
+      "nativeWidth": 1672,
+      "alt": {
+        "it": "Un camaleonte verde tra foglie e bandierine.",
+        "en": "A green chameleon among leaves and strings of party flags."
+      },
+      "variants": [
+        {
+          "src": "/assets/projects/camaleonte-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/assets/projects/camaleonte-960.webp",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "src": "/assets/projects/camaleonte-1440.webp",
+          "width": 1440,
+          "height": 810
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "demo",
+        "url": "https://falker47.github.io/camaleonte/",
+        "label": {
+          "it": "Apri",
+          "en": "Play Camaleonte"
+        }
+      },
+      {
+        "type": "store",
+        "url": "https://play.google.com/store/apps/details?id=com.falker.camaleonte",
+        "label": {
+          "it": "Play Store",
+          "en": "Play Store"
+        }
+      },
+      {
+        "type": "repo",
+        "url": "https://github.com/falker47/camaleonte",
+        "label": {
+          "it": "Repo GitHub",
+          "en": "Source on GitHub"
+        }
+      }
+    ],
+    "page": "/projects/camaleonte/",
+    "hidden": false,
+    "order": 2
+  },
+  {
+    "id": "social-viewer",
+    "slug": "social-viewer",
+    "title": "Social Viewer",
+    "category": "app",
+    "kind": {
+      "it": "App Android",
+      "en": "Android app"
+    },
+    "stack": [
+      "Kotlin",
+      "Jetpack Compose"
+    ],
+    "summary": {
+      "it": "Apri i link pubblici dei social in un’app Android che mostra il contenuto senza il feed.",
+      "en": "Open a public link on Android to see the shared post without scrolling through a feed."
+    },
+    "description": {
+      "it": "Vedi il contenuto, non il feed. Apre i singoli link pubblici che ti arrivano da social diversi in un’interfaccia essenziale, senza trasformarsi in un altro social da scorrere.",
+      "en": "Social Viewer opens public posts people send you from different social platforms. Each link takes you straight to the shared content."
+    },
+    "cover": {
+      "src": "/assets/projects/social-viewer-480.webp",
+      "width": 480,
+      "height": 270,
+      "nativeWidth": 556,
+      "alt": {
+        "it": "Un telefono mostra un singolo post accanto al marchio Social Viewer.",
+        "en": "A phone showing one post next to the Social Viewer logo."
+      },
+      "variants": [
+        {
+          "src": "/assets/projects/social-viewer-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/assets/projects/social-viewer-556.webp",
+          "width": 556,
+          "height": 313
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "store",
+        "url": "https://play.google.com/store/apps/details?id=io.github.falker47.socialviewer",
+        "label": {
+          "it": "Play Store",
+          "en": "Play Store"
+        }
+      },
+      {
+        "type": "test",
+        "url": "/projects/social-viewer/test/",
+        "label": {
+          "it": "Prova l'app",
+          "en": "Try the test build"
+        }
+      },
+      {
+        "type": "repo",
+        "url": "https://github.com/falker47/SocialViewer",
+        "label": {
+          "it": "Repo GitHub",
+          "en": "Source on GitHub"
+        }
+      }
+    ],
+    "page": "/projects/social-viewer/",
+    "hidden": false,
+    "order": 3
+  },
+  {
+    "id": "chi-l-ha-detto",
+    "slug": "chi-l-ha-detto",
+    "title": "Chi l'ha detto?",
+    "category": "game",
+    "kind": {
+      "it": "Quiz storico",
+      "en": "History quiz"
+    },
+    "stack": [
+      "React",
+      "TypeScript",
+      "Neon",
+      "Vercel"
+    ],
+    "summary": {
+      "it": "Indovina l’autore di una citazione e scopri il contesto storico dopo la risposta.",
+      "en": "Guess who said it, then learn the history behind the quote."
+    },
+    "description": {
+      "it": "Quiz storico: riconosci l’autore di una citazione e ne scopri il contesto reale dopo la risposta. Modalità dedicate, streak e classifica globale completano il gioco.",
+      "en": "Identify the speaker and find out when and why the quote was said. Try different game modes, build a streak and compare scores on the global leaderboard."
+    },
+    "cover": {
+      "src": "/assets/projects/chi-l-ha-detto-480.webp",
+      "width": 480,
+      "height": 270,
+      "nativeWidth": 1200,
+      "alt": {
+        "it": "Ritratti illustrati di personaggi storici sulla copertina del quiz.",
+        "en": "Drawings of historical figures on the quiz cover."
+      },
+      "variants": [
+        {
+          "src": "/assets/projects/chi-l-ha-detto-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/assets/projects/chi-l-ha-detto-960.webp",
+          "width": 960,
+          "height": 541
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "demo",
+        "url": "https://chi-l-ha-detto.vercel.app/",
+        "label": {
+          "it": "Apri",
+          "en": "Play the quiz"
+        }
+      },
+      {
+        "type": "repo",
+        "url": "https://github.com/falker47/chi-l-ha-detto",
+        "label": {
+          "it": "Repo GitHub",
+          "en": "Source on GitHub"
+        }
+      }
+    ],
+    "page": null,
+    "hidden": false,
+    "order": 4
+  },
+  {
+    "id": "diario-di-bordo",
+    "slug": "diario-di-bordo",
+    "title": "Diario di Bordo",
+    "category": "app",
+    "kind": {
+      "it": "Applicazione web",
+      "en": "Web app"
+    },
+    "stack": [
+      "React",
+      "TypeScript",
+      "Supabase"
+    ],
+    "summary": {
+      "it": "Una comunità educativa racconta le proprie giornate con testi, foto e altri contributi multimediali.",
+      "en": "Members of an educational community share journal entries, photos and other media."
+    },
+    "description": {
+      "it": "Piattaforma mobile-first per il diario quotidiano di una comunità educativa: contenuti pubblici e contributi multimediali, con aree separate per educatori e amministratori.",
+      "en": "A mobile-first journal lets an educational community share day-to-day life through public posts and multimedia entries. Educators and administrators have separate workspaces."
+    },
+    "cover": {
+      "src": "/assets/projects/diario-di-bordo-480.webp",
+      "width": 480,
+      "height": 270,
+      "nativeWidth": 960,
+      "alt": {
+        "it": "Due calendari sovrapposti accanto al titolo Diario di Bordo.",
+        "en": "Two overlapping calendars next to the title Diario di Bordo."
+      },
+      "variants": [
+        {
+          "src": "/assets/projects/diario-di-bordo-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/assets/projects/diario-di-bordo-960.webp",
+          "width": 960,
+          "height": 540
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "demo",
+        "url": "https://diariodibordo.netlify.app/",
+        "label": {
+          "it": "Apri",
+          "en": "Open the journal"
+        }
+      },
+      {
+        "type": "repo",
+        "url": "https://github.com/falker47/Diario-di-Bordo",
+        "label": {
+          "it": "Repo GitHub",
+          "en": "Source on GitHub"
+        }
+      }
+    ],
+    "page": null,
+    "hidden": false,
+    "order": 5
+  },
+  {
+    "id": "easy-contract",
+    "slug": "easy-contract",
+    "title": "Easy Contract",
+    "category": "app",
+    "kind": {
+      "it": "Applicazione web",
+      "en": "Web app"
+    },
+    "stack": [
+      "Google GenAI",
+      "Netlify Functions"
+    ],
+    "summary": {
+      "it": "Trova clausole, costi e scadenze nei contratti caricati come PDF o immagini.",
+      "en": "Find clauses, costs and deadlines in a contract from a PDF or a photo."
+    },
+    "description": {
+      "it": "Legge contratti PDF o immagini per portare in superficie clausole, costi, scadenze e condizioni che meritano attenzione prima di firmare, distinguendo ciò che il documento dice da calcoli e incertezze.",
+      "en": "Upload a contract as a PDF or an image to review its clauses, costs, deadlines and terms before signing. Easy Contract distinguishes the document’s wording from calculations and flags anything uncertain."
+    },
+    "cover": {
+      "src": "/assets/projects/easy-contract-480.webp",
+      "width": 480,
+      "height": 270,
+      "nativeWidth": 1269,
+      "alt": {
+        "it": "Uno scudo con documento e lente accanto al nome Easy Contract.",
+        "en": "A shield, a document and a magnifying glass next to the Easy Contract name."
+      },
+      "variants": [
+        {
+          "src": "/assets/projects/easy-contract-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/assets/projects/easy-contract-960.webp",
+          "width": 960,
+          "height": 540
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "demo",
+        "url": "https://easy-contract.netlify.app/",
+        "label": {
+          "it": "Apri",
+          "en": "Open Easy Contract"
+        }
+      },
+      {
+        "type": "repo",
+        "url": "https://github.com/falker47/easy-contract",
+        "label": {
+          "it": "Repo GitHub",
+          "en": "Source on GitHub"
+        }
+      }
+    ],
+    "page": null,
+    "hidden": false,
+    "order": 6
+  },
+  {
+    "id": "zerofilez",
+    "slug": "zerofilez",
+    "title": "ZEROfilez",
+    "category": "tool",
+    "kind": {
+      "it": "Strumento web",
+      "en": "Web tool"
+    },
+    "stack": [
+      "JavaScript",
+      "Web Crypto"
+    ],
+    "summary": {
+      "it": "Consulta un archivio pubblico di strumenti e apri pacchetti cifrati direttamente nel browser.",
+      "en": "Browse the tool archive or open an encrypted package in your browser."
+    },
+    "description": {
+      "it": "Utility client-side a doppio uso: archivio pubblico di strumenti e frontend per pacchetti cifrati. Pacchetto e chiave sono elaborati nel browser, senza backend di upload.",
+      "en": "ZEROfilez combines a public tool archive with a viewer for encrypted packages. Your browser processes the package and its key locally."
+    },
+    "cover": {
+      "src": "/assets/projects/zerofilez-480.webp",
+      "width": 480,
+      "height": 270,
+      "nativeWidth": 800,
+      "alt": {
+        "it": "Cartelle scure con un lucchetto e il marchio ZEROfilez.",
+        "en": "Dark folders and a padlock next to the ZEROfilez logo."
+      },
+      "variants": [
+        {
+          "src": "/assets/projects/zerofilez-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/assets/projects/zerofilez-800.webp",
+          "width": 800,
+          "height": 450
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "demo",
+        "url": "https://falker47.github.io/ZEROfilez/",
+        "label": {
+          "it": "Apri",
+          "en": "Open ZEROfilez"
+        }
+      },
+      {
+        "type": "repo",
+        "url": "https://github.com/falker47/ZEROfilez",
+        "label": {
+          "it": "Repo GitHub",
+          "en": "Source on GitHub"
+        }
+      }
+    ],
+    "page": null,
+    "hidden": false,
+    "order": 7
+  },
+  {
+    "id": "pokemon-mystery-dungeon-tools",
+    "slug": "pokemon-mystery-dungeon-tools",
+    "title": "Pokémon Mystery Dungeon Tools",
+    "category": "tool",
+    "kind": {
+      "it": "Strumenti di gioco",
+      "en": "Tools for games"
+    },
+    "stack": [
+      "React"
+    ],
+    "summary": {
+      "it": "Modifica i salvataggi di Pokémon Mystery Dungeon o consulta la guida al quiz della personalità.",
+      "en": "Edit a Pokémon Mystery Dungeon save or use the quiz guide to choose your starter."
+    },
+    "description": {
+      "it": "Due utility per i Pokémon Mystery Dungeon classici: un save editor per Rescue Team ed Explorers e una guida bilingue ai quiz della personalità per orientare le risposte verso lo starter desiderato.",
+      "en": "Edit saves for Rescue Team and Explorers, or use the bilingual personality quiz guide to find the answers for your preferred starter."
+    },
+    "cover": {
+      "src": "/assets/projects/pokemon-mystery-dungeon-tools-480.webp",
+      "width": 480,
+      "height": 270,
+      "nativeWidth": 1672,
+      "alt": {
+        "it": "Un file di salvataggio con una matita nella copertina di Pokémon Mystery Dungeon Tools.",
+        "en": "A save file marked with a pencil on the Pokémon Mystery Dungeon Tools cover."
+      },
+      "variants": [
+        {
+          "src": "/assets/projects/pokemon-mystery-dungeon-tools-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/assets/projects/pokemon-mystery-dungeon-tools-960.webp",
+          "width": 960,
+          "height": 540
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "repo",
+        "url": "https://github.com/falker47/PokemonMysteryDungeon-SavEditor",
+        "label": {
+          "it": "Save Editor",
+          "en": "Save Editor"
+        }
+      },
+      {
+        "type": "demo",
+        "url": "https://pokemonmysterydungeon-reversequiz.netlify.app/",
+        "label": {
+          "it": "Reverse Quiz",
+          "en": "Reverse Quiz"
+        }
+      }
+    ],
+    "page": null,
+    "hidden": false,
+    "order": 8
+  },
+  {
+    "id": "carte-senza-umanita",
+    "slug": "carte-senza-umanita",
+    "title": "Carte senza Umanità",
+    "category": "game",
+    "kind": {
+      "it": "Party game",
+      "en": "Party game"
+    },
+    "stack": [
+      "React",
+      "Node.js",
+      "Socket.io"
+    ],
+    "summary": {
+      "it": "Gioca online con amici a un party game di carte con un mazzo italiano e turni in tempo reale.",
+      "en": "Play a card game online with friends using Italian-language cards and live rounds."
+    },
+    "description": {
+      "it": "Versione italiana non ufficiale di Cards Against Humanity pensata per giocare online in multiplayer, con un mazzo italiano selezionato e curato e partite gestite in tempo reale.",
+      "en": "An unofficial Italian adaptation of Cards Against Humanity for online multiplayer. Players use a curated deck of Italian-language cards and take turns in real time."
+    },
+    "cover": {
+      "src": "/assets/projects/carte-senza-umanita-480.webp",
+      "width": 480,
+      "height": 270,
+      "nativeWidth": 1672,
+      "alt": {
+        "it": "Carte bianche e nere sotto il titolo Carte senza Umanità.",
+        "en": "Black and white cards beneath the title Carte senza Umanità."
+      },
+      "variants": [
+        {
+          "src": "/assets/projects/carte-senza-umanita-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/assets/projects/carte-senza-umanita-960.webp",
+          "width": 960,
+          "height": 540
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "demo",
+        "url": "https://carte-senza-umanita.onrender.com/",
+        "label": {
+          "it": "Apri",
+          "en": "Play online"
+        }
+      },
+      {
+        "type": "repo",
+        "url": "https://github.com/falker47/Carte-senza-Umanita",
+        "label": {
+          "it": "Repo GitHub",
+          "en": "Source on GitHub"
+        }
+      }
+    ],
+    "page": null,
+    "hidden": false,
+    "order": 9
+  },
+  {
+    "id": "panacea",
+    "slug": "panacea",
+    "title": "Panacea",
+    "category": "tool",
+    "kind": {
+      "it": "Strumento Windows",
+      "en": "Windows tool"
+    },
+    "stack": [
+      "Python",
+      "CustomTkinter"
+    ],
+    "summary": {
+      "it": "Riunisce gli strumenti nativi di Windows per pulizia, riparazione e manutenzione del PC.",
+      "en": "Clean up, repair and maintain a PC with the tools built into Windows."
+    },
+    "description": {
+      "it": "Riunisce in un’unica interfaccia gli strumenti nativi di Windows per pulizia, riparazione e manutenzione, senza sostituirli con un motore proprietario. Il protocollo Resurrection li orchestra in una procedura completa per i PC più in difficoltà.",
+      "en": "Panacea brings Windows’ own cleanup, repair and maintenance tools together in one place. For PCs that need more work, its Resurrection protocol runs the tools in sequence."
+    },
+    "cover": {
+      "src": "/assets/projects/panacea-480.webp",
+      "width": 480,
+      "height": 270,
+      "nativeWidth": 1536,
+      "alt": {
+        "it": "Un calice dorato accanto al nome Panacea.",
+        "en": "A gold chalice next to the name Panacea."
+      },
+      "variants": [
+        {
+          "src": "/assets/projects/panacea-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/assets/projects/panacea-960.webp",
+          "width": 960,
+          "height": 540
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "repo",
+        "url": "https://github.com/falker47/Panacea",
+        "label": {
+          "it": "Repo GitHub",
+          "en": "Source on GitHub"
+        }
+      }
+    ],
+    "page": null,
+    "hidden": false,
+    "order": 10
+  },
+  {
+    "id": "iban-checker",
+    "slug": "iban-checker",
+    "title": "IBAN Checker",
+    "category": "tool",
+    "kind": {
+      "it": "Strumento web",
+      "en": "Web tool"
+    },
+    "stack": [
+      "JavaScript"
+    ],
+    "summary": {
+      "it": "Verifica gli IBAN italiani e suggerisce correzioni per refusi o caratteri invertiti.",
+      "en": "Check an Italian IBAN for typos or swapped characters and see suggested fixes."
+    },
+    "description": {
+      "it": "Validatore client-side per IBAN italiani: controlla struttura, Mod.97, CIN e ABI/CAB e, quando trova un errore, propone correzioni plausibili per refusi o caratteri invertiti.",
+      "en": "Check an Italian IBAN’s format, Mod 97 checksum, CIN and ABI/CAB codes in your browser. If a check fails, the tool suggests possible corrections."
+    },
+    "cover": {
+      "src": "/assets/projects/iban-checker-480.webp",
+      "width": 480,
+      "height": 270,
+      "nativeWidth": 800,
+      "alt": {
+        "it": "Un IBAN di esempio con l’ultima cifra evidenziata in verde.",
+        "en": "An example IBAN with the last digit highlighted in green."
+      },
+      "variants": [
+        {
+          "src": "/assets/projects/iban-checker-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/assets/projects/iban-checker-800.webp",
+          "width": 800,
+          "height": 450
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "demo",
+        "url": "https://falker47.github.io/IBAN-Checker/",
+        "label": {
+          "it": "Apri",
+          "en": "Check an IBAN"
+        }
+      },
+      {
+        "type": "repo",
+        "url": "https://github.com/falker47/IBAN-Checker",
+        "label": {
+          "it": "Repo GitHub",
+          "en": "Source on GitHub"
+        }
+      }
+    ],
+    "page": null,
+    "hidden": false,
+    "order": 11
+  },
+  {
+    "id": "codice-fiscale",
+    "slug": "codice-fiscale",
+    "title": "Codice Fiscale",
+    "category": "tool",
+    "kind": {
+      "it": "Strumento web",
+      "en": "Web tool"
+    },
+    "stack": [
+      "JavaScript"
+    ],
+    "summary": {
+      "it": "Genera, valida e decodifica codici fiscali italiani, inclusi i casi di omocodia.",
+      "en": "Generate, check or decode an Italian tax code, including codes issued to resolve duplicates."
+    },
+    "description": {
+      "it": "Genera, valida e decodifica il Codice Fiscale gestendo omocodia e codici Belfiore; quando il secolo è ambiguo, il decoder lo esplicita invece di inventare un anno di nascita.",
+      "en": "Generate, check and decode Italian tax codes using Belfiore location codes. The tool handles duplicate-code substitutions (omocodia) and flags dates of birth whose century is ambiguous."
+    },
+    "cover": {
+      "src": "/assets/projects/codice-fiscale-480.webp",
+      "width": 480,
+      "height": 270,
+      "nativeWidth": 960,
+      "alt": {
+        "it": "L’interfaccia di Codice Fiscale con le schede Calcola e Decodifica.",
+        "en": "The Calcola and Decodifica tabs in Codice Fiscale."
+      },
+      "variants": [
+        {
+          "src": "/assets/projects/codice-fiscale-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/assets/projects/codice-fiscale-960.webp",
+          "width": 960,
+          "height": 540
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "demo",
+        "url": "https://falker47.github.io/Codice-Fiscale/",
+        "label": {
+          "it": "Apri",
+          "en": "Open Codice Fiscale"
+        }
+      },
+      {
+        "type": "repo",
+        "url": "https://github.com/falker47/Codice-Fiscale",
+        "label": {
+          "it": "Repo GitHub",
+          "en": "Source on GitHub"
+        }
+      }
+    ],
+    "page": null,
+    "hidden": false,
+    "order": 12
+  },
+  {
+    "id": "sommatrix",
+    "slug": "sommatrix",
+    "title": "SOMMATRIX",
+    "category": "game",
+    "kind": {
+      "it": "Rompicapo",
+      "en": "Puzzle"
+    },
+    "stack": [
+      "JavaScript"
+    ],
+    "summary": {
+      "it": "Seleziona i numeri che soddisfano tutte le somme di riga e colonna in una griglia a soluzione unica.",
+      "en": "Select numbers in a grid so that every row and column adds up to its target. Each puzzle has one solution."
+    },
+    "description": {
+      "it": "Puzzle matematico: seleziona i numeri della griglia per raggiungere i target di righe e colonne. Ogni schema è verificato prima della partita per accettare solo puzzle con un’unica soluzione globale.",
+      "en": "Choose numbers to meet the target sums for each row and column. SOMMATRIX checks every board before play to make sure it has exactly one solution."
+    },
+    "cover": {
+      "src": "/assets/projects/sommatrix-480.webp",
+      "width": 480,
+      "height": 270,
+      "nativeWidth": 1672,
+      "alt": {
+        "it": "Una griglia numerica con alcune caselle evidenziate in verde.",
+        "en": "A number grid with several cells highlighted in green."
+      },
+      "variants": [
+        {
+          "src": "/assets/projects/sommatrix-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/assets/projects/sommatrix-960.webp",
+          "width": 960,
+          "height": 540
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "demo",
+        "url": "https://falker47.github.io/SOMMATRIX/",
+        "label": {
+          "it": "Apri",
+          "en": "Play SOMMATRIX"
+        }
+      },
+      {
+        "type": "repo",
+        "url": "https://github.com/falker47/SOMMATRIX",
+        "label": {
+          "it": "Repo GitHub",
+          "en": "Source on GitHub"
+        }
+      }
+    ],
+    "page": null,
+    "hidden": false,
+    "order": 13
+  },
+  {
+    "id": "crack-the-code",
+    "slug": "crack-the-code",
+    "title": "Crack the Code",
+    "category": "game",
+    "kind": {
+      "it": "Rompicapo",
+      "en": "Puzzle"
+    },
+    "stack": [
+      "JavaScript"
+    ],
+    "summary": {
+      "it": "Deduci il codice segreto in partite libere o in una campagna di nove livelli ispirata a Mastermind.",
+      "en": "Crack the secret code in free play or take on a nine-level campaign inspired by Mastermind."
+    },
+    "description": {
+      "it": "Puzzle browser single-player ispirato a Mastermind, con partita libera e campagna da nove livelli.",
+      "en": "A single-player codebreaking game for the browser, inspired by Mastermind. Choose free play or work through nine campaign levels."
+    },
+    "cover": {
+      "src": "/assets/projects/crack-the-code-480.webp",
+      "width": 480,
+      "height": 270,
+      "nativeWidth": 1024,
+      "alt": {
+        "it": "Quattro posizioni nascoste sopra il tastierino di Crack the Code.",
+        "en": "Four concealed slots above the keypad in Crack the Code."
+      },
+      "variants": [
+        {
+          "src": "/assets/projects/crack-the-code-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/assets/projects/crack-the-code-960.webp",
+          "width": 960,
+          "height": 540
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "demo",
+        "url": "https://falker47.github.io/Crack-the-Code/",
+        "label": {
+          "it": "Apri",
+          "en": "Play Crack the Code"
+        }
+      },
+      {
+        "type": "repo",
+        "url": "https://github.com/falker47/Crack-the-Code",
+        "label": {
+          "it": "Repo GitHub",
+          "en": "Source on GitHub"
+        }
+      }
+    ],
+    "page": null,
+    "hidden": false,
+    "order": 14
+  },
+  {
+    "id": "ringmin",
+    "slug": "ringmin",
+    "title": "Ringmin",
+    "category": "research",
+    "kind": {
+      "it": "Ricerca matematica",
+      "en": "Mathematical research"
+    },
+    "stack": [
+      "Python"
+    ],
+    "summary": {
+      "it": "Il cerchio centrale minimo studiato con ottimi finiti certificati e una teoria asintotica globale.",
+      "en": "How small can the central circle be? Ringmin gives certified optima for finite cases and an asymptotic limit."
+    },
+    "description": {
+      "it": "Ricerca sul cerchio centrale minimo. Il primo paper usa un TSP anti-Monge e certifica gli ottimi globali per n = 3…14; il secondo stabilisce il limite asintotico globale.",
+      "en": "Ringmin studies the smallest possible central circle. The first paper uses an anti-Monge traveling salesman problem to certify global optima for n = 3 through 14. The second establishes the global asymptotic limit."
+    },
+    "cover": {
+      "src": "/assets/projects/ringmin-480.webp",
+      "width": 480,
+      "height": 270,
+      "nativeWidth": 1672,
+      "alt": {
+        "it": "Cerchi numerati di raggi diversi disposti attorno a un cerchio centrale.",
+        "en": "Numbered circles of different sizes surround a central circle."
+      },
+      "variants": [
+        {
+          "src": "/assets/projects/ringmin-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/assets/projects/ringmin-960.webp",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "src": "/assets/projects/ringmin-1440.webp",
+          "width": 1440,
+          "height": 810
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "paper",
+        "url": "https://arxiv.org/abs/2607.28654",
+        "label": {
+          "it": "Paper I",
+          "en": "Paper I"
+        }
+      },
+      {
+        "type": "paper",
+        "url": "https://arxiv.org/abs/2609.13630",
+        "label": {
+          "it": "Paper II",
+          "en": "Paper II"
+        }
+      },
+      {
+        "type": "repo",
+        "url": "https://github.com/falker47/ringmin",
+        "label": {
+          "it": "Repo GitHub",
+          "en": "Source on GitHub"
+        }
+      }
+    ],
+    "page": "/research/",
+    "hidden": false,
+    "order": 15
+  },
+  {
+    "id": "power-ringmin",
+    "slug": "power-ringmin",
+    "title": "Power-Ringmin",
+    "category": "research",
+    "kind": {
+      "it": "Ricerca matematica",
+      "en": "Mathematical research"
+    },
+    "stack": [
+      "Python"
+    ],
+    "summary": {
+      "it": "Un’estensione di Ringmin con raggi quadratici e risultati finiti certificati per n da 3 a 6.",
+      "en": "This extension of Ringmin uses squared radii and certifies results for n = 3 through 6."
+    },
+    "description": {
+      "it": "Estensione indipendente del problema Ringmin ai raggi quadratici 1²,…,n². Contiene una formulazione esatta a vincoli di differenza e risultati finiti certificati per n = 3…6, senza rivendicare una costante asintotica globale esatta.",
+      "en": "Power-Ringmin studies the problem with radii 1², 2², …, n². It gives an exact formulation using difference constraints and certifies finite results for n = 3 through 6. The exact global asymptotic constant remains an open question for this extension."
+    },
+    "cover": {
+      "src": "/assets/projects/ringmin-480.webp",
+      "width": 480,
+      "height": 270,
+      "nativeWidth": 1672,
+      "alt": {
+        "it": "Il diagramma del problema del cerchio centrale da cui deriva Power-Ringmin.",
+        "en": "The central-circle diagram from Ringmin, the starting point for Power-Ringmin."
+      },
+      "variants": [
+        {
+          "src": "/assets/projects/ringmin-480.webp",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/assets/projects/ringmin-960.webp",
+          "width": 960,
+          "height": 540
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "repo",
+        "url": "https://github.com/falker47/ringmin-squared",
+        "label": {
+          "it": "Repo GitHub",
+          "en": "Source on GitHub"
+        }
+      }
+    ],
+    "page": null,
+    "hidden": true,
+    "order": 16
+  }
+]

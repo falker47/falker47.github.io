@@ -1,0 +1,62 @@
+{
+  "status": "active",
+  "redirects": [
+    {
+      "from": "/Nexus-portfolio/",
+      "to": "/",
+      "hashMap": {
+        "#projects": "#progetti",
+        "#certifications": "#certificazioni",
+        "#contact": "#contatti",
+        "#hero": ""
+      }
+    },
+    {
+      "from": "/Nexus-portfolio/index.html",
+      "to": "/",
+      "hashMap": {
+        "#projects": "#progetti",
+        "#certifications": "#certificazioni",
+        "#contact": "#contatti",
+        "#hero": ""
+      }
+    },
+    {
+      "from": "/Nexus-portfolio/research.html",
+      "to": "/research/"
+    },
+    {
+      "from": "/Nexus-portfolio/prof-gecko.html",
+      "to": "/projects/prof-gecko/"
+    },
+    {
+      "from": "/Nexus-portfolio/consigli.html",
+      "to": "/uses/"
+    },
+    {
+      "from": "/Nexus-portfolio/testers.html",
+      "to": "/projects/social-viewer/test/"
+    },
+    {
+      "from": "/Nexus-portfolio/socialviewer-privacy.html",
+      "to": "/projects/social-viewer/privacy/"
+    }
+  ],
+  "assets": [
+    "/Nexus-portfolio/assets/profile/maurizio-falconi-falker47.webp",
+    "/Nexus-portfolio/assets/branding/falkerlogo.png",
+    "/Nexus-portfolio/assets/branding/falkerlogo.webp",
+    "/Nexus-portfolio/assets/socialviewer/testers-preview.webp",
+    "/Nexus-portfolio/assets/projects/*.webp",
+    "/Nexus-portfolio/assets/certifications/*-full.webp",
+    "/Nexus-portfolio/assets/certifications/*-thumb.webp"
+  ],
+  "unchanged": [
+    "/",
+    "/?lang=it",
+    "/?lang=en",
+    "/robots.txt",
+    "/sitemap.xml",
+    "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json"
+  ]
+}

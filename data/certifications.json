@@ -1,0 +1,222 @@
+[
+  {
+    "id": "ai-and-machine-learning-engineering",
+    "title": "AI & Machine Learning Engineering",
+    "issuer": "Microsoft",
+    "year": 2025,
+    "alt": {
+      "it": "Attestato di Microsoft per AI & Machine Learning Engineering.",
+      "en": "Certificate from Microsoft for AI & Machine Learning Engineering."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
+      "width": 480,
+      "height": 371
+    },
+    "full": {
+      "src": "/assets/certifications/ai-and-machine-learning-engineering-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  },
+  {
+    "id": "data-science-professional-course",
+    "title": "Data Science Professional Course",
+    "issuer": "IBM",
+    "year": 2023,
+    "alt": {
+      "it": "Attestato di IBM per Data Science Professional Course.",
+      "en": "Certificate from IBM for Data Science Professional Course."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/data-science-professional-course-thumb.webp",
+      "width": 480,
+      "height": 371
+    },
+    "full": {
+      "src": "/assets/certifications/data-science-professional-course-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  },
+  {
+    "id": "blockchain-project-lead-specialization",
+    "title": "BlockChain Project Lead Specialization",
+    "issuer": "MasterZ",
+    "year": 2024,
+    "alt": {
+      "it": "Attestato di MasterZ per BlockChain Project Lead Specialization.",
+      "en": "Certificate from MasterZ for BlockChain Project Lead Specialization."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+      "width": 480,
+      "height": 371
+    },
+    "full": {
+      "src": "/assets/certifications/blockchain-project-lead-specialization-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  },
+  {
+    "id": "blockchain-and-digital-assets-course",
+    "title": "BlockChain & Digital Assets Course",
+    "issuer": "MasterZ",
+    "year": 2023,
+    "alt": {
+      "it": "Attestato di MasterZ per BlockChain & Digital Assets Course.",
+      "en": "Certificate from MasterZ for BlockChain & Digital Assets Course."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
+      "width": 480,
+      "height": 371
+    },
+    "full": {
+      "src": "/assets/certifications/blockchain-and-digital-assets-course-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  },
+  {
+    "id": "sas-programming-course",
+    "title": "SAS Programming Course",
+    "issuer": "SAS",
+    "year": 2024,
+    "alt": {
+      "it": "Attestato di SAS per SAS Programming Course.",
+      "en": "Certificate from SAS for SAS Programming Course."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/sas-programming-course-thumb.webp",
+      "width": 480,
+      "height": 371
+    },
+    "full": {
+      "src": "/assets/certifications/sas-programming-course-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  },
+  {
+    "id": "data-structures-and-algorithms",
+    "title": "Data Structures & Algorithms",
+    "issuer": "UC San Diego",
+    "year": 2023,
+    "alt": {
+      "it": "Attestato di UC San Diego per Data Structures & Algorithms.",
+      "en": "Certificate from UC San Diego for Data Structures & Algorithms."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
+      "width": 480,
+      "height": 371
+    },
+    "full": {
+      "src": "/assets/certifications/data-structures-and-algorithms-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  },
+  {
+    "id": "financial-technology-specialization",
+    "title": "Financial Technology Specialization",
+    "issuer": "Wharton University",
+    "year": 2023,
+    "alt": {
+      "it": "Attestato di Wharton University per Financial Technology Specialization.",
+      "en": "Certificate from Wharton University for Financial Technology Specialization."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/financial-technology-specialization-thumb.webp",
+      "width": 480,
+      "height": 371
+    },
+    "full": {
+      "src": "/assets/certifications/financial-technology-specialization-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  },
+  {
+    "id": "cybersecurity-professional-course",
+    "title": "Cybersecurity Professional Course",
+    "issuer": "Google",
+    "year": 2023,
+    "alt": {
+      "it": "Attestato di Google per Cybersecurity Professional Course.",
+      "en": "Certificate from Google for Cybersecurity Professional Course."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
+      "width": 480,
+      "height": 371
+    },
+    "full": {
+      "src": "/assets/certifications/cybersecurity-professional-course-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  },
+  {
+    "id": "french-b2-2-certificate",
+    "title": "French B2.2 Certificate",
+    "issuer": "Speexx",
+    "year": 2024,
+    "alt": {
+      "it": "Attestato di Speexx per French B2.2 Certificate.",
+      "en": "French B2.2 Certificate, issued by Speexx."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
+      "width": 480,
+      "height": 371
+    },
+    "full": {
+      "src": "/assets/certifications/french-b2-2-certificate-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  },
+  {
+    "id": "advanced-english-c1-equivalent",
+    "title": "Advanced English: C1 Equivalent",
+    "issuer": "Irvine University",
+    "year": 2023,
+    "alt": {
+      "it": "Attestato di Irvine University per Advanced English: C1 Equivalent.",
+      "en": "Certificate from Irvine University for Advanced English: C1 Equivalent."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+      "width": 480,
+      "height": 371
+    },
+    "full": {
+      "src": "/assets/certifications/advanced-english-c1-equivalent-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  },
+  {
+    "id": "fullstack-developer-certification",
+    "title": "Fullstack Developer Certification",
+    "issuer": "Blazar Group",
+    "year": 2023,
+    "alt": {
+      "it": "Attestato di Blazar Group per Fullstack Developer Certification.",
+      "en": "Fullstack Developer Certification, issued by Blazar Group."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
+      "width": 480,
+      "height": 371
+    },
+    "full": {
+      "src": "/assets/certifications/fullstack-developer-certification-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  }
+]

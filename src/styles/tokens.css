@@ -1,0 +1,87 @@
+@font-face {
+  font-family: 'Gelasio';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/assets/fonts/gelasio-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+  font-family: 'Gelasio';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/assets/fonts/gelasio-latin-400-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/assets/fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url("/assets/fonts/poppins-600.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url("/assets/fonts/poppins-700.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+:root {
+  color-scheme: dark;
+  --bg: #071525;
+  --surface: #0b1d30;
+  --surface-raised: #0d2338;
+  --paper: #f1f4f5;
+  --secondary: #c9d7e2;
+  --muted: #adbfce;
+  --blue: #9bdcff;
+  --stroke: #81bfe5;
+  --rule: #304d65;
+  --control-line: #708da3;
+  --rule-soft: #1d3a52;
+  --grid-line: #9bdcff08;
+  --header-bg: #071525ee;
+  --social-accent: #49c7bb;
+  --serif: "Gelasio", Georgia, serif;
+  --mono: "IBM Plex Mono", "Courier New", monospace;
+  --sans: "Segoe UI", system-ui, sans-serif;
+  --name: "Poppins", var(--sans);
+  --display: 40px;
+  --h2: 24px;
+  --h3: 19px;
+  --body: 15px;
+  --label: 12px;
+  --tracking: .08em;
+  --space: 4px;
+  --grid: 32px;
+  --target: 44px;
+  --header-height: 64px;
+  --radius: 12px;
+  --motion: cubic-bezier(.22,.7,.28,1);
+}
+@media (min-width: 700px) {
+  :root {
+    --display: 54px;
+    --h2: 30px;
+    --h3: 21px;
+    --body: 16px;
+    --label: 13px;
+  }
+}
