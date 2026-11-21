@@ -3,7 +3,7 @@
   "title": "Ringmin",
   "summary": {
     "it": "Ringmin studia il problema del cerchio centrale minimo. I due paper affrontano rispettivamente i casi finiti certificati e la teoria asintotica globale.",
-    "en": "Ringmin studies the minimum central-circle problem. The two papers address certified finite cases and the global asymptotic theory, respectively."
+    "en": "Ringmin asks how small the central circle can be. The first paper certifies solutions for finite cases. The second describes what happens as the number of circles grows."
   },
   "papers": [
     {
@@ -13,11 +13,11 @@
       "url": "https://arxiv.org/abs/2607.28654",
       "summary": {
         "it": "Riduce il problema di ordinamento a un TSP Supnick/anti-Monge; certificati espliciti e un verificatore indipendente rendono i risultati riproducibili. Per n maggiori i candidati restano euristici.",
-        "en": "Reduces the ordering problem to a Supnick/anti-Monge TSP; explicit certificates and an independent verifier make the results reproducible. Larger-n candidate optima remain heuristic."
+        "en": "The paper reduces circle ordering to a Supnick/anti-Monge traveling salesman problem. Explicit certificates and an independent verifier let readers reproduce the results. For larger n, the candidates are heuristic."
       },
       "highlight": {
         "it": "Ottimi globali certificati per n = 3,…,14.",
-        "en": "Certified global optima for n = 3,…,14."
+        "en": "Certified global optima for every n from 3 to 14."
       }
     },
     {
@@ -27,11 +27,11 @@
       "url": "https://arxiv.org/abs/2609.13630",
       "summary": {
         "it": "Caratterizza C* tramite programmi lineari finiti su parole bilanciate con un bound d’errore rigoroso che tende a zero. Restano aperti una forma chiusa elementare e un algoritmo di valutazione efficiente.",
-        "en": "Characterizes C* through finite balanced-word linear programs with a rigorous error bound that vanishes. An elementary closed form and an efficient evaluation algorithm remain open."
+        "en": "Finite linear programs on balanced words characterize C* with a rigorous error bound that tends to zero. Finding an elementary closed form or an efficient way to evaluate C* remains open."
       },
       "highlight": {
         "it": "Limite globale: R*(n) = C* n² + o(n²).",
-        "en": "Global limit: R*(n) = C* n² + o(n²)."
+        "en": "As n grows, R*(n) = C* n² + o(n²)."
       }
     }
   ],
@@ -50,7 +50,7 @@
     "url": "https://doi.org/10.5281/zenodo.22849826",
     "description": {
       "it": "Release software citabile con DOI.",
-      "en": "Citable software release with DOI."
+      "en": "Cite the software release using its DOI."
     }
   }
 }

@@ -1,5 +1,6 @@
 import profile from '../../data/profile.json' with { type: 'json' };
 import { html, jsonScript, raw } from '../lib/html.mjs';
+import { initialLanguageScript } from './language-switch.mjs';
 import { origin } from '../routes.mjs';
 
 export function head({ route, copy, desktopSizing }) {
@@ -8,6 +9,7 @@ export function head({ route, copy, desktopSizing }) {
   const image = new URL(route.image, origin).href;
   return html`<head>
 <meta charset="utf-8">
+${raw(initialLanguageScript(route, copy))}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#071525">
 <title>${route.title}</title>
