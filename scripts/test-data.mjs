@@ -189,7 +189,8 @@ test('every responsive image matches its encoded dimensions, directory, size and
   }
   async function media(image, directory, widths) {
     pair(image.alt);
-    assert.deepEqual(image.variants.map(v => v.width), widths);
+    positive(image.nativeWidth);
+    assert.deepEqual(image.variants.map(v => v.width), [...new Set(widths.map(width => Math.min(width, image.nativeWidth)))]);
     assert.equal(image.src, image.variants[0].src);
     await verify(image, directory);
     for (const variant of image.variants) await verify(variant, directory);
@@ -202,6 +203,8 @@ test('every responsive image matches its encoded dimensions, directory, size and
     await verify(c.thumbnail, 'certifications');
     await verify(c.full, 'certifications');
   }
+  assert.equal(profile.photo.nativeWidth, 256);
+  assert.equal(projects.find(project => project.id === 'social-viewer').cover.nativeWidth, Math.floor(313 * 16 / 9)); // 640×313 source, cropped to 16:9.
   await media(profile.photo, 'profile', [480, 960]);
   for (const dir of ['projects', 'mods', 'certifications', 'profile']) {
     for (const name of await readdir(join(root, 'assets', dir))) assert.ok(files.has('/assets/' + dir + '/' + name), 'Unreferenced asset ' + name);
@@ -223,6 +226,8 @@ test('responsive markup localizes alt text and opts priority images into eager l
     assert.equal(image.decoding, 'async');
     assert.equal(responsive.sizes, '42vw');
     assert.equal(responsive.srcset, cover.variants.map(v => v.src + ' ' + v.width + 'w').join(', '));
+    const capped = { ...cover, nativeWidth: cover.variants[0].width };
+    assert.equal(tags(render(capped)).find(tag => tag.attrs.srcset).attrs.srcset, cover.src + ' ' + cover.width + 'w');
     const priority = tags(render(cover, { fetchpriority: 'high' })).find(tag => tag.name === 'img').attrs;
     assert.equal(priority.fetchpriority, 'high');
     assert.equal(priority.loading, 'eager');

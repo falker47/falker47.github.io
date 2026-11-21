@@ -4,7 +4,7 @@ import { header } from './header.mjs';
 import { sprite } from './icons.mjs';
 import { footer } from './footer.mjs';
 
-export function layout(ctx) {
+export async function layout(ctx, bundleScripts) {
   const { route, copy, t } = ctx;
   const content = html`${raw(head(ctx))}
 <body>
@@ -16,8 +16,12 @@ ${raw(route.render(ctx))}
 ${raw(footer(ctx))}
 </div>`;
   const keys = new Set(Array.from(content.matchAll(/\bdata-(?:i18n|label|meta-i18n)="([^"]+)"/g), match => match[1]));
-  const catalogueScript = /\bdata-(?:alt|text)-it="/.test(content)
-    ? '<script src="/scripts/catalogue.js" defer></script>\n' : '';
+  const scripts = [];
+  if (/\bdata-(?:alt|text)-it="/.test(content)) scripts.push('/scripts/catalogue.js');
+  scripts.push('/scripts/i18n.js', '/scripts/components.js', '/scripts/animated-disclosures.js');
+  if (route.qaScript) scripts.push(route.qaScript);
+  if (route.path === '/') scripts.push('/scripts/home.js');
+  const bundle = await bundleScripts(scripts);
   const translations = {};
   for (const [lang, dictionary] of Object.entries(copy)) {
     translations[lang] = {};
@@ -30,12 +34,8 @@ ${raw(footer(ctx))}
 <html lang="it"${raw(route.path === '/' ? ' data-mode="pulse"' : '')}>
 ${raw(content)}
 <script type="application/json" id="page-i18n">${jsonScript(translations)}</script>
-${raw(catalogueScript)}<script src="/scripts/i18n.js" defer></script>
-<script src="/scripts/components.js" defer></script>
-<script src="/scripts/animated-disclosures.js" defer></script>
-${route.qaScript ? raw(html`<script src="${route.qaScript}" defer></script>`) : ''}
-${raw(route.path === '/' ? `<script src="/scripts/home.js" defer></script>
-<script type="module" src="scripts/nexus-downloads.mjs"></script>` : '')}
+<script type="module">${raw(bundle)}</script>
+${raw(route.path === '/' ? '<script type="module" src="scripts/nexus-downloads.mjs"></script>' : '')}
 </body>
 </html>
 `;

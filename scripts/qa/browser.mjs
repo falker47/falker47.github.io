@@ -7,9 +7,9 @@ import { parseArgs } from 'node:util';
 import redirectMap from '../../data/redirects.json' with { type: 'json' };
 import { startServer } from './serve.mjs';
 
-const qaDir = join(homedir(), 'qa-tools');
+const qaDir = process.env.QA_TOOLS_DIR || join(homedir(), 'qa-tools');
 export const qaRequire = createRequire(join(qaDir, 'package.json'));
-export const chromePath = async () => (await readFile(join(qaDir, 'chrome-path.txt'), 'utf8')).trim();
+export const chromePath = async () => process.env.QA_CHROME_PATH || (await readFile(join(qaDir, 'chrome-path.txt'), 'utf8')).trim();
 export const viewports = [{ width: 1440, height: 900 }, { width: 390, height: 844 }];
 
 export async function options(extra = {}) {

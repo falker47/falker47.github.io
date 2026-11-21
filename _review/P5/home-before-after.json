@@ -1,0 +1,61 @@
+{
+  "route": "/?lang=it",
+  "basis": "Cold Lighthouse navigations on the same machine with the same uncompressed loopback server and mobile/desktop presets. Bytes include HTTP transfer overhead.",
+  "base": "d010a5d8fe360991530806d80d9e0e4a18b9aeb9",
+  "before": [
+    {
+      "device": "mobile",
+      "lighthouse": "12.8.2",
+      "performance": 94,
+      "bytes": 338897,
+      "requests": 22,
+      "lcpMs": 2866.587,
+      "cls": 0,
+      "fcpMs": 1954.464,
+      "tbtMs": 20,
+      "speedIndexMs": 1954.464,
+      "lcpElement": "section.hero > div.hero-lead > h1 > em"
+    },
+    {
+      "device": "desktop",
+      "lighthouse": "12.8.2",
+      "performance": 100,
+      "bytes": 321893,
+      "requests": 22,
+      "lcpMs": 728.116,
+      "cls": 0.000005314895944974352,
+      "fcpMs": 482.46400000000006,
+      "tbtMs": 0,
+      "speedIndexMs": 544.5480209326699,
+      "lcpElement": "section.hero > div.hero-lead > h1 > span"
+    }
+  ],
+  "after": [
+    {
+      "device": "mobile",
+      "lighthouse": "12.8.2",
+      "performance": 96,
+      "bytes": 246873,
+      "requests": 14,
+      "lcpMs": 2583.834,
+      "cls": 0,
+      "fcpMs": 1805.384,
+      "tbtMs": 0,
+      "speedIndexMs": 1805.384,
+      "lcpElement": "section.hero > div.hero-lead > h1 > em"
+    },
+    {
+      "device": "desktop",
+      "lighthouse": "12.8.2",
+      "performance": 100,
+      "bytes": 246871,
+      "requests": 14,
+      "lcpMs": 796.9269999999999,
+      "cls": 0.000005314895944974352,
+      "fcpMs": 442.764,
+      "tbtMs": 0,
+      "speedIndexMs": 521.0814417532338,
+      "lcpElement": "section.hero > div.hero-lead > h1 > span"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
-import { html, jsonScript } from '../lib/html.mjs';
+import { html, jsonScript, raw } from '../lib/html.mjs';
 import { origin } from '../routes.mjs';
 
-export function redirectPage({ to, hashMap = {} }, copy) {
+export function redirectPage({ to, hashMap = {} }, copy, styles) {
   return html`<!doctype html>
 <html lang="it">
 <head>
@@ -16,10 +16,7 @@ export function redirectPage({ to, hashMap = {} }, copy) {
 </script>
 <meta http-equiv="refresh" content="0; url=${to}">
 <link rel="icon" href="/assets/images/falkerlogo.png">
-<link rel="stylesheet" href="/styles/tokens.css">
-<link rel="stylesheet" href="/styles/base.css">
-<link rel="stylesheet" href="/styles/components.css">
-<link rel="stylesheet" href="/styles/status.css">
+${raw(styles)}
 </head>
 <body>
 <main class="status-standalone">

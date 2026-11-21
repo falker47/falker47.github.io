@@ -20,7 +20,7 @@ const ringmin = projects.find(project => project.id === research.id);
 function gallery(t, entries) {
   return html`<ul class="data-gallery">${raw(entries.map(({ id, title, cover, hidden, summary, description }, index) =>
     html`<li data-entry="${id}">${raw(picture(cover, {
-      sizes: '(min-width: 1000px) 270px, (min-width: 700px) 30vw, 45vw',
+      sizes: '(min-width: 1296px) 288px, (min-width: 1000px) calc((100vw - 144px) / 4), (min-width: 700px) calc((100vw - 112px) / 3), (min-width: 600px) calc((100vw - 92px) / 2), calc((100vw - 44px) / 2)',
       fetchpriority: index === 0 && id === projects[0].id ? 'high' : undefined,
     }))}<strong>${title}</strong>${hidden ? label(t, 'guideHidden') : ''}
     <p>${localized(summary ?? description)}</p></li>`).join('\n'))}</ul>`;

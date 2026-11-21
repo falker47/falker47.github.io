@@ -45,10 +45,10 @@ if (typeof document !== 'undefined') {
 
   // Inline localization resets translated text; reapply live data after each language change.
   document.addEventListener('portfolio:languagechange', render);
-  loadStats().then(value => {
+  if (globalThis.navigator?.onLine !== false) loadStats().then(value => {
     stats = value;
     render();
   }).catch(() => {
-    // Keep the existing 12k+ fallback; never show a fabricated zero after an API error.
+    // The localized, build-time snapshot is already visible.
   });
 }

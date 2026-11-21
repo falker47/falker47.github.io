@@ -60,5 +60,8 @@
   motion.addEventListener('change', () => { if (motion.matches) { started = true; finish(); } });
   document.addEventListener('visibilitychange', () => { if (document.hidden && started) finish(); else prepare(); });
   window.addEventListener('resize', () => { if (started) finish(); else prepare(); });
-  prepare();
+  // Determine visibility from the final artwork layout. A preloaded route sheet
+  // can still be applying while deferred clients initialize.
+  if (document.readyState === 'complete') prepare();
+  else window.addEventListener('load', prepare, { once: true });
 })();

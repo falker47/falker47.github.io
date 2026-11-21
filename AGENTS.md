@@ -8,22 +8,25 @@ The static site builds with Node 22 and its standard library. Run commands from 
 - `node scripts/check.mjs` rebuilds, validates every HTML file, runs every `scripts/**/test-*.mjs` file and crawls local links and assets. CI uses the same command.
 - `node scripts/qa/serve.mjs` prints a free loopback URL. Directory routes redirect to their trailing slash. Missing paths serve `404.html` with status 404 when the file exists.
 - `node scripts/qa/screenshots.mjs --task F1 --pages / --langs it,en` captures both viewports at reduced motion.
-- `node scripts/qa/lighthouse.mjs --task F1 --pages / --min-perf-mobile 90 --min-perf-desktop 95 --min-a11y 95 --min-bp 95` records the category scores.
-- `node scripts/qa/axe.mjs --task F1 --pages /` checks both languages and viewports. Serious and critical violations fail the run.
+- `node scripts/qa/lighthouse.mjs --task P5 --pages /` records cold mobile and desktop scores, transferred bytes, requests, LCP and CLS in Italian and English.
+- `node scripts/qa/axe.mjs --task P5 --pages /` checks both languages and viewports. Any violation fails the run.
+- `node scripts/qa/audit.mjs --task R1` audits the current `_site/`, including every declared route, every existing redirect stub and the styleguide if built. `_review/R1/audit.json` records each result and exits nonzero on a missing gate. The thresholds are 95 mobile, 98 desktop, 100 Accessibility, 95 Best Practices and zero axe violations.
 
-Browser QA reads Playwright, Lighthouse and axe from `~/qa-tools` and the Chromium executable from `~/qa-tools/chrome-path.txt`. Review artifacts belong in `_review/<task>/`. Build, validation, tests and the link crawl work without those installations.
+Browser QA reads Playwright, Lighthouse and axe from `~/qa-tools` and the Chromium executable from `~/qa-tools/chrome-path.txt`. Review artifacts belong in `_review/<task>/`. The static budgets, tests and link crawl work with Node alone. With Chromium configured, the validator also checks actual cold home requests at both viewports and in both languages. CI uses its installed Chrome and a temporary copy of Playwright.
 
 ## Catalogue images
 
 Run `node scripts/tools/make-images.mjs` from the worktree to rebuild the committed WebPs and their dimensions. It reads `~/sources/Nexus-portfolio/assets`, the two Skyrim PNGs in `~/sources/mods` and Sharp from `~/qa-tools` via `createRequire`. CI validates the committed files with Node alone. A second run with identical inputs leaves every output byte intact.
 
-Project and mod covers use quality 80 at 480 and 960 px. Ringmin, Prof. Gecko, Camaleonte and Social Viewer also have a 1440 px hero. Covers outside the 5% tolerance are cropped to 16:9. Keep the Social Viewer wordmark in frame with a left-aligned crop. Certificates retain the complete page at both widths, and the portrait keeps its square frame. Power-Ringmin shares Ringmin’s diagram. Each catalogue WebP is at most 300,000 bytes and their combined budget is 4,000,000 bytes.
+Project and mod covers target 480 and 960 px at quality 80. The hero target is 1440 px for Ringmin, Prof. Gecko, Camaleonte and Social Viewer. The source dimensions after orientation and cropping cap every target. Duplicate widths collapse to one rendition. Covers outside the 5% tolerance are cropped to 16:9. Keep the Social Viewer wordmark in frame with a left-aligned crop. Certificates retain the complete page at both widths, and the portrait keeps its square frame. Power-Ringmin shares Ringmin’s diagram. Each catalogue WebP is at most 300,000 bytes and their combined budget is 4,000,000 bytes.
 
-Use `picture(media, { sizes, lang })` or `img(media, options)` from `src/lib/media.mjs`. The helpers read localized alt text and actual image dimensions from the data. Set `fetchpriority: 'high'` for a priority image. Inspect the complete catalogue on the QA-only `/styleguide/` after `node scripts/build.mjs --styleguide`. For size-limited review evidence, add `--format webp` to the screenshots command. Home captures use lossless encoding. `compare-hero.mjs --baseline PATH --baseline-task F2 --task F3 --format webp --exact` checks every pixel against the archived F2 PNGs as well as the hero geometry.
+Use `picture(media, { sizes, lang })` or `img(media, options)` from `src/lib/media.mjs`. The helpers read localized alt text and actual image dimensions from the data. Set `fetchpriority: 'high'` only for an image that supplies the page's LCP. Text supplies the home LCP. Inspect the complete catalogue on the QA-only `/styleguide/` after `node scripts/build.mjs --styleguide`. For size-limited review evidence, add `--format webp` to the screenshots command. Home captures use lossless encoding. `compare-hero.mjs --baseline PATH --baseline-task F2 --task F3 --format webp --exact` checks every pixel against the archived F2 PNGs as well as the hero geometry.
 
 ## Layout and rendering
 
 `src/routes.mjs` declares public URLs and page metadata. Each module in `src/pages/` exports `render(ctx)`. The build maps a directory route to its `index.html` and a file route to its filename. Shared head, header, language switch and footer live in `src/partials/`.
+
+The build inlines up to 14,000 bytes of CSS. Larger pages inline the shared first-paint styles and preload one content-addressed stylesheet, with a native stylesheet fallback for disabled JavaScript. The desktop sizing block stays byte-identical. The validator counts delivered HTML, CSS and JS (160,000 bytes per page) and initial home assets. The audit also enforces 450,000 transferred bytes and 15 actual requests for each cold home load.
 
 Use the escaping `html` template from `src/lib/html.mjs`. Wrap trusted rendered components in `raw()`. Put styles in `src/styles/`, browser scripts in `src/client/`, self-hosted assets in `assets/` and structured data in `data/`. The two original browser scripts retain their public URLs under `scripts/`.
 

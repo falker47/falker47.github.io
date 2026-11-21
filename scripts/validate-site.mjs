@@ -1,10 +1,13 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { fileStat } from './qa/serve.mjs';
+import { homedir } from 'node:os';
 import { spawnSync } from 'node:child_process';
 import vm from 'node:vm';
 import { createHash } from 'node:crypto';
 import { validateCanonical, validateMigration } from './validate-migration.mjs';
+import { pageBudget } from './budgets.mjs';
 import { checkText, designChecks } from './design-checks.mjs';
 import { decode, openSite, origin, references, siteRoot, walk } from './qa/site.mjs';
 
@@ -24,11 +27,15 @@ function checkScript(source, filename, module = false) {
 }
 
 const inlineCss = [];
+let homeStyles;
 let count = 0;
 for await (const file of walk(siteRoot)) {
   if (!file.endsWith('.html')) continue;
   count++;
   const { source, elements, ids, route } = await site.document(file);
+  const budget = await pageBudget(site, { route, source, elements });
+  console.log(route + ': ' + budget.bytes + ' HTML+CSS+JS bytes' + (budget.load ? ', initial resources ' + budget.load.bytes + ' bytes / ' + budget.load.requests + ' requests' : ''));
+  if (route === '/') homeStyles = budget.styles.map(sheet => sheet.css).join('\n');
   assert.equal(new Set(ids).size, ids.length, `${route}: unique HTML and SVG IDs`);
   assert.equal(elements.filter(e => e.name === 'h1').length, 1, `${route}: one primary heading`);
   validateCanonical(elements, route, site.redirects.get(route));
@@ -43,8 +50,26 @@ for await (const file of walk(siteRoot)) {
   const preloads = elements.filter(e => e.name === 'link' && e.attrs.rel === 'preload' && e.attrs.as === 'font').map(e => e.attrs.href).sort();
   assert.deepEqual(preloads, route === '/' ? ['/assets/fonts/gelasio-latin-400-italic.woff2', '/assets/fonts/gelasio-latin-400-normal.woff2'] : []);
   if (route === '/styleguide/') assert.ok(elements.some(e => e.name === 'meta' && e.attrs.name === 'robots' && e.attrs.content.includes('noindex')), 'QA route must be noindex');
+  const redirect = site.map.redirects.find(item => item.from === route);
+  if (!redirect) {
+    assert.ok(elements.some(e => e.name === 'main' && e.attrs.id && elements.some(a => a.name === 'a' && a.attrs.class?.split(/\s+/).includes('skip') && a.attrs.href === '#' + e.attrs.id)), route + ': skip link to main');
+    for (const landmark of ['header', 'nav', 'main', 'footer']) assert.ok(elements.some(e => e.name === landmark), route + ': missing ' + landmark);
+  }
+  let heading = 0, priority = 0;
   const used = new Set();
   for (const { name, attrs, body } of elements) {
+    if (/^h[1-6]$/.test(name)) {
+      const level = Number(name[1]);
+      assert.ok(level <= heading + 1, route + ': heading jump to ' + name);
+      heading = level;
+    }
+    if (name === 'img') {
+      assert.ok(Object.hasOwn(attrs, 'alt') && /^[1-9]\d*$/.test(attrs.width) && /^[1-9]\d*$/.test(attrs.height), route + ': missing image dimensions or alt ' + attrs.src);
+      const high = attrs.fetchpriority === 'high';
+      assert.equal(attrs.loading, high ? 'eager' : 'lazy', route + ': image priority ' + attrs.src);
+      if (high) priority++;
+    }
+    if (name === 'script' && attrs.src) assert.ok(attrs.type === 'module' || 'defer' in attrs, route + ': parser-blocking script');
     if (name === 'style') inlineCss.push(body);
     if (attrs.style) inlineCss.push(`inline { ${attrs.style} }`);
     for (const attr of ['alt', 'aria-label', 'title']) if (attrs[attr]) checkText(attrs[attr], route + ' ' + attr);
@@ -68,7 +93,8 @@ for await (const file of walk(siteRoot)) {
       }
     }
     const resource = name === 'script' ? attrs.src : name === 'link' ? attrs.href : undefined;
-    if (resource !== undefined) assert.equal(new URL(resource, origin + route).origin, origin, `${route}: external ${name} ${resource}`);
+    const embeddedIcon = name === 'link' && attrs.rel === 'icon' && resource?.startsWith('data:image/');
+    if (resource !== undefined && !embeddedIcon) assert.equal(new URL(resource, origin + route).origin, origin, `${route}: external ${name} ${resource}`);
     if (name === 'script') {
       if (attrs.src) {
         const script = await site.resolveFile(new URL(attrs.src, origin + route));
@@ -80,6 +106,7 @@ for await (const file of walk(siteRoot)) {
       else checkScript(body, route, attrs.type === 'module');
     }
   }
+  assert.ok(priority <= 1, route + ': more than one high priority image');
   for (const lang of ['it','en']) assert.deepEqual(Object.keys(translations[lang] || {}).sort(), [...used].sort(), `${route}: page-scoped ${lang} copy`);
   for (const ref of references(elements)) {
     const { kind } = await site.check(ref, route);
@@ -94,7 +121,7 @@ const html = await readFile(join(siteRoot, 'index.html'), 'utf8');
 await designChecks(siteRoot, inlineCss);
 assert.doesNotMatch(html, /href=["']\/styleguide\//, 'QA route in public navigation');
 assert.doesNotMatch(await readFile(join(siteRoot,'sitemap.xml'),'utf8'), /\/styleguide\//);
-const css = await readFile(join(siteRoot, 'styles/home.css'), 'utf8');
+const css = homeStyles;
 const i18n = await readFile(join(siteRoot, 'scripts/i18n.js'), 'utf8');
 assert.ok(Buffer.byteLength(html) <= 120000, 'Home exceeds 120 KB');
 assert.ok(!/<meta\b[^>]*name="robots"[^>]*content="[^"]*no(?:index|follow)/i.test(html), 'Production must be indexable');
@@ -133,4 +160,10 @@ assert.match(desktopRules,/\.desktop-engine\s*\{[^}]*height:\s*106%;[^}]*transfo
 assert.doesNotMatch(desktopRules,/\.hero(?:-lead)?(?:\s|\{|\.)|\.cta(?:\s|\{)|\bh1\s*\{/,'Artwork sizing must not change the headline, CTA or hero grid');
 assert.match(html,/<div class="hero-lead"><h1>/,'Existing independent lead stays in place');
 
+// Keep the Node-only static validator available in a bare checkout. CI and the
+// shared QA installation also exercise actual cold Chromium loads against _site.
+if (process.env.QA_CHROME_PATH || await fileStat(join(homedir(), 'qa-tools', 'chrome-path.txt'))) {
+  const { verifyHomeLoad } = await import('./qa/home-budget.mjs');
+  await verifyHomeLoad(site);
+}
 console.log(`Validated ${count} HTML page(s), ${checkedScripts.size} browser scripts and the approved desktop artwork.`);
