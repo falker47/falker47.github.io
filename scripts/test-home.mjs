@@ -16,6 +16,13 @@ test('the home validator rejects a wrong register destination', () => {
   assert.throws(() => validateHomeCatalogue(wrongLink));
 });
 
+test('the save editor row preserves both original project destinations', () => {
+  const rows = home.match(/<article class="mod-row">[^]*?<\/article>/g);
+  const editor = rows.find(row => row.includes('Hogwarts Legacy Save Editor'));
+  assert.match(editor, /class="row-title" href="https:\/\/www\.nexusmods\.com\/hogwartslegacy\/mods\/2414"/);
+  assert.match(editor, /href="https:\/\/github\.com\/falker47\/HogwartsLegacy-SaveEditor" aria-label="GitHub · Hogwarts Legacy Save Editor"/);
+});
+
 test('only the Uses link in the footer can refer to the legacy portfolio', () => {
   validateHomeCatalogue(home);
   const link = '<a href="https://falker47.github.io/Nexus-portfolio/">Portfolio</a>';

@@ -23,19 +23,36 @@
     },
     {
       "from": "/Nexus-portfolio/research.html",
-      "to": "/research/"
+      "to": "/research/",
+      "hashMap": {
+        "#research-title": "#main",
+        "#ringmin-title": "#ringmin",
+        "#reproducibility-title": "#riproducibilita"
+      }
     },
     {
       "from": "/Nexus-portfolio/prof-gecko.html",
-      "to": "/projects/prof-gecko/"
+      "to": "/projects/prof-gecko/",
+      "hashMap": {
+        "#prof-gecko-title": "#main",
+        "#prof-gecko-overview": "#app",
+        "#prof-gecko-access-title": "#risorse"
+      }
     },
     {
       "from": "/Nexus-portfolio/consigli.html",
-      "to": "/uses/"
+      "to": "/uses/",
+      "hashMap": {
+        "#recommendations-title": "#main",
+        "#principles-title": "#criterio"
+      }
     },
     {
       "from": "/Nexus-portfolio/testers.html",
-      "to": "/projects/social-viewer/test/"
+      "to": "/projects/social-viewer/test/",
+      "hashMap": {
+        "#page-title": "#main"
+      }
     },
     {
       "from": "/Nexus-portfolio/socialviewer-privacy.html",

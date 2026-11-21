@@ -9,7 +9,7 @@ import { icon } from '../../partials/icons.mjs';
 
 export function moddingPanel({ t }) {
   const rows = mods.items.map((mod, index) => modRow(t, {
-    title: mod.title, image: mod.cover, href: mod.url, summary: mod.description, game: mod.game,
+    title: mod.title, image: mod.cover, href: mod.url, summary: mod.description, game: mod.game, repo: mod.repo,
   }, index));
   return html`<div class="stats-pair">
   ${raw(statTile(t, { valueKey: 'moddingNumber', key: 'downloadsLabel', iconName: 'download', href: mods.profile }))}

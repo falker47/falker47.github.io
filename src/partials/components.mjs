@@ -50,7 +50,10 @@ export function modRow(t, item, index) {
   <span class="row-index">${serial(index)}</span>${raw(rowThumbnail(item.image))}
   <div class="row-copy"><h3><a class="row-title" href="${item.href}">${item.title}</a></h3>
   ${raw(rowSummary(t, item.summary))}</div>
-  <span class="row-kind">${item.game}</span><span class="mod-action" aria-hidden="true">Nexus Mods ${icon('arrow-ne')}</span></article>`;
+  <span class="row-kind">${item.game}</span>
+  ${item.repo ? raw(html`<div class="row-actions"><span aria-hidden="true">Nexus Mods ${icon('arrow-ne')}</span>
+    <a class="icon-button" href="${item.repo}" aria-label="GitHub · ${item.title}">${icon('github')}</a></div>`)
+    : raw(html`<span class="mod-action" aria-hidden="true">Nexus Mods ${icon('arrow-ne')}</span>`)}</article>`;
 }
 
 export function sheetFrame(t, { image, caption, fetchpriority, sizes = 'auto, (min-width: 1296px) 564px, (min-width: 1000px) calc((100vw - 168px) / 2), (min-width: 840px) calc((100vw - 152px) / 2), (min-width: 600px) calc(100vw - 106px), calc(100vw - 58px)' }) {

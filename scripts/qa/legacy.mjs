@@ -12,8 +12,10 @@ const { out } = await options();
 const records = [];
 const declared = new Set(routes.map(route => route.path));
 const cases = map.redirects.map(({ from, to }) => ({ from, to, sourceStatus: 200 }));
-for (const [hash, mapped] of Object.entries(map.redirects.find(entry => entry.from.endsWith('/index.html')).hashMap)) {
-  cases.push({ from: '/Nexus-portfolio/index.html?lang=en&ref=a%2Bb' + hash, to: '/?lang=en&ref=a%2Bb' + mapped, sourceStatus: 200 });
+for (const { from, to, hashMap } of map.redirects) {
+  for (const [hash, mapped] of Object.entries(hashMap ?? {})) {
+    cases.push({ from: from + '?lang=en&ref=a%2Bb' + hash, to: to + '?lang=en&ref=a%2Bb' + mapped, sourceStatus: 200 });
+  }
 }
 cases.push(
   { from: '/Nexus-portfolio/research.html?lang=en#paper', to: '/research/?lang=en#paper', sourceStatus: 200 },

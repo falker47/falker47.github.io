@@ -52,7 +52,13 @@ test('each old URL replaces history, retaining query and remapping only its own 
     for (const lang of ['it', 'en']) {
       assert.ok(links.some(e => e.attrs.lang === lang && new URL(e.attrs.href, origin).pathname === redirect.to));
     }
-    for (const hash of ['', '#projects', '#certifications', '#contact', '#hero', '#other']) {
+    const destination = await site.document(await site.resolveFile(new URL(redirect.to, origin)));
+    for (const mapped of Object.values(redirect.hashMap ?? {})) {
+      if (mapped) assert.ok(destination.elements.some(e => e.attrs.id === mapped.slice(1)), redirect.to + mapped);
+    }
+    const fragments = new Set(['', '#projects', '#certifications', '#contact', '#hero', '#other',
+      ...Object.keys(redirect.hashMap ?? {})]);
+    for (const hash of fragments) {
       let actual;
       const search = '?lang=en&x=a%2Bb';
       vm.runInNewContext(script, { location: { search, hash, replace(url) { actual = url; } } });
