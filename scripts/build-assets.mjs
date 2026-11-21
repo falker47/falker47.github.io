@@ -79,7 +79,11 @@ export function buildAssets(root, output) {
     }
     const initial = sheets.slice(0, index).join('');
     const path = await stylesheet(sheets.slice(index).join(''));
-    return (initial ? '<style>' + initial + '</style>' : '') + '<link rel="preload" as="style" href="' + path + '" onload="this.onload=null;this.rel=\'stylesheet\'">' +
+    const critical = initial ? '<style>' + initial + '</style>' : '';
+    // Inner-page columns and the centered error panel need their layout before paint.
+    // Home has a complete first-paint hero in its inline styles.
+    if (route.path && route.path !== '/') return critical + '<link rel="stylesheet" href="' + path + '">';
+    return critical + '<link rel="preload" as="style" href="' + path + '" onload="this.onload=null;this.rel=\'stylesheet\'">' +
       '<noscript><link rel="stylesheet" href="' + path + '"></noscript>';
   }
 
