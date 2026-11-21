@@ -1,5 +1,5 @@
 import { createReadStream } from 'node:fs';
-import { stat } from 'node:fs/promises';
+import { readFile, stat } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { once } from 'node:events';
 import { extname, join, resolve, sep } from 'node:path';
@@ -25,7 +25,7 @@ export async function fileStat(file) {
   catch (error) { if (['ENOENT', 'ENOTDIR'].includes(error.code)) return null; throw error; }
 }
 
-export async function startServer({ root = siteRoot, port = 0 } = {}) {
+export async function startServer({ root = siteRoot, port = 0, holdRedirects = new Set(), auditScripts = false } = {}) {
   const server = createServer(async (request, response) => {
     try {
       if (!['GET', 'HEAD'].includes(request.method)) {
@@ -53,6 +53,21 @@ export async function startServer({ root = siteRoot, port = 0 } = {}) {
         file = join(root, '404.html');
         info = await fileStat(file);
         if (!info?.isFile()) { response.writeHead(404, { 'Content-Type': 'text/plain' }).end('Not found'); return; }
+      }
+      if (status === 200 && holdRedirects.has(url.pathname)) {
+        if (auditScripts) {
+          // Lighthouse and axe need a scriptable document. Keep the published body
+          // and CSS intact; make only the two automatic navigation controls inert.
+          const html = await readFile(file, 'utf8');
+          const controls = /<script>[^<]*location\.replace\([^<]*<\/script>\s*<meta http-equiv="refresh"[^>]*>/;
+          if (!controls.test(html)) throw Error('Missing redirect controls in ' + url.pathname);
+          const preview = html.replace(controls, '<template>$&</template>');
+          response.writeHead(status, { 'Content-Type': types['.html'], 'Content-Length': Buffer.byteLength(preview) });
+          response.end(request.method === 'HEAD' ? undefined : preview);
+          return;
+        }
+        // Screenshot the original bytes with automatic refresh and scripts held.
+        response.setHeader('Content-Security-Policy', 'sandbox allow-same-origin');
       }
       response.writeHead(status, { 'Content-Type': types[extname(file)] || 'application/octet-stream',
         'Content-Length': info.size, 'X-Content-Type-Options': 'nosniff' });

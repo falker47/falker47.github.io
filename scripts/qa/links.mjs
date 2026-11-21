@@ -1,11 +1,23 @@
 import { readFile } from 'node:fs/promises';
+import { startServer } from './serve.mjs';
+import { routes } from '../../src/routes.mjs';
 import { cssUrls, openSite, origin, references } from './site.mjs';
 
 const site = await openSite();
+const { files } = JSON.parse(await readFile(new URL('../../legacy/sha256.json', import.meta.url), 'utf8'));
+const legacyUrls = [...site.map.redirects.map(entry => entry.from), ...Object.keys(files)];
+const server = await startServer();
+try {
+  for (const path of legacyUrls) {
+    const response = await fetch(new URL(path, server.origin), { method: 'HEAD', redirect: 'manual' });
+    if (response.status !== 200) throw Error(path + ': expected HTTP 200, got ' + response.status);
+  }
+  console.log(legacyUrls.length + ' legacy sources and assets returned HTTP 200 on loopback.');
+} finally { await server.close(); }
 const queue = [
-  { value: '/', base: '/' },
+  ...routes.map(route => ({ value: route.path, base: '/' })),
   { value: '/sitemap.xml', base: '/' },
-  ...site.map.redirects.map(entry => ({ value: new URL(entry.from, origin).href, base: '/', navigation: true })),
+  ...legacyUrls.map(path => ({ value: new URL(path, origin).href, base: '/', navigation: true })),
 ];
 const visited = new Set(), external = new Set(), pending = new Set(), errors = new Set();
 for (let index = 0; index < queue.length; index++) {
@@ -13,7 +25,7 @@ for (let index = 0; index < queue.length; index++) {
   try {
     const { kind, url, file } = await site.check(ref, ref.base);
     if (kind === 'external') { external.add(url.href); continue; }
-    if (kind === 'planned') { pending.add(url.pathname); continue; }
+    if (kind === 'planned' || kind === 'undeclared') { pending.add(kind + ' ' + url.pathname); continue; }
     if (kind !== 'internal' || visited.has(file)) continue;
     visited.add(file);
     if (file.endsWith('.html')) {
@@ -32,6 +44,6 @@ for (let index = 0; index < queue.length; index++) {
 }
 console.log(`Crawled ${visited.size} local file(s).`);
 for (const url of [...external].sort()) console.log(`External (unfetched) ${url}`);
-for (const path of [...pending].sort()) console.log(`P6 redirect source (separate Pages site) ${path}`);
+for (const path of [...pending].sort()) console.log(`Reported migration dependency ${path}`);
 for (const message of errors) console.error(message);
 if (errors.size) process.exitCode = 1;

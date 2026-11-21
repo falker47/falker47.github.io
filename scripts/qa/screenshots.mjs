@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { options, qaRequire, viewports, visit, withBrowser } from './browser.mjs';
 import { isolateNetwork } from './network.mjs';
 
-const { pages, langs, out, values } = await options({ format: { type: 'string', default: 'png' } });
+const { pages, langs, out, values, stubPages } = await options({ format: { type: 'string', default: 'png' } });
 if (!['png', 'webp'].includes(values.format)) throw Error('Use --format png or webp');
 const sharp = values.format === 'webp' ? qaRequire('sharp') : null;
 
@@ -28,13 +28,13 @@ const sessions = [];
 try {
   await withBrowser(async (browser, origin) => {
     for (const route of pages) for (const lang of langs) for (const viewport of viewports) {
-      const context = await browser.newContext({ viewport, deviceScaleFactor: 1, reducedMotion: 'reduce', locale: lang, serviceWorkers: 'block' });
+      const context = await browser.newContext({ viewport, javaScriptEnabled: !stubPages.has(route), deviceScaleFactor: 1, reducedMotion: 'reduce', locale: lang, serviceWorkers: 'block' });
       const requests = [];
-      sessions.push({ route, lang, viewport, requests });
+      sessions.push({ route, lang, viewport, javaScriptEnabled: !stubPages.has(route), requests });
       try {
         const verifyNetwork = await isolateNetwork(context, origin, requests);
         const page = await context.newPage();
-        await visit(page, origin, route, lang);
+        await visit(page, origin, route, lang, stubPages.has(route));
         const slug = route === '/' ? 'home' : route.replace(/^\/|\/$/g, '').replaceAll('/', '-');
         // Capture the pair back-to-back, before compression can affect offscreen image painting.
         const captures = [];
@@ -50,7 +50,7 @@ try {
         if (route === '/') assert.ok(requests.some(r => r.disposition.startsWith('fulfilled')), 'Home must fetch the intercepted production snapshot');
       } finally { await context.close(); }
     }
-  });
+  }, { holdRedirects: stubPages });
 } finally {
   await writeFile(join(out, 'network.json'), JSON.stringify(sessions, null, 2) + '\n');
 }
