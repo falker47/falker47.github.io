@@ -9,6 +9,7 @@ import { createHash } from 'node:crypto';
 import { validateCanonical, validateMigration } from './validate-migration.mjs';
 import { pageBudget } from './budgets.mjs';
 import { checkText, designChecks } from './design-checks.mjs';
+import { validateHomeCatalogue } from './validate-home.mjs';
 import { decode, openSite, origin, references, siteRoot, walk } from './qa/site.mjs';
 
 const site = await openSite();
@@ -118,6 +119,7 @@ assert.ok(count > 0, 'Build at least one page');
 await validateMigration(site);
 
 const html = await readFile(join(siteRoot, 'index.html'), 'utf8');
+validateHomeCatalogue(html);
 await designChecks(siteRoot, inlineCss);
 assert.doesNotMatch(html, /href=["']\/styleguide\//, 'QA route in public navigation');
 assert.doesNotMatch(await readFile(join(siteRoot,'sitemap.xml'),'utf8'), /\/styleguide\//);

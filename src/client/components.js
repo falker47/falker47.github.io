@@ -1,6 +1,24 @@
 (() => {
   'use strict';
 
+  const previews = document.querySelectorAll('picture > source[data-preview]');
+  if (previews.length) {
+    // Native lazy loading starts far outside a dense register. Reveal the actual
+    // picture shortly before it scrolls into view; no-script readers get it directly.
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.querySelector('source[data-preview]')?.remove();
+          observer.unobserve(entry.target);
+        }
+      }, { rootMargin: '240px 0px' });
+      for (const source of previews) observer.observe(source.parentElement);
+    } else {
+      for (const source of previews) source.remove();
+    }
+  }
+
   for (const list of document.querySelectorAll('[role="tablist"]')) {
     const tabs = Array.from(list.querySelectorAll('[role="tab"]'));
     const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
@@ -61,8 +79,8 @@
     image.decoding = 'async';
     const updateTitle = () => {
       if (!trigger) return;
-      title.textContent = trigger.textContent.trim();
-      image.alt = trigger.querySelector('img').getAttribute('data-alt-' + document.documentElement.lang) || title.textContent;
+      title.textContent = trigger.querySelector(':scope > span').textContent;
+      image.alt = trigger.querySelector('img').alt;
     };
     for (const link of document.querySelectorAll('[data-viewer]')) {
       if (link.dataset.viewer !== viewer.id) continue;
@@ -93,7 +111,8 @@
   if (!links.length) return;
   const sections = links.map(link => document.getElementById(link.hash.slice(1)));
   function current() {
-    const top = document.querySelector('.site-header').getBoundingClientRect().bottom + 16;
+    const top = document.querySelector('.site-header').getBoundingClientRect().bottom;
+    const reached = section => Math.floor(section.getBoundingClientRect().top) <= top;
     const visible = sections.filter(section => {
       const rect = section.getBoundingClientRect();
       return rect.top < innerHeight && rect.bottom > top;
@@ -106,7 +125,8 @@
       return Math.abs(destination - scrollY) <= 2;
     });
     const last = scrollY >= maxScroll - 2;
-    const active = linked || (last ? visible.at(-1) : visible.find(section => section.getBoundingClientRect().top <= top) || visible[0]);
+    const atProjects = reached(sections[0]);
+    const active = atProjects && (linked || (last ? visible.at(-1) : visible.find(reached)));
     links.forEach((link, i) => {
       if (sections[i] === active) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
@@ -114,9 +134,9 @@
   }
   function followFragment() {
     const about = document.getElementById('chi-sono');
-    if (location.hash === '#chi-sono' && !about.open) {
+    if (['#chi-sono', '#certificazioni'].includes(location.hash) && !about.open) {
       about.open = true;
-      about.scrollIntoView({ block: 'start' });
+      document.getElementById(location.hash.slice(1)).scrollIntoView({ block: 'start' });
     }
     current();
   }

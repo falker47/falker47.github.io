@@ -177,3 +177,5 @@
   .site-nav a[aria-current]::after { background: Highlight; }
   .register-tabs button[aria-selected="true"], .language-switch button[aria-pressed="true"] { border-bottom: 2px solid Highlight; }
 }
+
+.icon { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }

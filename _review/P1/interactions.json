@@ -1,0 +1,70 @@
+[
+  {
+    "route": "/",
+    "lang": "it",
+    "width": 1440,
+    "firstRowOffset": 972,
+    "scrollToSeeFullRow": 170,
+    "softwarePanelHeight": 1431,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/",
+    "lang": "it",
+    "width": 390,
+    "firstRowOffset": 1078,
+    "scrollToSeeFullRow": 319,
+    "softwarePanelHeight": 1254,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/",
+    "lang": "en",
+    "width": 1440,
+    "firstRowOffset": 972,
+    "scrollToSeeFullRow": 170,
+    "softwarePanelHeight": 1431,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/",
+    "lang": "en",
+    "width": 390,
+    "firstRowOffset": 1078,
+    "scrollToSeeFullRow": 319,
+    "softwarePanelHeight": 1254,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "it",
+    "width": 1440,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "it",
+    "width": 390,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "en",
+    "width": 1440,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/styleguide/",
+    "lang": "en",
+    "width": 390,
+    "targets": ">=44px",
+    "result": "pass"
+  }
+]

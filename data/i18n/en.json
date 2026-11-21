@@ -14,7 +14,7 @@
   "reducedReplay": "Reduced motion is on",
   "about": "About me",
   "intro": "I build apps and tools, make game mods and do independent research in mathematics.",
-  "aboutWork": "I studied physics and worked in data engineering. Now I work on AI and automation. I like figuring out how things work and using what I learn to build something. Writing software gives me a way to explore a new problem and try out an idea.",
+  "aboutWork": "I studied physics and worked in data engineering. Now I work on AI and digital innovation. I like figuring out how things work and using what I learn to build something. Writing software gives me a way to explore a new problem and try out an idea.",
   "aboutResearch": "In my own time I build apps, experiment with video game mods and study geometry through Ringmin, my independent research project. I also tutor students in math and physics.",
   "philosophy": "I want to keep learning, test my ideas and make open-source tools that others can use.",
   "researchProfiles": "Tutoring, research and other profiles",
@@ -59,7 +59,7 @@
   "softwareIntro": "I build apps, tools and games.",
   "moddingIntro": "I make mods and tools that add features to video games.",
   "researchIntro": "I study mathematical problems independently and publish the algorithms and checks behind my results.",
-  "teachingIntro": "I’ve tutored students in math and physics since January 2023.",
+  "teachingIntro": "Since January 2023 I’ve tutored students in math and physics, online and in person, with digital notes and guided practice.",
   "catalogSoftware": "software projects on Nexus Portfolio",
   "selectedThree": "3 featured examples",
   "selectedTwo": "2 featured examples",
@@ -147,5 +147,14 @@
   "kindResearch": "Mathematical research",
   "title./": "Maurizio Falconi (falker47) — AI & Digital Innovation Specialist",
   "title./styleguide/": "Sheets & Register · Component guide",
-  "title./404.html": "Page not found · Maurizio Falconi"
+  "title./404.html": "Page not found · Maurizio Falconi",
+  "homeMods": "mods",
+  "homePapers": "papers",
+  "allModsStart": "All",
+  "allModsEnd": "mods on Nexus Mods",
+  "researchLinks": "Ringmin resources",
+  "learnMore": "Learn more",
+  "profileLinks": "Profiles",
+  "showCertificates": "Show all",
+  "fewerCertificates": "Show fewer"
 }

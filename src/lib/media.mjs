@@ -19,5 +19,6 @@ export function img(media, options = {}) {
 
 export function picture(media, options = {}) {
   const responsive = responsiveAttributes(media, options.sizes ?? '100vw');
-  return html`<picture><source type="image/webp"${raw(responsive)}>${raw(imageTag(media, options))}</picture>`;
+  const preview = options.nearViewport ? '<source media="(scripting: enabled)" data-preview srcset="/assets/images/thumbnail-space.svg">' : '';
+  return html`<picture>${raw(preview)}<source type="image/webp"${raw(responsive)}>${raw(imageTag(media, options))}</picture>`;
 }

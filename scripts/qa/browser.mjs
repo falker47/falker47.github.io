@@ -20,7 +20,7 @@ export async function options(extra = {}) {
   if (!/^[a-z0-9][a-z0-9_-]*$/i.test(values.task || '')) throw Error('Provide --task ID');
   const pages = values.pages.split(',');
   const langs = values.langs.split(',');
-  if (pages.some(page => !/^\/(?:[\w-]+\/)*(?:[\w-]+\.html)?$/.test(page))) throw Error('Use comma-separated site routes');
+  if (pages.some(page => !/^\/(?:[\w-]+\/)*(?:[\w-]+\.html)?(?:#[\w-]+)?$/.test(page))) throw Error('Use comma-separated site routes');
   if (langs.some(lang => !['it','en'].includes(lang))) throw Error('Use it or en for --langs');
   const out = fileURLToPath(new URL(`../../_review/${values.task}/`, import.meta.url));
   await mkdir(out, { recursive: true });
@@ -44,7 +44,7 @@ export async function visit(page, origin, route, lang, bilingualFallback = false
   const response = await page.goto(url.href, { waitUntil: 'networkidle' });
   if (response?.status() !== 200) throw Error(`${url.pathname} HTTP ${response?.status()}`);
   await page.evaluate(() => document.fonts.ready);
-  if (new URL(page.url()).pathname !== route) throw Error('Visual audit left ' + route);
+  if (new URL(page.url()).pathname !== url.pathname) throw Error('Visual audit left ' + route);
   if (bilingualFallback) {
     for (const language of ['it', 'en']) {
       if (!await page.locator('.redirect-stub a[lang="' + language + '"]').isVisible()) throw Error('Missing ' + language + ' fallback');
@@ -52,4 +52,13 @@ export async function visit(page, origin, route, lang, bilingualFallback = false
     return;
   }
   if (await page.locator('html').getAttribute('lang') !== lang) throw Error(`Language did not switch to ${lang}`);
+}
+
+/** Capture the certificate fragment with its viewer open, as a visitor would open it. */
+export async function visitReviewState(page, origin, route, lang, stub = false) {
+  await visit(page, origin, route, lang, stub);
+  if (route === '/#certificazioni') {
+    await page.locator('#certificazioni .certificate').first().click();
+    await page.locator('dialog[open] > img').evaluate(image => image.decode());
+  }
 }

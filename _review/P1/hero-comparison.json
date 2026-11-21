@@ -1,0 +1,530 @@
+[
+  {
+    "lang": "it",
+    "width": 1440,
+    "headlineLines": 1,
+    "areas": {
+      "headline": {
+        "box": {
+          "x": 48,
+          "y": 130,
+          "width": 1344,
+          "height": 59.515625
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      },
+      "cta": {
+        "box": {
+          "x": 607.0625,
+          "y": 211.90625,
+          "width": 225.875,
+          "height": 47.59375
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      },
+      "diagram": {
+        "box": {
+          "x": 683.59375,
+          "y": 231.5,
+          "width": 708.40625,
+          "height": 495
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 1
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      },
+      "identity": {
+        "box": {
+          "x": 77.796875,
+          "y": 364.25,
+          "width": 520,
+          "height": 273.5
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 1
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      },
+      "portrait": {
+        "box": {
+          "x": 111.796875,
+          "y": 394.25,
+          "width": 88,
+          "height": 88
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 1
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      }
+    }
+  },
+  {
+    "lang": "it",
+    "width": 390,
+    "headlineLines": 3,
+    "areas": {
+      "headline": {
+        "box": {
+          "x": 16,
+          "y": 80,
+          "width": 358,
+          "height": 135.1875
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      },
+      "cta": {
+        "box": {
+          "x": 16,
+          "y": 235.1875,
+          "width": 231.875,
+          "height": 56
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      },
+      "diagram": {
+        "box": {
+          "x": 16,
+          "y": 315.1875,
+          "width": 358,
+          "height": 284.40625
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 1
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      },
+      "identity": {
+        "box": {
+          "x": 16,
+          "y": 623.59375,
+          "width": 358,
+          "height": 264.78125
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 66,
+          "maxChannelDelta": 10
+        },
+        "fullCapture": {
+          "pixelsOver2": 66,
+          "maxChannelDelta": 10
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      },
+      "portrait": {
+        "box": {
+          "x": 38,
+          "y": 645.59375,
+          "width": 68,
+          "height": 64.5
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 66,
+          "maxChannelDelta": 10
+        },
+        "fullCapture": {
+          "pixelsOver2": 66,
+          "maxChannelDelta": 10
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      }
+    }
+  },
+  {
+    "lang": "en",
+    "width": 1440,
+    "headlineLines": 1,
+    "areas": {
+      "headline": {
+        "box": {
+          "x": 48,
+          "y": 130,
+          "width": 1344,
+          "height": 59.515625
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      },
+      "cta": {
+        "box": {
+          "x": 614.296875,
+          "y": 211.90625,
+          "width": 211.390625,
+          "height": 47.59375
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      },
+      "diagram": {
+        "box": {
+          "x": 683.59375,
+          "y": 231.5,
+          "width": 708.40625,
+          "height": 495
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 1
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      },
+      "identity": {
+        "box": {
+          "x": 77.796875,
+          "y": 364.25,
+          "width": 520,
+          "height": 273.5
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 1
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      },
+      "portrait": {
+        "box": {
+          "x": 111.796875,
+          "y": 394.25,
+          "width": 88,
+          "height": 88
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 1
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      }
+    }
+  },
+  {
+    "lang": "en",
+    "width": 390,
+    "headlineLines": 3,
+    "areas": {
+      "headline": {
+        "box": {
+          "x": 16,
+          "y": 80,
+          "width": 358,
+          "height": 135.1875
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      },
+      "cta": {
+        "box": {
+          "x": 16,
+          "y": 235.1875,
+          "width": 217.390625,
+          "height": 56
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      },
+      "diagram": {
+        "box": {
+          "x": 16,
+          "y": 315.1875,
+          "width": 358,
+          "height": 284.40625
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 1
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      },
+      "identity": {
+        "box": {
+          "x": 16,
+          "y": 623.59375,
+          "width": 358,
+          "height": 264.78125
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 1
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      },
+      "portrait": {
+        "box": {
+          "x": 38,
+          "y": 645.59375,
+          "width": 68,
+          "height": 64.5
+        },
+        "maxBoxDelta": 0,
+        "viewportCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "fullCapture": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 1
+        },
+        "withoutTextAndGrid": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        },
+        "confirmedNonText": {
+          "pixelsOver2": 0,
+          "maxChannelDelta": 0
+        }
+      }
+    }
+  }
+]

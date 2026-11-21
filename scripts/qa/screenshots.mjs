@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { options, qaRequire, viewports, visit, withBrowser } from './browser.mjs';
+import { options, qaRequire, viewports, visitReviewState, withBrowser } from './browser.mjs';
 import { isolateNetwork } from './network.mjs';
 
 const { pages, langs, out, values, stubPages } = await options({ format: { type: 'string', default: 'png' } });
@@ -18,9 +18,12 @@ async function saveWebp(png, name, route, fullPage) {
   throw Error('Screenshot exceeds its byte budget: ' + name);
 }
 
-async function loadCatalogueImages(page) {
-  await page.locator('img[src]').evaluateAll(async images => {
-    for (const image of images) image.loading = 'eager';
+async function loadCatalogueImages(page, selector) {
+  await page.locator(selector).evaluateAll(async images => {
+    for (const image of images) {
+      image.closest('picture')?.querySelector('source[data-preview]')?.remove();
+      image.loading = 'eager';
+    }
     await Promise.all(images.map(image => image.decode()));
   });
 }
@@ -34,12 +37,14 @@ try {
       try {
         const verifyNetwork = await isolateNetwork(context, origin, requests);
         const page = await context.newPage();
-        await visit(page, origin, route, lang, stubPages.has(route));
-        const slug = route === '/' ? 'home' : route.replace(/^\/|\/$/g, '').replaceAll('/', '-');
+        await visitReviewState(page, origin, route, lang, stubPages.has(route));
+        const slug = route === '/#certificazioni' ? 'home-certificate-dialog' : route === '/' ? 'home' :
+          route.replace(/^\/#/, 'home-').replace(/^\/|\/$/g, '').replaceAll('/', '-');
         // Capture the pair back-to-back, before compression can affect offscreen image painting.
         const captures = [];
         for (const fullPage of [false, true]) {
-          if (fullPage && route === '/styleguide/') await loadCatalogueImages(page);
+          if (fullPage && route === '/styleguide/') await loadCatalogueImages(page, 'img[src]');
+          if (fullPage && new URL(route, origin).pathname === '/') await loadCatalogueImages(page, 'img[src]:visible');
           const name = `${slug}-${lang}-${viewport.width}${fullPage ? '-full' : ''}.${values.format}`;
           const png = await page.screenshot({ fullPage, path: sharp ? undefined : join(out, name) });
           if (sharp) captures.push({ png, name, fullPage });

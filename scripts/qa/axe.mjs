@@ -1,7 +1,7 @@
 import { writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { options, qaRequire, viewports, visit, withBrowser } from './browser.mjs';
+import { options, qaRequire, viewports, visitReviewState, withBrowser } from './browser.mjs';
 import { isolateNetwork } from './network.mjs';
 import { auditRoutes } from './audit-routes.mjs';
 
@@ -14,7 +14,7 @@ export async function runAxe(pages, langs, root) {
       const page = await browser.newPage({ viewport, locale: lang, reducedMotion: 'reduce', serviceWorkers: 'block' });
       try {
         const verifyNetwork = await isolateNetwork(page.context(), origin);
-        await visit(page, origin, route, lang, stub);
+        await visitReviewState(page, origin, route, lang, stub);
         await page.addScriptTag({ path: qaRequire.resolve('axe-core/axe.min.js') });
         row.violations = await page.evaluate(async () => {
           const { violations } = await window.axe.run(document);

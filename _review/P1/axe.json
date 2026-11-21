@@ -1,0 +1,146 @@
+[
+  {
+    "route": "/",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/#software",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/#software",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/#software",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/#software",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/#modding",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/#modding",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/#modding",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/#modding",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/#ricerca",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/#ricerca",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/#ricerca",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/#ricerca",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/#tutoring",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/#tutoring",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/#tutoring",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/#tutoring",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/#certificazioni",
+    "lang": "it",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/#certificazioni",
+    "lang": "it",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "route": "/#certificazioni",
+    "lang": "en",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "route": "/#certificazioni",
+    "lang": "en",
+    "width": 390,
+    "violations": []
+  }
+]
