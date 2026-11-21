@@ -14,7 +14,7 @@ export const routes = [
     render,
   },
   {
-    path: '/404.html', title: '404 · Maurizio Falconi', noindex: true,
+    path: '/404.html', title: 'Pagina non trovata · Maurizio Falconi', noindex: true,
     descriptionKey: 'missingReason', styles: ['/styles/status.css'],
     image: profile.photo.src, render: notFound,
   },
