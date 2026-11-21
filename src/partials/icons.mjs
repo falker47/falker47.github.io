@@ -12,6 +12,10 @@ const drawings = {
   external: '<path d="M12 4h8v8m0-8L10 14m-2-9H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/>',
   'play-store': '<path d="m5 3 14 8a1 1 0 0 1 0 2L5 21ZM5 3l10 12M5 21 15 9"/>',
   file: '<path d="M5 2h9l5 5v15H5Zm9 0v6h5M8 13h8m-8 4h6"/>',
+  wifi: '<path d="M2 9a16 16 0 0 1 20 0M5.5 12.5a10.5 10.5 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/><circle cx="12" cy="19.5" r="1"/>',
+  monitor: '<rect x="2.5" y="4" width="19" height="13" rx="1.5"/><path d="M12 17v3m-5 0h10"/>',
+  bolt: '<path d="M13.5 2 5 13h6l-.5 9L19 10h-6Z"/>',
+  camera: '<path d="m3 6 4-2 13 5-4 7L3 11Zm14 9 3 2v3h-5"/><path d="m5 12-1 2 5 2 1-2"/>',
   chevron: '<path d="m6 9 6 6 6-6"/>',
 };
 

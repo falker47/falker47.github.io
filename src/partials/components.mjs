@@ -53,8 +53,9 @@ export function modRow(t, item, index) {
   <span class="row-kind">${item.game}</span><span class="mod-action" aria-hidden="true">Nexus Mods ${icon('arrow-ne')}</span></article>`;
 }
 
-export function sheetFrame(t, { image, caption }) {
-  return html`<figure class="sheet"><div class="sheet-frame">${raw(img(image, { sizes: 'auto, (min-width: 1296px) 564px, (min-width: 1000px) calc((100vw - 168px) / 2), (min-width: 840px) calc((100vw - 152px) / 2), (min-width: 600px) calc(100vw - 106px), calc(100vw - 58px)' }))}</div><figcaption>${label(t, caption)}</figcaption></figure>`;
+export function sheetFrame(t, { image, caption, fetchpriority, sizes = 'auto, (min-width: 1296px) 564px, (min-width: 1000px) calc((100vw - 168px) / 2), (min-width: 840px) calc((100vw - 152px) / 2), (min-width: 600px) calc(100vw - 106px), calc(100vw - 58px)' }) {
+  const artwork = picture(image, { sizes, fetchpriority });
+  return html`<figure class="sheet"><div class="sheet-frame">${raw(artwork)}</div><figcaption>${label(t, caption)}</figcaption></figure>`;
 }
 
 export function statTile(t, { value, key, valueKey, iconName, href, nexusStat }) {
