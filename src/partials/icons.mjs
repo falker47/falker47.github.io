@@ -28,5 +28,5 @@ export function sprite() {
 
 export function icon(name) {
   if (!Object.hasOwn(drawings, name)) throw Error(`Unknown icon: ${name}`);
-  return raw(html`<svg class="icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="#icon-${name}"/></svg>`);
+  return raw(html`<svg class="icon" aria-hidden="true"><use href="#icon-${name}"/></svg>`);
 }

@@ -37,7 +37,7 @@ export function registerRow({ t }, item, index) {
   const { title, image, href, summary, kind, stack, github, filter, internal = false } = item;
   return html`<article class="register-row" data-kind="${filter}">
   <span class="row-index">${serial(index)}</span>${raw(rowThumbnail(image))}
-  <div class="row-copy"><h3><a class="row-title" href="${href}">${title}<span class="row-arrow">${icon(internal ? 'arrow-right' : 'arrow-ne')}</span></a></h3>
+  <div class="row-copy"><h3><a class="row-title" href="${href}">${title}</a></h3>
   ${raw(rowSummary(t, summary))}</div>
   <span class="row-kind">${typeof kind === 'string' ? label(t, kind) : localized(kind)}</span><span class="row-stack">${stack}</span>
   <div class="row-actions"><span aria-hidden="true">${label(t, internal ? 'viewSheet' : 'openLink')} ${icon(internal ? 'arrow-right' : 'arrow-ne')}</span>
@@ -48,7 +48,7 @@ export function registerRow({ t }, item, index) {
 export function modRow(t, item, index) {
   return html`<article class="mod-row">
   <span class="row-index">${serial(index)}</span>${raw(rowThumbnail(item.image))}
-  <div class="row-copy"><h3><a class="row-title" href="${item.href}">${item.title}<span class="row-arrow">${icon('arrow-ne')}</span></a></h3>
+  <div class="row-copy"><h3><a class="row-title" href="${item.href}">${item.title}</a></h3>
   ${raw(rowSummary(t, item.summary))}</div>
   <span class="row-kind">${item.game}</span><span class="mod-action" aria-hidden="true">Nexus Mods ${icon('arrow-ne')}</span></article>`;
 }

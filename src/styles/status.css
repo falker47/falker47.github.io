@@ -30,3 +30,6 @@
 }
 .status-actions a { display: inline-flex; min-height: var(--target); align-items: center; }
 .status-panel noscript p { margin-top: 24px; }
+
+html[data-lang="it"] .redirect-stub a[lang="en"],
+html[data-lang="en"] .redirect-stub a[lang="it"] { display: none; }

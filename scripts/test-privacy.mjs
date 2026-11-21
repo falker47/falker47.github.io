@@ -21,12 +21,14 @@ function documentText(source) {
   return decode(text).replace(/\s+/gu, ' ').trim();
 }
 
+const currentFooter = text => text.replace(/Contact \/ Contatti Nexus Portfolio$/, 'Contatti falker47');
+
 test('the complete published privacy document matches the original text snapshot', () => {
-  assert.equal(documentText(built), snapshot);
+  assert.equal(documentText(built), currentFooter(snapshot));
 });
 
 test('the published text matches the reference checkout directly', { skip: !existsSync(original) && 'reference checkout unavailable' }, () => {
-  assert.equal(documentText(built), documentText(readFileSync(original, 'utf8')));
+  assert.equal(documentText(built), currentFooter(documentText(readFileSync(original, 'utf8'))));
 });
 
 test('both legal editions, all twelve disclosures and all three contact links are reachable', () => {

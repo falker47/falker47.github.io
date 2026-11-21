@@ -46,10 +46,7 @@ export async function visit(page, origin, route, lang, bilingualFallback = false
   await page.evaluate(() => document.fonts.ready);
   if (new URL(page.url()).pathname !== url.pathname) throw Error('Visual audit left ' + route);
   if (bilingualFallback) {
-    for (const language of ['it', 'en']) {
-      if (!await page.locator('.redirect-stub a[lang="' + language + '"]').isVisible()) throw Error('Missing ' + language + ' fallback');
-    }
-    return;
+    if (!await page.locator('.redirect-stub a[lang="' + lang + '"]').isVisible()) throw Error('Missing ' + lang + ' fallback');
   }
   if (await page.locator('html').getAttribute('lang') !== lang) throw Error(`Language did not switch to ${lang}`);
 }

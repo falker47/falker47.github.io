@@ -17,7 +17,7 @@ export async function runLighthouse(pages, langs, thresholds = gates, root) {
   process.env.CHROME_PATH = executable;
   const results = [];
   for (const { path: route, stub } of pages) {
-    const server = await startServer({ root, holdDocument: stub ? route : undefined });
+    const server = await startServer({ root, holdRedirects: stub ? new Set([route]) : undefined, auditScripts: true });
     try {
       for (const lang of langs) for (const device of ['mobile', 'desktop']) {
         const row = { route, lang: lang || 'default', device, pass: false };

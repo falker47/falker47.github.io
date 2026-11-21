@@ -135,7 +135,9 @@ assert.equal(structured['@graph'].find(item => item['@type'] === 'Person')?.jobT
   'AI & Digital Innovation Specialist', 'Person.jobTitle must match the public role');
 assert.match(css, /prefers-reduced-motion:\s*reduce/);
 assert.doesNotMatch(html, /12k\+/, 'Do not ship stale 12k+ totals as the unique-download fallback');
-assert.match(html, /<script type="module" src="scripts\/nexus-downloads\.mjs"><\/script>/, 'Live Nexus totals must load without exposing a key');
+const nexusClient = await readFile(join(siteRoot, 'scripts/nexus-downloads.mjs'), 'utf8');
+const homeModules = (await site.document(join(siteRoot, 'index.html'))).elements.filter(e => e.name === 'script' && e.attrs.type === 'module');
+assert.ok(homeModules.some(e => e.body.endsWith(nexusClient)), 'Home runs the published live Nexus client');
 assert.match(i18n, /document\.dispatchEvent\(new Event\('portfolio:languagechange'\)\)/, 'Language toggle must preserve fetched Nexus totals');
 assert.match(html, /<a class="skip"[^>]*href="#main"|<a[^>]*href="#main"[^>]*class="skip"/);
 const styleBlock = html.match(/<style id="desktop-visual-sizing">[\s\S]*?<\/style>/)?.[0];

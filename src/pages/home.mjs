@@ -1,6 +1,6 @@
 import { projectsSection } from './home/projects.mjs';
 import { aboutSection } from './home/about.mjs';
-import { html, raw } from '../lib/html.mjs';
+import { html, raw, translatedText } from '../lib/html.mjs';
 import { primaryCta } from '../partials/components.mjs';
 
 export const jobTitle = 'AI & Digital Innovation Specialist';
@@ -40,7 +40,6 @@ export const graph = [
     "jobTitle": jobTitle,
     "description": "Sviluppo applicazioni e strumenti, creo mod per videogiochi e porto avanti ricerca matematica indipendente.",
     "sameAs": [
-      "https://falker47.github.io/Nexus-portfolio/",
       "https://github.com/falker47",
       "https://www.linkedin.com/in/mauriziofalconi/",
       "https://www.instagram.com/falker47/",
@@ -59,8 +58,8 @@ export const graph = [
   {
     "@type": "ImageObject",
     "@id": "https://falker47.github.io/#profile-image",
-    "contentUrl": "https://falker47.github.io/assets/images/maurizio-falconi.webp",
-    "url": "https://falker47.github.io/assets/images/maurizio-falconi.webp",
+    "contentUrl": "https://falker47.github.io/assets/images/maurizio-falconi-native.webp",
+    "url": "https://falker47.github.io/assets/images/maurizio-falconi-native.webp",
     "name": "Maurizio Falconi (falker47)",
     "caption": "Maurizio Falconi, known online as falker47"
   }
@@ -70,7 +69,7 @@ export function render(ctx) {
   const { t, copy } = ctx;
   return html`<main id="main" tabindex="-1">
 <section class="hero" aria-label="Maurizio Falconi">
-<div class="hero-lead"><h1><span data-i18n="headlineStart">${t('headlineStart')}</span><em data-i18n="headlineEnd">${t('headlineEnd')}</em></h1>
+<div class="hero-lead"><h1><span lang="it">${t('headlineStart')}</span><em lang="it">${t('headlineEnd')}</em><span lang="en">${translatedText(copy.en.headlineStart)}</span><em lang="en">${translatedText(copy.en.headlineEnd)}</em></h1>
 ${raw(primaryCta(t, 'cta', '#progetti'))}</div>
 <figure class="engine-figure" aria-label="${copy.it.diagramTitle}" data-label="diagramTitle" aria-describedby="diagram-description">
 <div class="engine-art" aria-hidden="true" data-identity-diagram="v1"><svg class="engine desktop-engine" viewBox="0 0 720 590" xmlns="http://www.w3.org/2000/svg">

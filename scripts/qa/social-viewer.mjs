@@ -65,7 +65,9 @@ async function checkPrivacy(page, origin, lang) {
       await reference.setContent(legacy);
       await reference.locator(`button[data-language="${lang}"]`).click();
       await reference.locator('details').evaluateAll(nodes => nodes.forEach(node => { node.open = true; }));
-      assert.equal(await visibleText(page.locator('main')), await visibleText(reference.locator('main')));
+      const originalText = await visibleText(reference.locator('main'));
+      const footer = lang === 'it' ? 'Contatti falker47' : 'Contact falker47';
+      assert.equal(await visibleText(page.locator('main')), originalText.replace(/Contact \/ Contatti Nexus Portfolio$/, footer));
     } finally { await reference.close(); }
   }
   results.push({ page: privacy, lang, width: page.viewportSize().width, disclosuresOpened: 6, renderedOriginalCompared: Boolean(legacy) });
@@ -106,5 +108,5 @@ await withBrowser(async (browser, origin) => {
     results.push({ page: privacy, jsEnabled: false, readableEditions: 2 });
   } finally { await mobile.close(); }
 });
-await writeFile(join(out, 'interactions.json'), JSON.stringify(results, null, 2) + '\n');
+await writeFile(join(out, 'social-viewer-interactions.json'), JSON.stringify(results, null, 2) + '\n');
 console.log(`Passed ${results.length} Social Viewer interaction checks.`);

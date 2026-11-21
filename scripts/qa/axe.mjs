@@ -26,7 +26,7 @@ export async function runAxe(pages, langs, root) {
       finally { await page.close(); }
       console.log(route, lang, viewport.width, row.pass ? '0 violations' : JSON.stringify(row));
     }
-  }, { root, holdDocument: stub ? route : undefined });
+  }, { root, holdRedirects: stub ? new Set([route]) : undefined, auditScripts: true });
   return results;
 }
 

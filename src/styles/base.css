@@ -24,6 +24,7 @@ button { font: inherit; color: inherit; }
 :where(.icon-sprite) { position: absolute; }
 :where(.site-header) { display: flex; align-items: center; height: var(--header-height); }
 :where(.site-brand) { margin-inline-end: auto; }
+html:lang(it) .hero-lead h1 [lang="en"], html:lang(en) .hero-lead h1 [lang="it"] { display: none !important; }
 @media (max-width: 999px) {
   :where(.desktop-engine) { display: none; }
   :where(.hero) { display: grid; gap: 24px; padding-top: 16px; }

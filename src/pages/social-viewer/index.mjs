@@ -9,9 +9,8 @@ import { renderTest } from './test.mjs';
 const project = projects.find(item => item.id === 'social-viewer');
 const link = type => project.links.find(item => item.type === type).url;
 const privacy = readFileSync(new URL('./privacy.html', import.meta.url), 'utf8');
-// testers-preview.webp is 640 × 313 before the 16:9 crop. Larger catalogue files were enlarged.
-const native = project.cover.variants.filter(v => v.width <= 640 && v.height <= 313)
-  .sort((a, b) => b.width - a.width)[0];
+// The product sheet is designed for the 480 px cover. Honour smaller originals too.
+const native = project.cover.variants.filter(v => v.width <= Math.min(480, project.cover.nativeWidth)).at(-1);
 if (!native) throw Error('No native-resolution Social Viewer cover in the catalogue');
 const cover = { ...project.cover, ...native, variants: [native] };
 

@@ -60,7 +60,7 @@ export async function runOffline(langs) {
         page.on('console', msg => { if (msg.type() === 'error') consoleErrors.push(msg.text()); });
         await visit(page, origin, '/', lang);
         for (const language of [lang, lang === 'en' ? 'it' : 'en']) {
-          await page.locator('[data-lang="' + language + '"]').click();
+          await page.locator('button[data-lang="' + language + '"]').click();
           assert.equal(await page.locator('[data-i18n="moddingNumber"]').first().textContent(), formatStats(snapshot.uniqueModDownloads, language).counter);
         }
         assert.deepEqual(errors, []);

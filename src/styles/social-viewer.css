@@ -13,7 +13,7 @@ body:has(.sv) .site-footer { margin-top: auto; }
 }
 .sv-kicker { color: var(--social-accent); text-transform: uppercase; letter-spacing: var(--tracking); }
 .sv-lead { color: var(--secondary); font-size: clamp(16px, 1.25vw, 19px); line-height: 1.5; }
-.sv h1 { font-size: var(--display); }
+.sv h1 { font-size: clamp(28px, 4vw, 32px); }
 .sv-back, .sv-secondary, .sv-related a, .sv-choices a, .sv-steps a, .policy-editions a {
   display: inline-flex; align-items: center; gap: 8px; min-height: var(--target);
 }
@@ -94,8 +94,8 @@ html:lang(it) .policy-editions a[lang="it"], html:lang(en) .policy-editions a[la
   color: var(--social-accent); text-decoration-thickness: 2px;
 }
 /* Both editions are readable before or without scripts. The shared switch sets html.lang. */
-html:lang(it):has(.site-header .language-switch:not([hidden])) .sv-policy [data-panel="en"],
-html:lang(en):has(.site-header .language-switch:not([hidden])) .sv-policy [data-panel="it"] { display: none; }
+html[data-lang="it"] .sv-policy [data-panel="en"],
+html[data-lang="en"] .sv-policy [data-panel="it"] { display: none; }
 .sv-policy .language-panel { padding-top: 24px; }
 .policy-heading h2 { font-size: var(--h2); text-transform: uppercase; }
 .policy-heading .lead { max-width: 70ch; margin-block: 12px; color: var(--secondary); font-size: clamp(16px, 1.3vw, 19px); }

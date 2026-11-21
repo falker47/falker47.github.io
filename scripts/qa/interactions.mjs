@@ -184,7 +184,7 @@ async function checkLiveNexus(page, origin, lang) {
   await page.goto('about:blank');
   await visit(page, origin, '/#modding', lang);
   for (const language of [lang, lang === 'it' ? 'en' : 'it']) {
-    await page.locator(`[data-lang="${language}"]`).click();
+    await page.locator(`button[data-lang="${language}"]`).click();
     await page.waitForFunction(({ count, downloads }) =>
       [...document.querySelectorAll('[data-nexus-stat="modCount"]')].every(node => node.textContent === count)
       && document.querySelector('[data-i18n="moddingNumber"]').textContent === downloads,
@@ -247,11 +247,11 @@ await withBrowser(async (browser, origin) => {
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
       assert.equal(await page.locator('.primary-cta:visible').count(), 1);
       const other = lang === 'en' ? 'it' : 'en';
-      await page.locator('[data-lang="' + other + '"]').click();
+      await page.locator('button[data-lang="' + other + '"]').click();
       assert.equal(await page.locator('html').getAttribute('lang'), other);
       assert.equal(await page.evaluate(() => localStorage.getItem('nexus-language')), other);
       if (route === '/styleguide/') await verifyCatalogueLanguage(page, other);
-      await page.locator('[data-lang="' + lang + '"]').click();
+      await page.locator('button[data-lang="' + lang + '"]').click();
       if (route === '/styleguide/') await verifyCatalogueLanguage(page, lang);
       let geometry;
       if (route === '/') {

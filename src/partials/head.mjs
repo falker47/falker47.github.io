@@ -35,7 +35,7 @@ ${route.robots || route.noindex ? raw(html`<meta name="robots" content="${route.
 <meta name="twitter:description" content="${description}"${descriptionMeta}>
 <meta name="twitter:image" content="${image}">
 ${route.graph ? raw(html`<script type="application/ld+json">${jsonScript({ '@context': 'https://schema.org', '@graph': route.graph })}</script>`) : ''}
-${route.path === '/' ? raw(['normal', 'italic'].map(style => html`<link rel="preload" href="/assets/fonts/gelasio-latin-400-${style}.woff2" as="font" type="font/woff2" crossorigin>`).join('\n')) : ''}
+${route.path === '/' ? raw(['normal', 'italic'].map(style => html`<link rel="preload" href="/assets/fonts/gelasio-latin-400-${style}.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">`).join('\n')) : ''}
 ${raw(styles)}
 ${route.path === '/' ? raw(html`<style id="desktop-visual-sizing">${raw(desktopSizing)}</style>`) : ''}
 </head>`;

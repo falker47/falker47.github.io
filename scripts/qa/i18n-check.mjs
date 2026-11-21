@@ -1,18 +1,19 @@
 import assert from 'node:assert/strict';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import redirectMap from '../../data/redirects.json' with { type: 'json' };
 import { routes } from '../../src/routes.mjs';
 import { styleguide } from '../../src/styleguide/page.mjs';
 import { layout } from '../../src/partials/layout.mjs';
 import { translatedText } from '../../src/lib/html.mjs';
 import { fileStat, siteRoot } from './serve.mjs';
-import { viewports, visit, withBrowser } from './browser.mjs';
+import { options, viewports, visit, withBrowser } from './browser.mjs';
 import { isolateNetwork } from './network.mjs';
 import { readTranslations, foreignPhrases, findForeignText } from './i18n-data.mjs';
 
 let copy, phrases;
 const report = { pages: [], bindings: null };
-const out = new URL('../../_review/P4/', import.meta.url);
+const { out } = await options({ task: { type: 'string', default: 'R1' } });
 
 async function scan(page, route, lang, row) {
   const main = page.locator('main');
@@ -58,7 +59,8 @@ async function checkBindings(browser, origin) {
         [0, 1, 2, 12345, 1000000].map(n => '<span data-i18n-plural="project" data-count="' + n + '"></span>').join('') +
         '<span data-i18n-number="12345.6"></span><time datetime="2023-01"></time><time datetime="2024-02-29"></time>' +
         '<a id="internal" href="/">Home</a></main>' };
-    const body = layout({ route, copy, t: key => translatedText(copy.it[key]), desktopSizing: '' });
+    const body = await layout({ route, copy, t: key => translatedText(copy.it[key]), desktopSizing: '', styles: '', favicon: '/assets/images/favicon-32.webp' },
+      async paths => (await Promise.all(paths.map(path => readFile(join(siteRoot, path), 'utf8')))).join('\n;\n'));
     await context.route(origin + path + '*', request => request.fulfill({ contentType: 'text/html', body }));
     const page = await context.newPage();
     await page.addInitScript(() => {
@@ -118,7 +120,8 @@ try {
   const { it, en, pairs } = await readTranslations();
   copy = { it, en };
   phrases = { it: foreignPhrases(pairs, 'it'), en: foreignPhrases(pairs, 'en') };
-  const pages = [...routes];
+  const stubs = new Set(redirectMap.redirects.map(entry => entry.from));
+  const pages = [...routes, ...[...stubs].map(path => ({ path, titleKey: 'moved', descriptionKey: 'moved' }))];
   if ((await fileStat(join(siteRoot, 'styleguide/index.html')))?.isFile()) pages.push(styleguide);
   await withBrowser(async (browser, origin) => {
     for (const route of pages) for (const lang of ['it', 'en']) for (const viewport of viewports) {
@@ -128,7 +131,7 @@ try {
       page.on('pageerror', error => row.errors.push(error.message));
       try {
         const verifyNetwork = await isolateNetwork(page.context(), origin);
-        await visit(page, origin, route.path, lang);
+        await visit(page, origin, route.path, lang, stubs.has(route.path));
         await scan(page, route, lang, row);
         verifyNetwork();
       } catch (error) { row.errors.push(error.message); }
@@ -138,11 +141,10 @@ try {
     await checkBindings(browser, origin);
     report.bindings = 'passed';
     report.leakControls = { it: 'visible English detected, hidden English ignored', en: 'visible Italian detected, hidden Italian ignored' };
-  });
+  }, { holdRedirects: stubs, auditScripts: true });
 } catch (error) { report.error = error.message; }
 finally {
-  await mkdir(out, { recursive: true });
-  await writeFile(new URL('i18n.json', out), JSON.stringify(report, null, 2) + '\n');
+  await writeFile(join(out, 'i18n.json'), JSON.stringify(report, null, 2) + '\n');
 }
 if (report.error) console.error(report.error);
 if (report.error || report.pages.some(row => row.leaks.length || row.errors.length)) process.exitCode = 1;

@@ -37,7 +37,7 @@ export const routes = [
     title: `${profile.name} (${profile.handle}) — ${profile.role}`,
     descriptionKey: 'intro',
     styles: ['/styles/home.css'],
-    image: '/assets/images/maurizio-falconi.webp',
+    image: '/assets/images/maurizio-falconi-native.webp',
     graph,
     render,
   },

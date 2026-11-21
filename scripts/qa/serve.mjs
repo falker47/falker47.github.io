@@ -25,7 +25,7 @@ export async function fileStat(file) {
   catch (error) { if (['ENOENT', 'ENOTDIR'].includes(error.code)) return null; throw error; }
 }
 
-export async function startServer({ root = siteRoot, port = 0, holdRedirects = new Set(), auditScripts = false, holdDocument } = {}) {
+export async function startServer({ root = siteRoot, port = 0, holdRedirects = new Set(), auditScripts = false } = {}) {
   const server = createServer(async (request, response) => {
     try {
       if (!['GET', 'HEAD'].includes(request.method)) {
@@ -36,12 +36,6 @@ export async function startServer({ root = siteRoot, port = 0, holdRedirects = n
       try {
         if (!request.url.startsWith('/') || request.url.startsWith('//')) throw Error('Invalid request target');
         url = new URL(request.url, 'http://localhost');
-        // A 204 lets the browser keep the real stub document after it attempts
-        // location.replace or meta refresh. Its HTML and scripts stay untouched.
-        if (holdDocument && url.pathname !== holdDocument && request.headers['sec-fetch-dest'] === 'document') {
-          response.writeHead(204).end();
-          return;
-        }
         file = localPath(root, url.pathname);
       } catch { response.writeHead(400).end(); return; }
       let info = await fileStat(file);

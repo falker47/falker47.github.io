@@ -8,14 +8,14 @@ import { startServer } from './serve.mjs';
 const { values, langs, out } = await options({
   baseline: { type: 'string' }, 'baseline-task': { type: 'string', default: 'F1' },
   format: { type: 'string', default: 'png' }, 'baseline-format': { type: 'string', default: 'png' },
-  exact: { type: 'boolean', default: false }, 'exact-hero': { type: 'boolean', default: false },
+  exact: { type: 'boolean', default: false }, 'exact-hero': { type: 'boolean', default: false }, 'exact-geometry': { type: 'boolean', default: false },
 });
 if (!values.baseline) throw Error('Provide --baseline PATH to the built reference checkout');
 if (!/^[a-z0-9][a-z0-9_-]*$/i.test(values['baseline-task'])) throw Error('Invalid baseline task');
 if (![values.format, values['baseline-format']].every(format => ['png', 'webp'].includes(format))) throw Error('Use --format png or webp');
 const reference = join(values.baseline, '_review', values['baseline-task']);
 const sharp = qaRequire('sharp');
-const areas = { ...(values['exact-hero'] ? { hero: '.hero' } : {}), headline: '.hero-lead h1', cta: '.hero-lead .cta', diagram: '.engine-figure', identity: '.identity', portrait: '.portrait' };
+const areas = { ...(values['exact-hero'] || values['exact-geometry'] ? { hero: '.hero' } : {}), headline: '.hero-lead h1', cta: '.hero-lead .cta', diagram: '.engine-figure', identity: '.identity', portrait: '.portrait' };
 
 async function measure(page) {
   return page.evaluate(areas => {
@@ -108,6 +108,7 @@ try {
       for (const key of Object.keys(areas)) {
         const box = before.boxes[key], next = after.boxes[key];
         const maxBoxDelta = Math.max(...Object.keys(box).map(k => Math.abs(box[k] - next[k])));
+        if (values['exact-geometry']) assert.equal(maxBoxDelta, 0, name + ' ' + key + ': geometry changed');
         assert.ok(maxBoxDelta <= .25, name + ' ' + key + ': moved by ' + maxBoxDelta + 'px');
         const visibleBox = { ...box, height: Math.min(box.height, viewport.height - box.y) };
         const [visible, full, isolated] = await Promise.all([
@@ -136,6 +137,7 @@ if (results.some(r => Object.values(r.areas).some(a => a.confirmedNonText.pixels
   throw Error('Non-text hero differences remain; inspect hero-comparison.json');
 }
 
+if (values['exact-geometry']) console.log('All four hero comparisons: 0 px shifts in all six regions.');
 if (values['exact-hero']) console.log('All four hero comparisons: 0 px shifts, 0 changed pixels in viewport and full-page hero crops.');
 if (values.exact) {
   for (const row of results) {

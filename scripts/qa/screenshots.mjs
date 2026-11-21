@@ -31,9 +31,9 @@ const sessions = [];
 try {
   await withBrowser(async (browser, origin) => {
     for (const route of pages) for (const lang of langs) for (const viewport of viewports) {
-      const context = await browser.newContext({ viewport, javaScriptEnabled: !stubPages.has(route), deviceScaleFactor: 1, reducedMotion: 'reduce', locale: lang, serviceWorkers: 'block' });
+      const context = await browser.newContext({ viewport, javaScriptEnabled: true, deviceScaleFactor: 1, reducedMotion: 'reduce', locale: lang, serviceWorkers: 'block' });
       const requests = [];
-      sessions.push({ route, lang, viewport, javaScriptEnabled: !stubPages.has(route), requests });
+      sessions.push({ route, lang, viewport, javaScriptEnabled: true, requests });
       try {
         const verifyNetwork = await isolateNetwork(context, origin, requests);
         const page = await context.newPage();
@@ -43,8 +43,9 @@ try {
         // Capture the pair back-to-back, before compression can affect offscreen image painting.
         const captures = [];
         for (const fullPage of [false, true]) {
+          if (fullPage && route.startsWith('/#') && route !== '/#certificazioni') await page.evaluate(() => scrollTo(0, 0));
           if (fullPage && route === '/styleguide/') await loadCatalogueImages(page, 'img[src]');
-          if (fullPage && new URL(route, origin).pathname === '/') await loadCatalogueImages(page, 'img[src]:visible');
+          if (fullPage && route !== '/styleguide/') await loadCatalogueImages(page, 'img[src]:visible');
           const name = `${slug}-${lang}-${viewport.width}${fullPage ? '-full' : ''}.${values.format}`;
           const png = await page.screenshot({ fullPage, path: sharp ? undefined : join(out, name) });
           if (sharp) captures.push({ png, name, fullPage });
@@ -55,7 +56,7 @@ try {
         if (route === '/') assert.ok(requests.some(r => r.disposition.startsWith('fulfilled')), 'Home must fetch the intercepted production snapshot');
       } finally { await context.close(); }
     }
-  }, { holdRedirects: stubPages });
+  }, { holdRedirects: stubPages, auditScripts: true });
 } finally {
   await writeFile(join(out, 'network.json'), JSON.stringify(sessions, null, 2) + '\n');
 }

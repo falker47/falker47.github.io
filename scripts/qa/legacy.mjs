@@ -34,7 +34,7 @@ await withBrowser(async (browser, origin) => {
         if (response.request().isNavigationRequest() && response.frame() === page.mainFrame()) documents.push(response);
       });
       const expected = new URL(to, origin);
-      const finalStatus = declared.has(expected.pathname) ? 200 : 404;
+      const finalStatus = sourceStatus === 200 || declared.has(expected.pathname) ? 200 : 404;
       await page.goto(origin + from, { waitUntil: 'commit' });
       await page.waitForURL(url => url.origin === origin && url.pathname === expected.pathname, { waitUntil: 'load' });
       const final = new URL(page.url());
@@ -67,7 +67,7 @@ await withBrowser(async (browser, origin) => {
 });
 
 const lines = ['# Legacy URLs in Chromium', '',
-  'Paths below share the loopback origin. The server served the published files with normal scripts and automatic refresh. The native-refresh row used a JavaScript-disabled context. A 404 at a mapped destination is expected until P2 or P3 declares the route.', '',
+  'Paths below share the loopback origin. The server served the published files with normal scripts and automatic refresh. The native-refresh row used a JavaScript-disabled context. Each active mapped destination must return HTTP 200. Unmapped recovery probes exercise the custom 404.', '',
   '| Old URL | First HTTP | Final URL reached | Final HTTP | Mechanism |',
   '| --- | ---: | --- | ---: | --- |',
   ...records.map(([from, first, to, last, note]) => '| `' + from + '` | ' + first + ' | `' + to + '` | ' + last + ' | ' + note + ' |'), ''];
