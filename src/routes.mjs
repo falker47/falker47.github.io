@@ -6,6 +6,7 @@ import { page as research } from './pages/research.mjs';
 import { page as gecko } from './pages/prof-gecko.mjs';
 import { page as camaleonte } from './pages/camaleonte.mjs';
 import { page as uses } from './pages/uses.mjs';
+import { socialViewerRoutes } from './pages/social-viewer/index.mjs';
 
 export const origin = 'https://falker47.github.io';
 
@@ -46,4 +47,5 @@ export const routes = [
     image: profile.photo.src, render: notFound,
   },
   ...[research, gecko, camaleonte, uses].map(detailRoute),
+  ...socialViewerRoutes,
 ];

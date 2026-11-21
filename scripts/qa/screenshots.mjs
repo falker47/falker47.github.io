@@ -39,7 +39,7 @@ try {
         const page = await context.newPage();
         await visitReviewState(page, origin, route, lang, stubPages.has(route));
         const slug = route === '/#certificazioni' ? 'home-certificate-dialog' : route === '/' ? 'home' :
-          route.replace(/^\/#/, 'home-').replace(/^\/|\/$/g, '').replaceAll('/', '-');
+          route.replace(/^\/#/, 'home-').replace(/^\/|\/(?=#|$)/g, '').replace(/[/#]/g, '-');
         // Capture the pair back-to-back, before compression can affect offscreen image painting.
         const captures = [];
         for (const fullPage of [false, true]) {
