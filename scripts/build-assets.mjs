@@ -80,11 +80,9 @@ export function buildAssets(root, output) {
     const initial = sheets.slice(0, index).join('');
     const path = await stylesheet(sheets.slice(index).join(''));
     const critical = initial ? '<style>' + initial + '</style>' : '';
-    // Inner-page columns and the centered error panel need their layout before paint.
-    // Home has a complete first-paint hero in its inline styles.
-    if (route.path && route.path !== '/') return critical + '<link rel="stylesheet" href="' + path + '">';
-    return critical + '<link rel="preload" as="style" href="' + path + '" onload="this.onload=null;this.rel=\'stylesheet\'">' +
-      '<noscript><link rel="stylesheet" href="' + path + '"></noscript>';
+    // Fetch a single content-addressed sheet. The native stylesheet applies the
+    // complete layout before paint and also works when scripting is disabled.
+    return critical + '<link rel="preload" as="style" href="' + path + '"><link rel="stylesheet" href="' + path + '">';
   }
 
   async function scripts(paths) {

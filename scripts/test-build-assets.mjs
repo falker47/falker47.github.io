@@ -40,6 +40,8 @@ test('the CSS byte threshold includes the protected home block and hashes actual
   const large = await assets.styles(page, 'protected'.repeat(3));
   const external = tags(large).find(t => t.attrs.as === 'style').attrs.href;
   assert.match(external, /^\/styles\/site-[a-f0-9]{16}\.css$/);
+  assert.ok(tags(large).some(t => t.attrs.rel === 'stylesheet' && t.attrs.href === external));
+  assert.doesNotMatch(large, /\bonload=|<noscript>/, 'The initial layout stylesheet must apply before paint');
   assert.equal(await readFile(join(root, external), 'utf8'), boundary);
   assert.equal(await assets.styles(page, 'protected'.repeat(3)), large);
   await writeFile(file, boundary.replace('aaa', 'abb'));
