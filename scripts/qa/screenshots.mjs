@@ -9,7 +9,9 @@ if (!['png', 'webp'].includes(values.format)) throw Error('Use --format png or w
 const sharp = values.format === 'webp' ? qaRequire('sharp') : null;
 
 async function saveWebp(png, name, route, fullPage) {
-  const limit = route !== '/' && fullPage ? 200 * 1024 : 300_000;
+  // Full pages get 200 KB per 3,000 px of height (long catalogues such as /projects/).
+  const { height } = await sharp(png).metadata();
+  const limit = route !== '/' && fullPage ? 200 * 1024 * Math.max(1, Math.ceil(height / 3000)) : 300_000;
   const qualities = route === '/' ? [100] : [80, 70, 60, 50, 40, 35, 30, 25, 20];
   for (const quality of qualities) {
     const bytes = await sharp(png).webp({ lossless: route === '/', quality, effort: 6 }).toBuffer();

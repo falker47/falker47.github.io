@@ -122,3 +122,8 @@ html[data-lang="en"] .sv-policy [data-panel="it"] { display: none; }
   .sv-policy .language-panel { padding-top: 16px; }
   .policy-heading .meta { display: grid; }
 }
+@media (max-width: 599px) {
+  /* On a phone the title already links back to Social Viewer; keep both paths in one screen. */
+  .sv-test { grid-template-areas: "head" "picker" "facts" "foot"; }
+  .sv-test > .detail-crumbs { display: none; }
+}

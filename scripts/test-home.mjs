@@ -34,6 +34,14 @@ test('every project sheet keeps its order, plate number and destinations', () =>
   assert.throws(() => validateProjectsPage(sheets.replace(/<span class="index-count">4<\/span>/, '<span class="index-count">5</span>')));
 });
 
+test('the sheet partial links exactly the project pages this site renders', async () => {
+  const { projectPages } = await import('../src/partials/sheets.mjs');
+  const { routes } = await import('../src/routes.mjs');
+  const projects = (await import('../data/projects.json', { with: { type: 'json' } })).default;
+  const rendered = new Set(routes.map(route => route.path));
+  assert.deepEqual([...projectPages].sort(), projects.map(project => project.page).filter(page => page && rendered.has(page)).sort());
+});
+
 test('the Save Editor sheet preserves both original project destinations', () => {
   const editor = sheets.match(/<article class="tavola[^"]*" aria-labelledby="tav-hogwarts-legacy-save-editor">[^]*?<\/article>/)[0];
   assert.match(editor, /class="tavola-link" href="https:\/\/www\.nexusmods\.com\/hogwartslegacy\/mods\/2414"/);

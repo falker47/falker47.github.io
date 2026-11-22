@@ -110,7 +110,7 @@ async function checkBindings(browser, origin) {
     }
     await page.locator('#internal').click();
     await page.waitForFunction(() => document.documentElement.dataset.lang === 'en' &&
-      document.querySelector('.language-switch button[data-lang="en"]')?.getAttribute('aria-pressed') === 'true');
+      document.querySelector('button[data-lang="en"]')?.getAttribute('aria-pressed') === 'true');
     assert.equal(new URL(page.url()).pathname, '/');
     verifyNetwork();
   } finally { await context.close(); }
