@@ -13,15 +13,15 @@ test('text arrows, ordinary digits and fragments survive the emoji check', () =>
 });
 
 test('unknown font, insufficient contrast and undersized controls fail Node validation', async () => {
-  const root = await mkdtemp(join(tmpdir(), 'register-css-'));
+  const root = await mkdtemp(join(tmpdir(), 'sheets-css-'));
   try {
     const css = `:root { --bg:#071525; --surface:#0b1d30; --surface-raised:#0d2338; --header-bg:#071525ee; --paper:#f1f4f5; --blue:#9bdcff; --target:44px; }
-      :where(.site-header, .register-tabs, .filter-chips, .register-row, .mod-row) :is(a, button) { min-height: var(--target); }
+      :where(.site-header, .site-footer, .tavola, .sheets-index, .detail-crumbs) :is(a, button) { min-height: var(--target); }
       body { color:var(--paper); background:var(--bg); font-family:system-ui,sans-serif; }`;
     await writeFile(join(root, 'site.css'), css);
     await designChecks(root);
-    await assert.rejects(designChecks(root, ['.row-title {font-family: Gelaasio, serif}']), /undeclared font/);
-    await assert.rejects(designChecks(root, ['.row-title {color:var(--paper);background:var(--blue)}']), /below 4.5/);
-    await assert.rejects(designChecks(root, ['.row-title {min-height:20px}']), /min-height/);
+    await assert.rejects(designChecks(root, ['.tavola-link {font-family: Gelaasio, serif}']), /undeclared font/);
+    await assert.rejects(designChecks(root, ['.tavola-link {color:var(--paper);background:var(--blue)}']), /below 4.5/);
+    await assert.rejects(designChecks(root, ['.tavola-link {min-height:20px}']), /min-height/);
   } finally { await rm(root, { recursive: true, force: true }); }
 });

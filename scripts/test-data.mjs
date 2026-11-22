@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { img, picture } from '../src/lib/media.mjs';
 import { tags } from './qa/site.mjs';
 import { styleguide } from '../src/styleguide/page.mjs';
+import { routes } from '../src/routes.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const read = async name => JSON.parse(await readFile(join(root, 'data', name + '.json'), 'utf8'));
@@ -243,7 +244,8 @@ test('the QA Data section shows all 30 entries and keeps planned routes out of n
   const expected = [...projects.map(p => p.cover), ...mods.items.map(m => m.cover), ...certs.map(c => c.thumbnail)];
   assert.equal(elements.filter(e => e.name === 'picture').length, expected.length);
   assert.deepEqual(elements.filter(e => e.name === 'img' && e.attrs.src).map(e => e.attrs.src), expected.map(image => image.src));
-  const planned = new Set([...projects.map(p => p.page), '/projects/social-viewer/test/']);
+  const built = new Set(routes.map(route => route.path));
+  const planned = new Set([...projects.map(p => p.page), '/projects/social-viewer/test/'].filter(path => path && !built.has(path)));
   for (const link of tags(markup).filter(e => e.name === 'a')) {
     assert.ok(!planned.has(link.attrs.href), 'Unbuilt route in styleguide: ' + link.attrs.href);
     assert.doesNotMatch(link.attrs.href, /\/Nexus-portfolio\//i);

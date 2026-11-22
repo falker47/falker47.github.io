@@ -1,6 +1,7 @@
 import { html, raw } from '../../lib/html.mjs';
 import { label } from '../../partials/components.mjs';
 import { icon } from '../../partials/icons.mjs';
+import { crumb } from '../../partials/detail-page.mjs';
 
 const group = 'https://groups.google.com/g/camaleonte-testing';
 const optIn = 'https://play.google.com/apps/testing/io.github.falker47.socialviewer';
@@ -20,7 +21,8 @@ function pathPanel({ t, copy }, id, store) {
 
 export function renderTest(ctx, store) {
   const { t, copy } = ctx;
-  return html`<main id="main" class="sv sv-test">
+  return html`<main id="main" tabindex="-1" class="sv sv-test">
+  ${raw(crumb(ctx, { href: '../', text: 'Social Viewer' }))}
   <header class="sv-test-head">
     <div class="sv-test-meta"><p class="sv-kicker">Falker Studio Testers</p><span class="sv-status">${label(t, 'svStatus')}</span></div>
     <h1><a href="../">Social Viewer</a></h1>

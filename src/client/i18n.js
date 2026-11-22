@@ -3,7 +3,7 @@
   const root = document.documentElement;
   const pageCopy = JSON.parse(document.getElementById('page-i18n').textContent);
   const titles = document.getElementById('site-language').dataset;
-  const buttons = document.querySelectorAll('.language-switch button[data-lang]');
+  const buttons = document.querySelectorAll('button[data-lang]');
   const extraCopy = new Map();
   let revision = 0;
 

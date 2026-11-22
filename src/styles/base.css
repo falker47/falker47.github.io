@@ -1,5 +1,5 @@
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-padding-block-start: calc(var(--header-height) + 12px); }
+html { scroll-padding-block-start: 16px; }
 body {
   margin: 0;
   color: var(--paper);
@@ -22,7 +22,7 @@ button { font: inherit; color: inherit; }
 /* Reserve chrome and choose one SVG before a large route sheet arrives. The
    zero-specificity defaults allow the page's own rules to refine its layout. */
 :where(.icon-sprite) { position: absolute; }
-:where(.site-header) { display: flex; align-items: center; height: var(--header-height); }
+:where(.site-header) { display: flex; align-items: center; min-height: var(--header-height); }
 :where(.site-brand) { margin-inline-end: auto; }
 html:lang(it) .hero-lead h1 [lang="en"], html:lang(en) .hero-lead h1 [lang="it"] { display: none !important; }
 @media (max-width: 999px) {

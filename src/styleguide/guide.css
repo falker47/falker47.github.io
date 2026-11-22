@@ -6,11 +6,7 @@
 .guide-intro label { display: inline-flex; align-items: center; gap: 12px; color: var(--secondary); }
 .guide select { min-height: var(--target); padding-inline: 8px; color: var(--paper); background: var(--surface); border: 1px solid var(--rule); font: inherit; }
 .guide-section { border-top: 1px solid var(--rule); padding-block: 20px; min-width: 0; }
-.guide-columns, .guide-stats, .guide-states { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
-.guide-stats { gap: 8px; }
-.guide-columns .mod-row { grid-template-columns: 3ch 128px minmax(0,1fr); }
-.guide-columns .mod-action, .guide-columns .mod-row .row-kind { display: none; }
-.guide .sheet { margin-bottom: 16px; }
+.guide-columns, .guide-states { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
 .data-section h3 { margin: 20px 0 12px; font-size: var(--h3); }
 .data-gallery, .guide .certificate-grid {
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px 16px;
@@ -21,7 +17,6 @@
 .data-gallery p, .certificate small { margin-bottom: 0; color: var(--secondary); font-size: 14px; line-height: 1.4; }
 .data-gallery p { margin-top: 4px; }
 .data-gallery [data-i18n="guideHidden"] { color: var(--muted); font-size: var(--label); }
-.guide :is(.register-row, .mod-row) > picture { display: contents; }
 @media (max-width: 999px) {
   .data-gallery, .guide .certificate-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
@@ -38,6 +33,4 @@
 @media (max-width: 699px) {
   .guide { margin-top: 20px; }
   .guide-states { grid-template-columns: 1fr; }
-  .guide-columns .mod-row { grid-template-columns: 104px minmax(0,1fr) 20px; }
-  .guide-columns .mod-row .row-kind { display: block; }
 }

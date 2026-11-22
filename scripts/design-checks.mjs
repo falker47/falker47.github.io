@@ -3,7 +3,7 @@ import { stat, readFile } from 'node:fs/promises';
 import { walk } from './qa/site.mjs';
 
 const systemFamilies = new Set(['system-ui','sans-serif','serif','monospace','cursive','fantasy','ui-serif','ui-sans-serif','ui-monospace','ui-rounded','arial','helvetica','georgia','times new roman','courier new','segoe ui','sfmono-regular','menlo','monaco','consolas','inherit','initial','unset','revert','revert-layer','-apple-system','blinkmacsystemfont','helvetica neue']);
-const roots = ['.site-header', '.register-tabs', '.filter-chips', '.register-row', '.mod-row'];
+const roots = ['.site-header', '.site-footer', '.tavola', '.sheets-index', '.detail-crumbs'];
 
 function rules(css) {
   // Leaf blocks also cover declarations inside media queries.
@@ -104,7 +104,7 @@ export async function designChecks(siteRoot, inlineCss = []) {
         covered.add(root);
       }
     }
-    if (/\.(?:site-header|site-nav|register-tabs|filter-chips|register-row|mod-row)\b[^,{]*(?:\s[ab]\b|\sbutton\b)|\.(?:row-title|icon-button|site-brand)\b/.test(selector) && /^\d+(?:\.\d+)?px$/.test(min)) {
+    if (/\.(?:site-header|site-nav|site-footer|work-tabs|tavola|sheets-index|detail-crumbs)\b[^,{]*(?:\s[ab]\b|\sbutton\b)|\.(?:tavola-link|site-brand)\b/.test(selector) && /^\d+(?:\.\d+)?px$/.test(min)) {
       assert.ok(parseFloat(min) >= 44, `${selector}: min-height ${min}`);
     }
   }

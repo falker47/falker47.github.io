@@ -1,7 +1,8 @@
 import { html, raw } from '../lib/html.mjs';
 import { label } from '../partials/components.mjs';
-import { detailPage, section } from '../partials/detail-page.mjs';
+import { action, detailPage, section } from '../partials/detail-page.mjs';
 import { icon } from '../partials/icons.mjs';
+import { specRows } from '../partials/sheets.mjs';
 
 const variants = [480, 960, 1440].map(width => ({
   src: `/assets/images/uses-${width}.webp`, width, height: width * 9 / 16,
@@ -20,21 +21,26 @@ export const page = {
 };
 
 function recommendation(t, item) {
-  return html`<li><article class="detail-pick">
+  return html`<li class="detail-pick">
     <p class="detail-meta">${icon(item.glyph)} ${label(t, item.category)}</p>
     <h3 id="${item.title}-name">${label(t, item.title)}</h3><p>${label(t, item.text)}</p>
     <a href="${item.url}" rel="sponsored noopener" aria-labelledby="${item.title}-cta ${item.title}-name">
-      <span id="${item.title}-cta">${label(t, 'usesAmazon')}</span>${icon('arrow-ne')}</a>
+      <span id="${item.title}-cta">${label(t, 'usesAmazon')}</span> <span aria-hidden="true">↗</span></a>
     <small>${label(t, 'usesPaidLink')}</small>
-  </article></li>`;
+  </li>`;
 }
 
 export function render(ctx) {
   const { t } = ctx;
   return detailPage(ctx, {
-    kicker: 'usesPageKicker', caption: 'usesSheet', media: cover, altKey: 'usesImageAlt',
-    body: section(t, 'usesEditorialTitle', html`<p>${label(t, 'usesEditorialText')}</p>`, 'criterio')
+    plate: html`<p class="tavola-label">${label(t, 'usesPageKicker')}</p>`, media: cover, altKey: 'usesImageAlt',
+    back: { href: '/', key: 'navHome' },
+    spec: specRows(t, [
+      ['specKind', label(t, 'usesSpecKind')], ['usesSpecCount', String(picks.length)], ['specWhere', label(t, 'usesSpecWhere')],
+    ]),
+    actions: [action(t, '#consigli', 'usesSeePicks', false)],
+    body: section(t, 'usesPicksTitle', html`<ul class="detail-list detail-picks">${raw(picks.map(item => recommendation(t, item)).join('\n'))}</ul>`, 'consigli')
+      + section(t, 'usesEditorialTitle', html`<p>${label(t, 'usesEditorialText')}</p>`, 'criterio')
       + section(t, 'usesDisclosureTitle', html`<p>${label(t, 'usesDisclosure')}</p>`, 'affiliazione'),
-    resources: html`<ul class="detail-picks">${raw(picks.map(item => recommendation(t, item)).join('\n'))}</ul>`,
   });
 }

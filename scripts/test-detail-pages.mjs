@@ -26,7 +26,11 @@ test('detail pages publish a priority picture, a canonical author and working re
     assert.equal(person['@id'], origin + '/#person');
     assert.equal(person.jobTitle, 'AI & Digital Innovation Specialist');
     assert.equal(graph.find(item => item.url === origin + path).author['@id'], person['@id']);
-    assert.ok(elements.some(el => el.attrs.href === (path === '/research/' ? '/#ricerca' : '/#software')));
+    // "← Progetti" for project pages, "← Home" for the recommendations.
+    const crumb = source.match(/<nav class="detail-crumbs"[^>]*><a href="([^"]+)">/);
+    assert.equal(crumb?.[1], path === '/uses/' ? '/' : '/projects/', path + ' breadcrumb');
+    assert.match(source, /<article class="tavola tavola-top[^"]*" aria-labelledby="page-title">[^]*?<table class="spec">/, path + ' top sheet');
+    assert.ok(!/class="[^"]*\b(?:register-row|filter-chips|register-tabs)\b/.test(source), path + ' R1 components');
     assert.match(source, /<footer\b[\s\S]*?<a href="\/uses\/"/);
   }
 });

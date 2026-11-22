@@ -1,40 +1,48 @@
 import { html, raw } from '../lib/html.mjs';
-import { label, sheetFrame } from './components.mjs';
+import { label } from './components.mjs';
 import { icon } from './icons.mjs';
+import { sheetFigure, specTable } from './sheets.mjs';
 
-export function detailPage({ route, copy, t }, { kicker, media, altKey, caption, body, resources, research = false }) {
-  const back = research ? ['/#ricerca', 'detailBackResearch'] : ['/#software', 'detailBackSoftware'];
-  const image = { ...media, alt: { it: copy.it[altKey], en: copy.en[altKey] } };
-  return html`<main id="main" class="detail-page">
-  <nav class="detail-crumbs" aria-label="${copy.it.detailBreadcrumb}" data-label="detailBreadcrumb">
-    <a href="/#progetti">${label(t, 'workTitle')}</a><span aria-hidden="true">›</span>
-    <span aria-current="page">${label(t, route.titleKey)}</span>
-  </nav>
-  <header class="detail-hero">
-    <div class="detail-intro"><p class="detail-kicker">${label(t, kicker)}</p>
-      <h1>${label(t, route.titleKey)}</h1>
-      <p class="detail-lead">${label(t, route.descriptionKey)}</p>
+// Breadcrumb back to a parent page, written as "← Progetti".
+export function crumb({ t, copy }, { href = '/projects/', key = 'workTitle', text } = {}) {
+  return html`<nav class="detail-crumbs" aria-label="${copy.it.detailBreadcrumb}" data-label="detailBreadcrumb"><a href="${href}"><span aria-hidden="true">←</span> ${text ?? label(t, key)}</a></nav>`;
+}
+
+export function action(t, href, key, external = true) {
+  return html`<a class="tavola-link" href="${href}">${label(t, key)} <span aria-hidden="true">${external ? '↗' : '→'}</span></a>`;
+}
+
+/**
+ * The top sheet of a project page: a framed image, plate label, title, lead,
+ * spec table and actions. Short blocks follow under ruled headings.
+ */
+export function detailPage(ctx, { plate, media, altKey, spec, actions, body, back = {}, sizes }) {
+  const { route, copy, t } = ctx;
+  const image = altKey ? { ...media, alt: { it: copy.it[altKey], en: copy.en[altKey] } } : media;
+  return html`<main id="main" tabindex="-1" class="detail-page">
+  ${raw(crumb(ctx, back))}
+  <article class="tavola tavola-top" aria-labelledby="page-title">
+    ${raw(sheetFigure(image, { fetchpriority: 'high', sizes }))}
+    <div class="tavola-text">${raw(plate)}
+      <h1 id="page-title">${label(t, route.titleKey)}</h1>
+      <p class="tavola-summary">${label(t, route.descriptionKey)}</p>
+      ${raw(spec)}
+      <div class="tavola-links">${raw(actions.join(''))}</div>
     </div>
-    ${raw(sheetFrame(t, { image, caption, fetchpriority: 'high',
-      sizes: '(min-width: 1200px) 584px, (min-width: 800px) 51vw, (min-width: 600px) calc(100vw - 106px), calc(100vw - 58px)' }))}
-  </header>
+  </article>
   ${raw(body)}
-  ${raw(section(t, 'detailResources', resources, 'risorse'))}
-  <a class="detail-back" href="${back[0]}"><span aria-hidden="true">←</span> ${label(t, back[1])}</a>
 </main>`;
 }
 
 export function section(t, heading, content, id) {
-  return html`<section class="detail-section" aria-labelledby="${id}">
-    <h2 id="${id}">${label(t, heading)}</h2>
-    <div class="detail-section-body">${raw(content)}</div>
+  return html`<section class="detail-block" id="${id}" aria-labelledby="${id}-title">
+    <h2 id="${id}-title">${label(t, heading)}</h2>
+    <div class="detail-block-body">${raw(content)}</div>
   </section>`;
 }
 
-export function resource(t, href, key, glyph) {
-  return html`<li><a class="detail-resource" href="${href}">${icon(glyph)}${label(t, key)}${icon('arrow-ne')}</a></li>`;
+export function plateFor(t, number, extraKey) {
+  return html`<p class="tavola-label">${label(t, 'sheetLabel')} ${number}${extraKey ? raw(html` · ${label(t, extraKey)}`) : ''}</p>`;
 }
 
-export function resourceList(links) {
-  return html`<ul class="detail-links">${raw(links.join('\n'))}</ul>`;
-}
+export { specTable, icon };

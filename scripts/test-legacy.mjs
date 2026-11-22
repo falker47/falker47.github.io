@@ -13,6 +13,7 @@ import { origin, routes } from '../src/routes.mjs';
 import { startServer } from './qa/serve.mjs';
 import { openSite, routeFor, siteRoot, tags, walk } from './qa/site.mjs';
 import { validateCanonical, validateSitemap } from './validate-migration.mjs';
+import { legacyTarget } from '../src/pages/redirect.mjs';
 
 const site = await openSite();
 const legacy = fileURLToPath(new URL('../legacy/', import.meta.url));
@@ -52,9 +53,10 @@ test('each old URL replaces history, retaining query and remapping only its own 
     for (const lang of ['it', 'en']) {
       assert.ok(links.some(e => e.attrs.lang === lang && new URL(e.attrs.href, origin).pathname === redirect.to));
     }
-    const destination = await site.document(await site.resolveFile(new URL(redirect.to, origin)));
     for (const mapped of Object.values(redirect.hashMap ?? {})) {
-      if (mapped) assert.ok(destination.elements.some(e => e.attrs.id === mapped.slice(1)), redirect.to + mapped);
+      const url = new URL(mapped.startsWith('/') ? mapped : redirect.to + mapped, origin);
+      const destination = await site.document(await site.resolveFile(url));
+      if (url.hash) assert.ok(destination.elements.some(e => e.attrs.id === url.hash.slice(1)), url.pathname + url.hash);
     }
     const fragments = new Set(['', '#projects', '#certifications', '#contact', '#hero', '#other',
       ...Object.keys(redirect.hashMap ?? {})]);
@@ -62,7 +64,8 @@ test('each old URL replaces history, retaining query and remapping only its own 
       let actual;
       const search = '?lang=en&x=a%2Bb';
       vm.runInNewContext(script, { location: { search, hash, replace(url) { actual = url; } } });
-      assert.equal(actual, redirect.to + search + (redirect.hashMap?.[hash] ?? hash), redirect.from + hash);
+      assert.equal(actual, legacyTarget(redirect.to, redirect.hashMap ?? {}, search, hash), redirect.from + hash);
+      if (hash === '#projects' && redirect.to === '/') assert.equal(actual, '/projects/' + search, 'Old project lists open the projects page');
     }
   }
 });

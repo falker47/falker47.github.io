@@ -5,6 +5,7 @@ import { join } from 'node:path';
 import map from '../../data/redirects.json' with { type: 'json' };
 import manifest from '../../legacy/sha256.json' with { type: 'json' };
 import { routes } from '../../src/routes.mjs';
+import { legacyTarget } from '../../src/pages/redirect.mjs';
 import { options, withBrowser } from './browser.mjs';
 import { isolateNetwork } from './network.mjs';
 
@@ -13,14 +14,14 @@ const records = [];
 const declared = new Set(routes.map(route => route.path));
 const cases = map.redirects.map(({ from, to }) => ({ from, to, sourceStatus: 200 }));
 for (const { from, to, hashMap } of map.redirects) {
-  for (const [hash, mapped] of Object.entries(hashMap ?? {})) {
-    cases.push({ from: from + '?lang=en&ref=a%2Bb' + hash, to: to + '?lang=en&ref=a%2Bb' + mapped, sourceStatus: 200 });
+  for (const hash of Object.keys(hashMap ?? {})) {
+    cases.push({ from: from + '?lang=en&ref=a%2Bb' + hash, to: legacyTarget(to, hashMap, '?lang=en&ref=a%2Bb', hash), sourceStatus: 200 });
   }
 }
 cases.push(
   { from: '/Nexus-portfolio/research.html?lang=en#paper', to: '/research/?lang=en#paper', sourceStatus: 200 },
   { from: '/Nexus-portfolio/research.html', to: '/research/', sourceStatus: 200, noScript: true },
-  { from: '/Nexus-portfolio/projects/retired.html?lang=en', to: '/?lang=en#software', sourceStatus: 404 },
+  { from: '/Nexus-portfolio/projects/retired.html?lang=en', to: '/projects/?lang=en', sourceStatus: 404 },
   { from: '/Nexus-portfolio/missing.html?lang=en', to: '/?lang=en', sourceStatus: 404 },
   { from: '/missing-p6-page?lang=en', to: '/missing-p6-page?lang=en', sourceStatus: 404 },
 );

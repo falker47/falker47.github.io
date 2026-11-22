@@ -28,7 +28,6 @@
         tab.setAttribute('aria-selected', String(tab === current));
         panels[i].hidden = tab !== current;
       });
-      list.dispatchEvent(new CustomEvent('tabchange', { bubbles: true, detail: current.id }));
     }
     tabs.forEach((tab, index) => {
       tab.addEventListener('click', () => select(tab));
@@ -41,34 +40,9 @@
         tabs[next].focus();
       });
     });
-    if (list.closest('.work')) {
-      list.closest('.work').classList.add('work-enhanced');
-      const hashes = { '#software': 'tab-software', '#modding': 'tab-modding', '#ricerca': 'tab-research', '#tutoring': 'tab-teaching' };
-      const fromHash = () => {
-        const target = tabs.find(tab => tab.id === hashes[location.hash]);
-        if (target) {
-          select(target);
-          document.getElementById('progetti').scrollIntoView();
-        }
-        return Boolean(target);
-      };
-      window.addEventListener('hashchange', fromHash);
-      list.addEventListener('tabchange', event => {
-        const hash = Object.keys(hashes).find(key => hashes[key] === event.detail);
-        if (hash && !list.hidden) history.replaceState(history.state, '', hash);
-      });
-      if (!fromHash()) select(tabs[0]);
-    } else select(tabs[0]);
+    list.closest('.work')?.classList.add('work-enhanced');
+    select(tabs[0]);
     list.hidden = false;
-  }
-
-  for (const filters of document.querySelectorAll('.filter-chips')) {
-    const buttons = filters.querySelectorAll('[data-filter]');
-    const rows = filters.closest('[data-filter-list]')?.querySelectorAll('.register-row') || [];
-    for (const button of buttons) button.addEventListener('click', () => {
-      for (const item of buttons) item.setAttribute('aria-pressed', String(item === button));
-      for (const row of rows) row.hidden = button.dataset.filter !== 'all' && row.dataset.kind !== button.dataset.filter;
-    });
   }
 
   for (const viewer of document.querySelectorAll('.certificate-viewer')) {
@@ -107,50 +81,15 @@
     document.addEventListener('portfolio:languagechange', updateTitle);
   }
 
-  const links = Array.from(document.querySelectorAll('.site-nav a[href^="#"]'));
-  if (!links.length) return;
-  const sections = links.map(link => document.getElementById(link.hash.slice(1)));
-  function current() {
-    const top = document.querySelector('.site-header').getBoundingClientRect().bottom;
-    const reached = section => Math.floor(section.getBoundingClientRect().top) <= top;
-    const visible = sections.filter(section => {
-      const rect = section.getBoundingClientRect();
-      return rect.top < innerHeight && rect.bottom > top;
-    });
-    const maxScroll = document.documentElement.scrollHeight - innerHeight;
-    const padding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
-    const linked = visible.find(section => {
-      if ('#' + section.id !== location.hash) return false;
-      const destination = Math.max(0, Math.min(maxScroll, scrollY + section.getBoundingClientRect().top - padding));
-      return Math.abs(destination - scrollY) <= 2;
-    });
-    const last = scrollY >= maxScroll - 2;
-    const atProjects = reached(sections[0]);
-    const active = atProjects && (linked || (last ? visible.at(-1) : visible.find(reached)));
-    links.forEach((link, i) => {
-      if (sections[i] === active) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
-    });
-  }
+  // A fragment inside a closed disclosure (#chi-sono, #certificazioni) opens it first.
   function followFragment() {
-    const about = document.getElementById('chi-sono');
-    if (['#chi-sono', '#certificazioni'].includes(location.hash) && !about.open) {
-      about.open = true;
-      document.getElementById(location.hash.slice(1)).scrollIntoView({ block: 'start' });
-    }
-    current();
+    let target;
+    try { target = location.hash ? document.querySelector(location.hash) : null; } catch { return; }
+    const details = target?.closest('details');
+    if (!details || details.open) return;
+    details.open = true;
+    target.scrollIntoView({ block: 'start' });
   }
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(current, { rootMargin: '-64px 0px 0px', threshold: [0, 1] });
-    sections.forEach(section => observer.observe(section));
-  }
-  let frame = 0;
-  addEventListener('scroll', () => {
-    if (!frame) frame = requestAnimationFrame(() => { frame = 0; current(); });
-  }, { passive: true });
-  links.find(link => link.hash === '#chi-sono').addEventListener('click', () => {
-    document.getElementById('chi-sono').open = true;
-  });
   addEventListener('hashchange', followFragment);
   followFragment();
 })();

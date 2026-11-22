@@ -2,6 +2,15 @@ import { html, jsonScript, raw } from '../lib/html.mjs';
 import { initialLanguageScript } from '../partials/language-switch.mjs';
 import { origin } from '../routes.mjs';
 
+// A fragment maps to another fragment of the destination ("#contact" → "#contatti")
+// or to another page ("#projects" → "/projects/"). The query string is always kept.
+export function legacyTarget(to, fragments, search, hash) {
+  const mapped = Object.prototype.hasOwnProperty.call(fragments, hash) ? fragments[hash] : hash;
+  if (mapped.charAt(0) !== '/') return to + search + mapped;
+  const at = mapped.indexOf('#');
+  return at === -1 ? mapped + search : mapped.slice(0, at) + search + mapped.slice(at);
+}
+
 export function redirectPage({ to, hashMap = {} }, copy, styles) {
   return html`<!doctype html>
 <html lang="it">
@@ -13,7 +22,7 @@ export function redirectPage({ to, hashMap = {} }, copy, styles) {
 <script>
   const target = ${jsonScript(to)};
   const fragments = ${jsonScript(hashMap)};
-  location.replace(target + location.search + (fragments[location.hash] ?? location.hash));
+  location.replace((${raw(legacyTarget.toString())})(target, fragments, location.search, location.hash));
 </script>
 <meta http-equiv="refresh" content="0; url=${to}">
 ${raw(initialLanguageScript({ titleKey: 'moved' }, copy))}

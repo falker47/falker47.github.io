@@ -13,6 +13,10 @@
       "FastAPI",
       "RAG"
     ],
+    "where": {
+      "it": "Web, ospitata su Vercel",
+      "en": "Web, hosted on Vercel"
+    },
     "summary": {
       "it": "Un chatbot distingue giochi e generazioni Pokémon, con Pokédex e strumenti per comporre la squadra.",
       "en": "Ask about a particular Pokémon game or generation, look up Pokémon in the Pokédex and build your team."
@@ -76,6 +80,10 @@
       "TypeScript",
       "Zustand"
     ],
+    "where": {
+      "it": "Web e Google Play",
+      "en": "Web and Google Play"
+    },
     "summary": {
       "it": "Un party game di deduzione per 3–12 giocatori su un solo telefono, anche offline.",
       "en": "Bluff and spot the odd player out as 3–12 people share one phone. You can play offline."
@@ -154,6 +162,10 @@
       "Kotlin",
       "Jetpack Compose"
     ],
+    "where": {
+      "it": "Google Play, anche come tester",
+      "en": "Google Play, also as a tester"
+    },
     "summary": {
       "it": "Apri i link pubblici dei social in un’app Android che mostra il contenuto senza il feed.",
       "en": "Open a public link on Android to see the shared post without scrolling through a feed."
@@ -229,6 +241,10 @@
       "Neon",
       "Vercel"
     ],
+    "where": {
+      "it": "Web, ospitato su Vercel",
+      "en": "Web, hosted on Vercel"
+    },
     "summary": {
       "it": "Indovina l’autore di una citazione e scopri il contesto storico dopo la risposta.",
       "en": "Guess who said it, then learn the history behind the quote."
@@ -295,6 +311,10 @@
       "TypeScript",
       "Supabase"
     ],
+    "where": {
+      "it": "Web, ospitata su Netlify",
+      "en": "Web, hosted on Netlify"
+    },
     "summary": {
       "it": "Una comunità educativa racconta le proprie giornate con testi, foto e altri contributi multimediali.",
       "en": "Members of an educational community share journal entries, photos and other media."
@@ -360,6 +380,10 @@
       "Google GenAI",
       "Netlify Functions"
     ],
+    "where": {
+      "it": "Web, ospitata su Netlify",
+      "en": "Web, hosted on Netlify"
+    },
     "summary": {
       "it": "Trova clausole, costi e scadenze nei contratti caricati come PDF o immagini.",
       "en": "Find clauses, costs and deadlines in a contract from a PDF or a photo."
@@ -425,6 +449,10 @@
       "JavaScript",
       "Web Crypto"
     ],
+    "where": {
+      "it": "Web, su GitHub Pages",
+      "en": "Web, on GitHub Pages"
+    },
     "summary": {
       "it": "Consulta un archivio pubblico di strumenti e apri pacchetti cifrati direttamente nel browser.",
       "en": "Browse the tool archive or open an encrypted package in your browser."
@@ -489,6 +517,10 @@
     "stack": [
       "React"
     ],
+    "where": {
+      "it": "Web, ospitati su Netlify",
+      "en": "Web, hosted on Netlify"
+    },
     "summary": {
       "it": "Modifica i salvataggi di Pokémon Mystery Dungeon o consulta la guida al quiz della personalità.",
       "en": "Edit a Pokémon Mystery Dungeon save or use the quiz guide to choose your starter."
@@ -555,6 +587,10 @@
       "Node.js",
       "Socket.io"
     ],
+    "where": {
+      "it": "Web, ospitato su Render",
+      "en": "Web, hosted on Render"
+    },
     "summary": {
       "it": "Gioca online con amici a un party game di carte con un mazzo italiano e turni in tempo reale.",
       "en": "Play a card game online with friends using Italian-language cards and live rounds."
@@ -620,6 +656,10 @@
       "Python",
       "CustomTkinter"
     ],
+    "where": {
+      "it": "Windows, dal codice su GitHub",
+      "en": "Windows, from the source on GitHub"
+    },
     "summary": {
       "it": "Riunisce gli strumenti nativi di Windows per pulizia, riparazione e manutenzione del PC.",
       "en": "Clean up, repair and maintain a PC with the tools built into Windows."
@@ -676,6 +716,10 @@
     "stack": [
       "JavaScript"
     ],
+    "where": {
+      "it": "Web, su GitHub Pages",
+      "en": "Web, on GitHub Pages"
+    },
     "summary": {
       "it": "Verifica gli IBAN italiani e suggerisce correzioni per refusi o caratteri invertiti.",
       "en": "Check an Italian IBAN for typos or swapped characters and see suggested fixes."
@@ -740,6 +784,10 @@
     "stack": [
       "JavaScript"
     ],
+    "where": {
+      "it": "Web, su GitHub Pages",
+      "en": "Web, on GitHub Pages"
+    },
     "summary": {
       "it": "Genera, valida e decodifica codici fiscali italiani, inclusi i casi di omocodia.",
       "en": "Generate, check or decode an Italian tax code, including codes issued to resolve duplicates."
@@ -804,6 +852,10 @@
     "stack": [
       "JavaScript"
     ],
+    "where": {
+      "it": "Web, su GitHub Pages",
+      "en": "Web, on GitHub Pages"
+    },
     "summary": {
       "it": "Seleziona i numeri che soddisfano tutte le somme di riga e colonna in una griglia a soluzione unica.",
       "en": "Select numbers in a grid so that every row and column adds up to its target. Each puzzle has one solution."
@@ -868,6 +920,10 @@
     "stack": [
       "JavaScript"
     ],
+    "where": {
+      "it": "Web, su GitHub Pages",
+      "en": "Web, on GitHub Pages"
+    },
     "summary": {
       "it": "Deduci il codice segreto in partite libere o in una campagna di nove livelli ispirata a Mastermind.",
       "en": "Crack the secret code in free play or take on a nine-level campaign inspired by Mastermind."
@@ -932,6 +988,10 @@
     "stack": [
       "Python"
     ],
+    "where": {
+      "it": "arXiv, GitHub e Zenodo",
+      "en": "arXiv, GitHub and Zenodo"
+    },
     "summary": {
       "it": "Il cerchio centrale minimo studiato con ottimi finiti certificati e una teoria asintotica globale.",
       "en": "How small can the central circle be? Ringmin gives certified optima for finite cases and an asymptotic limit."
@@ -1009,6 +1069,10 @@
     "stack": [
       "Python"
     ],
+    "where": {
+      "it": "Codice su GitHub",
+      "en": "Source on GitHub"
+    },
     "summary": {
       "it": "Un’estensione di Ringmin con raggi quadratici e risultati finiti certificati per n da 3 a 6.",
       "en": "This extension of Ringmin uses squared radii and certifies results for n = 3 through 6."

@@ -5,6 +5,19 @@
       "id": "hogwarts-legacy-save-editor",
       "title": "Hogwarts Legacy Save Editor",
       "game": "Hogwarts Legacy",
+      "kind": {
+        "it": "Editor di salvataggi · Hogwarts Legacy",
+        "en": "Save editor · Hogwarts Legacy"
+      },
+      "stack": [
+        "Python",
+        "CustomTkinter",
+        "PyWebView"
+      ],
+      "where": {
+        "it": "Nexus Mods, per la versione PC",
+        "en": "Nexus Mods, for the PC version"
+      },
       "url": "https://www.nexusmods.com/hogwartslegacy/mods/2414",
       "repo": "https://github.com/falker47/HogwartsLegacy-SaveEditor",
       "description": {
@@ -38,6 +51,17 @@
       "id": "giant-shockwaves",
       "title": "Giant Shockwaves",
       "game": "Skyrim Special Edition",
+      "kind": {
+        "it": "Nuovo potere · Skyrim Special Edition",
+        "en": "New power · Skyrim Special Edition"
+      },
+      "stack": [
+        "Creation Kit"
+      ],
+      "where": {
+        "it": "Nexus Mods, per la versione PC",
+        "en": "Nexus Mods, for the PC version"
+      },
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/198756",
       "repo": null,
       "description": {
@@ -71,6 +95,17 @@
       "id": "respect-the-chief",
       "title": "Respect the Chief",
       "game": "Skyrim Special Edition",
+      "kind": {
+        "it": "Mod di gameplay · Skyrim Special Edition",
+        "en": "Gameplay mod · Skyrim Special Edition"
+      },
+      "stack": [
+        "Creation Kit"
+      ],
+      "where": {
+        "it": "Nexus Mods, per la versione PC",
+        "en": "Nexus Mods, for the PC version"
+      },
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/193883",
       "repo": null,
       "description": {
