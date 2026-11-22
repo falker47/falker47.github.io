@@ -78,11 +78,12 @@ function actions(t, item) {
   return html`<p class="tavola-links">${raw(links.join(''))}</p>`;
 }
 
-export function tavola(ctx, item, index) {
+// The first sheet of a page can be its largest contentful paint: pass { priority: true }.
+export function tavola(ctx, item, index, { priority = false } = {}) {
   const { t } = ctx;
   const titleId = 'tav-' + item.id;
   return html`<article class="tavola${index % 2 ? ' tavola-flip' : ''}" aria-labelledby="${titleId}">
-  ${raw(sheetFigure(item.cover))}
+  ${raw(sheetFigure(item.cover, { fetchpriority: priority ? 'high' : undefined }))}
   <div class="tavola-text">${raw(sheetLabel(t, item.id))}
   <h2 id="${titleId}">${item.title}</h2>
   <p class="tavola-summary">${localized(item.summary)}</p>

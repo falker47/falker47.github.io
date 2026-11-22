@@ -13,7 +13,7 @@ export function render(ctx) {
   let index = 0;
   const sections = groups.map(group => html`<section class="sheet-group" id="${group.id}" aria-labelledby="${group.id}-title">
   <div class="group-head"><h2 id="${group.id}-title">${label(t, group.key)}</h2><span class="group-count" aria-hidden="true">${String(group.items.length).padStart(2, '0')}</span></div>
-  ${raw(group.items.map(item => tavola(ctx, item, index++)).join('\n'))}
+  ${raw(group.items.map(item => tavola(ctx, item, index, { priority: index++ === 0 })).join('\n'))}
 </section>`);
   return html`<main id="main" tabindex="-1" class="sheets-page">
   <header class="sheets-intro">
