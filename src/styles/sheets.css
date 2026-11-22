@@ -9,7 +9,7 @@
 .sheets-index li { display: flex; align-items: center; }
 .sheets-index li:not(:last-child)::after { content: "·"; padding-inline: 8px; color: var(--muted); }
 .sheets-index a {
-  display: inline-flex; align-items: baseline; gap: 6px; min-height: var(--target); padding-block: 12px;
+  display: inline-flex; align-items: baseline; justify-content: center; gap: 6px; min-width: var(--target); min-height: var(--target); padding-block: 12px;
   color: var(--paper); text-decoration: none;
 }
 .sheets-index a:is(:hover, [data-preview="hover"]) { color: var(--blue); text-decoration: underline; }

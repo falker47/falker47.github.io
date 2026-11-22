@@ -8,12 +8,12 @@ The static site builds with Node 22 and its standard library. Run commands from 
 
 | Pages | Routes |
 | --- | --- |
-| Portfolio and recommendations | `/`, `/research/`, `/uses/` |
+| Home, projects and recommendations | `/`, `/projects/`, `/research/`, `/uses/` |
 | Project details | `/projects/prof-gecko/`, `/projects/camaleonte/`, `/projects/social-viewer/` |
 | Social Viewer testing and privacy | `/projects/social-viewer/test/`, `/projects/social-viewer/privacy/` |
 | Error recovery | `/404.html` |
 
-The home tabs use `#software`, `#modding`, `#ricerca` and `#tutoring`. Derive register rows, filter counts and destinations from `data/projects.json` and featured mods from `data/mods.json`. Use `data/research.json` for papers and repositories, `data/tutoring.json` for lessons and ratings, `data/profile.json` for identity and contacts, and `data/certifications.json` for credentials. Keep visible strings and accessible labels paired in `data/i18n/it.json` and `data/i18n/en.json`. The Social Viewer privacy text has a comparison fixture in `docs/unify/privacy-snapshot.txt`.
+The home is the master home (V2): masthead with flags, hero, the collapsible "Chi sono" (`#chi-sono`, certificates at `#certificazioni`) and "Cosa faccio" (`#cosa-faccio`, the master's four tabs), and a one-line footer. Its counts come from data and its project links open `/projects/`. `/projects/` renders one technical sheet per project from `src/partials/sheets.mjs`: software groups from `data/projects.json` in data order, then `data/mods.json`, then Ringmin. The same partial draws the top sheet of every project page; plate numbers follow the projects page order. Use `data/research.json` for papers and repositories, `data/tutoring.json` for lessons and ratings, `data/profile.json` for identity and contacts, and `data/certifications.json` for credentials. Keep visible strings and accessible labels paired in `data/i18n/it.json` and `data/i18n/en.json`. The Social Viewer privacy text has a comparison fixture in `docs/unify/privacy-snapshot.txt`.
 
 `data/redirects.json` is active. The seven `/Nexus-portfolio/` source URLs include two aliases for one index file. The build publishes the stubs and copies the assets in `legacy/Nexus-portfolio/assets/` to their original paths. Preserve the exact paths and hashes in `legacy/sha256.json`. Other project Pages sites use their own repositories and reserved top-level paths. [URL map](docs/unify/URL-MAP.md)
 
@@ -24,7 +24,7 @@ The home tabs use `#software`, `#modding`, `#ricerca` and `#tutoring`. Derive re
 - `node scripts/qa/audit.mjs --task local` runs Lighthouse and axe on all declared pages, active stubs and the styleguide if built. Each Italian and English run must reach Performance ≥95 mobile and ≥98 desktop, Accessibility 100 and Best Practices ≥95, with zero axe violations. SEO is recorded. For an individual page, run `lighthouse.mjs` or `axe.mjs` in `scripts/qa/` with `--task local --pages /uses/`.
 - `node scripts/qa/legacy.mjs --task local` follows redirects in Chromium, checks translated links, native refresh and 404 recovery, and verifies every original asset against its SHA-256. Each mapped source and final destination must return HTTP 200.
 - `node scripts/qa/i18n-check.mjs --task local` checks both languages at 390 and 1440 px. Every scanned page and interaction state must have zero language leaks and zero scan errors.
-- `node scripts/qa/interactions.mjs --task local` exercises home navigation, filters and certificates. `node scripts/qa/social-viewer.mjs --task local` checks the product, tester and legal pages. `node scripts/qa/release-layout.mjs --task local` checks layout and native image bounds. Keep the 390 px Software panel within 1,500 px, headings outside the hero at most 32 px, and one primary action at most per view.
+- `node scripts/qa/interactions.mjs --task local --pages /,/projects/` exercises the home disclosures, tabs, certificates, fragments and live Nexus totals, and the projects index. `node scripts/qa/social-viewer.mjs --task local` checks the product, tester and legal pages. `node scripts/qa/release-layout.mjs --task local` checks layout and native image bounds. At 390×844 each sheet on `/projects/` keeps its image, title and first link within one screen height. Outside the hero, page titles stay at most 40 px, sheet titles 34 px, group headings 30 px and other headings 32 px, with one primary action at most per view.
 - `node scripts/qa/screenshots.mjs --task local --pages / --langs it,en` captures viewport and full-page images at reduced motion. After capturing both languages, use `node scripts/qa/compare-hero.mjs --baseline PATH --baseline-task F3 --task local --exact-geometry` with a built F3 reference and its PNGs to check hero geometry.
 
 Build before browser QA. Use `--task` to select the evidence folder `_review/<task>/`. Browser tools resolve Playwright, Lighthouse, chrome-launcher, axe-core and Sharp from `~/qa-tools` and read the Chromium executable from `~/qa-tools/chrome-path.txt`. The static budgets, tests and link crawl run with Node alone. With Chromium configured, the validator also checks actual cold home requests at both viewports in both languages.
@@ -39,7 +39,7 @@ Use `picture(media, { sizes, lang })` or `img(media, options)` from `src/lib/med
 
 ## Layout and rendering
 
-Keep the approved home blueprint and its inline `desktop-visual-sizing` block. The build inlines up to 14,000 bytes of CSS. Larger pages use shared first-paint styles and one content-addressed stylesheet with a native fallback. Limit the delivered HTML, CSS and JS to 160,000 bytes per page and cold home loads to 450,000 bytes and 15 requests. [Design brief](docs/unify/BRIEF.md)
+Keep the approved hero, its inline `desktop-visual-sizing` block and the master home around it ([design brief](docs/unify/BRIEF.md)). The build inlines up to 14,000 bytes of CSS. Larger pages use shared first-paint styles and one content-addressed stylesheet with a native fallback. Limit the delivered HTML, CSS and JS to 160,000 bytes per page and cold home loads to 450,000 bytes and 15 requests. 
 
 Use the escaping `html` template from `src/lib/html.mjs`. Wrap trusted rendered components in `raw()`. Put styles in `src/styles/`, browser scripts in `src/client/`, self-hosted assets in `assets/` and structured data in `data/`. The two original browser scripts retain their public URLs under `scripts/`.
 
@@ -51,4 +51,4 @@ The scheduled Nexus updater owns `data/nexus-downloads.json`. Preserve the profi
 
 `Deploy Pages` checks out `main` for pushes to `main`, manual runs and successful completions of `Refresh Nexus Mods downloads` on `main`. The `workflow_run` path also rebuilds Pages when the snapshot is already current.
 
-Work on the task branch in its dedicated worktree and deliver a draft PR to the assigned base. Production deployment belongs to `main`. Keep build output, dependencies and reference clones out of commits. Use the R1 measurements for release evidence and the go-live runbook for the production cutover. [Release results](docs/unify/RELEASE.md) · [Go-live runbook](docs/unify/GO-LIVE.md)
+Work on the task branch in its dedicated worktree and deliver a draft PR to the assigned base. Production deployment belongs to `main`. Keep build output, dependencies and reference clones out of commits. V2 evidence lives in `_review/V2/`; `node scripts/qa/compare-home.mjs --baseline PATH --task ID` compares the home with a built F1 checkout. Use the go-live runbook for the production cutover. [Release results](docs/unify/RELEASE.md) · [Go-live runbook](docs/unify/GO-LIVE.md)

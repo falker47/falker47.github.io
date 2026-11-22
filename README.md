@@ -1,6 +1,6 @@
 # Maurizio Falconi’s personal site
 
-This repository builds Maurizio Falconi’s unified portfolio for [falker47.github.io](https://falker47.github.io/). It brings together software, game mods, research and tutoring. Italian is rendered in the HTML. The language switch and `?lang=en` open the English edition on the same route.
+This repository builds Maurizio Falconi’s unified portfolio for [falker47.github.io](https://falker47.github.io/). It brings together software, game mods, research and tutoring: the master home at `/` and every project as a technical sheet at `/projects/`. Italian is rendered in the HTML. The language switch and `?lang=en` open the English edition on the same route.
 
 ## Repository layout
 
@@ -32,10 +32,10 @@ Build before running browser QA. Install Playwright, Lighthouse, chrome-launcher
 
 ## Add a catalogue entry
 
-- **Project.** Add a record to `data/projects.json` with a unique ID and slug, sequential `order`, category, visibility, stack, typed links and IT/EN copy, including `cover.alt`. Set `page` to a declared detail route or `null`. Register the ID in `projectSources` in `scripts/tools/make-images.mjs` with its source path relative to `<HOME>/sources/Nexus-portfolio/assets/`.
-- **Featured mod.** Append to `items` in `data/mods.json` with an ID, title, game, Nexus URL, repository URL or `null`, and IT/EN description and cover alt text. Supply the artwork for a new mod at `<HOME>/sources/mods/<id>.png`.
+- **Project.** Add a record to `data/projects.json` with a unique ID and slug, sequential `order`, category, visibility, stack, `where` (IT/EN, the spec table's "Dove"), typed links and IT/EN copy, including `cover.alt`. Set `page` to a declared detail route or `null`. Register the ID in `projectSources` in `scripts/tools/make-images.mjs` with its source path relative to `<HOME>/sources/Nexus-portfolio/assets/`.
+- **Featured mod.** Append to `items` in `data/mods.json` with an ID, title, game, IT/EN `kind`, `stack`, IT/EN `where`, Nexus URL, repository URL or `null`, and IT/EN description and cover alt text. Supply the artwork for a new mod at `<HOME>/sources/mods/<id>.png`.
 
-Run `node scripts/tools/make-images.mjs` to generate the WebPs and write their dimensions to the data. Commit the generated variants with the entry. Update the catalogue expectations in `scripts/test-data.mjs` for the new inventory, then run `node scripts/check.mjs`.
+Run `node scripts/tools/make-images.mjs` to generate the WebPs and write their dimensions to the data. Commit the generated variants with the entry. The new entry appears on `/projects/` and in the home counts automatically. Update the catalogue expectations in `scripts/test-data.mjs` for the new inventory, then run `node scripts/check.mjs`.
 
 ## Nexus refresh and deployment
 

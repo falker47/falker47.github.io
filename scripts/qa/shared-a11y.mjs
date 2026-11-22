@@ -18,9 +18,14 @@ export async function runReflow(pages, langs) {
         assert.ok(await page.locator('.skip').evaluate(el => el === document.activeElement && getComputedStyle(el).outlineStyle !== 'none'));
         await page.keyboard.press('Enter');
         assert.equal(await page.locator(':focus').getAttribute('id'), 'main');
-        for (const tab of await page.getByRole('tab').all()) {
-          await tab.click();
-          assert.equal(await tab.getAttribute('aria-selected'), 'true');
+        // Open the home disclosures so their tabs and links are measured too.
+        await page.evaluate(() => document.querySelectorAll('details.about, details.work').forEach(details => { details.open = true; }));
+        const tabs = await page.getByRole('tab').all();
+        for (const tab of tabs.length ? tabs : [null]) {
+          if (tab) {
+            await tab.click();
+            assert.equal(await tab.getAttribute('aria-selected'), 'true');
+          }
           const problems = await page.evaluate(() => {
             const small = [...document.querySelectorAll('a[href],button,summary,select')].filter(el => {
               const { width, height } = el.getBoundingClientRect();
