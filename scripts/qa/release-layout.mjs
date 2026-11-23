@@ -80,7 +80,7 @@ async function verify(page, path, lang, width) {
   } else if (!path.startsWith('/Nexus-portfolio/')) {
     assert.equal(await page.locator('.site-footer a[href="/uses/"]').count(), 1);
   }
-  const back = page.locator('.detail-crumbs a').first();
+  const back = page.locator('.detail-crumbs a:visible').first();
   if (await back.count()) {
     const target = await back.getAttribute('href');
     const expected = new URL(target, page.url()).pathname;
