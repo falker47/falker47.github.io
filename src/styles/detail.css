@@ -83,3 +83,39 @@
   .detail-block { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; padding-block: 36px; }
   .detail-block-body { margin-top: 2px; }
 }
+
+/* "Cosa uso" (V4): a compact page, each pick beside its product. */
+.detail-compact.detail-page { padding-block: 4px 40px; }
+.detail-compact .detail-top { gap: 16px; }
+.detail-compact .detail-cover { max-width: 420px; }
+.detail-compact .detail-top h1 { font-size: 26px; }
+.detail-compact .detail-lead { font-size: 14px; }
+.detail-compact .detail-block { padding-block: 20px; }
+.detail-compact .detail-top + .detail-block { margin-top: 16px; }
+.detail-compact .detail-block h2 { font-size: 19px; }
+.detail-compact .detail-block-body p { font-size: 14px; }
+.detail-compact .detail-list > li + li { margin-top: 12px; padding-top: 12px; }
+.detail-compact .detail-list h3 { font-size: 17px; }
+.detail-pick { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 14px; align-items: start; }
+.pick-photo { width: 84px; height: 84px; object-fit: contain; border-radius: 10px; background: #d8d4cf; }
+.pick-text { min-width: 0; }
+.detail-compact .detail-pick h3 { margin-block: 2px 2px; }
+@media (min-width: 600px) {
+  .detail-compact .detail-top h1 { font-size: 30px; }
+  .detail-compact .detail-block h2 { font-size: 21px; }
+  .detail-pick { grid-template-columns: 112px minmax(0, 1fr); gap: 18px; }
+  .pick-photo { width: 112px; height: 112px; }
+}
+@media (min-width: 900px) {
+  .detail-compact .detail-top { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 32px; padding: 18px; }
+  .detail-compact .detail-top h1 { font-size: 32px; }
+  .detail-compact .detail-block { gap: 40px; padding-block: 24px; }
+}
+@media (min-width: 900px) {
+  /* Headings above their content, and the four picks two by two. */
+  .detail-compact .detail-block { display: block; }
+  .detail-compact .detail-block-body { max-width: none; }
+  .detail-compact .detail-picks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 40px; }
+  .detail-compact .detail-picks > li + li { margin-top: 0; padding-top: 0; border-top: 0; }
+  .detail-compact .detail-block-body > p { max-width: 80ch; }
+}

@@ -108,7 +108,7 @@ test('featured mods, certificates, research, tutoring and profile have their req
     https(m.url);
     if (m.repo !== null) https(m.repo);
   }
-  assert.equal(certs.length, 11);
+  assert.equal(certs.length, 15); // V4 adds four Coursera courses to the fan.
   for (const c of certs) {
     string(c.title);
     string(c.issuer);
@@ -241,14 +241,14 @@ test('responsive markup localizes alt text and opts priority images into eager l
   }
 });
 
-test('the QA Data section shows all 30 entries and keeps planned routes out of navigation', () => {
+test('the QA Data section shows all 34 entries and keeps planned routes out of navigation', () => {
   // Covers are pictures; the certificates are the cards of the fan deck.
   const markup = styleguide.render({ t: key => it[key], copy: { it, en } });
   const section = markup.match(/<section [^>]*id="data"[^>]*>([\s\S]*?)<\/section>/);
   assert.ok(section, 'Missing Data section');
   const elements = tags(section[1]);
   const expected = [...projects.map(p => p.cover), ...mods.items.map(m => m.cover), ...certs.map(c => c.thumbnail)];
-  assert.equal(expected.length, 30);
+  assert.equal(expected.length, 34);
   assert.equal(elements.filter(e => e.name === 'picture').length, projects.length + mods.items.length);
   assert.equal(elements.filter(e => e.name === 'button' && e.attrs.class === 'deck-card').length, certs.length);
   assert.deepEqual(elements.filter(e => e.name === 'img' && e.attrs.src).map(e => e.attrs.src), expected.map(image => image.src));

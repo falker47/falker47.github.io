@@ -88,10 +88,12 @@ function checkSoftware(source) {
       assert.equal(text(card.match(/<span class="card-stack">([^]*?)<\/span>/)[1]), project.stack.join(' · '), project.id + ' stack');
       assert.equal(text(card.match(/<p class="card-summary">([^]*?)<\/p>/)[1]), project.summary.it, project.id + ' summary');
       // The title opens the project's own page when there is one; the buttons follow the data order.
-      const links = [...(project.page ? [project.page] : []), ...project.links.map(link => link.url)];
+      // A published app shows no tester link on its card (V4); the project page keeps it.
+      const shown = project.links.filter(link => link.type !== 'test' || !project.links.some(other => other.type === 'store'));
+      const links = [...(project.page ? [project.page] : []), ...shown.map(link => link.url)];
       assert.deepEqual(hrefs(card), links, project.id + ' links');
       const names = [...card.match(/<p class="card-links">([^]*?)<\/p>/)[1].matchAll(/<a [^>]*>([^]*?)<span class="sr-only">/g)].map(match => text(match[1]));
-      assert.deepEqual(names, project.links.map(link => link.type === 'repo' ? (link.label.it === 'Repo GitHub' ? 'GitHub' : link.label.it)
+      assert.deepEqual(names, shown.map(link => link.type === 'repo' ? (link.label.it === 'Repo GitHub' ? 'GitHub' : link.label.it)
         : link.type === 'store' ? 'Play Store' : link.type === 'test' ? 'Prova l’app' : 'Apri'), project.id + ' link names');
       checkButtons(card.match(/<p class="card-links">([^]*?)<\/p>/)[1], project.id);
     }
@@ -134,10 +136,13 @@ function checkModding(source) {
       const image = tags(card).find(node => node.name === 'img');
       if (mod.kind === 'translation') {
         assert.equal(image, undefined, mod.name + ': a translation has no picture');
-        assert.equal(text(card.match(/<div class="mod-type">([^]*?)<\/div>/)[1]), 'IT ' + mod.game, mod.name + ' typographic header');
+        // Translations share the mod card (V4): a 16:9 typographic cover in place of the picture.
+        assert.equal(text(card.match(/<div class="card-cover mod-type">([^]*?)<\/div>/)[1]), 'IT ' + mod.game, mod.name + ' typographic cover');
       } else {
         assert.equal(image.attrs.src, covers.get(mod.url)?.cover.src ?? mod.image.src, mod.name + ' picture');
       }
+      assert.equal(text(card.match(/<span class="pill">([^]*?)<\/span>/)[1]), mod.game.replace(' Special Edition', ' SE'), mod.name + ' game pill');
+      assert.equal(text(card.match(/<span class="card-stack">([^]*?)<\/span>/)[1]), mod.category ?? mod.game, mod.name + ' category');
       const repo = covers.get(mod.url)?.repo;
       assert.deepEqual(hrefs(card).slice(1), repo ? [repo] : [], mod.name + ' repository');
       checkButtons(card.match(/<p class="card-links">([^]*?)<\/p>/)[1], mod.name);
@@ -163,22 +168,23 @@ function checkResearch(source) {
   assert.equal([...papers[0].matchAll(/<circle class="rm-centre"/g)].length, ringmin.optima.length);
   assert.equal([...papers[0].matchAll(/<circle class="rm-(?:circle|floating)"/g)].length, ringmin.optima.reduce((sum, item) => sum + item.n, 0));
   assert.equal([...papers[0].matchAll(/<circle class="rm-floating"/g)].length, ringmin.optima.reduce((sum, item) => sum + item.floating_circles.length, 0));
-  assert.equal([...papers[1].matchAll(/<circle class="rm-dot"/g)].length, ringmin.asymptotic.filter(row => row.certified).length, 'Filled dots are certified values');
-  assert.equal([...papers[1].matchAll(/<circle class="rm-dot rm-open"/g)].length, ringmin.asymptotic.filter(row => !row.certified).length, 'Hollow dots are non-exhaustive');
-  assert.match(papers[1], /<text class="rm-limit-label"[^>]*data-i18n="ringminLimit">1\/8 · limite inferiore<\/text>/);
-  // Paper II is drawn against 1/n: n = ∞ at the origin, where the certified interval for C* is a band.
-  const ticks = [...papers[1].matchAll(/<text class="rm-tick" x="([\d.]+)" y="[\d.]+" text-anchor="middle">([^<]+)<\/text>/g)].map(match => [Number(match[1]), decode(match[2])]);
-  assert.deepEqual(ticks.map(tick => tick[1]), ['n = ∞', '18', '10', '6', '4', '3'], 'Axis labels at 1/n');
-  const [origin, third] = [ticks[0][0], ticks.at(-1)[0]];
-  for (const [x, value] of ticks.slice(1)) assert.ok(Math.abs(x - (origin + (third - origin) * 3 / Number(value))) < .2, 'Tick ' + value + ' sits at 1/n');
-  assert.match(papers[1], />1\/n<\/text>/, 'Axis title 1/n');
-  assert.equal([...papers[1].matchAll(/<rect class="rm-band"/g)].length, 1, 'One band for C*');
+  // Paper II (V4): one circle per n of radius R(n)/n², solid when certified, dashed otherwise,
+  // inside the dashed 1/8 circle and the ring of the certified interval for C*.
+  const rings = [...papers[1].matchAll(/<circle class="rm-ring( rm-open)?" cx="[\d.]+" cy="[\d.]+" r="([\d.]+)"\/>/g)].map(match => ({ open: Boolean(match[1]), r: Number(match[2]) }));
+  assert.deepEqual(rings.map(ring => ring.open), ringmin.asymptotic.map(row => !row.certified), 'Solid rings are certified values, dashed ones non-exhaustive');
+  const scales = rings.map((ring, i) => ring.r / ringmin.asymptotic[i].ratio);
+  assert.ok(Math.max(...scales) - Math.min(...scales) < .02 * scales[0], 'Each radius is R(n)/n² on one scale');
+  const radiusOf = name => Number(papers[1].match(new RegExp('<circle class="' + name + '" cx="[\\d.]+" cy="[\\d.]+" r="([\\d.]+)"'))[1]);
+  const [limit, band] = [radiusOf('rm-limit'), radiusOf('rm-band')];
+  assert.ok(Math.abs(limit - scales[0] / 8) < .2, 'The dashed circle is 1/8');
+  assert.ok(Math.abs(band - scales[0] * (ringmin.constant.lower + ringmin.constant.upper) / 2) < .2, 'The ring is the C* interval');
+  assert.ok(Math.max(...rings.map(ring => ring.r)) < limit && limit < band, 'n ≤ 18 inside 1/8, inside C*');
   const it = value => new Intl.NumberFormat('it-IT', { minimumFractionDigits: 4, maximumFractionDigits: 4 }).format(value);
   const [low, high] = [Math.floor(ringmin.constant.lower * 1e4) / 1e4, Math.ceil(ringmin.constant.upper * 1e4) / 1e4];
-  assert.equal(decode(papers[1].match(/<text class="rm-band-label"[^>]*>([^]*?)<\/text>/)[1].replace(/<[^>]+>/g, '')), `C* ∈ [${it(low)}; ${it(high)}]`, 'Band label from data/ringmin.json');
-  const line = papers[1].match(/<path class="rm-limit" d="M[\d.]+ ([\d.]+)H/)[1];
-  const band = papers[1].match(/<rect class="rm-band" x="[\d.]+" y="([\d.]+)"/)[1];
-  assert.ok(Number(band) < Number(line), 'The C* band sits above the 1/8 line');
+  assert.equal(decode(papers[1].match(/<text class="rm-band-range"[^>]*>([^]*?)<\/text>/)[1].replace(/<[^>]+>/g, '')), `[${it(low)}; ${it(high)}]`, 'Band label from data/ringmin.json');
+  assert.match(papers[1], /<text class="rm-band-label"[^>]*>C\*<\/text>/);
+  assert.match(papers[1], /<text class="rm-limit-label"[^>]*>1\/8<\/text>/);
+  assert.match(papers[1], new RegExp('>n = ' + ringmin.asymptotic[0].n + ' → ' + ringmin.asymptotic.at(-1).n + '</text>'));
   const foot = markup.match(/<p class="research-foot">[^]*?<\/p>/)[0];
   assert.deepEqual(hrefs(foot), [research.repositories.find(item => item.project === 'power-ringmin').url, research.zenodo.url]);
   checkButtons(foot, 'Research foot');
@@ -209,15 +215,15 @@ function checkAbout(source) {
   const about = source.match(/<details class="about" id="chi-sono"[^]*?<\/details>/)[0];
   assert.ok(!/journey|jr-/.test(about), 'The "Percorso" drawing is gone');
   // The facts card: four figures counted from the data, each a link to its section.
-  const facts = [...about.matchAll(/<li><a class="fact" href="([^"]+)"><strong class="fact-value"[^>]*>([^<]+)<\/strong><span class="fact-label">([^]*?)<\/span><\/a><\/li>/g)]
-    .map(([, href, value, name]) => [href, value, text(name)]);
+  const facts = [...about.matchAll(/<li><a class="fact fact-([\w-]+)" href="([^"]+)"><span class="fact-glyph" aria-hidden="true">([^]*?)<\/span><strong class="fact-value"[^>]*>([^<]+)<\/strong><span class="fact-label">([^]*?)<\/span><\/a><\/li>/g)]
+    .map(([, tone, href, glyph, value, name]) => [href, value, text(name), tone, /href="#((?:icon|brand)-[\w-]+)"/.exec(glyph)?.[1]]);
   assert.deepEqual(facts, [
-    ['#progetti', italian(visible.filter(item => ['app', 'game', 'tool'].includes(item.category)).length), 'progetti software'],
-    ['#panel-modding', italian(snapshot.uniqueModDownloads), 'download unici su Nexus Mods'],
-    ['#ricerca', italian(research.papers.length), 'articoli su arXiv'],
-    ['#certificazioni', italian(certificates.length), 'certificazioni'],
+    ['#progetti', italian(visible.filter(item => ['app', 'game', 'tool'].includes(item.category)).length), 'progetti software', 'software', 'icon-code'],
+    ['#panel-modding', italian(snapshot.uniqueModDownloads), 'download unici su Nexus Mods', 'modding', 'brand-nexusmods'],
+    ['#ricerca', italian(research.papers.length), 'articoli su arXiv', 'research', 'brand-arxiv'],
+    ['#certificazioni', italian(certificates.length), 'certificazioni', 'credentials', 'icon-medal'],
   ], 'Facts from data');
-  const order = ['data-i18n="aboutWork"', 'data-i18n="aboutResearch"', 'class="about-facts"', 'class="philosophy"', 'class="research-links about-actions"', 'class="credentials"'].map(part => about.indexOf(part));
+  const order = ['data-i18n="aboutWork"', 'class="about-facts"', 'class="philosophy"', 'class="research-links about-actions"', 'class="credentials"'].map(part => about.indexOf(part));
   assert.ok(order.every(index => index >= 0) && order.every((index, i) => !i || index > order[i - 1]), 'Text, facts, quote, links, certificates');
   // The profile row keeps its arrow on every link; GitHub, OEIS and ORCID show their marks.
   for (const button of buttons(about.match(/<nav class="research-links about-actions"[^]*?<\/nav>/)[0].replace(/<a href="([^"]+)" class="about-action about-action-profile"/g, '<a href="$1"'))) {

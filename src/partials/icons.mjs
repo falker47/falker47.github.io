@@ -15,6 +15,8 @@ const drawings = {
   bolt: '<path d="M13.5 2 5 13h6l-.5 9L19 10h-6Z"/>',
   camera: '<path d="m3 6 4-2 13 5-4 7L3 11Zm14 9 3 2v3h-5"/><path d="m5 12-1 2 5 2 1-2"/>',
   chevron: '<path d="m6 9 6 6 6-6"/>',
+  code: '<rect x="2.5" y="4" width="19" height="16" rx="2"/><path d="M2.5 8h19M9 12l-2.5 2.5L9 17m6-5 2.5 2.5L15 17"/>',
+  medal: '<circle cx="12" cy="15" r="5.5"/><path d="m9 9.8-3-6.8h4l2 4 2-4h4l-3 6.8M12 12.5v5"/>',
 };
 
 export const iconNames = Object.keys(drawings);
@@ -39,15 +41,16 @@ export function brand(name) {
 /** The hover ink of a mark: its brand colour, or near white where that colour is too dark on the cards. */
 export const brandInk = name => brands.marks[name].hover;
 
-// Generic icons are always in the sprite; a brand mark only when the page uses it.
+// The sprite holds only the icons and marks that the page uses.
 export function sprite(content = '') {
+  const icons = iconNames.filter(name => content.includes(`href="#icon-${name}"`));
   const used = brandNames.filter(name => content.includes(`href="#brand-${name}"`));
   const marks = used.map(name => {
     const { viewBox, body, mono } = brands.marks[name];
     // Several-colour marks keep their published colours, including the implicit black fill.
     return html`<symbol id="brand-${name}" viewBox="${viewBox}">${raw(mono ? body : '<g fill="#000">' + body + '</g>')}</symbol>`;
   });
-  return html`<svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="0" height="0">${raw(iconNames.map(name =>
+  return html`<svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="0" height="0">${raw(icons.map(name =>
     html`<symbol id="icon-${name}" viewBox="0 0 24 24">${raw(drawings[name])}</symbol>`).join(''))}${raw(marks.join(''))}</svg>`;
 }
 

@@ -86,10 +86,10 @@ async function checkPickers(page) {
       await steps.first().click();
       await page.waitForFunction(node => node.scrollLeft <= 2, await track.elementHandle());
     }
-    // Cards sit side by side: about 3.15 per view on desktop (4.15 for mods), 86% of the row on a phone.
-    const ratio = await track.evaluate(node => node.querySelector('.card').getBoundingClientRect().width / node.clientWidth);
-    if (page.viewportSize().width < 600) assert.ok(ratio <= .87 && ratio > .7, panel + ' phone card ' + ratio);
-    else if (panel === 'software') assert.ok(Math.abs(1 / ratio - 3.15) < .2, 'software cards per view ' + 1 / ratio);
+    // Cards sit side by side (V4, more compact): (row − 48 px) / 4.2 each on desktop, 78% of the row on a phone.
+    const [card, row] = await track.evaluate(node => [node.querySelector('.card').getBoundingClientRect().width, node.clientWidth]);
+    if (page.viewportSize().width < 600) assert.ok(card / row <= .8 && card / row > .7, panel + ' phone card ' + card / row);
+    else if (panel === 'software') assert.ok(Math.abs(card - (row - 48) / 4.2) < 2, 'software card width ' + card);
     // The count line beside the toggles follows the category.
     if (panel === 'software') assert.deepEqual(await picker.locator('.picker-count:visible').evaluateAll(nodes => nodes.map(node => node.dataset.group)), [groups[0]]);
   }

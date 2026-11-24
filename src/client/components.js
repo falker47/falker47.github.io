@@ -32,6 +32,8 @@
         tab.setAttribute('aria-selected', String(tab === current));
         panels[i].hidden = tab !== current;
       });
+      // The tabs of "I miei progetti" also set the accent of the whole site.
+      if (list.closest('.work')) document.documentElement.dataset.accent = current.dataset.panel;
     }
     tabs.forEach((tab, index) => {
       tab.addEventListener('click', () => select(tab));

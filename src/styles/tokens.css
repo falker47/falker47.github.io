@@ -63,6 +63,8 @@
   --brand: var(--paper);
   /* The pressed category pill; #panel-modding switches it to the Nexus orange. */
   --panel-accent: var(--blue);
+  /* The colour of a "Chi sono" figure: the section it opens. */
+  --tone: var(--blue);
   --cat: var(--cat-app);
   --serif: "Gelasio", Georgia, serif;
   --mono: "IBM Plex Mono", "Courier New", monospace;
@@ -79,6 +81,24 @@
   --header-height: 64px;
   --radius: 14px;
   --motion: cubic-bezier(.22,.7,.28,1);
+}
+/* V4: the site accent follows the tab of "I miei progetti": Software keeps the blue, Modding
+   takes the Nexus Mods orange, Research a violet and Lessons a green. src/client/components.js
+   sets data-accent on <html>; text inks stay at 4.5:1 or more on every dark surface. */
+:root[data-accent="modding"] {
+  --blue: #fdba74;
+  --stroke: #fb923c;
+  --accent: #fb923c;
+}
+:root[data-accent="research"] {
+  --blue: #c4b5fd;
+  --stroke: #a78bfa;
+  --accent: #a78bfa;
+}
+:root[data-accent="teaching"] {
+  --blue: #86efac;
+  --stroke: #4ade80;
+  --accent: #4ade80;
 }
 @media (min-width: 700px) {
   :root {

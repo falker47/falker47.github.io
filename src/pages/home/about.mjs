@@ -3,7 +3,7 @@ import profile from '../../../data/profile.json' with { type: 'json' };
 import research from '../../../data/research.json' with { type: 'json' };
 import { html, raw } from '../../lib/html.mjs';
 import { certificateDeck, label } from '../../partials/components.mjs';
-import { brand, brandFor, brandInk } from '../../partials/icons.mjs';
+import { brand, brandFor, brandInk, icon } from '../../partials/icons.mjs';
 import { categories } from './work.mjs';
 
 const arrow = '<svg class="about-action-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M6 18 18 6M7 6h11v11"/></svg>';
@@ -26,11 +26,12 @@ const actions = [
 // The four figures beside the text, all counted from the data at build time. The Nexus total
 // is the live counter of the Modding tab (same key, same snapshot).
 const integer = value => new Intl.NumberFormat('it-IT').format(value);
+// Each figure wears the colour of the section it opens, and its mark or icon.
 export const facts = [
-  { key: 'factProjects', href: '#progetti', value: categories.reduce((sum, category) => sum + category.items.length, 0) },
-  { key: 'factDownloads', href: '#panel-modding', live: 'moddingNumber' },
-  { key: 'factPapers', href: '#ricerca', value: research.papers.length },
-  { key: 'factCertificates', href: '#certificazioni', value: credentials.length },
+  { key: 'factProjects', href: '#progetti', tone: 'software', glyph: () => icon('code'), value: categories.reduce((sum, category) => sum + category.items.length, 0) },
+  { key: 'factDownloads', href: '#panel-modding', tone: 'modding', glyph: () => brand('nexusmods'), live: 'moddingNumber' },
+  { key: 'factPapers', href: '#ricerca', tone: 'research', glyph: () => brand('arxiv'), value: research.papers.length },
+  { key: 'factCertificates', href: '#certificazioni', tone: 'credentials', glyph: () => icon('medal'), value: credentials.length },
 ];
 
 function factsCard({ t, copy }) {
@@ -38,7 +39,7 @@ function factsCard({ t, copy }) {
     const value = fact.live
       ? html`<strong class="fact-value" data-i18n="${fact.live}">${t(fact.live)}</strong>`
       : html`<strong class="fact-value" data-i18n-number="${fact.value}">${integer(fact.value)}</strong>`;
-    return html`<li><a class="fact" href="${fact.href}">${raw(value)}<span class="fact-label">${label(t, fact.key)}</span></a></li>`;
+    return html`<li><a class="fact fact-${fact.tone}" href="${fact.href}"><span class="fact-glyph" aria-hidden="true">${fact.glyph()}</span>${raw(value)}<span class="fact-label">${label(t, fact.key)}</span></a></li>`;
   }).join('');
   return html`<section class="about-facts" aria-labelledby="facts-title"><h3 class="section-label" id="facts-title">${label(t, 'factsTitle')}</h3><ul class="facts-grid" data-label="factsTitle" aria-label="${copy.it.factsTitle}">${raw(items)}</ul></section>`;
 }
@@ -54,7 +55,7 @@ export function aboutSection(ctx) {
     const style = mark ? html` style="--brand:${brandInk(mark)}" data-brand="${mark}"` : '';
     return html`<a href="${href}" class="about-action about-action-profile"${raw(style)}>${mark ? brand(mark) : raw(icons[glyph])}${raw(title)}${raw(arrow)}</a>`;
   }).join('');
-  return html`<details class="about" id="chi-sono"><summary><h2>${label(t, 'about')}</h2></summary><div class="about-content"><div class="about-intro"><div class="about-text"><p data-i18n="aboutWork">${t('aboutWork')}</p><p data-i18n="aboutResearch">${t('aboutResearch')}</p></div>
+  return html`<details class="about" id="chi-sono"><summary><h2>${label(t, 'about')}</h2></summary><div class="about-content"><div class="about-intro"><div class="about-text"><p data-i18n="aboutWork">${t('aboutWork')}</p></div>
 ${raw(factsCard(ctx))}</div>
 <p class="philosophy" data-i18n="philosophy">${t('philosophy')}</p><nav class="research-links about-actions" aria-label="${copy.it.researchProfiles}" data-label="researchProfiles">${raw(links)}</nav>
 <section class="credentials" id="certificazioni" aria-labelledby="credentials-title"><h3 class="section-label" id="credentials-title">${label(t, 'guideCertificates')} <span aria-hidden="true">·</span> ${credentials.length}</h3>

@@ -39,10 +39,13 @@ const certificateSources = {
   'advanced-english-c1-equivalent': 'certifications/Certificate Advanced English Coursera 7PGZG57X3H9R-full.webp',
   'fullstack-developer-certification': 'certifications/Attestato Blazar Maurizio Falconi 2200x1700-full.webp',
 };
+// V4: certificates that the old portfolio never showed. Their originals (Coursera PDFs rendered at
+// 200 dpi, or the PNGs Coursera issued) live in <HOME>/sources/certifications/<id>.png.
+const extraCertificates = new Set(['fundamentals-of-quantitative-modeling', 'understanding-financial-markets', 'greek-and-roman-mythology', 'archaeoastronomy']);
 const heroes = new Set(['ringmin', 'prof-gecko', 'camaleonte', 'social-viewer']);
 const assets = new Map();
 const data = {};
-for (const name of ['projects', 'mods', 'certifications', 'profile']) {
+for (const name of ['projects', 'mods', 'certifications', 'profile', 'uses']) {
   data[name] = JSON.parse(await readFile(join(root, 'data', name + '.json'), 'utf8'));
 }
 
@@ -94,7 +97,7 @@ for (const mod of data.mods.items) {
 
 for (const cert of data.certifications) {
   // Use the same complete document for the thumbnail and the legible full view.
-  const input = join(portfolio, certificateSources[cert.id]);
+  const input = extraCertificates.has(cert.id) ? join(sources, 'certifications', cert.id + '.png') : join(portfolio, certificateSources[cert.id]);
   const { nativeWidth } = await sourceFrame(input);
   // Cards render 150 CSS px wide: 300 px covers 2x screens, 480 px the denser ones.
   const small = await rendition(input, 'certifications', cert.id + '-thumb-300', Math.min(300, nativeWidth));
@@ -105,6 +108,15 @@ for (const cert of data.certifications) {
 
 const portrait = join(portfolio, 'profile', 'maurizio-falconi-falker47.webp');
 data.profile.photo = await responsive(portrait, 'profile', 'maurizio-falconi', data.profile.photo.alt, [480, 960]);
+
+// The "Cosa uso" picks: each product cut from the page's own cover illustration, 240 px wide.
+for (const item of data.uses.items) {
+  const { data: bytes, info } = await sharp(join(root, data.uses.source.slice(1))).extract(item.crop).resize({ width: 240, withoutEnlargement: true })
+    .webp({ quality: 80, effort: 6 }).toBuffer({ resolveWithObject: true });
+  const src = '/assets/uses/' + item.id + '.webp';
+  assets.set(src, bytes);
+  item.image = { src, width: info.width, height: info.height };
+}
 
 const total = [...assets.values()].reduce((sum, bytes) => sum + bytes.length, 0);
 if (total > 4_000_000) throw Error('Images exceed the 4 MB budget: ' + total);

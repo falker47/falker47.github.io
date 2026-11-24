@@ -66,6 +66,11 @@ export async function designChecks(siteRoot, inlineCss = []) {
   }
   const pairs = new Set();
   const darkSurfaces = ['--bg','--surface','--surface-raised','--header-bg'];
+  function contrastOf(map, foreground, background) {
+    const backdrop = rgb(resolve('var(' + background + ')', map), rgb(map.get('--bg')));
+    const [fg, bg] = [luminance(rgb(resolve('var(' + foreground + ')', map), backdrop)), luminance(backdrop)];
+    return (Math.max(fg, bg) + .05) / (Math.min(fg, bg) + .05);
+  }
   function contrast(foreground, background, minimum = 4.5) {
     const pair = foreground + '/' + background + ' ' + minimum;
     if (pairs.has(pair)) return;
@@ -83,7 +88,18 @@ export async function designChecks(siteRoot, inlineCss = []) {
   for (const ink of ['--accent', '--cat-app', '--cat-game', '--cat-tool', '--nexus', '--nexus-amber']) {
     if (tokens.has(ink)) for (const background of darkSurfaces) contrast(ink, background);
   }
-  // A pressed category pill sets the page background colour on the panel accent.
+  // V4: each tab of "I miei progetti" swaps the accent inks; they keep the same contrast.
+  for (const { selector, values } of all) {
+    if (!/^:root\[data-accent="[\w-]+"\]$/.test(selector)) continue;
+    const themed = new Map(tokens);
+    for (const [key, value] of values) if (key.startsWith('--')) themed.set(key, value);
+    for (const ink of ['--blue', '--stroke', '--accent']) for (const background of darkSurfaces) {
+      const ratio = contrastOf(themed, ink, background);
+      assert.ok(ratio >= (ink === '--stroke' ? 3 : 4.5), `${selector} ${ink}/${background}: ${ratio.toFixed(2)}:1`);
+    }
+    assert.ok(contrastOf(themed, '--bg', '--blue') >= 4.5, selector + ': page ink on the accent');
+  }
+    // A pressed category pill sets the page background colour on the panel accent.
   for (const accent of ['--blue', '--nexus']) if (tokens.has(accent)) contrast('--bg', accent);
   const covered = new Set();
   for (const { selector, values } of all) {

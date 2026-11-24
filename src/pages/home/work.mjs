@@ -44,6 +44,9 @@ function projectLink(t, project, entry) {
   return actionLink(entry.url, text, { title: project.title });
 }
 
+// A published app needs no tester link on its card: its project page keeps the tester programme.
+export const cardLinks = project => project.links.filter(entry => entry.type !== 'test' || !project.links.some(link => link.type === 'store'));
+
 function projectCard(t, project) {
   // The title opens the project's own page when this site has one.
   const title = project.page ? html`<a href="${project.page}">${project.title}</a>` : html`${project.title}`;
@@ -52,7 +55,7 @@ function projectCard(t, project) {
 <div class="card-body"><h4>${raw(title)}</h4>
 <p class="card-meta"><span class="pill">${localized(project.kind)}</span><span class="card-stack">${project.stack.join(' · ')}</span></p>
 <p class="card-summary">${localized(project.summary)}</p>
-<p class="card-links">${join(project.links.map(entry => projectLink(t, project, entry)))}</p></div></li>`;
+<p class="card-links">${join(cardLinks(project).map(entry => projectLink(t, project, entry)))}</p></div></li>`;
 }
 
 function rail(copy, cards, modifier = '') {
@@ -91,15 +94,15 @@ function modCard(t, mod) {
   if (cover?.repo) links.push(actionLink(cover.repo, 'GitHub', { title: mod.name }));
   const translation = mod.kind === 'translation';
   const head = translation
-    ? html`<div class="mod-type"><b>IT</b><span>${mod.game}</span></div>`
+    ? html`<div class="card-cover mod-type"><b>IT</b><span>${mod.game}</span></div>`
     : html`<div class="card-cover">${raw(cover
       ? img(cover.cover, { sizes: '(min-width: 600px) 386px, 80vw' })
       : html`<img src="${mod.image.src}" width="${mod.image.width}" height="${mod.image.height}" alt="" loading="lazy" decoding="async">`)}</div>`;
   const width = Math.max(2, Math.round(Math.sqrt(mod.downloads / maxDownloads) * 1000) / 10);
-  return html`<li class="card mod-card${translation ? ' compact' : ''}">
+  return html`<li class="card mod-card${translation ? ' translation' : ''}">
 ${raw(head)}
 <div class="card-body"><h4>${mod.name}</h4>
-<p class="card-meta">${translation ? '' : raw(html`<span class="pill">${shortGame(mod.game)}</span>`)}<span class="card-stack">${mod.category ?? (translation ? '' : mod.game)}</span></p>
+<p class="card-meta"><span class="pill">${shortGame(mod.game)}</span><span class="card-stack">${mod.category ?? mod.game}</span></p>
 <p class="mod-stats"><strong>${number(mod.downloads)}</strong> <span>${label(t, 'downloadsWord')} · ${number(mod.endorsements)} ${label(t, 'endorsementsWord')}</span></p>
 <div class="mod-bar" aria-hidden="true"><span style="width:${width}%"></span></div>
 <p class="card-links">${join(links)}</p></div></li>`;

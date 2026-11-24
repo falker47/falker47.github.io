@@ -35,10 +35,10 @@ export function cover(media, { sizes, fetchpriority = 'high' } = {}) {
  * The top of a project page: the cover, a label, the title, a lead, the facts
  * and the links. Short blocks follow under ruled headings.
  */
-export function detailPage(ctx, { kicker, media, altKey, spec, actions, body, back = {}, sizes }) {
+export function detailPage(ctx, { kicker, media, altKey, spec, actions, body, back = {}, sizes, compact = false }) {
   const { route, copy, t } = ctx;
   const image = altKey ? { ...media, alt: { it: copy.it[altKey], en: copy.en[altKey] } } : media;
-  return html`<main id="main" tabindex="-1" class="detail-page">
+  return html`<main id="main" tabindex="-1" class="detail-page${compact ? ' detail-compact' : ''}">
   ${raw(crumb(ctx, back))}
   <article class="detail-top" aria-labelledby="page-title">
     ${raw(cover(image, { sizes }))}

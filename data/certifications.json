@@ -224,6 +224,70 @@
     }
   },
   {
+    "id": "fundamentals-of-quantitative-modeling",
+    "title": "Fundamentals of Quantitative Modeling",
+    "issuer": "Wharton University",
+    "year": 2023,
+    "alt": {
+      "it": "Attestato di Wharton University per Fundamentals of Quantitative Modeling.",
+      "en": "Certificate from Wharton University for Fundamentals of Quantitative Modeling."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
+    },
+    "full": {
+      "src": "/assets/certifications/fundamentals-of-quantitative-modeling-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  },
+  {
+    "id": "understanding-financial-markets",
+    "title": "Understanding Financial Markets",
+    "issuer": "University of Geneva",
+    "year": 2023,
+    "alt": {
+      "it": "Attestato di University of Geneva per Understanding Financial Markets.",
+      "en": "Certificate from University of Geneva for Understanding Financial Markets."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/understanding-financial-markets-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/understanding-financial-markets-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/understanding-financial-markets-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
+    },
+    "full": {
+      "src": "/assets/certifications/understanding-financial-markets-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  },
+  {
     "id": "cybersecurity-professional-course",
     "title": "Cybersecurity Professional Course",
     "issuer": "Google",
@@ -347,6 +411,70 @@
     },
     "full": {
       "src": "/assets/certifications/fullstack-developer-certification-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  },
+  {
+    "id": "greek-and-roman-mythology",
+    "title": "Greek and Roman Mythology",
+    "issuer": "University of Pennsylvania",
+    "year": 2023,
+    "alt": {
+      "it": "Attestato di University of Pennsylvania per Greek and Roman Mythology.",
+      "en": "Certificate from University of Pennsylvania for Greek and Roman Mythology."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/greek-and-roman-mythology-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/greek-and-roman-mythology-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/greek-and-roman-mythology-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
+    },
+    "full": {
+      "src": "/assets/certifications/greek-and-roman-mythology-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  },
+  {
+    "id": "archaeoastronomy",
+    "title": "Archaeoastronomy",
+    "issuer": "Politecnico di Milano",
+    "year": 2023,
+    "alt": {
+      "it": "Attestato di Politecnico di Milano per Archaeoastronomy.",
+      "en": "Certificate from Politecnico di Milano for Archaeoastronomy."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/archaeoastronomy-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/archaeoastronomy-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/archaeoastronomy-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
+    },
+    "full": {
+      "src": "/assets/certifications/archaeoastronomy-full.webp",
       "width": 960,
       "height": 742
     }

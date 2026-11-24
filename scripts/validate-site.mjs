@@ -126,7 +126,8 @@ assert.doesNotMatch(await readFile(join(siteRoot,'sitemap.xml'),'utf8'), /\/styl
 const css = homeStyles;
 const i18n = await readFile(join(siteRoot, 'scripts/i18n.js'), 'utf8');
 // V3 renders every project, mod and paper inside the home (V2: 120 KB with three examples per tab).
-assert.ok(Buffer.byteLength(html) <= 165000, 'Home exceeds 165 KB');
+// V4: 170 KB, for the four certificates added to the fan (about 850 bytes each) and room for new mods.
+assert.ok(Buffer.byteLength(html) <= 170000, 'Home exceeds 170 KB');
 assert.ok(!/<meta\b[^>]*name="robots"[^>]*content="[^"]*no(?:index|follow)/i.test(html), 'Production must be indexable');
 assert.match(html, /<link rel="canonical" href="https:\/\/falker47\.github\.io\/"/);
 assert.match(html, /<meta name="google-site-verification" content="[^"]+"/);
