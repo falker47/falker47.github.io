@@ -1,0 +1,478 @@
+[
+  {
+    "route": "/",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/404.html",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/404.html",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/404.html",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/404.html",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/research/",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/research/",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/research/",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/research/",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/prof-gecko/",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/prof-gecko/",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/prof-gecko/",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/prof-gecko/",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/camaleonte/",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/camaleonte/",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/camaleonte/",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/camaleonte/",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/uses/",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/uses/",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/uses/",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/uses/",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/test/",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/test/",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/test/",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/test/",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/privacy/",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/privacy/",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/privacy/",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/social-viewer/privacy/",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/index.html",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/index.html",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/index.html",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/index.html",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/research.html",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/research.html",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/research.html",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/research.html",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/prof-gecko.html",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/prof-gecko.html",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/prof-gecko.html",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/prof-gecko.html",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/consigli.html",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/consigli.html",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/consigli.html",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/consigli.html",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/testers.html",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/testers.html",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/testers.html",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/testers.html",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/socialviewer-privacy.html",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/socialviewer-privacy.html",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/socialviewer-privacy.html",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/Nexus-portfolio/socialviewer-privacy.html",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/projects/",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  }
+]

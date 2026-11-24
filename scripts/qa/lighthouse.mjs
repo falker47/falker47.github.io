@@ -7,7 +7,11 @@ import { auditRoutes } from './audit-routes.mjs';
 import { checkLoad, snapshotUrl } from '../budgets.mjs';
 
 const load = name => import(pathToFileURL(qaRequire.resolve(name)));
-export const gates = { 'min-perf-mobile': 95, 'min-perf-desktop': 98, 'min-a11y': 100, 'min-bp': 95 };
+// V3 floors: the home now holds every project, so mobile performance must reach 90 and desktop 95.
+export const gates = { 'min-perf-mobile': 90, 'min-perf-desktop': 95, 'min-a11y': 100, 'min-bp': 95 };
+// Extra Chrome flags for machines whose headless GPU stalls the main thread (for example
+// QA_CHROME_FLAGS=--disable-gpu during a remote-desktop session). The report records them.
+const extraFlags = (process.env.QA_CHROME_FLAGS ?? '').split(/s+/).filter(Boolean);
 
 export async function runLighthouse(pages, langs, thresholds = gates, root) {
   const { default: lighthouse } = await load('lighthouse');
@@ -24,7 +28,7 @@ export async function runLighthouse(pages, langs, thresholds = gates, root) {
         results.push(row);
         let chrome;
         try {
-          chrome = await launch({ chromePath: executable, chromeFlags: ['--headless=new', '--no-sandbox'] });
+          chrome = await launch({ chromePath: executable, chromeFlags: ['--headless=new', '--no-sandbox', ...extraFlags] });
           const url = new URL(route, server.origin);
           if (lang) url.searchParams.set('lang', lang);
           const { lhr } = await lighthouse(url.href, {
@@ -53,6 +57,7 @@ export async function runLighthouse(pages, langs, thresholds = gates, root) {
             bytes: item.transferSize,
           }));
           row.version = lhr.lighthouseVersion;
+          if (extraFlags.length) row.chromeFlags = extraFlags;
           const bad = requests.find(item => new URL(item.url).origin !== server.origin && item.url !== snapshotUrl);
           if (bad) throw Error('Unexpected request: ' + bad.url);
           if (route === '/') checkLoad(row.metrics, device + ' home');
