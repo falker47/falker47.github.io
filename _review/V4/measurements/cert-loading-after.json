@@ -1,0 +1,479 @@
+{
+  "profile": "Fast 4G",
+  "conditions": {
+    "offline": false,
+    "latency": 165,
+    "downloadThroughput": 1012500,
+    "uploadThroughput": 168750
+  },
+  "rows": [
+    {
+      "viewport": 1440,
+      "reader": "after 3 s",
+      "medianMs": 17,
+      "runsMs": [
+        17,
+        16,
+        17
+      ],
+      "trace": [
+        {
+          "path": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
+          "startAfterClick": -2609,
+          "duration": 235,
+          "bytes": 7646
+        },
+        {
+          "path": "/assets/certifications/data-science-professional-course-thumb-300.webp",
+          "startAfterClick": -2609,
+          "duration": 223,
+          "bytes": 7102
+        },
+        {
+          "path": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
+          "startAfterClick": -2609,
+          "duration": 220,
+          "bytes": 5814
+        },
+        {
+          "path": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
+          "startAfterClick": -2609,
+          "duration": 236,
+          "bytes": 10146
+        },
+        {
+          "path": "/assets/certifications/sas-programming-course-thumb-300.webp",
+          "startAfterClick": -2609,
+          "duration": 220,
+          "bytes": 4772
+        },
+        {
+          "path": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
+          "startAfterClick": -2609,
+          "duration": 223,
+          "bytes": 7070
+        },
+        {
+          "path": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
+          "startAfterClick": -2609,
+          "duration": 451,
+          "bytes": 8086
+        },
+        {
+          "path": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
+          "startAfterClick": -2608,
+          "duration": 435,
+          "bytes": 6284
+        },
+        {
+          "path": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
+          "startAfterClick": -2608,
+          "duration": 451,
+          "bytes": 7886
+        },
+        {
+          "path": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
+          "startAfterClick": -2608,
+          "duration": 451,
+          "bytes": 7430
+        },
+        {
+          "path": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
+          "startAfterClick": -2608,
+          "duration": 452,
+          "bytes": 9842
+        }
+      ]
+    },
+    {
+      "viewport": 1440,
+      "reader": "at load",
+      "medianMs": 468,
+      "runsMs": [
+        487,
+        450,
+        468
+      ],
+      "trace": [
+        {
+          "path": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
+          "startAfterClick": 13,
+          "duration": 226,
+          "bytes": 7646
+        },
+        {
+          "path": "/assets/certifications/data-science-professional-course-thumb-300.webp",
+          "startAfterClick": 13,
+          "duration": 226,
+          "bytes": 7102
+        },
+        {
+          "path": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
+          "startAfterClick": 13,
+          "duration": 211,
+          "bytes": 5814
+        },
+        {
+          "path": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
+          "startAfterClick": 13,
+          "duration": 227,
+          "bytes": 10146
+        },
+        {
+          "path": "/assets/certifications/sas-programming-course-thumb-300.webp",
+          "startAfterClick": 13,
+          "duration": 226,
+          "bytes": 4772
+        },
+        {
+          "path": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
+          "startAfterClick": 13,
+          "duration": 226,
+          "bytes": 7070
+        },
+        {
+          "path": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
+          "startAfterClick": 13,
+          "duration": 405,
+          "bytes": 8086
+        },
+        {
+          "path": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
+          "startAfterClick": 13,
+          "duration": 436,
+          "bytes": 7886
+        },
+        {
+          "path": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
+          "startAfterClick": 13,
+          "duration": 435,
+          "bytes": 6284
+        },
+        {
+          "path": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
+          "startAfterClick": 13,
+          "duration": 451,
+          "bytes": 7430
+        },
+        {
+          "path": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
+          "startAfterClick": 13,
+          "duration": 451,
+          "bytes": 9842
+        }
+      ]
+    },
+    {
+      "viewport": 1440,
+      "reader": "hover, then 300 ms",
+      "medianMs": 72,
+      "runsMs": [
+        71,
+        72,
+        92
+      ],
+      "trace": [
+        {
+          "path": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
+          "startAfterClick": -384,
+          "duration": 230,
+          "bytes": 7646
+        },
+        {
+          "path": "/assets/certifications/data-science-professional-course-thumb-300.webp",
+          "startAfterClick": -384,
+          "duration": 230,
+          "bytes": 7102
+        },
+        {
+          "path": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
+          "startAfterClick": -383,
+          "duration": 214,
+          "bytes": 5814
+        },
+        {
+          "path": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
+          "startAfterClick": -383,
+          "duration": 233,
+          "bytes": 10146
+        },
+        {
+          "path": "/assets/certifications/sas-programming-course-thumb-300.webp",
+          "startAfterClick": -383,
+          "duration": 215,
+          "bytes": 4772
+        },
+        {
+          "path": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
+          "startAfterClick": -383,
+          "duration": 230,
+          "bytes": 7070
+        },
+        {
+          "path": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
+          "startAfterClick": -383,
+          "duration": 396,
+          "bytes": 8086
+        },
+        {
+          "path": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
+          "startAfterClick": -383,
+          "duration": 428,
+          "bytes": 7886
+        },
+        {
+          "path": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
+          "startAfterClick": -383,
+          "duration": 428,
+          "bytes": 6284
+        },
+        {
+          "path": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
+          "startAfterClick": -383,
+          "duration": 428,
+          "bytes": 7430
+        },
+        {
+          "path": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
+          "startAfterClick": -383,
+          "duration": 443,
+          "bytes": 9842
+        }
+      ]
+    },
+    {
+      "viewport": 390,
+      "reader": "after 3 s",
+      "medianMs": 25,
+      "runsMs": [
+        26,
+        25,
+        25
+      ],
+      "trace": [
+        {
+          "path": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
+          "startAfterClick": -3001,
+          "duration": 262,
+          "bytes": 17078
+        },
+        {
+          "path": "/assets/certifications/data-science-professional-course-thumb.webp",
+          "startAfterClick": -3001,
+          "duration": 259,
+          "bytes": 16208
+        },
+        {
+          "path": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+          "startAfterClick": -3001,
+          "duration": 245,
+          "bytes": 10222
+        },
+        {
+          "path": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
+          "startAfterClick": -3001,
+          "duration": 275,
+          "bytes": 19054
+        },
+        {
+          "path": "/assets/certifications/sas-programming-course-thumb.webp",
+          "startAfterClick": -3000,
+          "duration": 244,
+          "bytes": 9562
+        },
+        {
+          "path": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
+          "startAfterClick": -3000,
+          "duration": 263,
+          "bytes": 16286
+        },
+        {
+          "path": "/assets/certifications/financial-technology-specialization-thumb.webp",
+          "startAfterClick": -3000,
+          "duration": 482,
+          "bytes": 18386
+        },
+        {
+          "path": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
+          "startAfterClick": -3000,
+          "duration": 497,
+          "bytes": 18078
+        },
+        {
+          "path": "/assets/certifications/french-b2-2-certificate-thumb.webp",
+          "startAfterClick": -3000,
+          "duration": 513,
+          "bytes": 15532
+        },
+        {
+          "path": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+          "startAfterClick": -3000,
+          "duration": 513,
+          "bytes": 16854
+        },
+        {
+          "path": "/assets/certifications/fullstack-developer-certification-thumb.webp",
+          "startAfterClick": -3000,
+          "duration": 529,
+          "bytes": 18448
+        }
+      ]
+    },
+    {
+      "viewport": 390,
+      "reader": "at load",
+      "medianMs": 544,
+      "runsMs": [
+        545,
+        544,
+        527
+      ],
+      "trace": [
+        {
+          "path": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
+          "startAfterClick": -7,
+          "duration": 277,
+          "bytes": 17078
+        },
+        {
+          "path": "/assets/certifications/data-science-professional-course-thumb.webp",
+          "startAfterClick": -7,
+          "duration": 277,
+          "bytes": 16208
+        },
+        {
+          "path": "/assets/certifications/sas-programming-course-thumb.webp",
+          "startAfterClick": -7,
+          "duration": 247,
+          "bytes": 9562
+        },
+        {
+          "path": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+          "startAfterClick": -7,
+          "duration": 247,
+          "bytes": 10222
+        },
+        {
+          "path": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
+          "startAfterClick": -7,
+          "duration": 277,
+          "bytes": 19054
+        },
+        {
+          "path": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
+          "startAfterClick": -7,
+          "duration": 278,
+          "bytes": 16286
+        },
+        {
+          "path": "/assets/certifications/financial-technology-specialization-thumb.webp",
+          "startAfterClick": -7,
+          "duration": 462,
+          "bytes": 18386
+        },
+        {
+          "path": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
+          "startAfterClick": -6,
+          "duration": 463,
+          "bytes": 18078
+        },
+        {
+          "path": "/assets/certifications/french-b2-2-certificate-thumb.webp",
+          "startAfterClick": -6,
+          "duration": 509,
+          "bytes": 15532
+        },
+        {
+          "path": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+          "startAfterClick": -6,
+          "duration": 509,
+          "bytes": 16854
+        },
+        {
+          "path": "/assets/certifications/fullstack-developer-certification-thumb.webp",
+          "startAfterClick": -6,
+          "duration": 516,
+          "bytes": 18448
+        }
+      ]
+    },
+    {
+      "viewport": 390,
+      "reader": "hover, then 300 ms",
+      "medianMs": 174,
+      "runsMs": [
+        170,
+        176,
+        174
+      ],
+      "trace": [
+        {
+          "path": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
+          "startAfterClick": -364,
+          "duration": 277,
+          "bytes": 17078
+        },
+        {
+          "path": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+          "startAfterClick": -364,
+          "duration": 245,
+          "bytes": 10222
+        },
+        {
+          "path": "/assets/certifications/data-science-professional-course-thumb.webp",
+          "startAfterClick": -364,
+          "duration": 277,
+          "bytes": 16208
+        },
+        {
+          "path": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
+          "startAfterClick": -364,
+          "duration": 277,
+          "bytes": 19054
+        },
+        {
+          "path": "/assets/certifications/sas-programming-course-thumb.webp",
+          "startAfterClick": -364,
+          "duration": 245,
+          "bytes": 9562
+        },
+        {
+          "path": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
+          "startAfterClick": -364,
+          "duration": 277,
+          "bytes": 16286
+        },
+        {
+          "path": "/assets/certifications/financial-technology-specialization-thumb.webp",
+          "startAfterClick": -364,
+          "duration": 467,
+          "bytes": 18386
+        },
+        {
+          "path": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
+          "startAfterClick": -364,
+          "duration": 465,
+          "bytes": 18078
+        },
+        {
+          "path": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+          "startAfterClick": -364,
+          "duration": 512,
+          "bytes": 16854
+        },
+        {
+          "path": "/assets/certifications/french-b2-2-certificate-thumb.webp",
+          "startAfterClick": -364,
+          "duration": 512,
+          "bytes": 15532
+        },
+        {
+          "path": "/assets/certifications/fullstack-developer-certification-thumb.webp",
+          "startAfterClick": -363,
+          "duration": 512,
+          "bytes": 18448
+        }
+      ]
+    }
+  ]
+}

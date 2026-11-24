@@ -2,7 +2,8 @@
 // Usage: node scripts/qa/cert-loading.mjs --task V4 [--label after] [--root <another built _site>] [--runs 3]
 // Each run is a cold visit. Three readers: one opens the section 3 s after the page has loaded,
 // one opens it at the load event, one points at the summary and opens it 300 ms later.
-// The time runs from the click to the moment every thumbnail in the fan has loaded and decoded.
+// The time runs from the click (the page then scrolls to the fan) to the moment every thumbnail
+// in the fan has loaded and decoded.
 import { writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { options, viewports, withBrowser } from './browser.mjs';
@@ -34,8 +35,13 @@ await withBrowser(async (browser, origin) => {
           const images = [...document.querySelectorAll('.deck-card img')];
           const start = performance.now();
           document.querySelector('#chi-sono > summary').click();
+          // The reader goes straight to the fan, which may sit below the fold on a phone.
+          document.querySelector('#certificazioni .deck').scrollIntoView({ block: 'center' });
           const ready = image => image.complete && image.naturalWidth > 0;
-          while (!images.every(ready)) await new Promise(next => requestAnimationFrame(next));
+          while (!images.every(ready)) {
+            if (performance.now() - start > 30000) throw Error('The fan did not load within 30 s');
+            await new Promise(next => requestAnimationFrame(next));
+          }
           await Promise.all(images.map(image => image.decode().catch(() => {})));
           const end = performance.now();
           const entries = performance.getEntriesByType('resource').filter(entry => /\/assets\/certifications\/.*-thumb/.test(entry.name));
