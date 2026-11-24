@@ -36,6 +36,6 @@ export function aboutSection(ctx) {
 <section class="about-journey" aria-labelledby="journey-title"><h3 class="section-label" id="journey-title">${label(t, 'journeyTitle')}</h3>
 ${raw(journey(ctx))}</section>
 <p class="philosophy" data-i18n="philosophy">${t('philosophy')}</p><nav class="research-links about-actions" aria-label="${copy.it.researchProfiles}" data-label="researchProfiles">${raw(links)}</nav>
-<section class="credentials" id="certificazioni" aria-labelledby="credentials-title"><h3 class="section-label" id="credentials-title">${label(t, 'guideCertificates')}</h3>
+<section class="credentials" id="certificazioni" aria-labelledby="credentials-title"><h3 class="section-label" id="credentials-title">${label(t, 'guideCertificates')} <span aria-hidden="true">·</span> ${credentials.length}</h3>
 ${raw(certificateDeck(ctx, credentials, 'home-certificate'))}</section></div></details>`;
 }

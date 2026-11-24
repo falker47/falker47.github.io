@@ -11,12 +11,16 @@ export function primaryCta(t, key, href) {
 }
 
 /**
- * The certificates as a fan of overlapping cards. Each card is a button that
- * opens the viewer; the caption beside the fan names the card under the pointer.
+ * The certificates as a fan of overlapping cards, turned from −9° to +9°. Each
+ * card is a button that opens the viewer; the caption beside the fan names the
+ * card under the pointer or the focus.
  */
 export function certificateDeck({ t, copy }, entries, id) {
-  const cards = entries.map(({ thumbnail, full, alt, title, issuer, year }, index) =>
-    html`<button type="button" class="deck-card" style="--i:${index}" data-viewer="${id}" data-full="${full.src}" data-width="${full.width}" data-height="${full.height}" data-meta="${issuer} · ${year}" data-title="${title}" aria-label="${title}, ${issuer}, ${year}" aria-haspopup="dialog" aria-controls="${id}">${raw(img({ ...thumbnail, alt, variants: [thumbnail] }, { sizes: '150px' }))}</button>`);
+  const last = Math.max(1, entries.length - 1);
+  const cards = entries.map(({ thumbnail, full, alt, title, issuer, year }, index) => {
+    const turn = index / last - .5;
+    return html`<button type="button" class="deck-card" style="--r:${(turn * 18).toFixed(1)}deg;--y:${(Math.abs(turn) * 16).toFixed(1)}px" data-viewer="${id}" data-full="${full.src}" data-width="${full.width}" data-height="${full.height}" data-meta="${issuer} · ${year}" data-title="${title}" aria-label="${title}, ${issuer}, ${year}" aria-haspopup="dialog" aria-controls="${id}">${raw(img({ ...thumbnail, alt, variants: [thumbnail] }, { sizes: '150px' }))}</button>`;
+  });
   return html`<div class="deck" style="--n:${entries.length}">
   <div class="deck-fan" role="group" data-label="guideCertificates" aria-label="${copy.it.guideCertificates}">
   ${group(cards)}
@@ -28,7 +32,7 @@ export function certificateDeck({ t, copy }, entries, id) {
   </div>
 </div>
 <dialog class="certificate-viewer" id="${id}" aria-labelledby="${id}-title">
-  <div class="viewer-bar"><div><p class="viewer-meta"></p><h3 id="${id}-title"></h3></div><form method="dialog"><button class="text-button">${label(t, 'closeViewer')}</button></form></div>
+  <div class="viewer-bar"><h3 id="${id}-title"></h3><form method="dialog"><button class="viewer-step viewer-close" data-label="closeViewer" aria-label="${copy.it.closeViewer}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></form></div>
   <div class="viewer-stage"></div>
   <div class="viewer-foot"><button type="button" class="viewer-step" data-step="-1" data-label="viewerPrevious" aria-label="${copy.it.viewerPrevious}"><span aria-hidden="true">←</span></button><p class="viewer-count" aria-live="polite"><span class="viewer-index">1</span> / ${entries.length}</p><button type="button" class="viewer-step" data-step="1" data-label="viewerNext" aria-label="${copy.it.viewerNext}"><span aria-hidden="true">→</span></button></div>
 </dialog>`;

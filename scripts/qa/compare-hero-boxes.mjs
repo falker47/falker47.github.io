@@ -11,9 +11,13 @@ const { out, values } = await options({ baseline: { type: 'string' } });
 if (!values.baseline) throw Error('Provide --baseline PATH (a checkout with a built _site)');
 
 // Boxes that must not move, and boxes whose text changed on purpose (weight, size, case).
+// Below 600 px the role takes two lines, as in the approved prototype: the card keeps its
+// place and width and grows by that line, and what follows it moves down by the same amount.
 const fixed = ['.hero-lead h1', '.hero-lead .cta', '.identity', '.identity-core', '.person', '.portrait', '.person-handle',
   '.identity-intro', '.contacts', '.engine-art', '#chi-sono > summary', 'details.work > summary'];
 const restyled = ['.person-name', '.person-role'];
+const growsOnPhones = ['.identity', '.identity-core', '.person', '.portrait'];
+const followsOnPhones = ['.identity-intro', '.contacts', '#chi-sono > summary', 'details.work > summary'];
 const sizes = [[1440, 900], [390, 844], [1280, 720], [768, 1024], [1920, 1080], [360, 740], [1000, 620]];
 
 async function measure(root) {
@@ -40,15 +44,23 @@ async function measure(root) {
 
 const before = await measure(join(resolve(values.baseline), '_site'));
 const after = await measure();
-const report = { baseline: resolve(values.baseline), viewports: Object.keys(before).length, fixed, restyled, moved: [], restyledBoxes: [] };
+const report = { baseline: resolve(values.baseline), viewports: Object.keys(before).length, fixed, restyled, growsOnPhones, followsOnPhones, moved: [], restyledBoxes: [], phoneGrowth: [] };
 for (const key of Object.keys(before)) {
+  const phone = parseInt(key, 10) < 600;
+  const growth = phone ? Math.round((after[key]['.person-role'][3] - before[key]['.person-role'][3]) * 100) / 100 : 0;
+  if (growth) report.phoneGrowth.push({ view: key, roleLines: 2, extraHeight: growth });
   for (const selector of fixed) {
-    if (JSON.stringify(before[key][selector]) !== JSON.stringify(after[key][selector])) report.moved.push({ view: key, selector, before: before[key][selector], after: after[key][selector] });
+    const [a, b] = [before[key][selector], after[key][selector]];
+    if (JSON.stringify(a) === JSON.stringify(b)) continue;
+    const close = (x, y) => Math.abs(x - y) <= .02;
+    if (growth && growsOnPhones.includes(selector) && close(a[0], b[0]) && close(a[1], b[1]) && close(a[2], b[2]) && close(a[3] + growth, b[3])) continue;
+    if (growth && followsOnPhones.includes(selector) && close(a[0], b[0]) && close(a[1] + growth, b[1]) && close(a[2], b[2]) && close(a[3], b[3])) continue;
+    report.moved.push({ view: key, selector, before: a, after: b });
   }
   for (const selector of restyled) {
     const [a, b] = [before[key][selector], after[key][selector]];
-    // Restyled text keeps its origin and its line box; only its width may change.
-    if (a[0] !== b[0] || a[1] !== b[1] || a[3] !== b[3]) report.moved.push({ view: key, selector, before: a, after: b });
+    // Restyled text keeps its origin and its line box; only its width may change (and the role's height on phones).
+    if (a[0] !== b[0] || a[1] !== b[1] || (a[3] !== b[3] && !(growth && selector === '.person-role'))) report.moved.push({ view: key, selector, before: a, after: b });
     else if (a[2] !== b[2]) report.restyledBoxes.push({ view: key, selector, widthBefore: a[2], widthAfter: b[2] });
   }
 }

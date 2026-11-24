@@ -9,30 +9,30 @@
     "cards": [
       {
         "title": "Prof. Gecko",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Social Viewer",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Diario di Bordo",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Easy Contract",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 14.268292682926829,
+    "smallestChartText": 16.6,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -92,30 +92,30 @@
     "cards": [
       {
         "title": "Prof. Gecko",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Social Viewer",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Diario di Bordo",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Easy Contract",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 13,
+    "smallestChartText": 12.5,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -155,13 +155,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 62.5,
+        "height": 79.296875,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.2578125
+        "scale": 0.30975341796875
       }
     ]
   },
@@ -175,30 +175,30 @@
     "cards": [
       {
         "title": "Prof. Gecko",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Social Viewer",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Diario di Bordo",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Easy Contract",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 14.268292682926829,
+    "smallestChartText": 16.6,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -258,30 +258,30 @@
     "cards": [
       {
         "title": "Prof. Gecko",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Social Viewer",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Diario di Bordo",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Easy Contract",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 13,
+    "smallestChartText": 12.5,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -321,13 +321,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 62.5,
+        "height": 79.296875,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.2578125
+        "scale": 0.30975341796875
       }
     ]
   },
@@ -2507,30 +2507,30 @@
     "cards": [
       {
         "title": "Prof. Gecko",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Social Viewer",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Diario di Bordo",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Easy Contract",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 14.268292682926829,
+    "smallestChartText": 16.6,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -2592,13 +2592,13 @@
       {
         "src": "/assets/certifications/data-science-professional-course-thumb.webp",
         "width": 161.169921875,
-        "height": 132.0379638671875,
+        "height": 132.03790283203125,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.3558974767309636
+        "scale": 0.35589731221571763
       },
       {
         "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
@@ -2657,7 +2657,7 @@
       },
       {
         "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
-        "width": 154.890625,
+        "width": 154.89056396484375,
         "height": 123.4578857421875,
         "fit": "fill",
         "native": [
@@ -2668,7 +2668,7 @@
       },
       {
         "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
-        "width": 158.10833740234375,
+        "width": 158.10830688476562,
         "height": 127.81097412109375,
         "fit": "fill",
         "native": [
@@ -2679,14 +2679,14 @@
       },
       {
         "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
-        "width": 161.169921875,
-        "height": 132.0379638671875,
+        "width": 161.16989135742188,
+        "height": 132.03790283203125,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.3558974767309636
+        "scale": 0.35589731221571763
       },
       {
         "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
@@ -2711,30 +2711,30 @@
     "cards": [
       {
         "title": "Prof. Gecko",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Social Viewer",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Diario di Bordo",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Easy Contract",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 13,
+    "smallestChartText": 12.5,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -2774,13 +2774,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 62.5,
+        "height": 79.296875,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.2578125
+        "scale": 0.30975341796875
       },
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
@@ -2795,18 +2795,18 @@
       },
       {
         "src": "/assets/certifications/data-science-professional-course-thumb.webp",
-        "width": 119.78789520263672,
-        "height": 98.1319580078125,
+        "width": 119.78790283203125,
+        "height": 98.1318359375,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.2645066253579852
+        "scale": 0.2645062963274933
       },
       {
         "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
-        "width": 117.51249694824219,
+        "width": 117.51248931884766,
         "height": 94.990234375,
         "fit": "fill",
         "native": [
@@ -2828,7 +2828,7 @@
       },
       {
         "src": "/assets/certifications/sas-programming-course-thumb.webp",
-        "width": 112.61612701416016,
+        "width": 112.61613464355469,
         "height": 88.428955078125,
         "fit": "fill",
         "native": [
@@ -2850,7 +2850,7 @@
       },
       {
         "src": "/assets/certifications/financial-technology-specialization-thumb.webp",
-        "width": 112.61613464355469,
+        "width": 112.61611938476562,
         "height": 88.428955078125,
         "fit": "fill",
         "native": [
@@ -2861,7 +2861,7 @@
       },
       {
         "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
-        "width": 115.12110900878906,
+        "width": 115.12112426757812,
         "height": 91.7547607421875,
         "fit": "fill",
         "native": [
@@ -2872,7 +2872,7 @@
       },
       {
         "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
-        "width": 117.51249694824219,
+        "width": 117.51248168945312,
         "height": 94.990234375,
         "fit": "fill",
         "native": [
@@ -2883,18 +2883,18 @@
       },
       {
         "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
-        "width": 119.78788757324219,
-        "height": 98.1319580078125,
+        "width": 119.78790283203125,
+        "height": 98.1318359375,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.2645066253579852
+        "scale": 0.2645062963274933
       },
       {
         "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
-        "width": 121.94509887695312,
+        "width": 121.94508361816406,
         "height": 101.1766357421875,
         "fit": "fill",
         "native": [
@@ -2915,30 +2915,30 @@
     "cards": [
       {
         "title": "Prof. Gecko",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Social Viewer",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Diario di Bordo",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Easy Contract",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 14.268292682926829,
+    "smallestChartText": 16.6,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -3000,13 +3000,13 @@
       {
         "src": "/assets/certifications/data-science-professional-course-thumb.webp",
         "width": 161.169921875,
-        "height": 132.0379638671875,
+        "height": 132.03790283203125,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.3558974767309636
+        "scale": 0.35589731221571763
       },
       {
         "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
@@ -3065,7 +3065,7 @@
       },
       {
         "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
-        "width": 154.890625,
+        "width": 154.89056396484375,
         "height": 123.4578857421875,
         "fit": "fill",
         "native": [
@@ -3076,7 +3076,7 @@
       },
       {
         "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
-        "width": 158.10833740234375,
+        "width": 158.10830688476562,
         "height": 127.81097412109375,
         "fit": "fill",
         "native": [
@@ -3087,14 +3087,14 @@
       },
       {
         "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
-        "width": 161.169921875,
-        "height": 132.0379638671875,
+        "width": 161.16989135742188,
+        "height": 132.03790283203125,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.3558974767309636
+        "scale": 0.35589731221571763
       },
       {
         "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
@@ -3119,30 +3119,30 @@
     "cards": [
       {
         "title": "Prof. Gecko",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Social Viewer",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Diario di Bordo",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Easy Contract",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 13,
+    "smallestChartText": 12.5,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -3182,13 +3182,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 62.5,
+        "height": 79.296875,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.2578125
+        "scale": 0.30975341796875
       },
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
@@ -3203,18 +3203,18 @@
       },
       {
         "src": "/assets/certifications/data-science-professional-course-thumb.webp",
-        "width": 119.78789520263672,
-        "height": 98.1319580078125,
+        "width": 119.78790283203125,
+        "height": 98.1318359375,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.2645066253579852
+        "scale": 0.2645062963274933
       },
       {
         "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
-        "width": 117.51249694824219,
+        "width": 117.51248931884766,
         "height": 94.990234375,
         "fit": "fill",
         "native": [
@@ -3236,7 +3236,7 @@
       },
       {
         "src": "/assets/certifications/sas-programming-course-thumb.webp",
-        "width": 112.61612701416016,
+        "width": 112.61613464355469,
         "height": 88.428955078125,
         "fit": "fill",
         "native": [
@@ -3258,7 +3258,7 @@
       },
       {
         "src": "/assets/certifications/financial-technology-specialization-thumb.webp",
-        "width": 112.61613464355469,
+        "width": 112.61611938476562,
         "height": 88.428955078125,
         "fit": "fill",
         "native": [
@@ -3269,7 +3269,7 @@
       },
       {
         "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
-        "width": 115.12110900878906,
+        "width": 115.12112426757812,
         "height": 91.7547607421875,
         "fit": "fill",
         "native": [
@@ -3280,7 +3280,7 @@
       },
       {
         "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
-        "width": 117.51249694824219,
+        "width": 117.51248168945312,
         "height": 94.990234375,
         "fit": "fill",
         "native": [
@@ -3291,18 +3291,18 @@
       },
       {
         "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
-        "width": 119.78788757324219,
-        "height": 98.1319580078125,
+        "width": 119.78790283203125,
+        "height": 98.1318359375,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.2645066253579852
+        "scale": 0.2645062963274933
       },
       {
         "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
-        "width": 121.94509887695312,
+        "width": 121.94508361816406,
         "height": 101.1766357421875,
         "fit": "fill",
         "native": [
@@ -3323,30 +3323,30 @@
     "cards": [
       {
         "title": "Prof. Gecko",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Social Viewer",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Diario di Bordo",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Easy Contract",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 14.268292682926829,
+    "smallestChartText": 16.6,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -3396,47 +3396,47 @@
       },
       {
         "src": "/assets/projects/prof-gecko-480.webp",
-        "width": 411.328125,
-        "height": 231.359375,
+        "width": 395.453125,
+        "height": 222.4375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.85693359375
+        "scale": 0.8238606770833333
       },
       {
         "src": "/assets/projects/social-viewer-480.webp",
-        "width": 411.328125,
-        "height": 231.359375,
+        "width": 395.453125,
+        "height": 222.4375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.85693359375
+        "scale": 0.8238606770833333
       },
       {
         "src": "/assets/projects/diario-di-bordo-480.webp",
-        "width": 411.328125,
-        "height": 231.359375,
+        "width": 395.453125,
+        "height": 222.4375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.85693359375
+        "scale": 0.8238606770833333
       },
       {
         "src": "/assets/projects/easy-contract-480.webp",
-        "width": 411.328125,
-        "height": 231.359375,
+        "width": 395.453125,
+        "height": 222.4375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.85693359375
+        "scale": 0.8238606770833333
       }
     ]
   },
@@ -3450,30 +3450,30 @@
     "cards": [
       {
         "title": "Prof. Gecko",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Social Viewer",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Diario di Bordo",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Easy Contract",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 13,
+    "smallestChartText": 12.5,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -3513,57 +3513,57 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 62.5,
+        "height": 79.296875,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.2578125
+        "scale": 0.30975341796875
       },
       {
         "src": "/assets/projects/prof-gecko-480.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6372395833333333
+        "scale": 0.630078125
       },
       {
         "src": "/assets/projects/social-viewer-480.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6372395833333333
+        "scale": 0.630078125
       },
       {
         "src": "/assets/projects/diario-di-bordo-480.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6372395833333333
+        "scale": 0.630078125
       },
       {
         "src": "/assets/projects/easy-contract-480.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6372395833333333
+        "scale": 0.630078125
       }
     ]
   },
@@ -3577,30 +3577,30 @@
     "cards": [
       {
         "title": "Prof. Gecko",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Social Viewer",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Diario di Bordo",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Easy Contract",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 14.268292682926829,
+    "smallestChartText": 16.6,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -3650,47 +3650,47 @@
       },
       {
         "src": "/assets/projects/prof-gecko-480.webp",
-        "width": 411.328125,
-        "height": 231.359375,
+        "width": 395.453125,
+        "height": 222.4375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.85693359375
+        "scale": 0.8238606770833333
       },
       {
         "src": "/assets/projects/social-viewer-480.webp",
-        "width": 411.328125,
-        "height": 231.359375,
+        "width": 395.453125,
+        "height": 222.4375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.85693359375
+        "scale": 0.8238606770833333
       },
       {
         "src": "/assets/projects/diario-di-bordo-480.webp",
-        "width": 411.328125,
-        "height": 231.359375,
+        "width": 395.453125,
+        "height": 222.4375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.85693359375
+        "scale": 0.8238606770833333
       },
       {
         "src": "/assets/projects/easy-contract-480.webp",
-        "width": 411.328125,
-        "height": 231.359375,
+        "width": 395.453125,
+        "height": 222.4375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.85693359375
+        "scale": 0.8238606770833333
       }
     ]
   },
@@ -3704,30 +3704,30 @@
     "cards": [
       {
         "title": "Prof. Gecko",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Social Viewer",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Diario di Bordo",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Easy Contract",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 13,
+    "smallestChartText": 12.5,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -3767,57 +3767,57 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 62.5,
+        "height": 79.296875,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.2578125
+        "scale": 0.30975341796875
       },
       {
         "src": "/assets/projects/prof-gecko-480.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6372395833333333
+        "scale": 0.630078125
       },
       {
         "src": "/assets/projects/social-viewer-480.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6372395833333333
+        "scale": 0.630078125
       },
       {
         "src": "/assets/projects/diario-di-bordo-480.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6372395833333333
+        "scale": 0.630078125
       },
       {
         "src": "/assets/projects/easy-contract-480.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6372395833333333
+        "scale": 0.630078125
       }
     ]
   },
@@ -3831,66 +3831,66 @@
     "cards": [
       {
         "title": "Hogwarts Legacy Save Editor",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Spouse Merchant",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Slow Time Edit Extended",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Soarin' Over Skyrim - Configur",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Respect the Chief",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Instant Spell Casting - Player",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Giant Shockwaves",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Spell Shouts MCM",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Unrelenting Force - Fus Ro Dah",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "DMMF - Multilingual Notificati",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 14.268292682926829,
+    "smallestChartText": 16.6,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -3940,113 +3940,113 @@
       },
       {
         "src": "/assets/mods/hogwarts-legacy-save-editor-480.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6424153645833334
+        "scale": 0.8
       },
       {
         "src": "/assets/nexus/192394.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.8029513888888888
+        "scale": 1
       },
       {
         "src": "/assets/nexus/197092.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.8029513888888888
+        "scale": 1
       },
       {
         "src": "/assets/nexus/192204.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.8029513888888888
+        "scale": 1
       },
       {
         "src": "/assets/mods/respect-the-chief-480.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6424153645833334
+        "scale": 0.8
       },
       {
         "src": "/assets/nexus/197145.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.8029513888888888
+        "scale": 1
       },
       {
         "src": "/assets/mods/giant-shockwaves-480.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6424153645833334
+        "scale": 0.8
       },
       {
         "src": "/assets/nexus/196979.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.8029513888888888
+        "scale": 1
       },
       {
         "src": "/assets/nexus/196616.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.8029513888888888
+        "scale": 1
       },
       {
         "src": "/assets/nexus/197146.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.8029513888888888
+        "scale": 1
       }
     ]
   },
@@ -4060,66 +4060,66 @@
     "cards": [
       {
         "title": "Hogwarts Legacy Save Editor",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Spouse Merchant",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Slow Time Edit Extended",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Soarin' Over Skyrim - Configur",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Respect the Chief",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Instant Spell Casting - Player",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Giant Shockwaves",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Spell Shouts MCM",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Unrelenting Force - Fus Ro Dah",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "DMMF - Multilingual Notificati",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 13,
+    "smallestChartText": 12.5,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -4159,123 +4159,123 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 62.5,
+        "height": 79.296875,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.2578125
+        "scale": 0.30975341796875
       },
       {
         "src": "/assets/mods/hogwarts-legacy-save-editor-480.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6372395833333333
+        "scale": 0.630078125
       },
       {
         "src": "/assets/nexus/192394.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.7965133101851852
+        "scale": 0.7875434027777778
       },
       {
         "src": "/assets/nexus/197092.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.7965133101851852
+        "scale": 0.7875434027777778
       },
       {
         "src": "/assets/nexus/192204.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.7965133101851852
+        "scale": 0.7875434027777778
       },
       {
         "src": "/assets/mods/respect-the-chief-480.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6372395833333333
+        "scale": 0.630078125
       },
       {
         "src": "/assets/nexus/197145.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.7965133101851852
+        "scale": 0.7875434027777778
       },
       {
         "src": "/assets/mods/giant-shockwaves-480.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6372395833333333
+        "scale": 0.630078125
       },
       {
         "src": "/assets/nexus/196979.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.7965133101851852
+        "scale": 0.7875434027777778
       },
       {
         "src": "/assets/nexus/196616.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.7965133101851852
+        "scale": 0.7875434027777778
       },
       {
         "src": "/assets/nexus/197146.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.7965133101851852
+        "scale": 0.7875434027777778
       }
     ]
   },
@@ -4289,66 +4289,66 @@
     "cards": [
       {
         "title": "Hogwarts Legacy Save Editor",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Spouse Merchant",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Slow Time Edit Extended",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Soarin' Over Skyrim - Configur",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Respect the Chief",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Instant Spell Casting - Player",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Giant Shockwaves",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Spell Shouts MCM",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Unrelenting Force - Fus Ro Dah",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "DMMF - Multilingual Notificati",
-        "width": 310,
+        "width": 386,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 14.268292682926829,
+    "smallestChartText": 16.6,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -4398,113 +4398,113 @@
       },
       {
         "src": "/assets/mods/hogwarts-legacy-save-editor-480.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6424153645833334
+        "scale": 0.8
       },
       {
         "src": "/assets/nexus/192394.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.8029513888888888
+        "scale": 1
       },
       {
         "src": "/assets/nexus/197092.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.8029513888888888
+        "scale": 1
       },
       {
         "src": "/assets/nexus/192204.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.8029513888888888
+        "scale": 1
       },
       {
         "src": "/assets/mods/respect-the-chief-480.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6424153645833334
+        "scale": 0.8
       },
       {
         "src": "/assets/nexus/197145.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.8029513888888888
+        "scale": 1
       },
       {
         "src": "/assets/mods/giant-shockwaves-480.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6424153645833334
+        "scale": 0.8
       },
       {
         "src": "/assets/nexus/196979.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.8029513888888888
+        "scale": 1
       },
       {
         "src": "/assets/nexus/196616.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.8029513888888888
+        "scale": 1
       },
       {
         "src": "/assets/nexus/197146.webp",
-        "width": 308.359375,
-        "height": 173.4375,
+        "width": 384,
+        "height": 216,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.8029513888888888
+        "scale": 1
       }
     ]
   },
@@ -4518,66 +4518,66 @@
     "cards": [
       {
         "title": "Hogwarts Legacy Save Editor",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Spouse Merchant",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Slow Time Edit Extended",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Soarin' Over Skyrim - Configur",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Respect the Chief",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Instant Spell Casting - Player",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Giant Shockwaves",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Spell Shouts MCM",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Unrelenting Force - Fus Ro Dah",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "DMMF - Multilingual Notificati",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 13,
+    "smallestChartText": 12.5,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -4617,123 +4617,123 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 62.5,
+        "height": 79.296875,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.2578125
+        "scale": 0.30975341796875
       },
       {
         "src": "/assets/mods/hogwarts-legacy-save-editor-480.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6372395833333333
+        "scale": 0.630078125
       },
       {
         "src": "/assets/nexus/192394.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.7965133101851852
+        "scale": 0.7875434027777778
       },
       {
         "src": "/assets/nexus/197092.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.7965133101851852
+        "scale": 0.7875434027777778
       },
       {
         "src": "/assets/nexus/192204.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.7965133101851852
+        "scale": 0.7875434027777778
       },
       {
         "src": "/assets/mods/respect-the-chief-480.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6372395833333333
+        "scale": 0.630078125
       },
       {
         "src": "/assets/nexus/197145.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.7965133101851852
+        "scale": 0.7875434027777778
       },
       {
         "src": "/assets/mods/giant-shockwaves-480.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           480,
           270
         ],
-        "scale": 0.6372395833333333
+        "scale": 0.630078125
       },
       {
         "src": "/assets/nexus/196979.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.7965133101851852
+        "scale": 0.7875434027777778
       },
       {
         "src": "/assets/nexus/196616.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.7965133101851852
+        "scale": 0.7875434027777778
       },
       {
         "src": "/assets/nexus/197146.webp",
-        "width": 305.875,
-        "height": 172.046875,
+        "width": 302.4375,
+        "height": 170.109375,
         "fit": "cover",
         "native": [
           385,
           216
         ],
-        "scale": 0.7965133101851852
+        "scale": 0.7875434027777778
       }
     ]
   },
@@ -4747,18 +4747,18 @@
     "cards": [
       {
         "title": "Certificazione esatta dei casi",
-        "width": 665,
+        "width": 638,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "La costante asintotica globale",
-        "width": 665,
+        "width": 638,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 14.268292682926829,
+    "smallestChartText": 12.692307692307692,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -4829,7 +4829,7 @@
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 11.7,
+    "smallestChartText": 11.076923076923077,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -4869,13 +4869,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 62.5,
+        "height": 79.296875,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.2578125
+        "scale": 0.30975341796875
       }
     ]
   },
@@ -4889,18 +4889,18 @@
     "cards": [
       {
         "title": "Exact certification of the fin",
-        "width": 665,
+        "width": 638,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "The global asymptotic constant",
-        "width": 665,
+        "width": 638,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 14.268292682926829,
+    "smallestChartText": 12.692307692307692,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -4971,7 +4971,7 @@
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 11.7,
+    "smallestChartText": 11.076923076923077,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -5011,13 +5011,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 62.5,
+        "height": 79.296875,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.2578125
+        "scale": 0.30975341796875
       }
     ]
   },
@@ -5031,24 +5031,24 @@
     "cards": [
       {
         "title": "card feedback-result",
-        "width": 439,
+        "width": 423,
         "spill": false,
         "smallestLink": null
       },
       {
         "title": "card feedback-result",
-        "width": 439,
+        "width": 423,
         "spill": false,
         "smallestLink": null
       },
       {
         "title": "Lezioni individuali",
-        "width": 439,
+        "width": 423,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 14.268292682926829,
+    "smallestChartText": 16.6,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -5147,7 +5147,7 @@
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 13,
+    "smallestChartText": 12.5,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -5187,13 +5187,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 62.5,
+        "height": 79.296875,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.2578125
+        "scale": 0.30975341796875
       },
       {
         "src": "/assets/images/letuelezioni.png",
@@ -5229,24 +5229,24 @@
     "cards": [
       {
         "title": "card feedback-result",
-        "width": 439,
+        "width": 423,
         "spill": false,
         "smallestLink": null
       },
       {
         "title": "card feedback-result",
-        "width": 439,
+        "width": 423,
         "spill": false,
         "smallestLink": null
       },
       {
         "title": "Individual lessons",
-        "width": 439,
+        "width": 423,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 14.268292682926829,
+    "smallestChartText": 16.6,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -5345,7 +5345,7 @@
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 13,
+    "smallestChartText": 12.5,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -5385,13 +5385,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 62.5,
+        "height": 79.296875,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.2578125
+        "scale": 0.30975341796875
       },
       {
         "src": "/assets/images/letuelezioni.png",
@@ -5427,30 +5427,30 @@
     "cards": [
       {
         "title": "Prof. Gecko",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Social Viewer",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Diario di Bordo",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Easy Contract",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 14.268292682926829,
+    "smallestChartText": 16.6,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -5512,13 +5512,13 @@
       {
         "src": "/assets/certifications/data-science-professional-course-thumb.webp",
         "width": 161.169921875,
-        "height": 132.0379638671875,
+        "height": 132.03790283203125,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.3558974767309636
+        "scale": 0.35589731221571763
       },
       {
         "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
@@ -5577,7 +5577,7 @@
       },
       {
         "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
-        "width": 154.890625,
+        "width": 154.89056396484375,
         "height": 123.4578857421875,
         "fit": "fill",
         "native": [
@@ -5588,7 +5588,7 @@
       },
       {
         "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
-        "width": 158.10833740234375,
+        "width": 158.10830688476562,
         "height": 127.81097412109375,
         "fit": "fill",
         "native": [
@@ -5599,14 +5599,14 @@
       },
       {
         "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
-        "width": 161.169921875,
-        "height": 132.0379638671875,
+        "width": 161.16989135742188,
+        "height": 132.03790283203125,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.3558974767309636
+        "scale": 0.35589731221571763
       },
       {
         "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
@@ -5621,14 +5621,14 @@
       },
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-full.webp",
-        "width": 926,
-        "height": 576,
+        "width": 958,
+        "height": 740,
         "fit": "contain",
         "native": [
           960,
           742
         ],
-        "scale": 0.7762803234501348
+        "scale": 0.9973045822102425
       }
     ]
   },
@@ -5642,30 +5642,30 @@
     "cards": [
       {
         "title": "Prof. Gecko",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Social Viewer",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Diario di Bordo",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Easy Contract",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 13,
+    "smallestChartText": 12.5,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -5705,13 +5705,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 62.5,
+        "height": 79.296875,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.2578125
+        "scale": 0.30975341796875
       },
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
@@ -5726,25 +5726,25 @@
       },
       {
         "src": "/assets/certifications/data-science-professional-course-thumb.webp",
-        "width": 119.78789520263672,
-        "height": 98.13192749023438,
+        "width": 119.78790283203125,
+        "height": 98.13186645507812,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.2645065431003622
+        "scale": 0.2645063785851162
       },
       {
         "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
-        "width": 117.51249694824219,
-        "height": 94.99020385742188,
+        "width": 117.51248931884766,
+        "height": 94.990234375,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.2560382853299781
+        "scale": 0.25603836758760107
       },
       {
         "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
@@ -5759,14 +5759,14 @@
       },
       {
         "src": "/assets/certifications/sas-programming-course-thumb.webp",
-        "width": 112.61612701416016,
-        "height": 88.4288330078125,
+        "width": 112.61613464355469,
+        "height": 88.42886352539062,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.2383526496167453
+        "scale": 0.23835273187436826
       },
       {
         "src": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
@@ -5781,18 +5781,18 @@
       },
       {
         "src": "/assets/certifications/financial-technology-specialization-thumb.webp",
-        "width": 112.61613464355469,
-        "height": 88.4288330078125,
+        "width": 112.61611938476562,
+        "height": 88.42886352539062,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.2383526496167453
+        "scale": 0.23835273187436826
       },
       {
         "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
-        "width": 115.12110900878906,
+        "width": 115.12112426757812,
         "height": 91.75482177734375,
         "fit": "fill",
         "native": [
@@ -5803,29 +5803,29 @@
       },
       {
         "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
-        "width": 117.51249694824219,
-        "height": 94.99020385742188,
+        "width": 117.51248168945312,
+        "height": 94.990234375,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.2560382853299781
+        "scale": 0.25603836758760107
       },
       {
         "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
-        "width": 119.78788757324219,
-        "height": 98.13192749023438,
+        "width": 119.78790283203125,
+        "height": 98.13186645507812,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.2645065431003622
+        "scale": 0.2645063785851162
       },
       {
         "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
-        "width": 121.94509887695312,
+        "width": 121.94508361816406,
         "height": 101.1767578125,
         "fit": "fill",
         "native": [
@@ -5836,14 +5836,14 @@
       },
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-full.webp",
-        "width": 320,
-        "height": 247.328125,
+        "width": 372,
+        "height": 287.515625,
         "fit": "contain",
         "native": [
           960,
           742
         ],
-        "scale": 0.3333263140161725
+        "scale": 0.38748736522911054
       }
     ]
   },
@@ -5857,30 +5857,30 @@
     "cards": [
       {
         "title": "Prof. Gecko",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Social Viewer",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Diario di Bordo",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Easy Contract",
-        "width": 413,
+        "width": 397,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 14.268292682926829,
+    "smallestChartText": 16.6,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -5942,13 +5942,13 @@
       {
         "src": "/assets/certifications/data-science-professional-course-thumb.webp",
         "width": 161.169921875,
-        "height": 132.0379638671875,
+        "height": 132.03790283203125,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.3558974767309636
+        "scale": 0.35589731221571763
       },
       {
         "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
@@ -6007,7 +6007,7 @@
       },
       {
         "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
-        "width": 154.890625,
+        "width": 154.89056396484375,
         "height": 123.4578857421875,
         "fit": "fill",
         "native": [
@@ -6018,7 +6018,7 @@
       },
       {
         "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
-        "width": 158.10833740234375,
+        "width": 158.10830688476562,
         "height": 127.81097412109375,
         "fit": "fill",
         "native": [
@@ -6029,14 +6029,14 @@
       },
       {
         "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
-        "width": 161.169921875,
-        "height": 132.0379638671875,
+        "width": 161.16989135742188,
+        "height": 132.03790283203125,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.3558974767309636
+        "scale": 0.35589731221571763
       },
       {
         "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
@@ -6051,14 +6051,14 @@
       },
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-full.webp",
-        "width": 926,
-        "height": 576,
+        "width": 958,
+        "height": 740,
         "fit": "contain",
         "native": [
           960,
           742
         ],
-        "scale": 0.7762803234501348
+        "scale": 0.9973045822102425
       }
     ]
   },
@@ -6072,30 +6072,30 @@
     "cards": [
       {
         "title": "Prof. Gecko",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Social Viewer",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Diario di Bordo",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       },
       {
         "title": "Easy Contract",
-        "width": 308,
+        "width": 304,
         "spill": false,
         "smallestLink": 44
       }
     ],
-    "smallestChartText": 13,
+    "smallestChartText": 12.5,
     "primaryActions": 1,
     "obsoleteWording": false,
     "images": [
@@ -6135,13 +6135,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 62.5,
+        "height": 79.296875,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.2578125
+        "scale": 0.30975341796875
       },
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
@@ -6156,25 +6156,25 @@
       },
       {
         "src": "/assets/certifications/data-science-professional-course-thumb.webp",
-        "width": 119.78789520263672,
-        "height": 98.13192749023438,
+        "width": 119.78790283203125,
+        "height": 98.13186645507812,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.2645065431003622
+        "scale": 0.2645063785851162
       },
       {
         "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
-        "width": 117.51249694824219,
-        "height": 94.99020385742188,
+        "width": 117.51248931884766,
+        "height": 94.990234375,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.2560382853299781
+        "scale": 0.25603836758760107
       },
       {
         "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
@@ -6189,14 +6189,14 @@
       },
       {
         "src": "/assets/certifications/sas-programming-course-thumb.webp",
-        "width": 112.61612701416016,
-        "height": 88.4288330078125,
+        "width": 112.61613464355469,
+        "height": 88.42886352539062,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.2383526496167453
+        "scale": 0.23835273187436826
       },
       {
         "src": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
@@ -6211,18 +6211,18 @@
       },
       {
         "src": "/assets/certifications/financial-technology-specialization-thumb.webp",
-        "width": 112.61613464355469,
-        "height": 88.4288330078125,
+        "width": 112.61611938476562,
+        "height": 88.42886352539062,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.2383526496167453
+        "scale": 0.23835273187436826
       },
       {
         "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
-        "width": 115.12110900878906,
+        "width": 115.12112426757812,
         "height": 91.75482177734375,
         "fit": "fill",
         "native": [
@@ -6233,29 +6233,29 @@
       },
       {
         "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
-        "width": 117.51249694824219,
-        "height": 94.99020385742188,
+        "width": 117.51248168945312,
+        "height": 94.990234375,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.2560382853299781
+        "scale": 0.25603836758760107
       },
       {
         "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
-        "width": 119.78788757324219,
-        "height": 98.13192749023438,
+        "width": 119.78790283203125,
+        "height": 98.13186645507812,
         "fit": "fill",
         "native": [
           480,
           371
         ],
-        "scale": 0.2645065431003622
+        "scale": 0.2645063785851162
       },
       {
         "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
-        "width": 121.94509887695312,
+        "width": 121.94508361816406,
         "height": 101.1767578125,
         "fit": "fill",
         "native": [
@@ -6266,14 +6266,14 @@
       },
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-full.webp",
-        "width": 320,
-        "height": 247.328125,
+        "width": 372,
+        "height": 287.515625,
         "fit": "contain",
         "native": [
           960,
           742
         ],
-        "scale": 0.3333263140161725
+        "scale": 0.38748736522911054
       }
     ]
   }

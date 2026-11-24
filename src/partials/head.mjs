@@ -15,7 +15,7 @@ export function head({ route, copy, desktopSizing, styles, favicon }) {
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json; object-src 'none'; base-uri 'self'">
 ${raw(initialLanguageScript(route, copy))}
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#071525">
+<meta name="theme-color" content="#0c0d11">
 <title${titleLabel}>${route.title}</title>
 <meta name="description" content="${description}" data-meta-i18n="${route.descriptionKey}">
 ${route.robots || route.noindex ? raw(html`<meta name="robots" content="${route.robots ?? 'noindex'}">`) : ''}

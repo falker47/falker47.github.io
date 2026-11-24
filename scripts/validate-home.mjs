@@ -25,7 +25,7 @@ const panel = (source, id) => {
 const cards = markup => [...markup.matchAll(/<li class="card[^"]*">([^]*?)<\/li>/g)].map(match => match[1]);
 const groups = markup => [...markup.matchAll(/<section class="picker-group cat-([\w-]+)" data-group="([\w-]+)"[^>]*>([^]*?)<\/section>/g)]
   .map(([, colour, id, body]) => ({ colour, id, body }));
-const toggles = markup => [...markup.matchAll(/<button type="button" class="picker-toggle cat-([\w-]+)" data-group="([\w-]+)" aria-pressed="(true|false)">([^]*?)<\/button>/g)]
+const toggles = markup => [...markup.matchAll(/<button type="button" class="picker-toggle result cat-([\w-]+)" data-group="([\w-]+)" aria-pressed="(true|false)">([^]*?)<\/button>/g)]
   .map(([, colour, id, pressed, body]) => ({ colour, id, pressed, label: text(body) }));
 
 function checkStructure(source) {
@@ -65,19 +65,20 @@ function checkSoftware(source) {
       assert.equal(text(card.match(/<h4>([^]*?)<\/h4>/)[1]), project.title, project.id + ' title');
       const image = tags(card).find(node => node.name === 'img');
       assert.equal(image.attrs.src, project.cover.src, project.id + ' cover');
-      assert.equal(text(card.match(/<p class="pill">([^]*?)<\/p>/)[1]), project.kind.it, project.id + ' kind');
-      assert.equal(text(card.match(/<p class="card-stack">([^]*?)<\/p>/)[1]), project.stack.join(' · '), project.id + ' stack');
+      assert.equal(text(card.match(/<span class="pill">([^]*?)<\/span>(?=<span class="card-stack">)/)[1]), project.kind.it, project.id + ' kind');
+      assert.equal(text(card.match(/<span class="card-stack">([^]*?)<\/span>/)[1]), project.stack.join(' · '), project.id + ' stack');
       assert.equal(text(card.match(/<p class="card-summary">([^]*?)<\/p>/)[1]), project.summary.it, project.id + ' summary');
-      const links = [];
-      if (project.page) links.push(project.page);
-      for (const type of ['demo', 'store', 'test', 'repo']) {
-        const entry = project.links.find(link => link.type === type);
-        if (entry) links.push(entry.url);
-      }
+      // The title opens the project's own page when there is one; the buttons follow the data order.
+      const links = [...(project.page ? [project.page] : []), ...project.links.map(link => link.url)];
       assert.deepEqual(hrefs(card), links, project.id + ' links');
+      const names = [...card.match(/<p class="card-links">([^]*?)<\/p>/)[1].matchAll(/<a [^>]*>([^]*?)<span class="sr-only">/g)].map(match => text(match[1]));
+      assert.deepEqual(names, project.links.map(link => link.type === 'repo' ? (link.label.it === 'Repo GitHub' ? 'GitHub' : link.label.it)
+        : link.type === 'store' ? 'Play Store' : link.type === 'test' ? 'Prova l’app' : 'Apri'), project.id + ' link names');
     }
   }
-  assert.ok(markup.includes('<p class="card-stack">Python · PySide6 · Qt Quick</p>'), 'Panacea is a PySide6 application');
+  assert.ok(markup.includes('<span class="card-stack">Python · PySide6 · Qt Quick</span>'), 'Panacea is a PySide6 application');
+  const notes = [...markup.matchAll(/<p class="sample-count picker-count" data-group="([\w-]+)" hidden>([^]*?)<\/p>/g)].map(match => [match[1], text(match[2])]);
+  assert.deepEqual(notes, expected.map((group, index) => [group.id, `${['App', 'Giochi', 'Strumenti'][index]} · ${group.items.length} progetti · scorri per vederli tutti`]), 'One count line per category');
 }
 
 // Modding: every published mod, with its downloads, endorsements and bar.
@@ -142,7 +143,10 @@ function checkResearch(source) {
   assert.equal([...papers[1].matchAll(/<circle class="rm-dot rm-open"/g)].length, ringmin.asymptotic.filter(row => !row.certified).length, 'Hollow dots are non-exhaustive');
   assert.match(papers[1], /<text class="rm-limit-label"[^>]*data-i18n="ringminLimit">1\/8 · C\* sta sopra questa linea ↑<\/text>/);
   const foot = markup.match(/<p class="research-foot">[^]*?<\/p>/)[0];
-  assert.deepEqual(hrefs(foot), ['/research/', research.repositories.find(item => item.project === 'power-ringmin').url, research.zenodo.url]);
+  assert.deepEqual(hrefs(foot), [research.repositories.find(item => item.project === 'power-ringmin').url, research.zenodo.url]);
+  const tile = markup.match(/<a class="result" href="\/research\/">([^]*?)<\/a>/);
+  assert.ok(tile, 'The paper count opens the research page');
+  assert.equal(text(tile[1]).replace(/\s*→$/, ''), `${research.papers.length} articoli su arXiv`);
 }
 
 function checkLessons(source) {

@@ -1,0 +1,198 @@
+[
+  {
+    "route": "/",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#chi-sono",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#chi-sono",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#chi-sono",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#chi-sono",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#progetti",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#progetti",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#progetti",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#progetti",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#tab-modding",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#tab-modding",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#tab-modding",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#tab-modding",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#ricerca",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#ricerca",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#ricerca",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#ricerca",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#tab-teaching",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#tab-teaching",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#tab-teaching",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#tab-teaching",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#certificazioni",
+    "lang": "it",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#certificazioni",
+    "lang": "it",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#certificazioni",
+    "lang": "en",
+    "width": 1440,
+    "pass": true,
+    "violations": []
+  },
+  {
+    "route": "/#certificazioni",
+    "lang": "en",
+    "width": 390,
+    "pass": true,
+    "violations": []
+  }
+]

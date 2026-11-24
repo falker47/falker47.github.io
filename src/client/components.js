@@ -57,6 +57,7 @@
     function show(name) {
       toggles.forEach(toggle => toggle.setAttribute('aria-pressed', String(toggle.dataset.group === name)));
       groups.forEach(group => { group.hidden = group.dataset.group !== name; });
+      picker.querySelectorAll('.picker-count').forEach(count => { count.hidden = count.dataset.group !== name; });
     }
     toggles.forEach(toggle => toggle.addEventListener('click', () => show(toggle.dataset.group)));
     picker.classList.add('picker-enhanced');
@@ -64,7 +65,7 @@
     bar.hidden = false;
   }
 
-  // Rails: the arrows move one view; touch and keyboard scroll natively.
+  // Rails: the arrows move by one card; touch and keyboard scroll natively.
   for (const rail of document.querySelectorAll('.rail')) {
     const track = rail.querySelector('.rail-track');
     const steps = Array.from(rail.querySelectorAll('.rail-step'));
@@ -75,7 +76,9 @@
     steps.forEach(step => {
       step.hidden = false;
       step.addEventListener('click', () => {
-        track.scrollBy({ left: Number(step.dataset.step) * track.clientWidth * .92, behavior: reduced.matches ? 'auto' : 'smooth' });
+        const card = track.querySelector('.card');
+        const width = card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0) : track.clientWidth;
+        track.scrollBy({ left: Number(step.dataset.step) * width, behavior: reduced.matches ? 'auto' : 'smooth' });
       });
     });
     track.addEventListener('scroll', update, { passive: true });
@@ -109,7 +112,6 @@
     if (!cards.length || !viewer.showModal) continue;
     const stage = viewer.querySelector('.viewer-stage');
     const title = viewer.querySelector('h3');
-    const meta = viewer.querySelector('.viewer-meta');
     const index = viewer.querySelector('.viewer-index');
     const image = document.createElement('img');
     image.decoding = 'async';
@@ -118,8 +120,7 @@
     function show(position) {
       current = (position + cards.length) % cards.length;
       const card = cards[current];
-      title.textContent = card.dataset.title;
-      meta.textContent = card.dataset.meta;
+      title.textContent = card.dataset.title + ' — ' + card.dataset.meta.replace(' · ', ', ');
       index.textContent = String(current + 1);
       image.width = Number(card.dataset.width);
       image.height = Number(card.dataset.height);
@@ -132,7 +133,7 @@
       stage.append(image);
       viewer.showModal();
     }));
-    for (const step of viewer.querySelectorAll('.viewer-step')) {
+    for (const step of viewer.querySelectorAll('.viewer-step[data-step]')) {
       step.addEventListener('click', () => show(current + Number(step.dataset.step)));
     }
     viewer.addEventListener('keydown', event => {

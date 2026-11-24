@@ -1,7 +1,7 @@
 import data from '../../data/ringmin.json' with { type: 'json' };
 import { html, raw } from '../lib/html.mjs';
 
-const round = value => Number(value.toFixed(2));
+const fixed = (value, digits = 2) => Number(value.toFixed(digits));
 
 /**
  * The circles of one certified configuration, around a central circle of radius
@@ -27,15 +27,12 @@ export function smallestGap(configuration) {
   return gap;
 }
 
-// One configuration in a 100-unit square. Each drawing has its own scale, so
-// the central circle grows with n while the frame stays the same.
+// One configuration in a 100-unit square centred on the central circle. The
+// farthest a circle can reach is R + 2n, which sets the scale of each drawing.
 function configuration(optimum) {
-  const list = circles(optimum);
-  const extent = Math.max(...list.map(c => Math.max(Math.abs(c.x), Math.abs(c.y)) + c.r));
-  const k = 46 / extent;
-  const at = value => round(50 + value * k);
-  const outer = list.map(c => html`<circle class="${c.floating ? 'rm-floating' : 'rm-circle'}" cx="${at(c.x)}" cy="${at(c.y)}" r="${round(c.r * k)}"/>`).join('');
-  return html`<div class="rm-cell"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">${raw(outer)}<circle class="rm-centre" cx="50" cy="50" r="${round(optimum.R_float64 * k)}"/></svg><span>n = ${optimum.n}</span></div>`;
+  const scale = 46 / (optimum.R_float64 + 2 * optimum.n);
+  const outer = circles(optimum).map(c => html`<circle class="${c.floating ? 'rm-floating' : 'rm-circle'}" cx="${fixed(c.x * scale)}" cy="${fixed(c.y * scale)}" r="${fixed(c.r * scale)}"/>`).join('');
+  return html`<div class="rm-cell"><svg viewBox="-50 -50 100 100" aria-hidden="true" focusable="false"><circle class="rm-centre" r="${fixed(optimum.R_float64 * scale)}"/>${raw(outer)}</svg><span>n = ${optimum.n}</span></div>`;
 }
 
 /** Paper I: the twelve certified configurations, six by two (four columns on a phone). */
@@ -45,22 +42,20 @@ export function configurations({ copy }) {
 
 /** Paper II: R(n)/n² against n, with the 1/8 line that C* stays above. */
 export function chart({ t, copy }) {
-  const W = 360, H = 216, left = 44, right = 24, top = 30, bottom = 30;
+  const W = 520, H = 230, left = 62, bottom = 30, top = 18, right = 16;
   const rows = data.asymptotic;
-  const first = rows[0].n, last = rows.at(-1).n, max = .14;
-  const x = n => round(left + (n - first) / (last - first) * (W - left - right));
-  const y = value => round(top + (1 - value / max) * (H - top - bottom));
-  const ticks = [0, .05, .1];
-  const grid = ticks.map(value => html`<path class="rm-axis" d="M${left} ${y(value)}H${W - right}"/><text class="rm-tick" x="${left - 6}" y="${y(value) + 4}" text-anchor="end">${value === 0 ? '0' : value.toFixed(2)}</text>`).join('');
-  const labels = rows.filter(row => row.n % 3 === 0).map(row => html`<text class="rm-tick" x="${x(row.n)}" y="${H - bottom + 16}" text-anchor="middle">${row.n}</text>`).join('');
-  const dots = rows.map(row => html`<circle class="${row.certified ? 'rm-dot' : 'rm-dot rm-open'}" cx="${x(row.n)}" cy="${y(row.ratio)}" r="3.4"/>`).join('');
+  const first = rows[0].n, last = rows.at(-1).n, low = .02, high = .14;
+  const x = n => fixed(left + (n - first) / (last - first) * (W - left - right), 1);
+  const y = value => fixed(top + (high - value) / (high - low) * (H - top - bottom), 1);
+  const grid = [.02, .05, .08, .11, .14].map(value => html`<path class="rm-axis" d="M${left} ${y(value)}H${W - right}"/><text class="rm-tick" x="${left - 8}" y="${y(value) + 4}" text-anchor="end">${value.toFixed(2)}</text>`).join('');
+  const labels = rows.filter(row => row.n % 3 === 0).map(row => html`<text class="rm-tick" x="${x(row.n)}" y="${H - 8}" text-anchor="middle">${row.n}</text>`).join('');
+  const dots = rows.map(row => html`<circle class="${row.certified ? 'rm-dot' : 'rm-dot rm-open'}" cx="${x(row.n)}" cy="${y(row.ratio)}" r="4"/>`).join('');
   const line = 'M' + rows.map(row => x(row.n) + ' ' + y(row.ratio)).join('L');
   return html`<svg class="rm-chart" viewBox="0 0 ${W} ${H}" role="img" data-label="ringminChartLabel" aria-label="${copy.it.ringminChartLabel}">
 ${raw(grid)}${raw(labels)}
-<text class="rm-tick" x="${W - 2}" y="${H - bottom + 16}" text-anchor="end">n</text>
-<text class="rm-tick" x="4" y="12">R(n)/n²</text>
 <path class="rm-limit" d="M${left} ${y(1 / 8)}H${W - right}"/>
-<text class="rm-limit-label" x="${W - 4}" y="${y(1 / 8) - 7}" text-anchor="end" data-i18n="ringminLimit">${t('ringminLimit')}</text>
+<text class="rm-limit-label" x="${W - right - 4}" y="${y(1 / 8) - 8}" text-anchor="end" data-i18n="ringminLimit">${t('ringminLimit')}</text>
 <path class="rm-trend" d="${line}"/>${raw(dots)}
+<text class="rm-tick" x="${left}" y="${top - 4}">R(n) / n²</text>
 </svg>`;
 }

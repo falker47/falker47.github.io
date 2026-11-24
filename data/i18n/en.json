@@ -207,8 +207,7 @@
   "downloadsWord": "downloads",
   "endorsementsWord": "endorsements",
   "codeLink": "Code",
-  "researchFigures": "Above, the twelve certified configurations: the central circle is filled and the circles that are free to move are dashed. In the chart, filled dots are certified values and hollow dots come from non-exhaustive searches.",
-  "researchPageLink": "Ringmin page",
+  "researchFigures": "The first card shows the 12 certified optimal configurations, from the repository data; dashed circles are “floating” and touch only the central one. The second plots R(n)/n²: filled dots are certified values, hollow dots come from non-exhaustive searches.",
   "ringminGridLabel": "The twelve certified optimal configurations, from n = 3 to n = 14: circles of radius 1 to n arranged around the central circle.",
   "ringminChartLabel": "Chart of R(n)/n² for n from 3 to 18: the values grow and stay below the 1/8 line.",
   "ringminLimit": "1/8 · C* lies above this line ↑",
@@ -224,8 +223,8 @@
   "journeyAiNote": "Today",
   "deckIssuers": "Microsoft, IBM, Google, Wharton, UC San Diego and others",
   "deckCount": "certificates",
-  "deckHintHover": "Hover over a card to read it, click to open it.",
-  "deckHintTouch": "Tap the deck to browse them",
+  "deckHintHover": "Hover over a certificate or click it to open it.",
+  "deckHintTouch": "Tap the deck to browse them.",
   "viewerPrevious": "Previous certificate",
   "viewerNext": "Next certificate",
   "backToProjects": "My projects",
@@ -234,5 +233,9 @@
   "paperILine": "Optimal chain order, seam obstructions classified for k = 1, 2, 3, and certificates that do not depend on floating point.",
   "paperIITitle": "The global asymptotic constant",
   "paperIIHighlight": "R*(n) = C* n² + o(n²), with C* computable to any precision.",
-  "paperIILine": "Finite linear programs enclose C* in an arbitrarily narrow interval; the explicit lower bound exceeds 1/8."
+  "paperIILine": "Finite linear programs enclose C* in an arbitrarily narrow interval; the explicit lower bound exceeds 1/8.",
+  "papersLabel": "papers on arXiv",
+  "projectsWord": "projects",
+  "scrollHint": "scroll to see them all",
+  "researchAlso": "See also"
 }

@@ -19,6 +19,18 @@
     ".person-name",
     ".person-role"
   ],
+  "growsOnPhones": [
+    ".identity",
+    ".identity-core",
+    ".person",
+    ".portrait"
+  ],
+  "followsOnPhones": [
+    ".identity-intro",
+    ".contacts",
+    "#chi-sono > summary",
+    "details.work > summary"
+  ],
   "moved": [],
   "restyledBoxes": [
     {
@@ -31,7 +43,7 @@
       "view": "1440×900 it",
       "selector": ".person-role",
       "widthBefore": 189.06,
-      "widthAfter": 246.59
+      "widthAfter": 253.52
     },
     {
       "view": "1440×900 en",
@@ -43,7 +55,7 @@
       "view": "1440×900 en",
       "selector": ".person-role",
       "widthBefore": 189.06,
-      "widthAfter": 246.59
+      "widthAfter": 253.52
     },
     {
       "view": "390×844 it",
@@ -55,7 +67,7 @@
       "view": "390×844 it",
       "selector": ".person-role",
       "widthBefore": 174.52,
-      "widthAfter": 196.97
+      "widthAfter": 230
     },
     {
       "view": "390×844 en",
@@ -67,7 +79,7 @@
       "view": "390×844 en",
       "selector": ".person-role",
       "widthBefore": 174.52,
-      "widthAfter": 196.97
+      "widthAfter": 230
     },
     {
       "view": "1280×720 it",
@@ -79,7 +91,7 @@
       "view": "1280×720 it",
       "selector": ".person-role",
       "widthBefore": 189.06,
-      "widthAfter": 246.59
+      "widthAfter": 253.52
     },
     {
       "view": "1280×720 en",
@@ -91,7 +103,7 @@
       "view": "1280×720 en",
       "selector": ".person-role",
       "widthBefore": 189.06,
-      "widthAfter": 246.59
+      "widthAfter": 253.52
     },
     {
       "view": "768×1024 it",
@@ -103,7 +115,7 @@
       "view": "768×1024 it",
       "selector": ".person-role",
       "widthBefore": 189.06,
-      "widthAfter": 246.59
+      "widthAfter": 253.52
     },
     {
       "view": "768×1024 en",
@@ -115,7 +127,7 @@
       "view": "768×1024 en",
       "selector": ".person-role",
       "widthBefore": 189.06,
-      "widthAfter": 246.59
+      "widthAfter": 253.52
     },
     {
       "view": "1920×1080 it",
@@ -127,7 +139,7 @@
       "view": "1920×1080 it",
       "selector": ".person-role",
       "widthBefore": 189.06,
-      "widthAfter": 246.59
+      "widthAfter": 253.52
     },
     {
       "view": "1920×1080 en",
@@ -139,7 +151,7 @@
       "view": "1920×1080 en",
       "selector": ".person-role",
       "widthBefore": 189.06,
-      "widthAfter": 246.59
+      "widthAfter": 253.52
     },
     {
       "view": "360×740 it",
@@ -151,7 +163,7 @@
       "view": "360×740 it",
       "selector": ".person-role",
       "widthBefore": 174.52,
-      "widthAfter": 196.97
+      "widthAfter": 200
     },
     {
       "view": "360×740 en",
@@ -163,7 +175,7 @@
       "view": "360×740 en",
       "selector": ".person-role",
       "widthBefore": 174.52,
-      "widthAfter": 196.97
+      "widthAfter": 200
     },
     {
       "view": "1000×620 it",
@@ -175,7 +187,7 @@
       "view": "1000×620 it",
       "selector": ".person-role",
       "widthBefore": 189.06,
-      "widthAfter": 246.59
+      "widthAfter": 253.52
     },
     {
       "view": "1000×620 en",
@@ -187,7 +199,29 @@
       "view": "1000×620 en",
       "selector": ".person-role",
       "widthBefore": 189.06,
-      "widthAfter": 246.59
+      "widthAfter": 253.52
+    }
+  ],
+  "phoneGrowth": [
+    {
+      "view": "390×844 it",
+      "roleLines": 2,
+      "extraHeight": 16.79
+    },
+    {
+      "view": "390×844 en",
+      "roleLines": 2,
+      "extraHeight": 16.79
+    },
+    {
+      "view": "360×740 it",
+      "roleLines": 2,
+      "extraHeight": 16.79
+    },
+    {
+      "view": "360×740 en",
+      "roleLines": 2,
+      "extraHeight": 16.79
     }
   ]
 }

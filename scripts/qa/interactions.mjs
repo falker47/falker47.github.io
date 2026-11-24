@@ -69,7 +69,7 @@ async function checkPickers(page) {
     const track = rail.locator('.rail-track');
     assert.equal(await track.evaluate(node => getComputedStyle(node).scrollSnapType), 'x mandatory');
     const steps = rail.locator('.rail-step');
-    if (page.viewportSize().width < 700) assert.equal(await steps.locator('visible=true').count(), 0, 'Arrows are hidden on phones');
+    if (page.viewportSize().width < 600) assert.equal(await steps.locator('visible=true').count(), 0, 'Arrows are hidden on phones');
     else if (await track.evaluate(node => node.scrollWidth > node.clientWidth + 4)) {
       assert.ok(await steps.first().isDisabled(), 'The row starts at its first card');
       await steps.last().click();
@@ -80,8 +80,10 @@ async function checkPickers(page) {
     }
     // Cards sit side by side: about 3.15 per view on desktop (4.15 for mods), 86% of the row on a phone.
     const ratio = await track.evaluate(node => node.querySelector('.card').getBoundingClientRect().width / node.clientWidth);
-    if (page.viewportSize().width < 700) assert.ok(ratio <= .87 && ratio > .7, panel + ' phone card ' + ratio);
+    if (page.viewportSize().width < 600) assert.ok(ratio <= .87 && ratio > .7, panel + ' phone card ' + ratio);
     else if (panel === 'software') assert.ok(Math.abs(1 / ratio - 3.15) < .2, 'software cards per view ' + 1 / ratio);
+    // The count line beside the toggles follows the category.
+    if (panel === 'software') assert.deepEqual(await picker.locator('.picker-count:visible').evaluateAll(nodes => nodes.map(node => node.dataset.group)), [groups[0]]);
   }
   await page.locator('#tab-software').click();
 }
@@ -100,13 +102,14 @@ async function checkCertificates(page) {
   await dialog.waitFor();
   const image = dialog.locator('.viewer-stage img');
   assert.ok(await image.evaluate(img => img.decode().then(() => img.naturalWidth > 0)));
-  assert.equal(await dialog.locator('h3').innerText(), await trigger.getAttribute('data-title'));
+  const heading = card => `${card.title} — ${card.issuer}, ${card.year}`;
+  assert.equal(await dialog.locator('h3').innerText(), heading(certificates.at(-1)));
   assert.equal(await image.getAttribute('alt'), await trigger.locator('img').getAttribute('alt'));
   const count = () => dialog.locator('.viewer-count').innerText();
   assert.equal(await count(), certificates.length + ' / ' + certificates.length);
   await page.keyboard.press('ArrowRight');
   assert.equal(await count(), '1 / ' + certificates.length);
-  assert.equal(await dialog.locator('h3').innerText(), certificates[0].title);
+  assert.equal(await dialog.locator('h3').innerText(), heading(certificates[0]));
   assert.equal(new URL(await image.getAttribute('src'), page.url()).pathname, certificates[0].full.src);
   await page.keyboard.press('ArrowLeft');
   assert.equal(await count(), certificates.length + ' / ' + certificates.length);
@@ -257,7 +260,7 @@ async function home(page, origin, lang) {
   await settled(page, '#chi-sono');
   assert.equal(await page.locator('.about-actions a[href="/research/"]').count(), 1);
   assert.equal(await page.locator('.journey svg:visible').count(), 1, 'One journey drawing per width');
-  assert.equal(await page.locator('.journey svg:visible').getAttribute('class'), page.viewportSize().width < 700 ? 'journey-tall' : 'journey-wide');
+  assert.equal(await page.locator('.journey svg:visible').getAttribute('class'), page.viewportSize().width < 900 ? 'journey-tall' : 'journey-wide');
   assert.equal(await page.locator('.journey svg:visible .jr-pulse').evaluate(node => getComputedStyle(node).display), 'none', 'No pulse with reduced motion');
   await checkCertificates(page);
   await checkFragments(page, origin, lang);

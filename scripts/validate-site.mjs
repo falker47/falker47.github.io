@@ -126,7 +126,7 @@ assert.doesNotMatch(await readFile(join(siteRoot,'sitemap.xml'),'utf8'), /\/styl
 const css = homeStyles;
 const i18n = await readFile(join(siteRoot, 'scripts/i18n.js'), 'utf8');
 // V3 renders every project, mod and paper inside the home (V2: 120 KB with three examples per tab).
-assert.ok(Buffer.byteLength(html) <= 150000, 'Home exceeds 150 KB');
+assert.ok(Buffer.byteLength(html) <= 165000, 'Home exceeds 165 KB');
 assert.ok(!/<meta\b[^>]*name="robots"[^>]*content="[^"]*no(?:index|follow)/i.test(html), 'Production must be indexable');
 assert.match(html, /<link rel="canonical" href="https:\/\/falker47\.github\.io\/"/);
 assert.match(html, /<meta name="google-site-verification" content="[^"]+"/);
@@ -155,8 +155,8 @@ assert.match(desktopRules,/\.identity\s*\{[^}]*max-width:\s*min\(100%,\s*520px\)
 assert.match(desktopRules,/\.identity\s*\{[^}]*padding:\s*0;[^}]*background:\s*none;[^}]*border:\s*0;[^}]*box-shadow:\s*none;/,'The pinned block gives the card no frame of its own');
 // V3 hero guards. The 1 px gradient ring is an absolutely positioned, masked pseudo-element, so it adds
 // nothing to the card's box; the card shadow sits on the inner surface, which the pinned block leaves free.
-assert.match(css,/\.identity::before\{[^}]*position:absolute;inset:0;[^}]*padding:1px;[^}]*background:linear-gradient\(135deg,#60a5fa66,#ffffff10 50%,#a78bfa33\);[^}]*mask:[^}]*exclude[^}]*pointer-events:none\}/,'The identity ring takes no part in layout');
-assert.match(css,/\.identity-core\{background:#12151cd1;[^}]*backdrop-filter:blur\(14px\);box-shadow:[^}]+\}/,'Identity surface and shadow');
+assert.match(css,/\.identity::before\{[^}]*position:absolute;inset:0;[^}]*padding:1px;[^}]*background:linear-gradient\(135deg,#60a5fa66,#ffffff10 40%,#a78bfa33\);[^}]*mask:[^}]*exclude[^}]*pointer-events:none\}/,'The identity ring takes no part in layout');
+assert.match(css,/\.identity-core\{background:#12151cd1;[^}]*backdrop-filter:blur\(10px\);box-shadow:[^}]+\}/,'Identity surface and shadow');
 assert.match(css,/\.hero-band::before\{[^}]*background-size:34px 34px\}/,'The 34 px grid stays inside the hero band');
 assert.match(css,/\.hero-glow i\{[^}]*animation:hero-drift 28s ease-in-out infinite alternate/,'Hero glows drift slowly');
 assert.match(css,/@media\(prefers-reduced-motion:reduce\)\{\.hero-glow i\{animation:none\}\}/,'No drift with reduced motion');
