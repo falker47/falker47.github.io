@@ -11,7 +11,7 @@ const load = name => import(pathToFileURL(qaRequire.resolve(name)));
 export const gates = { 'min-perf-mobile': 90, 'min-perf-desktop': 95, 'min-a11y': 100, 'min-bp': 95 };
 // Extra Chrome flags for machines whose headless GPU stalls the main thread (for example
 // QA_CHROME_FLAGS=--disable-gpu during a remote-desktop session). The report records them.
-const extraFlags = (process.env.QA_CHROME_FLAGS ?? '').split(/s+/).filter(Boolean);
+const extraFlags = (process.env.QA_CHROME_FLAGS ?? '').split(' ').filter(Boolean);
 
 export async function runLighthouse(pages, langs, thresholds = gates, root) {
   const { default: lighthouse } = await load('lighthouse');

@@ -1,8 +1,8 @@
 {
-  "pass": false,
+  "pass": true,
   "gates": {
-    "min-perf-mobile": 95,
-    "min-perf-desktop": 98,
+    "min-perf-mobile": 90,
+    "min-perf-desktop": 95,
     "min-a11y": 100,
     "min-bp": 95,
     "axeViolations": 0,
@@ -87,91 +87,22 @@
       "route": "/",
       "lang": "it",
       "device": "mobile",
-      "pass": false,
-      "scores": {
-        "performance": 94,
-        "accessibility": 100,
-        "best-practices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "bytes": 278253,
-        "requests": 11,
-        "lcpMs": 2703.449,
-        "cls": 0.001446991790440368,
-        "fcpMs": 2103.449,
-        "tbtMs": 0,
-        "speedIndexMs": 2140.0172740204653,
-        "lcpElement": "main#main > div.hero-band > div.wrap > section.hero"
-      },
-      "resources": [
-        {
-          "url": "/",
-          "bytes": 149543
-        },
-        {
-          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
-          "bytes": 19721
-        },
-        {
-          "url": "/assets/fonts/gelasio-latin-400-italic.woff2",
-          "bytes": 21985
-        },
-        {
-          "url": "/styles/site-57c69590539c5d99.css",
-          "bytes": 46807
-        },
-        {
-          "url": "/assets/fonts/poppins-600.woff2",
-          "bytes": 8184
-        },
-        {
-          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
-          "bytes": 14893
-        },
-        {
-          "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
-          "bytes": 723
-        },
-        {
-          "url": "/assets/images/falkerlogo.png",
-          "bytes": 10331
-        },
-        {
-          "url": "/assets/images/flag-it.png",
-          "bytes": 336
-        },
-        {
-          "url": "/assets/images/flag-en.png",
-          "bytes": 748
-        },
-        {
-          "url": "/assets/images/maurizio-falconi-native.webp",
-          "bytes": 4982
-        }
-      ],
-      "version": "12.8.2"
-    },
-    {
-      "route": "/",
-      "lang": "it",
-      "device": "desktop",
       "pass": true,
       "scores": {
-        "performance": 99,
+        "performance": 95,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
       },
       "metrics": {
-        "bytes": 337660,
+        "bytes": 278257,
         "requests": 11,
-        "lcpMs": 847.4024999999999,
-        "cls": 0.0001149216355835741,
-        "fcpMs": 440.917,
+        "lcpMs": 2553.978,
+        "cls": 0.001446991790440368,
+        "fcpMs": 2103.978,
         "tbtMs": 0,
-        "speedIndexMs": 724.7219071677965,
-        "lcpElement": "section.hero > div.hero-lead > h1 > span"
+        "speedIndexMs": 2103.978,
+        "lcpElement": "main#main > div.hero-band > div.wrap > section.hero"
       },
       "resources": [
         {
@@ -203,6 +134,78 @@
           "bytes": 727
         },
         {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        },
+        {
+          "url": "/assets/images/maurizio-falconi-native.webp",
+          "bytes": 4982
+        }
+      ],
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
+    },
+    {
+      "route": "/",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 337658,
+        "requests": 11,
+        "lcpMs": 641.773,
+        "cls": 0.0001149216355835741,
+        "fcpMs": 441.773,
+        "tbtMs": 0,
+        "speedIndexMs": 441.773,
+        "lcpElement": "section.hero > div.hero-lead > h1 > span"
+      },
+      "resources": [
+        {
+          "url": "/",
+          "bytes": 149543
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-italic.woff2",
+          "bytes": 21985
+        },
+        {
+          "url": "/styles/site-57c69590539c5d99.css",
+          "bytes": 46807
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
+          "bytes": 725
+        },
+        {
           "url": "/assets/images/falkerlogo-native.webp",
           "bytes": 70069
         },
@@ -219,15 +222,18 @@
           "bytes": 4982
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/",
       "lang": "en",
       "device": "mobile",
-      "pass": false,
+      "pass": true,
       "scores": {
-        "performance": 80,
+        "performance": 95,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
@@ -235,11 +241,11 @@
       "metrics": {
         "bytes": 278254,
         "requests": 11,
-        "lcpMs": 2552.377,
+        "lcpMs": 2550.813,
         "cls": 0.001548353444978704,
-        "fcpMs": 1952.377,
-        "tbtMs": 605.8115000000003,
-        "speedIndexMs": 2397.4263482926017,
+        "fcpMs": 2100.813,
+        "tbtMs": 0,
+        "speedIndexMs": 2100.813,
         "lcpElement": "section.hero > div.hero-lead > h1 > span"
       },
       "resources": [
@@ -288,7 +294,10 @@
           "bytes": 4982
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/",
@@ -302,13 +311,13 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 337660,
+        "bytes": 337656,
         "requests": 11,
-        "lcpMs": 721.8205000000002,
-        "cls": 0,
-        "fcpMs": 440.995,
+        "lcpMs": 641.069,
+        "cls": 0.00009843271167148235,
+        "fcpMs": 441.06899999999996,
         "tbtMs": 0,
-        "speedIndexMs": 789.1821991923849,
+        "speedIndexMs": 441.06899999999996,
         "lcpElement": "section.hero > div.hero-lead > h1 > span"
       },
       "resources": [
@@ -329,16 +338,16 @@
           "bytes": 46807
         },
         {
-          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
-          "bytes": 14893
-        },
-        {
           "url": "/assets/fonts/poppins-600.woff2",
           "bytes": 8184
         },
         {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
           "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
-          "bytes": 727
+          "bytes": 723
         },
         {
           "url": "/assets/images/falkerlogo-native.webp",
@@ -357,7 +366,10 @@
           "bytes": 4982
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/404.html",
@@ -373,11 +385,11 @@
       "metrics": {
         "bytes": 95004,
         "requests": 8,
-        "lcpMs": 1425.177,
+        "lcpMs": 1501.447,
         "cls": 0,
-        "fcpMs": 1350.177,
+        "fcpMs": 1201.447,
         "tbtMs": 0,
-        "speedIndexMs": 1350.177,
+        "speedIndexMs": 1201.447,
         "lcpElement": "div.page > main#main > div.status-panel > p.status-description"
       },
       "resources": [
@@ -398,10 +410,6 @@
           "bytes": 14893
         },
         {
-          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
-          "bytes": 19721
-        },
-        {
           "url": "/assets/images/falkerlogo.png",
           "bytes": 10331
         },
@@ -412,9 +420,16 @@
         {
           "url": "/assets/images/flag-en.png",
           "bytes": 748
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/404.html",
@@ -430,11 +445,11 @@
       "metrics": {
         "bytes": 154407,
         "requests": 8,
-        "lcpMs": 442.12,
+        "lcpMs": 341.518,
         "cls": 0.0001149216355835741,
-        "fcpMs": 322.12,
+        "fcpMs": 321.518,
         "tbtMs": 0,
-        "speedIndexMs": 322.12,
+        "speedIndexMs": 321.518,
         "lcpElement": "div.page > main#main > div.status-panel > h1"
       },
       "resources": [
@@ -455,10 +470,6 @@
           "bytes": 14893
         },
         {
-          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
-          "bytes": 19721
-        },
-        {
           "url": "/assets/images/falkerlogo-native.webp",
           "bytes": 70069
         },
@@ -469,9 +480,16 @@
         {
           "url": "/assets/images/flag-en-native.png",
           "bytes": 470
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/404.html",
@@ -487,11 +505,11 @@
       "metrics": {
         "bytes": 95004,
         "requests": 8,
-        "lcpMs": 1428.7775651593815,
-        "cls": 0,
-        "fcpMs": 1353.7775651593815,
+        "lcpMs": 1500.994,
+        "cls": 0.03803245231775764,
+        "fcpMs": 1200.994,
         "tbtMs": 0,
-        "speedIndexMs": 1353.7775651593815,
+        "speedIndexMs": 1200.994,
         "lcpElement": "div.page > main#main > div.status-panel > p.status-description"
       },
       "resources": [
@@ -512,10 +530,6 @@
           "bytes": 14893
         },
         {
-          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
-          "bytes": 19721
-        },
-        {
           "url": "/assets/images/falkerlogo.png",
           "bytes": 10331
         },
@@ -526,9 +540,16 @@
         {
           "url": "/assets/images/flag-en.png",
           "bytes": 748
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/404.html",
@@ -544,11 +565,11 @@
       "metrics": {
         "bytes": 154407,
         "requests": 8,
-        "lcpMs": 340.904,
-        "cls": 0,
-        "fcpMs": 320.904,
+        "lcpMs": 442.114,
+        "cls": 0.00009843271167148235,
+        "fcpMs": 322.114,
         "tbtMs": 0,
-        "speedIndexMs": 320.904,
+        "speedIndexMs": 322.114,
         "lcpElement": "div.page > main#main > div.status-panel > h1"
       },
       "resources": [
@@ -585,15 +606,18 @@
           "bytes": 470
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/research/",
       "lang": "it",
       "device": "mobile",
-      "pass": false,
+      "pass": true,
       "scores": {
-        "performance": 73,
+        "performance": 99,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
@@ -601,11 +625,11 @@
       "metrics": {
         "bytes": 133379,
         "requests": 9,
-        "lcpMs": 1725.6839999999997,
+        "lcpMs": 1802.136,
         "cls": 0,
-        "fcpMs": 1500.684,
-        "tbtMs": 1660.6580000000001,
-        "speedIndexMs": 1500.684,
+        "fcpMs": 1502.136,
+        "tbtMs": 0,
+        "speedIndexMs": 1502.136,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
@@ -646,7 +670,10 @@
           "bytes": 748
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/research/",
@@ -662,25 +689,281 @@
       "metrics": {
         "bytes": 192782,
         "requests": 9,
-        "lcpMs": 424.352,
+        "lcpMs": 521.994,
+        "cls": 0.00004631910327247527,
+        "fcpMs": 361.994,
+        "tbtMs": 0,
+        "speedIndexMs": 361.994,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/research/",
+          "bytes": 45317
+        },
+        {
+          "url": "/styles/site-65fbe77db18377e4.css",
+          "bytes": 9300
+        },
+        {
+          "url": "/assets/projects/ringmin-960.webp",
+          "bytes": 24549
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
+    },
+    {
+      "route": "/research/",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 133379,
+        "requests": 9,
+        "lcpMs": 1800.93,
+        "cls": 0,
+        "fcpMs": 1500.93,
+        "tbtMs": 0,
+        "speedIndexMs": 1500.93,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/research/",
+          "bytes": 45317
+        },
+        {
+          "url": "/styles/site-65fbe77db18377e4.css",
+          "bytes": 9300
+        },
+        {
+          "url": "/assets/projects/ringmin-960.webp",
+          "bytes": 24549
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
+    },
+    {
+      "route": "/research/",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 192782,
+        "requests": 9,
+        "lcpMs": 522.884,
+        "cls": 0.0684224753479469,
+        "fcpMs": 362.884,
+        "tbtMs": 0,
+        "speedIndexMs": 362.884,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/research/",
+          "bytes": 45317
+        },
+        {
+          "url": "/styles/site-65fbe77db18377e4.css",
+          "bytes": 9300
+        },
+        {
+          "url": "/assets/projects/ringmin-960.webp",
+          "bytes": 24549
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
+    },
+    {
+      "route": "/projects/prof-gecko/",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 138495,
+        "requests": 9,
+        "lcpMs": 1801.348,
+        "cls": 0,
+        "fcpMs": 1351.348,
+        "tbtMs": 0,
+        "speedIndexMs": 1351.348,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/projects/prof-gecko/",
+          "bytes": 41303
+        },
+        {
+          "url": "/styles/site-65fbe77db18377e4.css",
+          "bytes": 9300
+        },
+        {
+          "url": "/assets/projects/prof-gecko-960.webp",
+          "bytes": 33679
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
+    },
+    {
+      "route": "/projects/prof-gecko/",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 197898,
+        "requests": 9,
+        "lcpMs": 481.59399999999994,
         "cls": 0.0004205227866314609,
-        "fcpMs": 364.352,
+        "fcpMs": 321.594,
         "tbtMs": 0,
-        "speedIndexMs": 398.30892406678095,
+        "speedIndexMs": 321.594,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
-          "url": "/research/",
-          "bytes": 45317
+          "url": "/projects/prof-gecko/",
+          "bytes": 41303
         },
         {
           "url": "/styles/site-65fbe77db18377e4.css",
           "bytes": 9300
         },
         {
-          "url": "/assets/projects/ringmin-960.webp",
-          "bytes": 24549
+          "url": "/assets/projects/prof-gecko-960.webp",
+          "bytes": 33679
         },
         {
           "url": "/assets/fonts/poppins-600.woff2",
@@ -707,73 +990,15 @@
           "bytes": 470
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
-      "route": "/research/",
+      "route": "/projects/prof-gecko/",
       "lang": "en",
       "device": "mobile",
-      "pass": false,
-      "scores": {
-        "performance": 77,
-        "accessibility": 100,
-        "best-practices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "bytes": 133379,
-        "requests": 9,
-        "lcpMs": 1802.456,
-        "cls": 0,
-        "fcpMs": 1502.456,
-        "tbtMs": 1031.2720000000002,
-        "speedIndexMs": 1502.456,
-        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
-      },
-      "resources": [
-        {
-          "url": "/research/",
-          "bytes": 45317
-        },
-        {
-          "url": "/styles/site-65fbe77db18377e4.css",
-          "bytes": 9300
-        },
-        {
-          "url": "/assets/projects/ringmin-960.webp",
-          "bytes": 24549
-        },
-        {
-          "url": "/assets/fonts/poppins-600.woff2",
-          "bytes": 8184
-        },
-        {
-          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
-          "bytes": 14893
-        },
-        {
-          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
-          "bytes": 19721
-        },
-        {
-          "url": "/assets/images/falkerlogo.png",
-          "bytes": 10331
-        },
-        {
-          "url": "/assets/images/flag-it.png",
-          "bytes": 336
-        },
-        {
-          "url": "/assets/images/flag-en.png",
-          "bytes": 748
-        }
-      ],
-      "version": "12.8.2"
-    },
-    {
-      "route": "/research/",
-      "lang": "en",
-      "device": "desktop",
       "pass": true,
       "scores": {
         "performance": 100,
@@ -782,74 +1007,13 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 192782,
-        "requests": 9,
-        "lcpMs": 420.962,
-        "cls": 0,
-        "fcpMs": 360.962,
-        "tbtMs": 0,
-        "speedIndexMs": 360.962,
-        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
-      },
-      "resources": [
-        {
-          "url": "/research/",
-          "bytes": 45317
-        },
-        {
-          "url": "/styles/site-65fbe77db18377e4.css",
-          "bytes": 9300
-        },
-        {
-          "url": "/assets/projects/ringmin-960.webp",
-          "bytes": 24549
-        },
-        {
-          "url": "/assets/fonts/poppins-600.woff2",
-          "bytes": 8184
-        },
-        {
-          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
-          "bytes": 14893
-        },
-        {
-          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
-          "bytes": 19721
-        },
-        {
-          "url": "/assets/images/falkerlogo-native.webp",
-          "bytes": 70069
-        },
-        {
-          "url": "/assets/images/flag-it-native.png",
-          "bytes": 279
-        },
-        {
-          "url": "/assets/images/flag-en-native.png",
-          "bytes": 470
-        }
-      ],
-      "version": "12.8.2"
-    },
-    {
-      "route": "/projects/prof-gecko/",
-      "lang": "it",
-      "device": "mobile",
-      "pass": false,
-      "scores": {
-        "performance": 73,
-        "accessibility": 100,
-        "best-practices": 100,
-        "seo": 100
-      },
-      "metrics": {
         "bytes": 138495,
         "requests": 9,
-        "lcpMs": 1726.564,
+        "lcpMs": 1725.704,
         "cls": 0,
-        "fcpMs": 1351.564,
-        "tbtMs": 1599.218,
-        "speedIndexMs": 1351.564,
+        "fcpMs": 1350.704,
+        "tbtMs": 0,
+        "speedIndexMs": 1350.704,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
@@ -890,129 +1054,10 @@
           "bytes": 748
         }
       ],
-      "version": "12.8.2"
-    },
-    {
-      "route": "/projects/prof-gecko/",
-      "lang": "it",
-      "device": "desktop",
-      "pass": true,
-      "scores": {
-        "performance": 100,
-        "accessibility": 100,
-        "best-practices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "bytes": 197898,
-        "requests": 9,
-        "lcpMs": 401.314,
-        "cls": 0.00016383775599649377,
-        "fcpMs": 321.314,
-        "tbtMs": 0,
-        "speedIndexMs": 321.314,
-        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
-      },
-      "resources": [
-        {
-          "url": "/projects/prof-gecko/",
-          "bytes": 41303
-        },
-        {
-          "url": "/styles/site-65fbe77db18377e4.css",
-          "bytes": 9300
-        },
-        {
-          "url": "/assets/projects/prof-gecko-960.webp",
-          "bytes": 33679
-        },
-        {
-          "url": "/assets/fonts/poppins-600.woff2",
-          "bytes": 8184
-        },
-        {
-          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
-          "bytes": 14893
-        },
-        {
-          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
-          "bytes": 19721
-        },
-        {
-          "url": "/assets/images/falkerlogo-native.webp",
-          "bytes": 70069
-        },
-        {
-          "url": "/assets/images/flag-it-native.png",
-          "bytes": 279
-        },
-        {
-          "url": "/assets/images/flag-en-native.png",
-          "bytes": 470
-        }
-      ],
-      "version": "12.8.2"
-    },
-    {
-      "route": "/projects/prof-gecko/",
-      "lang": "en",
-      "device": "mobile",
-      "pass": false,
-      "scores": {
-        "performance": 76,
-        "accessibility": 100,
-        "best-practices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "bytes": 138495,
-        "requests": 9,
-        "lcpMs": 1725.984,
-        "cls": 0,
-        "fcpMs": 1350.984,
-        "tbtMs": 1202.5080000000003,
-        "speedIndexMs": 1350.984,
-        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
-      },
-      "resources": [
-        {
-          "url": "/projects/prof-gecko/",
-          "bytes": 41303
-        },
-        {
-          "url": "/styles/site-65fbe77db18377e4.css",
-          "bytes": 9300
-        },
-        {
-          "url": "/assets/projects/prof-gecko-960.webp",
-          "bytes": 33679
-        },
-        {
-          "url": "/assets/fonts/poppins-600.woff2",
-          "bytes": 8184
-        },
-        {
-          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
-          "bytes": 14893
-        },
-        {
-          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
-          "bytes": 19721
-        },
-        {
-          "url": "/assets/images/falkerlogo.png",
-          "bytes": 10331
-        },
-        {
-          "url": "/assets/images/flag-it.png",
-          "bytes": 336
-        },
-        {
-          "url": "/assets/images/flag-en.png",
-          "bytes": 748
-        }
-      ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/prof-gecko/",
@@ -1028,11 +1073,11 @@
       "metrics": {
         "bytes": 197898,
         "requests": 9,
-        "lcpMs": 402.144,
-        "cls": 0,
-        "fcpMs": 322.144,
+        "lcpMs": 481.466,
+        "cls": 0.00014697621279639988,
+        "fcpMs": 321.466,
         "tbtMs": 0,
-        "speedIndexMs": 322.144,
+        "speedIndexMs": 321.466,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
@@ -1073,15 +1118,18 @@
           "bytes": 470
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/camaleonte/",
       "lang": "it",
       "device": "mobile",
-      "pass": false,
+      "pass": true,
       "scores": {
-        "performance": 78,
+        "performance": 100,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
@@ -1089,11 +1137,11 @@
       "metrics": {
         "bytes": 137706,
         "requests": 9,
-        "lcpMs": 1725.5080000000003,
+        "lcpMs": 1725.634,
         "cls": 0,
-        "fcpMs": 1350.508,
-        "tbtMs": 997.2460000000001,
-        "speedIndexMs": 1350.508,
+        "fcpMs": 1350.634,
+        "tbtMs": 0,
+        "speedIndexMs": 1350.634,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
@@ -1134,7 +1182,10 @@
           "bytes": 748
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/camaleonte/",
@@ -1150,11 +1201,11 @@
       "metrics": {
         "bytes": 197109,
         "requests": 9,
-        "lcpMs": 483.874,
-        "cls": 0.0002267999330265808,
-        "fcpMs": 323.874,
+        "lcpMs": 481.234,
+        "cls": 0.0001092812803025623,
+        "fcpMs": 321.234,
         "tbtMs": 0,
-        "speedIndexMs": 323.874,
+        "speedIndexMs": 321.234,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
@@ -1195,15 +1246,18 @@
           "bytes": 470
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/camaleonte/",
       "lang": "en",
       "device": "mobile",
-      "pass": false,
+      "pass": true,
       "scores": {
-        "performance": 79,
+        "performance": 99,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
@@ -1211,11 +1265,11 @@
       "metrics": {
         "bytes": 137706,
         "requests": 9,
-        "lcpMs": 1726.73,
+        "lcpMs": 1800.882,
         "cls": 0,
-        "fcpMs": 1351.73,
-        "tbtMs": 855.1349999999998,
-        "speedIndexMs": 1351.73,
+        "fcpMs": 1350.882,
+        "tbtMs": 0,
+        "speedIndexMs": 1350.882,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
@@ -1256,7 +1310,10 @@
           "bytes": 748
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/camaleonte/",
@@ -1272,11 +1329,11 @@
       "metrics": {
         "bytes": 197109,
         "requests": 9,
-        "lcpMs": 483.64,
+        "lcpMs": 481.18999999999994,
         "cls": 0.002408639947883697,
-        "fcpMs": 323.64,
+        "fcpMs": 321.19,
         "tbtMs": 0,
-        "speedIndexMs": 325.133693750754,
+        "speedIndexMs": 321.19,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
@@ -1317,15 +1374,18 @@
           "bytes": 470
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/uses/",
       "lang": "it",
       "device": "mobile",
-      "pass": false,
+      "pass": true,
       "scores": {
-        "performance": 75,
+        "performance": 99,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
@@ -1333,11 +1393,11 @@
       "metrics": {
         "bytes": 141468,
         "requests": 9,
-        "lcpMs": 1877.108,
+        "lcpMs": 1951.246,
         "cls": 0,
-        "fcpMs": 1502.108,
-        "tbtMs": 1163.9460000000001,
-        "speedIndexMs": 1502.108,
+        "fcpMs": 1501.246,
+        "tbtMs": 0,
+        "speedIndexMs": 1501.246,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
@@ -1378,7 +1438,10 @@
           "bytes": 748
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/uses/",
@@ -1394,11 +1457,11 @@
       "metrics": {
         "bytes": 200871,
         "requests": 9,
-        "lcpMs": 440.744,
-        "cls": 0,
-        "fcpMs": 360.744,
+        "lcpMs": 521.328,
+        "cls": 0.00016383775599649377,
+        "fcpMs": 361.328,
         "tbtMs": 0,
-        "speedIndexMs": 360.744,
+        "speedIndexMs": 361.328,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
@@ -1439,15 +1502,18 @@
           "bytes": 470
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/uses/",
       "lang": "en",
       "device": "mobile",
-      "pass": false,
+      "pass": true,
       "scores": {
-        "performance": 78,
+        "performance": 99,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
@@ -1455,11 +1521,11 @@
       "metrics": {
         "bytes": 141468,
         "requests": 9,
-        "lcpMs": 1877.516,
+        "lcpMs": 1875.86,
         "cls": 0,
-        "fcpMs": 1502.516,
-        "tbtMs": 962.7419999999997,
-        "speedIndexMs": 1502.516,
+        "fcpMs": 1500.86,
+        "tbtMs": 0,
+        "speedIndexMs": 1500.86,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
@@ -1500,7 +1566,10 @@
           "bytes": 748
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/uses/",
@@ -1516,11 +1585,11 @@
       "metrics": {
         "bytes": 200871,
         "requests": 9,
-        "lcpMs": 441.14,
+        "lcpMs": 440.946,
         "cls": 0,
-        "fcpMs": 361.14,
+        "fcpMs": 360.946,
         "tbtMs": 0,
-        "speedIndexMs": 381.2022067739963,
+        "speedIndexMs": 360.946,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
@@ -1561,15 +1630,18 @@
           "bytes": 470
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/social-viewer/",
       "lang": "it",
       "device": "mobile",
-      "pass": false,
+      "pass": true,
       "scores": {
-        "performance": 71,
+        "performance": 99,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
@@ -1577,11 +1649,11 @@
       "metrics": {
         "bytes": 116578,
         "requests": 9,
-        "lcpMs": 1577.7220000000002,
+        "lcpMs": 1635,
         "cls": 0,
-        "fcpMs": 1352.722,
-        "tbtMs": 2515.139,
-        "speedIndexMs": 1375.3109440342664,
+        "fcpMs": 1410,
+        "tbtMs": 0,
+        "speedIndexMs": 1410,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
@@ -1622,7 +1694,10 @@
           "bytes": 748
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/social-viewer/",
@@ -1638,11 +1713,11 @@
       "metrics": {
         "bytes": 175981,
         "requests": 9,
-        "lcpMs": 341.942,
+        "lcpMs": 343.252,
         "cls": 0.0005349492163558358,
-        "fcpMs": 321.942,
+        "fcpMs": 323.252,
         "tbtMs": 0,
-        "speedIndexMs": 357.99118723868725,
+        "speedIndexMs": 323.252,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
@@ -1683,7 +1758,10 @@
           "bytes": 470
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/social-viewer/",
@@ -1699,11 +1777,11 @@
       "metrics": {
         "bytes": 116578,
         "requests": 9,
-        "lcpMs": 1652.156,
+        "lcpMs": 1650.62,
         "cls": 0,
-        "fcpMs": 1352.156,
+        "fcpMs": 1350.62,
         "tbtMs": 0,
-        "speedIndexMs": 1352.156,
+        "speedIndexMs": 1350.62,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
@@ -1744,7 +1822,10 @@
           "bytes": 748
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/social-viewer/",
@@ -1760,11 +1841,11 @@
       "metrics": {
         "bytes": 175981,
         "requests": 9,
-        "lcpMs": 341.206,
-        "cls": 0,
-        "fcpMs": 321.206,
+        "lcpMs": 481.102,
+        "cls": 0.00016264074949654146,
+        "fcpMs": 321.102,
         "tbtMs": 0,
-        "speedIndexMs": 358.251815561684,
+        "speedIndexMs": 321.102,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
@@ -1805,7 +1886,10 @@
           "bytes": 470
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/social-viewer/test/",
@@ -1821,11 +1905,11 @@
       "metrics": {
         "bytes": 110609,
         "requests": 8,
-        "lcpMs": 1425.4140000000002,
+        "lcpMs": 1501.558,
         "cls": 0,
-        "fcpMs": 1350.414,
+        "fcpMs": 1351.558,
         "tbtMs": 0,
-        "speedIndexMs": 1350.414,
+        "speedIndexMs": 1351.558,
         "lcpElement": "div.page > main#main > section.sv-picker > p.sv-help"
       },
       "resources": [
@@ -1862,7 +1946,10 @@
           "bytes": 748
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/social-viewer/test/",
@@ -1878,11 +1965,11 @@
       "metrics": {
         "bytes": 170012,
         "requests": 8,
-        "lcpMs": 483.86299999999994,
-        "cls": 0.0001149216355835741,
-        "fcpMs": 323.863,
+        "lcpMs": 340.64199999999994,
+        "cls": 0,
+        "fcpMs": 320.642,
         "tbtMs": 0,
-        "speedIndexMs": 323.863,
+        "speedIndexMs": 320.642,
         "lcpElement": "div.page > main#main > section.sv-picker > h2#path-question"
       },
       "resources": [
@@ -1919,7 +2006,10 @@
           "bytes": 470
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/social-viewer/test/",
@@ -1935,11 +2025,11 @@
       "metrics": {
         "bytes": 110609,
         "requests": 8,
-        "lcpMs": 1425.596,
+        "lcpMs": 1500.765,
         "cls": 0,
-        "fcpMs": 1350.596,
+        "fcpMs": 1350.765,
         "tbtMs": 0,
-        "speedIndexMs": 1350.596,
+        "speedIndexMs": 1350.765,
         "lcpElement": "div.page > main#main > section.sv-picker > h2#path-question"
       },
       "resources": [
@@ -1976,7 +2066,10 @@
           "bytes": 748
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/social-viewer/test/",
@@ -1992,11 +2085,11 @@
       "metrics": {
         "bytes": 170012,
         "requests": 8,
-        "lcpMs": 342.715,
+        "lcpMs": 341.46899999999994,
         "cls": 0,
-        "fcpMs": 322.715,
+        "fcpMs": 321.469,
         "tbtMs": 0,
-        "speedIndexMs": 371.7548420542975,
+        "speedIndexMs": 321.469,
         "lcpElement": "div.page > main#main > section.sv-picker > h2#path-question"
       },
       "resources": [
@@ -2033,15 +2126,18 @@
           "bytes": 470
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/social-viewer/privacy/",
       "lang": "it",
       "device": "mobile",
-      "pass": false,
+      "pass": true,
       "scores": {
-        "performance": 71,
+        "performance": 99,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
@@ -2049,11 +2145,11 @@
       "metrics": {
         "bytes": 117295,
         "requests": 8,
-        "lcpMs": 1650.2869999999998,
+        "lcpMs": 1710,
         "cls": 0,
-        "fcpMs": 1500.287,
-        "tbtMs": 2108.8565,
-        "speedIndexMs": 1500.287,
+        "fcpMs": 1560,
+        "tbtMs": 0,
+        "speedIndexMs": 1560,
         "lcpElement": "main#main > section#policy-it > header.policy-heading > p.lead"
       },
       "resources": [
@@ -2090,7 +2186,10 @@
           "bytes": 748
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/social-viewer/privacy/",
@@ -2106,11 +2205,11 @@
       "metrics": {
         "bytes": 176698,
         "requests": 8,
-        "lcpMs": 521.063,
-        "cls": 0,
-        "fcpMs": 361.063,
+        "lcpMs": 382.158,
+        "cls": 0.0001175186527240185,
+        "fcpMs": 362.158,
         "tbtMs": 0,
-        "speedIndexMs": 361.063,
+        "speedIndexMs": 362.158,
         "lcpElement": "main#main > section#policy-it > header.policy-heading > p.lead"
       },
       "resources": [
@@ -2147,15 +2246,18 @@
           "bytes": 470
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/social-viewer/privacy/",
       "lang": "en",
       "device": "mobile",
-      "pass": false,
+      "pass": true,
       "scores": {
-        "performance": 82,
+        "performance": 99,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
@@ -2163,11 +2265,11 @@
       "metrics": {
         "bytes": 117295,
         "requests": 8,
-        "lcpMs": 1651.1889999999999,
+        "lcpMs": 1651.214,
         "cls": 0,
-        "fcpMs": 1501.189,
-        "tbtMs": 696.9055000000001,
-        "speedIndexMs": 1501.189,
+        "fcpMs": 1501.214,
+        "tbtMs": 0,
+        "speedIndexMs": 1501.214,
         "lcpElement": "main#main > section#policy-en > header.policy-heading > p.lead"
       },
       "resources": [
@@ -2180,16 +2282,16 @@
           "bytes": 15713
         },
         {
-          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
-          "bytes": 19721
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
         },
         {
           "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
           "bytes": 14893
         },
         {
-          "url": "/assets/fonts/poppins-600.woff2",
-          "bytes": 8184
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
         },
         {
           "url": "/assets/images/falkerlogo.png",
@@ -2204,7 +2306,10 @@
           "bytes": 748
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/social-viewer/privacy/",
@@ -2220,11 +2325,11 @@
       "metrics": {
         "bytes": 176698,
         "requests": 8,
-        "lcpMs": 522.489,
+        "lcpMs": 520.904,
         "cls": 0.0001006571095239246,
-        "fcpMs": 362.48900000000003,
+        "fcpMs": 360.904,
         "tbtMs": 0,
-        "speedIndexMs": 393.6686913070311,
+        "speedIndexMs": 360.904,
         "lcpElement": "main#main > section#policy-en > header.policy-heading > p.lead"
       },
       "resources": [
@@ -2261,7 +2366,10 @@
           "bytes": 470
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/",
@@ -2277,11 +2385,11 @@
       "metrics": {
         "bytes": 68487,
         "requests": 6,
-        "lcpMs": 1200.65,
+        "lcpMs": 1201.371,
         "cls": 0,
-        "fcpMs": 1050.65,
+        "fcpMs": 1051.371,
         "tbtMs": 0,
-        "speedIndexMs": 1050.65,
+        "speedIndexMs": 1051.371,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -2310,7 +2418,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/",
@@ -2326,11 +2437,11 @@
       "metrics": {
         "bytes": 68487,
         "requests": 6,
-        "lcpMs": 284.8016,
+        "lcpMs": 281.006,
         "cls": 0,
-        "fcpMs": 284.8016,
+        "fcpMs": 281.006,
         "tbtMs": 0,
-        "speedIndexMs": 284.8016,
+        "speedIndexMs": 281.006,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -2359,7 +2470,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/",
@@ -2375,11 +2489,11 @@
       "metrics": {
         "bytes": 68487,
         "requests": 6,
-        "lcpMs": 1203.7705,
+        "lcpMs": 1200.933,
         "cls": 0.0007657801051121892,
-        "fcpMs": 1053.7705,
+        "fcpMs": 1050.933,
         "tbtMs": 0,
-        "speedIndexMs": 1053.7705,
+        "speedIndexMs": 1050.933,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -2408,7 +2522,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/",
@@ -2424,11 +2541,11 @@
       "metrics": {
         "bytes": 68487,
         "requests": 6,
-        "lcpMs": 283.221,
-        "cls": 0,
-        "fcpMs": 283.221,
+        "lcpMs": 281.192,
+        "cls": 0.0002792361658348656,
+        "fcpMs": 281.192,
         "tbtMs": 0,
-        "speedIndexMs": 283.221,
+        "speedIndexMs": 281.192,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -2457,7 +2574,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/index.html",
@@ -2473,11 +2593,11 @@
       "metrics": {
         "bytes": 68487,
         "requests": 6,
-        "lcpMs": 1200.75,
+        "lcpMs": 1200.636,
         "cls": 0,
-        "fcpMs": 1050.75,
+        "fcpMs": 1050.636,
         "tbtMs": 0,
-        "speedIndexMs": 1050.75,
+        "speedIndexMs": 1050.636,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -2506,7 +2626,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/index.html",
@@ -2522,11 +2645,11 @@
       "metrics": {
         "bytes": 68487,
         "requests": 6,
-        "lcpMs": 281.337,
+        "lcpMs": 281.963,
         "cls": 0,
-        "fcpMs": 281.337,
+        "fcpMs": 281.963,
         "tbtMs": 0,
-        "speedIndexMs": 281.337,
+        "speedIndexMs": 281.963,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -2555,7 +2678,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/index.html",
@@ -2571,11 +2697,11 @@
       "metrics": {
         "bytes": 68487,
         "requests": 6,
-        "lcpMs": 1202.128,
-        "cls": 0,
-        "fcpMs": 1052.128,
+        "lcpMs": 1200.817,
+        "cls": 0.0007657801051121892,
+        "fcpMs": 1050.817,
         "tbtMs": 0,
-        "speedIndexMs": 1052.128,
+        "speedIndexMs": 1050.817,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -2604,7 +2730,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/index.html",
@@ -2620,207 +2749,63 @@
       "metrics": {
         "bytes": 68487,
         "requests": 6,
-        "lcpMs": 282.321,
-        "cls": 0,
-        "fcpMs": 282.321,
-        "tbtMs": 0,
-        "speedIndexMs": 282.321,
-        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
-      },
-      "resources": [
-        {
-          "url": "/Nexus-portfolio/index.html",
-          "bytes": 8957
-        },
-        {
-          "url": "/styles/site-65fbe77db18377e4.css",
-          "bytes": 9300
-        },
-        {
-          "url": "/scripts/i18n.js",
-          "bytes": 5285
-        },
-        {
-          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
-          "bytes": 14893
-        },
-        {
-          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
-          "bytes": 19721
-        },
-        {
-          "url": "/assets/images/falkerlogo.png",
-          "bytes": 10331
-        }
-      ],
-      "version": "12.8.2"
-    },
-    {
-      "route": "/Nexus-portfolio/research.html",
-      "lang": "it",
-      "device": "mobile",
-      "pass": true,
-      "scores": {
-        "performance": 100,
-        "accessibility": 100,
-        "best-practices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "bytes": 68544,
-        "requests": 6,
-        "lcpMs": 1200.683,
-        "cls": 0,
-        "fcpMs": 1050.683,
-        "tbtMs": 0,
-        "speedIndexMs": 1050.683,
-        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
-      },
-      "resources": [
-        {
-          "url": "/Nexus-portfolio/research.html",
-          "bytes": 9014
-        },
-        {
-          "url": "/styles/site-65fbe77db18377e4.css",
-          "bytes": 9300
-        },
-        {
-          "url": "/scripts/i18n.js",
-          "bytes": 5285
-        },
-        {
-          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
-          "bytes": 14893
-        },
-        {
-          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
-          "bytes": 19721
-        },
-        {
-          "url": "/assets/images/falkerlogo.png",
-          "bytes": 10331
-        }
-      ],
-      "version": "12.8.2"
-    },
-    {
-      "route": "/Nexus-portfolio/research.html",
-      "lang": "it",
-      "device": "desktop",
-      "pass": true,
-      "scores": {
-        "performance": 100,
-        "accessibility": 100,
-        "best-practices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "bytes": 68544,
-        "requests": 6,
-        "lcpMs": 282.081,
-        "cls": 0,
-        "fcpMs": 282.081,
-        "tbtMs": 0,
-        "speedIndexMs": 282.081,
-        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
-      },
-      "resources": [
-        {
-          "url": "/Nexus-portfolio/research.html",
-          "bytes": 9014
-        },
-        {
-          "url": "/styles/site-65fbe77db18377e4.css",
-          "bytes": 9300
-        },
-        {
-          "url": "/scripts/i18n.js",
-          "bytes": 5285
-        },
-        {
-          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
-          "bytes": 14893
-        },
-        {
-          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
-          "bytes": 19721
-        },
-        {
-          "url": "/assets/images/falkerlogo.png",
-          "bytes": 10331
-        }
-      ],
-      "version": "12.8.2"
-    },
-    {
-      "route": "/Nexus-portfolio/research.html",
-      "lang": "en",
-      "device": "mobile",
-      "pass": true,
-      "scores": {
-        "performance": 100,
-        "accessibility": 100,
-        "best-practices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "bytes": 68544,
-        "requests": 6,
-        "lcpMs": 1200.605,
-        "cls": 0,
-        "fcpMs": 1050.605,
-        "tbtMs": 0,
-        "speedIndexMs": 1050.605,
-        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
-      },
-      "resources": [
-        {
-          "url": "/Nexus-portfolio/research.html",
-          "bytes": 9014
-        },
-        {
-          "url": "/styles/site-65fbe77db18377e4.css",
-          "bytes": 9300
-        },
-        {
-          "url": "/scripts/i18n.js",
-          "bytes": 5285
-        },
-        {
-          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
-          "bytes": 14893
-        },
-        {
-          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
-          "bytes": 19721
-        },
-        {
-          "url": "/assets/images/falkerlogo.png",
-          "bytes": 10331
-        }
-      ],
-      "version": "12.8.2"
-    },
-    {
-      "route": "/Nexus-portfolio/research.html",
-      "lang": "en",
-      "device": "desktop",
-      "pass": true,
-      "scores": {
-        "performance": 100,
-        "accessibility": 100,
-        "best-practices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "bytes": 68544,
-        "requests": 6,
-        "lcpMs": 280.638,
+        "lcpMs": 282.158,
         "cls": 0.0002792361658348656,
-        "fcpMs": 280.638,
+        "fcpMs": 282.158,
         "tbtMs": 0,
-        "speedIndexMs": 280.638,
+        "speedIndexMs": 282.158,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/index.html",
+          "bytes": 8957
+        },
+        {
+          "url": "/styles/site-65fbe77db18377e4.css",
+          "bytes": 9300
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
+    },
+    {
+      "route": "/Nexus-portfolio/research.html",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 68544,
+        "requests": 6,
+        "lcpMs": 1201.332,
+        "cls": 0,
+        "fcpMs": 1051.332,
+        "tbtMs": 0,
+        "speedIndexMs": 1051.332,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -2849,7 +2834,166 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
+    },
+    {
+      "route": "/Nexus-portfolio/research.html",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 68544,
+        "requests": 6,
+        "lcpMs": 281.041,
+        "cls": 0,
+        "fcpMs": 281.041,
+        "tbtMs": 0,
+        "speedIndexMs": 281.041,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/research.html",
+          "bytes": 9014
+        },
+        {
+          "url": "/styles/site-65fbe77db18377e4.css",
+          "bytes": 9300
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
+    },
+    {
+      "route": "/Nexus-portfolio/research.html",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 68544,
+        "requests": 6,
+        "lcpMs": 1200.594,
+        "cls": 0.0007657801051121892,
+        "fcpMs": 1050.594,
+        "tbtMs": 0,
+        "speedIndexMs": 1050.594,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/research.html",
+          "bytes": 9014
+        },
+        {
+          "url": "/styles/site-65fbe77db18377e4.css",
+          "bytes": 9300
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
+    },
+    {
+      "route": "/Nexus-portfolio/research.html",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 68544,
+        "requests": 6,
+        "lcpMs": 281.437,
+        "cls": 0.0002792361658348656,
+        "fcpMs": 281.437,
+        "tbtMs": 0,
+        "speedIndexMs": 281.437,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/research.html",
+          "bytes": 9014
+        },
+        {
+          "url": "/styles/site-65fbe77db18377e4.css",
+          "bytes": 9300
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/prof-gecko.html",
@@ -2865,11 +3009,11 @@
       "metrics": {
         "bytes": 68608,
         "requests": 6,
-        "lcpMs": 1200.458,
+        "lcpMs": 1200.875,
         "cls": 0,
-        "fcpMs": 1050.458,
+        "fcpMs": 1050.875,
         "tbtMs": 0,
-        "speedIndexMs": 1050.458,
+        "speedIndexMs": 1050.875,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -2898,7 +3042,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/prof-gecko.html",
@@ -2914,11 +3061,11 @@
       "metrics": {
         "bytes": 68608,
         "requests": 6,
-        "lcpMs": 280.665,
+        "lcpMs": 280.438,
         "cls": 0,
-        "fcpMs": 280.665,
+        "fcpMs": 280.438,
         "tbtMs": 0,
-        "speedIndexMs": 280.665,
+        "speedIndexMs": 280.438,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -2947,7 +3094,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/prof-gecko.html",
@@ -2963,11 +3113,11 @@
       "metrics": {
         "bytes": 68608,
         "requests": 6,
-        "lcpMs": 1201.888,
-        "cls": 0.0008792290095732542,
-        "fcpMs": 1051.888,
+        "lcpMs": 1200.736,
+        "cls": 0.0007657801051121892,
+        "fcpMs": 1050.736,
         "tbtMs": 0,
-        "speedIndexMs": 1051.888,
+        "speedIndexMs": 1050.736,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -2996,7 +3146,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/prof-gecko.html",
@@ -3012,11 +3165,11 @@
       "metrics": {
         "bytes": 68608,
         "requests": 6,
-        "lcpMs": 283.2198,
-        "cls": 0,
-        "fcpMs": 283.2198,
+        "lcpMs": 280.546,
+        "cls": 0.0002792361658348656,
+        "fcpMs": 280.546,
         "tbtMs": 0,
-        "speedIndexMs": 283.2198,
+        "speedIndexMs": 280.546,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -3045,7 +3198,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/consigli.html",
@@ -3061,11 +3217,11 @@
       "metrics": {
         "bytes": 68487,
         "requests": 6,
-        "lcpMs": 1200.177,
+        "lcpMs": 1200.523,
         "cls": 0,
-        "fcpMs": 1050.177,
+        "fcpMs": 1050.523,
         "tbtMs": 0,
-        "speedIndexMs": 1050.177,
+        "speedIndexMs": 1050.523,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -3094,7 +3250,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/consigli.html",
@@ -3110,11 +3269,11 @@
       "metrics": {
         "bytes": 68487,
         "requests": 6,
-        "lcpMs": 283.3155,
+        "lcpMs": 281.846,
         "cls": 0,
-        "fcpMs": 283.3155,
+        "fcpMs": 281.846,
         "tbtMs": 0,
-        "speedIndexMs": 283.3155,
+        "speedIndexMs": 281.846,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -3143,7 +3302,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/consigli.html",
@@ -3159,11 +3321,11 @@
       "metrics": {
         "bytes": 68487,
         "requests": 6,
-        "lcpMs": 1200.409,
-        "cls": 0,
-        "fcpMs": 1050.409,
+        "lcpMs": 1200.55,
+        "cls": 0.0007657801051121892,
+        "fcpMs": 1050.55,
         "tbtMs": 0,
-        "speedIndexMs": 1050.409,
+        "speedIndexMs": 1050.55,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -3192,7 +3354,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/consigli.html",
@@ -3208,11 +3373,11 @@
       "metrics": {
         "bytes": 68487,
         "requests": 6,
-        "lcpMs": 282.556,
-        "cls": 0,
-        "fcpMs": 282.556,
+        "lcpMs": 281.264,
+        "cls": 0.0002792361658348656,
+        "fcpMs": 281.264,
         "tbtMs": 0,
-        "speedIndexMs": 282.556,
+        "speedIndexMs": 281.264,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -3241,7 +3406,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/testers.html",
@@ -3257,11 +3425,11 @@
       "metrics": {
         "bytes": 68582,
         "requests": 6,
-        "lcpMs": 1203.099,
+        "lcpMs": 1200.88,
         "cls": 0,
-        "fcpMs": 1053.099,
+        "fcpMs": 1050.88,
         "tbtMs": 0,
-        "speedIndexMs": 1053.099,
+        "speedIndexMs": 1050.88,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -3290,7 +3458,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/testers.html",
@@ -3306,11 +3477,11 @@
       "metrics": {
         "bytes": 68582,
         "requests": 6,
-        "lcpMs": 280.512,
+        "lcpMs": 280.709,
         "cls": 0,
-        "fcpMs": 280.512,
+        "fcpMs": 280.709,
         "tbtMs": 0,
-        "speedIndexMs": 280.512,
+        "speedIndexMs": 280.709,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -3339,7 +3510,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/testers.html",
@@ -3355,11 +3529,11 @@
       "metrics": {
         "bytes": 68582,
         "requests": 6,
-        "lcpMs": 1201.026,
-        "cls": 0,
-        "fcpMs": 1051.026,
+        "lcpMs": 1200.633,
+        "cls": 0.0007657801051121892,
+        "fcpMs": 1050.633,
         "tbtMs": 0,
-        "speedIndexMs": 1051.026,
+        "speedIndexMs": 1050.633,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -3388,7 +3562,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/testers.html",
@@ -3404,11 +3581,11 @@
       "metrics": {
         "bytes": 68582,
         "requests": 6,
-        "lcpMs": 280.443,
-        "cls": 0,
-        "fcpMs": 280.443,
+        "lcpMs": 281.054,
+        "cls": 0.0002792361658348656,
+        "fcpMs": 281.054,
         "tbtMs": 0,
-        "speedIndexMs": 280.443,
+        "speedIndexMs": 281.054,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -3437,7 +3614,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/socialviewer-privacy.html",
@@ -3453,11 +3633,11 @@
       "metrics": {
         "bytes": 68579,
         "requests": 6,
-        "lcpMs": 1200.777,
+        "lcpMs": 1200.927,
         "cls": 0,
-        "fcpMs": 1050.777,
+        "fcpMs": 1050.927,
         "tbtMs": 0,
-        "speedIndexMs": 1050.777,
+        "speedIndexMs": 1050.927,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -3486,7 +3666,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/socialviewer-privacy.html",
@@ -3502,11 +3685,11 @@
       "metrics": {
         "bytes": 68579,
         "requests": 6,
-        "lcpMs": 282.836,
+        "lcpMs": 281.456,
         "cls": 0,
-        "fcpMs": 282.836,
+        "fcpMs": 281.456,
         "tbtMs": 0,
-        "speedIndexMs": 282.836,
+        "speedIndexMs": 281.456,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -3535,7 +3718,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/socialviewer-privacy.html",
@@ -3551,11 +3737,11 @@
       "metrics": {
         "bytes": 68579,
         "requests": 6,
-        "lcpMs": 1201.309,
-        "cls": 0,
-        "fcpMs": 1051.309,
+        "lcpMs": 1200.86,
+        "cls": 0.0007657801051121892,
+        "fcpMs": 1050.86,
         "tbtMs": 0,
-        "speedIndexMs": 1051.309,
+        "speedIndexMs": 1050.86,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -3584,7 +3770,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/Nexus-portfolio/socialviewer-privacy.html",
@@ -3600,11 +3789,11 @@
       "metrics": {
         "bytes": 68579,
         "requests": 6,
-        "lcpMs": 281.969,
-        "cls": 0,
-        "fcpMs": 281.969,
+        "lcpMs": 280.913,
+        "cls": 0.0002792361658348656,
+        "fcpMs": 280.913,
         "tbtMs": 0,
-        "speedIndexMs": 281.969,
+        "speedIndexMs": 280.913,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -3633,7 +3822,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/",
@@ -3649,11 +3841,11 @@
       "metrics": {
         "bytes": 68550,
         "requests": 6,
-        "lcpMs": 1201.933,
+        "lcpMs": 1201.043,
         "cls": 0,
-        "fcpMs": 1051.933,
+        "fcpMs": 1051.043,
         "tbtMs": 0,
-        "speedIndexMs": 1051.933,
+        "speedIndexMs": 1051.043,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -3682,7 +3874,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/",
@@ -3698,11 +3893,11 @@
       "metrics": {
         "bytes": 68550,
         "requests": 6,
-        "lcpMs": 281.328,
+        "lcpMs": 281.057,
         "cls": 0,
-        "fcpMs": 281.328,
+        "fcpMs": 281.057,
         "tbtMs": 0,
-        "speedIndexMs": 281.328,
+        "speedIndexMs": 281.057,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -3731,7 +3926,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/",
@@ -3747,11 +3945,11 @@
       "metrics": {
         "bytes": 68550,
         "requests": 6,
-        "lcpMs": 1200.498,
-        "cls": 0,
-        "fcpMs": 1050.498,
+        "lcpMs": 1201.217,
+        "cls": 0.0007657801051121892,
+        "fcpMs": 1051.217,
         "tbtMs": 0,
-        "speedIndexMs": 1050.498,
+        "speedIndexMs": 1051.217,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -3780,7 +3978,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     },
     {
       "route": "/projects/",
@@ -3796,11 +3997,11 @@
       "metrics": {
         "bytes": 68550,
         "requests": 6,
-        "lcpMs": 283.8288,
-        "cls": 0.0003191270466684178,
-        "fcpMs": 283.8288,
+        "lcpMs": 281.533,
+        "cls": 0.0002792361658348656,
+        "fcpMs": 281.533,
         "tbtMs": 0,
-        "speedIndexMs": 283.8288,
+        "speedIndexMs": 281.533,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
@@ -3829,7 +4030,10 @@
           "bytes": 10331
         }
       ],
-      "version": "12.8.2"
+      "version": "12.8.2",
+      "chromeFlags": [
+        "--disable-gpu"
+      ]
     }
   ],
   "axe": [
