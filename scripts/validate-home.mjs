@@ -25,7 +25,7 @@ const panel = (source, id) => {
 const cards = markup => [...markup.matchAll(/<li class="card[^"]*">([^]*?)<\/li>/g)].map(match => match[1]);
 const groups = markup => [...markup.matchAll(/<section class="picker-group cat-([\w-]+)" data-group="([\w-]+)"[^>]*>([^]*?)<\/section>/g)]
   .map(([, colour, id, body]) => ({ colour, id, body }));
-const toggles = markup => [...markup.matchAll(/<button type="button" class="picker-toggle cat-([\w-]+)" data-group="([\w-]+)" aria-pressed="(true|false)">([^]*?)<\/button>/g)]
+const toggles = markup => [...markup.matchAll(/<button type="button" class="picker-toggle result cat-([\w-]+)" data-group="([\w-]+)" aria-pressed="(true|false)">([^]*?)<\/button>/g)]
   .map(([, colour, id, pressed, body]) => ({ colour, id, pressed, label: text(body) }));
 // Each card button: its destination, its platform mark (V4) or the arrow icon it keeps.
 const buttons = markup => [...markup.matchAll(/<a href="([^"]+)"([^>]*)>([^]*?)<\/a>/g)]
@@ -69,10 +69,10 @@ function checkStructure(source) {
 // Software: the three counts are the toggles; each group lists its projects in data order.
 function checkSoftware(source) {
   const markup = panel(source, 'software');
-  const expected = [['app', 'App'], ['game', 'Giochi'], ['tool', 'Strumenti']].map(([id, word]) => ({ id, word, items: visible.filter(item => item.category === id) }));
-  assert.deepEqual(toggles(markup), expected.map((group, index) => ({ colour: group.id, id: group.id, pressed: String(index === 0), label: `${group.word} ${group.items.length}` })),
-    'Software pills: "App 4 · Giochi 5 · Strumenti 5" from data, App selected, no "All"');
-  assert.ok(!/class="result-icon"/.test(markup.match(/<div class="picker-bar"[^]*?<\/div>/)[0]), 'The pills are text only');
+  const expected = [['app', 'app'], ['game', 'giochi'], ['tool', 'strumenti']].map(([id, word]) => ({ id, word, items: visible.filter(item => item.category === id) }));
+  assert.deepEqual(toggles(markup), expected.map((group, index) => ({ colour: group.id, id: group.id, pressed: String(index === 0), label: `${group.items.length} ${group.word}` })),
+    'Software tiles: counts from data, App selected, no "All"');
+  assert.equal([...markup.match(/<div class="picker-bar"[^]*?<\/div>/)[0].matchAll(/<svg class="result-icon"/g)].length, 3, 'Each tile has its drawing');
   const listed = groups(markup);
   assert.deepEqual(listed.map(group => group.id), expected.map(group => group.id));
   for (const [index, group] of listed.entries()) {
@@ -106,18 +106,16 @@ function checkSoftware(source) {
 // Modding: every published mod, with its downloads, endorsements and bar.
 function checkModding(source) {
   const markup = panel(source, 'modding');
-  const expected = [['mod', 'Mod'], ['translation', 'Traduzioni']].map(([id, word]) => ({ id, word, items: nexus.mods.filter(mod => mod.kind === id) }));
-  assert.deepEqual(toggles(markup), expected.map((group, index) => ({ colour: group.id, id: group.id, pressed: String(index === 0), label: `${group.word} ${group.items.length}` })),
-    'Modding pills: "Mod 10 · Traduzioni 17" from data');
-  assert.match(markup, /<p class="sample-count"><a href="[^"]+"><svg class="brand brand-nexusmods"[^>]*><use href="#brand-nexusmods"\/><\/svg><strong data-i18n="moddingNumber">/, 'The Nexus mark opens the download summary');
+  const expected = [['mod', 'mod'], ['translation', 'traduzioni italiane']].map(([id, word]) => ({ id, word, items: nexus.mods.filter(mod => mod.kind === id) }));
+  assert.deepEqual(toggles(markup), expected.map((group, index) => ({ colour: group.id, id: group.id, pressed: String(index === 0), label: `${group.items.length} ${group.word}` })),
+    'Modding tiles: "10 mod · 17 traduzioni italiane" from data');
+  // The unique downloads lead the row as a tile of their own, with the Nexus mark, linked to the profile.
+  assert.match(markup, new RegExp('<div class="results-row picker-head"><a class="result nexus-total" href="' + featured.profile + '"><svg class="brand brand-nexusmods"[^>]*><use href="#brand-nexusmods"/></svg><span class="result-body"><strong class="result-value" data-i18n="moddingNumber">'), 'The Nexus total leads the row');
   // Read the rendered markup only; the bundled Nexus client mentions the same attributes.
-  const counts = [...markup.matchAll(/<strong\b[^>]*data-nexus-stat="modCount"[^>]*>([^<]+)</g)];
-  assert.equal(counts.length, 1, 'One live mod count');
-  assert.equal(counts[0][1], italian(snapshot.modCount));
+  assert.equal([...markup.matchAll(/data-nexus-stat=/g)].length, 0, 'No publication count or snapshot date (V4)');
   const downloads = [...markup.matchAll(/<strong\b[^>]*data-i18n="moddingNumber"[^>]*>([^<]+)</g)];
   assert.equal(downloads.length, 1, 'One live download total');
   assert.equal(downloads[0][1], italian(snapshot.uniqueModDownloads));
-  assert.match(markup, new RegExp('<time data-nexus-stat="checkedOn" datetime="' + snapshot.checkedOn + '">'), 'Snapshot date');
   const covers = new Map(featured.items.map(item => [item.url, item]));
   const max = Math.max(...nexus.mods.map(mod => mod.downloads));
   const listed = groups(markup);
@@ -181,10 +179,8 @@ function checkResearch(source) {
   assert.ok(Math.max(...rings.map(ring => ring.r)) < limit && limit < band, 'n ≤ 18 inside 1/8, inside C*');
   const it = value => new Intl.NumberFormat('it-IT', { minimumFractionDigits: 4, maximumFractionDigits: 4 }).format(value);
   const [low, high] = [Math.floor(ringmin.constant.lower * 1e4) / 1e4, Math.ceil(ringmin.constant.upper * 1e4) / 1e4];
-  assert.equal(decode(papers[1].match(/<text class="rm-band-range"[^>]*>([^]*?)<\/text>/)[1].replace(/<[^>]+>/g, '')), `[${it(low)}; ${it(high)}]`, 'Band label from data/ringmin.json');
-  assert.match(papers[1], /<text class="rm-band-label"[^>]*>C\*<\/text>/);
-  assert.match(papers[1], /<text class="rm-limit-label"[^>]*>1\/8<\/text>/);
-  assert.match(papers[1], new RegExp('>n = ' + ringmin.asymptotic[0].n + ' → ' + ringmin.asymptotic.at(-1).n + '</text>'));
+  assert.equal(text(papers[1].match(/<p class="paper-bound">([^]*?)<\/p>/)[1]).replace(/\s+(?=[;\]])|(?<=\[)\s+/g, ''), `C* ∈ [${it(low)}; ${it(high)}]`, 'The C* interval from data/ringmin.json');
+  assert.deepEqual([...papers[1].matchAll(/<g class="rm-tag [\w-]+">[^]*?<text[^>]*>([^<]+)<\/text><\/g>/g)].map(match => decode(match[1])), ['C*', '1/8'], 'Two tags on the drawing');
   const foot = markup.match(/<p class="research-foot">[^]*?<\/p>/)[0];
   assert.deepEqual(hrefs(foot), [research.repositories.find(item => item.project === 'power-ringmin').url, research.zenodo.url]);
   checkButtons(foot, 'Research foot');

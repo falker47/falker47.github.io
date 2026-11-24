@@ -133,11 +133,35 @@
       initial.hidden = Boolean(card);
       current.hidden = !card;
     }
-    for (const card of deck.querySelectorAll('.deck-card')) {
-      card.addEventListener('pointerenter', event => { preloadFull(card); if (event.pointerType !== 'touch') name(card); });
-      card.addEventListener('pointerleave', () => name(deck.querySelector('.deck-card:focus-visible')));
+    // The pointer picks the card from its slot in the fan, the strip of the card that the next
+    // one leaves visible, not from the card on top: a raised card would otherwise keep the
+    // pointer until it left, and moving to the right would feel stuck.
+    const fan = deck.querySelector('.deck-fan');
+    const cards = Array.from(deck.querySelectorAll('.deck-card'));
+    let active = null;
+    function activate(card) {
+      if (card === active) return;
+      if (active) active.removeAttribute('data-active');
+      active = card;
+      if (card) {
+        card.setAttribute('data-active', '');
+        preloadFull(card);
+      }
+      name(card || deck.querySelector('.deck-card:focus-visible'));
+    }
+    fan.addEventListener('pointermove', event => {
+      if (event.pointerType === 'touch' || cards.length < 2) return;
+      if (!event.target.closest('.deck-card')) return activate(null);
+      const x = event.clientX - fan.getBoundingClientRect().left - cards[0].offsetLeft;
+      const step = cards[1].offsetLeft - cards[0].offsetLeft;
+      activate(cards[Math.max(0, Math.min(cards.length - 1, Math.floor(x / step)))]);
+    });
+    fan.addEventListener('pointerleave', () => activate(null));
+    deck.classList.add('deck-enhanced');
+    for (const card of cards) {
+      card.addEventListener('pointerenter', event => { if (event.pointerType === 'touch') preloadFull(card); });
       card.addEventListener('focus', () => { preloadFull(card); name(card); });
-      card.addEventListener('blur', () => name(null));
+      card.addEventListener('blur', () => name(active));
     }
   }
 

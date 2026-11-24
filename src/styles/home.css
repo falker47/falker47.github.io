@@ -432,3 +432,15 @@ h1 {font-size:clamp(46px,4.05vw,61px);margin:32px 0;line-height:1.06}
 @media(min-width:1000px) and (max-height:740px) {
 .hero-lead h1 {font-size:34px}
 }
+/* V4: the hero follows the accent of the selected tab. Its drawing is a palette of hand-tuned
+   blues, so it turns as a whole: a hue rotation from the blue (about 203 degrees) to the orange,
+   violet or green of the tab. */
+.engine-figure,.hero-glow,.identity::before {transition:filter .4s ease}
+:root[data-accent="modding"] :is(.engine-figure,.hero-glow),:root[data-accent="modding"] .identity::before {filter:hue-rotate(-176deg) saturate(1.25)}
+:root[data-accent="research"] :is(.engine-figure,.hero-glow),:root[data-accent="research"] .identity::before {filter:hue-rotate(52deg)}
+:root[data-accent="teaching"] :is(.engine-figure,.hero-glow),:root[data-accent="teaching"] .identity::before {filter:hue-rotate(-61deg)}
+.cta .cta-icon {background:color-mix(in srgb,var(--blue) 14%,#071018)}
+.hero-band::before {background-image:linear-gradient(color-mix(in srgb,var(--blue) 4%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--blue) 4%,transparent) 1px,transparent 1px)}
+@media(prefers-reduced-motion:reduce) {
+.engine-figure,.hero-glow,.identity::before {transition:none}
+}

@@ -49,26 +49,25 @@ const bound = (value, round, lang) => new Intl.NumberFormat(lang === 'it' ? 'it-
   { minimumFractionDigits: 4, maximumFractionDigits: 4 }).format(round(value * 1e4) / 1e4);
 export const constantRange = lang => [bound(data.constant.lower, Math.floor, lang), bound(data.constant.upper, Math.ceil, lang)];
 
+// A label sitting on a circle: a small rounded tag that masks the line behind it.
+function tag(x, y, text, className) {
+  const width = 12 + text.length * 7.6;
+  return html`<g class="${className}"><rect x="${fixed(x - width / 2)}" y="${fixed(y - 9)}" width="${fixed(width)}" height="18" rx="9"/><text x="${x}" y="${fixed(y + 4.2)}" text-anchor="middle">${text}</text></g>`;
+}
+
 export function chart({ copy }) {
-  const W = 288, H = 162, cx = 80, cy = 81;
+  const W = 288, H = 162, cx = 144, cy = 81;
   const { lower, upper } = data.constant;
-  const scale = 72 / ((lower + upper) / 2);
+  const scale = 70 / ((lower + upper) / 2);
   const radius = value => fixed(value * scale);
-  const point = (r, degrees) => [fixed(cx + r * Math.cos(degrees * Math.PI / 180)), fixed(cy + r * Math.sin(degrees * Math.PI / 180))];
   const rows = data.asymptotic;
   const rings = rows.map(row => html`<circle class="${row.certified ? 'rm-ring' : 'rm-ring rm-open'}" cx="${cx}" cy="${cy}" r="${radius(row.ratio)}"/>`).join('');
   const band = Math.max(1.6, radius(upper) - radius(lower));
-  const [it, en] = [constantRange('it'), constantRange('en')];
-  const [cStart, cEnd] = [point(radius(upper) + 2, -38), [158, 38]];
-  const [eStart, eEnd] = [point(radius(1 / 8) + 1, 24), [158, 108]];
   return html`<svg class="rm-chart rm-rings" viewBox="0 0 ${W} ${H}" role="img" data-label="ringminChartLabel" aria-label="${copy.it.ringminChartLabel}">
 <circle class="rm-band" cx="${cx}" cy="${cy}" r="${fixed((radius(lower) + radius(upper)) / 2)}" stroke-width="${fixed(band)}"/>
 <circle class="rm-limit" cx="${cx}" cy="${cy}" r="${radius(1 / 8)}"/>
 ${raw(rings)}<circle class="rm-centre" cx="${cx}" cy="${cy}" r="2"/>
-<path class="rm-leader" d="M${cStart.join(' ')}L${cEnd.join(' ')}"/><path class="rm-leader" d="M${eStart.join(' ')}L${eEnd.join(' ')}"/>
-<text class="rm-band-label" x="162" y="${cEnd[1] + 5}">C*</text>
-<text class="rm-band-range" x="162" y="${cEnd[1] + 22}">[<tspan data-text-it="${it[0]}" data-text-en="${en[0]}">${it[0]}</tspan>; <tspan data-text-it="${it[1]}" data-text-en="${en[1]}">${it[1]}</tspan>]</text>
-<text class="rm-limit-label" x="162" y="${eEnd[1] + 4}">1/8</text>
-<text class="rm-tick" x="162" y="${H - 14}">n = ${rows[0].n} → ${rows.at(-1).n}</text>
+${raw(tag(cx, fixed(cy - (radius(lower) + radius(upper)) / 2), 'C*', 'rm-tag rm-tag-band'))}
+${raw(tag(cx, fixed(cy + radius(1 / 8)), '1/8', 'rm-tag rm-tag-limit'))}
 </svg>`;
 }

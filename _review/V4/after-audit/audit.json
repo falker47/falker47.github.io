@@ -1,5 +1,5 @@
 {
-  "pass": true,
+  "pass": false,
   "gates": {
     "min-perf-mobile": 90,
     "min-perf-desktop": 95,
@@ -10,8 +10,8 @@
     "homePageBytes": 220000,
     "homeBytes": 450000,
     "homeRequests": 15,
-    "deferredBytes": 200000,
-    "deferredRequests": 11
+    "deferredBytes": 300000,
+    "deferredRequests": 15
   },
   "routes": [
     {
@@ -89,35 +89,35 @@
       "route": "/",
       "lang": "it",
       "device": "mobile",
-      "pass": true,
+      "pass": false,
       "scores": {
-        "performance": 93,
+        "performance": 86,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
       },
       "metrics": {
-        "bytes": 378781,
-        "requests": 22,
-        "lcpMs": 2855.416,
-        "cls": 0,
-        "fcpMs": 1955.4160000000002,
-        "tbtMs": 97.29200000000037,
-        "speedIndexMs": 2090.1844680232048,
-        "lcpElement": "main#main > div.hero-band > div.wrap > section.hero",
+        "bytes": 402677,
+        "requests": 26,
+        "lcpMs": 2929.67,
+        "cls": 0.002488536962727396,
+        "fcpMs": 2104.67,
+        "tbtMs": 301.66499999999996,
+        "speedIndexMs": 2325.129667844124,
+        "lcpElement": "section.hero > div.identity > div.identity-core > p.identity-intro",
         "firstLoad": {
-          "bytes": 294678,
+          "bytes": 297280,
           "requests": 11
         },
         "idlePrefetch": {
-          "bytes": 84103,
-          "requests": 11
+          "bytes": 105397,
+          "requests": 15
         }
       },
       "resources": [
         {
           "url": "/",
-          "bytes": 163713
+          "bytes": 165097
         },
         {
           "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
@@ -128,8 +128,8 @@
           "bytes": 21985
         },
         {
-          "url": "/styles/site-ba1abf9415f486ed.css",
-          "bytes": 49063
+          "url": "/styles/site-7fbb367e2d2e1956.css",
+          "bytes": 50281
         },
         {
           "url": "/assets/fonts/poppins-600.woff2",
@@ -188,6 +188,14 @@
           "bytes": 8270
         },
         {
+          "url": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb-300.webp",
+          "bytes": 5666
+        },
+        {
+          "url": "/assets/certifications/understanding-financial-markets-thumb-300.webp",
+          "bytes": 5746
+        },
+        {
           "url": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
           "bytes": 8070
         },
@@ -202,6 +210,14 @@
         {
           "url": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
           "bytes": 10026
+        },
+        {
+          "url": "/assets/certifications/greek-and-roman-mythology-thumb-300.webp",
+          "bytes": 5062
+        },
+        {
+          "url": "/assets/certifications/archaeoastronomy-thumb-300.webp",
+          "bytes": 4820
         }
       ],
       "version": "12.8.2"
@@ -212,33 +228,33 @@
       "device": "desktop",
       "pass": true,
       "scores": {
-        "performance": 100,
+        "performance": 96,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
       },
       "metrics": {
-        "bytes": 438182,
-        "requests": 22,
-        "lcpMs": 699.011,
+        "bytes": 462086,
+        "requests": 26,
+        "lcpMs": 1166.016,
         "cls": 0.0002378959081224645,
-        "fcpMs": 481.81999999999994,
-        "tbtMs": 0,
-        "speedIndexMs": 778.5525930256529,
-        "lcpElement": "section.hero > div.hero-lead > h1 > span",
+        "fcpMs": 484.47,
+        "tbtMs": 97.76499999999999,
+        "speedIndexMs": 899.6981439824764,
+        "lcpElement": "section.hero > div.identity > div.identity-core > p.identity-intro",
         "firstLoad": {
-          "bytes": 354079,
+          "bytes": 356689,
           "requests": 11
         },
         "idlePrefetch": {
-          "bytes": 84103,
-          "requests": 11
+          "bytes": 105397,
+          "requests": 15
         }
       },
       "resources": [
         {
           "url": "/",
-          "bytes": 163713
+          "bytes": 165097
         },
         {
           "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
@@ -249,8 +265,8 @@
           "bytes": 21985
         },
         {
-          "url": "/styles/site-ba1abf9415f486ed.css",
-          "bytes": 49063
+          "url": "/styles/site-7fbb367e2d2e1956.css",
+          "bytes": 50281
         },
         {
           "url": "/assets/fonts/poppins-600.woff2",
@@ -262,7 +278,7 @@
         },
         {
           "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
-          "bytes": 720
+          "bytes": 728
         },
         {
           "url": "/assets/images/falkerlogo-native.webp",
@@ -309,6 +325,14 @@
           "bytes": 8270
         },
         {
+          "url": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb-300.webp",
+          "bytes": 5666
+        },
+        {
+          "url": "/assets/certifications/understanding-financial-markets-thumb-300.webp",
+          "bytes": 5746
+        },
+        {
           "url": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
           "bytes": 8070
         },
@@ -323,6 +347,14 @@
         {
           "url": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
           "bytes": 10026
+        },
+        {
+          "url": "/assets/certifications/greek-and-roman-mythology-thumb-300.webp",
+          "bytes": 5062
+        },
+        {
+          "url": "/assets/certifications/archaeoastronomy-thumb-300.webp",
+          "bytes": 4820
         }
       ],
       "version": "12.8.2"
@@ -331,35 +363,35 @@
       "route": "/",
       "lang": "en",
       "device": "mobile",
-      "pass": true,
+      "pass": false,
       "scores": {
-        "performance": 94,
+        "performance": 83,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
       },
       "metrics": {
-        "bytes": 378782,
-        "requests": 22,
-        "lcpMs": 2851.4039999999995,
-        "cls": 0.001548353444978704,
-        "fcpMs": 2101.404,
-        "tbtMs": 0,
-        "speedIndexMs": 2140.106812034941,
-        "lcpElement": "section.hero > div.hero-lead > h1 > span",
+        "bytes": 402677,
+        "requests": 26,
+        "lcpMs": 2852.9799999999996,
+        "cls": 0,
+        "fcpMs": 2102.98,
+        "tbtMs": 415.7550000000001,
+        "speedIndexMs": 2283.1613573307836,
+        "lcpElement": "section.hero > div.identity > div.identity-core > p.identity-intro",
         "firstLoad": {
-          "bytes": 294679,
+          "bytes": 297280,
           "requests": 11
         },
         "idlePrefetch": {
-          "bytes": 84103,
-          "requests": 11
+          "bytes": 105397,
+          "requests": 15
         }
       },
       "resources": [
         {
           "url": "/",
-          "bytes": 163713
+          "bytes": 165097
         },
         {
           "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
@@ -370,8 +402,8 @@
           "bytes": 21985
         },
         {
-          "url": "/styles/site-ba1abf9415f486ed.css",
-          "bytes": 49063
+          "url": "/styles/site-7fbb367e2d2e1956.css",
+          "bytes": 50281
         },
         {
           "url": "/assets/fonts/poppins-600.woff2",
@@ -383,7 +415,7 @@
         },
         {
           "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
-          "bytes": 723
+          "bytes": 722
         },
         {
           "url": "/assets/images/falkerlogo.png",
@@ -430,6 +462,14 @@
           "bytes": 8270
         },
         {
+          "url": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb-300.webp",
+          "bytes": 5666
+        },
+        {
+          "url": "/assets/certifications/understanding-financial-markets-thumb-300.webp",
+          "bytes": 5746
+        },
+        {
           "url": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
           "bytes": 8070
         },
@@ -444,6 +484,14 @@
         {
           "url": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
           "bytes": 10026
+        },
+        {
+          "url": "/assets/certifications/greek-and-roman-mythology-thumb-300.webp",
+          "bytes": 5062
+        },
+        {
+          "url": "/assets/certifications/archaeoastronomy-thumb-300.webp",
+          "bytes": 4820
         }
       ],
       "version": "12.8.2"
@@ -454,33 +502,33 @@
       "device": "desktop",
       "pass": true,
       "scores": {
-        "performance": 99,
+        "performance": 100,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
       },
       "metrics": {
-        "bytes": 438185,
-        "requests": 22,
-        "lcpMs": 754.029,
-        "cls": 0.000204156378600823,
-        "fcpMs": 481.41200000000003,
-        "tbtMs": 0,
-        "speedIndexMs": 909.2385023404825,
+        "bytes": 462082,
+        "requests": 26,
+        "lcpMs": 719.5749999999998,
+        "cls": 0,
+        "fcpMs": 441.92599999999993,
+        "tbtMs": 54.037000000000035,
+        "speedIndexMs": 806.5744892402454,
         "lcpElement": "section.hero > div.hero-lead > h1 > span",
         "firstLoad": {
-          "bytes": 354082,
+          "bytes": 356685,
           "requests": 11
         },
         "idlePrefetch": {
-          "bytes": 84103,
-          "requests": 11
+          "bytes": 105397,
+          "requests": 15
         }
       },
       "resources": [
         {
           "url": "/",
-          "bytes": 163713
+          "bytes": 165097
         },
         {
           "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
@@ -491,8 +539,8 @@
           "bytes": 21985
         },
         {
-          "url": "/styles/site-ba1abf9415f486ed.css",
-          "bytes": 49063
+          "url": "/styles/site-7fbb367e2d2e1956.css",
+          "bytes": 50281
         },
         {
           "url": "/assets/fonts/poppins-600.woff2",
@@ -504,7 +552,7 @@
         },
         {
           "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
-          "bytes": 723
+          "bytes": 724
         },
         {
           "url": "/assets/images/falkerlogo-native.webp",
@@ -551,6 +599,14 @@
           "bytes": 8270
         },
         {
+          "url": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb-300.webp",
+          "bytes": 5666
+        },
+        {
+          "url": "/assets/certifications/understanding-financial-markets-thumb-300.webp",
+          "bytes": 5746
+        },
+        {
           "url": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
           "bytes": 8070
         },
@@ -565,6 +621,14 @@
         {
           "url": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
           "bytes": 10026
+        },
+        {
+          "url": "/assets/certifications/greek-and-roman-mythology-thumb-300.webp",
+          "bytes": 5062
+        },
+        {
+          "url": "/assets/certifications/archaeoastronomy-thumb-300.webp",
+          "bytes": 4820
         }
       ],
       "version": "12.8.2"
@@ -581,19 +645,19 @@
         "seo": 69
       },
       "metrics": {
-        "bytes": 98318,
+        "bytes": 97366,
         "requests": 8,
-        "lcpMs": 1425.9029999999998,
+        "lcpMs": 1500.264,
         "cls": 0,
-        "fcpMs": 1350.903,
+        "fcpMs": 1350.264,
         "tbtMs": 0,
-        "speedIndexMs": 1350.903,
+        "speedIndexMs": 1350.264,
         "lcpElement": "div.page > main#main > div.status-panel > p.status-description"
       },
       "resources": [
         {
           "url": "/404.html",
-          "bytes": 34079
+          "bytes": 33127
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -638,19 +702,19 @@
         "seo": 69
       },
       "metrics": {
-        "bytes": 157721,
+        "bytes": 156769,
         "requests": 8,
-        "lcpMs": 340.516,
+        "lcpMs": 340.814,
         "cls": 0,
-        "fcpMs": 320.516,
+        "fcpMs": 320.814,
         "tbtMs": 0,
-        "speedIndexMs": 320.516,
+        "speedIndexMs": 371.6726499764204,
         "lcpElement": "div.page > main#main > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/404.html",
-          "bytes": 34079
+          "bytes": 33127
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -695,19 +759,19 @@
         "seo": 69
       },
       "metrics": {
-        "bytes": 98318,
+        "bytes": 97366,
         "requests": 8,
-        "lcpMs": 1425.486,
-        "cls": 0,
-        "fcpMs": 1350.486,
+        "lcpMs": 1500.938,
+        "cls": 0.03816790375060021,
+        "fcpMs": 1350.938,
         "tbtMs": 0,
-        "speedIndexMs": 1350.486,
+        "speedIndexMs": 1350.938,
         "lcpElement": "div.page > main#main > div.status-panel > p.status-description"
       },
       "resources": [
         {
           "url": "/404.html",
-          "bytes": 34079
+          "bytes": 33127
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -722,10 +786,6 @@
           "bytes": 14893
         },
         {
-          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
-          "bytes": 19721
-        },
-        {
           "url": "/assets/images/falkerlogo.png",
           "bytes": 10331
         },
@@ -736,6 +796,10 @@
         {
           "url": "/assets/images/flag-en.png",
           "bytes": 748
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
         }
       ],
       "version": "12.8.2"
@@ -752,19 +816,19 @@
         "seo": 69
       },
       "metrics": {
-        "bytes": 157721,
+        "bytes": 156769,
         "requests": 8,
-        "lcpMs": 340.948,
-        "cls": 0,
-        "fcpMs": 320.948,
+        "lcpMs": 340.808,
+        "cls": 0.0002833203090797653,
+        "fcpMs": 320.808,
         "tbtMs": 0,
-        "speedIndexMs": 366.0259083426555,
+        "speedIndexMs": 362.8252397411824,
         "lcpElement": "div.page > main#main > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/404.html",
-          "bytes": 34079
+          "bytes": 33127
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -779,10 +843,6 @@
           "bytes": 14893
         },
         {
-          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
-          "bytes": 19721
-        },
-        {
           "url": "/assets/images/falkerlogo-native.webp",
           "bytes": 70069
         },
@@ -793,6 +853,10 @@
         {
           "url": "/assets/images/flag-en-native.png",
           "bytes": 470
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
         }
       ],
       "version": "12.8.2"
@@ -809,19 +873,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 136963,
+        "bytes": 137703,
         "requests": 9,
-        "lcpMs": 1800.074,
+        "lcpMs": 1727.1,
         "cls": 0,
-        "fcpMs": 1500.074,
+        "fcpMs": 1502.1,
         "tbtMs": 0,
-        "speedIndexMs": 1500.074,
+        "speedIndexMs": 1502.1,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/research/",
-          "bytes": 48175
+          "bytes": 48915
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -870,19 +934,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 196366,
+        "bytes": 197106,
         "requests": 9,
-        "lcpMs": 521.2139999999999,
+        "lcpMs": 523.822,
         "cls": 0.0002895910204283852,
-        "fcpMs": 361.21399999999994,
+        "fcpMs": 363.822,
         "tbtMs": 0,
-        "speedIndexMs": 361.21399999999994,
+        "speedIndexMs": 369.49830849104524,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/research/",
-          "bytes": 48175
+          "bytes": 48915
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -931,19 +995,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 136963,
+        "bytes": 137703,
         "requests": 9,
-        "lcpMs": 1725.864,
+        "lcpMs": 1725.962,
         "cls": 0,
-        "fcpMs": 1500.864,
+        "fcpMs": 1500.962,
         "tbtMs": 0,
-        "speedIndexMs": 1500.864,
+        "speedIndexMs": 1500.962,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/research/",
-          "bytes": 48175
+          "bytes": 48915
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -992,19 +1056,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 196366,
+        "bytes": 197106,
         "requests": 9,
-        "lcpMs": 421.076,
+        "lcpMs": 421.062,
         "cls": 0,
-        "fcpMs": 361.076,
+        "fcpMs": 361.062,
         "tbtMs": 0,
-        "speedIndexMs": 361.076,
+        "speedIndexMs": 378.83921227049234,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/research/",
-          "bytes": 48175
+          "bytes": 48915
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -1053,19 +1117,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 141969,
+        "bytes": 142709,
         "requests": 9,
-        "lcpMs": 1876.332,
+        "lcpMs": 1950.0279999999998,
         "cls": 0,
-        "fcpMs": 1501.332,
+        "fcpMs": 1500.028,
         "tbtMs": 0,
-        "speedIndexMs": 1501.332,
+        "speedIndexMs": 1500.028,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/projects/prof-gecko/",
-          "bytes": 44051
+          "bytes": 44791
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -1114,19 +1178,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 201372,
+        "bytes": 202112,
         "requests": 9,
-        "lcpMs": 526.71,
+        "lcpMs": 521.538,
         "cls": 0.0002895910204283852,
-        "fcpMs": 366.71000000000004,
+        "fcpMs": 361.538,
         "tbtMs": 0,
-        "speedIndexMs": 366.71000000000004,
+        "speedIndexMs": 361.538,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/projects/prof-gecko/",
-          "bytes": 44051
+          "bytes": 44791
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -1175,19 +1239,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 141969,
+        "bytes": 142709,
         "requests": 9,
-        "lcpMs": 1875.602,
+        "lcpMs": 1876.3759999999997,
         "cls": 0,
-        "fcpMs": 1500.602,
+        "fcpMs": 1501.376,
         "tbtMs": 0,
-        "speedIndexMs": 1500.602,
+        "speedIndexMs": 1501.376,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/projects/prof-gecko/",
-          "bytes": 44051
+          "bytes": 44791
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -1236,19 +1300,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 201372,
+        "bytes": 202112,
         "requests": 9,
-        "lcpMs": 440.61799999999994,
+        "lcpMs": 441.308,
         "cls": 0,
-        "fcpMs": 360.61799999999994,
+        "fcpMs": 361.308,
         "tbtMs": 0,
-        "speedIndexMs": 360.61799999999994,
+        "speedIndexMs": 361.308,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/projects/prof-gecko/",
-          "bytes": 44051
+          "bytes": 44791
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -1297,19 +1361,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 141807,
+        "bytes": 142547,
         "requests": 9,
-        "lcpMs": 1875.594,
+        "lcpMs": 1950.6240000000003,
         "cls": 0,
-        "fcpMs": 1500.594,
+        "fcpMs": 1500.624,
         "tbtMs": 0,
-        "speedIndexMs": 1500.594,
+        "speedIndexMs": 1500.624,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/projects/camaleonte/",
-          "bytes": 44617
+          "bytes": 45357
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -1358,19 +1422,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 201210,
+        "bytes": 201950,
         "requests": 9,
-        "lcpMs": 441.21000000000004,
-        "cls": 0,
-        "fcpMs": 361.21000000000004,
+        "lcpMs": 521.424,
+        "cls": 0.001291120026723707,
+        "fcpMs": 361.424,
         "tbtMs": 0,
-        "speedIndexMs": 379.4109926533798,
+        "speedIndexMs": 379.95813133653303,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/projects/camaleonte/",
-          "bytes": 44617
+          "bytes": 45357
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -1419,19 +1483,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 141807,
+        "bytes": 142547,
         "requests": 9,
-        "lcpMs": 1951.358,
+        "lcpMs": 1875.7779999999998,
         "cls": 0,
-        "fcpMs": 1501.358,
+        "fcpMs": 1500.778,
         "tbtMs": 0,
-        "speedIndexMs": 1501.358,
+        "speedIndexMs": 1500.778,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/projects/camaleonte/",
-          "bytes": 44617
+          "bytes": 45357
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -1480,19 +1544,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 201210,
+        "bytes": 201950,
         "requests": 9,
-        "lcpMs": 441.27199999999993,
+        "lcpMs": 441.706,
         "cls": 0,
-        "fcpMs": 361.27199999999993,
+        "fcpMs": 361.706,
         "tbtMs": 0,
-        "speedIndexMs": 386.8799060078799,
+        "speedIndexMs": 361.706,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/projects/camaleonte/",
-          "bytes": 44617
+          "bytes": 45357
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -1541,19 +1605,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 144965,
-        "requests": 9,
-        "lcpMs": 1935,
+        "bytes": 167085,
+        "requests": 13,
+        "lcpMs": 1951.576,
         "cls": 0,
-        "fcpMs": 1560,
+        "fcpMs": 1501.576,
         "tbtMs": 0,
-        "speedIndexMs": 1560,
+        "speedIndexMs": 1501.576,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/uses/",
-          "bytes": 48099
+          "bytes": 49981
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -1586,6 +1650,22 @@
         {
           "url": "/assets/images/flag-en.png",
           "bytes": 748
+        },
+        {
+          "url": "/assets/uses/router.webp",
+          "bytes": 6710
+        },
+        {
+          "url": "/assets/uses/monitor.webp",
+          "bytes": 3714
+        },
+        {
+          "url": "/assets/uses/charger.webp",
+          "bytes": 4140
+        },
+        {
+          "url": "/assets/uses/camera.webp",
+          "bytes": 5674
         }
       ],
       "version": "12.8.2"
@@ -1602,19 +1682,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 204368,
-        "requests": 9,
-        "lcpMs": 440.73,
-        "cls": 0,
-        "fcpMs": 360.73,
+        "bytes": 226488,
+        "requests": 13,
+        "lcpMs": 441.198,
+        "cls": 0.0007585248597035202,
+        "fcpMs": 361.198,
         "tbtMs": 0,
-        "speedIndexMs": 360.73,
+        "speedIndexMs": 361.198,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/uses/",
-          "bytes": 48099
+          "bytes": 49981
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -1647,6 +1727,22 @@
         {
           "url": "/assets/images/flag-en-native.png",
           "bytes": 470
+        },
+        {
+          "url": "/assets/uses/router.webp",
+          "bytes": 6710
+        },
+        {
+          "url": "/assets/uses/monitor.webp",
+          "bytes": 3714
+        },
+        {
+          "url": "/assets/uses/charger.webp",
+          "bytes": 4140
+        },
+        {
+          "url": "/assets/uses/camera.webp",
+          "bytes": 5674
         }
       ],
       "version": "12.8.2"
@@ -1663,19 +1759,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 144965,
-        "requests": 9,
-        "lcpMs": 1950.886,
+        "bytes": 167085,
+        "requests": 13,
+        "lcpMs": 2026.842,
         "cls": 0,
-        "fcpMs": 1500.886,
+        "fcpMs": 1501.842,
         "tbtMs": 0,
-        "speedIndexMs": 1500.886,
+        "speedIndexMs": 1501.842,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/uses/",
-          "bytes": 48099
+          "bytes": 49981
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -1708,6 +1804,22 @@
         {
           "url": "/assets/images/flag-en.png",
           "bytes": 748
+        },
+        {
+          "url": "/assets/uses/router.webp",
+          "bytes": 6710
+        },
+        {
+          "url": "/assets/uses/monitor.webp",
+          "bytes": 3714
+        },
+        {
+          "url": "/assets/uses/charger.webp",
+          "bytes": 4140
+        },
+        {
+          "url": "/assets/uses/camera.webp",
+          "bytes": 5674
         }
       ],
       "version": "12.8.2"
@@ -1724,19 +1836,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 204368,
-        "requests": 9,
-        "lcpMs": 441.21000000000004,
+        "bytes": 226488,
+        "requests": 13,
+        "lcpMs": 440.87,
         "cls": 0,
-        "fcpMs": 361.21000000000004,
+        "fcpMs": 360.87,
         "tbtMs": 0,
-        "speedIndexMs": 418.082732656012,
+        "speedIndexMs": 383.73666326193506,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/uses/",
-          "bytes": 48099
+          "bytes": 49981
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -1769,6 +1881,22 @@
         {
           "url": "/assets/images/flag-en-native.png",
           "bytes": 470
+        },
+        {
+          "url": "/assets/uses/router.webp",
+          "bytes": 6710
+        },
+        {
+          "url": "/assets/uses/monitor.webp",
+          "bytes": 3714
+        },
+        {
+          "url": "/assets/uses/charger.webp",
+          "bytes": 4140
+        },
+        {
+          "url": "/assets/uses/camera.webp",
+          "bytes": 5674
         }
       ],
       "version": "12.8.2"
@@ -1785,19 +1913,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 120203,
+        "bytes": 120947,
         "requests": 9,
-        "lcpMs": 1578.4238593677997,
+        "lcpMs": 1575.398,
         "cls": 0,
-        "fcpMs": 1353.4238593677999,
+        "fcpMs": 1350.398,
         "tbtMs": 0,
-        "speedIndexMs": 1353.4238593677999,
+        "speedIndexMs": 1350.398,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/projects/social-viewer/",
-          "bytes": 41661
+          "bytes": 42405
         },
         {
           "url": "/styles/site-aee51abf4438a3c3.css",
@@ -1846,19 +1974,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 179606,
+        "bytes": 180350,
         "requests": 9,
-        "lcpMs": 340.858,
-        "cls": 0,
-        "fcpMs": 320.858,
+        "lcpMs": 481.112,
+        "cls": 0.000853557354142953,
+        "fcpMs": 321.112,
         "tbtMs": 0,
-        "speedIndexMs": 353.07444931870305,
+        "speedIndexMs": 383.17926916271847,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/projects/social-viewer/",
-          "bytes": 41661
+          "bytes": 42405
         },
         {
           "url": "/styles/site-aee51abf4438a3c3.css",
@@ -1907,19 +2035,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 120203,
+        "bytes": 120947,
         "requests": 9,
-        "lcpMs": 1576.29,
+        "lcpMs": 1575.92,
         "cls": 0,
-        "fcpMs": 1351.29,
+        "fcpMs": 1350.92,
         "tbtMs": 0,
-        "speedIndexMs": 1351.29,
+        "speedIndexMs": 1350.92,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/projects/social-viewer/",
-          "bytes": 41661
+          "bytes": 42405
         },
         {
           "url": "/styles/site-aee51abf4438a3c3.css",
@@ -1968,19 +2096,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 179606,
+        "bytes": 180350,
         "requests": 9,
-        "lcpMs": 341.12,
+        "lcpMs": 340.938,
         "cls": 0,
-        "fcpMs": 321.12,
+        "fcpMs": 320.938,
         "tbtMs": 0,
-        "speedIndexMs": 340.93234624522927,
+        "speedIndexMs": 390.91843416164915,
         "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
       },
       "resources": [
         {
           "url": "/projects/social-viewer/",
-          "bytes": 41661
+          "bytes": 42405
         },
         {
           "url": "/styles/site-aee51abf4438a3c3.css",
@@ -2023,25 +2151,25 @@
       "device": "mobile",
       "pass": true,
       "scores": {
-        "performance": 100,
+        "performance": 99,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 69
       },
       "metrics": {
-        "bytes": 114048,
+        "bytes": 114788,
         "requests": 8,
-        "lcpMs": 1425.335,
+        "lcpMs": 1576.0880000000002,
         "cls": 0,
-        "fcpMs": 1350.335,
+        "fcpMs": 1501.088,
         "tbtMs": 0,
-        "speedIndexMs": 1350.335,
+        "speedIndexMs": 1501.088,
         "lcpElement": "div.page > main#main > section.sv-picker > p.sv-help"
       },
       "resources": [
         {
           "url": "/projects/social-viewer/test/",
-          "bytes": 43396
+          "bytes": 44136
         },
         {
           "url": "/styles/site-aee51abf4438a3c3.css",
@@ -2086,19 +2214,19 @@
         "seo": 69
       },
       "metrics": {
-        "bytes": 173451,
+        "bytes": 174191,
         "requests": 8,
-        "lcpMs": 341.194,
+        "lcpMs": 380.19499999999994,
         "cls": 0,
-        "fcpMs": 321.194,
+        "fcpMs": 360.19499999999994,
         "tbtMs": 0,
-        "speedIndexMs": 330.999586579599,
+        "speedIndexMs": 360.19499999999994,
         "lcpElement": "div.page > main#main > section.sv-picker > h2#path-question"
       },
       "resources": [
         {
           "url": "/projects/social-viewer/test/",
-          "bytes": 43396
+          "bytes": 44136
         },
         {
           "url": "/styles/site-aee51abf4438a3c3.css",
@@ -2137,25 +2265,25 @@
       "device": "mobile",
       "pass": true,
       "scores": {
-        "performance": 100,
+        "performance": 99,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 69
       },
       "metrics": {
-        "bytes": 114048,
+        "bytes": 114788,
         "requests": 8,
-        "lcpMs": 1428.1741162433946,
+        "lcpMs": 1575.5949999999998,
         "cls": 0,
-        "fcpMs": 1353.1741162433946,
+        "fcpMs": 1500.595,
         "tbtMs": 0,
-        "speedIndexMs": 1353.1741162433946,
+        "speedIndexMs": 1500.595,
         "lcpElement": "div.page > main#main > section.sv-picker > h2#path-question"
       },
       "resources": [
         {
           "url": "/projects/social-viewer/test/",
-          "bytes": 43396
+          "bytes": 44136
         },
         {
           "url": "/styles/site-aee51abf4438a3c3.css",
@@ -2200,19 +2328,19 @@
         "seo": 69
       },
       "metrics": {
-        "bytes": 173451,
+        "bytes": 174191,
         "requests": 8,
-        "lcpMs": 340.856,
+        "lcpMs": 521.571,
         "cls": 0,
-        "fcpMs": 320.856,
+        "fcpMs": 361.571,
         "tbtMs": 0,
-        "speedIndexMs": 332.58446226480305,
+        "speedIndexMs": 361.571,
         "lcpElement": "div.page > main#main > section.sv-picker > h2#path-question"
       },
       "resources": [
         {
           "url": "/projects/social-viewer/test/",
-          "bytes": 43396
+          "bytes": 44136
         },
         {
           "url": "/styles/site-aee51abf4438a3c3.css",
@@ -2257,19 +2385,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 120748,
+        "bytes": 121400,
         "requests": 8,
-        "lcpMs": 1575.426,
+        "lcpMs": 1576.137,
         "cls": 0,
-        "fcpMs": 1500.426,
+        "fcpMs": 1501.137,
         "tbtMs": 0,
-        "speedIndexMs": 1500.426,
+        "speedIndexMs": 1501.137,
         "lcpElement": "main#main > section#policy-it > header.policy-heading > p.lead"
       },
       "resources": [
         {
           "url": "/projects/social-viewer/privacy/",
-          "bytes": 50096
+          "bytes": 50748
         },
         {
           "url": "/styles/site-aee51abf4438a3c3.css",
@@ -2314,19 +2442,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 180151,
+        "bytes": 180803,
         "requests": 8,
-        "lcpMs": 380.544,
+        "lcpMs": 380.596,
         "cls": 0,
-        "fcpMs": 360.544,
+        "fcpMs": 360.596,
         "tbtMs": 0,
-        "speedIndexMs": 360.544,
+        "speedIndexMs": 360.596,
         "lcpElement": "main#main > section#policy-it > header.policy-heading > p.lead"
       },
       "resources": [
         {
           "url": "/projects/social-viewer/privacy/",
-          "bytes": 50096
+          "bytes": 50748
         },
         {
           "url": "/styles/site-aee51abf4438a3c3.css",
@@ -2371,19 +2499,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 120748,
+        "bytes": 121400,
         "requests": 8,
-        "lcpMs": 1576.281,
+        "lcpMs": 1650.496,
         "cls": 0,
-        "fcpMs": 1501.281,
+        "fcpMs": 1500.496,
         "tbtMs": 0,
-        "speedIndexMs": 1501.281,
+        "speedIndexMs": 1500.496,
         "lcpElement": "main#main > section#policy-en > header.policy-heading > p.lead"
       },
       "resources": [
         {
           "url": "/projects/social-viewer/privacy/",
-          "bytes": 50096
+          "bytes": 50748
         },
         {
           "url": "/styles/site-aee51abf4438a3c3.css",
@@ -2428,19 +2556,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 180151,
+        "bytes": 180803,
         "requests": 8,
-        "lcpMs": 380.677,
+        "lcpMs": 440,
         "cls": 0,
-        "fcpMs": 360.677,
+        "fcpMs": 420,
         "tbtMs": 0,
-        "speedIndexMs": 360.677,
+        "speedIndexMs": 420,
         "lcpElement": "main#main > section#policy-en > header.policy-heading > p.lead"
       },
       "resources": [
         {
           "url": "/projects/social-viewer/privacy/",
-          "bytes": 50096
+          "bytes": 50748
         },
         {
           "url": "/styles/site-aee51abf4438a3c3.css",
@@ -2485,19 +2613,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69266,
+        "bytes": 69534,
         "requests": 6,
-        "lcpMs": 1200.788,
+        "lcpMs": 1201.721,
         "cls": 0,
-        "fcpMs": 1050.788,
+        "fcpMs": 1051.721,
         "tbtMs": 0,
-        "speedIndexMs": 1050.788,
+        "speedIndexMs": 1051.721,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/",
-          "bytes": 9010
+          "bytes": 9278
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -2534,68 +2662,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69266,
+        "bytes": 69534,
         "requests": 6,
-        "lcpMs": 281.282,
+        "lcpMs": 282.001,
         "cls": 0,
-        "fcpMs": 281.282,
+        "fcpMs": 282.001,
         "tbtMs": 0,
-        "speedIndexMs": 281.282,
+        "speedIndexMs": 282.001,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/",
-          "bytes": 9010
-        },
-        {
-          "url": "/styles/site-5cfb025d9d7c50de.css",
-          "bytes": 10026
-        },
-        {
-          "url": "/scripts/i18n.js",
-          "bytes": 5285
-        },
-        {
-          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
-          "bytes": 19721
-        },
-        {
-          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
-          "bytes": 14893
-        },
-        {
-          "url": "/assets/images/falkerlogo.png",
-          "bytes": 10331
-        }
-      ],
-      "version": "12.8.2"
-    },
-    {
-      "route": "/Nexus-portfolio/",
-      "lang": "en",
-      "device": "mobile",
-      "pass": true,
-      "scores": {
-        "performance": 100,
-        "accessibility": 100,
-        "best-practices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "bytes": 69266,
-        "requests": 6,
-        "lcpMs": 1200.706,
-        "cls": 0,
-        "fcpMs": 1050.706,
-        "tbtMs": 0,
-        "speedIndexMs": 1050.706,
-        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
-      },
-      "resources": [
-        {
-          "url": "/Nexus-portfolio/",
-          "bytes": 9010
+          "bytes": 9278
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -2623,7 +2702,7 @@
     {
       "route": "/Nexus-portfolio/",
       "lang": "en",
-      "device": "desktop",
+      "device": "mobile",
       "pass": true,
       "scores": {
         "performance": 100,
@@ -2632,19 +2711,68 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69266,
+        "bytes": 69534,
         "requests": 6,
-        "lcpMs": 281.031,
+        "lcpMs": 1200.942,
         "cls": 0,
-        "fcpMs": 281.031,
+        "fcpMs": 1050.942,
         "tbtMs": 0,
-        "speedIndexMs": 281.031,
+        "speedIndexMs": 1050.942,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/",
-          "bytes": 9010
+          "bytes": 9278
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69534,
+        "requests": 6,
+        "lcpMs": 282.031,
+        "cls": 0.0003191270466684178,
+        "fcpMs": 282.031,
+        "tbtMs": 0,
+        "speedIndexMs": 282.031,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/",
+          "bytes": 9278
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -2681,19 +2809,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69266,
+        "bytes": 69534,
         "requests": 6,
-        "lcpMs": 1200.047,
+        "lcpMs": 1260,
         "cls": 0,
-        "fcpMs": 1050.047,
+        "fcpMs": 1110,
         "tbtMs": 0,
-        "speedIndexMs": 1050.047,
+        "speedIndexMs": 1110,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/index.html",
-          "bytes": 9010
+          "bytes": 9278
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -2730,19 +2858,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69266,
+        "bytes": 69534,
         "requests": 6,
-        "lcpMs": 281.034,
+        "lcpMs": 280.513,
         "cls": 0,
-        "fcpMs": 281.034,
+        "fcpMs": 280.513,
         "tbtMs": 0,
-        "speedIndexMs": 281.034,
+        "speedIndexMs": 280.513,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/index.html",
-          "bytes": 9010
+          "bytes": 9278
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -2779,19 +2907,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69266,
+        "bytes": 69534,
         "requests": 6,
-        "lcpMs": 1202.8062,
+        "lcpMs": 1201.989,
         "cls": 0,
-        "fcpMs": 1052.8062,
+        "fcpMs": 1051.989,
         "tbtMs": 0,
-        "speedIndexMs": 1052.8062,
+        "speedIndexMs": 1051.989,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/index.html",
-          "bytes": 9010
+          "bytes": 9278
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -2828,19 +2956,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69266,
+        "bytes": 69534,
         "requests": 6,
-        "lcpMs": 281.042,
+        "lcpMs": 280.592,
         "cls": 0,
-        "fcpMs": 281.042,
+        "fcpMs": 280.592,
         "tbtMs": 0,
-        "speedIndexMs": 281.042,
+        "speedIndexMs": 280.592,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/index.html",
-          "bytes": 9010
+          "bytes": 9278
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -2877,19 +3005,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69323,
+        "bytes": 69591,
         "requests": 6,
-        "lcpMs": 1201.953,
+        "lcpMs": 1202.975,
         "cls": 0,
-        "fcpMs": 1051.953,
+        "fcpMs": 1052.975,
         "tbtMs": 0,
-        "speedIndexMs": 1051.953,
+        "speedIndexMs": 1052.975,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/research.html",
-          "bytes": 9067
+          "bytes": 9335
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -2926,19 +3054,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69323,
+        "bytes": 69591,
         "requests": 6,
-        "lcpMs": 281.84,
+        "lcpMs": 280.342,
         "cls": 0,
-        "fcpMs": 281.84,
+        "fcpMs": 280.342,
         "tbtMs": 0,
-        "speedIndexMs": 281.84,
+        "speedIndexMs": 280.342,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/research.html",
-          "bytes": 9067
+          "bytes": 9335
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -2975,19 +3103,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69323,
+        "bytes": 69591,
         "requests": 6,
-        "lcpMs": 1200.416,
+        "lcpMs": 1201.238,
         "cls": 0,
-        "fcpMs": 1050.416,
+        "fcpMs": 1051.238,
         "tbtMs": 0,
-        "speedIndexMs": 1050.416,
+        "speedIndexMs": 1051.238,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/research.html",
-          "bytes": 9067
+          "bytes": 9335
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3024,19 +3152,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69323,
+        "bytes": 69591,
         "requests": 6,
-        "lcpMs": 281.194,
+        "lcpMs": 281.061,
         "cls": 0,
-        "fcpMs": 281.194,
+        "fcpMs": 281.061,
         "tbtMs": 0,
-        "speedIndexMs": 281.194,
+        "speedIndexMs": 281.061,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/research.html",
-          "bytes": 9067
+          "bytes": 9335
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3073,19 +3201,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69387,
+        "bytes": 69655,
         "requests": 6,
-        "lcpMs": 1200.451,
+        "lcpMs": 1200.828,
         "cls": 0,
-        "fcpMs": 1050.451,
+        "fcpMs": 1050.828,
         "tbtMs": 0,
-        "speedIndexMs": 1050.451,
+        "speedIndexMs": 1050.828,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/prof-gecko.html",
-          "bytes": 9131
+          "bytes": 9399
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3122,19 +3250,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69387,
+        "bytes": 69655,
         "requests": 6,
-        "lcpMs": 280.877,
+        "lcpMs": 282.255,
         "cls": 0,
-        "fcpMs": 280.877,
+        "fcpMs": 282.255,
         "tbtMs": 0,
-        "speedIndexMs": 280.877,
+        "speedIndexMs": 282.255,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/prof-gecko.html",
-          "bytes": 9131
+          "bytes": 9399
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3171,19 +3299,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69387,
+        "bytes": 69655,
         "requests": 6,
-        "lcpMs": 1201.01,
+        "lcpMs": 1200.623,
         "cls": 0,
-        "fcpMs": 1051.01,
+        "fcpMs": 1050.623,
         "tbtMs": 0,
-        "speedIndexMs": 1051.01,
+        "speedIndexMs": 1050.623,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/prof-gecko.html",
-          "bytes": 9131
+          "bytes": 9399
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3220,19 +3348,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69387,
+        "bytes": 69655,
         "requests": 6,
-        "lcpMs": 280.451,
-        "cls": 0,
-        "fcpMs": 280.451,
+        "lcpMs": 280.638,
+        "cls": 0.0002792361658348656,
+        "fcpMs": 280.638,
         "tbtMs": 0,
-        "speedIndexMs": 280.451,
+        "speedIndexMs": 280.638,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/prof-gecko.html",
-          "bytes": 9131
+          "bytes": 9399
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3269,19 +3397,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69266,
+        "bytes": 69534,
         "requests": 6,
-        "lcpMs": 1201.004,
+        "lcpMs": 1200.09,
         "cls": 0,
-        "fcpMs": 1051.004,
+        "fcpMs": 1050.09,
         "tbtMs": 0,
-        "speedIndexMs": 1051.004,
+        "speedIndexMs": 1050.09,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/consigli.html",
-          "bytes": 9010
+          "bytes": 9278
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3318,19 +3446,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69266,
+        "bytes": 69534,
         "requests": 6,
-        "lcpMs": 281.174,
+        "lcpMs": 280.365,
         "cls": 0,
-        "fcpMs": 281.174,
+        "fcpMs": 280.365,
         "tbtMs": 0,
-        "speedIndexMs": 281.174,
+        "speedIndexMs": 280.365,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/consigli.html",
-          "bytes": 9010
+          "bytes": 9278
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3367,19 +3495,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69266,
+        "bytes": 69534,
         "requests": 6,
-        "lcpMs": 1200.909,
+        "lcpMs": 1200.814,
         "cls": 0.0007657801051121892,
-        "fcpMs": 1050.909,
+        "fcpMs": 1050.814,
         "tbtMs": 0,
-        "speedIndexMs": 1050.909,
+        "speedIndexMs": 1050.814,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/consigli.html",
-          "bytes": 9010
+          "bytes": 9278
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3416,19 +3544,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69266,
+        "bytes": 69534,
         "requests": 6,
-        "lcpMs": 281.242,
-        "cls": 0,
-        "fcpMs": 281.242,
+        "lcpMs": 281.371,
+        "cls": 0.0003191270466684178,
+        "fcpMs": 281.371,
         "tbtMs": 0,
-        "speedIndexMs": 281.242,
+        "speedIndexMs": 281.371,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/consigli.html",
-          "bytes": 9010
+          "bytes": 9278
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3465,19 +3593,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69361,
+        "bytes": 69629,
         "requests": 6,
-        "lcpMs": 1201.993,
+        "lcpMs": 1200.943,
         "cls": 0,
-        "fcpMs": 1051.993,
+        "fcpMs": 1050.943,
         "tbtMs": 0,
-        "speedIndexMs": 1051.993,
+        "speedIndexMs": 1050.943,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/testers.html",
-          "bytes": 9105
+          "bytes": 9373
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3514,19 +3642,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69361,
+        "bytes": 69629,
         "requests": 6,
-        "lcpMs": 281.778,
+        "lcpMs": 280.864,
         "cls": 0,
-        "fcpMs": 281.778,
+        "fcpMs": 280.864,
         "tbtMs": 0,
-        "speedIndexMs": 281.778,
+        "speedIndexMs": 280.864,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/testers.html",
-          "bytes": 9105
+          "bytes": 9373
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3563,19 +3691,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69361,
+        "bytes": 69629,
         "requests": 6,
-        "lcpMs": 1200.805,
+        "lcpMs": 1201.32,
         "cls": 0,
-        "fcpMs": 1050.805,
+        "fcpMs": 1051.32,
         "tbtMs": 0,
-        "speedIndexMs": 1050.805,
+        "speedIndexMs": 1051.32,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/testers.html",
-          "bytes": 9105
+          "bytes": 9373
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3612,19 +3740,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69361,
+        "bytes": 69629,
         "requests": 6,
-        "lcpMs": 280.885,
+        "lcpMs": 280.577,
         "cls": 0,
-        "fcpMs": 280.885,
+        "fcpMs": 280.577,
         "tbtMs": 0,
-        "speedIndexMs": 280.885,
+        "speedIndexMs": 280.577,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/testers.html",
-          "bytes": 9105
+          "bytes": 9373
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3661,19 +3789,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69358,
+        "bytes": 69626,
         "requests": 6,
-        "lcpMs": 1200.165,
+        "lcpMs": 1201.019,
         "cls": 0,
-        "fcpMs": 1050.165,
+        "fcpMs": 1051.019,
         "tbtMs": 0,
-        "speedIndexMs": 1050.165,
+        "speedIndexMs": 1051.019,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/socialviewer-privacy.html",
-          "bytes": 9102
+          "bytes": 9370
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3710,19 +3838,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69358,
+        "bytes": 69626,
         "requests": 6,
-        "lcpMs": 281.084,
+        "lcpMs": 281.009,
         "cls": 0,
-        "fcpMs": 281.084,
+        "fcpMs": 281.009,
         "tbtMs": 0,
-        "speedIndexMs": 281.084,
+        "speedIndexMs": 281.009,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/socialviewer-privacy.html",
-          "bytes": 9102
+          "bytes": 9370
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3759,19 +3887,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69358,
+        "bytes": 69626,
         "requests": 6,
-        "lcpMs": 1200.363,
+        "lcpMs": 1204.1046,
         "cls": 0,
-        "fcpMs": 1050.363,
+        "fcpMs": 1054.1046,
         "tbtMs": 0,
-        "speedIndexMs": 1050.363,
+        "speedIndexMs": 1054.1046,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/socialviewer-privacy.html",
-          "bytes": 9102
+          "bytes": 9370
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3808,19 +3936,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69358,
+        "bytes": 69626,
         "requests": 6,
-        "lcpMs": 280.537,
+        "lcpMs": 281.001,
         "cls": 0,
-        "fcpMs": 280.537,
+        "fcpMs": 281.001,
         "tbtMs": 0,
-        "speedIndexMs": 280.537,
+        "speedIndexMs": 281.001,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/Nexus-portfolio/socialviewer-privacy.html",
-          "bytes": 9102
+          "bytes": 9370
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3857,19 +3985,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69329,
+        "bytes": 69597,
         "requests": 6,
-        "lcpMs": 1200.865,
+        "lcpMs": 1201.06,
         "cls": 0,
-        "fcpMs": 1050.865,
+        "fcpMs": 1051.06,
         "tbtMs": 0,
-        "speedIndexMs": 1050.865,
+        "speedIndexMs": 1051.06,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/projects/",
-          "bytes": 9073
+          "bytes": 9341
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3906,19 +4034,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69329,
+        "bytes": 69597,
         "requests": 6,
-        "lcpMs": 281.414,
+        "lcpMs": 281.501,
         "cls": 0,
-        "fcpMs": 281.414,
+        "fcpMs": 281.501,
         "tbtMs": 0,
-        "speedIndexMs": 281.414,
+        "speedIndexMs": 281.501,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/projects/",
-          "bytes": 9073
+          "bytes": 9341
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -3955,19 +4083,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69329,
+        "bytes": 69597,
         "requests": 6,
-        "lcpMs": 1201.009,
+        "lcpMs": 1200.381,
         "cls": 0,
-        "fcpMs": 1051.009,
+        "fcpMs": 1050.381,
         "tbtMs": 0,
-        "speedIndexMs": 1051.009,
+        "speedIndexMs": 1050.381,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/projects/",
-          "bytes": 9073
+          "bytes": 9341
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",
@@ -4004,19 +4132,19 @@
         "seo": 100
       },
       "metrics": {
-        "bytes": 69329,
+        "bytes": 69597,
         "requests": 6,
-        "lcpMs": 281.065,
-        "cls": 0,
-        "fcpMs": 281.065,
+        "lcpMs": 281.363,
+        "cls": 0.0002792361658348656,
+        "fcpMs": 281.363,
         "tbtMs": 0,
-        "speedIndexMs": 281.065,
+        "speedIndexMs": 281.363,
         "lcpElement": "body > main.status-standalone > div.status-panel > h1"
       },
       "resources": [
         {
           "url": "/projects/",
-          "bytes": 9073
+          "bytes": 9341
         },
         {
           "url": "/styles/site-5cfb025d9d7c50de.css",

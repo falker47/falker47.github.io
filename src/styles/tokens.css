@@ -59,6 +59,7 @@
   /* Nexus Mods orange, from the official emblem (logo-emblem.svg), and a lighter amber for gradients. */
   --nexus: #f97316;
   --nexus-amber: #fbbf24;
+  --nexus-light: #fdba74;
   /* Hover ink of a platform mark; each external action sets its own from data/brands.json. */
   --brand: var(--paper);
   /* The pressed category pill; #panel-modding switches it to the Nexus orange. */

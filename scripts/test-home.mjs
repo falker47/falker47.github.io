@@ -9,7 +9,7 @@ test('the home keeps the master structure and renders every catalogue from data'
   validateHomeCatalogue(home);
   assert.throws(() => validateHomeCatalogue(home.replace('<details class="work" id="progetti">', '<details class="work" id="progetti" open>')), /collapsed/);
   assert.throws(() => validateHomeCatalogue(home.replace('<a class="cta primary-cta" href="#progetti">', '<a class="cta primary-cta" href="/projects/">')), /hero action/);
-  assert.throws(() => validateHomeCatalogue(home.replace('<span data-i18n="apps">App</span> <span class="picker-count-value">4</span>', '<span data-i18n="apps">App</span> <span class="picker-count-value">9</span>')), /Software pills/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<strong class="result-value">4</strong>', '<strong class="result-value">9</strong>')), /Software tiles/);
   assert.throws(() => validateHomeCatalogue(home.replace('<a href="/uses/">', '<a href="/uses/" aria-current="page">')), /current/);
   assert.throws(() => validateHomeCatalogue(home.replace('<a class="footer-home" href="/">', '<a class="footer-home" href="#main">')), /signature/);
   assert.throws(() => validateHomeCatalogue(home.replace('<span class="card-stack">Python · PySide6 · Qt Quick</span>', '<span class="card-stack">Python · CustomTkinter</span>')), /panacea stack/);
@@ -40,19 +40,17 @@ test('the Lessons tab puts the text and its action before the two portals', () =
 });
 
 test('the Modding tab lists every published mod with its own numbers and picture rule', () => {
-  assert.throws(() => validateHomeCatalogue(home.replace('<span data-i18n="modsPill">Mod</span> <span class="picker-count-value">', '<span data-i18n="modsPill">Mod</span> <span class="picker-count-value">9')), /Modding pills/);
-  assert.throws(() => validateHomeCatalogue(home.replace('<svg class="brand brand-nexusmods" aria-hidden="true" focusable="false"><use href="#brand-nexusmods"/></svg><strong data-i18n="moddingNumber">', '<strong data-i18n="moddingNumber">')), /Nexus mark/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<a class="result nexus-total"', '<a class="result"')), /Nexus total/);
   assert.throws(() => validateHomeCatalogue(home.replace(/(<strong><span data-i18n-number=")(\d+)(")/, (_, start, value, end) => start + (Number(value) + 1) + end)), /counts/);
   assert.throws(() => validateHomeCatalogue(home.replace('<div class="card-cover mod-type"><b>IT</b>', '<div class="card-cover mod-type"><img src="/assets/nexus/1.webp" width="1" height="1" alt=""><b>IT</b>')), /translation has no picture/);
   assert.throws(() => validateHomeCatalogue(home.replace('href="https://github.com/falker47/HogwartsLegacy-SaveEditor"', 'href="https://github.com/falker47"')), /repository/);
-  assert.throws(() => validateHomeCatalogue(home.replace(/<time data-nexus-stat="checkedOn" datetime="[\d-]+">/, '<time data-nexus-stat="checkedOn" datetime="2020-01-01">')), /Snapshot date/);
 });
 
 test('the Research tab draws the certified configurations and both kinds of dots', () => {
   assert.throws(() => validateHomeCatalogue(home.replace('<circle class="rm-ring rm-open"', '<circle class="rm-ring"')), /dashed/);
   assert.throws(() => validateHomeCatalogue(home.replace('<circle class="rm-floating"', '<circle class="rm-circle"')));
   assert.throws(() => validateHomeCatalogue(home.replace(/(<circle class="rm-limit" cx="[\d.]+" cy="[\d.]+" r=")[\d.]+/, '$1' + '20')), /1\/8/);
-  assert.throws(() => validateHomeCatalogue(home.replace(/(<text class="rm-band-range"[^>]*>\[<tspan[^>]*>)[^<]+/, '$1' + '0,1300')), /Band label/);
+  assert.throws(() => validateHomeCatalogue(home.replace(/(<p class="paper-bound">C\* ∈ \[<span[^>]*>)[^<]+/, '$1' + '0,1300')), /C\* interval/);
   assert.throws(() => validateHomeCatalogue(home.replace(/(<circle class="rm-ring" cx="[\d.]+" cy="[\d.]+" r=")[\d.]+/, '$1' + '5')), /scale/);
   assert.throws(() => validateHomeCatalogue(home.replace('<a class="result" href="/research/">', '<a class="result" href="https://arxiv.org/">')), /paper count/);
 });

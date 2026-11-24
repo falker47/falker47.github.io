@@ -57,19 +57,19 @@ async function checkPickers(page) {
     const toggles = picker.locator('.picker-toggle');
     assert.deepEqual(await toggles.evaluateAll(nodes => nodes.map(node => node.dataset.group)), groups);
     assert.deepEqual(await toggles.evaluateAll(nodes => nodes.map(node => node.getAttribute('aria-pressed'))), groups.map((_, i) => String(i === 0)));
-    // The pressed pill is filled with the panel accent, the others are outlined; each is a 44 px target.
+    // The pressed tile is outlined in the panel accent, the others have no border; each is a 44 px target.
     const [pressed, ...others] = await toggles.evaluateAll(nodes => nodes.map(node => {
       const style = getComputedStyle(node);
-      return { height: node.getBoundingClientRect().height, background: style.backgroundColor };
+      return { height: node.getBoundingClientRect().height, border: style.borderTopColor };
     }));
-    assert.ok([pressed, ...others].every(item => item.height >= 44), panel + ' pills are 44 px targets');
-    assert.equal(pressed.background, panel === 'modding' ? 'rgb(249, 115, 22)' : 'rgb(155, 220, 255)', panel + ' pressed pill uses the panel accent');
-    assert.ok(others.every(item => item.background === 'rgba(0, 0, 0, 0)'), panel + ' other pills are outlined');
+    assert.ok([pressed, ...others].every(item => item.height >= 44), panel + ' tiles are 44 px targets');
+    assert.equal(pressed.border, panel === 'modding' ? 'rgb(249, 115, 22)' : 'rgb(155, 220, 255)', panel + ' pressed tile uses the panel accent');
+    assert.ok(others.every(item => item.border === 'rgba(0, 0, 0, 0)'), panel + ' other tiles have no border');
     for (const group of [...groups].reverse()) {
       await picker.locator('.picker-toggle[data-group="' + group + '"]').click();
       assert.deepEqual(await picker.locator('.picker-group:visible').evaluateAll(nodes => nodes.map(node => node.dataset.group)), [group]);
       assert.equal(await picker.locator('.picker-toggle[aria-pressed="true"]').getAttribute('data-group'), group);
-      const expected = Number(await picker.locator('.picker-toggle[data-group="' + group + '"] .picker-count-value').innerText());
+      const expected = Number(await picker.locator('.picker-toggle[data-group="' + group + '"] .result-value').innerText());
       assert.equal(await picker.locator('.picker-group:visible .card').count(), expected, group + ' cards match the count');
     }
     // The arrows move the row on wider screens; a phone scrolls it by touch.
@@ -101,6 +101,20 @@ async function checkCertificates(page) {
   assert.equal(await cards.count(), certificates.length);
   const caption = page.locator('.deck-caption');
   assert.ok(await caption.locator('.deck-default').isVisible());
+  // V4: with a mouse the card follows the pointer's slot in the fan, as smoothly to the right as to the left.
+  if (page.viewportSize().width >= 600) {
+    await page.locator('#certificazioni .deck-fan').scrollIntoViewIfNeeded();
+    const box = await page.locator('#certificazioni .deck-fan').boundingBox();
+    const [x0, step] = await cards.evaluateAll(nodes => [nodes[0].offsetLeft, nodes[1].offsetLeft - nodes[0].offsetLeft]);
+    const activeIndex = () => cards.evaluateAll(nodes => nodes.findIndex(node => node.hasAttribute('data-active')));
+    for (const index of [0, 1, 2, 3, 4, 3, 2, 1]) {
+      await page.mouse.move(box.x + x0 + step * index + step / 2, box.y + box.height - 24);
+      assert.equal(await activeIndex(), index, 'The fan follows the pointer to card ' + index);
+      assert.equal(await caption.locator('.deck-current .deck-title').innerText(), certificates[index].title);
+    }
+    await page.mouse.move(1, 1);
+    assert.equal(await activeIndex(), -1, 'Leaving the fan lowers the card');
+  }
   const trigger = cards.last();
   await trigger.focus();
   assert.equal(await caption.locator('.deck-current .deck-title').innerText(), await trigger.getAttribute('data-title'));
@@ -227,12 +241,9 @@ async function checkLiveNexus(page, origin, lang) {
   await page.locator('#tab-modding').click();
   for (const language of [lang, lang === 'it' ? 'en' : 'it']) {
     await page.locator(`button[data-lang="${language}"]`).click();
-    await page.waitForFunction(({ count, downloads, date }) =>
-      [...document.querySelectorAll('[data-nexus-stat="modCount"]')].every(node => node.textContent === count)
-      && document.querySelector('[data-i18n="moddingNumber"]').textContent === downloads
-      && document.querySelector('time[data-nexus-stat="checkedOn"]').textContent === date,
-    { count: String(stats.modCount), downloads: new Intl.NumberFormat(language).format(stats.uniqueModDownloads),
-      date: language === 'it' ? '3 febbraio 2031' : 'February 3, 2031' });
+    // V4: the live total shows in the Modding tile and in the "Chi sono" figure.
+    await page.waitForFunction(({ downloads }) => [...document.querySelectorAll('[data-i18n="moddingNumber"]')].every(node => node.textContent === downloads),
+      { downloads: new Intl.NumberFormat(language).format(stats.uniqueModDownloads) });
   }
 }
 

@@ -13,7 +13,7 @@
 .brand-type { display: flex; flex-direction: column; gap: 4px; }
 .brand-type strong {
   font: 600 18px/1.08 var(--name); letter-spacing: .02em;
-  background: linear-gradient(90deg, #f1f4f5, #9bdcff); -webkit-background-clip: text; background-clip: text; color: transparent;
+  background: linear-gradient(90deg, #f1f4f5, var(--blue)); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .brand-type > span { font: 10px/1.2 var(--mono); color: var(--paper); letter-spacing: .01em; }
 .site-nav { display: flex; align-items: center; gap: 28px; margin-right: 24px; }
@@ -33,14 +33,14 @@
   transition: background .2s, border-color .2s, opacity .2s;
 }
 .language button:hover { opacity: 1; border-color: var(--stroke); }
-.language button[aria-pressed=true] { opacity: 1; background: #9bdcff13; border-color: var(--stroke); }
+.language button[aria-pressed=true] { opacity: 1; background: color-mix(in srgb, var(--blue) 8%, transparent); border-color: var(--stroke); }
 .lang-flag { display: block; width: 24px; height: 16px; object-fit: cover; border-radius: 2px; box-shadow: 0 0 0 1px #ffffff38; }
 .menu-button {
   display: none; width: 44px; height: 44px; place-items: center; padding: 0;
   border: 1px solid #ffffff1f; border-radius: 10px; background: #ffffff08; color: var(--paper);
 }
 .menu-button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
-.menu-button[aria-expanded=true] { border-color: var(--stroke); background: #9bdcff13; }
+.menu-button[aria-expanded=true] { border-color: var(--stroke); background: color-mix(in srgb, var(--blue) 8%, transparent); }
 :where(.site-header, .site-footer) :is(a, button) { min-height: var(--target); }
 @media (max-width: 699px) {
   /* Without scripts the links stay visible as a second row. */
@@ -113,7 +113,7 @@ a[data-brand]:is(:hover, :focus-visible, [data-preview="hover"]) .brand { color:
 /* On a phone the cards overlap by as much as the row needs; from 600 px the step is 46 px. */
 .deck-fan {
   --w: 112px; --step: calc((100% - var(--w) - 6px) / (var(--n) - 1));
-  display: flex; align-items: flex-end; width: 100%; max-width: 354px; height: 128px; margin-bottom: 18px; padding: 18px 0 6px 6px;
+  position: relative; display: flex; align-items: flex-end; width: 100%; max-width: 354px; height: 128px; margin-bottom: 18px; padding: 18px 0 6px 6px;
 }
 .deck-card {
   position: relative; flex: none; width: var(--w); margin-left: calc(var(--step) - var(--w)); padding: 0; overflow: hidden;
@@ -123,7 +123,8 @@ a[data-brand]:is(:hover, :focus-visible, [data-preview="hover"]) .brand { color:
 }
 .deck-card:first-child { margin-left: 0; }
 .deck-card img { display: block; width: 100%; height: auto; }
-.deck-card:is(:hover, :focus-visible, [data-preview="hover"]) {
+/* With scripts the pointer's slot in the fan raises a card (data-active); without, the hovered card. */
+.deck-card:is(:focus-visible, [data-active], [data-preview="hover"]), .deck:not(.deck-enhanced) .deck-card:hover {
   z-index: 20; transform: rotate(0) translateY(-18px); box-shadow: 0 18px 40px #000000aa, 0 0 0 2px var(--accent);
 }
 .deck-caption { min-height: 64px; }

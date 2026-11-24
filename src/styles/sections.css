@@ -74,12 +74,18 @@
 .result-icon {width:36px;height:36px;flex:0 0 36px;stroke:var(--stroke);stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round}
 .result-arrow {font-size:14px;color:var(--stroke)}
 a.result:hover .result-label {color:var(--paper)}
-/* Category pills, one pressed at a time: filled with the panel accent when pressed, outlined otherwise. */
-.picker-toggle {display:inline-flex;align-items:center;gap:8px;min-height:44px;min-width:44px;padding:0 16px;border:1px solid var(--control-line);border-radius:999px;background:none;color:var(--secondary);font:600 14px/1 var(--name);white-space:nowrap;cursor:pointer;transition:border-color .16s,background-color .16s,color .16s}
-.picker-count-value {font:400 13px/1 var(--mono);color:var(--muted)}
-.picker-toggle:hover {border-color:var(--panel-accent);color:var(--paper)}
-.picker-toggle[aria-pressed=true] {border-color:var(--panel-accent);background:var(--panel-accent);color:var(--bg)}
-.picker-toggle[aria-pressed=true] .picker-count-value {color:var(--bg)}
+/* The category toggles are tiles like the research count, one pressed at a time: the pressed
+   tile takes the panel accent. */
+.picker-toggle {padding:6px 14px 6px 8px;border:1px solid transparent;border-radius:14px;background:none;font:inherit;color:inherit;cursor:pointer;transition:border-color .2s,background-color .2s}
+.picker-toggle:hover {background:#ffffff06}
+.picker-toggle .result-value {color:var(--paper)}
+.picker-toggle[aria-pressed=true] {border-color:var(--panel-accent);background:color-mix(in srgb,var(--panel-accent) 10%,transparent)}
+.picker-toggle[aria-pressed=true] :is(.result-value,.result-label) {color:var(--panel-accent)}
+.picker-toggle[aria-pressed=true] .result-icon {stroke:var(--panel-accent)}
+.nexus-total {padding:6px 14px 6px 8px;border-radius:14px}
+.nexus-total .brand {width:30px;height:30px;flex:none}
+.nexus-total .result-value {color:var(--nexus-light)}
+.nexus-total:hover .result-label {color:var(--paper)}
 .picker-heading {font:11px/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--cat);margin:18px 0 8px}
 .sample-count {flex:1 1 100%;font:11px/1.6 var(--mono);color:#a9b2c0;margin:0}
 .sample-count strong {font-weight:400}
@@ -118,28 +124,26 @@ a.result:hover .result-label {color:var(--paper)}
 .mod-stats strong {font:600 18px/1 var(--name);color:var(--paper)}
 .mod-bar {height:4px;border-radius:4px;background:#ffffff10;overflow:hidden}
 .mod-bar span {display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--nexus),var(--nexus-amber))}
-#panel-modding .sample-count .brand {width:18px;height:18px}
 
-.paper-cards {display:grid;gap:20px}
+.paper-cards {display:grid;gap:12px}
 .paper-card {--cat:var(--blue)}
 .paper-figure {display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;padding:12px;background:radial-gradient(90% 100% at 50% 0%,color-mix(in srgb,var(--stroke) 16%,transparent),transparent 70%),#0d1017;border-bottom:1px solid var(--rule)}
 .rm-grid {display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px 4px;width:100%}
-.rm-cell {text-align:center;font:11px/1.2 var(--mono);color:#a9b2c0}
+.rm-cell {text-align:center;font:10px/1.2 var(--mono);letter-spacing:-.02em;color:#a9b2c0;white-space:nowrap}
 .rm-cell svg {display:block;width:100%;height:auto;margin-bottom:2px}
 .rm-centre {fill:color-mix(in srgb,var(--stroke) 18%,#0d1017);stroke:var(--blue);stroke-width:1}
 .rm-circle {fill:#12151c;stroke:var(--stroke);stroke-width:.9}
 .rm-floating {fill:none;stroke:#f0a35e;stroke-width:.9;stroke-dasharray:2 1.6}
 .rm-chart {display:block;width:100%;height:auto;max-height:100%}
 .rm-rings {max-width:420px}
-.rm-tick {font:12.5px var(--mono);fill:#a9b2c0}
+.rm-tag rect {fill:#0d1017;stroke:var(--blue);stroke-width:1}
+.rm-tag text {font:600 12px var(--sans);fill:var(--blue)}
+.rm-tag-limit rect {stroke:color-mix(in srgb,var(--blue) 55%,transparent)}
+.paper-bound {font:12px/1.4 var(--mono);color:var(--blue);margin:0}
 .rm-limit {fill:none;stroke:var(--blue);stroke-width:.8;stroke-dasharray:3 3;opacity:.8}
-.rm-limit-label {font:12.5px var(--mono);fill:var(--blue)}
 .rm-band {fill:none;stroke:var(--blue);filter:drop-shadow(0 0 3px color-mix(in srgb,var(--blue) 65%,transparent))}
 .rm-ring {fill:none;stroke:var(--stroke);stroke-width:.8}
 .rm-ring.rm-open {stroke-dasharray:2 2;opacity:.8}
-.rm-leader {fill:none;stroke:#ffffff40;stroke-width:.6}
-.rm-band-range {font:12.5px var(--mono);fill:var(--blue)}
-.rm-band-label {font:16px var(--mono);fill:var(--blue)}
 .card-label {font:11px/1.4 var(--mono);color:var(--blue);margin:0}
 .paper-card h4 {font:400 19px/1.25 var(--serif);color:var(--paper)}
 .paper-highlight {font:italic 14px/1.45 var(--serif);color:var(--blue);margin:0}
@@ -172,14 +176,20 @@ a.result:hover .result-label {color:var(--paper)}
 :where(.about,.work) :is(a, button) {min-height:var(--target)}
 
 @media(min-width:600px) {
+.paper-cards {grid-template-columns:repeat(2,calc((100% - 24px)/2.25))}
 .footer {padding-block:20px 28px}
 .about-actions {grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 24px}
 .rail-track {grid-auto-columns:calc((100% - 24px)/2.25);gap:12px}
 .rail-mods .rail-track {grid-auto-columns:min(calc((100% - 24px)/2.25),386px)}
 .rail-steps {display:flex}
-/* The drawing stops growing at 420 px: smaller units keep its labels near 13 px. */
-.rm-rings :is(.rm-tick,.rm-limit-label,.rm-band-range) {font-size:9px}
-.rm-rings .rm-band-label {font-size:11.5px}
+}
+@media(max-width:699px) {
+/* On a phone the toggles share one row; the Nexus total takes its own. */
+.picker-head {gap:8px}
+.picker-bar {display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:6px;width:100%}
+.picker-toggle {padding:6px 6px 6px 6px;gap:6px}
+.picker-toggle .result-icon {width:28px;height:28px;flex-basis:28px}
+.nexus-total {width:100%}
 }
 @media(min-width:700px) {
 .work-tabs {margin-bottom:24px}
@@ -207,7 +217,7 @@ a.result:hover .result-label {color:var(--paper)}
 .work-content {padding:8px 24px 20px}
 .rail-track {grid-auto-columns:calc((100% - 48px)/4.2)}
 .rail-mods .rail-track {grid-auto-columns:min(calc((100% - 48px)/4.2),386px)}
-.paper-cards {grid-template-columns:repeat(2,minmax(0,1fr));max-width:980px}
+.paper-cards {grid-template-columns:repeat(2,calc((100% - 48px)/4.2));gap:12px}
 }
 @media(min-width:1000px) and (max-height:740px) {
 :is(.about,.work)>summary {min-height:46px}
