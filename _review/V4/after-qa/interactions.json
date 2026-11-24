@@ -28,6 +28,34 @@
     "result": "pass"
   },
   {
+    "route": "/uses/",
+    "lang": "it",
+    "width": 1440,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/uses/",
+    "lang": "it",
+    "width": 390,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/uses/",
+    "lang": "en",
+    "width": 1440,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/uses/",
+    "lang": "en",
+    "width": 390,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
     "route": "/",
     "lang": "it",
     "width": 320,
@@ -62,6 +90,50 @@
   },
   {
     "route": "/",
+    "lang": "en",
+    "width": 720,
+    "height": 450,
+    "deviceScaleFactor": 2,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/uses/",
+    "lang": "it",
+    "width": 320,
+    "height": 844,
+    "deviceScaleFactor": 1,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/uses/",
+    "lang": "it",
+    "width": 720,
+    "height": 450,
+    "deviceScaleFactor": 2,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/uses/",
+    "lang": "en",
+    "width": 320,
+    "height": 844,
+    "deviceScaleFactor": 1,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/uses/",
     "lang": "en",
     "width": 720,
     "height": 450,
