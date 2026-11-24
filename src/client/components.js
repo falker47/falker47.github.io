@@ -33,7 +33,11 @@
         panels[i].hidden = tab !== current;
       });
       // The tabs of "I miei progetti" also set the accent of the whole site.
-      if (list.closest('.work')) document.documentElement.dataset.accent = current.dataset.panel;
+      // Software keeps the default blue, so loading the page changes nothing (no restyle of the whole page).
+      if (list.closest('.work')) {
+        if (current.dataset.panel === 'software') delete document.documentElement.dataset.accent;
+        else document.documentElement.dataset.accent = current.dataset.panel;
+      }
     }
     tabs.forEach((tab, index) => {
       tab.addEventListener('click', () => select(tab));
@@ -104,7 +108,8 @@
     const summary = about.querySelector(':scope > summary');
     ['pointerenter', 'focus', 'touchstart'].forEach(type => summary.addEventListener(type, warm, { once: true, passive: true }));
     const saveData = navigator.connection && navigator.connection.saveData;
-    const idle = () => { if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout: 2000 }); else setTimeout(warm, 200); };
+    // A second after the load event, when the browser is idle: the first screen is settled by then.
+    const idle = () => setTimeout(() => { if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout: 3000 }); else warm(); }, 1000);
     if (!saveData) {
       if (document.readyState === 'complete') idle();
       else addEventListener('load', idle, { once: true });
