@@ -11,10 +11,11 @@ const sharp = values.format === 'webp' ? qaRequire('sharp') : null;
 async function saveWebp(png, name, route, fullPage) {
   // Full pages get 200 KB per 3,000 px of height (long catalogues such as /projects/).
   const { height } = await sharp(png).metadata();
-  const limit = route !== '/' && fullPage ? 200 * 1024 * Math.max(1, Math.ceil(height / 3000)) : 300_000;
-  const qualities = route === '/' ? [100] : [80, 70, 60, 50, 40, 35, 30, 25, 20];
+  // The hero band has soft gradients since V3, so the home is no longer stored losslessly.
+  const limit = fullPage ? 200 * 1024 * Math.max(1, Math.ceil(height / 3000)) : 300_000;
+  const qualities = [90, 80, 70, 60, 50, 40, 35, 30, 25, 20];
   for (const quality of qualities) {
-    const bytes = await sharp(png).webp({ lossless: route === '/', quality, effort: 6 }).toBuffer();
+    const bytes = await sharp(png).webp({ quality, effort: 6 }).toBuffer();
     if (bytes.length <= limit) return writeFile(join(out, name), bytes);
   }
   throw Error('Screenshot exceeds its byte budget: ' + name);
