@@ -2,13 +2,13 @@ import assert from 'node:assert/strict';
 import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { auditRoutes } from './audit-routes.mjs';
-import { options, qaRequire, viewports, visitReviewState, withBrowser } from './browser.mjs';
+import { homeStates, options, qaRequire, viewports, visitReviewState, withBrowser } from './browser.mjs';
 import { isolateNetwork } from './network.mjs';
 import { localPath, siteRoot } from './serve.mjs';
 
 const { out, langs } = await options();
 const { routes } = await auditRoutes();
-const sections = ['/#chi-sono', '/#certificazioni'];
+const sections = homeStates;
 const held = new Set(routes.filter(route => route.stub).map(route => route.path));
 const sharp = qaRequire('sharp');
 const assets = new Map();
@@ -30,20 +30,22 @@ async function verify(page, path, lang, width) {
     return {
       overflow: Math.max(0, document.documentElement.scrollWidth - innerWidth),
       largestHeadingOutsideHero: Math.max(0, ...headlines.map(node => parseFloat(getComputedStyle(node).fontSize))),
-      // Heading scale: page title, sheet titles, group and block headings, everything else.
+      // Heading scale: page titles up to 40 px, every other heading up to 32 px.
       headingLimits: headlines.map(node => {
         const size = parseFloat(getComputedStyle(node).fontSize);
-        const limit = node.matches('h1') ? 40 : node.matches('.tavola h2') ? 34 : node.matches('.group-head h2') ? 30 : 32;
+        const limit = node.matches('h1') ? 40 : 32;
         return { text: node.textContent.trim().slice(0, 40), size, limit };
       }).filter(heading => heading.size > heading.limit),
-      sheets: [...document.querySelectorAll('.sheets-page .tavola')].map(sheet => {
-        const figure = sheet.querySelector('.sheet-figure').getBoundingClientRect();
-        const title = sheet.querySelector('h2').getBoundingClientRect();
-        const link = [...sheet.querySelectorAll('.tavola-link')].find(a => a.getClientRects().length).getBoundingClientRect();
-        const top = Math.min(figure.top, title.top), bottom = Math.max(figure.bottom, title.bottom, link.bottom);
-        return { id: sheet.getAttribute('aria-labelledby'), span: Math.ceil(bottom - top), linkHeight: link.height,
-          imageAboveTitle: figure.bottom <= title.top + 1 };
+      // Every visible card: its text stays inside it and its links are 44 px targets.
+      cards: [...document.querySelectorAll('.card')].filter(visible).map(card => {
+        const bounds = card.getBoundingClientRect();
+        const links = [...card.querySelectorAll('a')].map(link => link.getBoundingClientRect().height);
+        return { title: card.querySelector('h4')?.textContent.trim().slice(0, 30) ?? card.className, width: Math.round(bounds.width),
+          spill: card.scrollWidth > card.clientWidth + 1, smallestLink: links.length ? Math.min(...links) : null };
       }),
+      // SVG labels: at least 11 px as rendered.
+      smallestChartText: Math.min(Infinity, ...[...document.querySelectorAll('.rm-chart text, .journey text')].filter(visible)
+        .map(node => parseFloat(getComputedStyle(node).fontSize) * node.ownerSVGElement.getBoundingClientRect().width / node.ownerSVGElement.viewBox.baseVal.width)),
       primaryActions: [...document.querySelectorAll('.primary-cta')].filter(visible).length,
       obsoleteWording: /Nexus Portfolio|Data Engineer(?:\s|$)|AI & Automation Engineer/i.test(text),
       images: [...document.images].filter(node => node.currentSrc && visible(node)).map(node => {
@@ -65,19 +67,18 @@ async function verify(page, path, lang, width) {
   rows.push(result);
   assert.equal(row.overflow, 0, path + ' overflow');
   assert.deepEqual(row.headingLimits, [], path + ' heading size');
-  for (const sheet of row.sheets) {
-    // Image, title and first link of every sheet fit within one screen height.
-    assert.ok(sheet.span <= page.viewportSize().height, path + ' ' + sheet.id + ' spans ' + sheet.span + 'px');
-    assert.ok(sheet.linkHeight >= 44, path + ' ' + sheet.id + ' link height');
-    if (width < 900) assert.ok(sheet.imageAboveTitle, path + ' ' + sheet.id + ' image first on narrow screens');
+  for (const card of row.cards) {
+    assert.ok(!card.spill, path + ' ' + card.title + ' overflows its card');
+    assert.ok(card.smallestLink === null || card.smallestLink >= 44, path + ' ' + card.title + ' link height');
   }
+  assert.ok(row.smallestChartText >= 11, path + ' drawing labels render at ' + row.smallestChartText + 'px');
   assert.ok(row.primaryActions <= 1, path + ' primary buttons');
   assert.equal(row.obsoleteWording, false, path + ' outdated copy');
   for (const image of row.images) assert.ok(image.scale <= 1.001, path + ' enlarged ' + JSON.stringify(image));
   if (path === '/' || path.startsWith('/#')) {
-    assert.deepEqual(await page.locator('a.result').evaluateAll(links => links.map(a => a.getAttribute('href'))),
-      ['/projects/#app', '/projects/#giochi', '/projects/#strumenti', 'https://www.nexusmods.com/profile/falker47/mods', 'https://www.nexusmods.com/profile/falker47/mods', '/research/']);
-  } else if (!path.startsWith('/Nexus-portfolio/')) {
+    assert.deepEqual(await page.locator('.site-nav a').evaluateAll(links => links.map(a => a.getAttribute('href'))), ['#progetti', '#ricerca', '#chi-sono']);
+    assert.equal(await page.locator('a[href="/projects/"]').count(), 0, 'The old projects page is not linked');
+  } else if (!held.has(path)) {
     assert.equal(await page.locator('.site-footer a[href="/uses/"]').count(), 1);
   }
   const back = page.locator('.detail-crumbs a:visible').first();

@@ -51,11 +51,19 @@ export async function visit(page, origin, route, lang, bilingualFallback = false
   if (await page.locator('html').getAttribute('lang') !== lang) throw Error(`Language did not switch to ${lang}`);
 }
 
-/** Capture the certificate fragment with its viewer open, as a visitor would open it. */
+// Home states for review. A fragment opens its section; "#tab-…" also selects that tab.
+export const homeStates = ['/#chi-sono', '/#progetti', '/#tab-modding', '/#ricerca', '/#tab-teaching', '/#certificazioni'];
+
+/** Open a home state as a visitor would: the certificate fragment is captured with its viewer open. */
 export async function visitReviewState(page, origin, route, lang, stub = false) {
   await visit(page, origin, route, lang, stub);
-  if (route === '/#certificazioni') {
-    await page.locator('#certificazioni .certificate').first().click();
-    await page.locator('dialog[open] > img').evaluate(image => image.decode());
+  const hash = route.startsWith('/#') ? route.slice(1) : '';
+  if (!hash) return;
+  await page.waitForFunction(() => !document.getAnimations().some(animation => animation.effect?.target?.matches?.('details')));
+  if (hash.startsWith('#tab-')) await page.locator(hash).click();
+  if (hash === '#certificazioni') {
+    // The next card covers most of the first one: open it from the keyboard.
+    await page.locator('#certificazioni .deck-card').first().press('Enter');
+    await page.locator('dialog[open] .viewer-stage img').evaluate(image => image.decode());
   }
 }

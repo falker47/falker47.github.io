@@ -1,0 +1,193 @@
+[
+  {
+    "page": "/projects/social-viewer/",
+    "lang": "it",
+    "width": 1440,
+    "cover": "/assets/projects/social-viewer-480.webp",
+    "displayedWidth": 480
+  },
+  {
+    "page": "/projects/social-viewer/test/",
+    "lang": "it",
+    "jsEnabled": true,
+    "path": "returning",
+    "steps": 2,
+    "width": 1440,
+    "height": 900,
+    "scrollY": 0,
+    "contentRight": 1440,
+    "stepsBottom": 524,
+    "feedbackBottom": 402
+  },
+  {
+    "page": "/projects/social-viewer/test/",
+    "lang": "it",
+    "jsEnabled": true,
+    "path": "first-time",
+    "steps": 3,
+    "width": 1440,
+    "height": 900,
+    "scrollY": 0,
+    "contentRight": 1440,
+    "stepsBottom": 593,
+    "feedbackBottom": 402
+  },
+  {
+    "page": "/projects/social-viewer/privacy/",
+    "lang": "it",
+    "width": 1440,
+    "disclosuresOpened": 6,
+    "renderedOriginalCompared": true
+  },
+  {
+    "page": "/projects/social-viewer/",
+    "lang": "en",
+    "width": 1440,
+    "cover": "/assets/projects/social-viewer-480.webp",
+    "displayedWidth": 480
+  },
+  {
+    "page": "/projects/social-viewer/test/",
+    "lang": "en",
+    "jsEnabled": true,
+    "path": "returning",
+    "steps": 2,
+    "width": 1440,
+    "height": 900,
+    "scrollY": 0,
+    "contentRight": 1440,
+    "stepsBottom": 585,
+    "feedbackBottom": 429
+  },
+  {
+    "page": "/projects/social-viewer/test/",
+    "lang": "en",
+    "jsEnabled": true,
+    "path": "first-time",
+    "steps": 3,
+    "width": 1440,
+    "height": 900,
+    "scrollY": 0,
+    "contentRight": 1440,
+    "stepsBottom": 629,
+    "feedbackBottom": 429
+  },
+  {
+    "page": "/projects/social-viewer/privacy/",
+    "lang": "en",
+    "width": 1440,
+    "disclosuresOpened": 6,
+    "renderedOriginalCompared": true
+  },
+  {
+    "page": "/projects/social-viewer/",
+    "lang": "it",
+    "width": 390,
+    "cover": "/assets/projects/social-viewer-480.webp",
+    "displayedWidth": 324
+  },
+  {
+    "page": "/projects/social-viewer/test/",
+    "lang": "it",
+    "jsEnabled": true,
+    "path": "returning",
+    "steps": 2,
+    "width": 390,
+    "height": 844,
+    "scrollY": 0,
+    "contentRight": 390,
+    "stepsBottom": 555,
+    "feedbackBottom": 702
+  },
+  {
+    "page": "/projects/social-viewer/test/",
+    "lang": "it",
+    "jsEnabled": true,
+    "path": "first-time",
+    "steps": 3,
+    "width": 390,
+    "height": 844,
+    "scrollY": 0,
+    "contentRight": 390,
+    "stepsBottom": 647,
+    "feedbackBottom": 794
+  },
+  {
+    "page": "/projects/social-viewer/privacy/",
+    "lang": "it",
+    "width": 390,
+    "disclosuresOpened": 6,
+    "renderedOriginalCompared": true
+  },
+  {
+    "page": "/projects/social-viewer/",
+    "lang": "en",
+    "width": 390,
+    "cover": "/assets/projects/social-viewer-480.webp",
+    "displayedWidth": 324
+  },
+  {
+    "page": "/projects/social-viewer/test/",
+    "lang": "en",
+    "jsEnabled": true,
+    "path": "returning",
+    "steps": 2,
+    "width": 390,
+    "height": 844,
+    "scrollY": 0,
+    "contentRight": 390,
+    "stepsBottom": 588,
+    "feedbackBottom": 735
+  },
+  {
+    "page": "/projects/social-viewer/test/",
+    "lang": "en",
+    "jsEnabled": true,
+    "path": "first-time",
+    "steps": 3,
+    "width": 390,
+    "height": 844,
+    "scrollY": 0,
+    "contentRight": 390,
+    "stepsBottom": 680,
+    "feedbackBottom": 827
+  },
+  {
+    "page": "/projects/social-viewer/privacy/",
+    "lang": "en",
+    "width": 390,
+    "disclosuresOpened": 6,
+    "renderedOriginalCompared": true
+  },
+  {
+    "page": "/projects/social-viewer/test/",
+    "lang": "it",
+    "jsEnabled": false,
+    "path": "returning",
+    "steps": 2,
+    "width": 390,
+    "height": 844,
+    "scrollY": 0,
+    "contentRight": 390,
+    "stepsBottom": 581,
+    "feedbackBottom": 728
+  },
+  {
+    "page": "/projects/social-viewer/test/",
+    "lang": "it",
+    "jsEnabled": false,
+    "path": "first-time",
+    "steps": 3,
+    "width": 390,
+    "height": 844,
+    "scrollY": 0,
+    "contentRight": 390,
+    "stepsBottom": 673,
+    "feedbackBottom": 820
+  },
+  {
+    "page": "/projects/social-viewer/privacy/",
+    "jsEnabled": false,
+    "readableEditions": 2
+  }
+]

@@ -61,7 +61,8 @@ body:has(.sv) .site-footer { margin-top: auto; }
 .sv-requirements div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 8px; padding-block: 8px; border-bottom: 1px solid var(--rule-soft); }
 .sv-requirements div > span, .sv-test-foot { color: var(--muted); }
 .sv-test-foot { grid-area: foot; font-size: 14px; }
-.sv-test-foot a { padding-block: 8px; }
+/* Text links on the tester page are 44 px targets too. */
+.sv-test-head h1 a, .sv-requirements a, .sv-test-foot a { display: inline-flex; align-items: center; min-width: var(--target); min-height: var(--target); }
 
 .sv-policy { max-width: 960px; }
 .policy-bar, .policy-footer, .policy-editions { display: flex; align-items: center; gap: 12px; }

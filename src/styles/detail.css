@@ -56,7 +56,7 @@
 .detail-paper h3 { margin-block: 4px 8px; }
 .detail-paper .detail-result { margin-bottom: 4px; color: var(--paper); }
 .detail-paper .detail-source { margin-block: 12px 4px; }
-.detail-source a { display: inline-flex; align-items: center; gap: 6px; min-height: var(--target); color: var(--blue); text-decoration-color: var(--stroke); }
+.detail-source a { display: inline-block; padding-block: 10px; color: var(--blue); line-height: 1.5; text-decoration-color: var(--stroke); }
 .detail-source a:is(:hover, [data-preview="hover"]) { color: var(--paper); }
 .detail-pick h3 { margin-block: 6px 4px; }
 .detail-pick a {

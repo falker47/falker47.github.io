@@ -21,7 +21,8 @@ Run these steps in order when the release branch has passed review. The user sit
 | Old URL | Expected destination |
 | --- | --- |
 | [Portfolio directory](https://falker47.github.io/Nexus-portfolio/) | [Home](https://falker47.github.io/) |
-| [Index with language and fragment](https://falker47.github.io/Nexus-portfolio/index.html?lang=en#projects) | [Projects page in English](https://falker47.github.io/projects/?lang=en) |
+| [Index with language and fragment](https://falker47.github.io/Nexus-portfolio/index.html?lang=en#projects) | [Projects inside the home, in English](https://falker47.github.io/?lang=en#progetti) |
+| [Old projects page](https://falker47.github.io/projects/) | [Projects inside the home](https://falker47.github.io/#progetti) |
 | [research.html](https://falker47.github.io/Nexus-portfolio/research.html) | [Research](https://falker47.github.io/research/) |
 | [prof-gecko.html](https://falker47.github.io/Nexus-portfolio/prof-gecko.html) | [Prof. Gecko](https://falker47.github.io/projects/prof-gecko/) |
 | [consigli.html](https://falker47.github.io/Nexus-portfolio/consigli.html) | [Uses](https://falker47.github.io/uses/) |

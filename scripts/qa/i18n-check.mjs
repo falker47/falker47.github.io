@@ -20,7 +20,16 @@ async function scan(page, route, lang, row) {
   assert.ok(await main.isVisible(), route.path + ': main is hidden');
   const seen = new Set();
   async function readState(name) {
-    const text = await main.innerText();
+    // Read what the visitor sees, without passages marked as another language on purpose
+    // (the arXiv titles carry lang="en" in both editions and are quoted, not translated).
+    const text = await main.evaluate((node, language) => {
+      const quoted = [...node.querySelectorAll('[lang]')].filter(el => !el.lang.toLowerCase().startsWith(language));
+      const saved = quoted.map(el => el.style.display);
+      for (const el of quoted) el.style.display = 'none';
+      const visible = node.innerText;
+      quoted.forEach((el, i) => { el.style.display = saved[i]; });
+      return visible;
+    }, lang);
     assert.ok(text.trim(), route.path + ': empty main');
     const hits = findForeignText(text, phrases[lang]);
     for (const hit of hits) {
@@ -38,6 +47,11 @@ async function scan(page, route, lang, row) {
   for (const tab of await main.getByRole('tab').all()) {
     await tab.click();
     await readState('tab ' + (await tab.innerText()).trim());
+    // Every category of the tab, one after the other.
+    for (const toggle of await main.locator('.work-panel:not([hidden]) .picker-toggle').all()) {
+      await toggle.click();
+      await readState('category ' + (await toggle.innerText()).trim());
+    }
   }
   const title = copy[lang][route.titleKey ?? 'title.' + route.path];
   assert.equal(await page.title(), title);
@@ -71,11 +85,11 @@ async function checkBindings(browser, origin) {
     await page.goto(origin + path + '?lang=en&keep=1#sample');
     const controls = new Set();
     for (const lang of ['en', 'it', 'en']) {
-      const button = page.locator('.language-switch button[data-lang="' + lang + '"]');
+      const button = page.locator('.language button[data-lang="' + lang + '"]');
       await button.click();
       await page.waitForFunction(expected => document.documentElement.dataset.eventAlt === expected, copy[lang].diagramTitle);
       assert.equal(await button.getAttribute('aria-pressed'), 'true');
-      assert.equal(await page.locator('.language-switch').getAttribute('aria-label'), copy[lang].language);
+      assert.equal(await page.locator('.language').getAttribute('aria-label'), copy[lang].language);
       assert.equal(await page.locator('[data-i18n-number]').innerText(), new Intl.NumberFormat(lang).format(12345.6));
       const number = new Intl.NumberFormat(lang);
       const expected = [0, 1, 2, 12345, 1000000].map(count =>

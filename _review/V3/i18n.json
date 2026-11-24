@@ -1,0 +1,733 @@
+{
+  "pages": [
+    {
+      "route": "/",
+      "lang": "it",
+      "width": 1440,
+      "states": [
+        "initial",
+        "disclosures open",
+        "tab Software",
+        "category 4\napp",
+        "category 5\ngiochi",
+        "category 5\nstrumenti",
+        "tab Modding",
+        "category 10\nmod",
+        "category 17\ntraduzioni italiane",
+        "tab Ricerca",
+        "tab Lezioni"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/",
+      "lang": "it",
+      "width": 390,
+      "states": [
+        "initial",
+        "disclosures open",
+        "tab Software",
+        "category 4\napp",
+        "category 5\ngiochi",
+        "category 5\nstrumenti",
+        "tab Modding",
+        "category 10\nmod",
+        "category 17\ntraduzioni italiane",
+        "tab Ricerca",
+        "tab Lezioni"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/",
+      "lang": "en",
+      "width": 1440,
+      "states": [
+        "initial",
+        "disclosures open",
+        "tab Software",
+        "category 4\napps",
+        "category 5\ngames",
+        "category 5\ntools",
+        "tab Modding",
+        "category 10\nmods",
+        "category 17\nItalian translations",
+        "tab Research",
+        "tab Tutoring"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/",
+      "lang": "en",
+      "width": 390,
+      "states": [
+        "initial",
+        "disclosures open",
+        "tab Software",
+        "category 4\napps",
+        "category 5\ngames",
+        "category 5\ntools",
+        "tab Modding",
+        "category 10\nmods",
+        "category 17\nItalian translations",
+        "tab Research",
+        "tab Tutoring"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/404.html",
+      "lang": "it",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/404.html",
+      "lang": "it",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/404.html",
+      "lang": "en",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/404.html",
+      "lang": "en",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/research/",
+      "lang": "it",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/research/",
+      "lang": "it",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/research/",
+      "lang": "en",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/research/",
+      "lang": "en",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/prof-gecko/",
+      "lang": "it",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/prof-gecko/",
+      "lang": "it",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/prof-gecko/",
+      "lang": "en",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/prof-gecko/",
+      "lang": "en",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/camaleonte/",
+      "lang": "it",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/camaleonte/",
+      "lang": "it",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/camaleonte/",
+      "lang": "en",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/camaleonte/",
+      "lang": "en",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/uses/",
+      "lang": "it",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/uses/",
+      "lang": "it",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/uses/",
+      "lang": "en",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/uses/",
+      "lang": "en",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/social-viewer/",
+      "lang": "it",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/social-viewer/",
+      "lang": "it",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/social-viewer/",
+      "lang": "en",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/social-viewer/",
+      "lang": "en",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/social-viewer/test/",
+      "lang": "it",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/social-viewer/test/",
+      "lang": "it",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/social-viewer/test/",
+      "lang": "en",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/social-viewer/test/",
+      "lang": "en",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/social-viewer/privacy/",
+      "lang": "it",
+      "width": 1440,
+      "states": [
+        "initial",
+        "disclosures open"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/social-viewer/privacy/",
+      "lang": "it",
+      "width": 390,
+      "states": [
+        "initial",
+        "disclosures open"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/social-viewer/privacy/",
+      "lang": "en",
+      "width": 1440,
+      "states": [
+        "initial",
+        "disclosures open"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/social-viewer/privacy/",
+      "lang": "en",
+      "width": 390,
+      "states": [
+        "initial",
+        "disclosures open"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/",
+      "lang": "it",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/",
+      "lang": "it",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/",
+      "lang": "en",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/",
+      "lang": "en",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/index.html",
+      "lang": "it",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/index.html",
+      "lang": "it",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/index.html",
+      "lang": "en",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/index.html",
+      "lang": "en",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/research.html",
+      "lang": "it",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/research.html",
+      "lang": "it",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/research.html",
+      "lang": "en",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/research.html",
+      "lang": "en",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/prof-gecko.html",
+      "lang": "it",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/prof-gecko.html",
+      "lang": "it",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/prof-gecko.html",
+      "lang": "en",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/prof-gecko.html",
+      "lang": "en",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/consigli.html",
+      "lang": "it",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/consigli.html",
+      "lang": "it",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/consigli.html",
+      "lang": "en",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/consigli.html",
+      "lang": "en",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/testers.html",
+      "lang": "it",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/testers.html",
+      "lang": "it",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/testers.html",
+      "lang": "en",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/testers.html",
+      "lang": "en",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/socialviewer-privacy.html",
+      "lang": "it",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/socialviewer-privacy.html",
+      "lang": "it",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/socialviewer-privacy.html",
+      "lang": "en",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/Nexus-portfolio/socialviewer-privacy.html",
+      "lang": "en",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/",
+      "lang": "it",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/",
+      "lang": "it",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/",
+      "lang": "en",
+      "width": 1440,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    },
+    {
+      "route": "/projects/",
+      "lang": "en",
+      "width": 390,
+      "states": [
+        "initial"
+      ],
+      "leaks": [],
+      "errors": []
+    }
+  ],
+  "bindings": "passed",
+  "leakControls": {
+    "it": "visible English detected, hidden English ignored",
+    "en": "visible Italian detected, hidden Italian ignored"
+  }
+}

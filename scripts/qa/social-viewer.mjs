@@ -49,7 +49,7 @@ async function checkPrivacy(page, origin, lang) {
   const selected = page.locator('.language-panel:visible');
   assert.equal(await selected.getAttribute('lang'), lang);
   const other = lang === 'it' ? 'en' : 'it';
-  const switcher = page.locator('.site-header .language-switch');
+  const switcher = page.locator('.site-header .language');
   await switcher.locator(`[data-lang="${other}"]`).click();
   assert.equal(await selected.getAttribute('lang'), other);
   assert.equal(new URL(page.url()).searchParams.get('lang'), other);

@@ -1,0 +1,278 @@
+[
+  {
+    "route": "/",
+    "lang": "it",
+    "device": "mobile",
+    "pass": true,
+    "scores": {
+      "performance": 95,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "metrics": {
+      "bytes": 272316,
+      "requests": 11,
+      "lcpMs": 2705.12,
+      "cls": 0,
+      "fcpMs": 1955.12,
+      "tbtMs": 0,
+      "speedIndexMs": 1955.12,
+      "lcpElement": "main#main > div.hero-band > div.wrap > section.hero"
+    },
+    "resources": [
+      {
+        "url": "/",
+        "bytes": 146165
+      },
+      {
+        "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+        "bytes": 19721
+      },
+      {
+        "url": "/assets/fonts/gelasio-latin-400-italic.woff2",
+        "bytes": 21985
+      },
+      {
+        "url": "/styles/site-d4b9b996b6311bb4.css",
+        "bytes": 44243
+      },
+      {
+        "url": "/assets/fonts/poppins-600.woff2",
+        "bytes": 8184
+      },
+      {
+        "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+        "bytes": 14893
+      },
+      {
+        "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
+        "bytes": 728
+      },
+      {
+        "url": "/assets/images/falkerlogo.png",
+        "bytes": 10331
+      },
+      {
+        "url": "/assets/images/flag-it.png",
+        "bytes": 336
+      },
+      {
+        "url": "/assets/images/flag-en.png",
+        "bytes": 748
+      },
+      {
+        "url": "/assets/images/maurizio-falconi-native.webp",
+        "bytes": 4982
+      }
+    ],
+    "version": "12.8.2"
+  },
+  {
+    "route": "/",
+    "lang": "it",
+    "device": "desktop",
+    "pass": true,
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "metrics": {
+      "bytes": 331718,
+      "requests": 11,
+      "lcpMs": 702.894,
+      "cls": 0,
+      "fcpMs": 442.1700000000001,
+      "tbtMs": 0,
+      "speedIndexMs": 727.3664170335749,
+      "lcpElement": "section.hero > div.hero-lead > h1 > span"
+    },
+    "resources": [
+      {
+        "url": "/",
+        "bytes": 146165
+      },
+      {
+        "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+        "bytes": 19721
+      },
+      {
+        "url": "/assets/fonts/gelasio-latin-400-italic.woff2",
+        "bytes": 21985
+      },
+      {
+        "url": "/styles/site-d4b9b996b6311bb4.css",
+        "bytes": 44243
+      },
+      {
+        "url": "/assets/fonts/poppins-600.woff2",
+        "bytes": 8184
+      },
+      {
+        "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+        "bytes": 14893
+      },
+      {
+        "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
+        "bytes": 727
+      },
+      {
+        "url": "/assets/images/falkerlogo-native.webp",
+        "bytes": 70069
+      },
+      {
+        "url": "/assets/images/flag-it-native.png",
+        "bytes": 279
+      },
+      {
+        "url": "/assets/images/flag-en-native.png",
+        "bytes": 470
+      },
+      {
+        "url": "/assets/images/maurizio-falconi-native.webp",
+        "bytes": 4982
+      }
+    ],
+    "version": "12.8.2"
+  },
+  {
+    "route": "/",
+    "lang": "en",
+    "device": "mobile",
+    "pass": true,
+    "scores": {
+      "performance": 95,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "metrics": {
+      "bytes": 272314,
+      "requests": 11,
+      "lcpMs": 2703.2013699801964,
+      "cls": 0,
+      "fcpMs": 1953.201369980196,
+      "tbtMs": 14.399315009902011,
+      "speedIndexMs": 1953.201369980196,
+      "lcpElement": "section.hero > div.hero-lead > h1 > span"
+    },
+    "resources": [
+      {
+        "url": "/",
+        "bytes": 146165
+      },
+      {
+        "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+        "bytes": 19721
+      },
+      {
+        "url": "/assets/fonts/gelasio-latin-400-italic.woff2",
+        "bytes": 21985
+      },
+      {
+        "url": "/styles/site-d4b9b996b6311bb4.css",
+        "bytes": 44243
+      },
+      {
+        "url": "/assets/fonts/poppins-600.woff2",
+        "bytes": 8184
+      },
+      {
+        "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+        "bytes": 14893
+      },
+      {
+        "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
+        "bytes": 726
+      },
+      {
+        "url": "/assets/images/falkerlogo.png",
+        "bytes": 10331
+      },
+      {
+        "url": "/assets/images/flag-it.png",
+        "bytes": 336
+      },
+      {
+        "url": "/assets/images/flag-en.png",
+        "bytes": 748
+      },
+      {
+        "url": "/assets/images/maurizio-falconi-native.webp",
+        "bytes": 4982
+      }
+    ],
+    "version": "12.8.2"
+  },
+  {
+    "route": "/",
+    "lang": "en",
+    "device": "desktop",
+    "pass": true,
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "metrics": {
+      "bytes": 331717,
+      "requests": 11,
+      "lcpMs": 821.3419999999999,
+      "cls": 0,
+      "fcpMs": 443.072,
+      "tbtMs": 47.46399999999994,
+      "speedIndexMs": 722.0202077008731,
+      "lcpElement": "section.hero > div.hero-lead > h1 > span"
+    },
+    "resources": [
+      {
+        "url": "/",
+        "bytes": 146165
+      },
+      {
+        "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+        "bytes": 19721
+      },
+      {
+        "url": "/assets/fonts/gelasio-latin-400-italic.woff2",
+        "bytes": 21985
+      },
+      {
+        "url": "/styles/site-d4b9b996b6311bb4.css",
+        "bytes": 44243
+      },
+      {
+        "url": "/assets/fonts/poppins-600.woff2",
+        "bytes": 8184
+      },
+      {
+        "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+        "bytes": 14893
+      },
+      {
+        "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
+        "bytes": 726
+      },
+      {
+        "url": "/assets/images/falkerlogo-native.webp",
+        "bytes": 70069
+      },
+      {
+        "url": "/assets/images/flag-it-native.png",
+        "bytes": 279
+      },
+      {
+        "url": "/assets/images/flag-en-native.png",
+        "bytes": 470
+      },
+      {
+        "url": "/assets/images/maurizio-falconi-native.webp",
+        "bytes": 4982
+      }
+    ],
+    "version": "12.8.2"
+  }
+]
