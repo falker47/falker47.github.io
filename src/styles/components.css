@@ -45,7 +45,7 @@
   .site-nav { order: 5; width: 100%; margin: 0; border-top: 1px solid var(--rule); }
   @media (scripting: enabled) {
     /* With scripts the same links open from the menu button, over the page. */
-    .menu-button { display: inline-grid; }
+    .menu-button { display: inline-grid; order: 4; }
     .site-nav {
       position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0;
       padding: 8px 16px 12px; border-top: 0; border-bottom: 1px solid var(--rule); background: #0c0d11;
@@ -93,9 +93,10 @@
 
 /* Certificates: a fan of overlapping cards and their viewer */
 .deck { display: grid; gap: 12px; align-items: center; }
+/* The cards overlap by a fixed step, or by less when the row is narrower than the full fan. */
 .deck-fan {
-  --w: 112px; --step: calc((100% - var(--w)) / (var(--n) - 1));
-  display: flex; width: 100%; max-width: 100%; padding: 26px 0 18px;
+  --w: 112px; --step: min(62px, (100% - var(--w)) / (var(--n) - 1));
+  display: flex; width: 100%; max-width: calc(var(--w) + (var(--n) - 1) * 62px + 16px); padding: 26px 8px 18px;
 }
 .deck-card {
   --t: calc(var(--i) / (var(--n) - 1) - .5);
@@ -118,10 +119,10 @@
   .hint-touch { display: inline; }
 }
 @media (min-width: 700px) {
-  .deck-fan { --w: 150px; --step: 62px; width: calc(var(--w) + (var(--n) - 1) * var(--step)); }
+  .deck-fan { --w: 150px; }
 }
 @media (min-width: 1100px) {
-  .deck { grid-template-columns: auto minmax(0, 1fr); gap: 48px; }
+  .deck { grid-template-columns: minmax(0, 786px) minmax(0, 1fr); gap: 48px; }
 }
 .certificate-viewer {
   width: min(960px, calc(100% - 24px)); max-height: calc(100dvh - 24px); margin: auto;

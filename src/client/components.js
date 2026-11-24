@@ -113,6 +113,7 @@
     const index = viewer.querySelector('.viewer-index');
     const image = document.createElement('img');
     image.decoding = 'async';
+    image.draggable = false;
     let current = 0, trigger = null, startX = null;
     function show(position) {
       current = (position + cards.length) % cards.length;
@@ -190,5 +191,8 @@
   });
   addEventListener('hashchange', () => reveal(location.hash, false));
   addEventListener('popstate', () => reveal(location.hash, false));
-  reveal(location.hash, false);
+  // The browser also scrolls to the fragment once the page has loaded: arrive again after it.
+  if (reveal(location.hash, false) && document.readyState !== 'complete') {
+    addEventListener('load', () => setTimeout(() => reveal(location.hash, false)), { once: true });
+  }
 })();
