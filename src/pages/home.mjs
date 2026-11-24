@@ -67,10 +67,10 @@ export const graph = [
 
 export function render(ctx) {
   const { t, copy } = ctx;
-  return html`<main id="main" tabindex="-1">
-<section class="hero" aria-label="Maurizio Falconi">
+  return html`<main id="main" tabindex="-1" class="home">
+<div class="hero-band"><div class="hero-glow" aria-hidden="true"><i></i></div><div class="wrap"><section class="hero" aria-label="Maurizio Falconi">
 <div class="hero-lead"><h1><span lang="it">${t('headlineStart')}</span><em lang="it">${t('headlineEnd')}</em><span lang="en">${translatedText(copy.en.headlineStart)}</span><em lang="en">${translatedText(copy.en.headlineEnd)}</em></h1>
-${raw(primaryCta(t, 'cta', '/projects/'))}</div>
+${raw(primaryCta(t, 'cta', '#progetti'))}</div>
 <figure class="engine-figure" aria-label="${copy.it.diagramTitle}" data-label="diagramTitle" aria-describedby="diagram-description">
 <div class="engine-art" aria-hidden="true" data-identity-diagram="v1"><svg class="engine desktop-engine" viewBox="0 0 720 590" xmlns="http://www.w3.org/2000/svg">
 <defs><radialGradient id="desktop-idea-light"><stop stop-color="#e4f6ff" stop-opacity=".8"/><stop offset=".42" stop-color="#a4dcff" stop-opacity=".42"/><stop offset="1" stop-color="#86d5ff" stop-opacity="0"/></radialGradient>
@@ -200,8 +200,10 @@ ${raw(primaryCta(t, 'cta', '/projects/'))}</div>
 
 <nav class="contacts" id="contatti" aria-label="${copy.it.contacts}" data-label="contacts"><a class="contact" href="https://github.com/falker47"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M12 .9A11.1 11.1 0 0 0 8.5 22.5c.55.1.75-.24.75-.53v-2.08c-3.1.67-3.75-1.3-3.75-1.3-.5-1.28-1.23-1.62-1.23-1.62-1-.69.08-.68.08-.68 1.1.08 1.69 1.14 1.69 1.14.98 1.68 2.58 1.2 3.21.92.1-.72.38-1.2.7-1.48-2.48-.28-5.09-1.24-5.09-5.5 0-1.22.44-2.22 1.14-3-.11-.28-.49-1.41.11-2.94 0 0 .93-.3 3.05 1.14a10.7 10.7 0 0 1 5.56 0c2.12-1.44 3.05-1.14 3.05-1.14.6 1.53.22 2.66.1 2.94.72.78 1.15 1.78 1.15 3 0 4.27-2.61 5.21-5.1 5.49.4.35.76 1.02.76 2.06v3.05c0 .3.2.64.76.53A11.1 11.1 0 0 0 12 .9Z"/></svg><span>GitHub</span></a><a class="contact" href="https://www.linkedin.com/in/mauriziofalconi/"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M11 17v-7M11 13c0-4 6-4 6 0v4"/><circle cx="7" cy="7" r=".8" fill="currentColor" stroke="none"/></svg><span>LinkedIn</span></a><a class="contact contact-mail" href="mailto:maurizio.falconi47@gmail.com" aria-label="${copy.it.email}" data-label="email" title="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg><span>Email</span></a></nav>
 </div></div>
-</section>
+</section></div></div>
+<div class="home-sections wrap">
 ${raw(aboutSection(ctx))}
 ${raw(workSection(ctx))}
+</div>
 </main>`;
 }

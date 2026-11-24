@@ -1,7 +1,8 @@
 import credentials from '../../../data/certifications.json' with { type: 'json' };
 import profile from '../../../data/profile.json' with { type: 'json' };
 import { html, raw } from '../../lib/html.mjs';
-import { certificates, label } from '../../partials/components.mjs';
+import { certificateDeck, label } from '../../partials/components.mjs';
+import { journey } from '../../partials/journey.mjs';
 
 const arrow = '<svg class="about-action-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M6 18 18 6M7 6h11v11"/></svg>';
 const icons = {
@@ -13,7 +14,7 @@ const icons = {
   tutoring: '<svg class="about-action-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false"><path d="M16 7c-4-3-9-3-13-1v19c4-2 9-2 13 1m0-19c4-3 9-3 13-1v19c-4-2-9-2-13 1V7Z"/><path d="M7 10h5m-5 5h5m8-5h5m-6 7 2 2 4-4"/></svg>',
 };
 
-// The master's profile row. Research now opens the research page of this site.
+// The master's profile row. Research opens the research page of this site.
 const actions = [
   ['linkedin', profile.links.linkedin, 'LinkedIn'],
   ['github', profile.links.github, 'GitHub'],
@@ -31,7 +32,10 @@ export function aboutSection(ctx) {
       : html`<span class="about-action-title">${name}</span>`;
     return html`<a href="${href}" class="about-action about-action-profile">${raw(icons[glyph])}${raw(title)}${raw(arrow)}</a>`;
   }).join('');
-  return html`<details class="about" id="chi-sono"><summary><h2>${label(t, 'about')}</h2></summary><div class="about-content"><p data-i18n="aboutWork">${t('aboutWork')}</p><p data-i18n="aboutResearch">${t('aboutResearch')}</p><p class="philosophy" data-i18n="philosophy">${t('philosophy')}</p><nav class="research-links about-actions" aria-label="${copy.it.researchProfiles}" data-label="researchProfiles">${raw(links)}</nav>
-<section class="credentials" id="certificazioni" aria-labelledby="credentials-title"><h3 id="credentials-title">${label(t, 'guideCertificates')}</h3>
-${raw(certificates(ctx, credentials, 'home-certificate', 4))}</section></div></details>`;
+  return html`<details class="about" id="chi-sono"><summary><h2>${label(t, 'about')}</h2></summary><div class="about-content"><div class="about-text"><p data-i18n="aboutWork">${t('aboutWork')}</p><p data-i18n="aboutResearch">${t('aboutResearch')}</p></div>
+<section class="about-journey" aria-labelledby="journey-title"><h3 class="section-label" id="journey-title">${label(t, 'journeyTitle')}</h3>
+${raw(journey(ctx))}</section>
+<p class="philosophy" data-i18n="philosophy">${t('philosophy')}</p><nav class="research-links about-actions" aria-label="${copy.it.researchProfiles}" data-label="researchProfiles">${raw(links)}</nav>
+<section class="credentials" id="certificazioni" aria-labelledby="credentials-title"><h3 class="section-label" id="credentials-title">${label(t, 'guideCertificates')}</h3>
+${raw(certificateDeck(ctx, credentials, 'home-certificate'))}</section></div></details>`;
 }

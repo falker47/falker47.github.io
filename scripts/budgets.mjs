@@ -2,7 +2,8 @@ import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
 import { cssUrls, origin, tags } from './qa/site.mjs';
 
-export const limits = { pageBytes: 160_000, homeBytes: 450_000, homeRequests: 15 };
+// V3: every project, mod and paper is rendered inside the home, so the home has its own code budget.
+export const limits = { pageBytes: 160_000, homePageBytes: 200_000, homeBytes: 450_000, homeRequests: 15 };
 export const snapshotUrl = 'https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json';
 
 export function checkLoad({ bytes, requests }, label = '/') {
@@ -45,7 +46,8 @@ export async function pageBudget(site, { route, source, elements }) {
     return bytes;
   }
   const bytes = await size(code);
-  assert.ok(bytes <= limits.pageBytes, route + ': ' + bytes + ' HTML+CSS+JS bytes exceed ' + limits.pageBytes);
+  const limit = route === '/' ? limits.homePageBytes : limits.pageBytes;
+  assert.ok(bytes <= limit, route + ': ' + bytes + ' HTML+CSS+JS bytes exceed ' + limit);
   if (route !== '/') return { bytes, styles };
   for (const href of code) first.add(href);
   first.add(snapshotUrl);

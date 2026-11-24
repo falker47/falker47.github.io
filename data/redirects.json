@@ -5,7 +5,7 @@
       "from": "/Nexus-portfolio/",
       "to": "/",
       "hashMap": {
-        "#projects": "/projects/",
+        "#projects": "/#progetti",
         "#certifications": "#certificazioni",
         "#contact": "#contatti",
         "#hero": ""
@@ -15,7 +15,7 @@
       "from": "/Nexus-portfolio/index.html",
       "to": "/",
       "hashMap": {
-        "#projects": "/projects/",
+        "#projects": "/#progetti",
         "#certifications": "#certificazioni",
         "#contact": "#contatti",
         "#hero": ""
@@ -57,6 +57,18 @@
     {
       "from": "/Nexus-portfolio/socialviewer-privacy.html",
       "to": "/projects/social-viewer/privacy/"
+    },
+    {
+      "from": "/projects/",
+      "to": "/",
+      "hashMap": {
+        "": "#progetti",
+        "#app": "#progetti",
+        "#giochi": "#progetti",
+        "#strumenti": "#progetti",
+        "#mod": "#progetti",
+        "#ricerca": "#ricerca"
+      }
     }
   ],
   "assets": [

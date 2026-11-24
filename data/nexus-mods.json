@@ -1,0 +1,340 @@
+{
+  "username": "falker47",
+  "checkedOn": "2026-11-23",
+  "source": "Nexus Mods GraphQL mods(filter: uploaderId)",
+  "totalCount": 27,
+  "mods": [
+    {
+      "modId": 2414,
+      "name": "Hogwarts Legacy Save Editor",
+      "kind": "mod",
+      "game": "Hogwarts Legacy",
+      "category": "Tools and Utilities",
+      "downloads": 10359,
+      "endorsements": 151,
+      "url": "https://www.nexusmods.com/hogwartslegacy/mods/2414",
+      "image": null
+    },
+    {
+      "modId": 192394,
+      "name": "Spouse Merchant",
+      "kind": "mod",
+      "game": "Skyrim Special Edition",
+      "category": "Immersion",
+      "downloads": 413,
+      "endorsements": 8,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192394",
+      "image": {
+        "src": "/assets/nexus/192394.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/192394/192394-1789845255-279195455.png"
+      }
+    },
+    {
+      "modId": 197092,
+      "name": "Slow Time Edit Extended",
+      "kind": "mod",
+      "game": "Skyrim Special Edition",
+      "category": "Magic - Gameplay",
+      "downloads": 389,
+      "endorsements": 11,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/197092",
+      "image": {
+        "src": "/assets/nexus/197092.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/197092/197092-1793137809-522329059.png"
+      }
+    },
+    {
+      "modId": 192204,
+      "name": "Soarin' Over Skyrim - Configurable Flight Speed - MCM",
+      "kind": "mod",
+      "game": "Skyrim Special Edition",
+      "category": "Patches",
+      "downloads": 365,
+      "endorsements": 6,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192204",
+      "image": {
+        "src": "/assets/nexus/192204.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/192204/192204-1790639694-885257545.png"
+      }
+    },
+    {
+      "modId": 193883,
+      "name": "Respect the Chief",
+      "kind": "mod",
+      "game": "Skyrim Special Edition",
+      "category": "Guilds/Factions",
+      "downloads": 249,
+      "endorsements": 12,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/193883",
+      "image": null
+    },
+    {
+      "modId": 197145,
+      "name": "Instant Spell Casting - Player Only (DMMF)",
+      "kind": "mod",
+      "game": "Skyrim Special Edition",
+      "category": "Magic - Gameplay",
+      "downloads": 216,
+      "endorsements": 4,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/197145",
+      "image": {
+        "src": "/assets/nexus/197145.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/197145/197145-1793174790-1372822650.png"
+      }
+    },
+    {
+      "modId": 198756,
+      "name": "Giant Shockwaves",
+      "kind": "mod",
+      "game": "Skyrim Special Edition",
+      "category": "Magic - Spells & Enchantments",
+      "downloads": 199,
+      "endorsements": 5,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/198756",
+      "image": null
+    },
+    {
+      "modId": 196979,
+      "name": "Spell Shouts MCM",
+      "kind": "mod",
+      "game": "Skyrim Special Edition",
+      "category": "Magic - Gameplay",
+      "downloads": 137,
+      "endorsements": 5,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/196979",
+      "image": {
+        "src": "/assets/nexus/196979.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/196979/196979-1793048592-814137079.png"
+      }
+    },
+    {
+      "modId": 192424,
+      "name": "Immersive Equipment Displays",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Immersion",
+      "downloads": 78,
+      "endorsements": 3,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192424",
+      "image": null
+    },
+    {
+      "modId": 196616,
+      "name": "Unrelenting Force - Fus Ro Dah as Spells - One-Click Casting",
+      "kind": "mod",
+      "game": "Skyrim Special Edition",
+      "category": "Magic - Spells & Enchantments",
+      "downloads": 69,
+      "endorsements": 1,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/196616",
+      "image": {
+        "src": "/assets/nexus/196616.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/196616/196616-1792842217-1060696012.png"
+      }
+    },
+    {
+      "modId": 192171,
+      "name": "Elianora's Breezehome Overhaul (EBO)",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Player homes",
+      "downloads": 49,
+      "endorsements": 1,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192171",
+      "image": null
+    },
+    {
+      "modId": 192318,
+      "name": "Completionist - Skyrim Completion Tracker (NG)",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Quests and Adventures",
+      "downloads": 36,
+      "endorsements": 1,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192318",
+      "image": null
+    },
+    {
+      "modId": 192150,
+      "name": "Unique Uniques SE",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Weapons",
+      "downloads": 30,
+      "endorsements": 0,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192150",
+      "image": null
+    },
+    {
+      "modId": 192352,
+      "name": "My Home is Your Home (MHiYH 2plus) - SSE",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Followers & Companions - Creatures",
+      "downloads": 30,
+      "endorsements": 0,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192352",
+      "image": null
+    },
+    {
+      "modId": 192291,
+      "name": "Dress Up Lover's NPC Outfit Changer - SE",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Utilities",
+      "downloads": 25,
+      "endorsements": 0,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192291",
+      "image": null
+    },
+    {
+      "modId": 192264,
+      "name": "Hearthfire Multiple Adoptions Expanded",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Gameplay",
+      "downloads": 24,
+      "endorsements": 1,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192264",
+      "image": null
+    },
+    {
+      "modId": 197146,
+      "name": "DMMF - Multilingual Notifications",
+      "kind": "mod",
+      "game": "Skyrim Special Edition",
+      "category": "Miscellaneous",
+      "downloads": 23,
+      "endorsements": 3,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/197146",
+      "image": {
+        "src": "/assets/nexus/197146.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/197146/197146-1793175810-735769804.png"
+      }
+    },
+    {
+      "modId": 192168,
+      "name": "Soarin' Over Skyrim 1.4.6",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Magic - Spells & Enchantments",
+      "downloads": 22,
+      "endorsements": 0,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192168",
+      "image": null
+    },
+    {
+      "modId": 192165,
+      "name": "Enchanter - More Enchantments",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Skills and Leveling",
+      "downloads": 21,
+      "endorsements": 0,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192165",
+      "image": null
+    },
+    {
+      "modId": 192317,
+      "name": "Equip Spells As Shouts (SKSE)",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Magic - Gameplay",
+      "downloads": 20,
+      "endorsements": 0,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192317",
+      "image": null
+    },
+    {
+      "modId": 192270,
+      "name": "YASTM - Yet Another Soul Trap Manager",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Gameplay",
+      "downloads": 19,
+      "endorsements": 0,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192270",
+      "image": null
+    },
+    {
+      "modId": 192290,
+      "name": "Smart Cast - Faster checks edition (Turbo mod)",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Magic - Gameplay",
+      "downloads": 19,
+      "endorsements": 0,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192290",
+      "image": null
+    },
+    {
+      "modId": 193424,
+      "name": "Detect Aura (spell)",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Cheats and God items",
+      "downloads": 18,
+      "endorsements": 0,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/193424",
+      "image": null
+    },
+    {
+      "modId": 192271,
+      "name": "Faster Nightingale Power Cooldown",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Gameplay",
+      "downloads": 15,
+      "endorsements": 0,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192271",
+      "image": null
+    },
+    {
+      "modId": 194441,
+      "name": "Miraak - Dragonborn Follower Dialogue Overhaul",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Followers & Companions",
+      "downloads": 10,
+      "endorsements": 0,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/194441",
+      "image": null
+    },
+    {
+      "modId": 197077,
+      "name": "Better Telekinesis - NG",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Patches",
+      "downloads": 6,
+      "endorsements": 0,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/197077",
+      "image": null
+    },
+    {
+      "modId": 198611,
+      "name": "Jiub's Opus",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Patches",
+      "downloads": 6,
+      "endorsements": 0,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/198611",
+      "image": null
+    }
+  ]
+}

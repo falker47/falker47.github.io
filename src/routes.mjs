@@ -2,7 +2,6 @@ import profile from '../data/profile.json' with { type: 'json' };
 import it from '../data/i18n/it.json' with { type: 'json' };
 import { graph, render } from './pages/home.mjs';
 import { render as notFound } from './pages/not-found.mjs';
-import { page as projects } from './pages/projects.mjs';
 import { page as research } from './pages/research.mjs';
 import { page as gecko } from './pages/prof-gecko.mjs';
 import { page as camaleonte } from './pages/camaleonte.mjs';
@@ -28,7 +27,7 @@ function detailRoute(page) {
   else if (entities.length) document.mainEntity = { '@id': entities[0]['@id'] };
   return {
     path: page.path, titleKey: page.titleKey, title: it[page.titleKey], descriptionKey: page.descriptionKey,
-    styles: page.styles ?? ['/styles/sheets.css', '/styles/detail.css'], image: page.image, graph: [person, document, ...entities], render: page.render,
+    styles: page.styles ?? ['/styles/detail.css'], image: page.image, graph: [person, document, ...entities], render: page.render,
   };
 }
 
@@ -37,7 +36,7 @@ export const routes = [
     path: '/',
     title: `${profile.name} (${profile.handle}) — ${profile.role}`,
     descriptionKey: 'intro',
-    styles: ['/styles/home.css'],
+    styles: ['/styles/home.css', '/styles/sections.css'],
     image: '/assets/images/maurizio-falconi-native.webp',
     graph,
     render,
@@ -47,6 +46,6 @@ export const routes = [
     descriptionKey: 'missingReason', styles: ['/styles/status.css'],
     image: profile.photo.src, render: notFound,
   },
-  ...[projects, research, gecko, camaleonte, uses].map(detailRoute),
+  ...[research, gecko, camaleonte, uses].map(detailRoute),
   ...socialViewerRoutes,
 ];

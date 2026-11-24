@@ -1,8 +1,7 @@
 import { html, raw } from '../lib/html.mjs';
 import { label } from '../partials/components.mjs';
-import { action, detailPage, section } from '../partials/detail-page.mjs';
+import { action, detailPage, facts, section } from '../partials/detail-page.mjs';
 import { icon } from '../partials/icons.mjs';
-import { specRows } from '../partials/sheets.mjs';
 
 const variants = [480, 960, 1440].map(width => ({
   src: `/assets/images/uses-${width}.webp`, width, height: width * 9 / 16,
@@ -33,9 +32,9 @@ function recommendation(t, item) {
 export function render(ctx) {
   const { t } = ctx;
   return detailPage(ctx, {
-    plate: html`<p class="tavola-label">${label(t, 'usesPageKicker')}</p>`, media: cover, altKey: 'usesImageAlt',
-    back: { href: '/', key: 'navHome' },
-    spec: specRows(t, [
+    kicker: 'usesPageKicker', media: cover, altKey: 'usesImageAlt',
+    back: { href: '/', text: 'Home' },
+    spec: facts(t, [
       ['specKind', label(t, 'usesSpecKind')], ['usesSpecCount', String(picks.length)], ['specWhere', label(t, 'usesSpecWhere')],
     ]),
     actions: [action(t, '#consigli', 'usesSeePicks', false)],

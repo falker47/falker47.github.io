@@ -65,7 +65,8 @@ test('each old URL replaces history, retaining query and remapping only its own 
       const search = '?lang=en&x=a%2Bb';
       vm.runInNewContext(script, { location: { search, hash, replace(url) { actual = url; } } });
       assert.equal(actual, legacyTarget(redirect.to, redirect.hashMap ?? {}, search, hash), redirect.from + hash);
-      if (hash === '#projects' && redirect.to === '/') assert.equal(actual, '/projects/' + search, 'Old project lists open the projects page');
+      if (hash === '#projects' && redirect.from.startsWith('/Nexus-portfolio/') && redirect.to === '/') assert.equal(actual, '/' + search + '#progetti', 'Old project lists open the projects inside the home');
+      if (hash === '' && redirect.from === '/projects/') assert.equal(actual, '/' + search + '#progetti', 'The old projects page opens the projects inside the home');
     }
   }
 });

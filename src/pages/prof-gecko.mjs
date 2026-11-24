@@ -1,8 +1,7 @@
 import projects from '../../data/projects.json' with { type: 'json' };
 import { html, raw } from '../lib/html.mjs';
 import { label } from '../partials/components.mjs';
-import { action, detailPage, plateFor, section } from '../partials/detail-page.mjs';
-import { sheetNumber, specTable } from '../partials/sheets.mjs';
+import { action, detailPage, projectFacts, section } from '../partials/detail-page.mjs';
 
 const project = projects.find(item => item.id === 'prof-gecko');
 const live = project.links.find(link => link.type === 'demo').url;
@@ -23,8 +22,8 @@ export function render(ctx) {
   const list = html`<ul class="detail-list">${raw(features.map(([heading, text]) =>
     html`<li><h3>${label(t, heading)}</h3><p>${label(t, text)}</p></li>`).join('\n'))}</ul>`;
   return detailPage(ctx, {
-    plate: plateFor(t, sheetNumber(project.id)), media: project.cover, altKey: 'geckoImageAlt',
-    spec: specTable(t, project), actions: [action(t, live, 'geckoLiveLink')],
+    kicker: 'apps', media: project.cover, altKey: 'geckoImageAlt',
+    spec: projectFacts(t, project), actions: [action(t, live, 'geckoLiveLink')],
     body: section(t, 'geckoOverviewTitle', html`<p>${label(t, 'geckoOverviewText')}</p>`, 'app')
       + section(t, 'geckoFeaturesTitle', list, 'funzioni')
       + section(t, 'geckoAccessTitle', html`<p>${label(t, 'geckoAccessText')}</p>`, 'risorse'),

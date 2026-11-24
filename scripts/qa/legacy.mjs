@@ -12,7 +12,8 @@ import { isolateNetwork } from './network.mjs';
 const { out } = await options();
 const records = [];
 const declared = new Set(routes.map(route => route.path));
-const cases = map.redirects.map(({ from, to }) => ({ from, to, sourceStatus: 200 }));
+// A stub may add a default fragment (/projects/ → /#progetti).
+const cases = map.redirects.map(({ from, to, hashMap }) => ({ from, to: legacyTarget(to, hashMap ?? {}, '', ''), sourceStatus: 200 }));
 for (const { from, to, hashMap } of map.redirects) {
   for (const hash of Object.keys(hashMap ?? {})) {
     cases.push({ from: from + '?lang=en&ref=a%2Bb' + hash, to: legacyTarget(to, hashMap, '?lang=en&ref=a%2Bb', hash), sourceStatus: 200 });
@@ -21,7 +22,7 @@ for (const { from, to, hashMap } of map.redirects) {
 cases.push(
   { from: '/Nexus-portfolio/research.html?lang=en#paper', to: '/research/?lang=en#paper', sourceStatus: 200 },
   { from: '/Nexus-portfolio/research.html', to: '/research/', sourceStatus: 200, noScript: true },
-  { from: '/Nexus-portfolio/projects/retired.html?lang=en', to: '/projects/?lang=en', sourceStatus: 404 },
+  { from: '/Nexus-portfolio/projects/retired.html?lang=en', to: '/?lang=en#progetti', sourceStatus: 404 },
   { from: '/Nexus-portfolio/missing.html?lang=en', to: '/?lang=en', sourceStatus: 404 },
   { from: '/missing-p6-page?lang=en', to: '/missing-p6-page?lang=en', sourceStatus: 404 },
 );

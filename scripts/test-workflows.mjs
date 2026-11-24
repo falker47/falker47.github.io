@@ -10,13 +10,17 @@ const pages = read('pages.yml');
 test('the Nexus refresh keeps its daily schedule, manual trigger and parser test', () => {
   assert.match(refresh, /schedule:\n\s+- cron: '24 5 \* \* \*'/);
   assert.match(refresh, /^  workflow_dispatch:/m);
-  assert.match(refresh, /node --test scripts\/test-nexus-downloads\.mjs/);
+  assert.match(refresh, /node --test scripts\/test-nexus-downloads\.mjs scripts\/test-nexus-mods\.mjs$/m);
   assert.match(refresh, /node scripts\/update-nexus-downloads\.mjs/);
 });
 
-test('the scheduled commit stages only the snapshot, with an unchanged-snapshot exit', () => {
-  assert.deepEqual([...refresh.matchAll(/^\s*git add (.+)$/gm)].map(m => m[1]), ['data/nexus-downloads.json']);
-  assert.match(refresh, /if git diff --quiet -- data\/nexus-downloads\.json; then[\s\S]*?exit 0\n\s+fi/);
+test('the scheduled commit stages only the snapshots and their pictures, with an unchanged exit', () => {
+  // V3: the same run also writes the mod list and the pictures of the original mods.
+  const scope = 'data/nexus-downloads.json data/nexus-mods.json assets/nexus';
+  assert.deepEqual([...refresh.matchAll(/^\s*git add (.+)$/gm)].map(m => m[1]), [scope]);
+  // Untracked pictures do not show in `git diff`, so the exit reads the porcelain status of the same paths.
+  assert.ok(refresh.includes('if [ -z "$(git status --porcelain -- ' + scope + ')" ]; then'));
+  assert.match(refresh, /--porcelain -- [^\n]+\n\s+echo [^\n]+\n\s+exit 0\n\s+fi/);
   assert.deepEqual([...refresh.matchAll(/^\s*git commit (.+)$/gm)].map(m => m[1]), ["-m 'data: refresh Nexus Mods download total'"]);
   assert.deepEqual([...refresh.matchAll(/^\s*git push (.+)$/gm)].map(m => m[1]), ['origin HEAD:main']);
 });

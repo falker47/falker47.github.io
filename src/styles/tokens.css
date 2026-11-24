@@ -34,31 +34,31 @@
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 
-@font-face {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url("/assets/fonts/poppins-700.woff2") format("woff2");
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-
+/* Direction V3: the master's blueprint navy stays inside the hero band. The page
+   below it and every other page use the Nexus neutrals. */
 :root {
   color-scheme: dark;
-  --bg: #071525;
-  --surface: #0b1d30;
-  --surface-raised: #0d2338;
+  --bg: #0f1014;
+  --surface: #171a21;
+  --surface-raised: #1f232c;
+  --hero-bg: #071525;
   --paper: #f1f4f5;
   --secondary: #c9d7e2;
   --muted: #adbfce;
   --blue: #9bdcff;
+  --accent: #60a5fa;
+  --violet: #a78bfa;
   --stroke: #81bfe5;
-  --rule: #304d65;
-  --control-line: #708da3;
-  --rule-soft: #1d3a52;
-  --grid-line: #9bdcff08;
-  --header-bg: #071525ee;
+  --rule: #ffffff14;
+  --control-line: #7b8799;
+  --rule-soft: #ffffff0d;
+  --header-bg: #0c0d11ed;
   --social-accent: #49c7bb;
+  --cat-app: #60a5fa;
+  --cat-game: #f0a35e;
+  --cat-tool: #4fd1a5;
+  --cat-mod: #c084fc;
+  --cat: var(--cat-app);
   --serif: "Gelasio", Georgia, serif;
   --mono: "IBM Plex Mono", "Courier New", monospace;
   --sans: "Segoe UI", system-ui, sans-serif;
@@ -70,10 +70,9 @@
   --label: 12px;
   --tracking: .08em;
   --space: 4px;
-  --grid: 32px;
   --target: 44px;
   --header-height: 64px;
-  --radius: 12px;
+  --radius: 14px;
   --motion: cubic-bezier(.22,.7,.28,1);
 }
 @media (min-width: 700px) {

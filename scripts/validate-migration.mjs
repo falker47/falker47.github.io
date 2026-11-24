@@ -20,7 +20,10 @@ export function validateCanonical(elements, route, redirect) {
   const refresh = elements.filter(e => e.name === 'meta' && e.attrs['http-equiv']?.toLowerCase() === 'refresh');
   assert.equal(refresh.length, 1, route + ': one refresh');
   const target = /^0\s*;\s*url\s*=\s*(\S+)\s*$/i.exec(refresh[0].attrs.content)?.[1];
-  assert.ok(target && new URL(target, origin + route).href === expected, route + ': immediate refresh must match canonical');
+  // The refresh may add the fragment that opens a section of the canonical page (/projects/ → /#progetti).
+  const destination = target && new URL(target, origin + route);
+  if (destination) destination.hash = '';
+  assert.ok(destination?.href === expected, route + ': immediate refresh must match canonical');
   assert.ok(elements.slice(0, elements.indexOf(refresh[0])).some(e => e.name === 'script' && !e.attrs.src
     && e.body.includes('location.replace(')), route + ': inline replacement before refresh');
 }

@@ -2,8 +2,7 @@ import projects from '../../data/projects.json' with { type: 'json' };
 import research from '../../data/research.json' with { type: 'json' };
 import { html, raw } from '../lib/html.mjs';
 import { label } from '../partials/components.mjs';
-import { action, detailPage, plateFor, section } from '../partials/detail-page.mjs';
-import { sheetNumber, specTable } from '../partials/sheets.mjs';
+import { action, detailPage, projectFacts, section } from '../partials/detail-page.mjs';
 
 const project = projects.find(item => item.id === research.id);
 
@@ -17,12 +16,15 @@ export const page = {
   })),
 };
 
+// The same texts as the Research tab of the home, followed by the arXiv title and a longer summary.
 function publication(t, paper) {
-  const key = 'researchPaper' + paper.number;
+  const home = 'paper' + paper.number, key = 'researchPaper' + paper.number;
   return html`<li class="detail-paper">
-    <p class="detail-meta">${label(t, 'researchPaperLabel')} ${paper.number} · arXiv:${paper.arxiv}</p>
-    <h3 lang="en"><a href="${paper.url}">${label(t, key + 'Title')} <span aria-hidden="true">↗</span></a></h3>
-    <p class="detail-result">${label(t, key + 'Result')}</p>
+    <p class="detail-meta">Paper ${paper.number} · arXiv ${paper.arxiv}</p>
+    <h3>${label(t, home + 'Title')}</h3>
+    <p class="detail-result">${label(t, home + 'Highlight')}</p>
+    <p>${label(t, home + 'Line')}</p>
+    <p class="detail-source" lang="en"><a href="${paper.url}">${label(t, key + 'Title')} <span aria-hidden="true">↗</span></a></p>
     <p>${label(t, key + 'Summary')}</p>
   </li>`;
 }
@@ -31,8 +33,8 @@ export function render(ctx) {
   const { t } = ctx;
   const repo = research.repositories.find(item => item.project === research.id);
   return detailPage(ctx, {
-    plate: plateFor(t, sheetNumber(project.id)), media: project.cover, altKey: 'researchImageAlt',
-    spec: specTable(t, project),
+    kicker: 'research', media: project.cover, altKey: 'researchImageAlt',
+    spec: projectFacts(t, project),
     actions: [action(t, repo.url, 'researchRepoLink'), action(t, research.zenodo.url, 'researchZenodoLink')],
     body: [
       section(t, 'researchProgramName', html`<p>${label(t, 'researchProgramSummary')}</p>`, 'ringmin'),

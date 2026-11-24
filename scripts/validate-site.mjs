@@ -9,7 +9,7 @@ import { createHash } from 'node:crypto';
 import { validateCanonical, validateMigration } from './validate-migration.mjs';
 import { pageBudget } from './budgets.mjs';
 import { checkText, designChecks } from './design-checks.mjs';
-import { validateHomeCatalogue, validateProjectsPage } from './validate-home.mjs';
+import { validateHomeCatalogue } from './validate-home.mjs';
 import { decode, openSite, origin, references, siteRoot, walk } from './qa/site.mjs';
 
 const site = await openSite();
@@ -120,13 +120,13 @@ await validateMigration(site);
 
 const html = await readFile(join(siteRoot, 'index.html'), 'utf8');
 validateHomeCatalogue(html);
-validateProjectsPage(await readFile(join(siteRoot, 'projects/index.html'), 'utf8'));
 await designChecks(siteRoot, inlineCss);
 assert.doesNotMatch(html, /href=["']\/styleguide\//, 'QA route in public navigation');
 assert.doesNotMatch(await readFile(join(siteRoot,'sitemap.xml'),'utf8'), /\/styleguide\//);
 const css = homeStyles;
 const i18n = await readFile(join(siteRoot, 'scripts/i18n.js'), 'utf8');
-assert.ok(Buffer.byteLength(html) <= 120000, 'Home exceeds 120 KB');
+// V3 renders every project, mod and paper inside the home (V2: 120 KB with three examples per tab).
+assert.ok(Buffer.byteLength(html) <= 150000, 'Home exceeds 150 KB');
 assert.ok(!/<meta\b[^>]*name="robots"[^>]*content="[^"]*no(?:index|follow)/i.test(html), 'Production must be indexable');
 assert.match(html, /<link rel="canonical" href="https:\/\/falker47\.github\.io\/"/);
 assert.match(html, /<meta name="google-site-verification" content="[^"]+"/);
@@ -152,7 +152,15 @@ assert.ok(desktopSizing,'Dedicated desktop artwork sizing must exist');
 const desktopRules=desktopSizing.replace(/\/\*[\s\S]*?\*\//g,'');
 assert.match(desktopRules,/^\s*@media\s*\(min-width:\s*1000px\)/);
 assert.match(desktopRules,/\.identity\s*\{[^}]*max-width:\s*min\(100%,\s*520px\)/);
-assert.match(desktopRules,/\.identity\s*\{[^}]*padding:\s*0;[^}]*background:\s*none;[^}]*border:\s*0;[^}]*box-shadow:\s*none;/,'No gradient frame around the card');
+assert.match(desktopRules,/\.identity\s*\{[^}]*padding:\s*0;[^}]*background:\s*none;[^}]*border:\s*0;[^}]*box-shadow:\s*none;/,'The pinned block gives the card no frame of its own');
+// V3 hero guards. The 1 px gradient ring is an absolutely positioned, masked pseudo-element, so it adds
+// nothing to the card's box; the card shadow sits on the inner surface, which the pinned block leaves free.
+assert.match(css,/\.identity::before\{[^}]*position:absolute;inset:0;[^}]*padding:1px;[^}]*background:linear-gradient\(135deg,#60a5fa66,#ffffff10 50%,#a78bfa33\);[^}]*mask:[^}]*exclude[^}]*pointer-events:none\}/,'The identity ring takes no part in layout');
+assert.match(css,/\.identity-core\{background:#12151cd1;[^}]*backdrop-filter:blur\(14px\);box-shadow:[^}]+\}/,'Identity surface and shadow');
+assert.match(css,/\.hero-band::before\{[^}]*background-size:34px 34px\}/,'The 34 px grid stays inside the hero band');
+assert.match(css,/\.hero-glow i\{[^}]*animation:hero-drift 28s ease-in-out infinite alternate/,'Hero glows drift slowly');
+assert.match(css,/@media\(prefers-reduced-motion:reduce\)\{\.hero-glow i\{animation:none\}\}/,'No drift with reduced motion');
+assert.doesNotMatch(html,/<video\b/i,'Video stays forbidden');
 assert.match(desktopRules,/\.identity-core\s*\{[^}]*width:\s*100%;[^}]*padding:\s*30px 34px;[^}]*border-radius:\s*inherit;/,'Inner card fills its container');
 assert.match(desktopRules,/@media\s*\(min-width:\s*1600px\)\s*\{[\s\S]*?\.identity-core\s*\{\s*padding:\s*32px 36px;/,'Large desktop uses inner padding');
 assert.match(desktopRules,/@media\s*\(min-width:\s*1000px\)\s*and\s*\(max-height:\s*620px\)[\s\S]*?\.identity-core\s*\{\s*padding:\s*20px 24px;/,'Short viewport uses inner padding');

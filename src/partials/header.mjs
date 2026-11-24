@@ -1,35 +1,28 @@
 import profile from '../../data/profile.json' with { type: 'json' };
 import { html, raw } from '../lib/html.mjs';
-import { flagSwitch, languageSwitch } from './language-switch.mjs';
+import { flagSwitch } from './language-switch.mjs';
 import { label } from './components.mjs';
 
-// The master's masthead: brand and flags, no navigation, not sticky.
-function masthead(copy) {
-  return html`<header class="masthead"><a class="brand" href="#main"><img class="brand-gecko" src="/assets/images/falkerlogo.png" srcset="/assets/images/falkerlogo-native.webp 1x, /assets/images/falkerlogo.png 2x" width="38" height="38" alt="" loading="lazy"><span class="brand-type"><strong>${profile.handle}</strong><span>${profile.name}</span></span></a>
-  ${raw(flagSwitch(copy.it.language))}
-</header>`;
-}
-
-const sections = [
-  ['/', 'navHome'],
-  ['/projects/', 'workTitle'],
-  ['/research/', 'research'],
-  ['/#chi-sono', 'navAbout'],
+// The three destinations live in the home: "I miei progetti" on its Software
+// or Research tab, and "Chi sono".
+export const sections = [
+  ['#progetti', 'workTitle'],
+  ['#ricerca', 'research'],
+  ['#chi-sono', 'navAbout'],
 ];
 
-function current(path, href) {
-  if (href === path) return 'page';
-  if (href === '/projects/' && path.startsWith('/projects/')) return 'true';
-  return null;
-}
-
+/**
+ * One full-width bar for every page. On the home the links stay on the page (a
+ * path would drop the ?lang= query and reload it). On a phone the links move
+ * into a menu button; without scripts they stay visible as a second row.
+ */
 export function header({ route, copy, t }) {
-  if (route.path === '/') return masthead(copy);
-  return html`<header class="site-header"><a class="site-brand" href="/" aria-label="${profile.handle} ${profile.name}">
-    <img src="/assets/images/falkerlogo.png" loading="lazy" width="36" height="36" alt=""><span>${profile.handle} <small>${profile.name}</small></span></a>
-  <nav class="site-nav" data-label="navSite" aria-label="${copy.it.navSite}">${raw(sections.map(([href, key]) => {
-    const state = current(route.path, href);
-    return html`<a href="${href}"${raw(state ? html` aria-current="${state}"` : '')}>${label(t, key)}</a>`;
-  }).join(''))}</nav>
-  ${raw(languageSwitch(copy.it.language))}</header>`;
+  const home = route.path === '/';
+  const links = sections.map(([hash, key]) => html`<a href="${home ? hash : '/' + hash}">${label(t, key)}</a>`).join('');
+  return html`<header class="site-header"><div class="header-bar wrap">
+  <a class="site-brand" href="${home ? '#main' : '/'}" aria-label="${profile.handle} ${profile.name}"><img class="brand-gecko" src="/assets/images/falkerlogo.png" srcset="/assets/images/falkerlogo-native.webp 1x, /assets/images/falkerlogo.png 2x" width="38" height="38" alt="" loading="lazy"><span class="brand-type"><strong>${profile.handle}</strong><span>${profile.name}</span></span></a>
+  <nav class="site-nav" id="site-nav" data-label="navSite" aria-label="${copy.it.navSite}">${raw(links)}</nav>
+  ${raw(flagSwitch(copy.it.language))}
+  <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-label="navMenu" aria-label="${copy.it.navMenu}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</div></header>`;
 }

@@ -654,7 +654,8 @@
     },
     "stack": [
       "Python",
-      "CustomTkinter"
+      "PySide6",
+      "Qt Quick"
     ],
     "where": {
       "it": "Windows, dal codice su GitHub",

@@ -124,7 +124,9 @@ test('featured mods, certificates, research, tutoring and profile have their req
     assert.ok(['I', 'II'].includes(paper.number));
     string(paper.title);
     pair(paper.summary);
+    pair(paper.heading);
     pair(paper.highlight);
+    pair(paper.line);
     assert.equal(paper.url, 'https://arxiv.org/abs/' + paper.arxiv);
   }
   assert.deepEqual(research.repositories.map(r => r.project), ['ringmin', 'power-ringmin']);
@@ -237,12 +239,15 @@ test('responsive markup localizes alt text and opts priority images into eager l
 });
 
 test('the QA Data section shows all 30 entries and keeps planned routes out of navigation', () => {
+  // Covers are pictures; the certificates are the cards of the fan deck.
   const markup = styleguide.render({ t: key => it[key], copy: { it, en } });
   const section = markup.match(/<section [^>]*id="data"[^>]*>([\s\S]*?)<\/section>/);
   assert.ok(section, 'Missing Data section');
   const elements = tags(section[1]);
   const expected = [...projects.map(p => p.cover), ...mods.items.map(m => m.cover), ...certs.map(c => c.thumbnail)];
-  assert.equal(elements.filter(e => e.name === 'picture').length, expected.length);
+  assert.equal(expected.length, 30);
+  assert.equal(elements.filter(e => e.name === 'picture').length, projects.length + mods.items.length);
+  assert.equal(elements.filter(e => e.name === 'button' && e.attrs.class === 'deck-card').length, certs.length);
   assert.deepEqual(elements.filter(e => e.name === 'img' && e.attrs.src).map(e => e.attrs.src), expected.map(image => image.src));
   const built = new Set(routes.map(route => route.path));
   const planned = new Set([...projects.map(p => p.page), '/projects/social-viewer/test/'].filter(path => path && !built.has(path)));

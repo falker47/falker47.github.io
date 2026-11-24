@@ -23,19 +23,19 @@ jobs:
         with:
           node-version: '22'
       - name: Test stats parser and localization
-        run: node --test scripts/test-nexus-downloads.mjs
-      - name: Read Nexus Mods and refresh snapshot
+        run: node --test scripts/test-nexus-downloads.mjs scripts/test-nexus-mods.mjs
+      - name: Read Nexus Mods and refresh snapshots
         env:
           NEXUS_API_KEY: ${{ secrets.NEXUS_API_KEY }}
         run: node scripts/update-nexus-downloads.mjs
-      - name: Commit updated snapshot only
+      - name: Commit updated snapshots only
         run: |
-          if git diff --quiet -- data/nexus-downloads.json; then
-            echo 'Snapshot already current'
+          if [ -z "$(git status --porcelain -- data/nexus-downloads.json data/nexus-mods.json assets/nexus)" ]; then
+            echo 'Snapshots already current'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/nexus-downloads.json
+          git add data/nexus-downloads.json data/nexus-mods.json assets/nexus
           git commit -m 'data: refresh Nexus Mods download total'
           git push origin HEAD:main

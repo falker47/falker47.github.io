@@ -72,12 +72,14 @@ try {
   const stubs = new Map();
   const stubStyles = await assets.styles({ styles: ['/styles/status.css'] }, '');
   for (const entry of (await json('redirects.json')).redirects) {
-    if (!entry.from.startsWith('/Nexus-portfolio/') || entry.to.startsWith('/Nexus-portfolio/')) {
+    // Stubs: the old portfolio's pages and /projects/, whose projects now live in the home.
+    if (!(entry.from.startsWith('/Nexus-portfolio/') || entry.from === '/projects/') || entry.to.startsWith('/Nexus-portfolio/')) {
       throw Error(`Unexpected legacy mapping ${entry.from} → ${entry.to}`);
     }
     pageFile(next, entry.to);
     const file = pageFile(next, entry.from);
     const markup = minifyHtml(redirectPage(entry, copy, stubStyles));
+    if (pages.has(file)) throw Error(`A stub would replace the page ${entry.from}`);
     if (stubs.has(file) && stubs.get(file) !== markup) throw Error(`Conflicting legacy aliases: ${entry.from}`);
     stubs.set(file, markup);
   }

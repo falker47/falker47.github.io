@@ -3,7 +3,8 @@ import { initialLanguageScript } from '../partials/language-switch.mjs';
 import { origin } from '../routes.mjs';
 
 // A fragment maps to another fragment of the destination ("#contact" → "#contatti")
-// or to another page ("#projects" → "/projects/"). The query string is always kept.
+// or to another page ("#projects" → "/#progetti"). The empty key is the fragment
+// for a visit without one ("/projects/" → "/#progetti"). The query string is always kept.
 export function legacyTarget(to, fragments, search, hash) {
   const mapped = Object.prototype.hasOwnProperty.call(fragments, hash) ? fragments[hash] : hash;
   if (mapped.charAt(0) !== '/') return to + search + mapped;
@@ -12,6 +13,8 @@ export function legacyTarget(to, fragments, search, hash) {
 }
 
 export function redirectPage({ to, hashMap = {} }, copy, styles) {
+  // The native refresh and the visible links carry the default fragment too.
+  const fragment = hashMap[''] ?? '';
   return html`<!doctype html>
 <html lang="it">
 <head>
@@ -24,7 +27,7 @@ export function redirectPage({ to, hashMap = {} }, copy, styles) {
   const fragments = ${jsonScript(hashMap)};
   location.replace((${raw(legacyTarget.toString())})(target, fragments, location.search, location.hash));
 </script>
-<meta http-equiv="refresh" content="0; url=${to}">
+<meta http-equiv="refresh" content="0; url=${to + fragment}">
 ${raw(initialLanguageScript({ titleKey: 'moved' }, copy))}
 <meta name="description" data-meta-i18n="moved" content="${copy.it.moved}">
 <meta property="og:title" content="${copy.it.moved}">
@@ -40,10 +43,10 @@ ${raw(styles)}
     <p class="status-code">falker47</p>
     <h1 data-i18n="moved">${copy.it.moved}</h1>
     <noscript><p class="status-translation" lang="en">${copy.en.moved}</p></noscript>
-    <p class="status-path"><code>${to}</code></p>
+    <p class="status-path"><code>${to + fragment}</code></p>
     <div class="status-actions">
-      <a href="${to}" lang="it">${copy.it.visitDestination}</a>
-      <a href="${to}?lang=en" lang="en">${copy.en.visitDestination}</a>
+      <a href="${to + fragment}" lang="it">${copy.it.visitDestination}</a>
+      <a href="${to}?lang=en${fragment}" lang="en">${copy.en.visitDestination}</a>
     </div>
   </div>
 </main>

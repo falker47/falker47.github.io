@@ -1,49 +1,45 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { test } from 'node:test';
-import { validateHomeCatalogue, validateProjectsPage } from './validate-home.mjs';
+import { validateHomeCatalogue } from './validate-home.mjs';
 
 const home = await readFile(new URL('../_site/index.html', import.meta.url), 'utf8');
-const sheets = await readFile(new URL('../_site/projects/index.html', import.meta.url), 'utf8');
 
-test('the home is the master layout with data-driven counts', () => {
+test('the home keeps the master structure and renders every catalogue from data', () => {
   validateHomeCatalogue(home);
-  const stale = home.replace(/(<a class="result" href="\/projects\/#giochi">[^]*?<strong class="result-value">)\d+/, (_, start) => start + '9');
-  assert.throws(() => validateHomeCatalogue(stale), /giochi/);
-  assert.throws(() => validateHomeCatalogue(home.replace('<details class="work" id="cosa-faccio">', '<details class="work" id="cosa-faccio" open>')), /collapsed/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<details class="work" id="progetti">', '<details class="work" id="progetti" open>')), /collapsed/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<a class="cta primary-cta" href="#progetti">', '<a class="cta primary-cta" href="/projects/">')), /hero action/);
+  assert.throws(() => validateHomeCatalogue(home.replace('aria-pressed="true"><strong>4</strong>', 'aria-pressed="true"><strong>9</strong>')), /Software toggles/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<p class="card-stack">Python · PySide6 · Qt Quick</p>', '<p class="card-stack">Python · CustomTkinter</p>')), /panacea stack/);
 });
 
-test('the home rejects R1 components and the sticky header', () => {
-  for (const name of ['register-row', 'filter-chips', 'register-tabs', 'site-header']) {
+test('the home rejects V2 and R1 components', () => {
+  for (const name of ['masthead', 'register-row', 'filter-chips', 'register-tabs', 'tavola', 'portfolio-cta']) {
     assert.throws(() => validateHomeCatalogue(home.replace('</main>', `<div class="${name}"></div></main>`)), new RegExp(name));
   }
 });
 
-test('home links reach the new pages instead of the legacy portfolio', () => {
+test('home links reach existing pages, never the legacy portfolio or the old projects page', () => {
   const legacy = '<a href="https://falker47.github.io/Nexus-portfolio/">Portfolio</a>';
   assert.throws(() => validateHomeCatalogue(home.replace('</main>', legacy + '</main>')), /new pages/);
-  assert.throws(() => validateHomeCatalogue(home.replace('<a class="portfolio-cta" href="/projects/">', '<a class="portfolio-cta" href="/#progetti">')));
+  assert.throws(() => validateHomeCatalogue(home.replace('</main>', '<a href="/projects/">Progetti</a></main>')), /Unknown internal page/);
   assert.throws(() => validateHomeCatalogue(home.replace('href="/projects/social-viewer/"', 'href="/projects/missing/"')));
 });
 
-test('every project sheet keeps its order, plate number and destinations', () => {
-  validateProjectsPage(sheets);
-  assert.throws(() => validateProjectsPage(sheets.replace('<span data-i18n="sheetLabel">Tav.</span> 02', '<span data-i18n="sheetLabel">Tav.</span> 03')), /plate/);
-  assert.throws(() => validateProjectsPage(sheets.replace('href="/projects/prof-gecko/"', 'href="https://profgecko.vercel.app/"')), /first link/);
-  assert.throws(() => validateProjectsPage(sheets.replace('href="https://github.com/falker47/HogwartsLegacy-SaveEditor"', 'href="https://github.com/falker47"')), /GitHub/);
-  assert.throws(() => validateProjectsPage(sheets.replace(/<span class="index-count">4<\/span>/, '<span class="index-count">5</span>')));
+test('the Modding tab lists every published mod with its own numbers and picture rule', () => {
+  assert.throws(() => validateHomeCatalogue(home.replace(/(<strong><span data-i18n-number=")(\d+)(")/, (_, start, value, end) => start + (Number(value) + 1) + end)), /counts/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<div class="mod-type"><span class="pill">IT</span>', '<div class="mod-type"><img src="/assets/nexus/1.webp" width="1" height="1" alt=""><span class="pill">IT</span>')), /translation has no picture/);
+  assert.throws(() => validateHomeCatalogue(home.replace('href="https://github.com/falker47/HogwartsLegacy-SaveEditor"', 'href="https://github.com/falker47"')), /repository/);
+  assert.throws(() => validateHomeCatalogue(home.replace(/<time data-nexus-stat="checkedOn" datetime="[\d-]+">/, '<time data-nexus-stat="checkedOn" datetime="2020-01-01">')), /Snapshot date/);
 });
 
-test('the sheet partial links exactly the project pages this site renders', async () => {
-  const { projectPages } = await import('../src/partials/sheets.mjs');
-  const { routes } = await import('../src/routes.mjs');
-  const projects = (await import('../data/projects.json', { with: { type: 'json' } })).default;
-  const rendered = new Set(routes.map(route => route.path));
-  assert.deepEqual([...projectPages].sort(), projects.map(project => project.page).filter(page => page && rendered.has(page)).sort());
+test('the Research tab draws the certified configurations and both kinds of dots', () => {
+  assert.throws(() => validateHomeCatalogue(home.replace('<circle class="rm-dot rm-open"', '<circle class="rm-dot"')), /dots/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<circle class="rm-floating"', '<circle class="rm-circle"')));
+  assert.throws(() => validateHomeCatalogue(home.replace('C* sta sopra questa linea ↑', 'C* sta sotto questa linea')));
 });
 
-test('the Save Editor sheet preserves both original project destinations', () => {
-  const editor = sheets.match(/<article class="tavola[^"]*" aria-labelledby="tav-hogwarts-legacy-save-editor">[^]*?<\/article>/)[0];
-  assert.match(editor, /class="tavola-link" href="https:\/\/www\.nexusmods\.com\/hogwartslegacy\/mods\/2414"/);
-  assert.match(editor, /class="tavola-link" href="https:\/\/github\.com\/falker47\/HogwartsLegacy-SaveEditor"/);
+test('Chi sono keeps the journey between text and philosophy and one deck card per certificate', () => {
+  assert.throws(() => validateHomeCatalogue(home.replace('<g class="jr-node jr-current"', '<g class="jr-node"')), /highlights today/);
+  assert.throws(() => validateHomeCatalogue(home.replace(/<button type="button" class="deck-card" style="--i:10"[^]*?<\/button>/, '')), /One card per certificate/);
 });

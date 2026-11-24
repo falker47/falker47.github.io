@@ -1,12 +1,10 @@
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-padding-block-start: 16px; }
+/* The header is sticky: anchors and deep links stop 76 px below the top. */
+html { scroll-padding-block-start: 76px; }
 body {
   margin: 0;
   color: var(--paper);
   background-color: var(--bg);
-  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
-                    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: var(--grid) var(--grid);
   font: var(--body)/1.6 var(--sans);
 }
 :where(h1, h2, h3, p, figure) { margin: 0; }
@@ -22,8 +20,12 @@ button { font: inherit; color: inherit; }
 /* Reserve chrome and choose one SVG before a large route sheet arrives. The
    zero-specificity defaults allow the page's own rules to refine its layout. */
 :where(.icon-sprite) { position: absolute; }
-:where(.site-header) { display: flex; align-items: center; min-height: var(--header-height); }
-:where(.site-brand) { margin-inline-end: auto; }
+:where(.site-header) { position: sticky; top: 0; z-index: 20; background: var(--header-bg); border-bottom: 1px solid var(--rule); }
+:where(.header-bar) { display: flex; align-items: center; gap: 8px; min-height: calc(var(--header-height) - 1px); }
+:where(.site-brand) { display: flex; align-items: center; gap: 10px; margin-inline-end: auto; color: var(--paper); text-decoration: none; }
+:where(.site-nav) { display: flex; }
+:where(.menu-button) { display: none; }
+:where(.hero-band) { position: relative; background: var(--hero-bg); border-bottom: 1px solid var(--rule); }
 html:lang(it) .hero-lead h1 [lang="en"], html:lang(en) .hero-lead h1 [lang="it"] { display: none !important; }
 @media (max-width: 999px) {
   :where(.desktop-engine) { display: none; }
@@ -35,7 +37,10 @@ html:lang(it) .hero-lead h1 [lang="en"], html:lang(en) .hero-lead h1 [lang="it"]
 @media (min-width: 1000px) { :where(.mobile-engine) { display: none; } }
 [hidden] { display: none !important; }
 @media (scripting: enabled) {
-  .work:not(.work-enhanced) .work-panel ~ .work-panel { display: none; }
+  /* Scripts show one tab and one category at a time: hide the others before they run. */
+  .work:not(.work-enhanced) .work-panel ~ .work-panel,
+  .picker:not(.picker-enhanced) .picker-group ~ .picker-group { display: none; }
+  @media (max-width: 699px) { .site-header:not(.menu-open) .site-nav { display: none; } }
 }
 :focus-visible, [data-preview="focus"] { outline: 2px solid var(--blue); outline-offset: 4px; }
 ::selection { color: var(--bg); background: var(--blue); }
@@ -45,13 +50,13 @@ html:lang(it) .hero-lead h1 [lang="en"], html:lang(en) .hero-lead h1 [lang="it"]
 }
 .skip {
   min-width: var(--target); min-height: var(--target);
-  position: fixed; z-index: 12; inset: 8px auto auto 8px; padding: 8px 16px;
+  position: fixed; z-index: 30; inset: 8px auto auto 8px; padding: 8px 16px;
   transform: translateY(-200%); background: var(--surface); color: var(--blue);
 }
 .skip:focus { transform: none; }
-.page { max-width: 1504px; margin-inline: auto; padding-inline: 16px; }
-@media (min-width: 600px) { .page { padding-inline: 40px; } }
-@media (min-width: 1000px) { .page { padding-inline: 48px; } }
+.page, .wrap { max-width: 1504px; margin-inline: auto; padding-inline: 16px; }
+@media (min-width: 600px) { .page, .wrap { padding-inline: 40px; } }
+@media (min-width: 1000px) { .page, .wrap { padding-inline: 48px; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

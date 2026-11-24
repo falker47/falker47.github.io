@@ -26,11 +26,13 @@ test('detail pages publish a priority picture, a canonical author and working re
     assert.equal(person['@id'], origin + '/#person');
     assert.equal(person.jobTitle, 'AI & Digital Innovation Specialist');
     assert.equal(graph.find(item => item.url === origin + path).author['@id'], person['@id']);
-    // "← Progetti" for project pages, "← Home" for the recommendations.
+    // "← I miei progetti" for project pages, "← Home" for the recommendations.
     const crumb = source.match(/<nav class="detail-crumbs"[^>]*><a href="([^"]+)">/);
-    assert.equal(crumb?.[1], path === '/uses/' ? '/' : '/projects/', path + ' breadcrumb');
-    assert.match(source, /<article class="tavola tavola-top[^"]*" aria-labelledby="page-title">[^]*?<table class="spec">/, path + ' top sheet');
-    assert.ok(!/class="[^"]*\b(?:register-row|filter-chips|register-tabs)\b/.test(source), path + ' R1 components');
+    assert.equal(crumb?.[1], path === '/uses/' ? '/' : '/#progetti', path + ' breadcrumb');
+    assert.match(source, /<article class="detail-top[^"]*" aria-labelledby="page-title">[^]*?<dl class="facts">/, path + ' page top');
+    assert.ok(!/class="[^"]*\b(?:register-row|filter-chips|register-tabs|tavola|sheet-frame|spec)\b/.test(source), path + ' retired components');
+    assert.deepEqual(elements.filter(el => el.name === 'a' && el.attrs.href?.startsWith('/#')).map(el => el.attrs.href).slice(0, 3),
+      ['/#progetti', '/#ricerca', '/#chi-sono'], path + ' header links');
     assert.match(source, /<footer\b[\s\S]*?<a href="\/uses\/"/);
   }
 });
@@ -42,16 +44,21 @@ test('Ringmin articles preserve their identifiers, summaries and authorship', ()
   const collection = graph.find(item => item['@type'] === 'CollectionPage');
   assert.deepEqual(collection.hasPart.map(item => item['@id']), articles.map(item => item['@id']));
   assert.deepEqual(articles.map(item => item.identifier), research.papers.map(paper => 'arXiv:' + paper.arxiv));
+  assert.equal(articles[0].headline, 'Minimum central circles: chain order, seam obstructions, and exact finite certification');
   for (const [index, article] of articles.entries()) {
     const paper = research.papers[index];
     assert.equal(article.url, paper.url);
     assert.equal(article.author['@id'], origin + '/#person');
-    const key = 'researchPaper' + paper.number;
+    const key = 'researchPaper' + paper.number, home = 'paper' + paper.number;
     for (const lang of ['it', 'en']) {
       assert.equal(copy[lang].researchProgramSummary, research.summary[lang]);
       assert.equal(copy[lang][key + 'Title'], paper.title);
       assert.equal(copy[lang][key + 'Summary'], paper.summary[lang]);
-      assert.equal(copy[lang][key + 'Result'], paper.highlight[lang]);
+      // The same three texts as the Research tab of the home.
+      assert.equal(copy[lang][home + 'Title'], paper.heading[lang]);
+      assert.equal(copy[lang][home + 'Highlight'], paper.highlight[lang]);
+      assert.equal(copy[lang][home + 'Line'], paper.line[lang]);
+      assert.doesNotMatch(paper.summary[lang], /euristic|heuristic/i);
     }
   }
 });

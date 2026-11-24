@@ -10,11 +10,11 @@ export async function layout(ctx, bundleScripts) {
 <body>
 ${raw(sprite())}
 <a class="skip" href="#main" data-i18n="skip">${t('skip')}</a>
-<div class="page">
 ${raw(header(ctx))}
-${raw(route.render(ctx))}
-${raw(footer(ctx))}
-</div>`;
+${raw(route.path === '/'
+    // The home's hero is a full-bleed band, so its sections bring their own gutters.
+    ? route.render(ctx) + '\n' + footer(ctx)
+    : '<div class="page">\n' + route.render(ctx) + '\n' + footer(ctx) + '\n</div>')}`;
   const keys = new Set(Array.from(content.matchAll(/\bdata-(?:i18n|label|meta-i18n)="([^"]+)"/g), match => match[1]));
   const scripts = [];
   if (/\bdata-(?:alt|text)-it="/.test(content)) scripts.push('/scripts/catalogue.js');

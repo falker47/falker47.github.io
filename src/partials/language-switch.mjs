@@ -20,17 +20,10 @@ export function initialLanguageScript(route, copy) {
 </script>`;
 }
 
-export function languageSwitch(label) {
-  return html`<div class="language-switch" role="group" aria-label="${label}" data-label="language">
-    <button type="button" disabled data-lang="it" lang="it" aria-label="IT · Italiano" aria-pressed="true">IT</button>
-    <button type="button" disabled data-lang="en" lang="en" aria-label="EN · English" aria-pressed="false">EN</button>
-  </div>`;
-}
-
-// The master's flag buttons on the home. The buttons work once the script runs.
+// The master's flag buttons, in the header of every page. The buttons work once the script runs.
 export function flagSwitch(label) {
-  return html`<nav class="language" aria-label="${label}" data-label="language">
+  return html`<div class="language" role="group" aria-label="${label}" data-label="language">
   <button type="button" disabled data-lang="it" lang="it" aria-label="Italiano" aria-pressed="true"><img class="lang-flag" src="/assets/images/flag-it.png" srcset="/assets/images/flag-it-native.png 1x, /assets/images/flag-it.png 2x" width="24" height="16" alt="" aria-hidden="true" loading="lazy"></button>
   <button type="button" disabled data-lang="en" lang="en" aria-label="English" aria-pressed="false"><img class="lang-flag" src="/assets/images/flag-en.png" srcset="/assets/images/flag-en-native.png 1x, /assets/images/flag-en.png 2x" width="24" height="16" alt="" aria-hidden="true" loading="lazy"></button>
-</nav>`;
+</div>`;
 }

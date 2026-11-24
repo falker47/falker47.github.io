@@ -62,7 +62,8 @@ test('validator counts delivered bytes once, lazy hero assets and forbidden CSS 
   assert.equal((await budget()).bytes, Buffer.byteLength(source) + 3);
   await writeFile(join(root, 'p.webp'), Buffer.alloc(450_000));
   await assert.rejects(budget, /first-load bytes/);
-  await writeFile(join(root, 's.css'), 'a'.repeat(160_000));
+  // The home has its own code budget since V3 (every project lives in it).
+  await writeFile(join(root, 's.css'), 'a'.repeat(200_000));
   await assert.rejects(budget, /HTML\+CSS\+JS/);
   await writeFile(join(root, 's.css'), '.a{background:url(https://example.org/img.png)}');
   await assert.rejects(budget, /external stylesheet resource/);

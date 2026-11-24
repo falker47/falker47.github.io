@@ -3,7 +3,7 @@ import { stat, readFile } from 'node:fs/promises';
 import { walk } from './qa/site.mjs';
 
 const systemFamilies = new Set(['system-ui','sans-serif','serif','monospace','cursive','fantasy','ui-serif','ui-sans-serif','ui-monospace','ui-rounded','arial','helvetica','georgia','times new roman','courier new','segoe ui','sfmono-regular','menlo','monaco','consolas','inherit','initial','unset','revert','revert-layer','-apple-system','blinkmacsystemfont','helvetica neue']);
-const roots = ['.site-header', '.site-footer', '.tavola', '.sheets-index', '.detail-crumbs'];
+const roots = ['.site-header', '.site-footer', '.detail-top', '.detail-crumbs', '.deck', '.work'];
 
 function rules(css) {
   // Leaf blocks also cover declarations inside media queries.
@@ -79,6 +79,10 @@ export async function designChecks(siteRoot, inlineCss = []) {
   if (tokens.has('--control-line')) for (const background of darkSurfaces) {
     for (const border of ['--control-line', '--blue', '--stroke']) contrast(border, background, 3);
   }
+  // Category and accent colours mark labels on every dark surface (V3).
+  for (const ink of ['--accent', '--cat-app', '--cat-game', '--cat-tool', '--cat-mod']) {
+    if (tokens.has(ink)) for (const background of darkSurfaces) contrast(ink, background);
+  }
   const covered = new Set();
   for (const { selector, values } of all) {
     let family = values.get('font-family');
@@ -104,7 +108,7 @@ export async function designChecks(siteRoot, inlineCss = []) {
         covered.add(root);
       }
     }
-    if (/\.(?:site-header|site-nav|site-footer|work-tabs|tavola|sheets-index|detail-crumbs)\b[^,{]*(?:\s[ab]\b|\sbutton\b)|\.(?:tavola-link|site-brand)\b/.test(selector) && /^\d+(?:\.\d+)?px$/.test(min)) {
+    if (/\.(?:site-header|site-nav|site-footer|work-tabs|detail-top|detail-crumbs|card-links|picker-bar|deck)\b[^,{]*(?:\s[ab]\b|\sbutton\b)|\.(?:detail-link|site-brand|picker-toggle|rail-step|menu-button|viewer-step)\b/.test(selector) && /^\d+(?:\.\d+)?px$/.test(min)) {
       assert.ok(parseFloat(min) >= 44, `${selector}: min-height ${min}`);
     }
   }
