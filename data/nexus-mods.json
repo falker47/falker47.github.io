@@ -1,6 +1,6 @@
 {
   "username": "falker47",
-  "checkedOn": "2026-11-23",
+  "checkedOn": "2026-11-24",
   "source": "Nexus Mods GraphQL mods(filter: uploaderId)",
   "totalCount": 27,
   "mods": [
@@ -10,8 +10,8 @@
       "kind": "mod",
       "game": "Hogwarts Legacy",
       "category": "Tools and Utilities",
-      "downloads": 10359,
-      "endorsements": 151,
+      "downloads": 10382,
+      "endorsements": 153,
       "url": "https://www.nexusmods.com/hogwartslegacy/mods/2414",
       "image": null
     },
@@ -37,7 +37,7 @@
       "kind": "mod",
       "game": "Skyrim Special Edition",
       "category": "Magic - Gameplay",
-      "downloads": 389,
+      "downloads": 394,
       "endorsements": 11,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/197092",
       "image": {
@@ -53,7 +53,7 @@
       "kind": "mod",
       "game": "Skyrim Special Edition",
       "category": "Patches",
-      "downloads": 365,
+      "downloads": 367,
       "endorsements": 6,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192204",
       "image": {
@@ -69,7 +69,7 @@
       "kind": "mod",
       "game": "Skyrim Special Edition",
       "category": "Guilds/Factions",
-      "downloads": 249,
+      "downloads": 250,
       "endorsements": 12,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/193883",
       "image": null
@@ -80,8 +80,8 @@
       "kind": "mod",
       "game": "Skyrim Special Edition",
       "category": "Magic - Gameplay",
-      "downloads": 216,
-      "endorsements": 4,
+      "downloads": 217,
+      "endorsements": 6,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/197145",
       "image": {
         "src": "/assets/nexus/197145.webp",
@@ -96,8 +96,8 @@
       "kind": "mod",
       "game": "Skyrim Special Edition",
       "category": "Magic - Spells & Enchantments",
-      "downloads": 199,
-      "endorsements": 5,
+      "downloads": 203,
+      "endorsements": 6,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/198756",
       "image": null
     },
@@ -107,8 +107,8 @@
       "kind": "mod",
       "game": "Skyrim Special Edition",
       "category": "Magic - Gameplay",
-      "downloads": 137,
-      "endorsements": 5,
+      "downloads": 138,
+      "endorsements": 6,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/196979",
       "image": {
         "src": "/assets/nexus/196979.webp",
@@ -126,7 +126,12 @@
       "downloads": 78,
       "endorsements": 3,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192424",
-      "image": null
+      "image": {
+        "src": "/assets/nexus/192424.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/192424/192424-1789867800-2037561252.png"
+      }
     },
     {
       "modId": 196616,
@@ -134,7 +139,7 @@
       "kind": "mod",
       "game": "Skyrim Special Edition",
       "category": "Magic - Spells & Enchantments",
-      "downloads": 69,
+      "downloads": 72,
       "endorsements": 1,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/196616",
       "image": {
@@ -153,7 +158,12 @@
       "downloads": 49,
       "endorsements": 1,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192171",
-      "image": null
+      "image": {
+        "src": "/assets/nexus/192171.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/192171/192171-1789821007-1323019613.png"
+      }
     },
     {
       "modId": 192318,
@@ -164,7 +174,12 @@
       "downloads": 36,
       "endorsements": 1,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192318",
-      "image": null
+      "image": {
+        "src": "/assets/nexus/192318.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/192318/192318-1789823758-1933290350.png"
+      }
     },
     {
       "modId": 192150,
@@ -175,7 +190,12 @@
       "downloads": 30,
       "endorsements": 0,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192150",
-      "image": null
+      "image": {
+        "src": "/assets/nexus/192150.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/192150/192150-1789817849-427357320.png"
+      }
     },
     {
       "modId": 192352,
@@ -186,7 +206,28 @@
       "downloads": 30,
       "endorsements": 0,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192352",
-      "image": null
+      "image": {
+        "src": "/assets/nexus/192352.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/192352/192352-1789824097-307206086.png"
+      }
+    },
+    {
+      "modId": 192264,
+      "name": "Hearthfire Multiple Adoptions Expanded",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Gameplay",
+      "downloads": 25,
+      "endorsements": 1,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192264",
+      "image": {
+        "src": "/assets/nexus/192264.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/192264/192264-1789821454-1654082245.png"
+      }
     },
     {
       "modId": 192291,
@@ -197,18 +238,12 @@
       "downloads": 25,
       "endorsements": 0,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192291",
-      "image": null
-    },
-    {
-      "modId": 192264,
-      "name": "Hearthfire Multiple Adoptions Expanded",
-      "kind": "translation",
-      "game": "Skyrim Special Edition",
-      "category": "Gameplay",
-      "downloads": 24,
-      "endorsements": 1,
-      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192264",
-      "image": null
+      "image": {
+        "src": "/assets/nexus/192291.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/192291/192291-1789816344-565831651.png"
+      }
     },
     {
       "modId": 197146,
@@ -235,7 +270,12 @@
       "downloads": 22,
       "endorsements": 0,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192168",
-      "image": null
+      "image": {
+        "src": "/assets/nexus/192168.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/192168/192168-1789657146-1635287359.png"
+      }
     },
     {
       "modId": 192165,
@@ -246,7 +286,28 @@
       "downloads": 21,
       "endorsements": 0,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192165",
-      "image": null
+      "image": {
+        "src": "/assets/nexus/192165.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/192165/192165-1789820416-156792973.png"
+      }
+    },
+    {
+      "modId": 192270,
+      "name": "YASTM - Yet Another Soul Trap Manager",
+      "kind": "translation",
+      "game": "Skyrim Special Edition",
+      "category": "Gameplay",
+      "downloads": 20,
+      "endorsements": 0,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192270",
+      "image": {
+        "src": "/assets/nexus/192270.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/192270/192270-1789824469-506574347.png"
+      }
     },
     {
       "modId": 192317,
@@ -257,18 +318,12 @@
       "downloads": 20,
       "endorsements": 0,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192317",
-      "image": null
-    },
-    {
-      "modId": 192270,
-      "name": "YASTM - Yet Another Soul Trap Manager",
-      "kind": "translation",
-      "game": "Skyrim Special Edition",
-      "category": "Gameplay",
-      "downloads": 19,
-      "endorsements": 0,
-      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192270",
-      "image": null
+      "image": {
+        "src": "/assets/nexus/192317.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/192317/192317-1789823405-1644170483.png"
+      }
     },
     {
       "modId": 192290,
@@ -279,7 +334,12 @@
       "downloads": 19,
       "endorsements": 0,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192290",
-      "image": null
+      "image": {
+        "src": "/assets/nexus/192290.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/192290/192290-1789818394-1740536967.png"
+      }
     },
     {
       "modId": 193424,
@@ -290,7 +350,12 @@
       "downloads": 18,
       "endorsements": 0,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/193424",
-      "image": null
+      "image": {
+        "src": "/assets/nexus/193424.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/193424/193424-1790694105-659198969.png"
+      }
     },
     {
       "modId": 192271,
@@ -301,7 +366,12 @@
       "downloads": 15,
       "endorsements": 0,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192271",
-      "image": null
+      "image": {
+        "src": "/assets/nexus/192271.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/192271/192271-1789822909-1748368125.png"
+      }
     },
     {
       "modId": 194441,
@@ -312,7 +382,12 @@
       "downloads": 10,
       "endorsements": 0,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/194441",
-      "image": null
+      "image": {
+        "src": "/assets/nexus/194441.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/194441/194441-1791408163-826854553.png"
+      }
     },
     {
       "modId": 197077,
@@ -323,7 +398,12 @@
       "downloads": 6,
       "endorsements": 0,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/197077",
-      "image": null
+      "image": {
+        "src": "/assets/nexus/197077.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/197077/197077-1793129994-872817297.png"
+      }
     },
     {
       "modId": 198611,
@@ -334,7 +414,12 @@
       "downloads": 6,
       "endorsements": 0,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/198611",
-      "image": null
+      "image": {
+        "src": "/assets/nexus/198611.webp",
+        "width": 385,
+        "height": 216,
+        "source": "https://staticdelivery.nexusmods.com/mods/1704/images/thumbnails/198611/198611-1794261136-438379732.png"
+      }
     }
   ]
 }

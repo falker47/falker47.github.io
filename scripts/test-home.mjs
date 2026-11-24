@@ -42,7 +42,7 @@ test('the Lessons tab puts the text and its action before the two portals', () =
 test('the Modding tab lists every published mod with its own numbers and picture rule', () => {
   assert.throws(() => validateHomeCatalogue(home.replace('<a class="result nexus-total"', '<a class="result"')), /Nexus total/);
   assert.throws(() => validateHomeCatalogue(home.replace(/(<strong><span data-i18n-number=")(\d+)(")/, (_, start, value, end) => start + (Number(value) + 1) + end)), /counts/);
-  assert.throws(() => validateHomeCatalogue(home.replace('<div class="card-cover mod-type"><b>IT</b>', '<div class="card-cover mod-type"><img src="/assets/nexus/1.webp" width="1" height="1" alt=""><b>IT</b>')), /translation has no picture/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<b class="cover-badge">IT</b>', '')), /IT badge/);
   assert.throws(() => validateHomeCatalogue(home.replace('href="https://github.com/falker47/HogwartsLegacy-SaveEditor"', 'href="https://github.com/falker47"')), /repository/);
 });
 

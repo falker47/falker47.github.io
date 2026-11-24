@@ -88,9 +88,9 @@ export async function designChecks(siteRoot, inlineCss = []) {
   for (const ink of ['--accent', '--cat-app', '--cat-game', '--cat-tool', '--nexus', '--nexus-amber']) {
     if (tokens.has(ink)) for (const background of darkSurfaces) contrast(ink, background);
   }
-  // V4: each tab of "I miei progetti" swaps the accent inks; they keep the same contrast.
+  // V4: each tab of "I miei progetti" swaps its accent inks; they keep the same contrast.
   for (const { selector, values } of all) {
-    if (!/^:root\[data-accent="[\w-]+"\]$/.test(selector)) continue;
+    if (!/^\.work\[data-accent="[\w-]+"\]$/.test(selector)) continue;
     const themed = new Map(tokens);
     for (const [key, value] of values) if (key.startsWith('--')) themed.set(key, value);
     for (const ink of ['--blue', '--stroke', '--accent']) for (const background of darkSurfaces) {

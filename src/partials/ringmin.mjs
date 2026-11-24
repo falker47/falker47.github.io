@@ -32,7 +32,7 @@ export function smallestGap(configuration) {
 function configuration(optimum) {
   const scale = 46 / (optimum.R_float64 + 2 * optimum.n);
   const outer = circles(optimum).map(c => html`<circle class="${c.floating ? 'rm-floating' : 'rm-circle'}" cx="${fixed(c.x * scale)}" cy="${fixed(c.y * scale)}" r="${fixed(c.r * scale)}"/>`).join('');
-  return html`<div class="rm-cell"><svg viewBox="-50 -50 100 100" aria-hidden="true" focusable="false"><circle class="rm-centre" r="${fixed(optimum.R_float64 * scale)}"/>${raw(outer)}</svg><span>n = ${optimum.n}</span></div>`;
+  return html`<div class="rm-cell"><svg viewBox="-50 -50 100 100" aria-hidden="true" focusable="false"><circle class="rm-centre" r="${fixed(optimum.R_float64 * scale)}"/>${raw(outer)}</svg><span>n=${optimum.n}</span></div>`;
 }
 
 /** Paper I: the twelve certified configurations, six by two (four columns on a phone). */

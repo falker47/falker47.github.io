@@ -132,15 +132,12 @@ function checkModding(source) {
       const width = Math.max(2, Math.round(Math.sqrt(mod.downloads / max) * 1000) / 10);
       assert.ok(card.includes('<span style="width:' + width + '%"></span>'), mod.name + ' bar');
       const image = tags(card).find(node => node.name === 'img');
-      if (mod.kind === 'translation') {
-        assert.equal(image, undefined, mod.name + ': a translation has no picture');
-        // Translations share the mod card (V4): a 16:9 typographic cover in place of the picture.
-        assert.equal(text(card.match(/<div class="card-cover mod-type">([^]*?)<\/div>/)[1]), 'IT ' + mod.game, mod.name + ' typographic cover');
-      } else {
-        assert.equal(image.attrs.src, covers.get(mod.url)?.cover.src ?? mod.image.src, mod.name + ' picture');
-      }
-      assert.equal(text(card.match(/<span class="pill">([^]*?)<\/span>/)[1]), mod.game.replace(' Special Edition', ' SE'), mod.name + ' game pill');
-      assert.equal(text(card.match(/<span class="card-stack">([^]*?)<\/span>/)[1]), mod.category ?? mod.game, mod.name + ' category');
+      // V4: translations show their Nexus picture with an "IT" badge, like the mods; a typographic
+      // cover only stands in for a mod that has no picture at all.
+      const expectedSrc = covers.get(mod.url)?.cover.src ?? mod.image?.src;
+      if (expectedSrc) assert.equal(image.attrs.src, expectedSrc, mod.name + ' picture');
+      else assert.equal(text(card.match(/<div class="card-cover mod-type">([^]*?)<\/div>/)[1]), (mod.kind === 'translation' ? 'IT ' : 'MOD ') + mod.game, mod.name + ' typographic cover');
+      assert.equal(card.includes('<b class="cover-badge">IT</b>'), mod.kind === 'translation' && Boolean(expectedSrc), mod.name + ' IT badge');
       const repo = covers.get(mod.url)?.repo;
       assert.deepEqual(hrefs(card).slice(1), repo ? [repo] : [], mod.name + ' repository');
       checkButtons(card.match(/<p class="card-links">([^]*?)<\/p>/)[1], mod.name);

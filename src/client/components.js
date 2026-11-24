@@ -32,11 +32,11 @@
         tab.setAttribute('aria-selected', String(tab === current));
         panels[i].hidden = tab !== current;
       });
-      // The tabs of "I miei progetti" also set the accent of the whole site.
-      // Software keeps the default blue, so loading the page changes nothing (no restyle of the whole page).
-      if (list.closest('.work')) {
-        if (current.dataset.panel === 'software') delete document.documentElement.dataset.accent;
-        else document.documentElement.dataset.accent = current.dataset.panel;
+      // The tabs of "I miei progetti" set its accent; Software keeps the default blue.
+      const work = list.closest('.work');
+      if (work) {
+        if (current.dataset.panel === 'software') delete work.dataset.accent;
+        else work.dataset.accent = current.dataset.panel;
       }
     }
     tabs.forEach((tab, index) => {

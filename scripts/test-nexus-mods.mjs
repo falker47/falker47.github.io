@@ -108,7 +108,7 @@ test('reads the size of PNG and WebP files from their headers', () => {
   assert.throws(() => imageInfo(Buffer.from('<html>not an image</html>')), /Unsupported/);
 });
 
-test('downloads pictures for original mods only, keeps existing covers and removes stale files', async () => {
+test('downloads pictures for every published mod, translations included, keeps existing covers and removes stale files', async () => {
   const dir = mkdtempSync(join(tmpdir(), 'nexus-thumbs-'));
   try {
     writeFileSync(join(dir, '999.png'), 'stale');
@@ -120,21 +120,21 @@ test('downloads pictures for original mods only, keeps existing covers and remov
       return { ok: true, status: 200, arrayBuffer: async () => webp(385, 216) };
     };
     const first = await syncThumbnails({ mods, thumbnails, covered: new Set([2414]), fetcher, dir });
-    // 2414 keeps its cover from data/mods.json; translations get a typographic header.
-    assert.deepEqual(requested, [thumbnails.get(5)]);
-    assert.deepEqual(first.map(mod => mod.image), [null,
-      { src: '/assets/nexus/5.webp', width: 385, height: 216, source: thumbnails.get(5) }, null, null]);
-    assert.deepEqual(readdirSync(dir).sort(), ['5.webp', 'README.txt']);
+    // 2414 keeps its cover from data/mods.json; the translations 9 and 7 get their Nexus pictures (V4).
+    assert.deepEqual(requested, [thumbnails.get(5), thumbnails.get(9), thumbnails.get(7)]);
+    const picture = id => ({ src: '/assets/nexus/' + id + '.webp', width: 385, height: 216, source: thumbnails.get(id) });
+    assert.deepEqual(first.map(mod => mod.image), [null, picture(5), picture(9), picture(7)]);
+    assert.deepEqual(readdirSync(dir).sort(), ['5.webp', '7.webp', '9.webp', 'README.txt']);
     assert.deepEqual(readFileSync(join(dir, '5.webp')), webp(385, 216));
     // An unchanged source is not downloaded again; a new one replaces the file.
     await syncThumbnails({ mods, thumbnails, previous: first, covered: new Set([2414]), fetcher, dir });
-    assert.equal(requested.length, 1);
+    assert.equal(requested.length, 3);
     const moved = new Map(thumbnails).set(5, thumbnails.get(5).replace('-1.png', '-2.png'));
     const next = await syncThumbnails({ mods, thumbnails: moved, previous: first, covered: new Set([2414]),
       fetcher: async url => { requested.push(url); return { ok: true, status: 200, arrayBuffer: async () => png(640, 360) }; }, dir });
-    assert.equal(requested.length, 2);
+    assert.equal(requested.length, 4);
     assert.equal(next[1].image.src, '/assets/nexus/5.png');
-    assert.deepEqual(readdirSync(dir).sort(), ['5.png', 'README.txt']);
+    assert.deepEqual(readdirSync(dir).sort(), ['5.png', '7.webp', '9.webp', 'README.txt']);
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
 
@@ -169,7 +169,9 @@ test('the committed snapshot matches its pictures and the featured covers', () =
     assert.doesNotMatch(mod.name, /Traduzione Italiana|Final Merge/);
     assert.equal(mod.url, new URL(mod.url).href);
     assert.match(mod.url, new RegExp('^https://www\\.nexusmods\\.com/[a-z0-9]+/mods/' + mod.modId + '$'));
-    if (mod.kind === 'translation' || covered.has(mod.modId)) { assert.equal(mod.image, null, mod.name); continue; }
+    if (covered.has(mod.modId)) { assert.equal(mod.image, null, mod.name); continue; }
+    // A mod Nexus shows without a picture keeps the typographic header.
+    if (mod.image === null) continue;
     assert.match(mod.image.src, new RegExp('^/assets/nexus/' + mod.modId + '\\.(?:png|webp|jpg)$'));
     const info = imageInfo(readFileSync(new URL('..' + mod.image.src, import.meta.url)));
     assert.deepEqual([info.width, info.height], [mod.image.width, mod.image.height], mod.name);

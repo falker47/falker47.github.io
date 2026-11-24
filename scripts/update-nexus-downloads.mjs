@@ -149,9 +149,10 @@ export function featuredIds(file = FEATURED) {
 }
 
 /**
- * Give every original mod a local picture in `dir` (<modId>.<ext>). Mods with a
- * cover in data/mods.json keep that cover and translations get a typographic
- * header, so neither downloads anything. An unchanged source is not fetched again.
+ * Give every published mod, translations included (V4), a local picture in `dir`
+ * (<modId>.<ext>). Mods with a cover in data/mods.json keep that cover and download
+ * nothing; a mod without a Nexus picture keeps a typographic header. An unchanged
+ * source is not fetched again.
  */
 export async function syncThumbnails({ mods, thumbnails, previous = [], covered = featuredIds(), fetcher = fetch, dir = THUMBNAILS }) {
   const known = new Map(previous.filter(mod => mod.image).map(mod => [mod.modId, mod.image]));
@@ -162,7 +163,7 @@ export async function syncThumbnails({ mods, thumbnails, previous = [], covered 
   for (const mod of mods) {
     const source = thumbnails.get(mod.modId);
     let image = null;
-    if (mod.kind === 'mod' && !covered.has(mod.modId) && source) {
+    if (!covered.has(mod.modId) && source) {
       const url = new URL(source);
       if (url.protocol !== 'https:' || url.hostname !== THUMBNAIL_HOST) throw new Error('Unexpected thumbnail host for mod ' + mod.modId);
       const prior = known.get(mod.modId);

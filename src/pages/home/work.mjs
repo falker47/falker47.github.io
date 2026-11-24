@@ -98,11 +98,13 @@ function modCard(t, mod) {
   const links = [actionLink(mod.url, 'Nexus', { title: mod.name })];
   if (cover?.repo) links.push(actionLink(cover.repo, 'GitHub', { title: mod.name }));
   const translation = mod.kind === 'translation';
-  const head = translation
-    ? html`<div class="card-cover mod-type"><b>IT</b><span>${mod.game}</span></div>`
-    : html`<div class="card-cover">${raw(cover
-      ? img(cover.cover, { sizes: '(min-width: 600px) 386px, 80vw' })
-      : html`<img src="${mod.image.src}" width="${mod.image.width}" height="${mod.image.height}" alt="" loading="lazy" decoding="async">`)}</div>`;
+  // Every card shows a picture: the cover from data/mods.json, else the Nexus picture (translations
+  // too, with an "IT" badge). A mod that Nexus shows without one gets a typographic cover.
+  const picture = cover ? img(cover.cover, { sizes: '(min-width: 600px) 386px, 80vw' })
+    : mod.image ? html`<img src="${mod.image.src}" width="${mod.image.width}" height="${mod.image.height}" alt="" loading="lazy" decoding="async">` : null;
+  const head = picture
+    ? html`<div class="card-cover">${raw(picture)}${translation ? raw('<b class="cover-badge">IT</b>') : ''}</div>`
+    : html`<div class="card-cover mod-type"><b>${translation ? 'IT' : 'MOD'}</b><span>${mod.game}</span></div>`;
   const width = Math.max(2, Math.round(Math.sqrt(mod.downloads / maxDownloads) * 1000) / 10);
   return html`<li class="card mod-card${translation ? ' translation' : ''}">
 ${raw(head)}
@@ -165,7 +167,7 @@ ${raw(panel('research', 'researchTitle', 'researchIntro', html`<div class="resul
 ${raw(paperCard(t, research.papers[0], configurations(ctx), repo))}
 ${raw(paperCard(t, research.papers[1], chart(ctx), repo, constantLine()))}
 </div>
-<p class="research-foot">${label(t, 'researchFigures')} ${label(t, 'researchAlso')} ${raw(actionLink(power, 'Power-Ringmin'))} <span aria-hidden="true">·</span> ${raw(actionLink(research.zenodo.url, 'Zenodo'))}</p>`))}
+<p class="research-foot">${label(t, 'researchAlso')} ${raw(actionLink(power, 'Power-Ringmin'))} <span aria-hidden="true">·</span> ${raw(actionLink(research.zenodo.url, 'Zenodo'))}</p>`))}
 ${raw(panel('teaching', 'teachingTitle', null, html`<div class="lessons">
 <div class="lessons-text"><h4 class="lessons-title">${label(t, 'lessonsTitle')}</h4><p class="lessons-body">${label(t, 'lessonsText')}</p>
 <p class="lessons-action"><a class="lessons-cta" href="${tutoring.portal}">${label(t, 'lessonsCta')}${icon('arrow-right')}</a></p></div>

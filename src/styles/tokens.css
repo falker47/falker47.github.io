@@ -83,20 +83,20 @@
   --radius: 14px;
   --motion: cubic-bezier(.22,.7,.28,1);
 }
-/* V4: the site accent follows the tab of "I miei progetti": Software keeps the blue, Modding
+/* V4: inside "I miei progetti" the accent follows the tab: Software keeps the blue, Modding
    takes the Nexus Mods orange, Research a violet and Lessons a green. src/client/components.js
-   sets data-accent on <html>; text inks stay at 4.5:1 or more on every dark surface. */
-:root[data-accent="modding"] {
+   sets data-accent on the disclosure; text inks stay at 4.5:1 or more on every dark surface. */
+.work[data-accent="modding"] {
   --blue: #fdba74;
   --stroke: #fb923c;
   --accent: #fb923c;
 }
-:root[data-accent="research"] {
+.work[data-accent="research"] {
   --blue: #c4b5fd;
   --stroke: #a78bfa;
   --accent: #a78bfa;
 }
-:root[data-accent="teaching"] {
+.work[data-accent="teaching"] {
   --blue: #86efac;
   --stroke: #4ade80;
   --accent: #4ade80;
