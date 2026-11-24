@@ -48,8 +48,64 @@ async function checkTabs(page) {
   await tabs.first().click();
 }
 
+// V4: every count in the three panels is the same tile: one height, radius, outline width, glyph
+// and number size; a tile that opens a page ends with its arrow. The first panel sets the measure.
+let tileMeasure;
+async function checkTiles(scope, name) {
+  const tiles = await scope.locator('.results-row .result:visible').evaluateAll(nodes => nodes.map(node => {
+    const style = getComputedStyle(node);
+    const glyph = node.firstElementChild;
+    return {
+      measure: [node.getBoundingClientRect().height, style.borderTopLeftRadius, style.borderTopWidth, glyph.getBoundingClientRect().width,
+        getComputedStyle(node.querySelector('.result-value')).fontSize].join(' '),
+      glyph: glyph.matches('svg.result-icon, svg.brand'), link: node.matches('a'), arrow: node.lastElementChild.matches('.result-arrow'),
+    };
+  }));
+  assert.ok(tiles.length, name + ' has count tiles');
+  tileMeasure ??= tiles[0].measure;
+  for (const tile of tiles) {
+    assert.equal(tile.measure, tileMeasure, name + ' tiles share one size');
+    assert.ok(tile.glyph, name + ' tiles open with their drawing or mark');
+    assert.equal(tile.arrow, tile.link, name + ' only linked tiles end with an arrow');
+  }
+  assert.ok(Number.parseFloat(tileMeasure) >= 44, 'Tiles are 44 px targets');
+}
+
+// V4: the buttons are the foot of each card: one to three per row, rows filling the card's width,
+// each a 44 px target showing its whole label, the platform mark first or the arrow last.
+async function checkCardButtons(scope, name) {
+  const cards = await scope.locator('.card-links').evaluateAll(nodes => nodes.map(row => {
+    const card = row.closest('.card').getBoundingClientRect();
+    const strip = row.getBoundingClientRect();
+    const links = [...row.children].map(link => {
+      const box = link.getBoundingClientRect();
+      return { top: Math.round(box.top), left: box.left, right: box.right, height: box.height, whole: link.scrollWidth <= link.clientWidth + 1,
+        brand: link.hasAttribute('data-brand'), first: link.firstElementChild?.matches('svg.brand') ?? false, last: link.lastElementChild?.matches('svg.icon') ?? false };
+    });
+    return { title: row.closest('.card').querySelector('h4').textContent.trim(), inset: [strip.left - card.left, card.right - strip.right],
+      edges: [strip.left + row.clientLeft, strip.left + row.clientLeft + row.clientWidth], links };
+  }));
+  assert.ok(cards.length, name + ' has cards');
+  for (const { title, inset, edges, links } of cards) {
+    const label = name + ' · ' + title;
+    assert.ok(links.length >= 1 && links.length <= 3, label + ': one to three buttons');
+    assert.ok(inset.every(gap => gap >= 0 && gap <= 1.5), label + ': the buttons span the card');
+    const rows = Map.groupBy(links, link => link.top);
+    for (const row of rows.values()) {
+      assert.ok(row.length <= 3, label + ': at most three in a row');
+      assert.ok(Math.abs(row[0].left - edges[0]) < 1 && Math.abs(row.at(-1).right - edges[1]) < 1, label + ': each row fills the card');
+    }
+    for (const link of links) {
+      assert.ok(link.height >= 44, label + ': 44 px target');
+      assert.ok(link.whole, label + ': whole label');
+      assert.ok(link.brand ? link.first && !link.last : link.last && !link.first, label + ': the mark leads, the arrow ends');
+    }
+  }
+}
+
 // The counts are the toggles: one group of cards shows at a time.
 async function checkPickers(page) {
+  tileMeasure = undefined;
   await openWork(page);
   for (const [panel, groups] of [['software', ['app', 'game', 'tool']], ['modding', ['mod', 'translation']]]) {
     await page.locator('#tab-' + panel).click();
@@ -57,16 +113,15 @@ async function checkPickers(page) {
     const toggles = picker.locator('.picker-toggle');
     assert.deepEqual(await toggles.evaluateAll(nodes => nodes.map(node => node.dataset.group)), groups);
     assert.deepEqual(await toggles.evaluateAll(nodes => nodes.map(node => node.getAttribute('aria-pressed'))), groups.map((_, i) => String(i === 0)));
-    // The pressed tile is outlined in the panel accent, the others have no border; each is a 44 px target.
-    const [pressed, ...others] = await toggles.evaluateAll(nodes => nodes.map(node => {
-      const style = getComputedStyle(node);
-      return { height: node.getBoundingClientRect().height, border: style.borderTopColor };
-    }));
-    assert.ok([pressed, ...others].every(item => item.height >= 44), panel + ' tiles are 44 px targets');
-    assert.equal(pressed.border, panel === 'modding' ? 'rgb(249, 115, 22)' : 'rgb(155, 220, 255)', panel + ' pressed tile uses the panel accent');
-    assert.ok(others.every(item => item.border === 'rgba(0, 0, 0, 0)'), panel + ' other tiles have no border');
+    // The pressed tile is outlined in the panel accent, the others in the neutral rule (V4).
+    const [pressed, ...others] = await toggles.evaluateAll(nodes => nodes.map(node => getComputedStyle(node).borderTopColor));
+    assert.equal(pressed, panel === 'modding' ? 'rgb(249, 115, 22)' : 'rgb(155, 220, 255)', panel + ' pressed tile uses the panel accent');
+    const rule = await picker.locator('.results-row').evaluate(node => getComputedStyle(node).borderBottomColor);
+    assert.ok(others.every(colour => colour === rule), panel + ' other tiles are outlined in the rule');
+    await checkTiles(page.locator('#panel-' + panel), panel);
     for (const group of [...groups].reverse()) {
       await picker.locator('.picker-toggle[data-group="' + group + '"]').click();
+      await checkCardButtons(picker.locator('.picker-group:visible'), panel + ' ' + group);
       assert.deepEqual(await picker.locator('.picker-group:visible').evaluateAll(nodes => nodes.map(node => node.dataset.group)), [group]);
       assert.equal(await picker.locator('.picker-toggle[aria-pressed="true"]').getAttribute('data-group'), group);
       const expected = Number(await picker.locator('.picker-toggle[data-group="' + group + '"] .result-value').innerText());
@@ -93,6 +148,10 @@ async function checkPickers(page) {
     // The count line beside the toggles follows the category.
     if (panel === 'software') assert.deepEqual(await picker.locator('.picker-count:visible').evaluateAll(nodes => nodes.map(node => node.dataset.group)), [groups[0]]);
   }
+  // Research: the paper count is the same tile, the two papers end with the same buttons.
+  await page.locator('#tab-research').click();
+  await checkTiles(page.locator('#panel-research'), 'research');
+  await checkCardButtons(page.locator('#panel-research .paper-cards'), 'research');
   await page.locator('#tab-software').click();
 }
 

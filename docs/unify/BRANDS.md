@@ -16,6 +16,6 @@ Simple Icons has neither Nexus Mods nor OEIS (checked in 16.38.1), so those two 
 
 ## Colours
 
-- One-colour marks (the Simple Icons set) take the text colour of their button. On hover and focus the mark and the button border take the brand colour from Simple Icons. Where that colour reads below 3:1 on the card surface `#171a21` (GitHub `#181717`, Google Play `#414141`, arXiv `#b31b1b`), they turn near white (`#f1f4f5`) instead.
+- One-colour marks (the Simple Icons set) take the text colour of their button. On hover and focus the mark takes the brand colour from Simple Icons, and so does the button border (on the home cards, a line along the top of the button). Where that colour reads below 3:1 on the card surface `#171a21` (GitHub `#181717`, Google Play `#414141`, arXiv `#b31b1b`), they turn near white (`#f1f4f5`) instead.
 - Several-colour marks (Nexus Mods, OEIS) always keep their published colours.
 - The Modding tab uses the Nexus Mods orange `#f97316`, the fill of the emblem's arms in `logo-emblem.svg`. The download bars run from it to the amber `#fbbf24`. Both pass 4.5:1 on every dark surface (`scripts/design-checks.mjs`), and the page background `#0f1014` passes 4.5:1 on the orange of a pressed pill.

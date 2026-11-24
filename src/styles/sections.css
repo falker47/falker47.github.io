@@ -62,30 +62,30 @@
 .cat-game {--cat:var(--cat-game)}
 .cat-tool {--cat:var(--cat-tool)}
 .cat-mod,.cat-translation {--cat:var(--nexus)}
-/* Each panel has one accent for its pills: the blue of the tabs, or the Nexus Mods orange. */
-#panel-software {--panel-accent:var(--blue)}
+/* Each panel has one accent: the blue of the tabs, or the Nexus Mods orange. */
+#panel-software,#panel-research {--panel-accent:var(--blue)}
 #panel-modding {--panel-accent:var(--nexus)}
-.results-row {display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding:0 0 14px;margin-bottom:12px;border-bottom:1px solid var(--rule)}
-.picker-bar {display:flex;flex-wrap:wrap;gap:8px}
-.result {display:flex;align-items:center;gap:7px;min-height:44px;min-width:0;color:var(--blue)}
-.result-body {display:flex;flex-direction:column;min-width:0;text-align:left}
-.result-value {font:400 24px/24px var(--serif);letter-spacing:-.04em;color:var(--blue);white-space:nowrap}
-.result-label {display:block;font:10.5px/12px var(--sans);color:var(--muted)}
-.result-icon {width:36px;height:36px;flex:0 0 36px;stroke:var(--stroke);stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round}
-.result-arrow {font-size:14px;color:var(--stroke)}
+.results-row {display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:0 0 14px;margin-bottom:12px;border-bottom:1px solid var(--rule)}
+.picker-bar {display:flex;flex-wrap:wrap;gap:10px}
+/* Every count is one kind of tile, like the figures of "Chi sono": the drawing or the mark in a
+   rounded square, the number, the label. A link (the Nexus total, the papers) and the pressed
+   toggle take the panel accent; the pressed toggle is outlined in it. */
+.result {--tone:var(--panel-accent);box-sizing:border-box;display:flex;align-items:center;gap:14px;height:76px;min-width:176px;padding:0 18px 0 14px;border:1px solid var(--rule);border-radius:14px;background:var(--surface);color:var(--paper);text-align:left;transition:border-color .16s,background-color .16s}
+.result-body {display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:0}
+.result-value {font:400 40px/1 var(--serif);letter-spacing:-.04em;color:var(--paper);white-space:nowrap}
+.result-label {display:block;font:12px/1.3 var(--sans);color:var(--muted);white-space:nowrap}
+.result :is(.result-icon,.brand) {box-sizing:border-box;width:40px;height:40px;flex:0 0 40px;padding:9px;border-radius:10px;background:#ffffff08}
+.result-icon {stroke:var(--stroke);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.result-arrow {margin-left:auto;padding-left:10px;font-size:15px;color:var(--stroke)}
+:is(a.result,.picker-toggle[aria-pressed=true]) {border-color:color-mix(in srgb,var(--tone) 35%,transparent);background:linear-gradient(135deg,color-mix(in srgb,var(--tone) 12%,var(--surface)),var(--surface) 70%)}
+:is(a.result,.picker-toggle[aria-pressed=true]) :is(.result-icon,.brand) {background:color-mix(in srgb,var(--tone) 18%,transparent)}
+:is(a.result,.picker-toggle):hover {border-color:color-mix(in srgb,var(--tone) 70%,transparent)}
 a.result:hover .result-label {color:var(--paper)}
-/* The category toggles are tiles like the research count, one pressed at a time: the pressed
-   tile takes the panel accent. */
-.picker-toggle {padding:6px 14px 6px 8px;border:1px solid transparent;border-radius:14px;background:none;font:inherit;color:inherit;cursor:pointer;transition:border-color .2s,background-color .2s}
-.picker-toggle:hover {background:#ffffff06}
-.picker-toggle .result-value {color:var(--paper)}
-.picker-toggle[aria-pressed=true] {border-color:var(--panel-accent);background:color-mix(in srgb,var(--panel-accent) 10%,transparent)}
-.picker-toggle[aria-pressed=true] :is(.result-value,.result-label) {color:var(--panel-accent)}
-.picker-toggle[aria-pressed=true] .result-icon {stroke:var(--panel-accent)}
-.nexus-total {padding:6px 14px 6px 8px;border-radius:14px}
-.nexus-total .brand {width:30px;height:30px;flex:none}
+.picker-toggle {font:inherit;cursor:pointer}
+.picker-toggle[aria-pressed=true] {border-color:var(--tone)}
+.picker-toggle[aria-pressed=true] :is(.result-value,.result-label) {color:var(--tone)}
+.picker-toggle[aria-pressed=true] .result-icon {stroke:var(--tone)}
 .nexus-total .result-value {color:var(--nexus-light)}
-.nexus-total:hover .result-label {color:var(--paper)}
 .picker-heading {font:11px/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--cat);margin:18px 0 8px}
 .sample-count {flex:1 1 100%;font:11px/1.6 var(--mono);color:#a9b2c0;margin:0}
 .sample-count strong {font-weight:400}
@@ -112,12 +112,20 @@ a.result:hover .result-label {color:var(--paper)}
 .card-meta {display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0;font:11px/1.4 var(--mono);color:#a9b2c0}
 .pill {font:600 10.5px/1 var(--name);color:var(--cat);border:1px solid color-mix(in srgb,var(--cat) 45%,transparent);border-radius:999px;padding:4px 8px}
 .card-summary {font-size:13px;line-height:1.5;color:#d8dee9;margin:0}
-.card-links {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:auto 0 0;padding-top:6px}
-.card-links a {display:flex;align-items:center;justify-content:center;gap:6px;min-width:0;min-height:44px;padding:0 6px;border:1px solid var(--rule);border-radius:8px;background:#ffffff06;font:600 12px/1 var(--name);color:#d8dee9;white-space:nowrap;overflow:hidden}
-.card-links a:first-child {border-color:color-mix(in srgb,var(--cat) 50%,transparent);color:var(--cat)}
-.card-links a:hover {background:#ffffff10}
-.card-links :is(.icon,.brand) {width:14px;height:14px;flex:none}
-.card-links a[data-brand]:hover {border-color:var(--brand)}
+/* The buttons are the foot of the card: up to three in a row, sharing it and split by rules, the
+   platform mark left of the label. Each keeps at least its text width; a card too narrow for three
+   gives the first a row of its own. The rules are the buttons' shadows, clipped at the edges. */
+.card-body {container-type:inline-size}
+.card-body>:has(+.card-links) {margin-bottom:8px}
+.card-links {display:flex;flex-wrap:wrap;margin:auto -14px -14px;border-top:1px solid var(--rule);overflow:hidden}
+.card-links a {box-sizing:border-box;flex:1 1 0;min-width:max-content;display:flex;align-items:center;justify-content:center;gap:6px;min-height:48px;padding:0 8px;box-shadow:-1px 0 var(--rule),0 -1px var(--rule);font:600 12.5px/1 var(--name);color:#d8dee9;white-space:nowrap;transition:background-color .16s,color .16s}
+.card-links a:first-child {color:var(--cat)}
+.card-links a:hover {background:#ffffff0a;color:var(--paper)}
+.card-links a[data-brand]:is(:hover,:focus-visible) {box-shadow:-1px 0 var(--rule),0 -1px var(--rule),inset 0 2px var(--brand)}
+.card-links a:focus-visible {outline-offset:-3px}
+.card-links :is(.icon,.brand) {width:15px;height:15px;flex:none}
+.card-links .icon {color:var(--stroke)}
+@container (max-width:226px) {.card-links:has(>:nth-child(3))>:first-child {flex-basis:100%}}
 
 .mod-type {display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12px;text-align:center;background:radial-gradient(80% 90% at 80% 10%,#f9731624,transparent 70%),linear-gradient(135deg,#1a1f2b,#12151c);font:12px/1.4 var(--mono);color:#a9b2c0}
 .mod-type b {font:600 20px/1 var(--name);letter-spacing:.12em;color:var(--nexus);border:1px solid color-mix(in srgb,var(--nexus) 55%,transparent);border-radius:999px;padding:8px 14px}
@@ -185,23 +193,19 @@ a.result:hover .result-label {color:var(--paper)}
 .rail-steps {display:flex}
 }
 @media(max-width:699px) {
-/* On a phone the toggles share one row; the Nexus total takes its own. */
-.picker-head {gap:8px}
-.picker-bar {display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:6px;width:100%}
-.picker-toggle {padding:6px 6px 6px 6px;gap:6px}
-.picker-toggle .result-icon {width:28px;height:28px;flex-basis:28px}
-.nexus-total {width:100%}
+/* On a phone every tile spans the row; the toggles share one row, the Nexus total takes its own. */
+.results-row {display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+.picker-bar {display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:8px;width:100%}
+.result {height:60px;min-width:0;width:100%;padding:0 10px;gap:8px;border-radius:12px}
+.result :is(.result-icon,.brand) {width:32px;height:32px;flex-basis:32px;padding:7px}
+.result-value {font-size:26px}
+.result-label {font-size:11px}
 }
 @media(min-width:700px) {
 .work-tabs {margin-bottom:24px}
 .work-tabs button {font-size:20px;padding:12px 0 14px;min-height:52px}
 .category-intro {font-size:16px;margin-bottom:14px}
-.results-row {gap:20px 36px;padding-bottom:20px;margin-bottom:20px}
-.result {gap:14px;min-height:76px}
-.result-body {gap:4px}
-.result-value {font-size:40px;line-height:1}
-.result-label {font-size:12px;line-height:1.5}
-.result-icon {width:28px;height:28px;flex-basis:28px;stroke-width:1.3}
+.results-row {padding-bottom:20px;margin-bottom:20px}
 .sample-count {flex:0 1 auto;margin-left:auto}
 }
 @media(min-width:900px) {
@@ -230,6 +234,7 @@ a.result:hover .result-label {color:var(--paper)}
 @media(forced-colors:active) {
 .work-tabs button[aria-selected=true] {border-color:Highlight}
 .picker-toggle[aria-pressed=true] {border-color:Highlight;background:Highlight;color:HighlightText}
+.card-links a {box-shadow:none;border-left:1px solid CanvasText}
 .rm-circle,.rm-floating,.rm-centre,.rm-ring,.rm-limit,.rm-band,.rm-leader {stroke:CanvasText}
 .rm-centre,.rm-circle {fill:Canvas}
 .platform-logo {filter:none}

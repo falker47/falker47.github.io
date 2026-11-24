@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { test } from 'node:test';
-import { validateHomeCatalogue } from './validate-home.mjs';
+import { checkButtons, validateHomeCatalogue } from './validate-home.mjs';
 
 const home = await readFile(new URL('../_site/index.html', import.meta.url), 'utf8');
 
@@ -32,6 +32,19 @@ test('external actions show their platform mark; other actions keep an arrow', (
   assert.throws(() => validateHomeCatalogue(home.replace(/<svg class="brand brand-github"[^>]*><use href="#brand-github"\/><\/svg>/, '')), /mark/);
   assert.throws(() => validateHomeCatalogue(home.replace(/<a href="(https:\/\/www\.nexusmods\.com[^"]+)" style="--brand:#[0-9a-f]+" data-brand="nexusmods">/, '<a href="$1">')), /brand/);
   assert.throws(() => validateHomeCatalogue(home.replace('<use href="#icon-arrow-ne"/>', '<use href="#icon-arrow-right"/>')), /arrow/);
+  // V4: the mark leads the label, the arrow ends it, and a card has at most three buttons.
+  assert.throws(() => validateHomeCatalogue(home.replace(/(<svg class="brand brand-github"[^>]*><use href="#brand-github"\/><\/svg>)GitHub/, 'GitHub$1')), /mark first, arrow last/);
+  assert.throws(() => validateHomeCatalogue(home.replace(/(<a href="https:\/\/profgecko\.vercel\.app\/">)([^]*?)(<svg class="icon[^"]*"[^>]*><use href="#icon-arrow-ne"\/><\/svg>)(<\/a>)/, '$1$3$2$4')), /mark first, arrow last/);
+  const row = home.match(/<p class="card-links">([^]*?)<\/p>/g).find(markup => markup.includes('data-brand="googleplay"') && markup.includes('icon-arrow-ne'));
+  assert.doesNotThrow(() => checkButtons(row, 'Camaleonte'));
+  assert.throws(() => checkButtons(row + row, 'Camaleonte twice'), /one to three buttons/);
+  assert.throws(() => checkButtons('<p class="card-links"></p>', 'Empty'), /one to three buttons/);
+});
+
+test('every count is the same tile: drawing or mark, number, label, and an arrow only on links', () => {
+  assert.throws(() => validateHomeCatalogue(home.replace(/(<a class="result" href="\/research\/">)<svg class="result-icon"[^]*?<\/svg>/, '$1')), /tile parts/);
+  assert.throws(() => validateHomeCatalogue(home.replace(/(<button type="button" class="picker-toggle result cat-mod"[^>]*>[^]*?)(<\/button>)/, '$1<span class="result-arrow" aria-hidden="true">→</span>$2')), /tile arrow/);
+  assert.throws(() => validateHomeCatalogue(home.replace(/<span class="result-arrow" aria-hidden="true">↗<\/span>(<\/a>)/, '$1')), /tile arrow/);
 });
 
 test('the Lessons tab puts the text and its action before the two portals', () => {

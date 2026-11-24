@@ -30,18 +30,34 @@ const toggles = markup => [...markup.matchAll(/<button type="button" class="pick
 // Each card button: its destination, its platform mark (V4) or the arrow icon it keeps.
 const buttons = markup => [...markup.matchAll(/<a href="([^"]+)"([^>]*)>([^]*?)<\/a>/g)]
   .map(([, href, attrs, body]) => ({ href, brand: /data-brand="([\w-]+)"/.exec(attrs)?.[1] ?? null,
-    mark: /href="#brand-([\w-]+)"/.exec(body)?.[1] ?? null, arrow: /href="#icon-(arrow-[\w-]+)"/.exec(body)?.[1] ?? null }));
+    mark: /href="#brand-([\w-]+)"/.exec(body)?.[1] ?? null, arrow: /href="#icon-(arrow-[\w-]+)"/.exec(body)?.[1] ?? null,
+    leads: body.startsWith('<svg class="brand '), ends: /<svg class="icon[^"]*"[^>]*><use href="#icon-arrow-[\w-]+"\/><\/svg>$/.test(body) }));
 const expectedBrand = href => {
   const host = /^https:\/\/([^/]+)/.exec(href)?.[1] ?? '';
   return [['github.com', 'github'], ['play.google.com', 'googleplay'], ['nexusmods.com', 'nexusmods'], ['arxiv.org', 'arxiv'],
     ['zenodo.org', 'zenodo'], ['orcid.org', 'orcid'], ['oeis.org', 'oeis']].find(([name]) => host === name || host.endsWith('.' + name))?.[1] ?? null;
 };
-function checkButtons(markup, label) {
-  for (const button of buttons(markup)) {
+// V4: one to three buttons; the platform mark leads the label, the arrow of any other link ends it.
+export function checkButtons(markup, label) {
+  const list = buttons(markup);
+  assert.ok(list.length >= 1 && list.length <= 3, label + ': one to three buttons');
+  for (const button of list) {
+    assert.ok(button.mark ? button.leads && !button.ends : button.ends && !button.leads, label + ': ' + button.href + ' mark first, arrow last');
     const brand = expectedBrand(button.href);
     assert.equal(button.brand, brand, label + ': ' + button.href + ' brand');
     assert.equal(button.mark, brand, label + ': ' + button.href + ' mark');
     assert.equal(button.arrow, brand ? null : /^[/#.]/.test(button.href) ? 'arrow-right' : 'arrow-ne', label + ': ' + button.href + ' arrow');
+  }
+}
+
+// V4: every count tile has the same parts in the same order: its drawing or mark, the number and
+// the label; a linked tile ends with its arrow, a toggle has none.
+function checkTiles(markup, label, expected) {
+  const tiles = [...markup.matchAll(/<(a|button) [^>]*class="(?:picker-toggle )?result\b[^"]*"[^>]*>([^]*?)<\/\1>/g)];
+  assert.equal(tiles.length, expected, label + ' tiles');
+  for (const [, tag, body] of tiles) {
+    assert.match(body, /^<svg class="(?:result-icon|brand [\w-]+)"[^]*?<\/svg><span class="result-body"><strong class="result-value"[^>]*>[^]*?<\/strong><span class="result-label">/, label + ' tile parts');
+    assert.equal(body.endsWith('<span class="result-arrow" aria-hidden="true">→</span>') || body.endsWith('<span class="result-arrow" aria-hidden="true">↗</span>'), tag === 'a', label + ' tile arrow');
   }
 }
 
@@ -69,6 +85,7 @@ function checkStructure(source) {
 // Software: the three counts are the toggles; each group lists its projects in data order.
 function checkSoftware(source) {
   const markup = panel(source, 'software');
+  checkTiles(markup, 'Software', 3);
   const expected = [['app', 'app'], ['game', 'giochi'], ['tool', 'strumenti']].map(([id, word]) => ({ id, word, items: visible.filter(item => item.category === id) }));
   assert.deepEqual(toggles(markup), expected.map((group, index) => ({ colour: group.id, id: group.id, pressed: String(index === 0), label: `${group.items.length} ${group.word}` })),
     'Software tiles: counts from data, App selected, no "All"');
@@ -106,6 +123,7 @@ function checkSoftware(source) {
 // Modding: every published mod, with its downloads, endorsements and bar.
 function checkModding(source) {
   const markup = panel(source, 'modding');
+  checkTiles(markup, 'Modding', 3);
   const expected = [['mod', 'mod'], ['translation', 'traduzioni italiane']].map(([id, word]) => ({ id, word, items: nexus.mods.filter(mod => mod.kind === id) }));
   assert.deepEqual(toggles(markup), expected.map((group, index) => ({ colour: group.id, id: group.id, pressed: String(index === 0), label: `${group.items.length} ${group.word}` })),
     'Modding tiles: "10 mod · 17 traduzioni italiane" from data');
@@ -147,6 +165,7 @@ function checkModding(source) {
 
 function checkResearch(source) {
   const markup = panel(source, 'research');
+  checkTiles(markup, 'Research', 1);
   const papers = [...markup.matchAll(/<article class="card paper-card"[^>]*>([^]*?)<\/article>/g)].map(match => match[1]);
   assert.equal(papers.length, research.papers.length);
   const repo = research.repositories.find(item => item.project === research.id).url;
