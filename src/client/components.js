@@ -86,6 +86,38 @@
     update();
   }
 
+  // Certificates. The thumbnails sit inside the closed "Chi sono", where lazy images wait
+  // until it opens. Start them once the page has loaded and the browser is idle, or as soon
+  // as the reader points at or focuses the summary. A card under the pointer or the focus
+  // also fetches its full image for the viewer.
+  const thumbnails = Array.from(document.querySelectorAll('.deck-card img'));
+  let warmed = false;
+  function warm() {
+    if (warmed) return;
+    warmed = true;
+    thumbnails.forEach(image => { image.loading = 'eager'; });
+  }
+  const about = thumbnails.length ? thumbnails[0].closest('details') : null;
+  if (about) {
+    const summary = about.querySelector(':scope > summary');
+    ['pointerenter', 'focus', 'touchstart'].forEach(type => summary.addEventListener(type, warm, { once: true, passive: true }));
+    const saveData = navigator.connection && navigator.connection.saveData;
+    const idle = () => { if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout: 2000 }); else setTimeout(warm, 200); };
+    if (!saveData) {
+      if (document.readyState === 'complete') idle();
+      else addEventListener('load', idle, { once: true });
+    }
+  }
+  const fetched = new Set();
+  function preloadFull(card) {
+    const src = card.dataset.full;
+    if (!src || fetched.has(src)) return;
+    fetched.add(src);
+    const image = new Image();
+    image.decoding = 'async';
+    image.src = src;
+  }
+
   // The caption beside the fan names the card under the pointer or the focus.
   for (const deck of document.querySelectorAll('.deck')) {
     const initial = deck.querySelector('.deck-default');
@@ -100,9 +132,9 @@
       current.hidden = !card;
     }
     for (const card of deck.querySelectorAll('.deck-card')) {
-      card.addEventListener('pointerenter', event => { if (event.pointerType !== 'touch') name(card); });
+      card.addEventListener('pointerenter', event => { preloadFull(card); if (event.pointerType !== 'touch') name(card); });
       card.addEventListener('pointerleave', () => name(deck.querySelector('.deck-card:focus-visible')));
-      card.addEventListener('focus', () => name(card));
+      card.addEventListener('focus', () => { preloadFull(card); name(card); });
       card.addEventListener('blur', () => name(null));
     }
   }

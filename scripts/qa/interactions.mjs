@@ -13,7 +13,7 @@ const active = locator => locator.evaluate(el => el === document.activeElement);
 const controls = ':is(.site-header,.work-tabs,.picker-bar,.card-links,.rail,.deck,.site-footer,.detail-top,.detail-crumbs) :is(a[href],button):visible';
 const minTargets = page => page.locator(controls).evaluateAll(nodes => Math.min(...nodes.map(el => el.getBoundingClientRect().height)));
 const panelIds = ['software', 'modding', 'research', 'teaching'];
-const headerLinks = ['#progetti', '#ricerca', '#chi-sono'];
+const headerLinks = ['#progetti', '#ricerca', '#chi-sono', '/uses/'];
 const offset = 76;
 const settled = (page, selector) => page.waitForFunction(query => {
   const details = document.querySelector(query);
@@ -57,11 +57,19 @@ async function checkPickers(page) {
     const toggles = picker.locator('.picker-toggle');
     assert.deepEqual(await toggles.evaluateAll(nodes => nodes.map(node => node.dataset.group)), groups);
     assert.deepEqual(await toggles.evaluateAll(nodes => nodes.map(node => node.getAttribute('aria-pressed'))), groups.map((_, i) => String(i === 0)));
+    // The pressed pill is filled with the panel accent, the others are outlined; each is a 44 px target.
+    const [pressed, ...others] = await toggles.evaluateAll(nodes => nodes.map(node => {
+      const style = getComputedStyle(node);
+      return { height: node.getBoundingClientRect().height, background: style.backgroundColor };
+    }));
+    assert.ok([pressed, ...others].every(item => item.height >= 44), panel + ' pills are 44 px targets');
+    assert.equal(pressed.background, panel === 'modding' ? 'rgb(249, 115, 22)' : 'rgb(155, 220, 255)', panel + ' pressed pill uses the panel accent');
+    assert.ok(others.every(item => item.background === 'rgba(0, 0, 0, 0)'), panel + ' other pills are outlined');
     for (const group of [...groups].reverse()) {
       await picker.locator('.picker-toggle[data-group="' + group + '"]').click();
       assert.deepEqual(await picker.locator('.picker-group:visible').evaluateAll(nodes => nodes.map(node => node.dataset.group)), [group]);
       assert.equal(await picker.locator('.picker-toggle[aria-pressed="true"]').getAttribute('data-group'), group);
-      const expected = Number(await picker.locator('.picker-toggle[data-group="' + group + '"] strong').innerText());
+      const expected = Number(await picker.locator('.picker-toggle[data-group="' + group + '"] .picker-count-value').innerText());
       assert.equal(await picker.locator('.picker-group:visible .card').count(), expected, group + ' cards match the count');
     }
     // The arrows move the row on wider screens; a phone scrolls it by touch.
@@ -185,10 +193,10 @@ async function checkFragments(page, origin, lang) {
 async function checkMenu(page) {
   const button = page.locator('.menu-button');
   const links = page.locator('.site-nav a');
-  assert.equal(await links.count(), 3);
+  assert.equal(await links.count(), headerLinks.length);
   if (page.viewportSize().width >= 700) {
     assert.equal(await button.isVisible(), false);
-    assert.equal(await links.locator('visible=true').count(), 3);
+    assert.equal(await links.locator('visible=true').count(), headerLinks.length);
     return;
   }
   assert.equal(await button.getAttribute('aria-expanded'), 'false');
@@ -196,7 +204,7 @@ async function checkMenu(page) {
   assert.equal(await links.locator('visible=true').count(), 0, 'Links wait behind the menu button');
   await button.press('Enter');
   assert.equal(await button.getAttribute('aria-expanded'), 'true');
-  assert.equal(await links.locator('visible=true').count(), 3);
+  assert.equal(await links.locator('visible=true').count(), headerLinks.length);
   assert.ok(await links.evaluateAll(nodes => Math.min(...nodes.map(node => node.getBoundingClientRect().height))) >= 44);
   await page.keyboard.press('Tab');
   assert.ok(await active(links.first()), 'The links follow the button in the tab order');
@@ -204,7 +212,8 @@ async function checkMenu(page) {
   assert.equal(await button.getAttribute('aria-expanded'), 'false');
   assert.ok(await active(button), 'Escape returns to the button');
   await button.click();
-  await page.locator('main').click({ position: { x: 5, y: 200 } });
+  // Below the open menu, which now holds four links.
+  await page.locator('main').click({ position: { x: 5, y: 300 } });
   assert.equal(await button.getAttribute('aria-expanded'), 'false', 'A click outside closes the menu');
 }
 
@@ -233,7 +242,7 @@ async function checkNoScript(browser, origin, viewport) {
     const verify = await isolateNetwork(context, origin);
     const page = await context.newPage();
     await page.goto(origin);
-    assert.equal(await page.locator('.site-nav a:visible').count(), 3, 'Header links are visible without scripts');
+    assert.equal(await page.locator('.site-nav a:visible').count(), headerLinks.length, 'Header links are visible without scripts');
     await page.locator('details.work > summary').click();
     assert.equal(await page.locator('.work-panel:visible').count(), panelIds.length, 'All panels readable without scripts');
     assert.equal(await page.locator('.work-tabs:visible, .picker-bar:visible').count(), 0);
@@ -259,9 +268,18 @@ async function home(page, origin, lang) {
   await page.locator('#chi-sono > summary').click();
   await settled(page, '#chi-sono');
   assert.equal(await page.locator('.about-actions a[href="/research/"]').count(), 1);
-  assert.equal(await page.locator('.journey svg:visible').count(), 1, 'One journey drawing per width');
-  assert.equal(await page.locator('.journey svg:visible').getAttribute('class'), page.viewportSize().width < 900 ? 'journey-tall' : 'journey-wide');
-  assert.equal(await page.locator('.journey svg:visible .jr-pulse').evaluate(node => getComputedStyle(node).display), 'none', 'No pulse with reduced motion');
+  // The facts card: beside the text from 900 px, below it on narrower screens, always two by two.
+  const layout = await page.evaluate(() => {
+    const box = selector => document.querySelector(selector).getBoundingClientRect();
+    const facts = [...document.querySelectorAll('.facts-grid li')].map(item => item.getBoundingClientRect());
+    return { text: box('.about-text'), card: box('.about-facts'), columns: new Set(facts.map(item => Math.round(item.left))).size, rows: new Set(facts.map(item => Math.round(item.top))).size };
+  });
+  if (page.viewportSize().width >= 900) assert.ok(layout.card.left > layout.text.right - 1, 'The facts card sits right of the text');
+  else assert.ok(layout.card.top >= layout.text.bottom - 1, 'The facts card follows the text');
+  assert.deepEqual([layout.columns, layout.rows], [2, 2], 'Four figures in a 2×2 grid');
+  assert.equal(await page.locator('.journey, .about-journey').count(), 0, 'No "Percorso" drawing');
+  // Once the page has loaded and gone idle, the certificate thumbnails have started loading.
+  assert.ok(await page.locator('.deck-card img').evaluateAll(images => images.every(image => image.loading === 'eager')), 'Thumbnails warmed after load');
   await checkCertificates(page);
   await checkFragments(page, origin, lang);
   await checkLiveNexus(page, origin, lang);
@@ -301,7 +319,9 @@ await withBrowser(async (browser, origin) => {
         const header = await page.locator('.site-header').evaluate(el => getComputedStyle(el).position);
         assert.equal(header, 'sticky', 'The same header bar on every page');
         const nav = await page.locator('.site-nav a').evaluateAll(links => links.map(a => a.getAttribute('href')));
-        assert.deepEqual(nav, headerLinks.map(hash => '/' + hash));
+        assert.deepEqual(nav, headerLinks.map(target => target.startsWith('/') ? target : '/' + target));
+        // "Cosa uso" is marked current on its own page only.
+        assert.deepEqual(await page.locator('.site-nav a[aria-current="page"]').evaluateAll(links => links.map(a => a.getAttribute('href'))), route === '/uses/' ? ['/uses/'] : []);
         await checkMenu(page);
       }
       assert.ok(await minTargets(page) >= 44);

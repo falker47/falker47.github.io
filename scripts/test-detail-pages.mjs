@@ -85,3 +85,19 @@ test('recommendations preserve the approved affiliate URLs and both original dis
   assert.equal(translations.it.usesDisclosure, 'In qualità di Affiliato Amazon io ricevo un guadagno dagli acquisti idonei.');
   assert.equal(translations.en.usesDisclosure, 'As an Amazon Associate I earn from qualifying purchases.');
 });
+
+test('every page links its signature to the home and lists "Cosa uso" last in the header', () => {
+  for (const route of routes) {
+    const file = route.path.endsWith('/') ? route.path + 'index.html' : route.path;
+    const source = readFileSync(new URL('../_site' + file, import.meta.url), 'utf8');
+    const nav = source.match(/<nav class="site-nav"[^]*?<\/nav>/)?.[0];
+    assert.ok(nav, route.path + ': header navigation');
+    const links = tags(nav).filter(node => node.name === 'a');
+    assert.equal(links.at(-1).attrs.href, '/uses/', route.path + ': "Cosa uso" comes last');
+    assert.match(nav, /<a href="\/uses\/"[^>]*><span data-i18n="navUsesShort">Cosa uso<\/span><\/a>/, route.path);
+    assert.deepEqual(links.filter(node => node.attrs['aria-current'] === 'page').map(node => node.attrs.href), route.path === '/uses/' ? ['/uses/'] : [], route.path + ': current item');
+    // The Social Viewer privacy text keeps its own policy footer; the site footer follows it.
+    const footer = source.match(/<footer class="(?:site-footer|footer wrap)"[^]*?<\/footer>/)?.[0];
+    assert.ok(footer && /<a class="footer-home" href="\/">/.test(footer), route.path + ': the signature links to the home');
+  }
+});

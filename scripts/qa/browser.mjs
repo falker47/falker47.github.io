@@ -17,7 +17,7 @@ export async function options(extra = {}) {
     task: { type: 'string' }, pages: { type: 'string', default: '/' },
     langs: { type: 'string', default: 'it,en' }, ...extra,
   } });
-  if (!/^[a-z0-9][a-z0-9_-]*$/i.test(values.task || '')) throw Error('Provide --task ID');
+  if (!/^[a-z0-9][a-z0-9_-]*(?:\/[a-z0-9][a-z0-9_-]*)?$/i.test(values.task || '')) throw Error('Provide --task ID');
   const pages = values.pages.split(',');
   const langs = values.langs.split(',');
   if (pages.some(page => !/^\/(?:[\w-]+\/)*(?:[\w-]+\.html)?(?:#[\w-]+)?$/.test(page))) throw Error('Use comma-separated site routes');

@@ -1,6 +1,6 @@
 import { html, raw } from '../lib/html.mjs';
 import { picture } from '../lib/media.mjs';
-import { label, localized } from './components.mjs';
+import { actionLink, label, localized } from './components.mjs';
 import { icon } from './icons.mjs';
 
 // Breadcrumb back to the projects inside the home, written as "← I miei progetti".
@@ -8,8 +8,8 @@ export function crumb({ t, copy }, { href = '/#progetti', key = 'backToProjects'
   return html`<nav class="detail-crumbs" aria-label="${copy.it.detailBreadcrumb}" data-label="detailBreadcrumb"><a href="${href}"><span aria-hidden="true">←</span> ${text ?? label(t, key)}</a></nav>`;
 }
 
-export function action(t, href, key, external = true) {
-  return html`<a class="detail-link" href="${href}">${label(t, key)} <span aria-hidden="true">${external ? '↗' : '→'}</span></a>`;
+export function action(t, href, key) {
+  return actionLink(href, label(t, key), { className: 'detail-link' });
 }
 
 // Short facts beside the cover: a label and its value on one line each.

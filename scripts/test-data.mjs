@@ -201,8 +201,11 @@ test('every responsive image matches its encoded dimensions, directory, size and
   for (const p of projects) await media(p.cover, 'projects', heroes.has(p.id) ? [480, 960, 1440] : [480, 960]);
   for (const m of mods.items) await media(m.cover, 'mods', [480, 960]);
   for (const c of certs) {
-    assert.equal(c.thumbnail.width, 480);
+    // V4: the fan's cards are 150 CSS px wide, so the thumbnails come at 300 and 480 px.
+    assert.deepEqual(c.thumbnail.variants.map(variant => variant.width), [300, 480], c.id);
+    assert.equal(c.thumbnail.src, c.thumbnail.variants[0].src);
     assert.equal(c.full.width, 960);
+    for (const variant of c.thumbnail.variants) await verify(variant, 'certifications');
     await verify(c.thumbnail, 'certifications');
     await verify(c.full, 'certifications');
   }

@@ -1,10 +1,22 @@
 import { html, raw } from '../lib/html.mjs';
 import { img } from '../lib/media.mjs';
-import { icon } from './icons.mjs';
+import { brand, brandFor, brandInk, icon } from './icons.mjs';
 
 export const label = (t, key) => raw(html`<span data-i18n="${key}">${t(key)}</span>`);
 export const localized = (value, lang = 'it') => raw(html`<span data-text-it="${value.it}" data-text-en="${value.en}">${value[lang]}</span>`);
 const group = items => raw(items.join('\n'));
+
+/**
+ * An action link. An external platform (GitHub, Google Play, Nexus Mods, arXiv, Zenodo,
+ * ORCID, OEIS) shows its mark left of the label and takes its colour on hover; any other
+ * link keeps an arrow: → inside this site, ↗ elsewhere. The title names the card for screen readers.
+ */
+export function actionLink(href, text, { title, className } = {}) {
+  const mark = brandFor(href);
+  const internal = /^[/#.]/.test(href);
+  const attrs = (className ? html` class="${className}"` : '') + (mark ? html` style="--brand:${brandInk(mark)}" data-brand="${mark}"` : '');
+  return html`<a href="${href}"${raw(attrs)}>${mark ? brand(mark) : ''}${text}${title ? raw(html`<span class="sr-only"> · ${title}</span>`) : ''}${mark ? '' : icon(internal ? 'arrow-right' : 'arrow-ne')}</a>`;
+}
 
 export function primaryCta(t, key, href) {
   return html`<a class="cta primary-cta" href="${href}">${label(t, key)}<span class="cta-icon" aria-hidden="true">${icon('arrow-right')}</span></a>`;
@@ -19,7 +31,7 @@ export function certificateDeck({ t, copy }, entries, id) {
   const last = Math.max(1, entries.length - 1);
   const cards = entries.map(({ thumbnail, full, alt, title, issuer, year }, index) => {
     const turn = index / last - .5;
-    return html`<button type="button" class="deck-card" style="--r:${(turn * 18).toFixed(1)}deg;--y:${(Math.abs(turn) * 16).toFixed(1)}px" data-viewer="${id}" data-full="${full.src}" data-width="${full.width}" data-height="${full.height}" data-meta="${issuer} · ${year}" data-title="${title}" aria-label="${title}, ${issuer}, ${year}" aria-haspopup="dialog" aria-controls="${id}">${raw(img({ ...thumbnail, alt, variants: [thumbnail] }, { sizes: '150px' }))}</button>`;
+    return html`<button type="button" class="deck-card" style="--r:${(turn * 18).toFixed(1)}deg;--y:${(Math.abs(turn) * 16).toFixed(1)}px" data-viewer="${id}" data-full="${full.src}" data-width="${full.width}" data-height="${full.height}" data-meta="${issuer} · ${year}" data-title="${title}" aria-label="${title}, ${issuer}, ${year}" aria-haspopup="dialog" aria-controls="${id}">${raw(img({ ...thumbnail, alt }, { sizes: '150px' }))}</button>`;
   });
   return html`<div class="deck" style="--n:${entries.length}">
   <div class="deck-fan" role="group" data-label="guideCertificates" aria-label="${copy.it.guideCertificates}">

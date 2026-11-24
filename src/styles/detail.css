@@ -32,6 +32,8 @@
 .detail-link + .detail-link { color: var(--secondary); font-weight: 400; }
 :where(.detail-top) :is(a, button) { min-height: var(--target); }
 .detail-link:is(:hover, [data-preview="hover"]) { color: var(--paper); text-decoration: underline; }
+.detail-link .icon { width: 16px; height: 16px; }
+.detail-link[data-brand]:is(:hover, [data-preview="hover"]) { color: var(--brand); }
 .detail-block { padding-block: 28px; border-top: 1px solid var(--rule); scroll-margin-top: 8px; }
 .detail-top + .detail-block { margin-top: 28px; }
 .detail-block:last-child { border-bottom: 1px solid var(--rule); }

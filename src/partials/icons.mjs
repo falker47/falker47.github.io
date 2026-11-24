@@ -1,3 +1,4 @@
+import brands from '../../data/brands.json' with { type: 'json' };
 import { html, raw } from '../lib/html.mjs';
 
 const drawings = {
@@ -18,9 +19,36 @@ const drawings = {
 
 export const iconNames = Object.keys(drawings);
 
-export function sprite() {
+export const brandNames = Object.keys(brands.marks);
+const brandHosts = [['github.com', 'github'], ['play.google.com', 'googleplay'], ['nexusmods.com', 'nexusmods'],
+  ['arxiv.org', 'arxiv'], ['zenodo.org', 'zenodo'], ['orcid.org', 'orcid'], ['oeis.org', 'oeis']];
+
+/** The platform of an external URL, if it has a brand mark (data/brands.json). */
+export function brandFor(url) {
+  let host;
+  try { host = new URL(url).hostname; } catch { return null; }
+  return brandHosts.find(([name]) => host === name || host.endsWith('.' + name))?.[1] ?? null;
+}
+
+/** A platform mark from the sprite; one-colour marks take the text colour. */
+export function brand(name) {
+  if (!Object.hasOwn(brands.marks, name)) throw Error(`Unknown brand: ${name}`);
+  return raw(html`<svg class="brand brand-${name}" aria-hidden="true" focusable="false"><use href="#brand-${name}"/></svg>`);
+}
+
+/** The hover ink of a mark: its brand colour, or near white where that colour is too dark on the cards. */
+export const brandInk = name => brands.marks[name].hover;
+
+// Generic icons are always in the sprite; a brand mark only when the page uses it.
+export function sprite(content = '') {
+  const used = brandNames.filter(name => content.includes(`href="#brand-${name}"`));
+  const marks = used.map(name => {
+    const { viewBox, body, mono } = brands.marks[name];
+    // Several-colour marks keep their published colours, including the implicit black fill.
+    return html`<symbol id="brand-${name}" viewBox="${viewBox}">${raw(mono ? body : '<g fill="#000">' + body + '</g>')}</symbol>`;
+  });
   return html`<svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="0" height="0">${raw(iconNames.map(name =>
-    html`<symbol id="icon-${name}" viewBox="0 0 24 24">${raw(drawings[name])}</symbol>`).join(''))}</svg>`;
+    html`<symbol id="icon-${name}" viewBox="0 0 24 24">${raw(drawings[name])}</symbol>`).join(''))}${raw(marks.join(''))}</svg>`;
 }
 
 export function icon(name) {

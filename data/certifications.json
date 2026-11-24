@@ -9,9 +9,21 @@
       "en": "Certificate from Microsoft for AI & Machine Learning Engineering."
     },
     "thumbnail": {
-      "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
-      "width": 480,
-      "height": 371
+      "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
     },
     "full": {
       "src": "/assets/certifications/ai-and-machine-learning-engineering-full.webp",
@@ -29,9 +41,21 @@
       "en": "Certificate from IBM for Data Science Professional Course."
     },
     "thumbnail": {
-      "src": "/assets/certifications/data-science-professional-course-thumb.webp",
-      "width": 480,
-      "height": 371
+      "src": "/assets/certifications/data-science-professional-course-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/data-science-professional-course-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/data-science-professional-course-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
     },
     "full": {
       "src": "/assets/certifications/data-science-professional-course-full.webp",
@@ -49,9 +73,21 @@
       "en": "Certificate from MasterZ for BlockChain Project Lead Specialization."
     },
     "thumbnail": {
-      "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
-      "width": 480,
-      "height": 371
+      "src": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
     },
     "full": {
       "src": "/assets/certifications/blockchain-project-lead-specialization-full.webp",
@@ -69,9 +105,21 @@
       "en": "Certificate from MasterZ for BlockChain & Digital Assets Course."
     },
     "thumbnail": {
-      "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
-      "width": 480,
-      "height": 371
+      "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
     },
     "full": {
       "src": "/assets/certifications/blockchain-and-digital-assets-course-full.webp",
@@ -89,9 +137,21 @@
       "en": "Certificate from SAS for SAS Programming Course."
     },
     "thumbnail": {
-      "src": "/assets/certifications/sas-programming-course-thumb.webp",
-      "width": 480,
-      "height": 371
+      "src": "/assets/certifications/sas-programming-course-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/sas-programming-course-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/sas-programming-course-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
     },
     "full": {
       "src": "/assets/certifications/sas-programming-course-full.webp",
@@ -109,9 +169,21 @@
       "en": "Certificate from UC San Diego for Data Structures & Algorithms."
     },
     "thumbnail": {
-      "src": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
-      "width": 480,
-      "height": 371
+      "src": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
     },
     "full": {
       "src": "/assets/certifications/data-structures-and-algorithms-full.webp",
@@ -129,9 +201,21 @@
       "en": "Certificate from Wharton University for Financial Technology Specialization."
     },
     "thumbnail": {
-      "src": "/assets/certifications/financial-technology-specialization-thumb.webp",
-      "width": 480,
-      "height": 371
+      "src": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/financial-technology-specialization-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
     },
     "full": {
       "src": "/assets/certifications/financial-technology-specialization-full.webp",
@@ -149,9 +233,21 @@
       "en": "Certificate from Google for Cybersecurity Professional Course."
     },
     "thumbnail": {
-      "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
-      "width": 480,
-      "height": 371
+      "src": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
     },
     "full": {
       "src": "/assets/certifications/cybersecurity-professional-course-full.webp",
@@ -169,9 +265,21 @@
       "en": "French B2.2 Certificate, issued by Speexx."
     },
     "thumbnail": {
-      "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
-      "width": 480,
-      "height": 371
+      "src": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
     },
     "full": {
       "src": "/assets/certifications/french-b2-2-certificate-full.webp",
@@ -189,9 +297,21 @@
       "en": "Certificate from Irvine University for Advanced English: C1 Equivalent."
     },
     "thumbnail": {
-      "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
-      "width": 480,
-      "height": 371
+      "src": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
     },
     "full": {
       "src": "/assets/certifications/advanced-english-c1-equivalent-full.webp",
@@ -209,9 +329,21 @@
       "en": "Fullstack Developer Certification, issued by Blazar Group."
     },
     "thumbnail": {
-      "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
-      "width": 480,
-      "height": 371
+      "src": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
     },
     "full": {
       "src": "/assets/certifications/fullstack-developer-certification-full.webp",

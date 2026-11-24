@@ -44,7 +44,7 @@ async function verify(page, path, lang, width) {
           spill: card.scrollWidth > card.clientWidth + 1, smallestLink: links.length ? Math.min(...links) : null };
       }),
       // SVG labels: at least 11 px as rendered.
-      smallestChartText: Math.min(Infinity, ...[...document.querySelectorAll('.rm-chart text, .journey text')].filter(visible)
+      smallestChartText: Math.min(Infinity, ...[...document.querySelectorAll('.rm-chart text')].filter(visible)
         .map(node => parseFloat(getComputedStyle(node).fontSize) * node.ownerSVGElement.getBoundingClientRect().width / node.ownerSVGElement.viewBox.baseVal.width)),
       primaryActions: [...document.querySelectorAll('.primary-cta')].filter(visible).length,
       obsoleteWording: /Nexus Portfolio|Data Engineer(?:\s|$)|AI & Automation Engineer/i.test(text),
@@ -76,7 +76,7 @@ async function verify(page, path, lang, width) {
   assert.equal(row.obsoleteWording, false, path + ' outdated copy');
   for (const image of row.images) assert.ok(image.scale <= 1.001, path + ' enlarged ' + JSON.stringify(image));
   if (path === '/' || path.startsWith('/#')) {
-    assert.deepEqual(await page.locator('.site-nav a').evaluateAll(links => links.map(a => a.getAttribute('href'))), ['#progetti', '#ricerca', '#chi-sono']);
+    assert.deepEqual(await page.locator('.site-nav a').evaluateAll(links => links.map(a => a.getAttribute('href'))), ['#progetti', '#ricerca', '#chi-sono', '/uses/']);
     assert.equal(await page.locator('a[href="/projects/"]').count(), 0, 'The old projects page is not linked');
   } else if (!held.has(path)) {
     assert.equal(await page.locator('.site-footer a[href="/uses/"]').count(), 1);

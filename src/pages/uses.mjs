@@ -37,7 +37,7 @@ export function render(ctx) {
     spec: facts(t, [
       ['specKind', label(t, 'usesSpecKind')], ['usesSpecCount', String(picks.length)], ['specWhere', label(t, 'usesSpecWhere')],
     ]),
-    actions: [action(t, '#consigli', 'usesSeePicks', false)],
+    actions: [action(t, '#consigli', 'usesSeePicks')],
     body: section(t, 'usesPicksTitle', html`<ul class="detail-list detail-picks">${raw(picks.map(item => recommendation(t, item)).join('\n'))}</ul>`, 'consigli')
       + section(t, 'usesEditorialTitle', html`<p>${label(t, 'usesEditorialText')}</p>`, 'criterio')
       + section(t, 'usesDisclosureTitle', html`<p>${label(t, 'usesDisclosure')}</p>`, 'affiliazione'),

@@ -96,7 +96,10 @@ for (const cert of data.certifications) {
   // Use the same complete document for the thumbnail and the legible full view.
   const input = join(portfolio, certificateSources[cert.id]);
   const { nativeWidth } = await sourceFrame(input);
-  cert.thumbnail = await rendition(input, 'certifications', cert.id + '-thumb', Math.min(480, nativeWidth));
+  // Cards render 150 CSS px wide: 300 px covers 2x screens, 480 px the denser ones.
+  const small = await rendition(input, 'certifications', cert.id + '-thumb-300', Math.min(300, nativeWidth));
+  const large = await rendition(input, 'certifications', cert.id + '-thumb', Math.min(480, nativeWidth));
+  cert.thumbnail = { ...small, variants: [small, large] };
   cert.full = await rendition(input, 'certifications', cert.id + '-full', Math.min(960, nativeWidth));
 }
 

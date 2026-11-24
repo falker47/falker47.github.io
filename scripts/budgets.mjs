@@ -1,15 +1,28 @@
 import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
 import { cssUrls, origin, tags } from './qa/site.mjs';
+import certifications from '../data/certifications.json' with { type: 'json' };
 
 // V3: every project, mod and paper is rendered inside the home, so the home has its own code budget.
 // Each published mod adds about 700 bytes: the limit leaves room for the list to grow.
-export const limits = { pageBytes: 160_000, homePageBytes: 220_000, homeBytes: 450_000, homeRequests: 15 };
+export const limits = { pageBytes: 160_000, homePageBytes: 220_000, homeBytes: 450_000, homeRequests: 15,
+  // V4: after the load event the home prefetches the certificate thumbnails, one per certificate.
+  deferredBytes: 200_000, deferredRequests: certifications.length };
 export const snapshotUrl = 'https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json';
 
 export function checkLoad({ bytes, requests }, label = '/') {
   assert.ok(bytes <= limits.homeBytes, label + ': ' + bytes + ' first-load bytes exceed ' + limits.homeBytes);
   assert.ok(requests <= limits.homeRequests, label + ': ' + requests + ' first-load requests exceed ' + limits.homeRequests);
+}
+
+export const isCertificateThumbnail = path => /^\/assets\/certifications\/[a-z0-9-]+-thumb(?:-300)?\.webp$/.test(path);
+
+/** The idle prefetch after the load event: only certificate thumbnails, at most one per certificate. */
+export function checkDeferred({ bytes, requests, urls }, label = '/') {
+  const other = urls.filter(path => !isCertificateThumbnail(path));
+  assert.deepEqual(other, [], label + ': unexpected requests after the load event');
+  assert.ok(bytes <= limits.deferredBytes, label + ': ' + bytes + ' prefetched bytes exceed ' + limits.deferredBytes);
+  assert.ok(requests <= limits.deferredRequests, label + ': ' + requests + ' prefetch requests exceed ' + limits.deferredRequests);
 }
 
 export async function pageBudget(site, { route, source, elements }) {

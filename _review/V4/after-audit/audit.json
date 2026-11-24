@@ -1,0 +1,4495 @@
+{
+  "pass": false,
+  "gates": {
+    "min-perf-mobile": 90,
+    "min-perf-desktop": 95,
+    "min-a11y": 100,
+    "min-bp": 95,
+    "axeViolations": 0,
+    "pageBytes": 160000,
+    "homePageBytes": 220000,
+    "homeBytes": 450000,
+    "homeRequests": 15,
+    "deferredBytes": 200000,
+    "deferredRequests": 11
+  },
+  "routes": [
+    {
+      "path": "/",
+      "stub": false
+    },
+    {
+      "path": "/404.html",
+      "stub": false
+    },
+    {
+      "path": "/research/",
+      "stub": false
+    },
+    {
+      "path": "/projects/prof-gecko/",
+      "stub": false
+    },
+    {
+      "path": "/projects/camaleonte/",
+      "stub": false
+    },
+    {
+      "path": "/uses/",
+      "stub": false
+    },
+    {
+      "path": "/projects/social-viewer/",
+      "stub": false
+    },
+    {
+      "path": "/projects/social-viewer/test/",
+      "stub": false
+    },
+    {
+      "path": "/projects/social-viewer/privacy/",
+      "stub": false
+    },
+    {
+      "path": "/Nexus-portfolio/",
+      "stub": true
+    },
+    {
+      "path": "/Nexus-portfolio/index.html",
+      "stub": true
+    },
+    {
+      "path": "/Nexus-portfolio/research.html",
+      "stub": true
+    },
+    {
+      "path": "/Nexus-portfolio/prof-gecko.html",
+      "stub": true
+    },
+    {
+      "path": "/Nexus-portfolio/consigli.html",
+      "stub": true
+    },
+    {
+      "path": "/Nexus-portfolio/testers.html",
+      "stub": true
+    },
+    {
+      "path": "/Nexus-portfolio/socialviewer-privacy.html",
+      "stub": true
+    },
+    {
+      "path": "/projects/",
+      "stub": true
+    }
+  ],
+  "pending": [],
+  "lighthouse": [
+    {
+      "route": "/",
+      "lang": "it",
+      "device": "mobile",
+      "pass": false,
+      "scores": {
+        "performance": 94,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 378782,
+        "requests": 22,
+        "lcpMs": 2781.65,
+        "cls": 0.001446991790440368,
+        "fcpMs": 2106.65,
+        "tbtMs": 0,
+        "speedIndexMs": 2156.3022459897993,
+        "lcpElement": "main#main > div.hero-band > div.wrap > section.hero"
+      },
+      "resources": [
+        {
+          "url": "/",
+          "bytes": 163713
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-italic.woff2",
+          "bytes": 21985
+        },
+        {
+          "url": "/styles/site-ba1abf9415f486ed.css",
+          "bytes": 49063
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
+          "bytes": 723
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        },
+        {
+          "url": "/assets/images/maurizio-falconi-native.webp",
+          "bytes": 4982
+        },
+        {
+          "url": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
+          "bytes": 7830
+        },
+        {
+          "url": "/assets/certifications/data-science-professional-course-thumb-300.webp",
+          "bytes": 7286
+        },
+        {
+          "url": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
+          "bytes": 5998
+        },
+        {
+          "url": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/certifications/sas-programming-course-thumb-300.webp",
+          "bytes": 4956
+        },
+        {
+          "url": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
+          "bytes": 7254
+        },
+        {
+          "url": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
+          "bytes": 8270
+        },
+        {
+          "url": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
+          "bytes": 8070
+        },
+        {
+          "url": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
+          "bytes": 6468
+        },
+        {
+          "url": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
+          "bytes": 7614
+        },
+        {
+          "url": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
+          "bytes": 10026
+        }
+      ],
+      "version": "12.8.2",
+      "error": "mobile home: 22 first-load requests exceed 15"
+    },
+    {
+      "route": "/",
+      "lang": "it",
+      "device": "desktop",
+      "pass": false,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 438183,
+        "requests": 22,
+        "lcpMs": 701.1859999999999,
+        "cls": 0.0002378959081224645,
+        "fcpMs": 441.1859999999999,
+        "tbtMs": 7.407000000000039,
+        "speedIndexMs": 838.1646145961535,
+        "lcpElement": "section.hero > div.hero-lead > h1 > span"
+      },
+      "resources": [
+        {
+          "url": "/",
+          "bytes": 163713
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-italic.woff2",
+          "bytes": 21985
+        },
+        {
+          "url": "/styles/site-ba1abf9415f486ed.css",
+          "bytes": 49063
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
+          "bytes": 721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        },
+        {
+          "url": "/assets/images/maurizio-falconi-native.webp",
+          "bytes": 4982
+        },
+        {
+          "url": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
+          "bytes": 7830
+        },
+        {
+          "url": "/assets/certifications/data-science-professional-course-thumb-300.webp",
+          "bytes": 7286
+        },
+        {
+          "url": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
+          "bytes": 5998
+        },
+        {
+          "url": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/certifications/sas-programming-course-thumb-300.webp",
+          "bytes": 4956
+        },
+        {
+          "url": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
+          "bytes": 7254
+        },
+        {
+          "url": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
+          "bytes": 8270
+        },
+        {
+          "url": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
+          "bytes": 8070
+        },
+        {
+          "url": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
+          "bytes": 6468
+        },
+        {
+          "url": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
+          "bytes": 7614
+        },
+        {
+          "url": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
+          "bytes": 10026
+        }
+      ],
+      "version": "12.8.2",
+      "error": "desktop home: 22 first-load requests exceed 15"
+    },
+    {
+      "route": "/",
+      "lang": "en",
+      "device": "mobile",
+      "pass": false,
+      "scores": {
+        "performance": 94,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 378779,
+        "requests": 22,
+        "lcpMs": 2701.4659999999994,
+        "cls": 0.001548353444978704,
+        "fcpMs": 2101.466,
+        "tbtMs": 0,
+        "speedIndexMs": 2101.466,
+        "lcpElement": "section.hero > div.hero-lead > h1 > span"
+      },
+      "resources": [
+        {
+          "url": "/",
+          "bytes": 163713
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-italic.woff2",
+          "bytes": 21985
+        },
+        {
+          "url": "/styles/site-ba1abf9415f486ed.css",
+          "bytes": 49063
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
+          "bytes": 720
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        },
+        {
+          "url": "/assets/images/maurizio-falconi-native.webp",
+          "bytes": 4982
+        },
+        {
+          "url": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
+          "bytes": 7830
+        },
+        {
+          "url": "/assets/certifications/data-science-professional-course-thumb-300.webp",
+          "bytes": 7286
+        },
+        {
+          "url": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
+          "bytes": 5998
+        },
+        {
+          "url": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/certifications/sas-programming-course-thumb-300.webp",
+          "bytes": 4956
+        },
+        {
+          "url": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
+          "bytes": 7254
+        },
+        {
+          "url": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
+          "bytes": 8270
+        },
+        {
+          "url": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
+          "bytes": 8070
+        },
+        {
+          "url": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
+          "bytes": 6468
+        },
+        {
+          "url": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
+          "bytes": 7614
+        },
+        {
+          "url": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
+          "bytes": 10026
+        }
+      ],
+      "version": "12.8.2",
+      "error": "mobile home: 22 first-load requests exceed 15"
+    },
+    {
+      "route": "/",
+      "lang": "en",
+      "device": "desktop",
+      "pass": false,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 438184,
+        "requests": 22,
+        "lcpMs": 909.577,
+        "cls": 0.000204156378600823,
+        "fcpMs": 481.28999999999996,
+        "tbtMs": 77.35500000000002,
+        "speedIndexMs": 830.8217664897243,
+        "lcpElement": "section.hero > div.hero-lead > h1 > span"
+      },
+      "resources": [
+        {
+          "url": "/",
+          "bytes": 163713
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-italic.woff2",
+          "bytes": 21985
+        },
+        {
+          "url": "/styles/site-ba1abf9415f486ed.css",
+          "bytes": 49063
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json",
+          "bytes": 722
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        },
+        {
+          "url": "/assets/images/maurizio-falconi-native.webp",
+          "bytes": 4982
+        },
+        {
+          "url": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
+          "bytes": 7830
+        },
+        {
+          "url": "/assets/certifications/data-science-professional-course-thumb-300.webp",
+          "bytes": 7286
+        },
+        {
+          "url": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
+          "bytes": 5998
+        },
+        {
+          "url": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/certifications/sas-programming-course-thumb-300.webp",
+          "bytes": 4956
+        },
+        {
+          "url": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
+          "bytes": 7254
+        },
+        {
+          "url": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
+          "bytes": 8270
+        },
+        {
+          "url": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
+          "bytes": 8070
+        },
+        {
+          "url": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
+          "bytes": 6468
+        },
+        {
+          "url": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
+          "bytes": 7614
+        },
+        {
+          "url": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
+          "bytes": 10026
+        }
+      ],
+      "version": "12.8.2",
+      "error": "desktop home: 22 first-load requests exceed 15"
+    },
+    {
+      "route": "/404.html",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "bytes": 98318,
+        "requests": 8,
+        "lcpMs": 1425.551,
+        "cls": 0,
+        "fcpMs": 1350.551,
+        "tbtMs": 0,
+        "speedIndexMs": 1350.551,
+        "lcpElement": "div.page > main#main > div.status-panel > p.status-description"
+      },
+      "resources": [
+        {
+          "url": "/404.html",
+          "bytes": 34079
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/404.html",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "bytes": 157721,
+        "requests": 8,
+        "lcpMs": 340.991,
+        "cls": 0,
+        "fcpMs": 320.991,
+        "tbtMs": 0,
+        "speedIndexMs": 423.10717498327494,
+        "lcpElement": "div.page > main#main > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/404.html",
+          "bytes": 34079
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/404.html",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "bytes": 98318,
+        "requests": 8,
+        "lcpMs": 1500.0080000000003,
+        "cls": 0,
+        "fcpMs": 1350.008,
+        "tbtMs": 0,
+        "speedIndexMs": 1350.008,
+        "lcpElement": "div.page > main#main > div.status-panel > p.status-description"
+      },
+      "resources": [
+        {
+          "url": "/404.html",
+          "bytes": 34079
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/404.html",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "bytes": 157721,
+        "requests": 8,
+        "lcpMs": 340.97,
+        "cls": 0,
+        "fcpMs": 320.97,
+        "tbtMs": 0,
+        "speedIndexMs": 326.7717287703306,
+        "lcpElement": "div.page > main#main > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/404.html",
+          "bytes": 34079
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/research/",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 136963,
+        "requests": 9,
+        "lcpMs": 1726.304,
+        "cls": 0,
+        "fcpMs": 1501.304,
+        "tbtMs": 0,
+        "speedIndexMs": 1501.304,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/research/",
+          "bytes": 48175
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/projects/ringmin-960.webp",
+          "bytes": 24549
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/research/",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 196366,
+        "requests": 9,
+        "lcpMs": 420.97800000000007,
+        "cls": 0,
+        "fcpMs": 360.97800000000007,
+        "tbtMs": 0,
+        "speedIndexMs": 360.97800000000007,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/research/",
+          "bytes": 48175
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/projects/ringmin-960.webp",
+          "bytes": 24549
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/research/",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 136963,
+        "requests": 9,
+        "lcpMs": 1726.076,
+        "cls": 0,
+        "fcpMs": 1501.076,
+        "tbtMs": 0,
+        "speedIndexMs": 1501.076,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/research/",
+          "bytes": 48175
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/projects/ringmin-960.webp",
+          "bytes": 24549
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/research/",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 196366,
+        "requests": 9,
+        "lcpMs": 420.994,
+        "cls": 0,
+        "fcpMs": 360.994,
+        "tbtMs": 0,
+        "speedIndexMs": 418.6648709112982,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/research/",
+          "bytes": 48175
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/projects/ringmin-960.webp",
+          "bytes": 24549
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/prof-gecko/",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 141969,
+        "requests": 9,
+        "lcpMs": 1875.5679999999998,
+        "cls": 0,
+        "fcpMs": 1500.568,
+        "tbtMs": 0,
+        "speedIndexMs": 1500.568,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/projects/prof-gecko/",
+          "bytes": 44051
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/projects/prof-gecko-960.webp",
+          "bytes": 33679
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/prof-gecko/",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 201372,
+        "requests": 9,
+        "lcpMs": 521.74,
+        "cls": 0.0002895910204283852,
+        "fcpMs": 361.74,
+        "tbtMs": 0,
+        "speedIndexMs": 361.74,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/projects/prof-gecko/",
+          "bytes": 44051
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/projects/prof-gecko-960.webp",
+          "bytes": 33679
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/prof-gecko/",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 141969,
+        "requests": 9,
+        "lcpMs": 1950.5279999999998,
+        "cls": 0,
+        "fcpMs": 1500.528,
+        "tbtMs": 0,
+        "speedIndexMs": 1500.528,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/projects/prof-gecko/",
+          "bytes": 44051
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/projects/prof-gecko-960.webp",
+          "bytes": 33679
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/prof-gecko/",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 201372,
+        "requests": 9,
+        "lcpMs": 521.192,
+        "cls": 0.00025508903972830995,
+        "fcpMs": 361.192,
+        "tbtMs": 0,
+        "speedIndexMs": 361.25333139208357,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/projects/prof-gecko/",
+          "bytes": 44051
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/projects/prof-gecko-960.webp",
+          "bytes": 33679
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/camaleonte/",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 141807,
+        "requests": 9,
+        "lcpMs": 1876.186,
+        "cls": 0,
+        "fcpMs": 1501.186,
+        "tbtMs": 0,
+        "speedIndexMs": 1501.186,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/projects/camaleonte/",
+          "bytes": 44617
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/projects/camaleonte-960.webp",
+          "bytes": 32951
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/camaleonte/",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 201210,
+        "requests": 9,
+        "lcpMs": 441.082,
+        "cls": 0,
+        "fcpMs": 361.082,
+        "tbtMs": 0,
+        "speedIndexMs": 361.082,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/projects/camaleonte/",
+          "bytes": 44617
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/projects/camaleonte-960.webp",
+          "bytes": 32951
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/camaleonte/",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 141807,
+        "requests": 9,
+        "lcpMs": 1950.8740000000003,
+        "cls": 0,
+        "fcpMs": 1500.874,
+        "tbtMs": 0,
+        "speedIndexMs": 1500.874,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/projects/camaleonte/",
+          "bytes": 44617
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/projects/camaleonte-960.webp",
+          "bytes": 32951
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/camaleonte/",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 201210,
+        "requests": 9,
+        "lcpMs": 441.04999999999995,
+        "cls": 0,
+        "fcpMs": 361.04999999999995,
+        "tbtMs": 0,
+        "speedIndexMs": 428.2386175016313,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/projects/camaleonte/",
+          "bytes": 44617
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/projects/camaleonte-960.webp",
+          "bytes": 32951
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/uses/",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 144965,
+        "requests": 9,
+        "lcpMs": 1875.976,
+        "cls": 0,
+        "fcpMs": 1500.976,
+        "tbtMs": 0,
+        "speedIndexMs": 1500.976,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/uses/",
+          "bytes": 48099
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/images/uses-960.webp",
+          "bytes": 32627
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/uses/",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 204368,
+        "requests": 9,
+        "lcpMs": 440.79600000000005,
+        "cls": 0,
+        "fcpMs": 360.79600000000005,
+        "tbtMs": 0,
+        "speedIndexMs": 360.79600000000005,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/uses/",
+          "bytes": 48099
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/images/uses-960.webp",
+          "bytes": 32627
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/uses/",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 144965,
+        "requests": 9,
+        "lcpMs": 1875.67,
+        "cls": 0,
+        "fcpMs": 1500.67,
+        "tbtMs": 0,
+        "speedIndexMs": 1500.67,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/uses/",
+          "bytes": 48099
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/images/uses-960.webp",
+          "bytes": 32627
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/uses/",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 204368,
+        "requests": 9,
+        "lcpMs": 440.586,
+        "cls": 0,
+        "fcpMs": 360.586,
+        "tbtMs": 0,
+        "speedIndexMs": 384.40878040029804,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/uses/",
+          "bytes": 48099
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/assets/images/uses-960.webp",
+          "bytes": 32627
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/social-viewer/",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 120203,
+        "requests": 9,
+        "lcpMs": 1575.9699999999998,
+        "cls": 0,
+        "fcpMs": 1350.97,
+        "tbtMs": 0,
+        "speedIndexMs": 1350.97,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/projects/social-viewer/",
+          "bytes": 41661
+        },
+        {
+          "url": "/styles/site-aee51abf4438a3c3.css",
+          "bytes": 16439
+        },
+        {
+          "url": "/assets/projects/social-viewer-480.webp",
+          "bytes": 7890
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/social-viewer/",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 179606,
+        "requests": 9,
+        "lcpMs": 480.97,
+        "cls": 0.0003021039459475236,
+        "fcpMs": 320.97,
+        "tbtMs": 0,
+        "speedIndexMs": 348.7028555050641,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/projects/social-viewer/",
+          "bytes": 41661
+        },
+        {
+          "url": "/styles/site-aee51abf4438a3c3.css",
+          "bytes": 16439
+        },
+        {
+          "url": "/assets/projects/social-viewer-480.webp",
+          "bytes": 7890
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/social-viewer/",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 120203,
+        "requests": 9,
+        "lcpMs": 1576.04,
+        "cls": 0,
+        "fcpMs": 1351.04,
+        "tbtMs": 0,
+        "speedIndexMs": 1351.04,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/projects/social-viewer/",
+          "bytes": 41661
+        },
+        {
+          "url": "/styles/site-aee51abf4438a3c3.css",
+          "bytes": 16439
+        },
+        {
+          "url": "/assets/projects/social-viewer-480.webp",
+          "bytes": 7890
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/social-viewer/",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 179606,
+        "requests": 9,
+        "lcpMs": 340.556,
+        "cls": 0,
+        "fcpMs": 320.556,
+        "tbtMs": 0,
+        "speedIndexMs": 336.793162248832,
+        "lcpElement": "article.detail-top > figure.detail-cover > picture > img"
+      },
+      "resources": [
+        {
+          "url": "/projects/social-viewer/",
+          "bytes": 41661
+        },
+        {
+          "url": "/styles/site-aee51abf4438a3c3.css",
+          "bytes": 16439
+        },
+        {
+          "url": "/assets/projects/social-viewer-480.webp",
+          "bytes": 7890
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/social-viewer/test/",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "bytes": 114048,
+        "requests": 8,
+        "lcpMs": 1425.779,
+        "cls": 0,
+        "fcpMs": 1350.779,
+        "tbtMs": 0,
+        "speedIndexMs": 1350.779,
+        "lcpElement": "div.page > main#main > section.sv-picker > p.sv-help"
+      },
+      "resources": [
+        {
+          "url": "/projects/social-viewer/test/",
+          "bytes": 43396
+        },
+        {
+          "url": "/styles/site-aee51abf4438a3c3.css",
+          "bytes": 16439
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/social-viewer/test/",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "bytes": 173451,
+        "requests": 8,
+        "lcpMs": 340.372,
+        "cls": 0,
+        "fcpMs": 320.372,
+        "tbtMs": 0,
+        "speedIndexMs": 335.6802765627643,
+        "lcpElement": "div.page > main#main > section.sv-picker > h2#path-question"
+      },
+      "resources": [
+        {
+          "url": "/projects/social-viewer/test/",
+          "bytes": 43396
+        },
+        {
+          "url": "/styles/site-aee51abf4438a3c3.css",
+          "bytes": 16439
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/social-viewer/test/",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "bytes": 114048,
+        "requests": 8,
+        "lcpMs": 1500.587,
+        "cls": 0,
+        "fcpMs": 1350.587,
+        "tbtMs": 0,
+        "speedIndexMs": 1350.587,
+        "lcpElement": "div.page > main#main > section.sv-picker > h2#path-question"
+      },
+      "resources": [
+        {
+          "url": "/projects/social-viewer/test/",
+          "bytes": 43396
+        },
+        {
+          "url": "/styles/site-aee51abf4438a3c3.css",
+          "bytes": 16439
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/social-viewer/test/",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "bytes": 173451,
+        "requests": 8,
+        "lcpMs": 340.741,
+        "cls": 0,
+        "fcpMs": 320.741,
+        "tbtMs": 0,
+        "speedIndexMs": 320.741,
+        "lcpElement": "div.page > main#main > section.sv-picker > h2#path-question"
+      },
+      "resources": [
+        {
+          "url": "/projects/social-viewer/test/",
+          "bytes": 43396
+        },
+        {
+          "url": "/styles/site-aee51abf4438a3c3.css",
+          "bytes": 16439
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/social-viewer/privacy/",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 120734,
+        "requests": 8,
+        "lcpMs": 1650.672,
+        "cls": 0,
+        "fcpMs": 1500.672,
+        "tbtMs": 0,
+        "speedIndexMs": 1500.672,
+        "lcpElement": "main#main > section#policy-it > header.policy-heading > p.lead"
+      },
+      "resources": [
+        {
+          "url": "/projects/social-viewer/privacy/",
+          "bytes": 50082
+        },
+        {
+          "url": "/styles/site-aee51abf4438a3c3.css",
+          "bytes": 16439
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/social-viewer/privacy/",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 180137,
+        "requests": 8,
+        "lcpMs": 380.72900000000004,
+        "cls": 0,
+        "fcpMs": 360.72900000000004,
+        "tbtMs": 0,
+        "speedIndexMs": 368.57611826363507,
+        "lcpElement": "main#main > section#policy-it > header.policy-heading > p.lead"
+      },
+      "resources": [
+        {
+          "url": "/projects/social-viewer/privacy/",
+          "bytes": 50082
+        },
+        {
+          "url": "/styles/site-aee51abf4438a3c3.css",
+          "bytes": 16439
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/social-viewer/privacy/",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 120734,
+        "requests": 8,
+        "lcpMs": 1576.014,
+        "cls": 0,
+        "fcpMs": 1501.014,
+        "tbtMs": 0,
+        "speedIndexMs": 1501.014,
+        "lcpElement": "main#main > section#policy-en > header.policy-heading > p.lead"
+      },
+      "resources": [
+        {
+          "url": "/projects/social-viewer/privacy/",
+          "bytes": 50082
+        },
+        {
+          "url": "/styles/site-aee51abf4438a3c3.css",
+          "bytes": 16439
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        },
+        {
+          "url": "/assets/images/flag-it.png",
+          "bytes": 336
+        },
+        {
+          "url": "/assets/images/flag-en.png",
+          "bytes": 748
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/social-viewer/privacy/",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 180137,
+        "requests": 8,
+        "lcpMs": 381.102,
+        "cls": 0,
+        "fcpMs": 361.102,
+        "tbtMs": 0,
+        "speedIndexMs": 361.102,
+        "lcpElement": "main#main > section#policy-en > header.policy-heading > p.lead"
+      },
+      "resources": [
+        {
+          "url": "/projects/social-viewer/privacy/",
+          "bytes": 50082
+        },
+        {
+          "url": "/styles/site-aee51abf4438a3c3.css",
+          "bytes": 16439
+        },
+        {
+          "url": "/assets/fonts/poppins-600.woff2",
+          "bytes": 8184
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo-native.webp",
+          "bytes": 70069
+        },
+        {
+          "url": "/assets/images/flag-it-native.png",
+          "bytes": 279
+        },
+        {
+          "url": "/assets/images/flag-en-native.png",
+          "bytes": 470
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69266,
+        "requests": 6,
+        "lcpMs": 1201.092,
+        "cls": 0,
+        "fcpMs": 1051.092,
+        "tbtMs": 0,
+        "speedIndexMs": 1051.092,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/",
+          "bytes": 9010
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69266,
+        "requests": 6,
+        "lcpMs": 281.569,
+        "cls": 0,
+        "fcpMs": 281.569,
+        "tbtMs": 0,
+        "speedIndexMs": 281.569,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/",
+          "bytes": 9010
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69266,
+        "requests": 6,
+        "lcpMs": 1200.736,
+        "cls": 0,
+        "fcpMs": 1050.736,
+        "tbtMs": 0,
+        "speedIndexMs": 1050.736,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/",
+          "bytes": 9010
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69266,
+        "requests": 6,
+        "lcpMs": 281.132,
+        "cls": 0,
+        "fcpMs": 281.132,
+        "tbtMs": 0,
+        "speedIndexMs": 281.132,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/",
+          "bytes": 9010
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/index.html",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69266,
+        "requests": 6,
+        "lcpMs": 1200.271,
+        "cls": 0,
+        "fcpMs": 1050.271,
+        "tbtMs": 0,
+        "speedIndexMs": 1050.271,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/index.html",
+          "bytes": 9010
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/index.html",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69266,
+        "requests": 6,
+        "lcpMs": 280.963,
+        "cls": 0,
+        "fcpMs": 280.963,
+        "tbtMs": 0,
+        "speedIndexMs": 280.963,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/index.html",
+          "bytes": 9010
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/index.html",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69266,
+        "requests": 6,
+        "lcpMs": 1260,
+        "cls": 0,
+        "fcpMs": 1110,
+        "tbtMs": 0,
+        "speedIndexMs": 1110,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/index.html",
+          "bytes": 9010
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/index.html",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69266,
+        "requests": 6,
+        "lcpMs": 280.692,
+        "cls": 0.0003191270466684178,
+        "fcpMs": 280.692,
+        "tbtMs": 0,
+        "speedIndexMs": 280.692,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/index.html",
+          "bytes": 9010
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/research.html",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69323,
+        "requests": 6,
+        "lcpMs": 1200.741,
+        "cls": 0,
+        "fcpMs": 1050.741,
+        "tbtMs": 0,
+        "speedIndexMs": 1050.741,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/research.html",
+          "bytes": 9067
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/research.html",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69323,
+        "requests": 6,
+        "lcpMs": 280.676,
+        "cls": 0,
+        "fcpMs": 280.676,
+        "tbtMs": 0,
+        "speedIndexMs": 280.676,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/research.html",
+          "bytes": 9067
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/research.html",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69323,
+        "requests": 6,
+        "lcpMs": 1200.227,
+        "cls": 0,
+        "fcpMs": 1050.227,
+        "tbtMs": 0,
+        "speedIndexMs": 1050.227,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/research.html",
+          "bytes": 9067
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/research.html",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69323,
+        "requests": 6,
+        "lcpMs": 280.456,
+        "cls": 0,
+        "fcpMs": 280.456,
+        "tbtMs": 0,
+        "speedIndexMs": 280.456,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/research.html",
+          "bytes": 9067
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/prof-gecko.html",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69387,
+        "requests": 6,
+        "lcpMs": 1201.167,
+        "cls": 0,
+        "fcpMs": 1051.167,
+        "tbtMs": 0,
+        "speedIndexMs": 1051.167,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/prof-gecko.html",
+          "bytes": 9131
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/prof-gecko.html",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69387,
+        "requests": 6,
+        "lcpMs": 281.043,
+        "cls": 0,
+        "fcpMs": 281.043,
+        "tbtMs": 0,
+        "speedIndexMs": 281.043,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/prof-gecko.html",
+          "bytes": 9131
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/prof-gecko.html",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69387,
+        "requests": 6,
+        "lcpMs": 1200.927,
+        "cls": 0,
+        "fcpMs": 1050.927,
+        "tbtMs": 0,
+        "speedIndexMs": 1050.927,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/prof-gecko.html",
+          "bytes": 9131
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/prof-gecko.html",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69387,
+        "requests": 6,
+        "lcpMs": 280.747,
+        "cls": 0,
+        "fcpMs": 280.747,
+        "tbtMs": 0,
+        "speedIndexMs": 280.747,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/prof-gecko.html",
+          "bytes": 9131
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/consigli.html",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69266,
+        "requests": 6,
+        "lcpMs": 1200.466,
+        "cls": 0,
+        "fcpMs": 1050.466,
+        "tbtMs": 0,
+        "speedIndexMs": 1050.466,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/consigli.html",
+          "bytes": 9010
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/consigli.html",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69266,
+        "requests": 6,
+        "lcpMs": 281.486,
+        "cls": 0,
+        "fcpMs": 281.486,
+        "tbtMs": 0,
+        "speedIndexMs": 281.486,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/consigli.html",
+          "bytes": 9010
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/consigli.html",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69266,
+        "requests": 6,
+        "lcpMs": 1200.521,
+        "cls": 0,
+        "fcpMs": 1050.521,
+        "tbtMs": 0,
+        "speedIndexMs": 1050.521,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/consigli.html",
+          "bytes": 9010
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/consigli.html",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69266,
+        "requests": 6,
+        "lcpMs": 281.02,
+        "cls": 0,
+        "fcpMs": 281.02,
+        "tbtMs": 0,
+        "speedIndexMs": 281.02,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/consigli.html",
+          "bytes": 9010
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/testers.html",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69361,
+        "requests": 6,
+        "lcpMs": 1200.253,
+        "cls": 0,
+        "fcpMs": 1050.253,
+        "tbtMs": 0,
+        "speedIndexMs": 1050.253,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/testers.html",
+          "bytes": 9105
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/testers.html",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69361,
+        "requests": 6,
+        "lcpMs": 280.622,
+        "cls": 0,
+        "fcpMs": 280.622,
+        "tbtMs": 0,
+        "speedIndexMs": 280.622,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/testers.html",
+          "bytes": 9105
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/testers.html",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69361,
+        "requests": 6,
+        "lcpMs": 1200.632,
+        "cls": 0,
+        "fcpMs": 1050.632,
+        "tbtMs": 0,
+        "speedIndexMs": 1050.632,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/testers.html",
+          "bytes": 9105
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/testers.html",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69361,
+        "requests": 6,
+        "lcpMs": 281.005,
+        "cls": 0.0002792361658348656,
+        "fcpMs": 281.005,
+        "tbtMs": 0,
+        "speedIndexMs": 281.005,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/testers.html",
+          "bytes": 9105
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/socialviewer-privacy.html",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69358,
+        "requests": 6,
+        "lcpMs": 1200.446,
+        "cls": 0,
+        "fcpMs": 1050.446,
+        "tbtMs": 0,
+        "speedIndexMs": 1050.446,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/socialviewer-privacy.html",
+          "bytes": 9102
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/socialviewer-privacy.html",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69358,
+        "requests": 6,
+        "lcpMs": 281.039,
+        "cls": 0,
+        "fcpMs": 281.039,
+        "tbtMs": 0,
+        "speedIndexMs": 281.039,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/socialviewer-privacy.html",
+          "bytes": 9102
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/socialviewer-privacy.html",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69358,
+        "requests": 6,
+        "lcpMs": 1200.563,
+        "cls": 0,
+        "fcpMs": 1050.563,
+        "tbtMs": 0,
+        "speedIndexMs": 1050.563,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/socialviewer-privacy.html",
+          "bytes": 9102
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/Nexus-portfolio/socialviewer-privacy.html",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69358,
+        "requests": 6,
+        "lcpMs": 281.048,
+        "cls": 0,
+        "fcpMs": 281.048,
+        "tbtMs": 0,
+        "speedIndexMs": 281.048,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/Nexus-portfolio/socialviewer-privacy.html",
+          "bytes": 9102
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/",
+      "lang": "it",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69329,
+        "requests": 6,
+        "lcpMs": 1201.142,
+        "cls": 0,
+        "fcpMs": 1051.142,
+        "tbtMs": 0,
+        "speedIndexMs": 1051.142,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/projects/",
+          "bytes": 9073
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/",
+      "lang": "it",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69329,
+        "requests": 6,
+        "lcpMs": 280.403,
+        "cls": 0,
+        "fcpMs": 280.403,
+        "tbtMs": 0,
+        "speedIndexMs": 280.403,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/projects/",
+          "bytes": 9073
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/",
+      "lang": "en",
+      "device": "mobile",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69329,
+        "requests": 6,
+        "lcpMs": 1201.412,
+        "cls": 0.0007657801051121892,
+        "fcpMs": 1051.412,
+        "tbtMs": 0,
+        "speedIndexMs": 1051.412,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/projects/",
+          "bytes": 9073
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    },
+    {
+      "route": "/projects/",
+      "lang": "en",
+      "device": "desktop",
+      "pass": true,
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "bytes": 69329,
+        "requests": 6,
+        "lcpMs": 280.661,
+        "cls": 0,
+        "fcpMs": 280.661,
+        "tbtMs": 0,
+        "speedIndexMs": 280.661,
+        "lcpElement": "body > main.status-standalone > div.status-panel > h1"
+      },
+      "resources": [
+        {
+          "url": "/projects/",
+          "bytes": 9073
+        },
+        {
+          "url": "/styles/site-5cfb025d9d7c50de.css",
+          "bytes": 10026
+        },
+        {
+          "url": "/scripts/i18n.js",
+          "bytes": 5285
+        },
+        {
+          "url": "/assets/fonts/ibm-plex-mono-latin-400-normal.woff2",
+          "bytes": 14893
+        },
+        {
+          "url": "/assets/fonts/gelasio-latin-400-normal.woff2",
+          "bytes": 19721
+        },
+        {
+          "url": "/assets/images/falkerlogo.png",
+          "bytes": 10331
+        }
+      ],
+      "version": "12.8.2"
+    }
+  ],
+  "axe": [
+    {
+      "route": "/",
+      "lang": "it",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/",
+      "lang": "it",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/",
+      "lang": "en",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/",
+      "lang": "en",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/404.html",
+      "lang": "it",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/404.html",
+      "lang": "it",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/404.html",
+      "lang": "en",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/404.html",
+      "lang": "en",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/research/",
+      "lang": "it",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/research/",
+      "lang": "it",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/research/",
+      "lang": "en",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/research/",
+      "lang": "en",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/prof-gecko/",
+      "lang": "it",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/prof-gecko/",
+      "lang": "it",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/prof-gecko/",
+      "lang": "en",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/prof-gecko/",
+      "lang": "en",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/camaleonte/",
+      "lang": "it",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/camaleonte/",
+      "lang": "it",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/camaleonte/",
+      "lang": "en",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/camaleonte/",
+      "lang": "en",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/uses/",
+      "lang": "it",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/uses/",
+      "lang": "it",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/uses/",
+      "lang": "en",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/uses/",
+      "lang": "en",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/social-viewer/",
+      "lang": "it",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/social-viewer/",
+      "lang": "it",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/social-viewer/",
+      "lang": "en",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/social-viewer/",
+      "lang": "en",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/social-viewer/test/",
+      "lang": "it",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/social-viewer/test/",
+      "lang": "it",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/social-viewer/test/",
+      "lang": "en",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/social-viewer/test/",
+      "lang": "en",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/social-viewer/privacy/",
+      "lang": "it",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/social-viewer/privacy/",
+      "lang": "it",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/social-viewer/privacy/",
+      "lang": "en",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/social-viewer/privacy/",
+      "lang": "en",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/",
+      "lang": "it",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/",
+      "lang": "it",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/",
+      "lang": "en",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/",
+      "lang": "en",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/index.html",
+      "lang": "it",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/index.html",
+      "lang": "it",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/index.html",
+      "lang": "en",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/index.html",
+      "lang": "en",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/research.html",
+      "lang": "it",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/research.html",
+      "lang": "it",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/research.html",
+      "lang": "en",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/research.html",
+      "lang": "en",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/prof-gecko.html",
+      "lang": "it",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/prof-gecko.html",
+      "lang": "it",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/prof-gecko.html",
+      "lang": "en",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/prof-gecko.html",
+      "lang": "en",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/consigli.html",
+      "lang": "it",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/consigli.html",
+      "lang": "it",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/consigli.html",
+      "lang": "en",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/consigli.html",
+      "lang": "en",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/testers.html",
+      "lang": "it",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/testers.html",
+      "lang": "it",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/testers.html",
+      "lang": "en",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/testers.html",
+      "lang": "en",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/socialviewer-privacy.html",
+      "lang": "it",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/socialviewer-privacy.html",
+      "lang": "it",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/socialviewer-privacy.html",
+      "lang": "en",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/Nexus-portfolio/socialviewer-privacy.html",
+      "lang": "en",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/",
+      "lang": "it",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/",
+      "lang": "it",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/",
+      "lang": "en",
+      "width": 1440,
+      "pass": true,
+      "violations": []
+    },
+    {
+      "route": "/projects/",
+      "lang": "en",
+      "width": 390,
+      "pass": true,
+      "violations": []
+    }
+  ]
+}

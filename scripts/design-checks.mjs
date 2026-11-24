@@ -80,9 +80,11 @@ export async function designChecks(siteRoot, inlineCss = []) {
     for (const border of ['--control-line', '--blue', '--stroke']) contrast(border, background, 3);
   }
   // Category and accent colours mark labels on every dark surface (V3).
-  for (const ink of ['--accent', '--cat-app', '--cat-game', '--cat-tool', '--cat-mod']) {
+  for (const ink of ['--accent', '--cat-app', '--cat-game', '--cat-tool', '--nexus', '--nexus-amber']) {
     if (tokens.has(ink)) for (const background of darkSurfaces) contrast(ink, background);
   }
+  // A pressed category pill sets the page background colour on the panel accent.
+  for (const accent of ['--blue', '--nexus']) if (tokens.has(accent)) contrast('--bg', accent);
   const covered = new Set();
   for (const { selector, values } of all) {
     let family = values.get('font-family');

@@ -6,28 +6,27 @@ import research from '../../../data/research.json' with { type: 'json' };
 import tutoring from '../../../data/tutoring.json' with { type: 'json' };
 import { html, raw } from '../../lib/html.mjs';
 import { img } from '../../lib/media.mjs';
-import { label, localized } from '../../partials/components.mjs';
+import { actionLink, label, localized } from '../../partials/components.mjs';
+import { brand, icon } from '../../partials/icons.mjs';
 import { chart, configurations } from '../../partials/ringmin.mjs';
 
 // "I miei progetti": every project lives here. All groups are rendered at build
 // time; the client only shows one tab and one category at a time.
 const visible = projects.filter(item => !item.hidden).sort((a, b) => a.order - b.order);
+// The research count keeps its drawing; the category toggles are text pills.
 const glyphs = {
-  app: '<rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 5h4m-3 14h2M9 9h6v6H9Z"/>',
-  game: '<path d="M7 7h10c3 0 5 9 3 11-1 1-3-1-5-3H9c-2 2-4 4-5 3-2-2 0-11 3-11ZM7 10v4m-2-2h4"/><circle cx="16" cy="11" r=".7"/><circle cx="18" cy="13" r=".7"/>',
-  tool: '<path d="m14 7 3 3 4-4c1 6-3 9-7 7L6 21l-3-3 8-8c-2-4 1-8 7-7Z"/>',
   paper: '<path d="M5 3h10l4 4v14H5ZM15 3v5h4M9 12h6m-6 4h6"/>',
 };
 const glyph = name => raw(html`<svg class="result-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">${raw(glyphs[name])}</svg>`);
 export const categories = [
-  { id: 'app', key: 'appsCount', name: 'apps' },
-  { id: 'game', key: 'gamesCount', name: 'games' },
-  { id: 'tool', key: 'toolsCount', name: 'tools' },
+  { id: 'app', key: 'appsCount', name: 'apps', pill: 'apps' },
+  { id: 'game', key: 'gamesCount', name: 'games', pill: 'games' },
+  { id: 'tool', key: 'toolsCount', name: 'tools', pill: 'tools' },
 ].map(category => ({ ...category, items: visible.filter(item => item.category === category.id) }));
 export const counts = Object.fromEntries(categories.map(category => [category.id, category.items.length]));
 export const modGroups = [
-  { id: 'mod', key: 'modsToggle' },
-  { id: 'translation', key: 'translationsToggle' },
+  { id: 'mod', key: 'modsToggle', pill: 'modsPill' },
+  { id: 'translation', key: 'translationsToggle', pill: 'translationsPill' },
 ].map(group => ({ ...group, items: nexus.mods.filter(mod => mod.kind === group.id) }));
 
 if (featured.profile !== 'https://www.nexusmods.com/profile/falker47/mods') throw Error('Unexpected Nexus profile');
@@ -38,13 +37,11 @@ const join = items => raw(items.join('\n'));
 const cardSizes = '(min-width: 1000px) 400px, (min-width: 600px) 55vw, 80vw';
 
 // A card link reads "Apri", "Play Store", "Prova l'app" or "GitHub"; a repository with its own name keeps it.
-function cardLink(t, title, href, text, arrow = '↗') {
-  return html`<a href="${href}">${text}<span class="sr-only"> · ${title}</span> <span aria-hidden="true">${arrow}</span></a>`;
-}
+// External platforms show their mark (actionLink); the other links keep an arrow.
 function projectLink(t, project, entry) {
   const text = entry.type === 'repo' ? (entry.label.it === 'Repo GitHub' ? 'GitHub' : localized(entry.label))
     : entry.type === 'store' ? 'Play Store' : label(t, entry.type === 'test' ? 'tryApp' : 'openLink');
-  return cardLink(t, project.title, entry.url, text, entry.url.startsWith('/') ? '→' : '↗');
+  return actionLink(entry.url, text, { title: project.title });
 }
 
 function projectCard(t, project) {
@@ -67,9 +64,10 @@ ${join(cards)}
 </div>`;
 }
 
-// The counts are the category toggles. Without scripts every group is listed under its own label.
+// The category toggles are a row of pills, "App 4 · Giochi 5 · Strumenti 5": one is pressed at a time.
+// Without scripts every group is listed under its own label.
 function picker({ t, copy }, name, groups, labelKey, card, note, modifier = '') {
-  const toggles = groups.map((group, index) => html`<button type="button" class="picker-toggle result cat-${group.id}" data-group="${group.id}" aria-pressed="${index === 0}">${glyphs[group.id] ? glyph(group.id) : ''}<span class="result-body"><strong class="result-value">${group.items.length}</strong><span class="result-label">${label(t, group.key)}</span></span></button>`);
+  const toggles = groups.map((group, index) => html`<button type="button" class="picker-toggle cat-${group.id}" data-group="${group.id}" aria-pressed="${index === 0}">${label(t, group.pill)} <span class="picker-count-value">${group.items.length}</span></button>`);
   const sections = groups.map(group => html`<section class="picker-group cat-${group.id}" data-group="${group.id}" aria-labelledby="${name}-${group.id}">
 <p class="picker-heading" id="${name}-${group.id}">${group.items.length} ${label(t, group.key)}</p>
 ${raw(rail(copy, group.items.map(item => card(t, item)), modifier))}
@@ -89,8 +87,8 @@ const maxDownloads = Math.max(...nexus.mods.map(mod => mod.downloads));
 const shortGame = game => game.replace(' Special Edition', ' SE');
 function modCard(t, mod) {
   const cover = covers.get(mod.modId);
-  const links = [cardLink(t, mod.name, mod.url, 'Nexus')];
-  if (cover?.repo) links.push(cardLink(t, mod.name, cover.repo, 'GitHub'));
+  const links = [actionLink(mod.url, 'Nexus', { title: mod.name })];
+  if (cover?.repo) links.push(actionLink(cover.repo, 'GitHub', { title: mod.name }));
   const translation = mod.kind === 'translation';
   const head = translation
     ? html`<div class="mod-type"><b>IT</b><span>${mod.game}</span></div>`
@@ -108,7 +106,7 @@ ${raw(head)}
 }
 
 function nexusNote(t) {
-  return html`<p class="sample-count"><a href="${featured.profile}"><strong data-i18n="moddingNumber">${t('moddingNumber')}</strong> ${label(t, 'uniqueDownloads')}</a> <span aria-hidden="true">·</span> <strong data-nexus-stat="modCount" data-i18n="nexusModCount">${t('nexusModCount')}</strong> ${label(t, 'publications')} <span aria-hidden="true">·</span> ${label(t, 'nexusDataOf')} <time data-nexus-stat="checkedOn" datetime="${snapshot.checkedOn}">${new Intl.DateTimeFormat('it-IT', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(snapshot.checkedOn + 'T00:00:00Z'))}</time></p>`;
+  return html`<p class="sample-count"><a href="${featured.profile}">${brand('nexusmods')}<strong data-i18n="moddingNumber">${t('moddingNumber')}</strong> ${label(t, 'uniqueDownloads')}</a> <span aria-hidden="true">·</span> <strong data-nexus-stat="modCount" data-i18n="nexusModCount">${t('nexusModCount')}</strong> ${label(t, 'publications')} <span aria-hidden="true">·</span> ${label(t, 'nexusDataOf')} <time data-nexus-stat="checkedOn" datetime="${snapshot.checkedOn}">${new Intl.DateTimeFormat('it-IT', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(snapshot.checkedOn + 'T00:00:00Z'))}</time></p>`;
 }
 
 function paperCard(t, paper, figure, repo) {
@@ -119,8 +117,8 @@ function paperCard(t, paper, figure, repo) {
 <h4 id="${key}-title">${label(t, key + 'Title')}</h4>
 <p class="paper-highlight">${label(t, key + 'Highlight')}</p>
 <p class="card-summary">${label(t, key + 'Line')}</p>
-<p class="card-links"><a href="${paper.url}">arXiv<span class="sr-only"> · Paper ${paper.number}</span> <span aria-hidden="true">↗</span></a>
-<a href="${repo}">${label(t, 'codeLink')}<span class="sr-only"> · Paper ${paper.number}</span> <span aria-hidden="true">↗</span></a></p></div></article>`;
+<p class="card-links">${raw(actionLink(paper.url, 'arXiv', { title: 'Paper ' + paper.number }))}
+${raw(actionLink(repo, label(t, 'codeLink'), { title: 'Paper ' + paper.number }))}</p></div></article>`;
 }
 
 const star = '<svg viewBox="0 0 24 24"><path d="m12 2.5 2.8 5.8 6.4.9-4.6 4.5 1.1 6.4-5.7-3-5.7 3 1.1-6.4-4.6-4.5 6.4-.9Z"/></svg>';
@@ -137,7 +135,7 @@ export function workSection(ctx) {
   const tabs = [['software', 'softwareTitle'], ['modding', 'moddingTitle'], ['research', 'researchTitle'], ['teaching', 'teachingTitle']];
   const tab = ([id, key], index) => html`<button id="tab-${id}" role="tab" type="button" aria-selected="${index === 0}" aria-controls="panel-${id}" tabindex="${index === 0 ? 0 : -1}" data-panel="${id}">${label(t, key)}</button>`;
   const panel = (id, key, intro, body) => html`<section class="work-panel" id="panel-${id}" role="tabpanel" aria-labelledby="tab-${id}" tabindex="0">
-<h3 class="panel-heading"${raw(id === 'research' ? ' id="ricerca"' : '')}>${label(t, key)}</h3><p class="category-intro">${label(t, intro)}</p>
+<h3 class="panel-heading"${raw(id === 'research' ? ' id="ricerca"' : '')}>${label(t, key)}</h3>${intro ? raw(html`<p class="category-intro">${label(t, intro)}</p>`) : ''}
 ${raw(body)}
 </section>`;
   const repo = research.repositories.find(item => item.project === research.id).url;
@@ -152,11 +150,15 @@ ${raw(panel('research', 'researchTitle', 'researchIntro', html`<div class="resul
 ${raw(paperCard(t, research.papers[0], configurations(ctx), repo))}
 ${raw(paperCard(t, research.papers[1], chart(ctx), repo))}
 </div>
-<p class="research-foot">${label(t, 'researchFigures')} ${label(t, 'researchAlso')} <a href="${power}">Power-Ringmin <span aria-hidden="true">↗</span></a> <span aria-hidden="true">·</span> <a href="${research.zenodo.url}">Zenodo <span aria-hidden="true">↗</span></a></p>`))}
-${raw(panel('teaching', 'teachingTitle', 'teachingIntro', html`<div class="lesson-cards">
+<p class="research-foot">${label(t, 'researchFigures')} ${label(t, 'researchAlso')} ${raw(actionLink(power, 'Power-Ringmin'))} <span aria-hidden="true">·</span> ${raw(actionLink(research.zenodo.url, 'Zenodo'))}</p>`))}
+${raw(panel('teaching', 'teachingTitle', null, html`<div class="lessons">
+<div class="lessons-text"><h4 class="lessons-title">${label(t, 'lessonsTitle')}</h4><p class="lessons-body">${label(t, 'lessonsText')}</p>
+<p class="lessons-action"><a class="lessons-cta" href="${tutoring.portal}">${label(t, 'lessonsCta')}${icon('arrow-right')}</a></p></div>
+<div class="lessons-reviews"><p class="lessons-lead">${label(t, 'lessonsLead')}</p>
+<div class="lesson-cards">
 ${raw(ratingCard(copy, ratings[0], 'letuelezioni'))}
 ${raw(ratingCard(copy, ratings[1], 'superprof'))}
-<article class="card lesson-card"><h4>${label(t, 'lessonExample')}</h4><p class="card-summary">${label(t, 'lessonText')}</p><p class="card-links"><a href="${tutoring.portal}">${label(t, 'lessonPortal')} <span aria-hidden="true">↗</span></a></p></article>
+</div></div>
 </div>`))}
 </div></div></details>`;
 }

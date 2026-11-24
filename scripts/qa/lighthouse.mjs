@@ -4,7 +4,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { chromePath, options, qaRequire } from './browser.mjs';
 import { startServer } from './serve.mjs';
 import { auditRoutes } from './audit-routes.mjs';
-import { checkLoad, snapshotUrl } from '../budgets.mjs';
+import { checkDeferred, checkLoad, isCertificateThumbnail, snapshotUrl } from '../budgets.mjs';
 
 const load = name => import(pathToFileURL(qaRequire.resolve(name)));
 // V3 floors: the home now holds every project, so mobile performance must reach 90 and desktop 95.
@@ -60,7 +60,17 @@ export async function runLighthouse(pages, langs, thresholds = gates, root) {
           if (extraFlags.length) row.chromeFlags = extraFlags;
           const bad = requests.find(item => new URL(item.url).origin !== server.origin && item.url !== snapshotUrl);
           if (bad) throw Error('Unexpected request: ' + bad.url);
-          if (route === '/') checkLoad(row.metrics, device + ' home');
+          if (route === '/') {
+            // V4: the certificate thumbnails prefetched after the load event have their own budget.
+            const path = item => new URL(item.url).pathname;
+            const later = requests.filter(item => isCertificateThumbnail(path(item)));
+            const first = requests.filter(item => !isCertificateThumbnail(path(item)));
+            const sum = list => list.reduce((total, item) => total + item.transferSize, 0);
+            row.metrics.firstLoad = { bytes: sum(first), requests: first.length };
+            row.metrics.idlePrefetch = { bytes: sum(later), requests: later.length };
+            checkLoad(row.metrics.firstLoad, device + ' home');
+            checkDeferred({ ...row.metrics.idlePrefetch, urls: later.map(path) }, device + ' home');
+          }
           row.pass = row.scores.performance >= thresholds['min-perf-' + device] &&
             row.scores.accessibility >= thresholds['min-a11y'] && row.scores['best-practices'] >= thresholds['min-bp'];
         } catch (error) { row.error = error.message; }

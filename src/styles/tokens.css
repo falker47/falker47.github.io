@@ -47,7 +47,6 @@
   --muted: #adbfce;
   --blue: #9bdcff;
   --accent: #60a5fa;
-  --violet: #a78bfa;
   --stroke: #81bfe5;
   --rule: #ffffff14;
   --control-line: #7b8799;
@@ -57,7 +56,13 @@
   --cat-app: #60a5fa;
   --cat-game: #f0a35e;
   --cat-tool: #4fd1a5;
-  --cat-mod: #c084fc;
+  /* Nexus Mods orange, from the official emblem (logo-emblem.svg), and a lighter amber for gradients. */
+  --nexus: #f97316;
+  --nexus-amber: #fbbf24;
+  /* Hover ink of a platform mark; each external action sets its own from data/brands.json. */
+  --brand: var(--paper);
+  /* The pressed category pill; #panel-modding switches it to the Nexus orange. */
+  --panel-accent: var(--blue);
   --cat: var(--cat-app);
   --serif: "Gelasio", Georgia, serif;
   --mono: "IBM Plex Mono", "Courier New", monospace;

@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync } from 'node:fs';
-import { homedir } from 'node:os';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
+import { homedir, tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
 import data from '../data/ringmin.json' with { type: 'json' };
 import { circles, smallestGap } from '../src/partials/ringmin.mjs';
-import { CERTIFIED, importRingmin } from './import-ringmin.mjs';
+import { CERTIFIED, importRingmin, readAsymptoticConstant } from './import-ringmin.mjs';
 
 const tolerance = 1e-4;
 const source = join(homedir(), 'sources', 'ringmin');
@@ -60,4 +60,28 @@ test('the snapshot matches the reference checkout', { skip: !existsSync(source) 
   if (fresh.source.commit !== committed.source.commit) return t.skip('the reference checkout is at another commit: run scripts/import-ringmin.mjs');
   assert.deepEqual(fresh.optima, committed.optima);
   assert.deepEqual(fresh.asymptotic, committed.asymptotic);
+});
+
+test('the certified interval for C* lies above 1/8 and above every finite value', () => {
+  const { lower, upper, lowerSource, upperSource } = data.constant;
+  assert.ok(1 / 8 < lower && lower < upper && upper < 1 / (2 * Math.PI), 'ordered bounds');
+  assert.ok(data.asymptotic.every(row => row.ratio < lower), 'R(n)/n² for n ≤ 18 stays below the interval');
+  assert.ok(upper - lower < .01, 'a short interval');
+  assert.match(lowerSource, /arXiv 2609\.13630/);
+  assert.match(upperSource, /GLOBAL_BOUNDS_ASYMPTOTICS\.md/);
+});
+
+test('the importer reads both bounds and rejects sources without them', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'ringmin-'));
+  mkdirSync(join(dir, 'paper_assets', 'asymptotic_sequel'), { recursive: true });
+  mkdirSync(join(dir, 'knowledge'));
+  const tex = join(dir, 'paper_assets', 'asymptotic_sequel', 'ringmin_asymptotic.tex');
+  const ledger = join(dir, 'knowledge', 'GLOBAL_BOUNDS_ASYMPTOTICS.md');
+  writeFileSync(tex, 'with exact directed enclosure\n\\[\n .1405 < C_{\\rm term}+\\eta_{\\rm width}\n < .1406.\n\\]');
+  writeFileSync(ledger, 'directed rational sqrt/log/pi enclosures also give the weaker exact bound\nlimsup R*(n)/n^2<0.142. This');
+  assert.deepEqual([readAsymptoticConstant(dir).lower, readAsymptoticConstant(dir).upper], [.1405, .142]);
+  writeFileSync(ledger, 'no bound here');
+  assert.throws(() => readAsymptoticConstant(dir), /no exact upper bound/);
+  writeFileSync(ledger, 'weaker exact bound\nlimsup R*(n)/n^2<0.12. This');
+  assert.throws(() => readAsymptoticConstant(dir), /Inconsistent/);
 });

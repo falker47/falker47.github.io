@@ -5,7 +5,8 @@ import { once } from 'node:events';
 import { extname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-export const siteRoot = fileURLToPath(new URL('../../_site/', import.meta.url));
+// QA_SITE_ROOT serves another built checkout (for before/after measurements).
+export const siteRoot = process.env.QA_SITE_ROOT ? resolve(process.env.QA_SITE_ROOT) : fileURLToPath(new URL('../../_site/', import.meta.url));
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8',
   '.json': 'application/json', '.xml': 'application/xml', '.txt': 'text/plain; charset=utf-8',

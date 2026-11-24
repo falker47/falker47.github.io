@@ -24,6 +24,8 @@
 .site-nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 8px; height: 1px; background: var(--blue); transition: right .25s; }
 .site-nav a:is(:hover, [data-preview="hover"], [data-preview="selected"]) { color: var(--paper); }
 .site-nav a:is(:hover, [data-preview="hover"], [data-preview="selected"])::after { right: 0; }
+.site-nav a[aria-current="page"] { color: var(--blue); }
+.site-nav a[aria-current="page"]::after { right: 0; }
 .language { display: flex; gap: 6px; }
 .language button {
   width: 44px; height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 0;
@@ -68,12 +70,21 @@
   display: flex; align-items: center; justify-content: space-between; gap: 20px;
   padding-block: 24px; border-top: 1px solid var(--rule);
 }
+.site-footer .footer-home { display: grid; gap: 0; color: var(--paper); }
 .footer-name { margin: 0; font: 600 16px/1.4 var(--name); }
 .footer-handle { margin: 0; color: var(--muted); font: 12px/1.5 var(--mono); }
+.footer-home .footer-name { text-decoration: underline 1px transparent; text-underline-offset: 4px; transition: text-decoration-color .16s, color .16s; }
+.site-footer .footer-home:is(:hover, :focus-visible, [data-preview="hover"]) .footer-name { color: var(--blue); text-decoration-color: currentColor; }
 .site-footer nav { display: flex; align-items: center; flex-wrap: wrap; gap: 0 24px; }
 .site-footer a, .text-link { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
 .site-footer a { color: var(--secondary); font-size: 14px; }
 .site-footer .icon { color: var(--stroke); width: 16px; }
+.site-footer .brand { color: var(--stroke); }
+
+/* Platform marks (data/brands.json) left of an external action: one-colour marks take the
+   text colour and turn to the brand colour on hover; several-colour marks keep their own. */
+.brand { display: inline-block; width: 16px; height: 16px; flex: none; vertical-align: middle; fill: currentColor; transition: color .16s; }
+a[data-brand]:is(:hover, :focus-visible, [data-preview="hover"]) .brand { color: var(--brand); }
 .site-footer a:is(:hover, [data-preview="hover"]), .site-brand:is(:hover, [data-preview="hover"]) { color: var(--blue); }
 
 .primary-cta {

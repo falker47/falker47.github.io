@@ -413,5 +413,11 @@
    "ratio": 0.116885048356,
    "certified": false
   }
- ]
+ ],
+ "constant": {
+  "lower": 0.14056946887766097,
+  "upper": 0.14199597951,
+  "lowerSource": "Paper II (arXiv 2609.13630), Proposition \"Explicit global lower bound\": C* ≥ C_term + η_width > 0.14056946887766098063257",
+  "upperSource": "ringmin knowledge/GLOBAL_BOUNDS_ASYMPTOTICS.md, shifted-family corollary: limsup R*(n)/n² < 0.14199597951"
+ }
 }

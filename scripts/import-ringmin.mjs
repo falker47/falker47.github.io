@@ -1,4 +1,4 @@
-// Copy the certified Ringmin optima and the asymptotic table into data/ringmin.json.
+// Copy the certified Ringmin optima, the asymptotic table and the certified interval for C* into data/ringmin.json.
 // Usage: node scripts/import-ringmin.mjs [path to a ringmin checkout]
 // The default source is <HOME>/sources/ringmin (https://github.com/falker47/ringmin).
 import { execFileSync } from 'node:child_process';
@@ -46,6 +46,29 @@ export function readAsymptotic(source) {
   });
 }
 
+/**
+ * The certified interval for the asymptotic constant C* = lim R*(n)/n².
+ * Lower end: Paper II (arXiv 2609.13630), Proposition "Explicit global lower bound", whose directed
+ * enclosure starts above this decimal. Upper end: the exact (directed-enclosure) bound on
+ * limsup R*(n)/n² recorded in knowledge/GLOBAL_BOUNDS_ASYMPTOTICS.md; Paper II names its sharper
+ * U_4 without a decimal value. Paper II proves that the limit exists, so both bound C*.
+ */
+export function readAsymptoticConstant(source) {
+  const paper = join(source, 'paper_assets', 'asymptotic_sequel', 'ringmin_asymptotic.tex');
+  const ledger = join(source, 'knowledge', 'GLOBAL_BOUNDS_ASYMPTOTICS.md');
+  const lower = /exact directed enclosure\s*\\\[\s*(\.\d+)\s*<\s*C_\{\\rm term\}\+\\eta_\{\\rm width\}/.exec(readFileSync(paper, 'utf8'))?.[1];
+  const upper = /weaker exact bound\s+limsup R\*\(n\)\/n\^2\s*<\s*(0\.\d+)/.exec(readFileSync(ledger, 'utf8'))?.[1];
+  if (!lower) throw Error(paper + ': no lower enclosure for C_term + eta_width');
+  if (!upper) throw Error(ledger + ': no exact upper bound for limsup R*(n)/n^2');
+  const result = {
+    lower: Number('0' + lower), upper: Number(upper),
+    lowerSource: 'Paper II (arXiv 2609.13630), Proposition "Explicit global lower bound": C* ≥ C_term + η_width > 0' + lower,
+    upperSource: 'ringmin knowledge/GLOBAL_BOUNDS_ASYMPTOTICS.md, shifted-family corollary: limsup R*(n)/n² < ' + upper,
+  };
+  if (!(1 / 8 < result.lower && result.lower < result.upper && result.upper < 1 / (2 * Math.PI))) throw Error('Inconsistent bounds for C*');
+  return result;
+}
+
 export function importRingmin(source) {
   const optima = [];
   for (let n = CERTIFIED.from; n <= CERTIFIED.to; n++) optima.push(readOptimum(source, n));
@@ -57,12 +80,12 @@ export function importRingmin(source) {
   let commit = null;
   try { commit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: source, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim(); }
   catch { /* A source archive has no Git metadata. */ }
-  return { source: { repository: 'https://github.com/falker47/ringmin', commit }, optima, asymptotic };
+  return { source: { repository: 'https://github.com/falker47/ringmin', commit }, optima, asymptotic, constant: readAsymptoticConstant(source) };
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const source = resolve(process.argv[2] ?? join(homedir(), 'sources', 'ringmin'));
   const data = importRingmin(source);
   writeFileSync(OUTPUT, JSON.stringify(data, null, 1) + '\n');
-  console.log('Imported', data.optima.length, 'certified optima and', data.asymptotic.length, 'asymptotic rows from', source);
+  console.log('Imported', data.optima.length, 'certified optima,', data.asymptotic.length, 'asymptotic rows and C* in [' + data.constant.lower + ', ' + data.constant.upper + '] from', source);
 }
