@@ -40,8 +40,8 @@ const certificateSources = {
   'fullstack-developer-certification': 'certifications/Attestato Blazar Maurizio Falconi 2200x1700-full.webp',
 };
 // V4: certificates that the old portfolio never showed. Their originals (Coursera PDFs rendered at
-// 200 dpi, or the PNGs Coursera issued) live in <HOME>/sources/certifications/<id>.png.
-const extraCertificates = new Set(['fundamentals-of-quantitative-modeling', 'understanding-financial-markets', 'greek-and-roman-mythology', 'archaeoastronomy']);
+// 200 dpi, the Anthropic Academy PDFs at 200 dpi, or the PNGs Coursera issued) live in <HOME>/sources/certifications/<id>.png.
+const extraCertificates = new Set(['claude-with-the-anthropic-api', 'model-context-protocol-advanced-topics', 'claude-code-in-action', 'fundamentals-of-quantitative-modeling', 'understanding-financial-markets', 'greek-and-roman-mythology', 'archaeoastronomy']);
 const heroes = new Set(['ringmin', 'prof-gecko', 'camaleonte', 'social-viewer']);
 const assets = new Map();
 const data = {};
