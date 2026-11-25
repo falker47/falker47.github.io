@@ -44,7 +44,7 @@ const drawing = `<defs><linearGradient id="studies-glass" x1="0" y1="0" x2="1" y
 </g>`;
 
 export function studiesDrawing({ t }) {
-  return html`<svg class="studies-drawing" viewBox="0 0 360 200" fill="none" focusable="false">${raw(drawing)}
-<text class="studies-label" x="79" y="186" text-anchor="middle" data-i18n="figurePhysics">${t('figurePhysics')}</text>
-<text class="studies-label" x="271" y="186" text-anchor="middle" data-i18n="figureSimulation">${t('figureSimulation')}</text></svg>`;
+  return html`<svg class="studies-drawing" viewBox="0 12 360 170" fill="none" focusable="false">${raw(drawing)}
+<text class="studies-label" x="79" y="176" text-anchor="middle" data-i18n="figurePhysics">${t('figurePhysics')}</text>
+<text class="studies-label" x="271" y="176" text-anchor="middle" data-i18n="figureSimulation">${t('figureSimulation')}</text></svg>`;
 }

@@ -351,7 +351,7 @@ async function home(page, origin, lang) {
   // (figure right on odd rows, left on even rows); below, the figure follows its paragraph.
   const rows = await page.locator('.about-row').evaluateAll(nodes => nodes.map(row => {
     const text = row.querySelector('p').getBoundingClientRect(), figure = row.querySelector('.about-figure').getBoundingClientRect();
-    return { text: { left: text.left, right: text.right, bottom: text.bottom }, figure: { left: figure.left, right: figure.right, top: figure.top } };
+    return { text: { left: text.left, right: text.right, bottom: text.bottom }, figure: { left: figure.left, right: figure.right, top: figure.top, width: figure.width, height: figure.height } };
   }));
   assert.equal(rows.length, 4, 'Four paragraph rows');
   for (const [index, { text, figure }] of rows.entries()) {
@@ -363,6 +363,11 @@ async function home(page, origin, lang) {
       const gap = index % 2 === 0 ? figure.left - text.right : text.left - figure.right;
       assert.ok(gap <= 48, `Row ${index + 1}: ${Math.round(gap)} px between the paragraph and its figure`);
     }
+  }
+  // The pendulum stays about 400 px wide beside the short first paragraph, cropped to its panels.
+  if (page.viewportSize().width >= 900) {
+    const { width, height } = rows[0].figure;
+    assert.ok(width <= 402 && height <= 225, `Row 1: the drawing is ${Math.round(width)}×${Math.round(height)} px`);
   }
   assert.equal(await page.locator('.journey, .about-journey').count(), 0, 'No "Percorso" drawing');
   // Once the page has loaded and gone idle, the certificate thumbnails have started loading.
