@@ -230,6 +230,7 @@
   "topicGenerativeAi": "Generative AI",
   "ratingReviewsOne": "from {count} review",
   "ratingReviewsOther": "from {count} reviews",
+  "ratingOutOf": "out of 5",
   "factProjects": "software projects",
   "factDownloads": "unique downloads on Nexus Mods",
   "factPapers": "papers on arXiv",

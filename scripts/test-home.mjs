@@ -4,6 +4,19 @@ import { test } from 'node:test';
 import { checkButtons, validateHomeCatalogue } from './validate-home.mjs';
 
 const home = await readFile(new URL('../_site/index.html', import.meta.url), 'utf8');
+const dictionaries = { it: JSON.parse(await readFile(new URL('../data/i18n/it.json', import.meta.url), 'utf8')), en: JSON.parse(await readFile(new URL('../data/i18n/en.json', import.meta.url), 'utf8')) };
+
+test('the studies drawing centres "Fisica" under the wave and keeps both labels inside the frame in both languages', () => {
+  const svg = home.match(/<svg class="studies-drawing" viewBox="([-\d.]+) [-\d.]+ ([\d.]+) [\d.]+"[^]*?<\/svg>/);
+  const [left, width] = [Number(svg[1]), Number(svg[2])];
+  const labels = Object.fromEntries([...svg[0].matchAll(/<text class="studies-label" x="([\d.]+)"[^>]*data-i18n="(\w+)"/g)].map(([, x, key]) => [key, Number(x)]));
+  assert.equal(labels.figurePhysics, 80, 'The wave runs from 20 to 140');
+  // 11 px IBM Plex Mono with .08em tracking: about 7.5 user units per character.
+  for (const [key, x] of Object.entries(labels)) for (const lang of ['it', 'en']) {
+    const half = dictionaries[lang][key].length * 7.5 / 2;
+    assert.ok(x - half >= left + 8 && x + half <= left + width - 8, `${key} (${lang}) fits the frame`);
+  }
+});
 
 test('the home keeps the master structure and renders every catalogue from data', () => {
   validateHomeCatalogue(home);

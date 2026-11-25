@@ -239,7 +239,7 @@ function checkAbout(source) {
   assert.deepEqual(rows, [['aboutStudies', 'studies'], ['aboutWork', 'work'], ['aboutApproach', 'approach'], ['aboutSpare', 'spare']]
     .map(([key, figure]) => [key, italianCopy[key], figure]), 'About rows in order');
   assert.ok(!/about-facts|facts-grid/.test(about), 'The "In breve" card is gone');
-  const facts = [...about.matchAll(/<li><a class="fact fact-([\w-]+)" href="([^"]+)"><span class="fact-glyph" aria-hidden="true">([^]*?)<\/span><strong class="fact-value"[^>]*>((?:<span[^>]*>[^<]*<\/span>)|[^<]+)<\/strong><span class="fact-label">(<span[^>]*>[^<]*<\/span>)<\/span>(?:<span class="fact-topics">((?:<span data-i18n="\w+">[^<]*<\/span>)+)<\/span>)?<\/a><\/li>/g)]
+  const facts = [...about.matchAll(/<li><a class="fact fact-([\w-]+)" href="([^"]+)"><span class="fact-glyph" aria-hidden="true">([^]*?)<\/span><strong class="fact-value"[^>]*>((?:<span[^>]*>[^<]*<\/span>)(?:<span class="sr-only"> <span data-i18n="\w+">[^<]*<\/span><\/span>)?|[^<]+)<\/strong><span class="fact-label">(<span[^>]*>[^<]*<\/span>)<\/span>(?:<span class="fact-topics">((?:<span data-i18n="\w+">[^<]*<\/span>)+)<\/span>)?<\/a><\/li>/g)]
     .map(([, tone, href, glyph, number, name, topics]) => [href, text(number), text(name), tone, /href="#((?:icon|brand)-[\w-]+)"/.exec(glyph)?.[1],
       topics ? [...topics.matchAll(/data-i18n="(\w+)"/g)].map(match => match[1]) : null]);
   const rating = aggregateRating(tutoring.ratings);
@@ -247,7 +247,8 @@ function checkAbout(source) {
     ['#certificazioni', italian(certificates.length), 'certificazioni', 'credentials', 'icon-medal', ['topicBlockchain', 'topicDataScience', 'topicMachineLearning', 'topicGenerativeAi']],
     ['#progetti', italian(visible.filter(item => ['app', 'game', 'tool'].includes(item.category)).length), 'progetti software', 'software', 'icon-code', null],
     ['#panel-modding', italian(snapshot.uniqueModDownloads), 'download unici su Nexus Mods', 'modding', 'brand-nexusmods', null],
-    ['#panel-teaching', formatScore(rating.score, 'it'), italianCopy[rating.count === 1 ? 'ratingReviewsOne' : 'ratingReviewsOther'].replace('{count}', rating.count), 'tutoring', 'icon-star', null],
+    // The score says it is out of five for screen readers (the star is decorative).
+    ['#panel-teaching', formatScore(rating.score, 'it') + ' ' + italianCopy.ratingOutOf, italianCopy[rating.count === 1 ? 'ratingReviewsOne' : 'ratingReviewsOther'].replace('{count}', rating.count), 'tutoring', 'icon-star', null],
     ['#ricerca', italian(research.papers.length), 'articoli su arXiv', 'research', 'brand-arxiv', null],
   ], 'Facts from data');
   const order = ['data-i18n="aboutStudies"', 'figure-studies', 'data-i18n="aboutWork"', 'fact-credentials', 'data-i18n="aboutApproach"', 'fact-software', 'fact-modding',

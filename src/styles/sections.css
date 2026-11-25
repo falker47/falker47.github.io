@@ -21,7 +21,7 @@
 /* Each paragraph, then its figure; from 900 px they alternate sides (P1 G1 / G2 P2 ...). */
 .about-row {display:grid;gap:14px;padding:18px 0;border-top:1px solid var(--rule-soft)}
 .about-row:first-child {border-top:0}
-.about-row p {font-size:16px;line-height:1.65;color:var(--secondary);margin:0;max-width:620px}
+.about-row p {font-size:16px;line-height:1.65;color:var(--secondary);margin:0}
 .about-figure {margin:0;padding:14px;border:1px solid var(--rule);border-radius:14px;background:var(--surface)}
 .studies-drawing {display:block;width:100%;max-width:340px;height:auto;margin:0 auto}
 .studies-line {stroke:var(--stroke);stroke-width:1.6}
@@ -223,8 +223,8 @@ a.result:hover .result-label {color:var(--paper)}
 }
 @media(min-width:900px) {
 /* Paragraph and figure side by side, alternating; the lessons text beside the two portals. */
-.about-row {grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);column-gap:40px;align-items:center}
-.about-row:nth-child(even) {grid-template-columns:minmax(0,1fr) minmax(0,1.45fr)}
+.about-row {grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);column-gap:40px;align-items:center}
+.about-row:nth-child(even) {grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}
 .about-row:nth-child(even) .about-figure {order:-1}
 .lessons {grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:48px;align-items:start}
 }

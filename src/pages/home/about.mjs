@@ -53,7 +53,7 @@ export const aboutRows = [
 
 function fact({ t, copy }, item) {
   const value = item.live ? html`<strong class="fact-value" data-i18n="${item.live}">${t(item.live)}</strong>`
-    : item.score ? html`<strong class="fact-value">${localized(item.score)}</strong>`
+    : item.score ? html`<strong class="fact-value">${localized(item.score)}<span class="sr-only"> ${label(t, 'ratingOutOf')}</span></strong>`
     : html`<strong class="fact-value" data-i18n-number="${item.value}">${integer(item.value)}</strong>`;
   const name = item.key ? label(t, item.key) : localized(item.reviews(copy));
   const topics = item.topics ? html`<span class="fact-topics">${raw(item.topics.map(key => html`<span data-i18n="${key}">${t(key)}</span>`).join(''))}</span>` : '';

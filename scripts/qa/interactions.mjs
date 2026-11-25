@@ -311,7 +311,7 @@ async function checkLiveNexus(page, origin, lang) {
     // The tutoring rating follows the language: 5,0 / 5.0 and the review count in words.
     const copy = language === 'it' ? italianCopy : englishCopy;
     assert.deepEqual(await page.locator('.fact-tutoring').evaluate(el => [el.querySelector('.fact-value').textContent, el.querySelector('.fact-label').textContent]),
-      [formatScore(rating.score, language), copy[rating.count === 1 ? 'ratingReviewsOne' : 'ratingReviewsOther'].replace('{count}', rating.count)], 'Rating in ' + language);
+      [formatScore(rating.score, language) + ' ' + copy.ratingOutOf, copy[rating.count === 1 ? 'ratingReviewsOne' : 'ratingReviewsOther'].replace('{count}', rating.count)], 'Rating in ' + language);
   }
 }
 
@@ -358,6 +358,11 @@ async function home(page, origin, lang) {
     if (page.viewportSize().width < 900) assert.ok(figure.top >= text.bottom - 1, `Row ${index + 1}: the figure follows its paragraph`);
     else if (index % 2 === 0) assert.ok(figure.left >= text.right - 1, `Row ${index + 1}: the figure sits right of its paragraph`);
     else assert.ok(figure.right <= text.left + 1, `Row ${index + 1}: the figure sits left of its paragraph`);
+    // The text fills its column: no empty band between a paragraph and its figure.
+    if (page.viewportSize().width >= 900) {
+      const gap = index % 2 === 0 ? figure.left - text.right : text.left - figure.right;
+      assert.ok(gap <= 48, `Row ${index + 1}: ${Math.round(gap)} px between the paragraph and its figure`);
+    }
   }
   assert.equal(await page.locator('.journey, .about-journey').count(), 0, 'No "Percorso" drawing');
   // Once the page has loaded and gone idle, the certificate thumbnails have started loading.
