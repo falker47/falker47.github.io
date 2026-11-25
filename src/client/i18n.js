@@ -97,7 +97,8 @@
     for (const node of document.querySelectorAll('[data-label]')) node.setAttribute('aria-label', copy[node.dataset.label]);
     setMetadata(lang, copy);
     buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.lang === lang)));
-    try { localStorage.setItem('nexus-language', lang); } catch { /* Optional storage. */ }
+    // Storage is optional (private windows); a line comment lets the build minify the rest of the file.
+    try { localStorage.setItem('nexus-language', lang); } catch { }
     const url = new URL(location.href);
     url.searchParams.set('lang', lang);
     url.searchParams.delete('mode');

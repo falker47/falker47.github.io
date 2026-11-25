@@ -233,11 +233,25 @@ function checkAbout(source) {
   const about = source.match(/<details class="about" id="chi-sono"[^]*?<\/details>/)[0];
   assert.ok(!/journey|jr-/.test(about), 'The "Percorso" drawing is gone');
   // The rows: each paragraph, then its figure. The figures are counted from the data and link
-  // to their section; the first row is a drawing (studies have no number).
-  const rows = [...about.matchAll(/<div class="about-row"><p data-i18n="(\w+)">([^<]*)<\/p><figure class="about-figure figure-(\w+)"/g)]
-    .map(([, key, value, figure]) => [key, decode(value), figure]);
+  // to their section; the first row is a drawing (studies have no number). V5: the rows are the
+  // slides of a carousel, one per paragraph.
+  assert.match(about, /<div class="about-carousel"><div class="about-rows"><div class="about-row" data-slide="0">/, 'The rows are the slides of the carousel');
+  const rows = [...about.matchAll(/<div class="about-row" data-slide="(\d)"><p data-i18n="(\w+)">([^<]*)<\/p><figure class="about-figure figure-(\w+)"/g)]
+    .map(([, slide, key, value, figure]) => [slide, key, decode(value), figure]);
   assert.deepEqual(rows, [['aboutStudies', 'studies'], ['aboutWork', 'work'], ['aboutApproach', 'approach'], ['aboutSpare', 'spare']]
-    .map(([key, figure]) => [key, italianCopy[key], figure]), 'About rows in order');
+    .map(([key, figure], index) => [String(index), key, italianCopy[key], figure]), 'About rows in order');
+  // The carousel controls wait for the script: without it the four rows stay in a column.
+  const nav = about.match(/<div class="about-nav" hidden>([^]*?)<\/div>/);
+  assert.ok(nav, 'The carousel controls are hidden until the script runs');
+  const controls = tags(nav[1]).filter(node => node.name === 'button');
+  assert.deepEqual(controls.map(node => [node.attrs.class, node.attrs['data-step'], node.attrs['data-label'], node.attrs['aria-label']]), [
+    ['about-step', '-1', 'aboutPrevious', italianCopy.aboutPrevious],
+    ['about-step', '1', 'aboutNext', italianCopy.aboutNext],
+  ], 'The two arrows');
+  // One decorative dot per paragraph, the first lit, and the counter; the arrows carry the labels.
+  assert.match(nav[1], /<span class="about-dots" aria-hidden="true"><i class="on"><\/i><i><\/i><i><\/i><i><\/i><\/span>/, 'One dot per paragraph');
+  assert.equal(text(nav[1].match(/<p class="about-count" aria-hidden="true">([^]*?)<\/p>/)[1]), '1 / 4', 'Slide counter');
+  assert.ok(!about.includes('class="philosophy"') && !('philosophy' in italianCopy), 'The closing quote is gone (V5)');
   assert.ok(!/about-facts|facts-grid/.test(about), 'The "In breve" card is gone');
   const facts = [...about.matchAll(/<li><a class="fact fact-([\w-]+)" href="([^"]+)"><span class="fact-glyph" aria-hidden="true">([^]*?)<\/span><strong class="fact-value"[^>]*>((?:<span[^>]*>[^<]*<\/span>)(?:<span class="sr-only"> <span data-i18n="\w+">[^<]*<\/span><\/span>)?|[^<]+)<\/strong><span class="fact-label">(<span[^>]*>[^<]*<\/span>)<\/span><\/a><\/li>/g)]
     .map(([, tone, href, glyph, number, name]) => [href, text(number), text(name), tone, /href="#((?:icon|brand)-[\w-]+)"/.exec(glyph)?.[1]]);
@@ -252,8 +266,8 @@ function checkAbout(source) {
   // The certificate fan is the figure of the work paragraph.
   assert.match(about, /<figure class="about-figure figure-work"><section class="credentials" id="certificazioni"/, 'The certificate fan sits beside the work paragraph');
   const order = ['data-i18n="aboutStudies"', 'figure-studies', 'data-i18n="aboutWork"', 'class="credentials"', 'data-i18n="aboutApproach"', 'fact-software', 'fact-modding',
-    'data-i18n="aboutSpare"', 'fact-tutoring', 'fact-research', 'class="philosophy"', 'class="research-links about-actions"'].map(part => about.indexOf(part));
-  assert.ok(order.every(index => index >= 0) && order.every((index, i) => !i || index > order[i - 1]), 'About order: each figure after its paragraph, then quote and links');
+    'data-i18n="aboutSpare"', 'fact-tutoring', 'fact-research', 'class="about-nav"', 'class="research-links about-actions"'].map(part => about.indexOf(part));
+  assert.ok(order.every(index => index >= 0) && order.every((index, i) => !i || index > order[i - 1]), 'About order: each figure after its paragraph, then the controls and links');
   // The profile row keeps its arrow on every link; GitHub, OEIS and ORCID show their marks.
   for (const button of buttons(about.match(/<nav class="research-links about-actions"[^]*?<\/nav>/)[0].replace(/<a href="([^"]+)" class="about-action about-action-profile"/g, '<a href="$1"'))) {
     assert.equal(button.brand, expectedBrand(button.href), 'About link ' + button.href);

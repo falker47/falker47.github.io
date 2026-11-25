@@ -235,6 +235,8 @@ async function checkFragments(page, origin, lang) {
     await visit(page, origin, '/#' + id, lang);
     assert.ok(await page.locator('#chi-sono').evaluate(el => el.open), '#' + id + ' opens Chi sono');
     await arrived('#' + id, '/#' + id);
+    // V5: the certificates are on the second slide of the carousel, which the link brings in.
+    assert.equal(await page.locator('.about-index').innerText(), id === 'certificazioni' ? '2' : '1', '/#' + id + ' slide');
   }
   await checkCertificates(page);
   for (const [id, tab] of [['progetti', 'software'], ['ricerca', 'research']]) {
@@ -330,6 +332,11 @@ async function checkNoScript(browser, origin, viewport) {
     assert.equal(await page.locator('.card:visible').count(), await page.locator('.card').count());
     await page.locator('#chi-sono > summary').click();
     assert.equal(await page.locator('.deck-card:visible').count(), certificates.length);
+    // V5: without scripts the four paragraphs stay in a column and the carousel controls stay hidden.
+    assert.equal(await page.locator('.about-row:visible').count(), 4, 'Every paragraph is readable without scripts');
+    assert.equal(await page.locator('.about-nav:visible').count(), 0);
+    const tops = await page.locator('.about-row').evaluateAll(rows => rows.map(row => row.getBoundingClientRect().top));
+    assert.ok(tops.every((top, i) => !i || top > tops[i - 1]), 'The paragraphs follow one another down the page');
     verify();
   } finally { await context.close(); }
 }
@@ -347,23 +354,48 @@ async function home(page, origin, lang) {
   await page.locator('#chi-sono > summary').click();
   await settled(page, '#chi-sono');
   assert.equal(await page.locator('.about-actions a[href="/research/"]').count(), 1);
-  // The rows of "Su di me": each paragraph with its figure. From 900 px they alternate sides
-  // (figure right on odd rows, left on even rows); below, the figure follows its paragraph.
-  const rows = await page.locator('.about-row').evaluateAll(nodes => nodes.map(row => {
-    const text = row.querySelector('p').getBoundingClientRect(), figure = row.querySelector('.about-figure').getBoundingClientRect();
-    return { text: { left: text.left, right: text.right, bottom: text.bottom }, figure: { left: figure.left, right: figure.right, top: figure.top, width: figure.width, height: figure.height } };
-  }));
-  assert.equal(rows.length, 4, 'Four paragraph rows');
+  // V5: the rows of "Su di me" are the slides of a carousel, each paragraph with its figure. From
+  // 900 px the figure sits right of its paragraph on every slide; below, it follows the paragraph.
+  // The arrows move one slide, the counter and the lit dot follow, and the track takes the height
+  // of the open slide.
+  const track = page.locator('.about-rows');
+  const nav = page.locator('.about-nav');
+  assert.ok(await nav.isVisible(), 'The carousel controls show with the script');
+  assert.equal(await track.evaluate(node => getComputedStyle(node).scrollSnapType), 'x mandatory');
+  const slide = () => page.locator('.about-index').innerText();
+  const fitted = index => page.waitForFunction(i => {
+    const rows = document.querySelector('.about-rows');
+    const row = rows.children[i];
+    return Math.abs(rows.getBoundingClientRect().height - row.offsetHeight) <= 1 && Math.abs(rows.scrollLeft - (row.offsetLeft - rows.children[0].offsetLeft)) <= 2;
+  }, index, { timeout: 5000 });
+  assert.equal(await slide(), '1', 'The carousel opens on the first paragraph');
+  assert.ok(await nav.locator('.about-step[data-step="-1"]').isDisabled(), 'No step back from the first paragraph');
+  const rows = [];
+  for (let index = 0; index < 4; index++) {
+    if (index) await nav.locator('.about-step[data-step="1"]').click();
+    await fitted(index);
+    assert.equal(await slide(), String(index + 1), 'The counter follows the arrows');
+    assert.equal(await nav.locator('.about-dots i').evaluateAll(dots => dots.findIndex(dot => dot.classList.contains('on'))), index, 'The lit dot follows the arrows');
+    rows.push(await page.locator('.about-row').nth(index).evaluate(row => {
+      const text = row.querySelector('p').getBoundingClientRect(), figure = row.querySelector('.about-figure').getBoundingClientRect();
+      return { text: { left: text.left, right: text.right, bottom: text.bottom }, figure: { left: figure.left, right: figure.right, top: figure.top, width: figure.width, height: figure.height } };
+    }));
+  }
+  assert.ok(await nav.locator('.about-step[data-step="1"]').isDisabled(), 'No step past the last paragraph');
   for (const [index, { text, figure }] of rows.entries()) {
     if (page.viewportSize().width < 900) assert.ok(figure.top >= text.bottom - 1, `Row ${index + 1}: the figure follows its paragraph`);
-    else if (index % 2 === 0) assert.ok(figure.left >= text.right - 1, `Row ${index + 1}: the figure sits right of its paragraph`);
-    else assert.ok(figure.right <= text.left + 1, `Row ${index + 1}: the figure sits left of its paragraph`);
-    // The text fills its column: no empty band between a paragraph and its figure.
-    if (page.viewportSize().width >= 900) {
-      const gap = index % 2 === 0 ? figure.left - text.right : text.left - figure.right;
-      assert.ok(gap <= 48, `Row ${index + 1}: ${Math.round(gap)} px between the paragraph and its figure`);
+    else {
+      assert.ok(figure.left >= text.right - 1, `Row ${index + 1}: the figure sits right of its paragraph`);
+      // The text fills its column: no empty band between a paragraph and its figure.
+      assert.ok(figure.left - text.right <= 48, `Row ${index + 1}: ${Math.round(figure.left - text.right)} px between the paragraph and its figure`);
     }
   }
+  // A swipe (a native scroll of the track) also moves the counter; the arrow goes back.
+  await track.evaluate(node => node.scrollTo({ left: node.children[1].offsetLeft - node.children[0].offsetLeft }));
+  await fitted(1);
+  assert.equal(await slide(), '2', 'A swipe moves the counter');
+  await nav.locator('.about-step[data-step="-1"]').click();
+  await fitted(0);
   // The pendulum stays about 400 px wide beside the short first paragraph, cropped to its panels.
   if (page.viewportSize().width >= 900) {
     const { width, height } = rows[0].figure;

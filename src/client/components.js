@@ -92,6 +92,59 @@
     update();
   }
 
+  // "Su di me": one paragraph at a time. The arrows move by one slide, touch scrolls natively;
+  // the track takes the height of the open slide, so a short paragraph leaves no gap.
+  for (const carousel of document.querySelectorAll('.about-carousel')) {
+    const track = carousel.firstElementChild;
+    const rows = Array.from(track.children);
+    const nav = carousel.querySelector('.about-nav');
+    const steps = nav.querySelectorAll('.about-step');
+    const dots = nav.querySelectorAll('.about-dots i');
+    let index = 0, width = 0;
+    const left = i => rows[i].offsetLeft - rows[0].offsetLeft;
+    function sync(next) {
+      index = Math.max(0, Math.min(rows.length - 1, next));
+      dots.forEach((dot, i) => dot.classList.toggle('on', i === index));
+      steps[0].disabled = !index;
+      steps[1].disabled = index === rows.length - 1;
+      nav.querySelector('.about-index').textContent = index + 1;
+      // A closed "Su di me" has nothing to measure: keep the last height.
+      if (rows[index].offsetHeight) track.style.height = rows[index].offsetHeight + 'px';
+      track.scrollTop = 0;
+    }
+    function go(next, smooth) {
+      sync(next);
+      track.scrollTo({ left: left(index), behavior: smooth && !reduced.matches ? 'smooth' : 'auto' });
+    }
+    track.addEventListener('scroll', () => {
+      const next = left(1) && Math.round(track.scrollLeft / left(1));
+      if (left(1) && next !== index) sync(next);
+    }, { passive: true });
+    steps.forEach(step => step.addEventListener('click', () => go(index + Number(step.dataset.step), true)));
+    // Focus on a link of another slide brings that slide in.
+    track.addEventListener('focusin', event => go(rows.indexOf(event.target.closest('.about-row')), false));
+    // A new width (a resize, the section opening) realigns the open slide; new heights resize the track.
+    if ('ResizeObserver' in window) {
+      const observer = new ResizeObserver(() => {
+        if (track.clientWidth !== width && (width = track.clientWidth)) track.scrollLeft = left(index);
+        sync(index);
+      });
+      [track].concat(rows).forEach(node => observer.observe(node));
+    }
+    // Measure the open slide before "Su di me" opens, so that its animation ends at that height.
+    const details = carousel.closest('details');
+    details.querySelector(':scope > summary').addEventListener('click', () => {
+      if (details.open) return;
+      details.open = true;
+      sync(index);
+      details.open = false;
+    });
+    carousel.aboutGo = go;
+    carousel.classList.add('about-enhanced');
+    nav.hidden = false;
+    sync(0);
+  }
+
   // Certificates. The thumbnails sit inside the closed "Chi sono", where lazy images wait
   // until it opens. Start them once the page has loaded and the browser is idle, or as soon
   // as the reader points at, focuses or opens the summary. A card under the pointer or the focus
@@ -233,6 +286,10 @@
     const details = target.matches('details') ? target : target.closest('details');
     if (!details) return false;
     if (tab) tab.click();
+    // A target in "Su di me" (the certificates) brings its slide in first.
+    const slide = target.closest('.about-row');
+    const carousel = slide && slide.closest('.about-carousel');
+    if (carousel && carousel.aboutGo) carousel.aboutGo(Array.from(slide.parentNode.children).indexOf(slide), false);
     const anchor = panel ? details : target;
     function arrive() {
       const top = anchor.getBoundingClientRect().top + scrollY - offset;

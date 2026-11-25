@@ -22,6 +22,17 @@
 .about-row {display:grid;gap:14px;padding:18px 0;border-top:1px solid var(--rule-soft)}
 .about-row:first-child {border-top:0}
 .about-row p {font-size:16px;line-height:1.65;color:var(--secondary);margin:0}
+/* V5: with the script the rows are the slides of a carousel, one paragraph at a time; the track
+   takes the height of the open slide. Without it they stay in a column. */
+.about-enhanced .about-rows {position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:100%;column-gap:24px;align-items:start;margin:4px 0 6px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;transition:height .3s cubic-bezier(.22,.7,.28,1)}
+.about-enhanced .about-rows::-webkit-scrollbar {display:none}
+.about-enhanced .about-row {scroll-snap-align:start;scroll-snap-stop:always;border-top:0;padding-bottom:8px}
+.about-nav {display:flex;align-items:center;justify-content:center;gap:6px;margin:0 0 22px}
+.about-nav[hidden] {display:none}
+.about-dots {display:flex;align-items:center;gap:8px;padding:0 8px}
+.about-dots i {width:8px;height:8px;border-radius:4px;background:#ffffff38;transition:width .2s,background-color .2s}
+.about-dots i.on {width:20px;background:var(--blue)}
+.about-count {margin:0 0 0 10px;font:12px/1 var(--mono);color:var(--muted)}
 .about-figure {margin:0;padding:14px;border:1px solid var(--rule);border-radius:14px;background:var(--surface)}
 /* The pendulum and its simulation, in the line language of the hero. */
 .figure-studies {padding:10px 8px;background:radial-gradient(ellipse at 50% 46%,#25608c6b,transparent 70%) var(--surface)}
@@ -52,7 +63,7 @@
 .figure-work .deck {grid-template-columns:minmax(0,1fr)}
 /* The figures: counted from the data at build time, each a tile in the colour of the section it
    opens, with that section's mark or icon. */
-.facts-list {display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.facts-list {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0;padding:0;list-style:none}
 .fact-software {--tone:#60a5fa}
 .fact-modding {--tone:#f97316}
 .fact-research {--tone:#a78bfa}
@@ -64,7 +75,14 @@
 .fact-label {font:11.5px/1.35 var(--sans);color:var(--muted)}
 .fact:is(:hover,:focus-visible) {border-color:color-mix(in srgb,var(--tone) 70%,transparent)}
 .fact:is(:hover,:focus-visible) .fact-label {color:var(--paper)}
-.about-content .philosophy {font:italic 18px/1.55 var(--serif);color:var(--paper);max-width:800px;margin:0 0 20px}
+/* Two tiles share a phone's row: the mark beside the number, the label under both. */
+@media(max-width:599px) {
+.fact {grid-template-columns:30px minmax(0,1fr);row-gap:8px;column-gap:10px;padding:10px}
+.fact-glyph {grid-row:auto;width:30px;height:30px;border-radius:8px}
+.fact-glyph :is(.icon,.brand) {width:17px;height:17px}
+.fact-value {font-size:22px}
+.fact-label {grid-column:1/-1}
+}
 .about-actions {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px;width:100%}
 .about-actions .about-action {min-width:0;min-height:44px;display:grid;grid-template-columns:18px minmax(0,1fr) 12px;align-items:center;gap:6px;padding:8px 2px;border-bottom:1px solid #304d65;color:var(--blue);transition:color .16s ease,border-color .16s ease,background-color .16s ease}
 .about-actions .about-action-title {min-width:0;font:12px/1.35 var(--sans)}
@@ -125,9 +143,9 @@ a.result:hover .result-label {color:var(--paper)}
 /* Nexus pictures are 385 px wide: their cards never grow past them. */
 .rail-mods .rail-track {grid-auto-columns:min(78%,386px)}
 .rail-steps {display:none;gap:8px;justify-content:flex-end;margin:4px 0 0}
-.rail-step {width:44px;height:44px;padding:0;border:1px solid var(--rule);border-radius:50%;background:#ffffff08;color:#d8dee9;font-size:18px}
-.rail-step:hover {border-color:#60a5fa88}
-.rail-step:disabled {opacity:.35}
+.rail-step,.about-step {width:44px;height:44px;padding:0;border:1px solid var(--rule);border-radius:50%;background:#ffffff08;color:#d8dee9;font-size:18px}
+:is(.rail-step,.about-step):hover {border-color:#60a5fa88}
+:is(.rail-step,.about-step):disabled {opacity:.35}
 
 .card {position:relative;display:flex;flex-direction:column;min-width:0;border:1px solid var(--rule);border-radius:12px;background:var(--surface);overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}
 .rail-track>.card {scroll-snap-align:start}
@@ -241,10 +259,9 @@ a.result:hover .result-label {color:var(--paper)}
 .sample-count {flex:0 1 auto;margin-left:auto}
 }
 @media(min-width:900px) {
-/* Paragraph and figure side by side, alternating; the lessons text beside the two portals. */
+/* Paragraph and figure side by side, the figure on the right of every slide (V5); the lessons
+   text beside the two portals. */
 .about-row {grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);column-gap:40px;align-items:center}
-.about-row:nth-child(even) {grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}
-.about-row:nth-child(even) .about-figure {order:-1}
 /* The pendulum keeps a legible 400 px beside the short first paragraph. */
 .about-row:first-child {grid-template-columns:minmax(0,1fr) minmax(0,400px)}
 .lessons {grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:48px;align-items:start}
