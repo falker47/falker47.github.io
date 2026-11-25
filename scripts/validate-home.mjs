@@ -10,6 +10,7 @@ import snapshot from '../data/nexus-downloads.json' with { type: 'json' };
 import italianCopy from '../data/i18n/it.json' with { type: 'json' };
 import { decode, tags } from './qa/site.mjs';
 import { routes } from '../src/routes.mjs';
+import { aggregateRating, formatScore } from '../src/lib/rating.mjs';
 
 // The V3 home: header bar, hero, "Chi sono" and "I miei progetti". Every project,
 // published mod and paper is rendered inside the page and read back from the data here.
@@ -231,21 +232,27 @@ function checkLessons(source) {
 function checkAbout(source) {
   const about = source.match(/<details class="about" id="chi-sono"[^]*?<\/details>/)[0];
   assert.ok(!/journey|jr-/.test(about), 'The "Percorso" drawing is gone');
-  // The facts card: four figures counted from the data, each a link to its section.
-  const facts = [...about.matchAll(/<li><a class="fact fact-([\w-]+)" href="([^"]+)"><span class="fact-glyph" aria-hidden="true">([^]*?)<\/span><strong class="fact-value"[^>]*>([^<]+)<\/strong><span class="fact-label">([^]*?)<\/span><\/a><\/li>/g)]
-    .map(([, tone, href, glyph, value, name]) => [href, value, text(name), tone, /href="#((?:icon|brand)-[\w-]+)"/.exec(glyph)?.[1]]);
+  // The rows: each paragraph, then its figure. The figures are counted from the data and link
+  // to their section; the first row is a drawing (studies have no number).
+  const rows = [...about.matchAll(/<div class="about-row"><p data-i18n="(\w+)">([^<]*)<\/p><figure class="about-figure figure-(\w+)"/g)]
+    .map(([, key, value, figure]) => [key, decode(value), figure]);
+  assert.deepEqual(rows, [['aboutStudies', 'studies'], ['aboutWork', 'work'], ['aboutApproach', 'approach'], ['aboutSpare', 'spare']]
+    .map(([key, figure]) => [key, italianCopy[key], figure]), 'About rows in order');
+  assert.ok(!/about-facts|facts-grid/.test(about), 'The "In breve" card is gone');
+  const facts = [...about.matchAll(/<li><a class="fact fact-([\w-]+)" href="([^"]+)"><span class="fact-glyph" aria-hidden="true">([^]*?)<\/span><strong class="fact-value"[^>]*>((?:<span[^>]*>[^<]*<\/span>)|[^<]+)<\/strong><span class="fact-label">(<span[^>]*>[^<]*<\/span>)<\/span>(?:<span class="fact-topics">((?:<span data-i18n="\w+">[^<]*<\/span>)+)<\/span>)?<\/a><\/li>/g)]
+    .map(([, tone, href, glyph, number, name, topics]) => [href, text(number), text(name), tone, /href="#((?:icon|brand)-[\w-]+)"/.exec(glyph)?.[1],
+      topics ? [...topics.matchAll(/data-i18n="(\w+)"/g)].map(match => match[1]) : null]);
+  const rating = aggregateRating(tutoring.ratings);
   assert.deepEqual(facts, [
-    ['#progetti', italian(visible.filter(item => ['app', 'game', 'tool'].includes(item.category)).length), 'progetti software', 'software', 'icon-code'],
-    ['#panel-modding', italian(snapshot.uniqueModDownloads), 'download unici su Nexus Mods', 'modding', 'brand-nexusmods'],
-    ['#ricerca', italian(research.papers.length), 'articoli su arXiv', 'research', 'brand-arxiv'],
-    ['#certificazioni', italian(certificates.length), 'certificazioni', 'credentials', 'icon-medal'],
+    ['#certificazioni', italian(certificates.length), 'certificazioni', 'credentials', 'icon-medal', ['topicBlockchain', 'topicDataScience', 'topicMachineLearning', 'topicGenerativeAi']],
+    ['#progetti', italian(visible.filter(item => ['app', 'game', 'tool'].includes(item.category)).length), 'progetti software', 'software', 'icon-code', null],
+    ['#panel-modding', italian(snapshot.uniqueModDownloads), 'download unici su Nexus Mods', 'modding', 'brand-nexusmods', null],
+    ['#panel-teaching', formatScore(rating.score, 'it'), italianCopy[rating.count === 1 ? 'ratingReviewsOne' : 'ratingReviewsOther'].replace('{count}', rating.count), 'tutoring', 'icon-star', null],
+    ['#ricerca', italian(research.papers.length), 'articoli su arXiv', 'research', 'brand-arxiv', null],
   ], 'Facts from data');
-  // The text: four paragraphs from the dictionary, in reading order.
-  const intro = about.match(/<div class="about-text">([^]*?)<\/div>/)[1];
-  assert.deepEqual([...intro.matchAll(/<p data-i18n="(\w+)">([^<]*)<\/p>/g)].map(([, key, value]) => [key, decode(value)]),
-    ['aboutStudies', 'aboutWork', 'aboutApproach', 'aboutSpare'].map(key => [key, italianCopy[key]]), 'About text');
-  const order = ['data-i18n="aboutStudies"', 'class="about-facts"', 'class="philosophy"', 'class="research-links about-actions"', 'class="credentials"'].map(part => about.indexOf(part));
-  assert.ok(order.every(index => index >= 0) && order.every((index, i) => !i || index > order[i - 1]), 'Text, facts, quote, links, certificates');
+  const order = ['data-i18n="aboutStudies"', 'figure-studies', 'data-i18n="aboutWork"', 'fact-credentials', 'data-i18n="aboutApproach"', 'fact-software', 'fact-modding',
+    'data-i18n="aboutSpare"', 'fact-tutoring', 'fact-research', 'class="philosophy"', 'class="research-links about-actions"', 'class="credentials"'].map(part => about.indexOf(part));
+  assert.ok(order.every(index => index >= 0) && order.every((index, i) => !i || index > order[i - 1]), 'About order: each figure after its paragraph, then quote, links, certificates');
   // The profile row keeps its arrow on every link; GitHub, OEIS and ORCID show their marks.
   for (const button of buttons(about.match(/<nav class="research-links about-actions"[^]*?<\/nav>/)[0].replace(/<a href="([^"]+)" class="about-action about-action-profile"/g, '<a href="$1"'))) {
     assert.equal(button.brand, expectedBrand(button.href), 'About link ' + button.href);

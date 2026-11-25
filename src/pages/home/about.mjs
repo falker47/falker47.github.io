@@ -1,8 +1,11 @@
 import credentials from '../../../data/certifications.json' with { type: 'json' };
 import profile from '../../../data/profile.json' with { type: 'json' };
 import research from '../../../data/research.json' with { type: 'json' };
+import tutoring from '../../../data/tutoring.json' with { type: 'json' };
 import { html, raw } from '../../lib/html.mjs';
-import { certificateDeck, label } from '../../partials/components.mjs';
+import { aggregateRating, formatScore } from '../../lib/rating.mjs';
+import { studiesDrawing } from '../../partials/about-studies.mjs';
+import { certificateDeck, label, localized } from '../../partials/components.mjs';
 import { brand, brandFor, brandInk, icon } from '../../partials/icons.mjs';
 import { categories } from './work.mjs';
 
@@ -23,33 +26,50 @@ const actions = [
   ['tutoring', 'https://www.letuelezioni.it/insegnanti/maurizio-falconi.htm', 'tutoring'],
 ];
 
-// The four figures beside the text, all counted from the data at build time. The Nexus total
-// is the live counter of the Modding tab (same key, same snapshot).
+// The figures beside the paragraphs, all counted from the data at build time. The Nexus total
+// is the live counter of the Modding tab (same key, same snapshot); the rating is the weighted
+// mean of the tutoring portals.
 const integer = value => new Intl.NumberFormat('it-IT').format(value);
+const rating = aggregateRating(tutoring.ratings);
+const reviews = (copy, lang) => copy[lang][rating.count === 1 ? 'ratingReviewsOne' : 'ratingReviewsOther'].replace('{count}', rating.count);
 // Each figure wears the colour of the section it opens, and its mark or icon.
-export const facts = [
-  { key: 'factProjects', href: '#progetti', tone: 'software', glyph: () => icon('code'), value: categories.reduce((sum, category) => sum + category.items.length, 0) },
-  { key: 'factDownloads', href: '#panel-modding', tone: 'modding', glyph: () => brand('nexusmods'), live: 'moddingNumber' },
-  { key: 'factPapers', href: '#ricerca', tone: 'research', glyph: () => brand('arxiv'), value: research.papers.length },
-  { key: 'factCertificates', href: '#certificazioni', tone: 'credentials', glyph: () => icon('medal'), value: credentials.length },
+const figures = {
+  certificates: { key: 'factCertificates', href: '#certificazioni', tone: 'credentials', glyph: () => icon('medal'), value: credentials.length,
+    topics: ['topicBlockchain', 'topicDataScience', 'topicMachineLearning', 'topicGenerativeAi'] },
+  projects: { key: 'factProjects', href: '#progetti', tone: 'software', glyph: () => icon('code'), value: categories.reduce((sum, category) => sum + category.items.length, 0) },
+  downloads: { key: 'factDownloads', href: '#panel-modding', tone: 'modding', glyph: () => brand('nexusmods'), live: 'moddingNumber' },
+  rating: rating && { href: '#panel-teaching', tone: 'tutoring', glyph: () => icon('star'),
+    score: { it: formatScore(rating.score, 'it'), en: formatScore(rating.score, 'en') }, reviews: copy => ({ it: reviews(copy, 'it'), en: reviews(copy, 'en') }) },
+  papers: { key: 'factPapers', href: '#ricerca', tone: 'research', glyph: () => brand('arxiv'), value: research.papers.length },
+};
+
+// Each paragraph and, after it, its figure: who I am, the path, the way I work, the rest of the time.
+export const aboutRows = [
+  { text: 'aboutStudies', figure: 'studies' },
+  { text: 'aboutWork', figure: 'work', facts: ['certificates'] },
+  { text: 'aboutApproach', figure: 'approach', facts: ['projects', 'downloads'] },
+  { text: 'aboutSpare', figure: 'spare', facts: ['rating', 'papers'] },
 ];
 
-// The text beside the facts: who I am, the path, the way I work, the rest of the time.
-export const aboutText = ['aboutStudies', 'aboutWork', 'aboutApproach', 'aboutSpare'];
+function fact({ t, copy }, item) {
+  const value = item.live ? html`<strong class="fact-value" data-i18n="${item.live}">${t(item.live)}</strong>`
+    : item.score ? html`<strong class="fact-value">${localized(item.score)}</strong>`
+    : html`<strong class="fact-value" data-i18n-number="${item.value}">${integer(item.value)}</strong>`;
+  const name = item.key ? label(t, item.key) : localized(item.reviews(copy));
+  const topics = item.topics ? html`<span class="fact-topics">${raw(item.topics.map(key => html`<span data-i18n="${key}">${t(key)}</span>`).join(''))}</span>` : '';
+  return html`<li><a class="fact fact-${item.tone}" href="${item.href}"><span class="fact-glyph" aria-hidden="true">${item.glyph()}</span>${raw(value)}<span class="fact-label">${name}</span>${raw(topics)}</a></li>`;
+}
 
-function factsCard({ t, copy }) {
-  const items = facts.map(fact => {
-    const value = fact.live
-      ? html`<strong class="fact-value" data-i18n="${fact.live}">${t(fact.live)}</strong>`
-      : html`<strong class="fact-value" data-i18n-number="${fact.value}">${integer(fact.value)}</strong>`;
-    return html`<li><a class="fact fact-${fact.tone}" href="${fact.href}"><span class="fact-glyph" aria-hidden="true">${fact.glyph()}</span>${raw(value)}<span class="fact-label">${label(t, fact.key)}</span></a></li>`;
-  }).join('');
-  return html`<section class="about-facts" aria-labelledby="facts-title"><h3 class="section-label" id="facts-title">${label(t, 'factsTitle')}</h3><ul class="facts-grid" data-label="factsTitle" aria-label="${copy.it.factsTitle}">${raw(items)}</ul></section>`;
+function aboutRow(ctx, row) {
+  const figure = row.facts
+    ? html`<figure class="about-figure figure-${row.figure}"><ul class="facts-list">${raw(row.facts.map(name => figures[name]).filter(Boolean).map(item => fact(ctx, item)).join(''))}</ul></figure>`
+    : html`<figure class="about-figure figure-${row.figure}" aria-hidden="true">${raw(studiesDrawing(ctx))}</figure>`;
+  return html`<div class="about-row"><p data-i18n="${row.text}">${ctx.t(row.text)}</p>${raw(figure)}</div>`;
 }
 
 export function aboutSection(ctx) {
   const { t, copy } = ctx;
-  const paragraphs = aboutText.map(key => html`<p data-i18n="${key}">${t(key)}</p>`).join('');
+  const rows = aboutRows.map(row => aboutRow(ctx, row)).join('');
   const links = actions.map(([glyph, href, name]) => {
     const title = name === 'research' || name === 'tutoring'
       ? html`<span class="about-action-title" data-i18n="${name}">${t(name)}</span>`
@@ -59,8 +79,7 @@ export function aboutSection(ctx) {
     const style = mark ? html` style="--brand:${brandInk(mark)}" data-brand="${mark}"` : '';
     return html`<a href="${href}" class="about-action about-action-profile"${raw(style)}>${mark ? brand(mark) : raw(icons[glyph])}${raw(title)}${raw(arrow)}</a>`;
   }).join('');
-  return html`<details class="about" id="chi-sono"><summary><h2>${label(t, 'about')}</h2></summary><div class="about-content"><div class="about-intro"><div class="about-text">${raw(paragraphs)}</div>
-${raw(factsCard(ctx))}</div>
+  return html`<details class="about" id="chi-sono"><summary><h2>${label(t, 'about')}</h2></summary><div class="about-content"><div class="about-rows">${raw(rows)}</div>
 <p class="philosophy" data-i18n="philosophy">${t('philosophy')}</p><nav class="research-links about-actions" aria-label="${copy.it.researchProfiles}" data-label="researchProfiles">${raw(links)}</nav>
 <section class="credentials" id="certificazioni" aria-labelledby="credentials-title"><h3 class="section-label" id="credentials-title">${label(t, 'guideCertificates')} <span aria-hidden="true">·</span> ${credentials.length}</h3>
 ${raw(certificateDeck(ctx, credentials, 'home-certificate'))}</section></div></details>`;

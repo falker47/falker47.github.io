@@ -17,6 +17,7 @@ const drawings = {
   chevron: '<path d="m6 9 6 6 6-6"/>',
   code: '<rect x="2.5" y="4" width="19" height="16" rx="2"/><path d="M2.5 8h19M9 12l-2.5 2.5L9 17m6-5 2.5 2.5L15 17"/>',
   medal: '<circle cx="12" cy="15" r="5.5"/><path d="m9 9.8-3-6.8h4l2 4 2-4h4l-3 6.8M12 12.5v5"/>',
+  star: '<path d="m12 2.5 2.8 5.8 6.4.9-4.6 4.5 1.1 6.4-5.7-3-5.7 3 1.1-6.4-4.6-4.5 6.4-.9Z"/>',
 };
 
 export const iconNames = Object.keys(drawings);

@@ -60,6 +60,7 @@
   --nexus: #f97316;
   --nexus-amber: #fbbf24;
   --nexus-light: #fdba74;
+  --star: #facc15;
   /* Hover ink of a platform mark; each external action sets its own from data/brands.json. */
   --brand: var(--paper);
   /* The pressed category pill; #panel-modding switches it to the Nexus orange. */

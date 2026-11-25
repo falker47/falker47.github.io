@@ -70,10 +70,15 @@ test('the Research tab draws the certified configurations and both kinds of dots
   assert.throws(() => validateHomeCatalogue(home.replace('<a class="result" href="/research/">', '<a class="result" href="https://arxiv.org/">')), /paper count/);
 });
 
-test('Chi sono shows the text, the facts from data and one deck card per certificate', () => {
+test('Su di me shows each paragraph beside its figure, the facts from data and one deck card per certificate', () => {
   assert.throws(() => validateHomeCatalogue(home.replace('<span data-i18n="factPapers">articoli su arXiv</span>', '<span data-i18n="factPapers">articoli</span>')), /Facts/);
   assert.throws(() => validateHomeCatalogue(home.replace('<a class="fact fact-research" href="#ricerca">', '<a class="fact fact-research" href="/research/">')), /Facts/);
-  assert.throws(() => validateHomeCatalogue(home.replace('<div class="about-text">', '<div class="about-text journey">')), /Percorso/);
+  assert.throws(() => validateHomeCatalogue(home.replace(/<li><a class="fact fact-tutoring"[^]*?<\/li>/, '')), /Facts/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<a class="fact fact-tutoring" href="#panel-teaching">', '<a class="fact fact-tutoring" href="/lessons/">')), /Facts/);
+  const work = home.match(/<div class="about-row"><p data-i18n="aboutWork">[^]*?<\/figure><\/div>/)[0];
+  const approach = home.match(/<div class="about-row"><p data-i18n="aboutApproach">[^]*?<\/figure><\/div>/)[0];
+  assert.throws(() => validateHomeCatalogue(home.replace(work + approach, approach + work)), /order/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<div class="about-rows">', '<div class="about-rows journey">')), /Percorso/);
   assert.throws(() => validateHomeCatalogue(home.replace(/(<img src="\/assets\/certifications\/[^"]+-thumb-300\.webp" srcset=")[^"]+/, '$1x.webp 300w')), /./);
   assert.throws(() => validateHomeCatalogue(home.replace(/<button type="button" class="deck-card" style="--r:9\.0deg[^]*?<\/button>/, '')), /One card per certificate/);
 });
