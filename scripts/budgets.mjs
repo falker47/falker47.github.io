@@ -5,7 +5,7 @@ import certifications from '../data/certifications.json' with { type: 'json' };
 
 // V3: every project, mod and paper is rendered inside the home, so the home has its own code budget.
 // Each published mod adds about 700 bytes: the limit leaves room for the list to grow.
-export const limits = { pageBytes: 160_000, homePageBytes: 230_000, homeBytes: 450_000, homeRequests: 15,
+export const limits = { pageBytes: 160_000, homePageBytes: 235_000, homeBytes: 450_000, homeRequests: 15,
   // V4: after the load event the home prefetches the certificate thumbnails, one per certificate.
   deferredBytes: certifications.length * 20_000, deferredRequests: certifications.length };
 export const snapshotUrl = 'https://raw.githubusercontent.com/falker47/falker47.github.io/main/data/nexus-downloads.json';

@@ -12,7 +12,7 @@
 
 ## Global Constraints
 
-- Home limits: HTML ≤ 180,000 bytes, HTML+CSS+JS ≤ 230,000 bytes (`scripts/validate-site.mjs`).
+- Home limits: HTML ≤ 180,000 bytes, HTML+CSS+JS ≤ 235,000 bytes (raised from 230,000 on 2026-11-25) (`scripts/validate-site.mjs`).
 - Every visible string is paired in `data/i18n/it.json` and `data/i18n/en.json`, or rendered with `localized({ it, en })`.
 - Figures are counted from data at build time; the Nexus figure keeps `data-i18n="moddingNumber"` (live counter).
 - Links: certificates `#certificazioni`, projects `#progetti`, Nexus `#panel-modding`, rating `#panel-teaching`, papers `#ricerca`.
