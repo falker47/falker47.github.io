@@ -1,5 +1,101 @@
 [
   {
+    "id": "claude-with-the-anthropic-api",
+    "title": "Claude with the Anthropic API",
+    "issuer": "Anthropic",
+    "year": 2026,
+    "alt": {
+      "it": "Attestato di Anthropic per Claude with the Anthropic API.",
+      "en": "Certificate from Anthropic for Claude with the Anthropic API."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/claude-with-the-anthropic-api-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/claude-with-the-anthropic-api-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/claude-with-the-anthropic-api-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
+    },
+    "full": {
+      "src": "/assets/certifications/claude-with-the-anthropic-api-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  },
+  {
+    "id": "model-context-protocol-advanced-topics",
+    "title": "Model Context Protocol: Advanced Topics",
+    "issuer": "Anthropic",
+    "year": 2026,
+    "alt": {
+      "it": "Attestato di Anthropic per Model Context Protocol: Advanced Topics.",
+      "en": "Certificate from Anthropic for Model Context Protocol: Advanced Topics."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/model-context-protocol-advanced-topics-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/model-context-protocol-advanced-topics-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/model-context-protocol-advanced-topics-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
+    },
+    "full": {
+      "src": "/assets/certifications/model-context-protocol-advanced-topics-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  },
+  {
+    "id": "claude-code-in-action",
+    "title": "Claude Code in Action",
+    "issuer": "Anthropic",
+    "year": 2026,
+    "alt": {
+      "it": "Attestato di Anthropic per Claude Code in Action.",
+      "en": "Certificate from Anthropic for Claude Code in Action."
+    },
+    "thumbnail": {
+      "src": "/assets/certifications/claude-code-in-action-thumb-300.webp",
+      "width": 300,
+      "height": 232,
+      "variants": [
+        {
+          "src": "/assets/certifications/claude-code-in-action-thumb-300.webp",
+          "width": 300,
+          "height": 232
+        },
+        {
+          "src": "/assets/certifications/claude-code-in-action-thumb.webp",
+          "width": 480,
+          "height": 371
+        }
+      ]
+    },
+    "full": {
+      "src": "/assets/certifications/claude-code-in-action-full.webp",
+      "width": 960,
+      "height": 742
+    }
+  },
+  {
     "id": "ai-and-machine-learning-engineering",
     "title": "AI & Machine Learning Engineering",
     "issuer": "Microsoft",
