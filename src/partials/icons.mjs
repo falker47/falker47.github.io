@@ -20,7 +20,7 @@ const drawings = {
   star: '<path d="m12 2.5 2.8 5.8 6.4.9-4.6 4.5 1.1 6.4-5.7-3-5.7 3 1.1-6.4-4.6-4.5 6.4-.9Z"/>',
   // V5: a terminal prompt for the software figure; a central circle and the circles tangent to it for the research link.
   terminal: '<path d="m6 7.5 4.5 4.5L6 16.5m7 1h5.5"/>',
-  ringmin: '<circle cx="12" cy="12" r="4.5" fill="currentColor" fill-opacity=".35"/><circle cx="19.5" cy="12" r="3"/><circle cx="15.75" cy="18.5" r="3"/><circle cx="8.25" cy="18.5" r="3"/><circle cx="4.5" cy="12" r="3"/><circle cx="8.25" cy="5.5" r="3"/><circle cx="15.75" cy="5.5" r="3"/>',
+  ringmin: '<circle cx="12" cy="12" r="4" fill="currentColor" fill-opacity=".35"/><circle cx="19" cy="12" r="3"/><circle cx="12" cy="19" r="3"/><circle cx="5" cy="12" r="3"/><circle cx="12" cy="5" r="3"/>',
 };
 
 export const iconNames = Object.keys(drawings);

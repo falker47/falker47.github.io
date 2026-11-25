@@ -53,10 +53,10 @@ function projectLink(t, project, entry) {
 export const cardLinks = project => project.links.filter(entry => entry.type !== 'test' || !project.links.some(link => link.type === 'store'));
 
 function projectCard(t, project) {
-  // The title opens the project's own page when this site has one. V5: its "Scheda →" label sits on
-  // the cover, and the link spreads over the cover (CSS), so the picture opens the page too.
-  const chip = html`<span class="cover-chip" aria-hidden="true">${label(t, 'projectPage')} →</span>`;
-  const title = project.page ? html`<a href="${project.page}">${project.title}${raw(chip)}</a>` : html`${project.title}`;
+  // The title opens the project's own page when this site has one. V5: its "Scheda" label sits on
+  // the cover (part of the link's name, the arrow is CSS), and the link spreads over the cover, so
+  // the picture opens the page too.
+  const title = project.page ? html`<a href="${project.page}">${project.title} <span class="cover-chip" data-i18n="projectPage">${t('projectPage')}</span></a>` : html`${project.title}`;
   return html`<li class="card">
 <div class="card-cover">${raw(img(project.cover, { sizes: cardSizes }))}</div>
 <div class="card-body"><h4>${raw(title)}</h4>

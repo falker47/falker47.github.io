@@ -100,9 +100,9 @@ function checkSoftware(source) {
     assert.equal(rendered.length, expected[index].items.length, group.id + ' cards');
     for (const [position, card] of rendered.entries()) {
       const project = expected[index].items[position];
-      // V5: a project with its own page says so on the cover: the title link carries a "Scheda →"
-      // label and spreads over the cover, so the cover opens the page too.
-      const chip = '<span class="cover-chip" aria-hidden="true"><span data-i18n="projectPage">' + italianCopy.projectPage + '</span> →</span>';
+      // V5: a project with its own page says so on the cover: the title link carries a "Scheda"
+      // label (part of its name) and spreads over the cover, so the cover opens the page too.
+      const chip = ' <span class="cover-chip" data-i18n="projectPage">' + italianCopy.projectPage + '</span>';
       const title = card.match(/<h4>([^]*?)<\/h4>/)[1];
       assert.equal(text(title.replace(chip, '')), project.title, project.id + ' title');
       assert.equal(title, project.page ? `<a href="${project.page}">${project.title}${chip}</a>` : project.title.replace(/'/g, '&#39;'), project.id + ' page label');
@@ -245,11 +245,11 @@ function checkAbout(source) {
   // The rows: each paragraph, then its figure. The figures are counted from the data and link
   // to their section; the first row is a drawing (studies have no number). V5: the rows are the
   // slides of a carousel, one per paragraph.
-  assert.match(about, /<div class="about-carousel"><div class="about-rows"><div class="about-row" data-slide="0">/, 'The rows are the slides of the carousel');
-  const rows = [...about.matchAll(/<div class="about-row" data-slide="(\d)"><p data-i18n="(\w+)">([^<]*)<\/p><figure class="about-figure figure-(\w+)"/g)]
-    .map(([, slide, key, value, figure]) => [slide, key, decode(value), figure]);
+  assert.match(about, /<div class="about-carousel"><div class="about-rows"><div class="about-row">/, 'The rows are the slides of the carousel');
+  const rows = [...about.matchAll(/<div class="about-row"><p data-i18n="(\w+)">([^<]*)<\/p><figure class="about-figure figure-(\w+)"/g)]
+    .map(([, key, value, figure]) => [key, decode(value), figure]);
   assert.deepEqual(rows, [['aboutStudies', 'studies'], ['aboutWork', 'work'], ['aboutApproach', 'approach'], ['aboutSpare', 'spare']]
-    .map(([key, figure], index) => [String(index), key, italianCopy[key], figure]), 'About rows in order');
+    .map(([key, figure]) => [key, italianCopy[key], figure]), 'About rows in order');
   // The carousel controls wait for the script: without it the four rows stay in a column.
   const nav = about.match(/<div class="about-nav" hidden>([^]*?)<\/div>/);
   assert.ok(nav, 'The carousel controls are hidden until the script runs');
@@ -258,9 +258,9 @@ function checkAbout(source) {
     ['about-step', '-1', 'aboutPrevious', italianCopy.aboutPrevious],
     ['about-step', '1', 'aboutNext', italianCopy.aboutNext],
   ], 'The two arrows');
-  // One decorative dot per paragraph, the first lit, and the counter; the arrows carry the labels.
+  // One decorative dot per paragraph, the first lit; the counter is announced when an arrow moves.
   assert.match(nav[1], /<span class="about-dots" aria-hidden="true"><i class="on"><\/i><i><\/i><i><\/i><i><\/i><\/span>/, 'One dot per paragraph');
-  assert.equal(text(nav[1].match(/<p class="about-count" aria-hidden="true">([^]*?)<\/p>/)[1]), '1 / 4', 'Slide counter');
+  assert.equal(text(nav[1].match(/<p class="about-count" aria-live="polite">([^]*?)<\/p>/)[1]), '1 / 4', 'Slide counter');
   assert.ok(!about.includes('class="philosophy"') && !('philosophy' in italianCopy), 'The closing quote is gone (V5)');
   assert.ok(!/about-facts|facts-grid/.test(about), 'The "In breve" card is gone');
   const facts = [...about.matchAll(/<li><a class="fact fact-([\w-]+)" href="([^"]+)"><span class="fact-glyph" aria-hidden="true">([^]*?)<\/span><strong class="fact-value"[^>]*>((?:<span[^>]*>[^<]*<\/span>)(?:<span class="sr-only"> <span data-i18n="\w+">[^<]*<\/span><\/span>)?|[^<]+)<\/strong><span class="fact-label">(<span[^>]*>[^<]*<\/span>)<\/span><\/a><\/li>/g)]

@@ -95,25 +95,28 @@
   // "Su di me": one paragraph at a time. The arrows move by one slide, touch scrolls natively;
   // the track takes the height of the open slide, so a short paragraph leaves no gap.
   for (const carousel of document.querySelectorAll('.about-carousel')) {
-    const track = carousel.firstElementChild;
-    const rows = Array.from(track.children);
-    const nav = carousel.querySelector('.about-nav');
-    const steps = nav.querySelectorAll('.about-step');
-    const dots = nav.querySelectorAll('.about-dots i');
+    const track = carousel.firstElementChild, rows = Array.from(track.children), nav = track.nextElementSibling;
+    const steps = nav.querySelectorAll('button'), dots = nav.querySelectorAll('i');
     let index = 0, width = 0;
     const left = i => rows[i].offsetLeft - rows[0].offsetLeft;
-    function sync(next) {
+    // Focus and the opening animation read the layout at once: their height skips the transition,
+    // or the browser would scroll the track to a focused card and the animation would end short.
+    function sync(next, now) {
       index = Math.max(0, Math.min(rows.length - 1, next));
       dots.forEach((dot, i) => dot.classList.toggle('on', i === index));
       steps[0].disabled = !index;
       steps[1].disabled = index === rows.length - 1;
       nav.querySelector('.about-index').textContent = index + 1;
-      // A closed "Su di me" has nothing to measure: keep the last height.
-      if (rows[index].offsetHeight) track.style.height = rows[index].offsetHeight + 'px';
+      // Where a closed "Su di me" has nothing to measure, keep the last height.
+      if (rows[index].offsetHeight) {
+        track.style.transition = now ? 'none' : '';
+        track.style.height = rows[index].offsetHeight + 'px';
+        if (now && track.offsetHeight) track.style.transition = '';
+      }
       track.scrollTop = 0;
     }
-    function go(next, smooth) {
-      sync(next);
+    function go(next, smooth, now) {
+      sync(next, now);
       track.scrollTo({ left: left(index), behavior: smooth && !reduced.matches ? 'smooth' : 'auto' });
     }
     track.addEventListener('scroll', () => {
@@ -121,8 +124,12 @@
       if (left(1) && next !== index) sync(next);
     }, { passive: true });
     steps.forEach(step => step.addEventListener('click', () => go(index + Number(step.dataset.step), true)));
-    // Focus on a link of another slide brings that slide in.
-    track.addEventListener('focusin', event => go(rows.indexOf(event.target.closest('.about-row')), false));
+    // Focus on a link of another slide brings that slide in. The browser has already scrolled the
+    // track to the link; once the track is realigned, the page scrolls to it instead.
+    track.addEventListener('focusin', event => {
+      go(rows.indexOf(event.target.closest('.about-row')), false, true);
+      event.target.scrollIntoView({ block: 'nearest' });
+    });
     // A new width (a resize, the section opening) realigns the open slide; new heights resize the track.
     if ('ResizeObserver' in window) {
       const observer = new ResizeObserver(() => {
@@ -136,7 +143,7 @@
     details.querySelector(':scope > summary').addEventListener('click', () => {
       if (details.open) return;
       details.open = true;
-      sync(index);
+      sync(index, true);
       details.open = false;
     });
     carousel.aboutGo = go;

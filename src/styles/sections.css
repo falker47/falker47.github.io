@@ -176,6 +176,7 @@ a.result:hover .result-label {color:var(--paper)}
    card), labelled "Scheda →" in its corner. */
 .card h4 a::before {content:'';position:absolute;top:0;left:0;right:0;aspect-ratio:16/9}
 .cover-chip {position:absolute;top:8px;right:8px;font:600 11px/1 var(--name);color:#fff;background:#0f1014d9;border:1px solid color-mix(in srgb,var(--cat) 60%,transparent);border-radius:999px;padding:6px 10px;transition:background-color .16s,color .16s}
+.cover-chip::after {content:' →';content:' →'/''}
 .card h4 a:is(:hover,:focus-visible) .cover-chip {background:var(--cat);color:var(--bg)}
 .card-meta {display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0;font:11px/1.4 var(--mono);color:#a9b2c0}
 .pill {font:600 10.5px/1 var(--name);color:var(--cat);border:1px solid color-mix(in srgb,var(--cat) 45%,transparent);border-radius:999px;padding:4px 8px}
@@ -202,9 +203,10 @@ a.result:hover .result-label {color:var(--paper)}
 .mod-bar {height:4px;border-radius:4px;background:#ffffff10;overflow:hidden}
 .mod-bar span {display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--nexus),var(--nexus-amber))}
 
-/* V5: the papers are project cards in a rail; the drawing is the cover. */
+/* V5: the papers are project cards in a rail; the drawing is the cover. On a phone the card is 78%
+   of the row: a thin padding keeps the chart labels at 11 px or more. */
 .paper-card {--cat:var(--blue)}
-.paper-figure {display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;min-height:0;padding:12px;background:radial-gradient(90% 100% at 50% 0%,color-mix(in srgb,var(--stroke) 16%,transparent),transparent 70%),#0d1017;border-bottom:1px solid var(--rule)}
+.paper-figure {display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;min-height:0;padding:8px;background:radial-gradient(90% 100% at 50% 0%,color-mix(in srgb,var(--stroke) 16%,transparent),transparent 70%),#0d1017;border-bottom:1px solid var(--rule)}
 .rm-grid {display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px 4px;width:100%}
 .rm-cell {display:flex;flex-direction:column;align-items:center;gap:2px;font:9px/1 var(--mono);color:#8b95a5;white-space:nowrap}
 .rm-cell svg {display:block;width:100%;height:auto;aspect-ratio:1}

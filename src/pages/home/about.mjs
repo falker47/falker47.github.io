@@ -67,23 +67,24 @@ function certificates(ctx) {
 ${raw(certificateDeck(ctx, credentials, 'home-certificate'))}</section>`;
 }
 
-function aboutRow(ctx, row, index) {
+function aboutRow(ctx, row) {
   const figure = row.facts
     ? html`<figure class="about-figure figure-${row.figure}"><ul class="facts-list">${raw(row.facts.map(name => figures[name]).filter(Boolean).map(item => fact(ctx, item)).join(''))}</ul></figure>`
     : html`<figure class="about-figure figure-${row.figure}"${raw(row.figure === 'studies' ? ' aria-hidden="true"' : '')}>${raw(row.art(ctx))}</figure>`;
-  return html`<div class="about-row" data-slide="${index}"><p data-i18n="${row.text}">${ctx.t(row.text)}</p>${raw(figure)}</div>`;
+  return html`<div class="about-row"><p data-i18n="${row.text}">${ctx.t(row.text)}</p>${raw(figure)}</div>`;
 }
 
 // V5: the rows are the slides of a carousel, one paragraph at a time, in reading order. The arrows,
-// the dots and the counter wait for the script; without it the rows stay in a column.
+// the dots and the counter wait for the script; without it the rows stay in a column. The counter
+// tells screen readers that an arrow moved to another paragraph.
 function carouselNav(copy) {
   const step = (direction, key, glyph) => html`<button type="button" class="about-step" data-step="${direction}" data-label="${key}" aria-label="${copy.it[key]}"><span aria-hidden="true">${glyph}</span></button>`;
-  return html`<div class="about-nav" hidden>${raw(step(-1, 'aboutPrevious', '←'))}<span class="about-dots" aria-hidden="true">${raw(aboutRows.map((row, index) => index ? '<i></i>' : '<i class="on"></i>').join(''))}</span>${raw(step(1, 'aboutNext', '→'))}<p class="about-count" aria-hidden="true"><span class="about-index">1</span> / ${aboutRows.length}</p></div>`;
+  return html`<div class="about-nav" hidden>${raw(step(-1, 'aboutPrevious', '←'))}<span class="about-dots" aria-hidden="true">${raw(aboutRows.map((row, index) => index ? '<i></i>' : '<i class="on"></i>').join(''))}</span>${raw(step(1, 'aboutNext', '→'))}<p class="about-count" aria-live="polite"><span class="about-index">1</span> / ${aboutRows.length}</p></div>`;
 }
 
 export function aboutSection(ctx) {
   const { t, copy } = ctx;
-  const rows = aboutRows.map((row, index) => aboutRow(ctx, row, index)).join('');
+  const rows = aboutRows.map(row => aboutRow(ctx, row)).join('');
   const links = actions.map(([glyph, href, name]) => {
     const title = name === 'research' || name === 'tutoring'
       ? html`<span class="about-action-title" data-i18n="${name}">${t(name)}</span>`

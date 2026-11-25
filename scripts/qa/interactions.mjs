@@ -346,6 +346,45 @@ async function checkLiveNexus(page, origin, lang) {
   }
 }
 
+// V5: the carousel's height transition runs only with motion, and the main pass reduces motion.
+// Tab into the certificates of slide 2: the focused card stays in view and the track keeps its
+// scroll at 0. Open "Su di me" after switching language while it was closed: the opening ends at
+// the height the section settles at, with no snap.
+async function checkCarouselMotion(browser, origin, viewport) {
+  const context = await browser.newContext({ viewport, locale: 'it', reducedMotion: 'no-preference', serviceWorkers: 'block' });
+  try {
+    const page = await context.newPage();
+    await visit(page, origin, '/', 'it');
+    const toggle = () => page.evaluate(async () => {
+      const details = document.querySelector('#chi-sono');
+      details.querySelector(':scope > summary').click();
+      const animation = details.getAnimations()[0];
+      const end = animation ? parseFloat(animation.effect.getKeyframes().at(-1).height) : null;
+      if (animation) await animation.finished;
+      await new Promise(resolve => setTimeout(resolve, 600));
+      return { open: details.open, end, final: details.getBoundingClientRect().height };
+    });
+    let state = await toggle();
+    assert.ok(state.open && (state.end === null || Math.abs(state.end - state.final) <= 1), `Opening ends at ${state.end} px and settles at ${state.final} px`);
+    await page.locator('#chi-sono > summary').focus();
+    await page.keyboard.press('Tab');
+    await page.waitForTimeout(600);
+    const focus = await page.evaluate(() => {
+      const box = document.activeElement.getBoundingClientRect();
+      return { card: document.activeElement.matches('.deck-card'), slide: document.querySelector('.about-index').textContent,
+        top: box.top, bottom: box.bottom, view: innerHeight, scroll: document.querySelector('.about-rows').scrollTop };
+    });
+    assert.ok(focus.card && focus.slide === '2', 'Tab from the summary reaches the certificates on slide 2');
+    assert.ok(focus.top >= 0 && focus.bottom <= focus.view, `The focused card is in view (${Math.round(focus.top)}–${Math.round(focus.bottom)} of ${focus.view} px)`);
+    assert.equal(focus.scroll, 0, 'The track keeps its scroll at 0');
+    state = await toggle();
+    assert.equal(state.open, false);
+    await page.locator('button[data-lang="en"]').click();
+    state = await toggle();
+    assert.ok(state.open && (state.end === null || Math.abs(state.end - state.final) <= 1), `After a language switch the opening ends at ${state.end} px and settles at ${state.final} px`);
+  } finally { await context.close(); }
+}
+
 async function checkNoScript(browser, origin, viewport) {
   const context = await browser.newContext({ viewport, javaScriptEnabled: false, locale: 'it' });
   try {
@@ -487,7 +526,10 @@ await withBrowser(async (browser, origin) => {
       await page.locator('button[data-lang="' + lang + '"]').click();
       if (route === '/') {
         await home(page, origin, lang);
-        if (lang === 'it') await checkNoScript(browser, origin, viewport);
+        if (lang === 'it') {
+          await checkNoScript(browser, origin, viewport);
+          await checkCarouselMotion(browser, origin, viewport);
+        }
       } else if (route === '/styleguide/') await guide(page);
       verifyNetwork();
       assert.deepEqual(errors, []);
