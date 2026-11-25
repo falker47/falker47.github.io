@@ -20,7 +20,7 @@ for(const [,key] of html.matchAll(/data-(?:i18n|label)="([^"]+)"/g))for(const la
 for(const [,attrs,source] of html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)){
  if(attrs.includes('application/ld+json')){
   const graph=JSON.parse(source)['@graph'];
-  assert.ok(graph.some(item=>item['@type']==='Person'&&item.jobTitle==='AI & Automation Engineer'));
+  assert.ok(graph.some(item=>item['@type']==='Person'&&item.jobTitle==='AI Engineer'));
  }else new vm.Script(source);
 }
 assert.match(html,/prefers-reduced-motion:\s*reduce/);
