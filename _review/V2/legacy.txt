@@ -1,0 +1,2 @@
+$ node scripts/qa/legacy.mjs --task V2
+72 browser navigations verified.

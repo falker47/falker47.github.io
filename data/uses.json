@@ -1,0 +1,81 @@
+{
+  "source": "/assets/images/uses-1440.webp",
+  "items": [
+    {
+      "id": "router",
+      "glyph": "wifi",
+      "category": "usesConnectivity",
+      "title": "usesRouter",
+      "text": "usesRouterText",
+      "url": "https://link.amazon/B01Um942w",
+      "crop": {
+        "left": 840,
+        "top": 60,
+        "width": 290,
+        "height": 420
+      },
+      "image": {
+        "src": "/assets/uses/router.webp",
+        "width": 240,
+        "height": 348
+      }
+    },
+    {
+      "id": "monitor",
+      "glyph": "monitor",
+      "category": "usesRemoteWork",
+      "title": "usesMonitor",
+      "text": "usesMonitorText",
+      "url": "https://link.amazon/B0cuqIZyw",
+      "crop": {
+        "left": 30,
+        "top": 10,
+        "width": 800,
+        "height": 590
+      },
+      "image": {
+        "src": "/assets/uses/monitor.webp",
+        "width": 240,
+        "height": 177
+      }
+    },
+    {
+      "id": "charger",
+      "glyph": "bolt",
+      "category": "usesCharging",
+      "title": "usesCharger",
+      "text": "usesChargerText",
+      "url": "https://link.amazon/B04ikrTOS",
+      "crop": {
+        "left": 360,
+        "top": 520,
+        "width": 310,
+        "height": 250
+      },
+      "image": {
+        "src": "/assets/uses/charger.webp",
+        "width": 240,
+        "height": 194
+      }
+    },
+    {
+      "id": "camera",
+      "glyph": "camera",
+      "category": "usesSecurity",
+      "title": "usesCamera",
+      "text": "usesCameraText",
+      "url": "https://link.amazon/B0h5EUEl1",
+      "crop": {
+        "left": 760,
+        "top": 380,
+        "width": 640,
+        "height": 370
+      },
+      "image": {
+        "src": "/assets/uses/camera.webp",
+        "width": 240,
+        "height": 139
+      }
+    }
+  ]
+}

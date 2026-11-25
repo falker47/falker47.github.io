@@ -1,0 +1,72 @@
+{
+  "id": "ringmin",
+  "title": "Ringmin",
+  "summary": {
+    "it": "Ringmin studia il problema del cerchio centrale minimo. I due paper affrontano rispettivamente i casi finiti certificati e la teoria asintotica globale.",
+    "en": "Ringmin asks how small the central circle can be. The first paper certifies solutions for finite cases. The second describes what happens as the number of circles grows."
+  },
+  "papers": [
+    {
+      "number": "I",
+      "arxiv": "2607.28654",
+      "title": "Minimum central circles: chain order, seam obstructions, and exact finite certification",
+      "url": "https://arxiv.org/abs/2607.28654",
+      "heading": {
+        "it": "Certificazione esatta dei casi finiti",
+        "en": "Exact certification of the finite cases"
+      },
+      "highlight": {
+        "it": "Ottimo globale certificato per ogni n da 3 a 14, con limiti razionali distanti meno di 10⁻¹¹.",
+        "en": "Certified global optimum for every n from 3 to 14, with rational bounds less than 10⁻¹¹ apart."
+      },
+      "line": {
+        "it": "Ordine ottimo della catena, ostruzioni di cucitura classificate per k = 1, 2, 3 e certificati che non dipendono dalla virgola mobile.",
+        "en": "Optimal chain order, seam obstructions classified for k = 1, 2, 3, and certificates that do not depend on floating point."
+      },
+      "summary": {
+        "it": "Riduce il problema di ordinamento a un TSP Supnick/anti-Monge; certificati espliciti e un verificatore indipendente rendono i risultati riproducibili.",
+        "en": "The paper reduces circle ordering to a Supnick/anti-Monge traveling salesman problem. Explicit certificates and an independent verifier let readers reproduce the results."
+      }
+    },
+    {
+      "number": "II",
+      "arxiv": "2609.13630",
+      "title": "Minimum central circles: an effective characterization of the global asymptotic constant",
+      "url": "https://arxiv.org/abs/2609.13630",
+      "heading": {
+        "it": "La costante asintotica globale",
+        "en": "The global asymptotic constant"
+      },
+      "highlight": {
+        "it": "R*(n) = C* n² + o(n²), con C* calcolabile a qualsiasi precisione.",
+        "en": "R*(n) = C* n² + o(n²), with C* computable to any precision."
+      },
+      "line": {
+        "it": "Programmi lineari finiti racchiudono C* in un intervallo stretto a piacere; il limite inferiore esplicito supera 1/8.",
+        "en": "Finite linear programs enclose C* in an arbitrarily narrow interval; the explicit lower bound exceeds 1/8."
+      },
+      "summary": {
+        "it": "Caratterizza C* tramite programmi lineari finiti su parole bilanciate con un bound d’errore rigoroso che tende a zero. Restano aperti una forma chiusa elementare e un algoritmo di valutazione efficiente.",
+        "en": "Finite linear programs on balanced words characterize C* with a rigorous error bound that tends to zero. Finding an elementary closed form or an efficient way to evaluate C* remains open."
+      }
+    }
+  ],
+  "repositories": [
+    {
+      "project": "ringmin",
+      "url": "https://github.com/falker47/ringmin"
+    },
+    {
+      "project": "power-ringmin",
+      "url": "https://github.com/falker47/ringmin-squared"
+    }
+  ],
+  "zenodo": {
+    "doi": "10.5281/zenodo.22849826",
+    "url": "https://doi.org/10.5281/zenodo.22849826",
+    "description": {
+      "it": "Release software citabile con DOI.",
+      "en": "Cite the software release using its DOI."
+    }
+  }
+}

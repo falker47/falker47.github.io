@@ -1,0 +1,6280 @@
+[
+  {
+    "path": "/",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Prof. Gecko",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Social Viewer",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Diario di Bordo",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Easy Contract",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 16.6,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 86,
+        "height": 86,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.3359375
+      }
+    ]
+  },
+  {
+    "path": "/",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Prof. Gecko",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Social Viewer",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Diario di Bordo",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Easy Contract",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 12.5,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 66,
+        "height": 79.296875,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.30975341796875
+      }
+    ]
+  },
+  {
+    "path": "/",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Prof. Gecko",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Social Viewer",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Diario di Bordo",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Easy Contract",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 16.6,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 86,
+        "height": 86,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.3359375
+      }
+    ]
+  },
+  {
+    "path": "/",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Prof. Gecko",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Social Viewer",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Diario di Bordo",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Easy Contract",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 12.5,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 66,
+        "height": 79.296875,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.30975341796875
+      }
+    ]
+  },
+  {
+    "path": "/404.html",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      }
+    ]
+  },
+  {
+    "path": "/404.html",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      }
+    ]
+  },
+  {
+    "path": "/404.html",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      }
+    ]
+  },
+  {
+    "path": "/404.html",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      }
+    ]
+  },
+  {
+    "path": "/research/",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 40,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/projects/ringmin-960.webp",
+        "width": 731.5,
+        "height": 411.46875,
+        "fit": "fill",
+        "native": [
+          960,
+          540
+        ],
+        "scale": 0.7619791666666667
+      }
+    ],
+    "crumb": "/#progetti"
+  },
+  {
+    "path": "/research/",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/projects/ringmin-480.webp",
+        "width": 324,
+        "height": 182.25,
+        "fit": "fill",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.675
+      }
+    ],
+    "crumb": "/#progetti"
+  },
+  {
+    "path": "/research/",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 40,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/projects/ringmin-960.webp",
+        "width": 731.5,
+        "height": 411.46875,
+        "fit": "fill",
+        "native": [
+          960,
+          540
+        ],
+        "scale": 0.7619791666666667
+      }
+    ],
+    "crumb": "/#progetti"
+  },
+  {
+    "path": "/research/",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/projects/ringmin-480.webp",
+        "width": 324,
+        "height": 182.25,
+        "fit": "fill",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.675
+      }
+    ],
+    "crumb": "/#progetti"
+  },
+  {
+    "path": "/projects/prof-gecko/",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 40,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/projects/prof-gecko-960.webp",
+        "width": 731.5,
+        "height": 411.46875,
+        "fit": "fill",
+        "native": [
+          960,
+          540
+        ],
+        "scale": 0.7619791666666667
+      }
+    ],
+    "crumb": "/#progetti"
+  },
+  {
+    "path": "/projects/prof-gecko/",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/projects/prof-gecko-480.webp",
+        "width": 324,
+        "height": 182.25,
+        "fit": "fill",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.675
+      }
+    ],
+    "crumb": "/#progetti"
+  },
+  {
+    "path": "/projects/prof-gecko/",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 40,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/projects/prof-gecko-960.webp",
+        "width": 731.5,
+        "height": 411.46875,
+        "fit": "fill",
+        "native": [
+          960,
+          540
+        ],
+        "scale": 0.7619791666666667
+      }
+    ],
+    "crumb": "/#progetti"
+  },
+  {
+    "path": "/projects/prof-gecko/",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/projects/prof-gecko-480.webp",
+        "width": 324,
+        "height": 182.25,
+        "fit": "fill",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.675
+      }
+    ],
+    "crumb": "/#progetti"
+  },
+  {
+    "path": "/projects/camaleonte/",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 40,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/projects/camaleonte-960.webp",
+        "width": 731.5,
+        "height": 411.46875,
+        "fit": "fill",
+        "native": [
+          960,
+          540
+        ],
+        "scale": 0.7619791666666667
+      }
+    ],
+    "crumb": "/#progetti"
+  },
+  {
+    "path": "/projects/camaleonte/",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/projects/camaleonte-480.webp",
+        "width": 324,
+        "height": 182.25,
+        "fit": "fill",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.675
+      }
+    ],
+    "crumb": "/#progetti"
+  },
+  {
+    "path": "/projects/camaleonte/",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 40,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/projects/camaleonte-960.webp",
+        "width": 731.5,
+        "height": 411.46875,
+        "fit": "fill",
+        "native": [
+          960,
+          540
+        ],
+        "scale": 0.7619791666666667
+      }
+    ],
+    "crumb": "/#progetti"
+  },
+  {
+    "path": "/projects/camaleonte/",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/projects/camaleonte-480.webp",
+        "width": 324,
+        "height": 182.25,
+        "fit": "fill",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.675
+      }
+    ],
+    "crumb": "/#progetti"
+  },
+  {
+    "path": "/uses/",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 40,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/uses-960.webp",
+        "width": 731.5,
+        "height": 411.46875,
+        "fit": "fill",
+        "native": [
+          960,
+          540
+        ],
+        "scale": 0.7619791666666667
+      }
+    ],
+    "crumb": "/"
+  },
+  {
+    "path": "/uses/",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/uses-480.webp",
+        "width": 324,
+        "height": 182.25,
+        "fit": "fill",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.675
+      }
+    ],
+    "crumb": "/"
+  },
+  {
+    "path": "/uses/",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 40,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/uses-960.webp",
+        "width": 731.5,
+        "height": 411.46875,
+        "fit": "fill",
+        "native": [
+          960,
+          540
+        ],
+        "scale": 0.7619791666666667
+      }
+    ],
+    "crumb": "/"
+  },
+  {
+    "path": "/uses/",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/uses-480.webp",
+        "width": 324,
+        "height": 182.25,
+        "fit": "fill",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.675
+      }
+    ],
+    "crumb": "/"
+  },
+  {
+    "path": "/projects/social-viewer/",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 40,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/projects/social-viewer-480.webp",
+        "width": 480,
+        "height": 270,
+        "fit": "fill",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 1
+      }
+    ],
+    "crumb": "/#progetti"
+  },
+  {
+    "path": "/projects/social-viewer/",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/projects/social-viewer-480.webp",
+        "width": 324,
+        "height": 182.25,
+        "fit": "fill",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.675
+      }
+    ],
+    "crumb": "/#progetti"
+  },
+  {
+    "path": "/projects/social-viewer/",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 40,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/projects/social-viewer-480.webp",
+        "width": 480,
+        "height": 270,
+        "fit": "fill",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 1
+      }
+    ],
+    "crumb": "/#progetti"
+  },
+  {
+    "path": "/projects/social-viewer/",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/projects/social-viewer-480.webp",
+        "width": 324,
+        "height": 182.25,
+        "fit": "fill",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.675
+      }
+    ],
+    "crumb": "/#progetti"
+  },
+  {
+    "path": "/projects/social-viewer/test/",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 32,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      }
+    ],
+    "crumb": "../"
+  },
+  {
+    "path": "/projects/social-viewer/test/",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 32,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      }
+    ]
+  },
+  {
+    "path": "/projects/social-viewer/test/",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 32,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      }
+    ],
+    "crumb": "../"
+  },
+  {
+    "path": "/projects/social-viewer/test/",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 32,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      }
+    ]
+  },
+  {
+    "path": "/projects/social-viewer/privacy/",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      }
+    ],
+    "crumb": "../"
+  },
+  {
+    "path": "/projects/social-viewer/privacy/",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      }
+    ],
+    "crumb": "../"
+  },
+  {
+    "path": "/projects/social-viewer/privacy/",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      }
+    ],
+    "crumb": "../"
+  },
+  {
+    "path": "/projects/social-viewer/privacy/",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      }
+    ],
+    "crumb": "../"
+  },
+  {
+    "path": "/Nexus-portfolio/",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/index.html",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/index.html",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/index.html",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/index.html",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/research.html",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/research.html",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/research.html",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/research.html",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/prof-gecko.html",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/prof-gecko.html",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/prof-gecko.html",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/prof-gecko.html",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/consigli.html",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/consigli.html",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/consigli.html",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/consigli.html",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/testers.html",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/testers.html",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/testers.html",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/testers.html",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/socialviewer-privacy.html",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/socialviewer-privacy.html",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/socialviewer-privacy.html",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/Nexus-portfolio/socialviewer-privacy.html",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/projects/",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/projects/",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/projects/",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 30,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/projects/",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [],
+    "smallestChartText": null,
+    "primaryActions": 0,
+    "obsoleteWording": false,
+    "images": []
+  },
+  {
+    "path": "/#chi-sono",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Prof. Gecko",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Social Viewer",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Diario di Bordo",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Easy Contract",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 16.6,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 86,
+        "height": 86,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.3359375
+      },
+      {
+        "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
+        "width": 164.072509765625,
+        "height": 136.13458251953125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.366939575524343
+      },
+      {
+        "src": "/assets/certifications/data-science-professional-course-thumb.webp",
+        "width": 161.169921875,
+        "height": 132.03790283203125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.35589731221571763
+      },
+      {
+        "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+        "width": 158.1082763671875,
+        "height": 127.81097412109375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.34450397337222033
+      },
+      {
+        "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
+        "width": 154.89059448242188,
+        "height": 123.4578857421875,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.3327705815153302
+      },
+      {
+        "src": "/assets/certifications/sas-programming-course-thumb.webp",
+        "width": 151.52008056640625,
+        "height": 118.98297119140625,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.3207088172275101
+      },
+      {
+        "src": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
+        "width": 148,
+        "height": 114.390625,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.30833333333333335
+      },
+      {
+        "src": "/assets/certifications/financial-technology-specialization-thumb.webp",
+        "width": 151.52008056640625,
+        "height": 118.98297119140625,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.3207088172275101
+      },
+      {
+        "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
+        "width": 154.89056396484375,
+        "height": 123.4578857421875,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.3327705815153302
+      },
+      {
+        "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
+        "width": 158.10830688476562,
+        "height": 127.81097412109375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.34450397337222033
+      },
+      {
+        "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+        "width": 161.16989135742188,
+        "height": 132.03790283203125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.35589731221571763
+      },
+      {
+        "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
+        "width": 164.072509765625,
+        "height": 136.13458251953125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.366939575524343
+      }
+    ]
+  },
+  {
+    "path": "/#chi-sono",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Prof. Gecko",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Social Viewer",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Diario di Bordo",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Easy Contract",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 12.5,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 66,
+        "height": 79.296875,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.30975341796875
+      },
+      {
+        "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
+        "width": 121.9450912475586,
+        "height": 101.1766357421875,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.27271330388729786
+      },
+      {
+        "src": "/assets/certifications/data-science-professional-course-thumb.webp",
+        "width": 119.78790283203125,
+        "height": 98.1318359375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.2645062963274933
+      },
+      {
+        "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+        "width": 117.51248931884766,
+        "height": 94.990234375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.25603836758760107
+      },
+      {
+        "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
+        "width": 115.1211166381836,
+        "height": 91.7547607421875,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.24731741439942723
+      },
+      {
+        "src": "/assets/certifications/sas-programming-course-thumb.webp",
+        "width": 112.61613464355469,
+        "height": 88.428955078125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.2383529786472372
+      },
+      {
+        "src": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
+        "width": 110,
+        "height": 85.015625,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.22916666666666666
+      },
+      {
+        "src": "/assets/certifications/financial-technology-specialization-thumb.webp",
+        "width": 112.61611938476562,
+        "height": 88.428955078125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.2383529786472372
+      },
+      {
+        "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
+        "width": 115.12112426757812,
+        "height": 91.7547607421875,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.24731741439942723
+      },
+      {
+        "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
+        "width": 117.51248168945312,
+        "height": 94.990234375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.25603836758760107
+      },
+      {
+        "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+        "width": 119.78790283203125,
+        "height": 98.1318359375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.2645062963274933
+      },
+      {
+        "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
+        "width": 121.94508361816406,
+        "height": 101.1766357421875,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.27271330388729786
+      }
+    ]
+  },
+  {
+    "path": "/#chi-sono",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Prof. Gecko",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Social Viewer",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Diario di Bordo",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Easy Contract",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 16.6,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 86,
+        "height": 86,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.3359375
+      },
+      {
+        "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
+        "width": 164.072509765625,
+        "height": 136.13458251953125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.366939575524343
+      },
+      {
+        "src": "/assets/certifications/data-science-professional-course-thumb.webp",
+        "width": 161.169921875,
+        "height": 132.03790283203125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.35589731221571763
+      },
+      {
+        "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+        "width": 158.1082763671875,
+        "height": 127.81097412109375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.34450397337222033
+      },
+      {
+        "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
+        "width": 154.89059448242188,
+        "height": 123.4578857421875,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.3327705815153302
+      },
+      {
+        "src": "/assets/certifications/sas-programming-course-thumb.webp",
+        "width": 151.52008056640625,
+        "height": 118.98297119140625,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.3207088172275101
+      },
+      {
+        "src": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
+        "width": 148,
+        "height": 114.390625,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.30833333333333335
+      },
+      {
+        "src": "/assets/certifications/financial-technology-specialization-thumb.webp",
+        "width": 151.52008056640625,
+        "height": 118.98297119140625,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.3207088172275101
+      },
+      {
+        "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
+        "width": 154.89056396484375,
+        "height": 123.4578857421875,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.3327705815153302
+      },
+      {
+        "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
+        "width": 158.10830688476562,
+        "height": 127.81097412109375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.34450397337222033
+      },
+      {
+        "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+        "width": 161.16989135742188,
+        "height": 132.03790283203125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.35589731221571763
+      },
+      {
+        "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
+        "width": 164.072509765625,
+        "height": 136.13458251953125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.366939575524343
+      }
+    ]
+  },
+  {
+    "path": "/#chi-sono",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Prof. Gecko",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Social Viewer",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Diario di Bordo",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Easy Contract",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 12.5,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 66,
+        "height": 79.296875,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.30975341796875
+      },
+      {
+        "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
+        "width": 121.9450912475586,
+        "height": 101.1766357421875,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.27271330388729786
+      },
+      {
+        "src": "/assets/certifications/data-science-professional-course-thumb.webp",
+        "width": 119.78790283203125,
+        "height": 98.1318359375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.2645062963274933
+      },
+      {
+        "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+        "width": 117.51248931884766,
+        "height": 94.990234375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.25603836758760107
+      },
+      {
+        "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
+        "width": 115.1211166381836,
+        "height": 91.7547607421875,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.24731741439942723
+      },
+      {
+        "src": "/assets/certifications/sas-programming-course-thumb.webp",
+        "width": 112.61613464355469,
+        "height": 88.428955078125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.2383529786472372
+      },
+      {
+        "src": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
+        "width": 110,
+        "height": 85.015625,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.22916666666666666
+      },
+      {
+        "src": "/assets/certifications/financial-technology-specialization-thumb.webp",
+        "width": 112.61611938476562,
+        "height": 88.428955078125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.2383529786472372
+      },
+      {
+        "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
+        "width": 115.12112426757812,
+        "height": 91.7547607421875,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.24731741439942723
+      },
+      {
+        "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
+        "width": 117.51248168945312,
+        "height": 94.990234375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.25603836758760107
+      },
+      {
+        "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+        "width": 119.78790283203125,
+        "height": 98.1318359375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.2645062963274933
+      },
+      {
+        "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
+        "width": 121.94508361816406,
+        "height": 101.1766357421875,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.27271330388729786
+      }
+    ]
+  },
+  {
+    "path": "/#progetti",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Prof. Gecko",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Social Viewer",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Diario di Bordo",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Easy Contract",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 16.6,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 86,
+        "height": 86,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.3359375
+      },
+      {
+        "src": "/assets/projects/prof-gecko-480.webp",
+        "width": 395.453125,
+        "height": 222.4375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.8238606770833333
+      },
+      {
+        "src": "/assets/projects/social-viewer-480.webp",
+        "width": 395.453125,
+        "height": 222.4375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.8238606770833333
+      },
+      {
+        "src": "/assets/projects/diario-di-bordo-480.webp",
+        "width": 395.453125,
+        "height": 222.4375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.8238606770833333
+      },
+      {
+        "src": "/assets/projects/easy-contract-480.webp",
+        "width": 395.453125,
+        "height": 222.4375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.8238606770833333
+      }
+    ]
+  },
+  {
+    "path": "/#progetti",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Prof. Gecko",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Social Viewer",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Diario di Bordo",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Easy Contract",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 12.5,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 66,
+        "height": 79.296875,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.30975341796875
+      },
+      {
+        "src": "/assets/projects/prof-gecko-480.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.630078125
+      },
+      {
+        "src": "/assets/projects/social-viewer-480.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.630078125
+      },
+      {
+        "src": "/assets/projects/diario-di-bordo-480.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.630078125
+      },
+      {
+        "src": "/assets/projects/easy-contract-480.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.630078125
+      }
+    ]
+  },
+  {
+    "path": "/#progetti",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Prof. Gecko",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Social Viewer",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Diario di Bordo",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Easy Contract",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 16.6,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 86,
+        "height": 86,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.3359375
+      },
+      {
+        "src": "/assets/projects/prof-gecko-480.webp",
+        "width": 395.453125,
+        "height": 222.4375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.8238606770833333
+      },
+      {
+        "src": "/assets/projects/social-viewer-480.webp",
+        "width": 395.453125,
+        "height": 222.4375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.8238606770833333
+      },
+      {
+        "src": "/assets/projects/diario-di-bordo-480.webp",
+        "width": 395.453125,
+        "height": 222.4375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.8238606770833333
+      },
+      {
+        "src": "/assets/projects/easy-contract-480.webp",
+        "width": 395.453125,
+        "height": 222.4375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.8238606770833333
+      }
+    ]
+  },
+  {
+    "path": "/#progetti",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Prof. Gecko",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Social Viewer",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Diario di Bordo",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Easy Contract",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 12.5,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 66,
+        "height": 79.296875,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.30975341796875
+      },
+      {
+        "src": "/assets/projects/prof-gecko-480.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.630078125
+      },
+      {
+        "src": "/assets/projects/social-viewer-480.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.630078125
+      },
+      {
+        "src": "/assets/projects/diario-di-bordo-480.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.630078125
+      },
+      {
+        "src": "/assets/projects/easy-contract-480.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.630078125
+      }
+    ]
+  },
+  {
+    "path": "/#tab-modding",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Hogwarts Legacy Save Editor",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Spouse Merchant",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Slow Time Edit Extended",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Soarin' Over Skyrim - Configur",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Respect the Chief",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Instant Spell Casting - Player",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Giant Shockwaves",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Spell Shouts MCM",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Unrelenting Force - Fus Ro Dah",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "DMMF - Multilingual Notificati",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 16.6,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 86,
+        "height": 86,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.3359375
+      },
+      {
+        "src": "/assets/mods/hogwarts-legacy-save-editor-480.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/nexus/192394.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 1
+      },
+      {
+        "src": "/assets/nexus/197092.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 1
+      },
+      {
+        "src": "/assets/nexus/192204.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 1
+      },
+      {
+        "src": "/assets/mods/respect-the-chief-480.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/nexus/197145.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 1
+      },
+      {
+        "src": "/assets/mods/giant-shockwaves-480.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/nexus/196979.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 1
+      },
+      {
+        "src": "/assets/nexus/196616.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 1
+      },
+      {
+        "src": "/assets/nexus/197146.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 1
+      }
+    ]
+  },
+  {
+    "path": "/#tab-modding",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Hogwarts Legacy Save Editor",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Spouse Merchant",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Slow Time Edit Extended",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Soarin' Over Skyrim - Configur",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Respect the Chief",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Instant Spell Casting - Player",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Giant Shockwaves",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Spell Shouts MCM",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Unrelenting Force - Fus Ro Dah",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "DMMF - Multilingual Notificati",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 12.5,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 66,
+        "height": 79.296875,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.30975341796875
+      },
+      {
+        "src": "/assets/mods/hogwarts-legacy-save-editor-480.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.630078125
+      },
+      {
+        "src": "/assets/nexus/192394.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 0.7875434027777778
+      },
+      {
+        "src": "/assets/nexus/197092.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 0.7875434027777778
+      },
+      {
+        "src": "/assets/nexus/192204.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 0.7875434027777778
+      },
+      {
+        "src": "/assets/mods/respect-the-chief-480.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.630078125
+      },
+      {
+        "src": "/assets/nexus/197145.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 0.7875434027777778
+      },
+      {
+        "src": "/assets/mods/giant-shockwaves-480.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.630078125
+      },
+      {
+        "src": "/assets/nexus/196979.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 0.7875434027777778
+      },
+      {
+        "src": "/assets/nexus/196616.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 0.7875434027777778
+      },
+      {
+        "src": "/assets/nexus/197146.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 0.7875434027777778
+      }
+    ]
+  },
+  {
+    "path": "/#tab-modding",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Hogwarts Legacy Save Editor",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Spouse Merchant",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Slow Time Edit Extended",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Soarin' Over Skyrim - Configur",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Respect the Chief",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Instant Spell Casting - Player",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Giant Shockwaves",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Spell Shouts MCM",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Unrelenting Force - Fus Ro Dah",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "DMMF - Multilingual Notificati",
+        "width": 386,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 16.6,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 86,
+        "height": 86,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.3359375
+      },
+      {
+        "src": "/assets/mods/hogwarts-legacy-save-editor-480.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/nexus/192394.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 1
+      },
+      {
+        "src": "/assets/nexus/197092.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 1
+      },
+      {
+        "src": "/assets/nexus/192204.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 1
+      },
+      {
+        "src": "/assets/mods/respect-the-chief-480.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/nexus/197145.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 1
+      },
+      {
+        "src": "/assets/mods/giant-shockwaves-480.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/nexus/196979.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 1
+      },
+      {
+        "src": "/assets/nexus/196616.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 1
+      },
+      {
+        "src": "/assets/nexus/197146.webp",
+        "width": 384,
+        "height": 216,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 1
+      }
+    ]
+  },
+  {
+    "path": "/#tab-modding",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Hogwarts Legacy Save Editor",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Spouse Merchant",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Slow Time Edit Extended",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Soarin' Over Skyrim - Configur",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Respect the Chief",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Instant Spell Casting - Player",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Giant Shockwaves",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Spell Shouts MCM",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Unrelenting Force - Fus Ro Dah",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "DMMF - Multilingual Notificati",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 12.5,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 66,
+        "height": 79.296875,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.30975341796875
+      },
+      {
+        "src": "/assets/mods/hogwarts-legacy-save-editor-480.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.630078125
+      },
+      {
+        "src": "/assets/nexus/192394.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 0.7875434027777778
+      },
+      {
+        "src": "/assets/nexus/197092.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 0.7875434027777778
+      },
+      {
+        "src": "/assets/nexus/192204.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 0.7875434027777778
+      },
+      {
+        "src": "/assets/mods/respect-the-chief-480.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.630078125
+      },
+      {
+        "src": "/assets/nexus/197145.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 0.7875434027777778
+      },
+      {
+        "src": "/assets/mods/giant-shockwaves-480.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          480,
+          270
+        ],
+        "scale": 0.630078125
+      },
+      {
+        "src": "/assets/nexus/196979.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 0.7875434027777778
+      },
+      {
+        "src": "/assets/nexus/196616.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 0.7875434027777778
+      },
+      {
+        "src": "/assets/nexus/197146.webp",
+        "width": 302.4375,
+        "height": 170.109375,
+        "fit": "cover",
+        "native": [
+          385,
+          216
+        ],
+        "scale": 0.7875434027777778
+      }
+    ]
+  },
+  {
+    "path": "/#ricerca",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Certificazione esatta dei casi",
+        "width": 638,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "La costante asintotica globale",
+        "width": 638,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 12.692307692307692,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 86,
+        "height": 86,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.3359375
+      }
+    ]
+  },
+  {
+    "path": "/#ricerca",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Certificazione esatta dei casi",
+        "width": 358,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "La costante asintotica globale",
+        "width": 358,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 11.076923076923077,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 66,
+        "height": 79.296875,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.30975341796875
+      }
+    ]
+  },
+  {
+    "path": "/#ricerca",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Exact certification of the fin",
+        "width": 638,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "The global asymptotic constant",
+        "width": 638,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 12.692307692307692,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 86,
+        "height": 86,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.3359375
+      }
+    ]
+  },
+  {
+    "path": "/#ricerca",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Exact certification of the fin",
+        "width": 358,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "The global asymptotic constant",
+        "width": 358,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 11.076923076923077,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 66,
+        "height": 79.296875,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.30975341796875
+      }
+    ]
+  },
+  {
+    "path": "/#tab-teaching",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "card feedback-result",
+        "width": 423,
+        "spill": false,
+        "smallestLink": null
+      },
+      {
+        "title": "card feedback-result",
+        "width": 423,
+        "spill": false,
+        "smallestLink": null
+      },
+      {
+        "title": "Lezioni individuali",
+        "width": 423,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 16.6,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 86,
+        "height": 86,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.3359375
+      },
+      {
+        "src": "/assets/images/letuelezioni.png",
+        "width": 24,
+        "height": 24,
+        "fit": "contain",
+        "native": [
+          48,
+          48
+        ],
+        "scale": 0.5
+      },
+      {
+        "src": "/assets/images/superprof.png",
+        "width": 24,
+        "height": 24,
+        "fit": "contain",
+        "native": [
+          48,
+          48
+        ],
+        "scale": 0.5
+      }
+    ]
+  },
+  {
+    "path": "/#tab-teaching",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "card feedback-result",
+        "width": 358,
+        "spill": false,
+        "smallestLink": null
+      },
+      {
+        "title": "card feedback-result",
+        "width": 358,
+        "spill": false,
+        "smallestLink": null
+      },
+      {
+        "title": "Lezioni individuali",
+        "width": 358,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 12.5,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 66,
+        "height": 79.296875,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.30975341796875
+      },
+      {
+        "src": "/assets/images/letuelezioni.png",
+        "width": 24,
+        "height": 24,
+        "fit": "contain",
+        "native": [
+          48,
+          48
+        ],
+        "scale": 0.5
+      },
+      {
+        "src": "/assets/images/superprof.png",
+        "width": 24,
+        "height": 24,
+        "fit": "contain",
+        "native": [
+          48,
+          48
+        ],
+        "scale": 0.5
+      }
+    ]
+  },
+  {
+    "path": "/#tab-teaching",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "card feedback-result",
+        "width": 423,
+        "spill": false,
+        "smallestLink": null
+      },
+      {
+        "title": "card feedback-result",
+        "width": 423,
+        "spill": false,
+        "smallestLink": null
+      },
+      {
+        "title": "Individual lessons",
+        "width": 423,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 16.6,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 86,
+        "height": 86,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.3359375
+      },
+      {
+        "src": "/assets/images/letuelezioni.png",
+        "width": 24,
+        "height": 24,
+        "fit": "contain",
+        "native": [
+          48,
+          48
+        ],
+        "scale": 0.5
+      },
+      {
+        "src": "/assets/images/superprof.png",
+        "width": 24,
+        "height": 24,
+        "fit": "contain",
+        "native": [
+          48,
+          48
+        ],
+        "scale": 0.5
+      }
+    ]
+  },
+  {
+    "path": "/#tab-teaching",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "card feedback-result",
+        "width": 358,
+        "spill": false,
+        "smallestLink": null
+      },
+      {
+        "title": "card feedback-result",
+        "width": 358,
+        "spill": false,
+        "smallestLink": null
+      },
+      {
+        "title": "Individual lessons",
+        "width": 358,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 12.5,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 66,
+        "height": 79.296875,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.30975341796875
+      },
+      {
+        "src": "/assets/images/letuelezioni.png",
+        "width": 24,
+        "height": 24,
+        "fit": "contain",
+        "native": [
+          48,
+          48
+        ],
+        "scale": 0.5
+      },
+      {
+        "src": "/assets/images/superprof.png",
+        "width": 24,
+        "height": 24,
+        "fit": "contain",
+        "native": [
+          48,
+          48
+        ],
+        "scale": 0.5
+      }
+    ]
+  },
+  {
+    "path": "/#certificazioni",
+    "lang": "it",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Prof. Gecko",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Social Viewer",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Diario di Bordo",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Easy Contract",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 16.6,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 86,
+        "height": 86,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.3359375
+      },
+      {
+        "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
+        "width": 164.072509765625,
+        "height": 136.13458251953125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.366939575524343
+      },
+      {
+        "src": "/assets/certifications/data-science-professional-course-thumb.webp",
+        "width": 161.169921875,
+        "height": 132.03790283203125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.35589731221571763
+      },
+      {
+        "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+        "width": 158.1082763671875,
+        "height": 127.81097412109375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.34450397337222033
+      },
+      {
+        "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
+        "width": 154.89059448242188,
+        "height": 123.4578857421875,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.3327705815153302
+      },
+      {
+        "src": "/assets/certifications/sas-programming-course-thumb.webp",
+        "width": 151.52008056640625,
+        "height": 118.98297119140625,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.3207088172275101
+      },
+      {
+        "src": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
+        "width": 148,
+        "height": 114.390625,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.30833333333333335
+      },
+      {
+        "src": "/assets/certifications/financial-technology-specialization-thumb.webp",
+        "width": 151.52008056640625,
+        "height": 118.98297119140625,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.3207088172275101
+      },
+      {
+        "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
+        "width": 154.89056396484375,
+        "height": 123.4578857421875,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.3327705815153302
+      },
+      {
+        "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
+        "width": 158.10830688476562,
+        "height": 127.81097412109375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.34450397337222033
+      },
+      {
+        "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+        "width": 161.16989135742188,
+        "height": 132.03790283203125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.35589731221571763
+      },
+      {
+        "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
+        "width": 164.072509765625,
+        "height": 136.13458251953125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.366939575524343
+      },
+      {
+        "src": "/assets/certifications/ai-and-machine-learning-engineering-full.webp",
+        "width": 958,
+        "height": 740,
+        "fit": "contain",
+        "native": [
+          960,
+          742
+        ],
+        "scale": 0.9973045822102425
+      }
+    ]
+  },
+  {
+    "path": "/#certificazioni",
+    "lang": "it",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Prof. Gecko",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Social Viewer",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Diario di Bordo",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Easy Contract",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 12.5,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 66,
+        "height": 79.296875,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.30975341796875
+      },
+      {
+        "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
+        "width": 121.9450912475586,
+        "height": 101.1767578125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.27271363291778977
+      },
+      {
+        "src": "/assets/certifications/data-science-professional-course-thumb.webp",
+        "width": 119.78790283203125,
+        "height": 98.13186645507812,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.2645063785851162
+      },
+      {
+        "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+        "width": 117.51248931884766,
+        "height": 94.990234375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.25603836758760107
+      },
+      {
+        "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
+        "width": 115.1211166381836,
+        "height": 91.75482177734375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.24731757891467318
+      },
+      {
+        "src": "/assets/certifications/sas-programming-course-thumb.webp",
+        "width": 112.61613464355469,
+        "height": 88.42886352539062,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.23835273187436826
+      },
+      {
+        "src": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
+        "width": 110,
+        "height": 85.015625,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.22916666666666666
+      },
+      {
+        "src": "/assets/certifications/financial-technology-specialization-thumb.webp",
+        "width": 112.61611938476562,
+        "height": 88.42886352539062,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.23835273187436826
+      },
+      {
+        "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
+        "width": 115.12112426757812,
+        "height": 91.75482177734375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.24731757891467318
+      },
+      {
+        "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
+        "width": 117.51248168945312,
+        "height": 94.990234375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.25603836758760107
+      },
+      {
+        "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+        "width": 119.78790283203125,
+        "height": 98.13186645507812,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.2645063785851162
+      },
+      {
+        "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
+        "width": 121.94508361816406,
+        "height": 101.1767578125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.27271363291778977
+      },
+      {
+        "src": "/assets/certifications/ai-and-machine-learning-engineering-full.webp",
+        "width": 372,
+        "height": 287.515625,
+        "fit": "contain",
+        "native": [
+          960,
+          742
+        ],
+        "scale": 0.38748736522911054
+      }
+    ]
+  },
+  {
+    "path": "/#certificazioni",
+    "lang": "en",
+    "width": 1440,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Prof. Gecko",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Social Viewer",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Diario di Bordo",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Easy Contract",
+        "width": 397,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 16.6,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 38,
+        "height": 38,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.0463980463980464
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 86,
+        "height": 86,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.3359375
+      },
+      {
+        "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
+        "width": 164.072509765625,
+        "height": 136.13458251953125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.366939575524343
+      },
+      {
+        "src": "/assets/certifications/data-science-professional-course-thumb.webp",
+        "width": 161.169921875,
+        "height": 132.03790283203125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.35589731221571763
+      },
+      {
+        "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+        "width": 158.1082763671875,
+        "height": 127.81097412109375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.34450397337222033
+      },
+      {
+        "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
+        "width": 154.89059448242188,
+        "height": 123.4578857421875,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.3327705815153302
+      },
+      {
+        "src": "/assets/certifications/sas-programming-course-thumb.webp",
+        "width": 151.52008056640625,
+        "height": 118.98297119140625,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.3207088172275101
+      },
+      {
+        "src": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
+        "width": 148,
+        "height": 114.390625,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.30833333333333335
+      },
+      {
+        "src": "/assets/certifications/financial-technology-specialization-thumb.webp",
+        "width": 151.52008056640625,
+        "height": 118.98297119140625,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.3207088172275101
+      },
+      {
+        "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
+        "width": 154.89056396484375,
+        "height": 123.4578857421875,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.3327705815153302
+      },
+      {
+        "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
+        "width": 158.10830688476562,
+        "height": 127.81097412109375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.34450397337222033
+      },
+      {
+        "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+        "width": 161.16989135742188,
+        "height": 132.03790283203125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.35589731221571763
+      },
+      {
+        "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
+        "width": 164.072509765625,
+        "height": 136.13458251953125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.366939575524343
+      },
+      {
+        "src": "/assets/certifications/ai-and-machine-learning-engineering-full.webp",
+        "width": 958,
+        "height": 740,
+        "fit": "contain",
+        "native": [
+          960,
+          742
+        ],
+        "scale": 0.9973045822102425
+      }
+    ]
+  },
+  {
+    "path": "/#certificazioni",
+    "lang": "en",
+    "width": 390,
+    "overflow": 0,
+    "largestHeadingOutsideHero": 24,
+    "headingLimits": [],
+    "cards": [
+      {
+        "title": "Prof. Gecko",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Social Viewer",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Diario di Bordo",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      },
+      {
+        "title": "Easy Contract",
+        "width": 304,
+        "spill": false,
+        "smallestLink": 44
+      }
+    ],
+    "smallestChartText": 12.5,
+    "primaryActions": 1,
+    "obsoleteWording": false,
+    "images": [
+      {
+        "src": "/assets/images/falkerlogo-native.webp",
+        "width": 32,
+        "height": 32,
+        "fit": "contain",
+        "native": [
+          819,
+          819
+        ],
+        "scale": 0.03907203907203907
+      },
+      {
+        "src": "/assets/images/flag-it-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          30,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/flag-en-native.png",
+        "width": 24,
+        "height": 16,
+        "fit": "cover",
+        "native": [
+          40,
+          20
+        ],
+        "scale": 0.8
+      },
+      {
+        "src": "/assets/images/maurizio-falconi-native.webp",
+        "width": 66,
+        "height": 79.296875,
+        "fit": "cover",
+        "native": [
+          256,
+          256
+        ],
+        "scale": 0.30975341796875
+      },
+      {
+        "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
+        "width": 121.9450912475586,
+        "height": 101.1767578125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.27271363291778977
+      },
+      {
+        "src": "/assets/certifications/data-science-professional-course-thumb.webp",
+        "width": 119.78790283203125,
+        "height": 98.13186645507812,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.2645063785851162
+      },
+      {
+        "src": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+        "width": 117.51248931884766,
+        "height": 94.990234375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.25603836758760107
+      },
+      {
+        "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
+        "width": 115.1211166381836,
+        "height": 91.75482177734375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.24731757891467318
+      },
+      {
+        "src": "/assets/certifications/sas-programming-course-thumb.webp",
+        "width": 112.61613464355469,
+        "height": 88.42886352539062,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.23835273187436826
+      },
+      {
+        "src": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
+        "width": 110,
+        "height": 85.015625,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.22916666666666666
+      },
+      {
+        "src": "/assets/certifications/financial-technology-specialization-thumb.webp",
+        "width": 112.61611938476562,
+        "height": 88.42886352539062,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.23835273187436826
+      },
+      {
+        "src": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
+        "width": 115.12112426757812,
+        "height": 91.75482177734375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.24731757891467318
+      },
+      {
+        "src": "/assets/certifications/french-b2-2-certificate-thumb.webp",
+        "width": 117.51248168945312,
+        "height": 94.990234375,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.25603836758760107
+      },
+      {
+        "src": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+        "width": 119.78790283203125,
+        "height": 98.13186645507812,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.2645063785851162
+      },
+      {
+        "src": "/assets/certifications/fullstack-developer-certification-thumb.webp",
+        "width": 121.94508361816406,
+        "height": 101.1767578125,
+        "fit": "fill",
+        "native": [
+          480,
+          371
+        ],
+        "scale": 0.27271363291778977
+      },
+      {
+        "src": "/assets/certifications/ai-and-machine-learning-engineering-full.webp",
+        "width": 372,
+        "height": 287.515625,
+        "fit": "contain",
+        "native": [
+          960,
+          742
+        ],
+        "scale": 0.38748736522911054
+      }
+    ]
+  }
+]

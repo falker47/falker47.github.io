@@ -1,0 +1,195 @@
+### node scripts/check.mjs (after the click fix)
+$ node scripts/build.mjs
+Built 16 page(s) in _site.
+$ node scripts/validate-site.mjs
+/404.html: 43758 HTML+CSS+JS bytes
+/: 224139 HTML+CSS+JS bytes, initial resources 363750 bytes / 11 requests
+/Nexus-portfolio/consigli.html: 24170 HTML+CSS+JS bytes
+/Nexus-portfolio/: 24170 HTML+CSS+JS bytes
+/Nexus-portfolio/prof-gecko.html: 24291 HTML+CSS+JS bytes
+/Nexus-portfolio/research.html: 24227 HTML+CSS+JS bytes
+/Nexus-portfolio/socialviewer-privacy.html: 24262 HTML+CSS+JS bytes
+/Nexus-portfolio/testers.html: 24265 HTML+CSS+JS bytes
+/projects/camaleonte/: 55988 HTML+CSS+JS bytes
+/projects/: 24233 HTML+CSS+JS bytes
+/projects/prof-gecko/: 55422 HTML+CSS+JS bytes
+/projects/social-viewer/: 59448 HTML+CSS+JS bytes
+/projects/social-viewer/privacy/: 67791 HTML+CSS+JS bytes
+/projects/social-viewer/test/: 61179 HTML+CSS+JS bytes
+/research/: 59546 HTML+CSS+JS bytes
+/uses/: 60612 HTML+CSS+JS bytes
+Validated font families, 64044/120000 WOFF2 bytes, 79 contrast pairs and 44px control rules.
+/ it 1440: cold browser load 363416 bytes / 11 requests; idle prefetch 0 bytes / 0 requests
+/ en 1440: cold browser load 363416 bytes / 11 requests; idle prefetch 0 bytes / 0 requests
+/ it 390: cold browser load 304013 bytes / 11 requests; idle prefetch 0 bytes / 0 requests
+/ en 390: cold browser load 304013 bytes / 11 requests; idle prefetch 0 bytes / 0 requests
+Validated 16 HTML page(s), 1 browser scripts and the approved desktop artwork.
+$ node --test --test-reporter=spec scripts/qa/test-site.mjs scripts/test-build-assets.mjs scripts/test-data.mjs scripts/test-design-checks.mjs scripts/test-detail-pages.mjs scripts/test-disclosures.mjs scripts/test-home.mjs scripts/test-i18n.mjs scripts/test-legacy.mjs scripts/test-nexus-downloads.mjs scripts/test-nexus-mods.mjs scripts/test-privacy.mjs scripts/test-ringmin.mjs scripts/test-workflows.mjs
+✔ template interpolation escapes text, attributes and script data (2.6021ms)
+✔ reference scanning ignores comments and JSON strings, and reads quoted and single-quoted attributes (3.8089ms)
+✔ directory indexes, query-preserving redirects, custom 404s and cross-page fragments (134.8058ms)
+✔ minification preserves text, raw content, descendant selectors and JS line terminators (2.7754ms)
+✔ the CSS byte threshold includes the protected home block and hashes actual bundle content (49.088ms)
+✔ validator counts delivered bytes once, lazy hero assets and forbidden CSS requests (44.54ms)
+✔ audit includes each existing stub URL and fails closed on missing public or active routes (19.9734ms)
+✔ catalogues have complete IT/EN pairs, safe URLs and unique identifiers (6.1049ms)
+✔ projects preserve catalogue order, visibility, summaries, routes and link types (2.1991ms)
+✔ featured mods, certificates, research, tutoring and profile have their required fields (1.2755ms)
+✔ every responsive image matches its encoded dimensions, directory, size and budget (152.3094ms)
+✔ responsive markup localizes alt text and opts priority images into eager loading (3.0023ms)
+✔ the QA Data section shows all 34 entries and keeps planned routes out of navigation (4.9367ms)
+✔ text arrows, ordinary digits and fragments survive the emoji check (3.6807ms)
+Validated font families, 0/120000 WOFF2 bytes, 5 contrast pairs and 44px control rules.
+✔ unknown font, insufficient contrast and undersized controls fail Node validation (42.2206ms)
+✔ detail pages publish a priority picture, a canonical author and working return links (17.3031ms)
+✔ Ringmin articles preserve their identifiers, summaries and authorship (4.5781ms)
+✔ project covers and public app links match the source catalogue (7.9832ms)
+✔ recommendations preserve the approved affiliate URLs and both original disclosures (4.4795ms)
+✔ every page links its signature to the home and lists "Cosa uso" last in the header (14.271ms)
+✔ about and work animate open and closed, preserving native details state (6.5143ms)
+✔ interrupts a transition without jumping, and settles to the last requested state (1.2687ms)
+✔ prefers-reduced-motion uses immediate native disclosure (1.3055ms)
+✔ switching to reduced motion cancels the animation and reaches its intended state (1.1682ms)
+✔ without Web Animations the disclosure remains natively usable (1.2582ms)
+✔ a disclosure opened by a deep link closes on its first summary click (1.5682ms)
+✔ the home keeps the master structure and renders every catalogue from data (112.806ms)
+✔ the home rejects V2 and R1 components (6.2842ms)
+✔ home links reach existing pages, never the legacy portfolio or the old projects page (53.2642ms)
+✔ external actions show their platform mark; other actions keep an arrow (20.0753ms)
+✔ every count is the same tile: drawing or mark, number, label, and an arrow only on links (14.0932ms)
+✔ the Lessons tab puts the text and its action before the two portals (17.5509ms)
+✔ the Modding tab lists every published mod with its own numbers and picture rule (16.6084ms)
+✔ the Research tab draws the certified configurations and both kinds of dots (66.3757ms)
+✔ Chi sono shows the text, the facts from data and one deck card per certificate (45.0893ms)
+✔ IT and EN have the same keys and every bilingual value in the data is nonempty (3.8819ms)
+✔ nested bilingual records are checked even when their parent has its own translations (1.1532ms)
+✔ every built HTML translation key exists in both dictionaries (79.1568ms)
+✔ each route has localized document and sharing titles (0.9373ms)
+✔ the head selects query, storage or browser language in that order, before styles and body (6.815ms)
+✔ visible-text checks find leaked prose in either direction, across line breaks and formatted counts (1.651ms)
+✔ every legacy image is byte-identical in the repository and the published tree (142.5479ms)
+✔ each old URL replaces history, retaining query and remapping only its own fragments (64.7581ms)
+✔ visual QA holds only the requested redirect and preserves its published body (3066.0107ms)
+✔ only links from their own stub can defer an undeclared destination (9.7798ms)
+✔ sitemap reflects canonical indexable routes, dates and the new portrait (13.3849ms)
+✔ validator rejects mismatched refresh, noindex stubs and non-self canonicals (1.0598ms)
+✔ uses the exact Nexus Mods profile uniqueModDownloads metric, not all downloads or collections (3.7285ms)
+✔ rejects API errors without overwriting the prior snapshot (1.4663ms)
+✔ rejects wrong profile identity and malformed unique-download counts (3.3056ms)
+✔ renders unique downloads exactly in Italian and English (40.921ms)
+✔ loads the uniqueModDownloads snapshot and rejects totalDownloads-only data (0.8564ms)
+✔ updates the download counter after changing language, without changing to the total-download metric (13.1337ms)
+✔ reads every mod of the verified member with the published query (9.6024ms)
+✔ cleans the published names (0.5374ms)
+✔ rejects a partial list, malformed mods and API errors (3.9885ms)
+✔ reads the size of PNG and WebP files from their headers (0.9115ms)
+✔ downloads pictures for every published mod, translations included, keeps existing covers and removes stale files (18.2865ms)
+✔ refuses pictures from another host, failed downloads and non-images (3.9271ms)
+✔ the committed snapshot matches its pictures and the featured covers (42.7363ms)
+✔ the complete published privacy document matches the original text snapshot (3.4285ms)
+✔ the published text matches the reference checkout directly (1.8897ms)
+✔ both legal editions, all twelve disclosures and all three contact links are reachable (3.5397ms)
+✔ the snapshot holds the twelve certified optima and the asymptotic table (4.0568ms)
+✔ in every configuration each pair of circles is tangent or apart (2.8381ms)
+✔ an overlapping drawing fails the same check (0.3111ms)
+✔ the snapshot matches the reference checkout (72.8958ms)
+✔ the certified interval for C* lies above 1/8 and above every finite value (0.5153ms)
+✔ the importer reads both bounds and rejects sources without them (10.3442ms)
+✔ the Nexus refresh keeps its daily schedule, manual trigger and parser test (2.1612ms)
+✔ the scheduled commit stages only the snapshots and their pictures, with an unchanged exit (3.3434ms)
+✔ Pages rebuilds main after a successful Nexus refresh without granting Actions write access (7.9148ms)
+✔ Pages deploys the checked artifact and branch validation runs on Node 22 (2.9111ms)
+ℹ tests 73
+ℹ suites 0
+ℹ pass 73
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3566.6855
+$ node scripts/qa/links.mjs
+51 legacy sources and assets returned HTTP 200 on loopback.
+Crawled 178 local file(s).
+External (unfetched) https://arxiv.org/abs/2607.28654
+External (unfetched) https://arxiv.org/abs/2609.13630
+External (unfetched) https://carte-senza-umanita.onrender.com/
+External (unfetched) https://chi-l-ha-detto.vercel.app/
+External (unfetched) https://diariodibordo.netlify.app/
+External (unfetched) https://doi.org/10.5281/zenodo.22849826
+External (unfetched) https://easy-contract.netlify.app/
+External (unfetched) https://falker47.github.io/Codice-Fiscale/
+External (unfetched) https://falker47.github.io/Crack-the-Code/
+External (unfetched) https://falker47.github.io/IBAN-Checker/
+External (unfetched) https://falker47.github.io/SOMMATRIX/
+External (unfetched) https://falker47.github.io/ZEROfilez/
+External (unfetched) https://falker47.github.io/camaleonte/
+External (unfetched) https://falker47.github.io/mauriziofalconi-ripetizioni/
+External (unfetched) https://github.com/falker47
+External (unfetched) https://github.com/falker47/Carte-senza-Umanita
+External (unfetched) https://github.com/falker47/Codice-Fiscale
+External (unfetched) https://github.com/falker47/Crack-the-Code
+External (unfetched) https://github.com/falker47/Diario-di-Bordo
+External (unfetched) https://github.com/falker47/HogwartsLegacy-SaveEditor
+External (unfetched) https://github.com/falker47/IBAN-Checker
+External (unfetched) https://github.com/falker47/Panacea
+External (unfetched) https://github.com/falker47/PokemonMysteryDungeon-SavEditor
+External (unfetched) https://github.com/falker47/SOMMATRIX
+External (unfetched) https://github.com/falker47/SocialViewer
+External (unfetched) https://github.com/falker47/ZEROfilez
+External (unfetched) https://github.com/falker47/camaleonte
+External (unfetched) https://github.com/falker47/chi-l-ha-detto
+External (unfetched) https://github.com/falker47/easy-contract
+External (unfetched) https://github.com/falker47/ringmin
+External (unfetched) https://github.com/falker47/ringmin-squared
+External (unfetched) https://groups.google.com/g/camaleonte-testing
+External (unfetched) https://link.amazon/B01Um942w
+External (unfetched) https://link.amazon/B04ikrTOS
+External (unfetched) https://link.amazon/B0cuqIZyw
+External (unfetched) https://link.amazon/B0h5EUEl1
+External (unfetched) https://oeis.org/wiki/User:Maurizio_Falconi
+External (unfetched) https://orcid.org/0009-0005-3162-3651
+External (unfetched) https://play.google.com/apps/testing/io.github.falker47.socialviewer
+External (unfetched) https://play.google.com/store/apps/details?id=com.falker.camaleonte
+External (unfetched) https://play.google.com/store/apps/details?id=io.github.falker47.socialviewer
+External (unfetched) https://pokemonmysterydungeon-reversequiz.netlify.app/
+External (unfetched) https://profgecko.vercel.app/
+External (unfetched) https://www.letuelezioni.it/insegnanti/maurizio-falconi.htm
+External (unfetched) https://www.linkedin.com/in/mauriziofalconi/
+External (unfetched) https://www.nexusmods.com/hogwartslegacy/mods/2414
+External (unfetched) https://www.nexusmods.com/profile/falker47/mods
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192150
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192165
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192168
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192171
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192204
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192264
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192270
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192271
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192290
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192291
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192317
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192318
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192352
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192394
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192424
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/193424
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/193883
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/194441
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/196616
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/196979
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/197077
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/197092
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/197145
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/197146
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/198611
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/198756
+External (unfetched) https://www.superprof.it/studente-fisica-propone-lezioni-matematica-fisica-per-scuola-media-liceo-parma-presenza-remoto.html
+External (unfetched) mailto:falker.dev@gmail.com
+External (unfetched) mailto:maurizio.falconi47@gmail.com
+### exit 0
+### node scripts/qa/interactions.mjs --task V4/after-qa --pages / (after the click fix)
+/ it 1440 passed
+/ it 390 passed
+/ en 1440 passed
+/ en 390 passed
+### exit 0

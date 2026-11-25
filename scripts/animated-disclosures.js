@@ -1,8 +1,8 @@
-// Smoothly expand and collapse the two native disclosures, with a native fallback.
+// Smoothly expand and collapse shared native disclosures, with a native fallback.
 (() => {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  document.querySelectorAll('details.about, details.work').forEach(details => {
+  document.querySelectorAll('details.about, details.work, details.disclosure').forEach(details => {
     const summary = details.querySelector(':scope > summary');
     if (!summary || typeof details.animate !== 'function') return;
 
@@ -22,7 +22,7 @@
       }
 
       event.preventDefault();
-      const opening = !expanded;
+      const opening = !(animation ? expanded : details.open);
       const startHeight = details.getBoundingClientRect().height;
       if (animation) animation.cancel();
 

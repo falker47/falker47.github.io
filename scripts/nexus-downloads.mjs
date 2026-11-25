@@ -41,14 +41,20 @@ if (typeof document !== 'undefined') {
     document.querySelectorAll('[data-i18n="modProof"]').forEach(node => {
       node.textContent = localized.proof;
     });
+    // The date beside the totals follows the snapshot they came from.
+    document.querySelectorAll('time[data-nexus-stat="checkedOn"]').forEach(node => {
+      node.setAttribute('datetime', stats.checkedOn);
+      node.textContent = new Intl.DateTimeFormat(document.documentElement.lang === 'en' ? 'en-US' : 'it-IT',
+        { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(stats.checkedOn + 'T00:00:00Z'));
+    });
   };
 
   // Inline localization resets translated text; reapply live data after each language change.
   document.addEventListener('portfolio:languagechange', render);
-  loadStats().then(value => {
+  if (globalThis.navigator?.onLine !== false) loadStats().then(value => {
     stats = value;
     render();
   }).catch(() => {
-    // Keep the existing 12k+ fallback; never show a fabricated zero after an API error.
+    // The localized, build-time snapshot is already visible.
   });
 }

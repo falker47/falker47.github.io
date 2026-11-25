@@ -1,0 +1,139 @@
+{
+  "profile": "https://www.nexusmods.com/profile/falker47/mods",
+  "items": [
+    {
+      "id": "hogwarts-legacy-save-editor",
+      "title": "Hogwarts Legacy Save Editor",
+      "game": "Hogwarts Legacy",
+      "kind": {
+        "it": "Editor di salvataggi · Hogwarts Legacy",
+        "en": "Save editor · Hogwarts Legacy"
+      },
+      "stack": [
+        "Python",
+        "CustomTkinter",
+        "PyWebView"
+      ],
+      "where": {
+        "it": "Nexus Mods, per la versione PC",
+        "en": "Nexus Mods, for the PC version"
+      },
+      "url": "https://www.nexusmods.com/hogwartslegacy/mods/2414",
+      "repo": "https://github.com/falker47/HogwartsLegacy-SaveEditor",
+      "description": {
+        "it": "Modifica i salvataggi, crea backup, esporta da Game Pass.",
+        "en": "Edit saves, back them up or export them from Game Pass."
+      },
+      "cover": {
+        "src": "/assets/mods/hogwarts-legacy-save-editor-480.webp",
+        "width": 480,
+        "height": 270,
+        "nativeWidth": 1672,
+        "alt": {
+          "it": "Una pergamena e una piuma sulla copertina dell’editor di salvataggi di Hogwarts Legacy.",
+          "en": "A scroll and a quill on the cover of Hogwarts Legacy Save Editor."
+        },
+        "variants": [
+          {
+            "src": "/assets/mods/hogwarts-legacy-save-editor-480.webp",
+            "width": 480,
+            "height": 270
+          },
+          {
+            "src": "/assets/mods/hogwarts-legacy-save-editor-960.webp",
+            "width": 960,
+            "height": 540
+          }
+        ]
+      }
+    },
+    {
+      "id": "giant-shockwaves",
+      "title": "Giant Shockwaves",
+      "game": "Skyrim Special Edition",
+      "kind": {
+        "it": "Nuovo potere · Skyrim Special Edition",
+        "en": "New power · Skyrim Special Edition"
+      },
+      "stack": [
+        "Creation Kit"
+      ],
+      "where": {
+        "it": "Nexus Mods, per la versione PC",
+        "en": "Nexus Mods, for the PC version"
+      },
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/198756",
+      "repo": null,
+      "description": {
+        "it": "Un potere che genera un'onda d'urto intorno a te e sbilancia i nemici nel raggio d'azione.",
+        "en": "Send out a shockwave that staggers nearby enemies."
+      },
+      "cover": {
+        "src": "/assets/mods/giant-shockwaves-480.webp",
+        "width": 480,
+        "height": 270,
+        "nativeWidth": 1672,
+        "alt": {
+          "it": "Un’onda d’urto si propaga fra i combattenti in un paesaggio innevato di Skyrim.",
+          "en": "A shockwave sweeps through a fight in a snowy Skyrim landscape."
+        },
+        "variants": [
+          {
+            "src": "/assets/mods/giant-shockwaves-480.webp",
+            "width": 480,
+            "height": 270
+          },
+          {
+            "src": "/assets/mods/giant-shockwaves-960.webp",
+            "width": 960,
+            "height": 540
+          }
+        ]
+      }
+    },
+    {
+      "id": "respect-the-chief",
+      "title": "Respect the Chief",
+      "game": "Skyrim Special Edition",
+      "kind": {
+        "it": "Mod di gameplay · Skyrim Special Edition",
+        "en": "Gameplay mod · Skyrim Special Edition"
+      },
+      "stack": [
+        "Creation Kit"
+      ],
+      "where": {
+        "it": "Nexus Mods, per la versione PC",
+        "en": "Nexus Mods, for the PC version"
+      },
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/193883",
+      "repo": null,
+      "description": {
+        "it": "Diventato capo di Thirsk dalla parte dei Riekling, i Riekling di Solstheim smettono di attaccarti e ti trattano da amico.",
+        "en": "Side with the Rieklings and become Chief of Thirsk. Rieklings across Solstheim will then treat you as a friend."
+      },
+      "cover": {
+        "src": "/assets/mods/respect-the-chief-480.webp",
+        "width": 480,
+        "height": 270,
+        "nativeWidth": 1672,
+        "alt": {
+          "it": "Il capo di Thirsk circondato dai Riekling nel loro accampamento.",
+          "en": "Rieklings gather around the Chief of Thirsk at their camp."
+        },
+        "variants": [
+          {
+            "src": "/assets/mods/respect-the-chief-480.webp",
+            "width": 480,
+            "height": 270
+          },
+          {
+            "src": "/assets/mods/respect-the-chief-960.webp",
+            "width": 960,
+            "height": 540
+          }
+        ]
+      }
+    }
+  ]
+}

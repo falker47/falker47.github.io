@@ -1,0 +1,69 @@
+name: SocialViewer privacy policy check
+
+on:
+  pull_request:
+    paths:
+      - 'src/pages/social-viewer/**'
+      - 'src/routes.mjs'
+      - 'src/partials/**'
+      - 'src/client/i18n.js'
+      - 'src/styles/social-viewer.css'
+      - 'data/i18n/*.json'
+      - 'data/projects.json'
+      - 'scripts/build.mjs'
+      - 'scripts/test-privacy.mjs'
+      - 'docs/unify/privacy-snapshot.txt'
+      - '.github/workflows/socialviewer-privacy-check.yml'
+  push:
+    branches: [main, 'codex/**']
+    paths:
+      - 'src/pages/social-viewer/**'
+      - 'src/routes.mjs'
+      - 'src/partials/**'
+      - 'src/client/i18n.js'
+      - 'src/styles/social-viewer.css'
+      - 'data/i18n/*.json'
+      - 'data/projects.json'
+      - 'scripts/build.mjs'
+      - 'scripts/test-privacy.mjs'
+      - 'docs/unify/privacy-snapshot.txt'
+      - '.github/workflows/socialviewer-privacy-check.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/build.mjs
+      - run: node scripts/test-privacy.mjs
+      - name: Validate bilingual privacy disclosure
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+
+          page = Path("_site/projects/social-viewer/privacy/index.html").read_text(encoding="utf-8")
+          class Parser(HTMLParser):
+              pass
+          Parser(convert_charrefs=True).feed(page)
+          assert "<html" in page and "</html>" in page
+          assert "<strong>Updated</strong> 6 November 2026" in page
+          assert "<strong>Aggiornata</strong> 6 novembre 2026" in page
+          assert "Instagram posts continue to use Meta's official oEmbed" in page
+          assert "I post Instagram continuano a utilizzare l'embed ufficiale Meta oEmbed" in page
+          assert "In versions that enable in-app Reel playback" in page
+          assert "Nelle versioni con riproduzione in-app dei Reel abilitata" in page
+          assert "third-party cookies" in page and "cookie di terze parti" in page
+          assert "undocumented" in page and "non documentato" in page
+          assert "proposed SocialViewer 0.1.10" not in page
+          assert "proposta per la pubblicazione" not in page
+          PY

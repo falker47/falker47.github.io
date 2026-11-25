@@ -1,9 +1,9 @@
-name: Validate homepage
+name: Validate site
 
 on:
-  push:
-    branches: [main, 'codex/**']
   pull_request:
+  push:
+    branches: [main, unify, 'codex/**']
 
 permissions:
   contents: read
@@ -22,7 +22,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node scripts/validate-site.mjs
-      - run: node --test scripts/test-disclosures.mjs
-      - run: node --test scripts/test-nexus-downloads.mjs
-      - run: node --check scripts/nexus-downloads.mjs
+      - name: Prepare cold-browser budget check
+        shell: bash
+        run: |
+          npm install --prefix "$RUNNER_TEMP/portfolio-browser" --no-save --ignore-scripts --no-audit --no-fund playwright@^1
+          chrome_path="$(command -v google-chrome)"
+          test -x "$chrome_path"
+          echo "QA_TOOLS_DIR=$RUNNER_TEMP/portfolio-browser" >> "$GITHUB_ENV"
+          echo "QA_CHROME_PATH=$chrome_path" >> "$GITHUB_ENV"
+      - run: node scripts/check.mjs

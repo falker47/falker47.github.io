@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'Gelasio';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/assets/fonts/gelasio-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+  font-family: 'Gelasio';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/assets/fonts/gelasio-latin-400-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/assets/fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url("/assets/fonts/poppins-600.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+/* Direction V3: the master's blueprint navy stays inside the hero band. The page
+   below it and every other page use the Nexus neutrals. */
+:root {
+  color-scheme: dark;
+  --bg: #0f1014;
+  --surface: #171a21;
+  --surface-raised: #1f232c;
+  --hero-bg: #0a1424;
+  --paper: #f1f4f5;
+  --secondary: #c9d7e2;
+  --muted: #adbfce;
+  --blue: #9bdcff;
+  --accent: #60a5fa;
+  --stroke: #81bfe5;
+  --rule: #ffffff14;
+  --control-line: #7b8799;
+  --rule-soft: #ffffff0d;
+  --header-bg: #0c0d11ed;
+  --social-accent: #49c7bb;
+  --cat-app: #60a5fa;
+  --cat-game: #f0a35e;
+  --cat-tool: #4fd1a5;
+  /* Nexus Mods orange, from the official emblem (logo-emblem.svg), and a lighter amber for gradients. */
+  --nexus: #f97316;
+  --nexus-amber: #fbbf24;
+  --nexus-light: #fdba74;
+  --star: #facc15;
+  /* Hover ink of a platform mark; each external action sets its own from data/brands.json. */
+  --brand: var(--paper);
+  /* The pressed category pill; #panel-modding switches it to the Nexus orange. */
+  --panel-accent: var(--blue);
+  /* The colour of a "Chi sono" figure: the section it opens. */
+  --tone: var(--blue);
+  --cat: var(--cat-app);
+  --serif: "Gelasio", Georgia, serif;
+  --mono: "IBM Plex Mono", "Courier New", monospace;
+  --sans: "Segoe UI", system-ui, sans-serif;
+  --name: "Poppins", var(--sans);
+  --display: 40px;
+  --h2: 24px;
+  --h3: 19px;
+  --body: 15px;
+  --label: 12px;
+  --tracking: .08em;
+  --space: 4px;
+  --target: 44px;
+  --header-height: 64px;
+  --radius: 14px;
+  --motion: cubic-bezier(.22,.7,.28,1);
+}
+/* V4: inside "I miei progetti" the accent follows the tab: Software keeps the blue, Modding
+   takes the Nexus Mods orange, Research a violet and Lessons a green. src/client/components.js
+   sets data-accent on the disclosure; text inks stay at 4.5:1 or more on every dark surface. */
+.work[data-accent="modding"] {
+  --blue: #fdba74;
+  --stroke: #fb923c;
+  --accent: #fb923c;
+}
+.work[data-accent="research"] {
+  --blue: #c4b5fd;
+  --stroke: #a78bfa;
+  --accent: #a78bfa;
+}
+.work[data-accent="teaching"] {
+  --blue: #86efac;
+  --stroke: #4ade80;
+  --accent: #4ade80;
+}
+@media (min-width: 700px) {
+  :root {
+    --display: 54px;
+    --h2: 30px;
+    --h3: 21px;
+    --body: 16px;
+    --label: 13px;
+  }
+}
