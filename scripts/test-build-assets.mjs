@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
 import { buildAssets, minifyCss, minifyHtml, minifyJs } from './build-assets.mjs';
-import { checkLoad, pageBudget } from './budgets.mjs';
+import { checkLoad, limits, pageBudget } from './budgets.mjs';
 import { auditRoutes } from './qa/audit-routes.mjs';
 import { openSite, tags } from './qa/site.mjs';
 
@@ -63,7 +63,7 @@ test('validator counts delivered bytes once, lazy hero assets and forbidden CSS 
   await writeFile(join(root, 'p.webp'), Buffer.alloc(450_000));
   await assert.rejects(budget, /first-load bytes/);
   // The home has its own code budget since V3 (every project lives in it).
-  await writeFile(join(root, 's.css'), 'a'.repeat(220_000));
+  await writeFile(join(root, 's.css'), 'a'.repeat(limits.homePageBytes));
   await assert.rejects(budget, /HTML\+CSS\+JS/);
   await writeFile(join(root, 's.css'), '.a{background:url(https://example.org/img.png)}');
   await assert.rejects(budget, /external stylesheet resource/);

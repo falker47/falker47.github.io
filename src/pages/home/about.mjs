@@ -34,6 +34,9 @@ export const facts = [
   { key: 'factCertificates', href: '#certificazioni', tone: 'credentials', glyph: () => icon('medal'), value: credentials.length },
 ];
 
+// The text beside the facts: who I am, the path, the way I work, the rest of the time.
+export const aboutText = ['aboutStudies', 'aboutWork', 'aboutApproach', 'aboutSpare'];
+
 function factsCard({ t, copy }) {
   const items = facts.map(fact => {
     const value = fact.live
@@ -46,6 +49,7 @@ function factsCard({ t, copy }) {
 
 export function aboutSection(ctx) {
   const { t, copy } = ctx;
+  const paragraphs = aboutText.map(key => html`<p data-i18n="${key}">${t(key)}</p>`).join('');
   const links = actions.map(([glyph, href, name]) => {
     const title = name === 'research' || name === 'tutoring'
       ? html`<span class="about-action-title" data-i18n="${name}">${t(name)}</span>`
@@ -55,7 +59,7 @@ export function aboutSection(ctx) {
     const style = mark ? html` style="--brand:${brandInk(mark)}" data-brand="${mark}"` : '';
     return html`<a href="${href}" class="about-action about-action-profile"${raw(style)}>${mark ? brand(mark) : raw(icons[glyph])}${raw(title)}${raw(arrow)}</a>`;
   }).join('');
-  return html`<details class="about" id="chi-sono"><summary><h2>${label(t, 'about')}</h2></summary><div class="about-content"><div class="about-intro"><div class="about-text"><p data-i18n="aboutWork">${t('aboutWork')}</p></div>
+  return html`<details class="about" id="chi-sono"><summary><h2>${label(t, 'about')}</h2></summary><div class="about-content"><div class="about-intro"><div class="about-text">${raw(paragraphs)}</div>
 ${raw(factsCard(ctx))}</div>
 <p class="philosophy" data-i18n="philosophy">${t('philosophy')}</p><nav class="research-links about-actions" aria-label="${copy.it.researchProfiles}" data-label="researchProfiles">${raw(links)}</nav>
 <section class="credentials" id="certificazioni" aria-labelledby="credentials-title"><h3 class="section-label" id="credentials-title">${label(t, 'guideCertificates')} <span aria-hidden="true">·</span> ${credentials.length}</h3>

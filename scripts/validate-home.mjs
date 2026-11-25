@@ -7,6 +7,7 @@ import ringmin from '../data/ringmin.json' with { type: 'json' };
 import tutoring from '../data/tutoring.json' with { type: 'json' };
 import certificates from '../data/certifications.json' with { type: 'json' };
 import snapshot from '../data/nexus-downloads.json' with { type: 'json' };
+import italianCopy from '../data/i18n/it.json' with { type: 'json' };
 import { decode, tags } from './qa/site.mjs';
 import { routes } from '../src/routes.mjs';
 
@@ -239,7 +240,11 @@ function checkAbout(source) {
     ['#ricerca', italian(research.papers.length), 'articoli su arXiv', 'research', 'brand-arxiv'],
     ['#certificazioni', italian(certificates.length), 'certificazioni', 'credentials', 'icon-medal'],
   ], 'Facts from data');
-  const order = ['data-i18n="aboutWork"', 'class="about-facts"', 'class="philosophy"', 'class="research-links about-actions"', 'class="credentials"'].map(part => about.indexOf(part));
+  // The text: four paragraphs from the dictionary, in reading order.
+  const intro = about.match(/<div class="about-text">([^]*?)<\/div>/)[1];
+  assert.deepEqual([...intro.matchAll(/<p data-i18n="(\w+)">([^<]*)<\/p>/g)].map(([, key, value]) => [key, decode(value)]),
+    ['aboutStudies', 'aboutWork', 'aboutApproach', 'aboutSpare'].map(key => [key, italianCopy[key]]), 'About text');
+  const order = ['data-i18n="aboutStudies"', 'class="about-facts"', 'class="philosophy"', 'class="research-links about-actions"', 'class="credentials"'].map(part => about.indexOf(part));
   assert.ok(order.every(index => index >= 0) && order.every((index, i) => !i || index > order[i - 1]), 'Text, facts, quote, links, certificates');
   // The profile row keeps its arrow on every link; GitHub, OEIS and ORCID show their marks.
   for (const button of buttons(about.match(/<nav class="research-links about-actions"[^]*?<\/nav>/)[0].replace(/<a href="([^"]+)" class="about-action about-action-profile"/g, '<a href="$1"'))) {
