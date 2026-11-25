@@ -155,13 +155,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 79.296875,
+        "height": 62.5,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.30975341796875
+        "scale": 0.2578125
       }
     ]
   },
@@ -321,13 +321,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 79.296875,
+        "height": 62.5,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.30975341796875
+        "scale": 0.2578125
       }
     ]
   },
@@ -2779,57 +2779,57 @@
       {
         "src": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
         "width": 159.83563232421875,
-        "height": 130.23724365234375,
+        "height": 130.23727416992188,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5613674295359644
+        "scale": 0.5613675610772495
       },
       {
         "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
         "width": 157.58831787109375,
-        "height": 127.15631103515625,
+        "height": 127.15634155273438,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5480875475653286
+        "scale": 0.5480876791066137
       },
       {
         "src": "/assets/certifications/sas-programming-course-thumb-300.webp",
         "width": 155.44183349609375,
-        "height": 124.2542724609375,
+        "height": 124.25433349609375,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5355787606074892
+        "scale": 0.5355790236900593
       },
       {
         "src": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
         "width": 153.03958129882812,
-        "height": 121.0489501953125,
+        "height": 121.04904174804688,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5217627163591056
+        "scale": 0.5217631109829607
       },
       {
         "src": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
         "width": 150.55856323242188,
-        "height": 117.7813720703125,
+        "height": 117.78140258789062,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.507678327889278
+        "scale": 0.507678459430563
       },
       {
         "src": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb-300.webp",
@@ -2844,62 +2844,62 @@
       },
       {
         "src": "/assets/certifications/understanding-financial-markets-thumb-300.webp",
-        "width": 150.55853271484375,
-        "height": 117.7813720703125,
+        "width": 150.55856323242188,
+        "height": 117.78140258789062,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.507678327889278
+        "scale": 0.507678459430563
       },
       {
         "src": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
-        "width": 153.03961181640625,
-        "height": 121.0489501953125,
+        "width": 153.03958129882812,
+        "height": 121.04904174804688,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5217627163591056
+        "scale": 0.5217631109829607
       },
       {
         "src": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
-        "width": 155.4417724609375,
-        "height": 124.2542724609375,
+        "width": 155.44183349609375,
+        "height": 124.25433349609375,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5355787606074892
+        "scale": 0.5355790236900593
       },
       {
         "src": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
         "width": 157.58831787109375,
-        "height": 127.15631103515625,
+        "height": 127.15634155273438,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5480875475653286
+        "scale": 0.5480876791066137
       },
       {
         "src": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
         "width": 159.83563232421875,
-        "height": 130.23724365234375,
+        "height": 130.23727416992188,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5613674295359644
+        "scale": 0.5613675610772495
       },
       {
         "src": "/assets/certifications/greek-and-roman-mythology-thumb-300.webp",
-        "width": 162.0006103515625,
+        "width": 162.00064086914062,
         "height": 133.2510986328125,
         "fit": "fill",
         "native": [
@@ -2994,13 +2994,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 79.296875,
+        "height": 62.5,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.30975341796875
+        "scale": 0.2578125
       },
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
@@ -3048,7 +3048,7 @@
       },
       {
         "src": "/assets/certifications/sas-programming-course-thumb-300.webp",
-        "width": 115.53083038330078,
+        "width": 115.53082275390625,
         "height": 92.3472900390625,
         "fit": "fill",
         "native": [
@@ -3092,7 +3092,7 @@
       },
       {
         "src": "/assets/certifications/understanding-financial-markets-thumb-300.webp",
-        "width": 111.90153503417969,
+        "width": 111.90155029296875,
         "height": 87.5362548828125,
         "fit": "fill",
         "native": [
@@ -3103,7 +3103,7 @@
       },
       {
         "src": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
-        "width": 113.74545288085938,
+        "width": 113.74542236328125,
         "height": 89.96484375,
         "fit": "fill",
         "native": [
@@ -3275,24 +3275,24 @@
       {
         "src": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
         "width": 159.83563232421875,
-        "height": 130.23724365234375,
+        "height": 130.23727416992188,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5613674295359644
+        "scale": 0.5613675610772495
       },
       {
         "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
         "width": 157.58831787109375,
-        "height": 127.15631103515625,
+        "height": 127.15634155273438,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5480875475653286
+        "scale": 0.5480876791066137
       },
       {
         "src": "/assets/certifications/sas-programming-course-thumb-300.webp",
@@ -3308,24 +3308,24 @@
       {
         "src": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
         "width": 153.03958129882812,
-        "height": 121.04901123046875,
+        "height": 121.04904174804688,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5217629794416756
+        "scale": 0.5217631109829607
       },
       {
         "src": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
         "width": 150.55856323242188,
-        "height": 117.78143310546875,
+        "height": 117.78140258789062,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5076785909718481
+        "scale": 0.507678459430563
       },
       {
         "src": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb-300.webp",
@@ -3340,29 +3340,29 @@
       },
       {
         "src": "/assets/certifications/understanding-financial-markets-thumb-300.webp",
-        "width": 150.55853271484375,
-        "height": 117.78143310546875,
+        "width": 150.55856323242188,
+        "height": 117.78140258789062,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5076785909718481
+        "scale": 0.507678459430563
       },
       {
         "src": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
-        "width": 153.03961181640625,
-        "height": 121.04901123046875,
+        "width": 153.03958129882812,
+        "height": 121.04904174804688,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5217629794416756
+        "scale": 0.5217631109829607
       },
       {
         "src": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
-        "width": 155.4417724609375,
+        "width": 155.44183349609375,
         "height": 124.25433349609375,
         "fit": "fill",
         "native": [
@@ -3374,28 +3374,28 @@
       {
         "src": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
         "width": 157.58831787109375,
-        "height": 127.15631103515625,
+        "height": 127.15634155273438,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5480875475653286
+        "scale": 0.5480876791066137
       },
       {
         "src": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
         "width": 159.83563232421875,
-        "height": 130.23724365234375,
+        "height": 130.23727416992188,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5613674295359644
+        "scale": 0.5613675610772495
       },
       {
         "src": "/assets/certifications/greek-and-roman-mythology-thumb-300.webp",
-        "width": 162.0006103515625,
+        "width": 162.00064086914062,
         "height": 133.2510986328125,
         "fit": "fill",
         "native": [
@@ -3490,13 +3490,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 79.296875,
+        "height": 62.5,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.30975341796875
+        "scale": 0.2578125
       },
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
@@ -3512,46 +3512,46 @@
       {
         "src": "/assets/certifications/data-science-professional-course-thumb-300.webp",
         "width": 120.40534973144531,
-        "height": 99.033935546875,
+        "height": 99.03399658203125,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.4268704118399784
+        "scale": 0.4268706749225485
       },
       {
         "src": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
         "width": 118.79629516601562,
-        "height": 96.7939453125,
+        "height": 96.79400634765625,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.4172152815193966
+        "scale": 0.4172155446019666
       },
       {
         "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
         "width": 117.1260986328125,
-        "height": 94.5040283203125,
+        "height": 94.50408935546875,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.4073449496565194
+        "scale": 0.4073452127390894
       },
       {
         "src": "/assets/certifications/sas-programming-course-thumb-300.webp",
-        "width": 115.53083038330078,
-        "height": 92.3472900390625,
+        "width": 115.53082275390625,
+        "height": 92.34722900390625,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.3980486639614763
+        "scale": 0.39804840087890625
       },
       {
         "src": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
@@ -3588,7 +3588,7 @@
       },
       {
         "src": "/assets/certifications/understanding-financial-markets-thumb-300.webp",
-        "width": 111.90153503417969,
+        "width": 111.90155029296875,
         "height": 87.5362548828125,
         "fit": "fill",
         "native": [
@@ -3599,7 +3599,7 @@
       },
       {
         "src": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
-        "width": 113.74545288085938,
+        "width": 113.74542236328125,
         "height": 89.96484375,
         "fit": "fill",
         "native": [
@@ -3611,46 +3611,46 @@
       {
         "src": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
         "width": 115.53082275390625,
-        "height": 92.3472900390625,
+        "height": 92.34722900390625,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.3980486639614763
+        "scale": 0.39804840087890625
       },
       {
         "src": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
         "width": 117.1260986328125,
-        "height": 94.5040283203125,
+        "height": 94.50408935546875,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.4073449496565194
+        "scale": 0.4073452127390894
       },
       {
         "src": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
         "width": 118.79631042480469,
-        "height": 96.7939453125,
+        "height": 96.79400634765625,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.4172152815193966
+        "scale": 0.4172155446019666
       },
       {
         "src": "/assets/certifications/greek-and-roman-mythology-thumb-300.webp",
         "width": 120.40534973144531,
-        "height": 99.033935546875,
+        "height": 99.03399658203125,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.4268704118399784
+        "scale": 0.4268706749225485
       },
       {
         "src": "/assets/certifications/archaeoastronomy-thumb-300.webp",
@@ -3865,13 +3865,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 79.296875,
+        "height": 62.5,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.30975341796875
+        "scale": 0.2578125
       },
       {
         "src": "/assets/projects/prof-gecko-480.webp",
@@ -4119,13 +4119,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 79.296875,
+        "height": 62.5,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.30975341796875
+        "scale": 0.2578125
       },
       {
         "src": "/assets/projects/prof-gecko-480.webp",
@@ -4511,13 +4511,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 79.296875,
+        "height": 62.5,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.30975341796875
+        "scale": 0.2578125
       },
       {
         "src": "/assets/mods/hogwarts-legacy-save-editor-480.webp",
@@ -4969,13 +4969,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 79.296875,
+        "height": 62.5,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.30975341796875
+        "scale": 0.2578125
       },
       {
         "src": "/assets/mods/hogwarts-legacy-save-editor-480.webp",
@@ -5221,13 +5221,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 79.296875,
+        "height": 62.5,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.30975341796875
+        "scale": 0.2578125
       }
     ]
   },
@@ -5363,13 +5363,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 79.296875,
+        "height": 62.5,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.30975341796875
+        "scale": 0.2578125
       }
     ]
   },
@@ -5527,13 +5527,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 79.296875,
+        "height": 62.5,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.30975341796875
+        "scale": 0.2578125
       },
       {
         "src": "/assets/images/letuelezioni.png",
@@ -5713,13 +5713,13 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 79.296875,
+        "height": 62.5,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.30975341796875
+        "scale": 0.2578125
       },
       {
         "src": "/assets/images/letuelezioni.png",
@@ -5829,24 +5829,24 @@
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
         "width": 164.08229064941406,
-        "height": 136.19635009765625,
+        "height": 136.19631958007812,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5870532331795528
+        "scale": 0.5870531016382677
       },
       {
         "src": "/assets/certifications/data-science-professional-course-thumb-300.webp",
         "width": 162.0006561279297,
-        "height": 133.2510986328125,
+        "height": 133.25108337402344,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5743581837621229
+        "scale": 0.5743581179914803
       },
       {
         "src": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
@@ -5862,46 +5862,46 @@
       {
         "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
         "width": 157.58831787109375,
-        "height": 127.15631103515625,
+        "height": 127.1563720703125,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5480875475653286
+        "scale": 0.5480878106478987
       },
       {
         "src": "/assets/certifications/sas-programming-course-thumb-300.webp",
         "width": 155.44183349609375,
-        "height": 124.25433349609375,
+        "height": 124.25434875488281,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5355790236900593
+        "scale": 0.5355790894607018
       },
       {
         "src": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
         "width": 153.03958129882812,
-        "height": 121.04901123046875,
+        "height": 121.04902648925781,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5217629794416756
+        "scale": 0.5217630452123182
       },
       {
         "src": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
         "width": 150.55856323242188,
-        "height": 117.78143310546875,
+        "height": 117.7813949584961,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5076785909718481
+        "scale": 0.5076784265452418
       },
       {
         "src": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb-300.webp",
@@ -5916,47 +5916,47 @@
       },
       {
         "src": "/assets/certifications/understanding-financial-markets-thumb-300.webp",
-        "width": 150.55853271484375,
-        "height": 117.78143310546875,
+        "width": 150.55856323242188,
+        "height": 117.7813949584961,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5076785909718481
+        "scale": 0.5076784265452418
       },
       {
         "src": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
-        "width": 153.03961181640625,
-        "height": 121.04901123046875,
+        "width": 153.03958129882812,
+        "height": 121.04902648925781,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5217629794416756
+        "scale": 0.5217630452123182
       },
       {
         "src": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
-        "width": 155.4417724609375,
-        "height": 124.25433349609375,
+        "width": 155.44183349609375,
+        "height": 124.25434875488281,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5355790236900593
+        "scale": 0.5355790894607018
       },
       {
         "src": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
         "width": 157.58831787109375,
-        "height": 127.15631103515625,
+        "height": 127.1563720703125,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5480875475653286
+        "scale": 0.5480878106478987
       },
       {
         "src": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
@@ -5971,25 +5971,25 @@
       },
       {
         "src": "/assets/certifications/greek-and-roman-mythology-thumb-300.webp",
-        "width": 162.0006103515625,
-        "height": 133.2510986328125,
+        "width": 162.00064086914062,
+        "height": 133.25108337402344,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5743581837621229
+        "scale": 0.5743581179914803
       },
       {
         "src": "/assets/certifications/archaeoastronomy-thumb-300.webp",
         "width": 164.082275390625,
-        "height": 136.19635009765625,
+        "height": 136.19631958007812,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5870532331795528
+        "scale": 0.5870531016382677
       },
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-full.webp",
@@ -6077,46 +6077,46 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 79.296875,
+        "height": 62.5,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.30975341796875
+        "scale": 0.2578125
       },
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
         "width": 121.95242309570312,
-        "height": 101.22299194335938,
+        "height": 101.2230224609375,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.4363059997558594
+        "scale": 0.4363061312971444
       },
       {
         "src": "/assets/certifications/data-science-professional-course-thumb-300.webp",
         "width": 120.40534973144531,
-        "height": 99.03399658203125,
+        "height": 99.03398895263672,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.4268706749225485
+        "scale": 0.42687064203722724
       },
       {
         "src": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
         "width": 118.79629516601562,
-        "height": 96.79397583007812,
+        "height": 96.7939682006836,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.41721541306068155
+        "scale": 0.4172153801753603
       },
       {
         "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
@@ -6131,36 +6131,36 @@
       },
       {
         "src": "/assets/certifications/sas-programming-course-thumb-300.webp",
-        "width": 115.53083038330078,
-        "height": 92.34719848632812,
+        "width": 115.53082275390625,
+        "height": 92.34721374511719,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.3980482693376212
+        "scale": 0.39804833510826376
       },
       {
         "src": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
         "width": 113.74544525146484,
-        "height": 89.96484375,
+        "height": 89.9648666381836,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.3877794989224138
+        "scale": 0.38777959757837754
       },
       {
         "src": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
         "width": 111.90151977539062,
-        "height": 87.53619384765625,
+        "height": 87.53621673583984,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.3773111803778287
+        "scale": 0.3773112790337924
       },
       {
         "src": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb-300.webp",
@@ -6175,36 +6175,36 @@
       },
       {
         "src": "/assets/certifications/understanding-financial-markets-thumb-300.webp",
-        "width": 111.90153503417969,
-        "height": 87.53619384765625,
+        "width": 111.90155029296875,
+        "height": 87.53621673583984,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.3773111803778287
+        "scale": 0.3773112790337924
       },
       {
         "src": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
-        "width": 113.74545288085938,
-        "height": 89.96484375,
+        "width": 113.74542236328125,
+        "height": 89.9648666381836,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.3877794989224138
+        "scale": 0.38777959757837754
       },
       {
         "src": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
         "width": 115.53082275390625,
-        "height": 92.34719848632812,
+        "height": 92.34721374511719,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.3980482693376212
+        "scale": 0.39804833510826376
       },
       {
         "src": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
@@ -6220,35 +6220,35 @@
       {
         "src": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
         "width": 118.79631042480469,
-        "height": 96.79397583007812,
+        "height": 96.7939682006836,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.41721541306068155
+        "scale": 0.4172153801753603
       },
       {
         "src": "/assets/certifications/greek-and-roman-mythology-thumb-300.webp",
         "width": 120.40534973144531,
-        "height": 99.03399658203125,
+        "height": 99.03398895263672,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.4268706749225485
+        "scale": 0.42687064203722724
       },
       {
         "src": "/assets/certifications/archaeoastronomy-thumb-300.webp",
         "width": 121.95243835449219,
-        "height": 101.22299194335938,
+        "height": 101.2230224609375,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.4363059997558594
+        "scale": 0.4363061312971444
       },
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-full.webp",
@@ -6347,24 +6347,24 @@
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
         "width": 164.08229064941406,
-        "height": 136.19635009765625,
+        "height": 136.19631958007812,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5870532331795528
+        "scale": 0.5870531016382677
       },
       {
         "src": "/assets/certifications/data-science-professional-course-thumb-300.webp",
         "width": 162.0006561279297,
-        "height": 133.2510986328125,
+        "height": 133.25108337402344,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5743581837621229
+        "scale": 0.5743581179914803
       },
       {
         "src": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
@@ -6380,46 +6380,46 @@
       {
         "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
         "width": 157.58831787109375,
-        "height": 127.15631103515625,
+        "height": 127.1563720703125,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5480875475653286
+        "scale": 0.5480878106478987
       },
       {
         "src": "/assets/certifications/sas-programming-course-thumb-300.webp",
         "width": 155.44183349609375,
-        "height": 124.25433349609375,
+        "height": 124.25434875488281,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5355790236900593
+        "scale": 0.5355790894607018
       },
       {
         "src": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
         "width": 153.03958129882812,
-        "height": 121.04901123046875,
+        "height": 121.04902648925781,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5217629794416756
+        "scale": 0.5217630452123182
       },
       {
         "src": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
         "width": 150.55856323242188,
-        "height": 117.78143310546875,
+        "height": 117.7813949584961,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5076785909718481
+        "scale": 0.5076784265452418
       },
       {
         "src": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb-300.webp",
@@ -6434,47 +6434,47 @@
       },
       {
         "src": "/assets/certifications/understanding-financial-markets-thumb-300.webp",
-        "width": 150.55853271484375,
-        "height": 117.78143310546875,
+        "width": 150.55856323242188,
+        "height": 117.7813949584961,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5076785909718481
+        "scale": 0.5076784265452418
       },
       {
         "src": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
-        "width": 153.03961181640625,
-        "height": 121.04901123046875,
+        "width": 153.03958129882812,
+        "height": 121.04902648925781,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5217629794416756
+        "scale": 0.5217630452123182
       },
       {
         "src": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
-        "width": 155.4417724609375,
-        "height": 124.25433349609375,
+        "width": 155.44183349609375,
+        "height": 124.25434875488281,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5355790236900593
+        "scale": 0.5355790894607018
       },
       {
         "src": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
         "width": 157.58831787109375,
-        "height": 127.15631103515625,
+        "height": 127.1563720703125,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5480875475653286
+        "scale": 0.5480878106478987
       },
       {
         "src": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
@@ -6489,25 +6489,25 @@
       },
       {
         "src": "/assets/certifications/greek-and-roman-mythology-thumb-300.webp",
-        "width": 162.0006103515625,
-        "height": 133.2510986328125,
+        "width": 162.00064086914062,
+        "height": 133.25108337402344,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5743581837621229
+        "scale": 0.5743581179914803
       },
       {
         "src": "/assets/certifications/archaeoastronomy-thumb-300.webp",
         "width": 164.082275390625,
-        "height": 136.19635009765625,
+        "height": 136.19631958007812,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.5870532331795528
+        "scale": 0.5870531016382677
       },
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-full.webp",
@@ -6595,46 +6595,46 @@
       {
         "src": "/assets/images/maurizio-falconi-native.webp",
         "width": 66,
-        "height": 79.296875,
+        "height": 62.5,
         "fit": "cover",
         "native": [
           256,
           256
         ],
-        "scale": 0.30975341796875
+        "scale": 0.2578125
       },
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
         "width": 121.95242309570312,
-        "height": 101.22299194335938,
+        "height": 101.2230224609375,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.4363059997558594
+        "scale": 0.4363061312971444
       },
       {
         "src": "/assets/certifications/data-science-professional-course-thumb-300.webp",
         "width": 120.40534973144531,
-        "height": 99.03399658203125,
+        "height": 99.03398895263672,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.4268706749225485
+        "scale": 0.42687064203722724
       },
       {
         "src": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
         "width": 118.79629516601562,
-        "height": 96.79397583007812,
+        "height": 96.7939682006836,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.41721541306068155
+        "scale": 0.4172153801753603
       },
       {
         "src": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
@@ -6649,36 +6649,36 @@
       },
       {
         "src": "/assets/certifications/sas-programming-course-thumb-300.webp",
-        "width": 115.53083038330078,
-        "height": 92.34719848632812,
+        "width": 115.53082275390625,
+        "height": 92.34721374511719,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.3980482693376212
+        "scale": 0.39804833510826376
       },
       {
         "src": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
         "width": 113.74544525146484,
-        "height": 89.96484375,
+        "height": 89.9648666381836,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.3877794989224138
+        "scale": 0.38777959757837754
       },
       {
         "src": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
         "width": 111.90151977539062,
-        "height": 87.53619384765625,
+        "height": 87.53621673583984,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.3773111803778287
+        "scale": 0.3773112790337924
       },
       {
         "src": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb-300.webp",
@@ -6693,36 +6693,36 @@
       },
       {
         "src": "/assets/certifications/understanding-financial-markets-thumb-300.webp",
-        "width": 111.90153503417969,
-        "height": 87.53619384765625,
+        "width": 111.90155029296875,
+        "height": 87.53621673583984,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.3773111803778287
+        "scale": 0.3773112790337924
       },
       {
         "src": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
-        "width": 113.74545288085938,
-        "height": 89.96484375,
+        "width": 113.74542236328125,
+        "height": 89.9648666381836,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.3877794989224138
+        "scale": 0.38777959757837754
       },
       {
         "src": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
         "width": 115.53082275390625,
-        "height": 92.34719848632812,
+        "height": 92.34721374511719,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.3980482693376212
+        "scale": 0.39804833510826376
       },
       {
         "src": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
@@ -6738,35 +6738,35 @@
       {
         "src": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
         "width": 118.79631042480469,
-        "height": 96.79397583007812,
+        "height": 96.7939682006836,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.41721541306068155
+        "scale": 0.4172153801753603
       },
       {
         "src": "/assets/certifications/greek-and-roman-mythology-thumb-300.webp",
         "width": 120.40534973144531,
-        "height": 99.03399658203125,
+        "height": 99.03398895263672,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.4268706749225485
+        "scale": 0.42687064203722724
       },
       {
         "src": "/assets/certifications/archaeoastronomy-thumb-300.webp",
         "width": 121.95243835449219,
-        "height": 101.22299194335938,
+        "height": 101.2230224609375,
         "fit": "fill",
         "native": [
           300,
           232
         ],
-        "scale": 0.4363059997558594
+        "scale": 0.4363061312971444
       },
       {
         "src": "/assets/certifications/ai-and-machine-learning-engineering-full.webp",
