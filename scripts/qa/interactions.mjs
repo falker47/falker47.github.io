@@ -6,8 +6,13 @@ import { options, viewports, visit, withBrowser } from './browser.mjs';
 import { isolateNetwork } from './network.mjs';
 import snapshot from '../../data/nexus-downloads.json' with { type: 'json' };
 import certificates from '../../data/certifications.json' with { type: 'json' };
+import tutoring from '../../data/tutoring.json' with { type: 'json' };
+import italianCopy from '../../data/i18n/it.json' with { type: 'json' };
+import englishCopy from '../../data/i18n/en.json' with { type: 'json' };
+import { aggregateRating, formatScore } from '../../src/lib/rating.mjs';
 
 const { pages, langs, out } = await options();
+const rating = aggregateRating(tutoring.ratings);
 const checks = [];
 const active = locator => locator.evaluate(el => el === document.activeElement);
 const controls = ':is(.site-header,.work-tabs,.picker-bar,.card-links,.rail,.deck,.site-footer,.detail-top,.detail-crumbs) :is(a[href],button):visible';
@@ -303,6 +308,10 @@ async function checkLiveNexus(page, origin, lang) {
     // V4: the live total shows in the Modding tile and in the "Chi sono" figure.
     await page.waitForFunction(({ downloads }) => [...document.querySelectorAll('[data-i18n="moddingNumber"]')].every(node => node.textContent === downloads),
       { downloads: new Intl.NumberFormat(language).format(stats.uniqueModDownloads) });
+    // The tutoring rating follows the language: 5,0 / 5.0 and the review count in words.
+    const copy = language === 'it' ? italianCopy : englishCopy;
+    assert.deepEqual(await page.locator('.fact-tutoring').evaluate(el => [el.querySelector('.fact-value').textContent, el.querySelector('.fact-label').textContent]),
+      [formatScore(rating.score, language), copy[rating.count === 1 ? 'ratingReviewsOne' : 'ratingReviewsOther'].replace('{count}', rating.count)], 'Rating in ' + language);
   }
 }
 
@@ -338,15 +347,18 @@ async function home(page, origin, lang) {
   await page.locator('#chi-sono > summary').click();
   await settled(page, '#chi-sono');
   assert.equal(await page.locator('.about-actions a[href="/research/"]').count(), 1);
-  // The facts card: beside the text from 900 px, below it on narrower screens, always two by two.
-  const layout = await page.evaluate(() => {
-    const box = selector => document.querySelector(selector).getBoundingClientRect();
-    const facts = [...document.querySelectorAll('.facts-grid li')].map(item => item.getBoundingClientRect());
-    return { text: box('.about-text'), card: box('.about-facts'), columns: new Set(facts.map(item => Math.round(item.left))).size, rows: new Set(facts.map(item => Math.round(item.top))).size };
-  });
-  if (page.viewportSize().width >= 900) assert.ok(layout.card.left > layout.text.right - 1, 'The facts card sits right of the text');
-  else assert.ok(layout.card.top >= layout.text.bottom - 1, 'The facts card follows the text');
-  assert.deepEqual([layout.columns, layout.rows], [2, 2], 'Four figures in a 2×2 grid');
+  // The rows of "Su di me": each paragraph with its figure. From 900 px they alternate sides
+  // (figure right on odd rows, left on even rows); below, the figure follows its paragraph.
+  const rows = await page.locator('.about-row').evaluateAll(nodes => nodes.map(row => {
+    const text = row.querySelector('p').getBoundingClientRect(), figure = row.querySelector('.about-figure').getBoundingClientRect();
+    return { text: { left: text.left, right: text.right, bottom: text.bottom }, figure: { left: figure.left, right: figure.right, top: figure.top } };
+  }));
+  assert.equal(rows.length, 4, 'Four paragraph rows');
+  for (const [index, { text, figure }] of rows.entries()) {
+    if (page.viewportSize().width < 900) assert.ok(figure.top >= text.bottom - 1, `Row ${index + 1}: the figure follows its paragraph`);
+    else if (index % 2 === 0) assert.ok(figure.left >= text.right - 1, `Row ${index + 1}: the figure sits right of its paragraph`);
+    else assert.ok(figure.right <= text.left + 1, `Row ${index + 1}: the figure sits left of its paragraph`);
+  }
   assert.equal(await page.locator('.journey, .about-journey').count(), 0, 'No "Percorso" drawing');
   // Once the page has loaded and gone idle, the certificate thumbnails have started loading.
   assert.ok(await page.locator('.deck-card img').evaluateAll(images => images.every(image => image.loading === 'eager')), 'Thumbnails warmed after load');
