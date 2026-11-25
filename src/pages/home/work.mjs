@@ -53,8 +53,10 @@ function projectLink(t, project, entry) {
 export const cardLinks = project => project.links.filter(entry => entry.type !== 'test' || !project.links.some(link => link.type === 'store'));
 
 function projectCard(t, project) {
-  // The title opens the project's own page when this site has one.
-  const title = project.page ? html`<a href="${project.page}">${project.title}</a>` : html`${project.title}`;
+  // The title opens the project's own page when this site has one. V5: its "Scheda →" label sits on
+  // the cover, and the link spreads over the cover (CSS), so the picture opens the page too.
+  const chip = html`<span class="cover-chip" aria-hidden="true">${label(t, 'projectPage')} →</span>`;
+  const title = project.page ? html`<a href="${project.page}">${project.title}${raw(chip)}</a>` : html`${project.title}`;
   return html`<li class="card">
 <div class="card-cover">${raw(img(project.cover, { sizes: cardSizes }))}</div>
 <div class="card-body"><h4>${raw(title)}</h4>
@@ -120,22 +122,22 @@ function nexusTotal(t) {
   return html`<a class="result nexus-total" href="${featured.profile}">${brand('nexusmods')}<span class="result-body"><strong class="result-value" data-i18n="moddingNumber">${t('moddingNumber')}</strong><span class="result-label">${label(t, 'factDownloads')}</span></span><span class="result-arrow" aria-hidden="true">↗</span></a>`;
 }
 
-// Paper II states the certified interval for C* under its heading, in the reader's number format.
+// Paper II states the certified interval for C* in its meta line, in the reader's number format.
 function constantLine() {
   const [it, en] = [constantRange('it'), constantRange('en')];
-  return html`<p class="paper-bound">C* ∈ [<span data-text-it="${it[0]}" data-text-en="${en[0]}">${it[0]}</span>; <span data-text-it="${it[1]}" data-text-en="${en[1]}">${it[1]}</span>]</p>`;
+  return html` · <span class="paper-bound">C* ∈ [<span data-text-it="${it[0]}" data-text-en="${en[0]}">${it[0]}</span>; <span data-text-it="${it[1]}" data-text-en="${en[1]}">${it[1]}</span>]</span>`;
 }
 
+// V5: a paper is a project card: its drawing as the cover, "Paper I" and the arXiv number in the
+// meta line, the result as the summary, arXiv and GitHub at the foot.
 function paperCard(t, paper, figure, repo, extra = '') {
   const key = 'paper' + paper.number;
-  return html`<article class="card paper-card" aria-labelledby="${key}-title">
-<div class="paper-figure">${raw(figure)}</div>
-<div class="card-body"><p class="card-label">Paper ${paper.number} · arXiv ${paper.arxiv}</p>
-<h4 id="${key}-title">${label(t, key + 'Title')}</h4>
-<p class="paper-highlight">${label(t, key + 'Highlight')}</p>${raw(extra)}
-<p class="card-summary">${label(t, key + 'Line')}</p>
+  return html`<li class="card paper-card"><div class="card-cover paper-figure">${raw(figure)}</div>
+<div class="card-body"><h4>${label(t, key + 'Title')}</h4>
+<p class="card-meta"><span class="pill">Paper ${paper.number}</span><span class="card-stack">arXiv ${paper.arxiv}${raw(extra)}</span></p>
+<p class="card-summary">${label(t, key + 'Highlight')}</p>
 <p class="card-links">${raw(actionLink(paper.url, 'arXiv', { title: 'Paper ' + paper.number }))}
-${raw(actionLink(repo, 'GitHub', { title: 'Paper ' + paper.number }))}</p></div></article>`;
+${raw(actionLink(repo, 'GitHub', { title: 'Paper ' + paper.number }))}</p></div></li>`;
 }
 
 const star = '<svg viewBox="0 0 24 24"><path d="m12 2.5 2.8 5.8 6.4.9-4.6 4.5 1.1 6.4-5.7-3-5.7 3 1.1-6.4-4.6-4.5 6.4-.9Z"/></svg>';
@@ -163,10 +165,8 @@ ${raw(body)}
 ${raw(panel('software', 'softwareTitle', 'softwareIntro', picker(ctx, 'software', categories, 'softwareCategories', projectCard, softwareNote(t))))}
 ${raw(panel('modding', 'moddingTitle', 'moddingIntro', picker(ctx, 'modding', modGroups, 'moddingCategories', modCard, '', ' rail-mods', nexusTotal(t))))}
 ${raw(panel('research', 'researchTitle', 'researchIntro', html`<div class="results-row"><a class="result" href="/research/">${glyph('paper')}<span class="result-body"><strong class="result-value">${research.papers.length}</strong><span class="result-label">${label(t, 'papersLabel')}</span></span><span class="result-arrow" aria-hidden="true">→</span></a></div>
-<div class="paper-cards">
-${raw(paperCard(t, research.papers[0], configurations(ctx), repo))}
-${raw(paperCard(t, research.papers[1], chart(ctx), repo, constantLine()))}
-</div>
+<div class="rail rail-papers"><ul class="rail-track">${raw(paperCard(t, research.papers[0], configurations(ctx), repo))}
+${raw(paperCard(t, research.papers[1], chart(ctx), repo, constantLine()))}</ul></div>
 <p class="research-foot">${label(t, 'researchAlso')} ${raw(actionLink(power, 'Power-Ringmin'))} <span aria-hidden="true">·</span> ${raw(actionLink(research.zenodo.url, 'Zenodo'))}</p>`))}
 ${raw(panel('teaching', 'teachingTitle', null, html`<div class="lessons">
 <div class="lessons-text"><h4 class="lessons-title">${label(t, 'lessonsTitle')}</h4><p class="lessons-body">${label(t, 'lessonsText')}</p>

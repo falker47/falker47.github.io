@@ -151,12 +151,41 @@ async function checkPickers(page) {
     if (page.viewportSize().width < 600) assert.ok(card / row <= .8 && card / row > .7, panel + ' phone card ' + card / row);
     else if (panel === 'software') assert.ok(Math.abs(card - (row - 48) / 4.2) < 2, 'software card width ' + card);
     // The count line beside the toggles follows the category.
-    if (panel === 'software') assert.deepEqual(await picker.locator('.picker-count:visible').evaluateAll(nodes => nodes.map(node => node.dataset.group)), [groups[0]]);
+    if (panel === 'software') {
+      assert.deepEqual(await picker.locator('.picker-count:visible').evaluateAll(nodes => nodes.map(node => node.dataset.group)), [groups[0]]);
+      // V5: a project with its own page shows "Scheda" on its cover, and the cover opens that page.
+      await picker.locator('.picker-toggle[data-group="app"]').click();
+      const covers = await picker.locator('.picker-group:visible .card').evaluateAll(cards => cards.map(card => {
+        const cover = card.querySelector('.card-cover').getBoundingClientRect();
+        card.scrollIntoView({ block: 'center', inline: 'nearest' });
+        const box = card.querySelector('.card-cover').getBoundingClientRect();
+        const hit = document.elementFromPoint(box.left + box.width / 2, box.top + box.height / 2)?.closest('a');
+        const chip = card.querySelector('.cover-chip')?.getBoundingClientRect();
+        return { page: card.querySelector('h4 a')?.getAttribute('href') ?? null, hit: hit ? hit.getAttribute('href') : null,
+          chip: chip ? chip.top >= box.top && chip.right <= box.right + 1 && chip.bottom <= box.bottom && cover.width > 0 : null };
+      }));
+      for (const cover of covers) {
+        assert.equal(cover.hit, cover.page, 'The cover opens ' + (cover.page ?? 'nothing'));
+        assert.equal(cover.chip, cover.page ? true : null, 'The "Scheda" label sits on the cover of ' + cover.page);
+      }
+    }
   }
-  // Research: the paper count is the same tile, the two papers end with the same buttons.
+  // Research (V5): the paper count is the same tile; the two papers are project cards in a rail,
+  // side by side on a phone like the other tabs, ending with the same buttons.
   await page.locator('#tab-research').click();
   await checkTiles(page.locator('#panel-research'), 'research');
-  await checkCardButtons(page.locator('#panel-research .paper-cards'), 'research');
+  await checkCardButtons(page.locator('#panel-research .rail-papers'), 'research');
+  const papers = await page.locator('#panel-research .rail-papers .card').evaluateAll(cards => cards.map(card => card.getBoundingClientRect()).map(box => ({ top: box.top, width: box.width })));
+  assert.equal(papers.length, 2);
+  assert.ok(Math.abs(papers[0].top - papers[1].top) < 1, 'The papers sit side by side');
+  const row = await page.locator('#panel-research .rail-track').evaluate(node => node.clientWidth);
+  if (page.viewportSize().width < 600) assert.ok(papers[0].width / row <= .8 && papers[0].width / row > .7, 'phone paper card ' + papers[0].width / row);
+  else if (page.viewportSize().width >= 1000) assert.ok(Math.abs(papers[0].width - (row - 48) / 4.2) < 2, 'paper card width ' + papers[0].width);
+  // Lessons (V5): from 900 px the two portals sit side by side.
+  await page.locator('#tab-teaching').click();
+  const portals = await page.locator('#panel-teaching .feedback-result').evaluateAll(cards => cards.map(card => card.getBoundingClientRect().top));
+  if (page.viewportSize().width >= 900) assert.ok(Math.abs(portals[0] - portals[1]) < 1, 'The two portals sit side by side');
+  else assert.ok(portals[1] > portals[0], 'On a phone the portals stack');
   await page.locator('#tab-software').click();
 }
 

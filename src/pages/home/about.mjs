@@ -10,10 +10,12 @@ import { brand, brandFor, brandInk, icon } from '../../partials/icons.mjs';
 import { categories } from './work.mjs';
 
 const arrow = '<svg class="about-action-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M6 18 18 6M7 6h11v11"/></svg>';
+// V5: every profile link shows the mark of the place it opens. LinkedIn, GitHub, OEIS and ORCID
+// have their own (data/brands.json); the lessons open Letuelezioni, the research this site's
+// research page, drawn as the circles of Ringmin.
 const icons = {
-  linkedin: '<svg class="about-action-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M11 17v-7M11 13c0-4 6-4 6 0v4"/><circle cx="7" cy="7" r=".8" fill="currentColor" stroke="none"/></svg>',
-  research: '<svg class="about-action-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false"><path d="M18 3H6v26h20V11L18 3Zm0 0v8h8M10 8h3"/><circle cx="16" cy="19" r="4"/><path d="m19 22 4 4"/></svg>',
-  tutoring: '<svg class="about-action-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false"><path d="M16 7c-4-3-9-3-13-1v19c4-2 9-2 13 1m0-19c4-3 9-3 13-1v19c-4-2-9-2-13 1V7Z"/><path d="M7 10h5m-5 5h5m8-5h5m-6 7 2 2 4-4"/></svg>',
+  research: '<svg class="about-action-icon" aria-hidden="true" focusable="false"><use href="#icon-ringmin"/></svg>',
+  tutoring: '<img class="about-action-icon" src="/assets/images/letuelezioni.png" width="18" height="18" alt="" loading="lazy">',
 };
 
 // The master's profile row. Research opens the research page of this site.
@@ -32,13 +34,14 @@ const actions = [
 const integer = value => new Intl.NumberFormat('it-IT').format(value);
 const rating = aggregateRating(tutoring.ratings);
 const reviews = (copy, lang) => copy[lang][rating.count === 1 ? 'ratingReviewsOne' : 'ratingReviewsOther'].replace('{count}', rating.count);
-// Each figure wears the colour of the section it opens, and its mark or icon.
+// Each figure wears the colour of the section it opens, and its mark or icon: V5, a badge like the
+// Nexus emblem (the terminal and the star on a solid square, the official arXiv logomark).
 const figures = {
-  projects: { key: 'factProjects', href: '#progetti', tone: 'software', glyph: () => icon('code'), value: categories.reduce((sum, category) => sum + category.items.length, 0) },
+  projects: { key: 'factProjects', href: '#progetti', tone: 'software', glyph: () => icon('terminal'), value: categories.reduce((sum, category) => sum + category.items.length, 0) },
   downloads: { key: 'factDownloads', href: '#panel-modding', tone: 'modding', glyph: () => brand('nexusmods'), live: 'moddingNumber' },
   rating: rating && { href: '#panel-teaching', tone: 'tutoring', glyph: () => icon('star'),
     score: { it: formatScore(rating.score, 'it'), en: formatScore(rating.score, 'en') }, reviews: copy => ({ it: reviews(copy, 'it'), en: reviews(copy, 'en') }) },
-  papers: { key: 'factPapers', href: '#ricerca', tone: 'research', glyph: () => brand('arxiv'), value: research.papers.length },
+  papers: { key: 'factPapers', href: '#ricerca', tone: 'research', glyph: () => brand('arxivmark'), value: research.papers.length },
 };
 
 // Each paragraph and, after it, its figure: who I am (the pendulum and its simulation), the path
