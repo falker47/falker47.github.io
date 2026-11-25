@@ -6,14 +6,34 @@ import { checkButtons, validateHomeCatalogue } from './validate-home.mjs';
 const home = await readFile(new URL('../_site/index.html', import.meta.url), 'utf8');
 const dictionaries = { it: JSON.parse(await readFile(new URL('../data/i18n/it.json', import.meta.url), 'utf8')), en: JSON.parse(await readFile(new URL('../data/i18n/en.json', import.meta.url), 'utf8')) };
 
-test('the studies drawing centres "Fisica" under the wave and keeps both labels inside the frame in both languages', () => {
-  const svg = home.match(/<svg class="studies-drawing" viewBox="([-\d.]+) [-\d.]+ ([\d.]+) [\d.]+"[^]*?<\/svg>/);
+const plain = markup => markup.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#39;/g, "'");
+const studies = () => home.match(/<svg class="studies-drawing" viewBox="([-\d.]+) [-\d.]+ ([\d.]+) [\d.]+"[^]*?<\/svg>/);
+
+test('the pendulum drawing shows the exact law and a correct, complete step in Python', () => {
+  const svg = studies()[0];
+  assert.equal(plain(svg.match(/<text class="studies-eq"[^>]*>([^]*?)<\/text>/)[1]), 'α = −(g/L) sin θ', 'Simple pendulum: angular acceleration');
+  assert.deepEqual([...svg.match(/<g class="studies-code">([^]*?)<\/g>/)[1].matchAll(/<text[^>]*>([^]*?)<\/text>/g)].map(([, line]) => plain(line)),
+    ['from math import sin', 'def step(th, w, dt):', 'a = -g/L * sin(th)', 'w = w + a * dt', 'return th + w*dt, w'], 'Semi-implicit Euler step');
+});
+
+test('the plotted angle keeps its amplitude, as the undamped step does', () => {
+  const svg = studies()[0];
+  const axis = Number(svg.match(/<path class="studies-axis" d="M[\d.]+ ([\d.]+)h/)[1]);
+  const peaks = [...svg.match(/<g class="studies-samples">([^]*?)<\/g>/)[1].matchAll(/<circle cx="[\d.]+" cy="([\d.]+)"/g)].map(([, y]) => Math.abs(Number(y) - axis));
+  assert.ok(peaks.length >= 12, 'Enough samples');
+  const top = Math.max(...peaks);
+  assert.ok(Math.abs(peaks[0] - top) < 0.6, 'The first sample is the release at the largest angle');
+  assert.ok(Math.abs(Math.max(...peaks.slice(-6)) - top) < 1.2, 'No damping in the last swing');
+});
+
+test('the pendulum drawing keeps both labels centred under their panels and inside the frame in both languages', () => {
+  const svg = studies();
   const [left, width] = [Number(svg[1]), Number(svg[2])];
   const labels = Object.fromEntries([...svg[0].matchAll(/<text class="studies-label" x="([\d.]+)"[^>]*data-i18n="(\w+)"/g)].map(([, x, key]) => [key, Number(x)]));
-  assert.equal(labels.figurePhysics, 80, 'The wave runs from 20 to 140');
-  // 11 px IBM Plex Mono with .08em tracking: about 7.5 user units per character.
+  assert.deepEqual(Object.keys(labels), ['figurePhysics', 'figureSimulation']);
+  // 11 px IBM Plex Mono with .09em tracking: about 7.6 user units per character.
   for (const [key, x] of Object.entries(labels)) for (const lang of ['it', 'en']) {
-    const half = dictionaries[lang][key].length * 7.5 / 2;
+    const half = dictionaries[lang][key].length * 7.6 / 2;
     assert.ok(x - half >= left + 8 && x + half <= left + width - 8, `${key} (${lang}) fits the frame`);
   }
 });
