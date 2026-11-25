@@ -1,2 +1,0 @@
-$ node scripts/qa/release-layout.mjs --task V2
-76 page and panel layouts, 48 distinct image files, 0 failures.
