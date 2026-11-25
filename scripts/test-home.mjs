@@ -60,11 +60,13 @@ test('the Modding tab lists every published mod with its own numbers and picture
 });
 
 test('the Research tab draws the certified configurations and both kinds of dots', () => {
-  assert.throws(() => validateHomeCatalogue(home.replace('<circle class="rm-ring rm-open"', '<circle class="rm-ring"')), /dashed/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<line class="rm-spoke rm-open"', '<line class="rm-spoke"')), /dashed/);
   assert.throws(() => validateHomeCatalogue(home.replace('<circle class="rm-floating"', '<circle class="rm-circle"')));
-  assert.throws(() => validateHomeCatalogue(home.replace(/(<circle class="rm-limit" cx="[\d.]+" cy="[\d.]+" r=")[\d.]+/, '$1' + '20')), /1\/8/);
+  assert.throws(() => validateHomeCatalogue(home.replace(/(<path class="rm-arc" d="M[\d.]+ [\d.]+ A)[\d.]+/, '$1' + '90')), /C\*/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<svg class="rm-chart" viewBox="0 0 320 180"', '<svg class="rm-chart" viewBox="0 0 288 162"')), /16:9/);
+  assert.throws(() => validateHomeCatalogue(home.replace('>C*</text>', '>1/8</text>')), /labels/);
   assert.throws(() => validateHomeCatalogue(home.replace(/(<p class="paper-bound">C\* ∈ \[<span[^>]*>)[^<]+/, '$1' + '0,1300')), /C\* interval/);
-  assert.throws(() => validateHomeCatalogue(home.replace(/(<circle class="rm-ring" cx="[\d.]+" cy="[\d.]+" r=")[\d.]+/, '$1' + '5')), /scale/);
+  assert.throws(() => validateHomeCatalogue(home.replace(/(<line class="rm-spoke" x1="[\d.]+" y1="[\d.]+" x2=")[\d.]+/, '$1' + '5')), /scale/);
   assert.throws(() => validateHomeCatalogue(home.replace('<a class="result" href="/research/">', '<a class="result" href="https://arxiv.org/">')), /paper count/);
 });
 

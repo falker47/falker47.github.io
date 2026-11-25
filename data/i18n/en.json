@@ -200,7 +200,7 @@
   "downloadsWord": "downloads",
   "endorsementsWord": "endorsements",
   "ringminGridLabel": "The twelve certified optimal configurations, from n = 3 to n = 14: circles of radius 1 to n arranged around the central circle.",
-  "ringminChartLabel": "Concentric circles of radius R(n)/n² for n from 3 to 18: they crowd towards the ring of the certified interval for the asymptotic constant C*, beyond the 1/8 circle.",
+  "ringminChartLabel": "One spoke for each n from 3 to 18, as long as R(n)/n²: the spokes lengthen towards the semicircle of the asymptotic constant C*, as thick as its certified interval. Certified values up to n = 14 are solid, the others dashed.",
   "deckIssuers": "Microsoft, IBM, Google, Wharton, UC San Diego and others",
   "deckCount": "certificates",
   "deckHintHover": "Hover over a certificate or click it to open it.",

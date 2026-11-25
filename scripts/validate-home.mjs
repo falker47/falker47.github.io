@@ -182,21 +182,25 @@ function checkResearch(source) {
   assert.equal([...papers[0].matchAll(/<circle class="rm-centre"/g)].length, ringmin.optima.length);
   assert.equal([...papers[0].matchAll(/<circle class="rm-(?:circle|floating)"/g)].length, ringmin.optima.reduce((sum, item) => sum + item.n, 0));
   assert.equal([...papers[0].matchAll(/<circle class="rm-floating"/g)].length, ringmin.optima.reduce((sum, item) => sum + item.floating_circles.length, 0));
-  // Paper II (V4): one circle per n of radius R(n)/n², solid when certified, dashed otherwise,
-  // inside the dashed 1/8 circle and the ring of the certified interval for C*.
-  const rings = [...papers[1].matchAll(/<circle class="rm-ring( rm-open)?" cx="[\d.]+" cy="[\d.]+" r="([\d.]+)"\/>/g)].map(match => ({ open: Boolean(match[1]), r: Number(match[2]) }));
-  assert.deepEqual(rings.map(ring => ring.open), ringmin.asymptotic.map(row => !row.certified), 'Solid rings are certified values, dashed ones non-exhaustive');
-  const scales = rings.map((ring, i) => ring.r / ringmin.asymptotic[i].ratio);
-  assert.ok(Math.max(...scales) - Math.min(...scales) < .02 * scales[0], 'Each radius is R(n)/n² on one scale');
-  const radiusOf = name => Number(papers[1].match(new RegExp('<circle class="' + name + '" cx="[\\d.]+" cy="[\\d.]+" r="([\\d.]+)"'))[1]);
-  const [limit, band] = [radiusOf('rm-limit'), radiusOf('rm-band')];
-  assert.ok(Math.abs(limit - scales[0] / 8) < .2, 'The dashed circle is 1/8');
-  assert.ok(Math.abs(band - scales[0] * (ringmin.constant.lower + ringmin.constant.upper) / 2) < .2, 'The ring is the C* interval');
-  assert.ok(Math.max(...rings.map(ring => ring.r)) < limit && limit < band, 'n ≤ 18 inside 1/8, inside C*');
+  // Paper II (V4): a 16:9 fan, one spoke per n from left to right, as long as R(n)/n² on one
+  // scale, solid when certified and dashed otherwise, under the semicircle of radius C*.
+  assert.match(papers[1], /<svg class="rm-chart" viewBox="0 0 320 180"/, 'Paper II is drawn at 16:9');
+  const spokes = [...papers[1].matchAll(/<line class="rm-spoke( rm-open)?" x1="([\d.]+)" y1="([\d.]+)" x2="([\d.-]+)" y2="([\d.-]+)"\/>/g)]
+    .map(([, open, ...xy]) => { const [x1, y1, x2, y2] = xy.map(Number); return { open: Boolean(open), length: Math.hypot(x2 - x1, y2 - y1), angle: Math.atan2(y2 - y1, x2 - x1) }; });
+  assert.deepEqual(spokes.map(item => item.open), ringmin.asymptotic.map(row => !row.certified), 'Solid spokes are certified values, dashed ones non-exhaustive');
+  const scales = spokes.map((item, i) => item.length / ringmin.asymptotic[i].ratio);
+  assert.ok(Math.max(...scales) - Math.min(...scales) < .02 * scales[0], 'Each spoke is R(n)/n² on one scale');
+  assert.ok(spokes.every((item, i) => i === 0 || (item.angle + 2 * Math.PI) % (2 * Math.PI) > (spokes[i - 1].angle + 2 * Math.PI) % (2 * Math.PI)), 'The spokes run from n = 3 on the left to the last n on the right');
+  assert.equal([...papers[1].matchAll(/<circle class="rm-tip(?: rm-open)?"/g)].length, spokes.length, 'A small circle caps each spoke');
+  const arc = papers[1].match(/<path class="rm-arc" d="M[\d.]+ [\d.]+ A([\d.]+) [\d.]+ 0 0 1 [\d.]+ [\d.]+" stroke-width="([\d.]+)"\/>/);
+  assert.ok(arc && Math.abs(Number(arc[1]) - scales[0] * (ringmin.constant.lower + ringmin.constant.upper) / 2) < .2, 'The semicircle is C* on the same scale');
+  assert.ok(Number(arc[2]) >= scales[0] * (ringmin.constant.upper - ringmin.constant.lower) - .01, 'The semicircle is as thick as the certified interval');
+  assert.ok(Math.max(...spokes.map(item => item.length)) < Number(arc[1]), 'Every spoke stays under C*');
+  assert.deepEqual([...papers[1].matchAll(/<text class="rm-label[^"]*"[^>]*>([^<]+)<\/text>/g)].map(match => decode(match[1])),
+    ['n = ' + ringmin.asymptotic[0].n, String(ringmin.asymptotic.at(-1).n), 'C*'], 'Three labels on the drawing');
   const it = value => new Intl.NumberFormat('it-IT', { minimumFractionDigits: 4, maximumFractionDigits: 4 }).format(value);
   const [low, high] = [Math.floor(ringmin.constant.lower * 1e4) / 1e4, Math.ceil(ringmin.constant.upper * 1e4) / 1e4];
   assert.equal(text(papers[1].match(/<p class="paper-bound">([^]*?)<\/p>/)[1]).replace(/\s+(?=[;\]])|(?<=\[)\s+/g, ''), `C* ∈ [${it(low)}; ${it(high)}]`, 'The C* interval from data/ringmin.json');
-  assert.deepEqual([...papers[1].matchAll(/<g class="rm-tag [\w-]+">[^]*?<text[^>]*>([^<]+)<\/text><\/g>/g)].map(match => decode(match[1])), ['C*', '1/8'], 'Two tags on the drawing');
   const foot = markup.match(/<p class="research-foot">[^]*?<\/p>/)[0];
   assert.deepEqual(hrefs(foot), [research.repositories.find(item => item.project === 'power-ringmin').url, research.zenodo.url]);
   checkButtons(foot, 'Research foot');

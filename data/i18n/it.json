@@ -200,7 +200,7 @@
   "downloadsWord": "download",
   "endorsementsWord": "endorsement",
   "ringminGridLabel": "Le dodici configurazioni ottime certificate, da n = 3 a n = 14: i cerchi di raggio da 1 a n disposti attorno al cerchio centrale.",
-  "ringminChartLabel": "Cerchi concentrici di raggio R(n)/n² per n da 3 a 18: si addensano verso l’anello dell’intervallo certificato della costante asintotica C*, oltre il cerchio 1/8.",
+  "ringminChartLabel": "Un raggio per ogni n da 3 a 18, lungo R(n)/n²: i raggi si allungano verso il semicerchio della costante asintotica C*, il cui spessore è l’intervallo certificato. Pieni i valori certificati fino a n = 14, tratteggiati gli altri.",
   "deckIssuers": "Microsoft, IBM, Google, Wharton, UC San Diego e altri",
   "deckCount": "certificazioni",
   "deckHintHover": "Passa sopra un attestato o cliccalo per aprirlo.",

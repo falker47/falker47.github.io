@@ -40,34 +40,34 @@ export function configurations({ copy }) {
   return html`<div class="rm-grid" role="img" data-label="ringminGridLabel" aria-label="${copy.it.ringminGridLabel}">${raw(data.optima.map(configuration).join(''))}</div>`;
 }
 
-/**
- * Paper II, drawn like Paper I: one circle per n, of radius R(n)/n² on a common scale, around
- * a common centre. Certified values are solid, non-exhaustive ones dashed. The circles close in
- * on the glowing ring of the certified interval for C* (data.constant), outside the dashed 1/8.
- */
+// The certified interval for C*, rounded outwards to four decimals in the reader's format.
 const bound = (value, round, lang) => new Intl.NumberFormat(lang === 'it' ? 'it-IT' : 'en-GB',
   { minimumFractionDigits: 4, maximumFractionDigits: 4 }).format(round(value * 1e4) / 1e4);
 export const constantRange = lang => [bound(data.constant.lower, Math.floor, lang), bound(data.constant.upper, Math.ceil, lang)];
 
-// A label sitting on a circle: a small rounded tag that masks the line behind it.
-function tag(x, y, text, className) {
-  const width = 12 + text.length * 7.6;
-  return html`<g class="${className}"><rect x="${fixed(x - width / 2)}" y="${fixed(y - 9)}" width="${fixed(width)}" height="18" rx="9"/><text x="${x}" y="${fixed(y + 4.2)}" text-anchor="middle">${text}</text></g>`;
-}
-
+/**
+ * Paper II, drawn like Paper I: a fan of thin spokes from a common hub, one per n from left
+ * to right, each as long as R(n)/n² on a common scale and capped by a small circle. Certified
+ * values are solid, non-exhaustive ones dashed. Above them glows the semicircle of radius C*,
+ * as thick as the certified interval (data.constant) allows on this scale.
+ */
 export function chart({ copy }) {
-  const W = 288, H = 162, cx = 144, cy = 81;
-  const { lower, upper } = data.constant;
-  const scale = 70 / ((lower + upper) / 2);
-  const radius = value => fixed(value * scale);
-  const rows = data.asymptotic;
-  const rings = rows.map(row => html`<circle class="${row.certified ? 'rm-ring' : 'rm-ring rm-open'}" cx="${cx}" cy="${cy}" r="${radius(row.ratio)}"/>`).join('');
-  const band = Math.max(1.6, radius(upper) - radius(lower));
-  return html`<svg class="rm-chart rm-rings" viewBox="0 0 ${W} ${H}" role="img" data-label="ringminChartLabel" aria-label="${copy.it.ringminChartLabel}">
-<circle class="rm-band" cx="${cx}" cy="${cy}" r="${fixed((radius(lower) + radius(upper)) / 2)}" stroke-width="${fixed(band)}"/>
-<circle class="rm-limit" cx="${cx}" cy="${cy}" r="${radius(1 / 8)}"/>
-${raw(rings)}<circle class="rm-centre" cx="${cx}" cy="${cy}" r="2"/>
-${raw(tag(cx, fixed(cy - (radius(lower) + radius(upper)) / 2), 'C*', 'rm-tag rm-tag-band'))}
-${raw(tag(cx, fixed(cy + radius(1 / 8)), '1/8', 'rm-tag rm-tag-limit'))}
+  const W = 320, H = 180, cx = 160, cy = 158, reach = 124;
+  const rows = data.asymptotic, { lower, upper } = data.constant;
+  const scale = reach / ((lower + upper) / 2);
+  const [from, to] = [Math.PI * 1.04, Math.PI * 1.96];
+  const spoke = (row, i) => {
+    const angle = from + (to - from) * i / (rows.length - 1), length = row.ratio * scale;
+    const [x, y] = [fixed(cx + length * Math.cos(angle)), fixed(cy + length * Math.sin(angle))];
+    const open = row.certified ? '' : ' rm-open';
+    return html`<line class="rm-spoke${open}" x1="${cx}" y1="${cy}" x2="${x}" y2="${y}"/><circle class="rm-tip${open}" cx="${x}" cy="${y}" r="2.2"/>`;
+  };
+  const label = (x, y, text, className = 'rm-label') => html`<text class="${className}" x="${x}" y="${y}" text-anchor="middle">${text}</text>`;
+  return html`<svg class="rm-chart" viewBox="0 0 ${W} ${H}" role="img" data-label="ringminChartLabel" aria-label="${copy.it.ringminChartLabel}">
+<path class="rm-arc" d="M${cx - reach} ${cy} A${reach} ${reach} 0 0 1 ${cx + reach} ${cy}" stroke-width="${fixed(Math.max(1.6, (upper - lower) * scale))}"/>
+<line class="rm-base" x1="${cx - reach - 10}" y1="${cy}" x2="${cx + reach + 10}" y2="${cy}"/>
+${raw(rows.map(spoke).join(''))}<circle class="rm-hub" cx="${cx}" cy="${cy}" r="3"/>
+${raw(label(cx - reach, cy + 17, 'n = ' + rows[0].n))}${raw(label(cx + reach, cy + 17, String(rows.at(-1).n)))}
+${raw(label(cx, cy - reach - 9, 'C*', 'rm-label rm-key'))}
 </svg>`;
 }
