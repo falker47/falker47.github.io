@@ -135,7 +135,7 @@ assert.match(html, /<meta name="google-site-verification" content="[^"]+"/);
 assert.ok(!/<title>[^<]*(?:Blueprint|Preview)/i.test(html), 'Use the public site title');
 const structured = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
 assert.equal(structured['@graph'].find(item => item['@type'] === 'Person')?.jobTitle,
-  'AI & Digital Innovation Specialist', 'Person.jobTitle must match the public role');
+  'AI Engineer', 'Person.jobTitle must match the public role');
 assert.match(css, /prefers-reduced-motion:\s*reduce/);
 assert.doesNotMatch(html, /12k\+/, 'Do not ship stale 12k+ totals as the unique-download fallback');
 const nexusClient = await readFile(join(siteRoot, 'scripts/nexus-downloads.mjs'), 'utf8');

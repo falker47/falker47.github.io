@@ -24,7 +24,7 @@ test('detail pages publish a priority picture, a canonical author and working re
     assert.match(source, /<picture><source [^>]+srcset="[^"]+"[^>]*><img [^>]+fetchpriority="high">/);
     const person = graph.find(item => item['@type'] === 'Person');
     assert.equal(person['@id'], origin + '/#person');
-    assert.equal(person.jobTitle, 'AI & Digital Innovation Specialist');
+    assert.equal(person.jobTitle, 'AI Engineer');
     assert.equal(graph.find(item => item.url === origin + path).author['@id'], person['@id']);
     // "← I miei progetti" for project pages, "← Home" for the recommendations.
     const crumb = source.match(/<nav class="detail-crumbs"[^>]*><a href="([^"]+)">/);

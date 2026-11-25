@@ -3,7 +3,7 @@ import { workSection } from './home/work.mjs';
 import { html, raw, translatedText } from '../lib/html.mjs';
 import { primaryCta } from '../partials/components.mjs';
 
-export const jobTitle = 'AI & Digital Innovation Specialist';
+export const jobTitle = 'AI Engineer';
 
 export const graph = [
   {
@@ -38,7 +38,7 @@ export const graph = [
       "@id": "https://falker47.github.io/#profile-image"
     },
     "jobTitle": jobTitle,
-    "description": "Sviluppo applicazioni e strumenti, creo mod per videogiochi e porto avanti ricerca matematica indipendente.",
+    "description": "Porto l'AI nei processi aziendali partendo dai dati, sviluppo applicazioni e strumenti, creo mod per videogiochi e faccio ricerca matematica indipendente.",
     "sameAs": [
       "https://github.com/falker47",
       "https://www.linkedin.com/in/mauriziofalconi/",
