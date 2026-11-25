@@ -1,92 +1,122 @@
-V4 refines the unified site (V3, #23): nine visual changes, every figure and string built from `data/` in Italian and English, tests updated for the new data. Base: `claude/v3-fusion`.
+V4 refines the unified site (V3, #23): the nine visual changes of the first pass, then four review rounds on the preview and a last text pass. Every figure and string is built from `data/` in Italian and English. Base: `claude/v3-fusion`.
 
-## Changes (before → after)
+## Before → after
 
-Each image puts the V3 build on the left and this branch on the right; the full capture matrix (IT/EN, 1440×900 and 390×844, "Chi sono" and "I miei progetti" open, every tab) is in `_review/V4/before/` and `_review/V4/after/`.
+`_review/V4/before/` (V3 build) and `_review/V4/after/` (this branch) hold the same matrix: home closed, "Chi sono" open, "I miei progetti" on each of its four tabs, `/research/` and `/uses/`, in Italian and English, at 1440×900 and 390×844, viewport and full page (64 captures each, reduced motion). `_review/V4/compare/` puts every pair side by side, V3 on the left. The main ones:
 
-1. **Chi sono: facts card replaces "Percorso".** One text column with both paragraphs; from 900 px a facts card on the right, 2×2 below the text on narrower screens. Figures are counted at build time: 14 software projects (App + Giochi + Strumenti), 10.871 / 10,871 Nexus unique downloads (the live counter of the Modding tab), 2 arXiv papers, 11 certifications; each links to its section (`#progetti`, `#panel-modding`, `#ricerca`, `#certificazioni`). Quote, profile links and certificate fan stay. ![1](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/01-about-facts.webp?raw=true) ![1 phone](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/01-about-facts-390.webp?raw=true)
-2. **Certificates load faster.** Thumbnails now come at 300w and 480w (`sizes="150px"`), and the home starts them after the load event (`requestIdleCallback`, 2 s timeout, `setTimeout` fallback; skipped with Save-Data) or as soon as the "Chi sono" summary gets the pointer, focus or a touch. A card under the pointer or the focus preloads its 960 px viewer image. Same look; measurements below. ![2](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/02-certificates.webp?raw=true)
-3. **Filter pills.** "App 4 · Giochi 5 · Strumenti 5" and "Mod 10 · Traduzioni 17": text only, 44 px tall, the pressed pill filled with the panel accent (blue on Software, Nexus orange on Modding), the others outlined. Same component on both panels; counts from the data. ![3](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/03-filter-pills.webp?raw=true) ![3 phone](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/03-filter-pills-390.webp?raw=true)
-4. **Brand marks on external actions.** One helper, `actionLink`, renders every external action: GitHub, Google Play, Nexus Mods, arXiv, Zenodo, ORCID and OEIS show their mark left of the label and take the brand colour on hover (border and mark); other links keep an arrow icon (→ inside the site, e.g. "Prova l'app", ↗ elsewhere, e.g. "Apri"). Applied to project, mod and paper cards, the research footnote, the "Chi sono" profile row, the project pages and the site footer. Marks are inlined into the page's icon sprite only when used. ![4](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/04-brand-buttons.webp?raw=true)
-5. **Modding in Nexus Mods orange.** No violet left in the panel: `--nexus: #f97316` (the emblem's fill), download bars `#f97316 → #fbbf24`, orange game chips, Nexus buttons and translation headers, the Nexus emblem in every Nexus button and before the "download unici" summary. ![5](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/05-nexus-orange.webp?raw=true)
-6. **Paper II chart against 1/n.** x from 0 to 1/3 with labels n = ∞, 18, 10, 6, 4, 3 at their 1/n positions and a "1/n" title; filled dots certified, hollow non-exhaustive (legend sentence updated in IT/EN). At x = 0 a short band marks the certified interval for C*, labelled "C* ∈ [0,1405; 0,1420]" (outward-rounded, localized), above the dashed 1/8 lower-bound line. A faint dashed segment extends the last two points to x = 0; it lands at 0.1396, beside the band, so it stays. ![6](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/06-cstar-chart.webp?raw=true) ![6 phone](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/06-cstar-chart-390.webp?raw=true)
-7. **Lessons.** From 900 px: title, text and "Scopri le lezioni →" on the left; the lead and the Letuelezioni and Superprof boxes on the right. Below 900 px the text and CTA come first. The separate "Lezioni individuali" box is gone. ![7](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/07-lessons.webp?raw=true) ![7 phone](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/07-lessons-390.webp?raw=true)
-   English copy, written for English readers:
-   - Title: *Maths and physics lessons*
-   - Text: *I have a degree in physics, and since 2023 I've been helping middle and high school students in Parma and online. We start wherever you get stuck and go through every step in full, with digital notes and guided exercises that you keep after the lesson.*
-   - CTA: *Explore the lessons*
-   - Lead: *Curious what my students say? These are the sites where I teach.*
-8. **Footer signature links home** on every page (`/`), underlined and blue on hover and focus. ![8](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/08-footer-link.webp?raw=true) ![8 home](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/08-footer-link-home.webp?raw=true)
-9. **"Cosa uso" / "What I use" in the header**, after the existing items, on desktop and in the phone menu, `aria-current="page"` on `/uses/`. ![9](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/09-nav-uses.webp?raw=true) ![9 phone](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/09-nav-menu-390.webp?raw=true)
+- Chi sono: [1440](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/home-chi-sono-it-1440-full.webp?raw=true) · [390](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/home-chi-sono-it-390-full.webp?raw=true)
+- Software: [1440](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/home-progetti-it-1440.webp?raw=true) · [390](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/home-progetti-it-390.webp?raw=true)
+- Modding: [1440](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/home-tab-modding-it-1440.webp?raw=true) · [390](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/home-tab-modding-it-390.webp?raw=true)
+- Research: [1440](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/home-ricerca-it-1440.webp?raw=true) · [390](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/home-ricerca-it-390.webp?raw=true)
+- Lessons: [1440 IT](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/home-tab-teaching-it-1440.webp?raw=true) · [390 EN](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/home-tab-teaching-en-390.webp?raw=true)
+- Cosa uso: [1440](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/uses-it-1440-full.webp?raw=true) · [390](https://github.com/falker47/falker47.github.io/blob/claude/v4-polish/_review/V4/compare/uses-it-390-full.webp?raw=true)
+
+## What changed, as it stands now
+
+**Header and footer.** "Cosa uso" / "What I use" after the three home sections, on desktop and in the phone menu (4 × 48 px), `aria-current="page"` on `/uses/`; on the home the section links stay fragments. The footer signature links to `/` on every page. Hero and header stay blue whatever the tab.
+
+**Chi sono.** Four paragraphs written by Maurizio (studies, work, way of reasoning, lessons and research; the English is rewritten, not translated word for word), the closing quote and the profile links. Beside the text, "In breve": four tiles counted from the data at build time, each in the colour and with the mark of its section and linked to it: 14 software projects (App + Giochi + Strumenti), 11.051 / 11,051 Nexus unique downloads (the live counter of the Modding tab), 2 arXiv papers, 15 certificates. Below 900 px the tiles go 2×2 under the text. The certificate fan has four new Coursera certificates (Wharton, Geneva, UPenn, Politecnico di Milano) and follows the pointer's slot as smoothly to the right as to the left.
+
+**Certificates load faster.** Thumbnails at 300w and 480w (`sizes="150px"`). The home starts them a second after the load event, while the browser is idle (`requestIdleCallback`, `setTimeout` fallback, skipped with Save-Data), or as soon as the "Chi sono" summary gets the pointer, focus or a touch. A card under the pointer or the focus preloads its 960 px viewer image. Timings below.
+
+**I miei progetti, all tabs.** The tab accent (blue, Nexus orange, violet, green) applies inside the section only. Longer panel intros. Every count is one tile shaped like the "Chi sono" figures: glyph or mark in a rounded square, number, label, an arrow only on links; same height, radius and sizes in every panel, the pressed category toggle outlined in the panel accent. Cards are smaller (about four per row on desktop) with their summaries in full. The buttons are the foot of each card: up to three in a row sharing its width, split by rules, the platform mark left of the label, brand colour on hover and focus; a card too narrow for three gives the first a row of its own. An app already on Google Play no longer shows the tester link.
+
+**Brand marks.** One helper, `actionLink`, renders every external action: GitHub, Google Play, Nexus Mods, arXiv, Zenodo, ORCID and OEIS show their mark (sources below); other links keep an arrow (→ inside the site, ↗ elsewhere). The icon sprite of each page carries only the icons it uses.
+
+**Modding.** Nexus Mods orange (`--nexus: #f97316`, the emblem's fill), bars `#f97316 → #fbbf24`. The panel leads with the unique-downloads tile (the publication count and snapshot date are gone), then the Mod and Traduzioni toggles. Translations use the mod card (16:9 cover, game pill, category); the Nexus updater now downloads their pictures too, shown with an "IT" badge, and a typographic header where a mod has none.
+
+**Research.** Paper cards at the size of the software cards, both drawings 16:9. Paper I: the twelve certified optima, 6×2, labels under square drawings. Paper II: a fan, one spoke per n from 3 to 18, as long as R(n)/n² on a common scale, solid when certified and dashed otherwise, under a glowing semicircle of radius C* whose thickness is the certified interval; label "C* ∈ [0,1405; 0,1420]" (outward-rounded, localized). Every number comes from `data/ringmin.json`; the 1/8 circle, absent from the data, is not drawn. "GitHub" instead of "Codice" on the cards; the explanatory footnote is gone, the Power-Ringmin and Zenodo links stay.
+
+**Lessons.** From 900 px: title, text and "Scopri le lezioni →" on the left, the lead and the Letuelezioni and Superprof boxes on the right; below 900 px text and button come first. The one-line intro and the "Lezioni individuali" box are gone. The text no longer mentions a degree:
+- IT: *La passione per la scienza mi ha portato a volerla anche insegnare, e dal 2023 seguo studenti delle medie e del liceo, a Parma e online. Partiamo da dove ti blocchi: ogni passaggio lo spiego per intero, con appunti digitali ed esercizi guidati che ti restano dopo la lezione.*
+- EN: *My passion for science made me want to teach it too, and since 2023 I've been helping middle and high school students in Parma and online. We start wherever you get stuck: I explain every step in full, with digital notes and guided exercises that you keep after the lesson.*
+
+**Cosa uso.** Compact page: each pick beside its product, cut from the cover illustration.
+
+## Review rounds
+
+| Round | Commit | What changed |
+| --- | --- | --- |
+| First pass | 551661a, 80aa77f | Nine changes: facts card, certificate loading, filter pills, brand marks, Nexus orange, Paper II chart against 1/n, lessons layout, footer link, "Cosa uso" in the header; evidence. |
+| Review 1 | f335f16 | Smaller hero headline and catalogue cards, figures as coloured tiles, four certificates, translations as mod cards, Paper I 6×2, tab accents, compact "Cosa uso", per-page icon sprite, no tester link for apps on Google Play. |
+| Review 2 | 5fc4e5a, 00377be, c6de128 | Toggles back to count tiles, Modding leads with downloads, longer intros, paper cards at software size, fluid fan; prefetch a second after load; audit with `--disable-gpu`. |
+| Review 3 | f369495 | Accent only inside "I miei progetti", quieter research, summaries in full, translation pictures from the updater. |
+| Tiles and buttons | 28b9b1c, 871a10f | One tile for every count, buttons as the card foot (direction C of three previews). |
+| Paper II | 14ba9d6 | The 1/n chart becomes the fan under the C* semicircle. |
+| Chi sono | a605e1f | Four paragraphs by Maurizio; home limits 230 KB HTML+CSS+JS, 180 KB HTML. |
+| Lessons text | this push | Passion for science instead of the degree, in IT and EN; opening "Chi sono" starts the thumbnails at once (see Decisions); evidence regenerated. |
 
 ## Measurements
 
 ### Certificate fan, time to visible on "Fast 4G"
 
-Chrome DevTools' Fast 4G preset (165 ms RTT, 9 Mbit/s down), cold cache, 3 runs each, median shown. The clock runs from the click on "Chi sono" (the page then scrolls to the fan) until all 11 thumbnails have loaded and decoded. Script: `node scripts/qa/cert-loading.mjs --task V4/measurements --label after [--root <V3 _site>]`; raw data and request traces in `_review/V4/measurements/`.
+Chrome DevTools' Fast 4G preset (165 ms RTT, 9 Mbit/s down), cold cache, 3 runs each, median shown. The clock runs from the click on "Chi sono" until every thumbnail has loaded and decoded. `node scripts/qa/cert-loading.mjs --task V4/measurements --label after [--root <V3 _site>]`; raw data and request traces in `_review/V4/measurements/` (V3 measured in the first pass).
 
 | Reader | 1440 px, V3 → V4 | 390 px (DPR 2.75), V3 → V4 |
 | --- | --- | --- |
-| opens "Chi sono" 3 s after load | 684 → **17 ms** | 697 → **25 ms** |
-| opens it at the load event | 676 → **468 ms** | 704 → **544 ms** |
-| points at the summary, opens 300 ms later | 682 → **72 ms** | 703 → **174 ms** |
+| opens "Chi sono" 3 s after load | 684 → **21 ms** | 697 → **32 ms** |
+| opens it at the load event | 676 → **640 ms** | 704 → 722 ms |
+| points at the summary, opens 300 ms later | 682 → **334 ms** | 703 → **390 ms** |
 
-**Cause, from the network trace of the V3 build:** the thumbnails are `loading="lazy"` inside the closed `<details>`, so Chromium does not request any of them until the section opens. In every V3 run the first thumbnail request starts 135–165 ms *after* the click, and all 11 then compete on the throttled link. Their weight was not the bottleneck (176 KB in total). In V4 the requests start up to 3 s *before* the click, and at 1440 px the 300w files halve the transfer (82 KB instead of 176 KB; phones at DPR 2.75 still pick the 480w files).
+V3 loads 11 thumbnails, V4 15 (four new certificates).
+
+In V3 the thumbnails are `loading="lazy"` inside the closed `<details>`, so Chromium requests none of them until the section opens: the first request starts 135–165 ms after the click and all of them then compete on the throttled link. In V4 the requests start before the click.
 
 ### Budgets
 
-- Cold home load (unchanged gate, now excluding the idle prefetch): 351,655 bytes / 11 requests at 1440 px, 292,252 / 11 at 390 px (limits 450,000 / 15).
-- The idle prefetch after the load event has its own gate (`checkDeferred`): only certificate thumbnails, at most one per certificate, ≤ 200,000 bytes; measured 82,078 bytes at 1440 px and 175,708 at 390 px. Lighthouse applies the same split.
-- Home HTML+CSS+JS 212,328 bytes (limit 220,000).
+- Cold home load, idle prefetch excluded: 365,839 bytes / 11 requests at 1440 px, 306,437 / 11 at 390 px (Lighthouse) (limits 450,000 / 15).
+- Idle prefetch after the load event (`checkDeferred`): 15 certificate thumbnails, 105,397 bytes (limit: thumbnails only, one per certificate, ≤ 200,000 bytes). Lighthouse applies the same split.
+- Home HTML+CSS+JS 224,139 bytes (limit 230,000), HTML 172,704 (limit 180,000).
 
 ### Lighthouse (performance / accessibility), V3 → V4
 
+`QA_CHROME_FLAGS=--disable-gpu` on both sides for `/` (V3 in `_review/V4/before-audit-nogpu/`); the other V3 rows come from `_review/V4/before-audit/`. Best practices 100 everywhere.
+
 | Route | IT mobile | IT desktop | EN mobile | EN desktop |
 | --- | --- | --- | --- | --- |
-| / | 95/100 → 93/100 | 99/100 → 100/100 | 93/100 → 94/100 | 98/100 → 99/100 |
+| / | 95/100 → 94/100 | 100/100 → 100/100 | 95/100 → 94/100 | 100/100 → 100/100 |
 | /404.html | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 |
-| /research/ | 99/100 → 99/100 | 100/100 → 100/100 | 99/100 → 99/100 | 99/100 → 100/100 |
+| /research/ | 99/100 → 99/100 | 100/100 → 100/100 | 99/100 → 99/100 | 99/100 → 99/100 |
 | /projects/prof-gecko/ | 99/100 → 99/100 | 100/100 → 100/100 | 99/100 → 99/100 | 100/100 → 100/100 |
 | /projects/camaleonte/ | 99/100 → 99/100 | 100/100 → 100/100 | 99/100 → 99/100 | 100/100 → 100/100 |
 | /uses/ | 99/100 → 99/100 | 100/100 → 100/100 | 99/100 → 99/100 | 100/100 → 100/100 |
 | /projects/social-viewer/ | 99/100 → 100/100 | 100/100 → 100/100 | 99/100 → 100/100 | 100/100 → 100/100 |
-| /projects/social-viewer/test/ | 100/100 → 100/100 | 100/100 → 100/100 | 99/100 → 100/100 | 100/100 → 100/100 |
+| /projects/social-viewer/test/ | 100/100 → 99/100 | 100/100 → 100/100 | 99/100 → 99/100 | 100/100 → 100/100 |
 | /projects/social-viewer/privacy/ | 99/100 → 99/100 | 100/100 → 100/100 | 99/100 → 99/100 | 100/100 → 100/100 |
-| /Nexus-portfolio/ | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 |
-| /Nexus-portfolio/index.html | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 |
-| /Nexus-portfolio/research.html | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 |
-| /Nexus-portfolio/prof-gecko.html | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 |
-| /Nexus-portfolio/consigli.html | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 |
-| /Nexus-portfolio/testers.html | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 |
-| /Nexus-portfolio/socialviewer-privacy.html | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 |
-| /projects/ | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 |
+| /Nexus-portfolio/ (7 stubs) and /projects/ | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 | 100/100 → 100/100 |
 
-Floors: performance ≥ 90 mobile and ≥ 95 desktop, accessibility 100, best practices ≥ 95; axe: 0 violations in all 68 runs (17 routes and stubs × IT/EN × 1440/390), as on V3. Every row passes; raw data in `_review/V4/before-audit/` and `_review/V4/after-audit/`.
+Floors: performance ≥ 90 mobile and ≥ 95 desktop, accessibility 100, best practices ≥ 95. axe: 0 violations in all 68 runs (17 routes and stubs × IT/EN × 1440/390). Every row passes; raw data in `_review/V4/after-audit/`.
 
 ## Checks
 
-- `node scripts/check.mjs`: pass (build, HTML/budget validation, 72 tests, link crawl, cold-browser load at both viewports).
-- `scripts/qa/audit.mjs`: PASS on every route and stub (table above).
+- `node scripts/check.mjs`: pass (build, HTML and budget validation, 73 tests, link crawl, cold-browser load at both viewports).
+- `scripts/qa/audit.mjs` with `QA_CHROME_FLAGS=--disable-gpu`: PASS on every route and stub (table above).
 - `scripts/qa/legacy.mjs`: 79 browser navigations verified.
-- `scripts/qa/i18n-check.mjs`: 0 language leaks, 0 scan errors on every page and interaction state (the new pills included).
-- `scripts/qa/release-layout.mjs`: 92 page and panel layouts, 0 failures.
-- `scripts/qa/interactions.mjs`: pass on `/`, `/research/`, `/uses/`, the three project pages, the Social Viewer test page and `/404.html` (see Decisions for the privacy page); `scripts/qa/social-viewer.mjs`: 19 checks pass.
-- `scripts/qa/overflow.mjs`: 150 layouts (every route and home state × IT/EN × 360/390/768/1024/1440 px, phone menu open), 0 with horizontal overflow. Reduced motion: captures and interactions run with `prefers-reduced-motion: reduce`, no running animations in the reflow check, the card lift stays off; the new transitions are colour-only.
+- `scripts/qa/i18n-check.mjs`: 0 language leaks, 0 scan errors on every page and interaction state.
+- `scripts/qa/release-layout.mjs`: 92 page and panel layouts, 47 image files, 0 failures.
+- `scripts/qa/overflow.mjs`: 150 layouts (every route and home state × IT/EN × 360/390/768/1024/1440 px, phone menu open), 0 with horizontal overflow.
+- `scripts/qa/interactions.mjs`: pass on `/`, `/research/`, `/uses/`, the three project pages, the Social Viewer test page and `/404.html` (32 runs); on the privacy page it fails at 320 px on the legal links (open point below).
+- `scripts/qa/social-viewer.mjs`: 19 checks pass. `scripts/qa/cert-loading.mjs`: table above.
+- Logs in `_review/V4/after-qa/` (`run.log`, then `run-fix.log` and `interactions-fix.log` after the click fix below). The Lighthouse run predates that one-line fix, which adds a click listener and changes nothing at load.
+
+## Open points
+
+- **GPU stall in headless Chrome.** On this machine (remote-desktop session) headless Chrome stalls on the GPU: one unattributed task of a second or more on every page with a picture. Without `--disable-gpu` the mobile home scores 74–94 across runs against 94–95 for V3 measured the same way; with the flag on both sides it is 94 against 95 (table above). The floor is met with the flag; CI runs on its own Chrome. Worth a run on a machine with a working GPU before merge.
+- **Legal links on the privacy page.** In `/projects/social-viewer/privacy/` the links inside the legal text (e.g. the e-mail address) are below the 44 px target in the reflow check of `interactions.mjs`. It was already so in V3; the text is a fixed legal snapshot (`docs/unify/privacy-snapshot.txt`), so it is left as is. `social-viewer.mjs` passes.
 
 ## Decisions
 
-- **Change 2, prefetch accounting.** The cold-load gate (450 KB / 15 requests) now counts the idle certificate prefetch separately instead of being raised: requests before and around the load event stay under the old limits, and the thumbnails after it have a dedicated limit (≤ 11 requests, ≤ 200 KB, nothing else allowed). Without this, Lighthouse and the cold-browser check would count 22 requests.
-- **Change 1, Nexus figure.** Shown exactly (10.871 / 10,871), not as "11k": five digits fit the card at every width and match the Modding tab's counter, which the facts card reuses, so it follows the live snapshot and the language switch. The projects figure counts the software categories only (App, Giochi, Strumenti = 14); Ringmin lives in the Research tab and is counted as a paper. The Nexus figure links to `#panel-modding`, which the deep-link code opens on the Modding tab.
-- **Change 3, ARIA.** The pills keep the V3 semantics, a labelled `role="group"` of toggle buttons with `aria-pressed`, exactly one pressed: a correct pattern, natively keyboard-operable (Tab, Enter, Space). "Panel accent" is read as one accent per panel (blue / Nexus orange), not the per-category colour, which still marks the cards.
-- **Change 4, colours on hover.** GitHub `#181717`, Google Play `#414141` and arXiv `#b31b1b` are below 3:1 on the card surface, so their marks and borders turn near white on hover instead; ORCID, Zenodo and the Nexus orange keep their brand colour. Nexus Mods and OEIS marks keep their published colours at all times. LinkedIn is not in Simple Icons (removed upstream) and is not in the list, so it keeps its existing glyph. The trailing ↗ is dropped where a mark identifies the destination.
-- **Change 4, logo sources.** Nexus Mods and OEIS are missing from Simple Icons 16.38.1; their official files are used unaltered and pinned by SHA-256 (see the table below). An automated re-download of the Nexus emblem today hits a Cloudflare bot check, which I did not try to bypass; the file in `~/sources/brand/` was retrieved in a browser earlier today and its hash is enforced by `make-brands.mjs`.
-- **Change 5, orange.** `#f97316` is the fill of the emblem's four arms in `logo-emblem.svg` (the lighter `#fb923c` is its disc); the lighter amber of the gradient is `#fbbf24`. Contrast on the dark surfaces is checked in `design-checks.mjs`: `#f97316` 6.2:1 on `--surface`, `#fbbf24` higher, and `--bg` text 6.8:1 on a pressed orange pill.
-- **Change 6, C\* interval.** Lower end from Paper II (arXiv 2609.13630), Proposition "Explicit global lower bound": C\* ≥ C_term + η_width > 0.14056946887766…. Paper II states the upper end only as U_4 = C_4(1/20000), with no decimal value, so the upper end comes from the ringmin repository's `knowledge/GLOBAL_BOUNDS_ASYMPTOTICS.md`: the exact directed-enclosure bound limsup R\*(n)/n² < 0.14199597951 (valid for C\* because Paper II proves the limit exists). No number was invented; both are imported by `scripts/import-ringmin.mjs` with their source sentences and checked by `scripts/test-ringmin.mjs`. The label rounds outward to four decimals.
-- **Change 7.** The teaching panel drops its one-line intro ("Do ripetizioni … dal gennaio 2023"), which the new text repeats. The CTA is a filled button but not `.primary-cta`, so the hero keeps the single primary action per view.
-- **Change 9.** On the home the three section links stay fragments; "Cosa uso" is the only path link. The phone menu is now 4 × 48 px tall; one interaction test now clicks 300 px below the top of `<main>` instead of 200 to stay clear of it.
-- **Outside the nine changes.** `/projects/social-viewer/privacy/` had no `tabindex="-1"` on `<main>`, so the skip link could not move focus there (also on V3); fixed with that attribute only. The page's inline legal links (e.g. the e-mail address) are still below 44 px in the reflow check; this is pre-existing, the text is a fixed legal snapshot, and V3 did not run `interactions.mjs` on it either. The Social Viewer checks (`social-viewer.mjs`) pass.
-- **QA tooling.** `--task` accepts one sub-folder (`V4/before`), and `QA_SITE_ROOT` serves another built checkout, so before/after runs share one set of scripts. New: `scripts/qa/cert-loading.mjs` and `scripts/qa/overflow.mjs` (all routes and home states at 360, 390, 768, 1024, 1440 px, phone menu open).
-- **Earlier attempt.** An earlier, interrupted session had left half-reverted edits in this worktree. They were saved as a patch outside the repository and the branch restarted from 7594622; nothing from it was committed except the two official brand files it had downloaded (kept outside the repository and hash-pinned).
+- **Prefetch accounting.** The cold-load gate (450 KB / 15 requests) counts the idle certificate prefetch separately instead of being raised: requests before and around the load event stay under the old limits, and the thumbnails after it have their own limit. Without this, Lighthouse and the cold-browser check would count 26 requests.
+- **Thumbnails on open.** Since review 2 the idle prefetch waits a second after load. A reader who opened "Chi sono" before then waited for it on phones, where the fan sits below the fold and the lazy images do not start: 1,723 ms at 390 px against 704 on V3. A click on the summary now starts them too (722 ms with 15 thumbnails instead of 11).
+- **Nexus figure.** Shown exactly (11.051 / 11,051), not as "11k": it fits the tile at every width and reuses the Modding counter, so it follows the live snapshot and the language switch. The projects figure counts the software categories only; Ringmin is counted as a paper.
+- **Toggles, ARIA.** The tiles keep the V3 semantics: a labelled `role="group"` of toggle buttons with `aria-pressed`, exactly one pressed, natively keyboard-operable.
+- **Brand colours on hover.** GitHub `#181717`, Google Play `#414141` and arXiv `#b31b1b` are below 3:1 on the card surface, so their marks and borders turn near white on hover; ORCID, Zenodo and the Nexus orange keep their colour. LinkedIn is not in Simple Icons and keeps its glyph.
+- **Logo sources.** Nexus Mods and OEIS are missing from Simple Icons 16.38.1; their official files are used unaltered and pinned by SHA-256. An automated re-download of the Nexus emblem hits a Cloudflare bot check, which was not bypassed; the file was retrieved in a browser and its hash is enforced by `make-brands.mjs`.
+- **Orange.** `#f97316` is the fill of the emblem's four arms; contrast checked in `design-checks.mjs` (6.2:1 on `--surface`, 6.8:1 for `--bg` text on a pressed orange tile).
+- **C\* interval.** Lower end from Paper II (arXiv 2609.13630), Proposition "Explicit global lower bound": C\* > 0.14056946887766…. Paper II gives the upper end only as U_4 = C_4(1/20000), so it comes from the ringmin repository's `knowledge/GLOBAL_BOUNDS_ASYMPTOTICS.md`: limsup R\*(n)/n² < 0.14199597951 (valid for C\* because Paper II proves the limit exists). Both are imported by `scripts/import-ringmin.mjs` with their source sentences and checked by `scripts/test-ringmin.mjs`.
+- **Lessons button.** Filled but not `.primary-cta`, so the hero keeps the single primary action per view.
+- **Privacy page skip link.** `<main>` had no `tabindex="-1"`, so the skip link could not move focus there (also on V3); fixed with that attribute only.
+- **QA tooling.** `--task` accepts one sub-folder (`V4/before`), and `QA_SITE_ROOT` serves another built checkout, so before/after runs share one set of scripts. New: `scripts/qa/cert-loading.mjs` and `scripts/qa/overflow.mjs`.
 
 ## Logo sources and licences
 

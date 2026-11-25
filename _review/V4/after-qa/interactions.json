@@ -28,6 +28,34 @@
     "result": "pass"
   },
   {
+    "route": "/research/",
+    "lang": "it",
+    "width": 1440,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/research/",
+    "lang": "it",
+    "width": 390,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/research/",
+    "lang": "en",
+    "width": 1440,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/research/",
+    "lang": "en",
+    "width": 390,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
     "route": "/uses/",
     "lang": "it",
     "width": 1440,
@@ -56,6 +84,146 @@
     "result": "pass"
   },
   {
+    "route": "/projects/prof-gecko/",
+    "lang": "it",
+    "width": 1440,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/prof-gecko/",
+    "lang": "it",
+    "width": 390,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/prof-gecko/",
+    "lang": "en",
+    "width": 1440,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/prof-gecko/",
+    "lang": "en",
+    "width": 390,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/camaleonte/",
+    "lang": "it",
+    "width": 1440,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/camaleonte/",
+    "lang": "it",
+    "width": 390,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/camaleonte/",
+    "lang": "en",
+    "width": 1440,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/camaleonte/",
+    "lang": "en",
+    "width": 390,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/social-viewer/",
+    "lang": "it",
+    "width": 1440,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/social-viewer/",
+    "lang": "it",
+    "width": 390,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/social-viewer/",
+    "lang": "en",
+    "width": 1440,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/social-viewer/",
+    "lang": "en",
+    "width": 390,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/social-viewer/test/",
+    "lang": "it",
+    "width": 1440,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/social-viewer/test/",
+    "lang": "it",
+    "width": 390,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/social-viewer/test/",
+    "lang": "en",
+    "width": 1440,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/social-viewer/test/",
+    "lang": "en",
+    "width": 390,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/404.html",
+    "lang": "it",
+    "width": 1440,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/404.html",
+    "lang": "it",
+    "width": 390,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/404.html",
+    "lang": "en",
+    "width": 1440,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
+    "route": "/404.html",
+    "lang": "en",
+    "width": 390,
+    "targets": ">=44px",
+    "result": "pass"
+  },
+  {
     "route": "/",
     "lang": "it",
     "width": 320,
@@ -100,6 +268,50 @@
     "result": "pass"
   },
   {
+    "route": "/research/",
+    "lang": "it",
+    "width": 320,
+    "height": 844,
+    "deviceScaleFactor": 1,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/research/",
+    "lang": "it",
+    "width": 720,
+    "height": 450,
+    "deviceScaleFactor": 2,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/research/",
+    "lang": "en",
+    "width": 320,
+    "height": 844,
+    "deviceScaleFactor": 1,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/research/",
+    "lang": "en",
+    "width": 720,
+    "height": 450,
+    "deviceScaleFactor": 2,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
     "route": "/uses/",
     "lang": "it",
     "width": 320,
@@ -134,6 +346,226 @@
   },
   {
     "route": "/uses/",
+    "lang": "en",
+    "width": 720,
+    "height": 450,
+    "deviceScaleFactor": 2,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/prof-gecko/",
+    "lang": "it",
+    "width": 320,
+    "height": 844,
+    "deviceScaleFactor": 1,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/prof-gecko/",
+    "lang": "it",
+    "width": 720,
+    "height": 450,
+    "deviceScaleFactor": 2,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/prof-gecko/",
+    "lang": "en",
+    "width": 320,
+    "height": 844,
+    "deviceScaleFactor": 1,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/prof-gecko/",
+    "lang": "en",
+    "width": 720,
+    "height": 450,
+    "deviceScaleFactor": 2,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/camaleonte/",
+    "lang": "it",
+    "width": 320,
+    "height": 844,
+    "deviceScaleFactor": 1,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/camaleonte/",
+    "lang": "it",
+    "width": 720,
+    "height": 450,
+    "deviceScaleFactor": 2,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/camaleonte/",
+    "lang": "en",
+    "width": 320,
+    "height": 844,
+    "deviceScaleFactor": 1,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/camaleonte/",
+    "lang": "en",
+    "width": 720,
+    "height": 450,
+    "deviceScaleFactor": 2,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/social-viewer/",
+    "lang": "it",
+    "width": 320,
+    "height": 844,
+    "deviceScaleFactor": 1,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/social-viewer/",
+    "lang": "it",
+    "width": 720,
+    "height": 450,
+    "deviceScaleFactor": 2,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/social-viewer/",
+    "lang": "en",
+    "width": 320,
+    "height": 844,
+    "deviceScaleFactor": 1,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/social-viewer/",
+    "lang": "en",
+    "width": 720,
+    "height": 450,
+    "deviceScaleFactor": 2,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/social-viewer/test/",
+    "lang": "it",
+    "width": 320,
+    "height": 844,
+    "deviceScaleFactor": 1,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/social-viewer/test/",
+    "lang": "it",
+    "width": 720,
+    "height": 450,
+    "deviceScaleFactor": 2,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/social-viewer/test/",
+    "lang": "en",
+    "width": 320,
+    "height": 844,
+    "deviceScaleFactor": 1,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/projects/social-viewer/test/",
+    "lang": "en",
+    "width": 720,
+    "height": 450,
+    "deviceScaleFactor": 2,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/404.html",
+    "lang": "it",
+    "width": 320,
+    "height": 844,
+    "deviceScaleFactor": 1,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/404.html",
+    "lang": "it",
+    "width": 720,
+    "height": 450,
+    "deviceScaleFactor": 2,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/404.html",
+    "lang": "en",
+    "width": 320,
+    "height": 844,
+    "deviceScaleFactor": 1,
+    "skip": "focused main",
+    "targets": "44×44",
+    "reducedMotion": "no running animations",
+    "result": "pass"
+  },
+  {
+    "route": "/404.html",
     "lang": "en",
     "width": 720,
     "height": 450,

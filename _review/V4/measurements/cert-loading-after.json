@@ -10,468 +10,612 @@
     {
       "viewport": 1440,
       "reader": "after 3 s",
-      "medianMs": 17,
+      "medianMs": 21,
       "runsMs": [
-        17,
-        16,
-        17
+        19,
+        21,
+        21
       ],
       "trace": [
         {
           "path": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
-          "startAfterClick": -2609,
-          "duration": 235,
+          "startAfterClick": -2001,
+          "duration": 190,
           "bytes": 7646
         },
         {
           "path": "/assets/certifications/data-science-professional-course-thumb-300.webp",
-          "startAfterClick": -2609,
-          "duration": 223,
+          "startAfterClick": -2001,
+          "duration": 214,
           "bytes": 7102
         },
         {
           "path": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
-          "startAfterClick": -2609,
-          "duration": 220,
+          "startAfterClick": -2000,
+          "duration": 209,
           "bytes": 5814
         },
         {
           "path": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
-          "startAfterClick": -2609,
-          "duration": 236,
+          "startAfterClick": -2000,
+          "duration": 222,
           "bytes": 10146
         },
         {
           "path": "/assets/certifications/sas-programming-course-thumb-300.webp",
-          "startAfterClick": -2609,
-          "duration": 220,
+          "startAfterClick": -2000,
+          "duration": 210,
           "bytes": 4772
         },
         {
           "path": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
-          "startAfterClick": -2609,
-          "duration": 223,
+          "startAfterClick": -2000,
+          "duration": 216,
           "bytes": 7070
         },
         {
           "path": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
-          "startAfterClick": -2609,
-          "duration": 451,
+          "startAfterClick": -2000,
+          "duration": 371,
           "bytes": 8086
         },
         {
-          "path": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
-          "startAfterClick": -2608,
-          "duration": 435,
-          "bytes": 6284
+          "path": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb-300.webp",
+          "startAfterClick": -2000,
+          "duration": 398,
+          "bytes": 5482
+        },
+        {
+          "path": "/assets/certifications/understanding-financial-markets-thumb-300.webp",
+          "startAfterClick": -2000,
+          "duration": 398,
+          "bytes": 5562
         },
         {
           "path": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
-          "startAfterClick": -2608,
-          "duration": 451,
+          "startAfterClick": -2000,
+          "duration": 424,
           "bytes": 7886
         },
         {
+          "path": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
+          "startAfterClick": -2000,
+          "duration": 425,
+          "bytes": 6284
+        },
+        {
           "path": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
-          "startAfterClick": -2608,
-          "duration": 451,
+          "startAfterClick": -2000,
+          "duration": 425,
           "bytes": 7430
         },
         {
           "path": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
-          "startAfterClick": -2608,
-          "duration": 452,
+          "startAfterClick": -2000,
+          "duration": 568,
           "bytes": 9842
+        },
+        {
+          "path": "/assets/certifications/greek-and-roman-mythology-thumb-300.webp",
+          "startAfterClick": -1999,
+          "duration": 585,
+          "bytes": 4878
+        },
+        {
+          "path": "/assets/certifications/archaeoastronomy-thumb-300.webp",
+          "startAfterClick": -1999,
+          "duration": 585,
+          "bytes": 4636
         }
       ]
     },
     {
       "viewport": 1440,
       "reader": "at load",
-      "medianMs": 468,
+      "medianMs": 640,
       "runsMs": [
-        487,
-        450,
-        468
+        640,
+        639,
+        666
       ],
       "trace": [
         {
           "path": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
-          "startAfterClick": 13,
-          "duration": 226,
+          "startAfterClick": 0,
+          "duration": 244,
           "bytes": 7646
         },
         {
-          "path": "/assets/certifications/data-science-professional-course-thumb-300.webp",
-          "startAfterClick": 13,
-          "duration": 226,
-          "bytes": 7102
-        },
-        {
           "path": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
-          "startAfterClick": 13,
-          "duration": 211,
+          "startAfterClick": 1,
+          "duration": 224,
           "bytes": 5814
         },
         {
+          "path": "/assets/certifications/data-science-professional-course-thumb-300.webp",
+          "startAfterClick": 1,
+          "duration": 244,
+          "bytes": 7102
+        },
+        {
           "path": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
-          "startAfterClick": 13,
-          "duration": 227,
+          "startAfterClick": 1,
+          "duration": 244,
           "bytes": 10146
         },
         {
           "path": "/assets/certifications/sas-programming-course-thumb-300.webp",
-          "startAfterClick": 13,
-          "duration": 226,
+          "startAfterClick": 1,
+          "duration": 223,
           "bytes": 4772
         },
         {
           "path": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
-          "startAfterClick": 13,
-          "duration": 226,
+          "startAfterClick": 1,
+          "duration": 244,
           "bytes": 7070
         },
         {
+          "path": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb-300.webp",
+          "startAfterClick": 1,
+          "duration": 413,
+          "bytes": 5482
+        },
+        {
           "path": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
-          "startAfterClick": 13,
-          "duration": 405,
+          "startAfterClick": 1,
+          "duration": 425,
           "bytes": 8086
         },
         {
+          "path": "/assets/certifications/understanding-financial-markets-thumb-300.webp",
+          "startAfterClick": 1,
+          "duration": 433,
+          "bytes": 5562
+        },
+        {
           "path": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
-          "startAfterClick": 13,
-          "duration": 436,
+          "startAfterClick": 1,
+          "duration": 449,
           "bytes": 7886
         },
         {
           "path": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
-          "startAfterClick": 13,
-          "duration": 435,
+          "startAfterClick": 1,
+          "duration": 448,
           "bytes": 6284
         },
         {
           "path": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
-          "startAfterClick": 13,
-          "duration": 451,
+          "startAfterClick": 1,
+          "duration": 449,
           "bytes": 7430
         },
         {
+          "path": "/assets/certifications/greek-and-roman-mythology-thumb-300.webp",
+          "startAfterClick": 1,
+          "duration": 605,
+          "bytes": 4878
+        },
+        {
           "path": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
-          "startAfterClick": 13,
-          "duration": 451,
+          "startAfterClick": 1,
+          "duration": 621,
           "bytes": 9842
+        },
+        {
+          "path": "/assets/certifications/archaeoastronomy-thumb-300.webp",
+          "startAfterClick": 1,
+          "duration": 621,
+          "bytes": 4636
         }
       ]
     },
     {
       "viewport": 1440,
       "reader": "hover, then 300 ms",
-      "medianMs": 72,
+      "medianMs": 334,
       "runsMs": [
-        71,
-        72,
-        92
+        314,
+        335,
+        334
       ],
       "trace": [
         {
           "path": "/assets/certifications/ai-and-machine-learning-engineering-thumb-300.webp",
-          "startAfterClick": -384,
-          "duration": 230,
+          "startAfterClick": -328,
+          "duration": 222,
           "bytes": 7646
         },
         {
           "path": "/assets/certifications/data-science-professional-course-thumb-300.webp",
-          "startAfterClick": -384,
-          "duration": 230,
+          "startAfterClick": -328,
+          "duration": 222,
           "bytes": 7102
         },
         {
           "path": "/assets/certifications/blockchain-project-lead-specialization-thumb-300.webp",
-          "startAfterClick": -383,
-          "duration": 214,
+          "startAfterClick": -328,
+          "duration": 222,
           "bytes": 5814
         },
         {
           "path": "/assets/certifications/blockchain-and-digital-assets-course-thumb-300.webp",
-          "startAfterClick": -383,
-          "duration": 233,
+          "startAfterClick": -328,
+          "duration": 226,
           "bytes": 10146
         },
         {
           "path": "/assets/certifications/sas-programming-course-thumb-300.webp",
-          "startAfterClick": -383,
-          "duration": 215,
+          "startAfterClick": -328,
+          "duration": 221,
           "bytes": 4772
         },
         {
           "path": "/assets/certifications/data-structures-and-algorithms-thumb-300.webp",
-          "startAfterClick": -383,
-          "duration": 230,
+          "startAfterClick": -327,
+          "duration": 226,
           "bytes": 7070
         },
         {
+          "path": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb-300.webp",
+          "startAfterClick": -327,
+          "duration": 431,
+          "bytes": 5482
+        },
+        {
           "path": "/assets/certifications/financial-technology-specialization-thumb-300.webp",
-          "startAfterClick": -383,
-          "duration": 396,
+          "startAfterClick": -327,
+          "duration": 443,
           "bytes": 8086
         },
         {
+          "path": "/assets/certifications/understanding-financial-markets-thumb-300.webp",
+          "startAfterClick": -327,
+          "duration": 431,
+          "bytes": 5562
+        },
+        {
           "path": "/assets/certifications/cybersecurity-professional-course-thumb-300.webp",
-          "startAfterClick": -383,
-          "duration": 428,
+          "startAfterClick": -327,
+          "duration": 445,
           "bytes": 7886
         },
         {
           "path": "/assets/certifications/french-b2-2-certificate-thumb-300.webp",
-          "startAfterClick": -383,
-          "duration": 428,
+          "startAfterClick": -327,
+          "duration": 443,
           "bytes": 6284
         },
         {
           "path": "/assets/certifications/advanced-english-c1-equivalent-thumb-300.webp",
-          "startAfterClick": -383,
-          "duration": 428,
+          "startAfterClick": -327,
+          "duration": 446,
           "bytes": 7430
         },
         {
           "path": "/assets/certifications/fullstack-developer-certification-thumb-300.webp",
-          "startAfterClick": -383,
-          "duration": 443,
+          "startAfterClick": -327,
+          "duration": 623,
           "bytes": 9842
+        },
+        {
+          "path": "/assets/certifications/greek-and-roman-mythology-thumb-300.webp",
+          "startAfterClick": -327,
+          "duration": 619,
+          "bytes": 4878
+        },
+        {
+          "path": "/assets/certifications/archaeoastronomy-thumb-300.webp",
+          "startAfterClick": -327,
+          "duration": 625,
+          "bytes": 4636
         }
       ]
     },
     {
       "viewport": 390,
       "reader": "after 3 s",
-      "medianMs": 25,
+      "medianMs": 32,
       "runsMs": [
-        26,
-        25,
-        25
+        32,
+        33,
+        31
       ],
       "trace": [
         {
           "path": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
-          "startAfterClick": -3001,
-          "duration": 262,
+          "startAfterClick": -2000,
+          "duration": 268,
           "bytes": 17078
         },
         {
           "path": "/assets/certifications/data-science-professional-course-thumb.webp",
-          "startAfterClick": -3001,
-          "duration": 259,
+          "startAfterClick": -2000,
+          "duration": 268,
           "bytes": 16208
         },
         {
           "path": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
-          "startAfterClick": -3001,
-          "duration": 245,
+          "startAfterClick": -2000,
+          "duration": 233,
           "bytes": 10222
         },
         {
           "path": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
-          "startAfterClick": -3001,
-          "duration": 275,
+          "startAfterClick": -2000,
+          "duration": 271,
           "bytes": 19054
         },
         {
           "path": "/assets/certifications/sas-programming-course-thumb.webp",
-          "startAfterClick": -3000,
-          "duration": 244,
+          "startAfterClick": -2000,
+          "duration": 247,
           "bytes": 9562
         },
         {
           "path": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
-          "startAfterClick": -3000,
-          "duration": 263,
+          "startAfterClick": -2000,
+          "duration": 269,
           "bytes": 16286
         },
         {
           "path": "/assets/certifications/financial-technology-specialization-thumb.webp",
-          "startAfterClick": -3000,
-          "duration": 482,
+          "startAfterClick": -2000,
+          "duration": 448,
           "bytes": 18386
         },
         {
-          "path": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
-          "startAfterClick": -3000,
+          "path": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb.webp",
+          "startAfterClick": -2000,
+          "duration": 449,
+          "bytes": 12042
+        },
+        {
+          "path": "/assets/certifications/understanding-financial-markets-thumb.webp",
+          "startAfterClick": -2000,
           "duration": 497,
+          "bytes": 11422
+        },
+        {
+          "path": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
+          "startAfterClick": -2000,
+          "duration": 519,
           "bytes": 18078
         },
         {
           "path": "/assets/certifications/french-b2-2-certificate-thumb.webp",
-          "startAfterClick": -3000,
-          "duration": 513,
+          "startAfterClick": -2000,
+          "duration": 511,
           "bytes": 15532
         },
         {
           "path": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
-          "startAfterClick": -3000,
-          "duration": 513,
+          "startAfterClick": -2000,
+          "duration": 519,
           "bytes": 16854
         },
         {
           "path": "/assets/certifications/fullstack-developer-certification-thumb.webp",
-          "startAfterClick": -3000,
-          "duration": 529,
+          "startAfterClick": -2000,
+          "duration": 666,
           "bytes": 18448
+        },
+        {
+          "path": "/assets/certifications/greek-and-roman-mythology-thumb.webp",
+          "startAfterClick": -2000,
+          "duration": 650,
+          "bytes": 11158
+        },
+        {
+          "path": "/assets/certifications/archaeoastronomy-thumb.webp",
+          "startAfterClick": -2000,
+          "duration": 682,
+          "bytes": 10010
         }
       ]
     },
     {
       "viewport": 390,
       "reader": "at load",
-      "medianMs": 544,
+      "medianMs": 722,
       "runsMs": [
-        545,
-        544,
-        527
+        717,
+        722,
+        758
       ],
       "trace": [
         {
           "path": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
-          "startAfterClick": -7,
-          "duration": 277,
+          "startAfterClick": 0,
+          "duration": 275,
           "bytes": 17078
         },
         {
+          "path": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+          "startAfterClick": 0,
+          "duration": 246,
+          "bytes": 10222
+        },
+        {
           "path": "/assets/certifications/data-science-professional-course-thumb.webp",
-          "startAfterClick": -7,
-          "duration": 277,
+          "startAfterClick": 0,
+          "duration": 274,
           "bytes": 16208
         },
         {
           "path": "/assets/certifications/sas-programming-course-thumb.webp",
-          "startAfterClick": -7,
-          "duration": 247,
+          "startAfterClick": 1,
+          "duration": 261,
           "bytes": 9562
         },
         {
-          "path": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
-          "startAfterClick": -7,
-          "duration": 247,
-          "bytes": 10222
-        },
-        {
           "path": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
-          "startAfterClick": -7,
-          "duration": 277,
+          "startAfterClick": 1,
+          "duration": 283,
           "bytes": 19054
         },
         {
           "path": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
-          "startAfterClick": -7,
-          "duration": 278,
+          "startAfterClick": 1,
+          "duration": 283,
           "bytes": 16286
         },
         {
           "path": "/assets/certifications/financial-technology-specialization-thumb.webp",
-          "startAfterClick": -7,
-          "duration": 462,
+          "startAfterClick": 1,
+          "duration": 449,
           "bytes": 18386
         },
         {
+          "path": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb.webp",
+          "startAfterClick": 1,
+          "duration": 475,
+          "bytes": 12042
+        },
+        {
+          "path": "/assets/certifications/understanding-financial-markets-thumb.webp",
+          "startAfterClick": 1,
+          "duration": 503,
+          "bytes": 11422
+        },
+        {
           "path": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
-          "startAfterClick": -6,
-          "duration": 463,
+          "startAfterClick": 1,
+          "duration": 524,
           "bytes": 18078
         },
         {
           "path": "/assets/certifications/french-b2-2-certificate-thumb.webp",
-          "startAfterClick": -6,
-          "duration": 509,
+          "startAfterClick": 1,
+          "duration": 524,
           "bytes": 15532
         },
         {
           "path": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
-          "startAfterClick": -6,
-          "duration": 509,
+          "startAfterClick": 1,
+          "duration": 524,
           "bytes": 16854
         },
         {
           "path": "/assets/certifications/fullstack-developer-certification-thumb.webp",
-          "startAfterClick": -6,
-          "duration": 516,
+          "startAfterClick": 1,
+          "duration": 650,
           "bytes": 18448
+        },
+        {
+          "path": "/assets/certifications/greek-and-roman-mythology-thumb.webp",
+          "startAfterClick": 1,
+          "duration": 658,
+          "bytes": 11158
+        },
+        {
+          "path": "/assets/certifications/archaeoastronomy-thumb.webp",
+          "startAfterClick": 1,
+          "duration": 688,
+          "bytes": 10010
         }
       ]
     },
     {
       "viewport": 390,
       "reader": "hover, then 300 ms",
-      "medianMs": 174,
+      "medianMs": 390,
       "runsMs": [
-        170,
-        176,
-        174
+        390,
+        390,
+        397
       ],
       "trace": [
         {
           "path": "/assets/certifications/ai-and-machine-learning-engineering-thumb.webp",
-          "startAfterClick": -364,
-          "duration": 277,
+          "startAfterClick": -315,
+          "duration": 263,
           "bytes": 17078
         },
         {
-          "path": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
-          "startAfterClick": -364,
-          "duration": 245,
-          "bytes": 10222
-        },
-        {
           "path": "/assets/certifications/data-science-professional-course-thumb.webp",
-          "startAfterClick": -364,
-          "duration": 277,
+          "startAfterClick": -314,
+          "duration": 264,
           "bytes": 16208
         },
         {
+          "path": "/assets/certifications/blockchain-project-lead-specialization-thumb.webp",
+          "startAfterClick": -314,
+          "duration": 240,
+          "bytes": 10222
+        },
+        {
           "path": "/assets/certifications/blockchain-and-digital-assets-course-thumb.webp",
-          "startAfterClick": -364,
-          "duration": 277,
+          "startAfterClick": -314,
+          "duration": 269,
           "bytes": 19054
         },
         {
           "path": "/assets/certifications/sas-programming-course-thumb.webp",
-          "startAfterClick": -364,
-          "duration": 245,
+          "startAfterClick": -314,
+          "duration": 242,
           "bytes": 9562
         },
         {
           "path": "/assets/certifications/data-structures-and-algorithms-thumb.webp",
-          "startAfterClick": -364,
-          "duration": 277,
+          "startAfterClick": -314,
+          "duration": 267,
           "bytes": 16286
         },
         {
+          "path": "/assets/certifications/fundamentals-of-quantitative-modeling-thumb.webp",
+          "startAfterClick": -314,
+          "duration": 451,
+          "bytes": 12042
+        },
+        {
           "path": "/assets/certifications/financial-technology-specialization-thumb.webp",
-          "startAfterClick": -364,
-          "duration": 467,
+          "startAfterClick": -314,
+          "duration": 470,
           "bytes": 18386
         },
         {
+          "path": "/assets/certifications/understanding-financial-markets-thumb.webp",
+          "startAfterClick": -314,
+          "duration": 485,
+          "bytes": 11422
+        },
+        {
           "path": "/assets/certifications/cybersecurity-professional-course-thumb.webp",
-          "startAfterClick": -364,
-          "duration": 465,
+          "startAfterClick": -314,
+          "duration": 506,
           "bytes": 18078
         },
         {
-          "path": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
-          "startAfterClick": -364,
-          "duration": 512,
-          "bytes": 16854
-        },
-        {
           "path": "/assets/certifications/french-b2-2-certificate-thumb.webp",
-          "startAfterClick": -364,
-          "duration": 512,
+          "startAfterClick": -314,
+          "duration": 507,
           "bytes": 15532
         },
         {
+          "path": "/assets/certifications/advanced-english-c1-equivalent-thumb.webp",
+          "startAfterClick": -314,
+          "duration": 513,
+          "bytes": 16854
+        },
+        {
           "path": "/assets/certifications/fullstack-developer-certification-thumb.webp",
-          "startAfterClick": -363,
-          "duration": 512,
+          "startAfterClick": -314,
+          "duration": 638,
           "bytes": 18448
+        },
+        {
+          "path": "/assets/certifications/greek-and-roman-mythology-thumb.webp",
+          "startAfterClick": -314,
+          "duration": 663,
+          "bytes": 11158
+        },
+        {
+          "path": "/assets/certifications/archaeoastronomy-thumb.webp",
+          "startAfterClick": -313,
+          "duration": 674,
+          "bytes": 10010
         }
       ]
     }

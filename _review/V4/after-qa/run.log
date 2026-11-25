@@ -1,0 +1,352 @@
+### node scripts/check.mjs
+$ node scripts/build.mjs
+Built 16 page(s) in _site.
+$ node scripts/validate-site.mjs
+/404.html: 43749 HTML+CSS+JS bytes
+/: 224130 HTML+CSS+JS bytes, initial resources 363741 bytes / 11 requests
+/Nexus-portfolio/consigli.html: 24170 HTML+CSS+JS bytes
+/Nexus-portfolio/: 24170 HTML+CSS+JS bytes
+/Nexus-portfolio/prof-gecko.html: 24291 HTML+CSS+JS bytes
+/Nexus-portfolio/research.html: 24227 HTML+CSS+JS bytes
+/Nexus-portfolio/socialviewer-privacy.html: 24262 HTML+CSS+JS bytes
+/Nexus-portfolio/testers.html: 24265 HTML+CSS+JS bytes
+/projects/camaleonte/: 55979 HTML+CSS+JS bytes
+/projects/: 24233 HTML+CSS+JS bytes
+/projects/prof-gecko/: 55413 HTML+CSS+JS bytes
+/projects/social-viewer/: 59439 HTML+CSS+JS bytes
+/projects/social-viewer/privacy/: 67782 HTML+CSS+JS bytes
+/projects/social-viewer/test/: 61170 HTML+CSS+JS bytes
+/research/: 59537 HTML+CSS+JS bytes
+/uses/: 60603 HTML+CSS+JS bytes
+Validated font families, 64044/120000 WOFF2 bytes, 79 contrast pairs and 44px control rules.
+/ it 1440: cold browser load 363407 bytes / 11 requests; idle prefetch 0 bytes / 0 requests
+/ en 1440: cold browser load 363407 bytes / 11 requests; idle prefetch 0 bytes / 0 requests
+/ it 390: cold browser load 304004 bytes / 11 requests; idle prefetch 0 bytes / 0 requests
+/ en 390: cold browser load 304004 bytes / 11 requests; idle prefetch 0 bytes / 0 requests
+Validated 16 HTML page(s), 1 browser scripts and the approved desktop artwork.
+$ node --test --test-reporter=spec scripts/qa/test-site.mjs scripts/test-build-assets.mjs scripts/test-data.mjs scripts/test-design-checks.mjs scripts/test-detail-pages.mjs scripts/test-disclosures.mjs scripts/test-home.mjs scripts/test-i18n.mjs scripts/test-legacy.mjs scripts/test-nexus-downloads.mjs scripts/test-nexus-mods.mjs scripts/test-privacy.mjs scripts/test-ringmin.mjs scripts/test-workflows.mjs
+✔ template interpolation escapes text, attributes and script data (2.0297ms)
+✔ reference scanning ignores comments and JSON strings, and reads quoted and single-quoted attributes (2.7851ms)
+✔ directory indexes, query-preserving redirects, custom 404s and cross-page fragments (165.4991ms)
+✔ minification preserves text, raw content, descendant selectors and JS line terminators (2.8989ms)
+✔ the CSS byte threshold includes the protected home block and hashes actual bundle content (75.6653ms)
+✔ validator counts delivered bytes once, lazy hero assets and forbidden CSS requests (106.0122ms)
+✔ audit includes each existing stub URL and fails closed on missing public or active routes (22.7821ms)
+✔ catalogues have complete IT/EN pairs, safe URLs and unique identifiers (6.7872ms)
+✔ projects preserve catalogue order, visibility, summaries, routes and link types (1.6646ms)
+✔ featured mods, certificates, research, tutoring and profile have their required fields (1.044ms)
+✔ every responsive image matches its encoded dimensions, directory, size and budget (244.8702ms)
+✔ responsive markup localizes alt text and opts priority images into eager loading (3.8928ms)
+✔ the QA Data section shows all 34 entries and keeps planned routes out of navigation (7.5083ms)
+✔ text arrows, ordinary digits and fragments survive the emoji check (3.4005ms)
+Validated font families, 0/120000 WOFF2 bytes, 5 contrast pairs and 44px control rules.
+✔ unknown font, insufficient contrast and undersized controls fail Node validation (81.6655ms)
+✔ detail pages publish a priority picture, a canonical author and working return links (45.9237ms)
+✔ Ringmin articles preserve their identifiers, summaries and authorship (13.2768ms)
+✔ project covers and public app links match the source catalogue (8.5932ms)
+✔ recommendations preserve the approved affiliate URLs and both original disclosures (4.6025ms)
+✔ every page links its signature to the home and lists "Cosa uso" last in the header (30.6617ms)
+✔ about and work animate open and closed, preserving native details state (5.5093ms)
+✔ interrupts a transition without jumping, and settles to the last requested state (1.372ms)
+✔ prefers-reduced-motion uses immediate native disclosure (5.8331ms)
+✔ switching to reduced motion cancels the animation and reaches its intended state (4.1135ms)
+✔ without Web Animations the disclosure remains natively usable (2.8369ms)
+✔ a disclosure opened by a deep link closes on its first summary click (2.1554ms)
+✔ the home keeps the master structure and renders every catalogue from data (130.4212ms)
+✔ the home rejects V2 and R1 components (6.4914ms)
+✔ home links reach existing pages, never the legacy portfolio or the old projects page (76.3512ms)
+✔ external actions show their platform mark; other actions keep an arrow (23.1654ms)
+✔ every count is the same tile: drawing or mark, number, label, and an arrow only on links (16.9525ms)
+✔ the Lessons tab puts the text and its action before the two portals (19.4879ms)
+✔ the Modding tab lists every published mod with its own numbers and picture rule (17.6599ms)
+✔ the Research tab draws the certified configurations and both kinds of dots (66.6448ms)
+✔ Chi sono shows the text, the facts from data and one deck card per certificate (53.6917ms)
+✔ IT and EN have the same keys and every bilingual value in the data is nonempty (4.401ms)
+✔ nested bilingual records are checked even when their parent has its own translations (1.7018ms)
+✔ every built HTML translation key exists in both dictionaries (100.5944ms)
+✔ each route has localized document and sharing titles (1.6152ms)
+✔ the head selects query, storage or browser language in that order, before styles and body (8.3998ms)
+✔ visible-text checks find leaked prose in either direction, across line breaks and formatted counts (1.6158ms)
+✔ every legacy image is byte-identical in the repository and the published tree (216.0982ms)
+✔ each old URL replaces history, retaining query and remapping only its own fragments (68.9462ms)
+✔ visual QA holds only the requested redirect and preserves its published body (3072.9677ms)
+✔ only links from their own stub can defer an undeclared destination (9.6748ms)
+✔ sitemap reflects canonical indexable routes, dates and the new portrait (12.9497ms)
+✔ validator rejects mismatched refresh, noindex stubs and non-self canonicals (1.0972ms)
+✔ uses the exact Nexus Mods profile uniqueModDownloads metric, not all downloads or collections (4.1563ms)
+✔ rejects API errors without overwriting the prior snapshot (1.5687ms)
+✔ rejects wrong profile identity and malformed unique-download counts (2.5309ms)
+✔ renders unique downloads exactly in Italian and English (43.9904ms)
+✔ loads the uniqueModDownloads snapshot and rejects totalDownloads-only data (1.4605ms)
+✔ updates the download counter after changing language, without changing to the total-download metric (20.1521ms)
+✔ reads every mod of the verified member with the published query (5.2749ms)
+✔ cleans the published names (0.3392ms)
+✔ rejects a partial list, malformed mods and API errors (5.3067ms)
+✔ reads the size of PNG and WebP files from their headers (1.1577ms)
+✔ downloads pictures for every published mod, translations included, keeps existing covers and removes stale files (20.356ms)
+✔ refuses pictures from another host, failed downloads and non-images (3.571ms)
+✔ the committed snapshot matches its pictures and the featured covers (99.1027ms)
+✔ the complete published privacy document matches the original text snapshot (4.2738ms)
+✔ the published text matches the reference checkout directly (4.4348ms)
+✔ both legal editions, all twelve disclosures and all three contact links are reachable (4.4726ms)
+✔ the snapshot holds the twelve certified optima and the asymptotic table (4.2615ms)
+✔ in every configuration each pair of circles is tangent or apart (3.753ms)
+✔ an overlapping drawing fails the same check (0.3897ms)
+✔ the snapshot matches the reference checkout (101.9061ms)
+✔ the certified interval for C* lies above 1/8 and above every finite value (0.5113ms)
+✔ the importer reads both bounds and rejects sources without them (15.8562ms)
+✔ the Nexus refresh keeps its daily schedule, manual trigger and parser test (1.72ms)
+✔ the scheduled commit stages only the snapshots and their pictures, with an unchanged exit (3.3244ms)
+✔ Pages rebuilds main after a successful Nexus refresh without granting Actions write access (23.6621ms)
+✔ Pages deploys the checked artifact and branch validation runs on Node 22 (2.3815ms)
+ℹ tests 73
+ℹ suites 0
+ℹ pass 73
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3697.1159
+$ node scripts/qa/links.mjs
+51 legacy sources and assets returned HTTP 200 on loopback.
+Crawled 178 local file(s).
+External (unfetched) https://arxiv.org/abs/2607.28654
+External (unfetched) https://arxiv.org/abs/2609.13630
+External (unfetched) https://carte-senza-umanita.onrender.com/
+External (unfetched) https://chi-l-ha-detto.vercel.app/
+External (unfetched) https://diariodibordo.netlify.app/
+External (unfetched) https://doi.org/10.5281/zenodo.22849826
+External (unfetched) https://easy-contract.netlify.app/
+External (unfetched) https://falker47.github.io/Codice-Fiscale/
+External (unfetched) https://falker47.github.io/Crack-the-Code/
+External (unfetched) https://falker47.github.io/IBAN-Checker/
+External (unfetched) https://falker47.github.io/SOMMATRIX/
+External (unfetched) https://falker47.github.io/ZEROfilez/
+External (unfetched) https://falker47.github.io/camaleonte/
+External (unfetched) https://falker47.github.io/mauriziofalconi-ripetizioni/
+External (unfetched) https://github.com/falker47
+External (unfetched) https://github.com/falker47/Carte-senza-Umanita
+External (unfetched) https://github.com/falker47/Codice-Fiscale
+External (unfetched) https://github.com/falker47/Crack-the-Code
+External (unfetched) https://github.com/falker47/Diario-di-Bordo
+External (unfetched) https://github.com/falker47/HogwartsLegacy-SaveEditor
+External (unfetched) https://github.com/falker47/IBAN-Checker
+External (unfetched) https://github.com/falker47/Panacea
+External (unfetched) https://github.com/falker47/PokemonMysteryDungeon-SavEditor
+External (unfetched) https://github.com/falker47/SOMMATRIX
+External (unfetched) https://github.com/falker47/SocialViewer
+External (unfetched) https://github.com/falker47/ZEROfilez
+External (unfetched) https://github.com/falker47/camaleonte
+External (unfetched) https://github.com/falker47/chi-l-ha-detto
+External (unfetched) https://github.com/falker47/easy-contract
+External (unfetched) https://github.com/falker47/ringmin
+External (unfetched) https://github.com/falker47/ringmin-squared
+External (unfetched) https://groups.google.com/g/camaleonte-testing
+External (unfetched) https://link.amazon/B01Um942w
+External (unfetched) https://link.amazon/B04ikrTOS
+External (unfetched) https://link.amazon/B0cuqIZyw
+External (unfetched) https://link.amazon/B0h5EUEl1
+External (unfetched) https://oeis.org/wiki/User:Maurizio_Falconi
+External (unfetched) https://orcid.org/0009-0005-3162-3651
+External (unfetched) https://play.google.com/apps/testing/io.github.falker47.socialviewer
+External (unfetched) https://play.google.com/store/apps/details?id=com.falker.camaleonte
+External (unfetched) https://play.google.com/store/apps/details?id=io.github.falker47.socialviewer
+External (unfetched) https://pokemonmysterydungeon-reversequiz.netlify.app/
+External (unfetched) https://profgecko.vercel.app/
+External (unfetched) https://www.letuelezioni.it/insegnanti/maurizio-falconi.htm
+External (unfetched) https://www.linkedin.com/in/mauriziofalconi/
+External (unfetched) https://www.nexusmods.com/hogwartslegacy/mods/2414
+External (unfetched) https://www.nexusmods.com/profile/falker47/mods
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192150
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192165
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192168
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192171
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192204
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192264
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192270
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192271
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192290
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192291
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192317
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192318
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192352
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192394
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/192424
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/193424
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/193883
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/194441
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/196616
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/196979
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/197077
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/197092
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/197145
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/197146
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/198611
+External (unfetched) https://www.nexusmods.com/skyrimspecialedition/mods/198756
+External (unfetched) https://www.superprof.it/studente-fisica-propone-lezioni-matematica-fisica-per-scuola-media-liceo-parma-presenza-remoto.html
+External (unfetched) mailto:falker.dev@gmail.com
+External (unfetched) mailto:maurizio.falconi47@gmail.com
+### exit 0
+### node scripts/qa/legacy.mjs --task V4/after-qa
+79 browser navigations verified.
+### exit 0
+### node scripts/qa/i18n-check.mjs --task V4/after-qa
+/ it 1440 0 leaks
+/ it 390 0 leaks
+/ en 1440 0 leaks
+/ en 390 0 leaks
+/404.html it 1440 0 leaks
+/404.html it 390 0 leaks
+/404.html en 1440 0 leaks
+/404.html en 390 0 leaks
+/research/ it 1440 0 leaks
+/research/ it 390 0 leaks
+/research/ en 1440 0 leaks
+/research/ en 390 0 leaks
+/projects/prof-gecko/ it 1440 0 leaks
+/projects/prof-gecko/ it 390 0 leaks
+/projects/prof-gecko/ en 1440 0 leaks
+/projects/prof-gecko/ en 390 0 leaks
+/projects/camaleonte/ it 1440 0 leaks
+/projects/camaleonte/ it 390 0 leaks
+/projects/camaleonte/ en 1440 0 leaks
+/projects/camaleonte/ en 390 0 leaks
+/uses/ it 1440 0 leaks
+/uses/ it 390 0 leaks
+/uses/ en 1440 0 leaks
+/uses/ en 390 0 leaks
+/projects/social-viewer/ it 1440 0 leaks
+/projects/social-viewer/ it 390 0 leaks
+/projects/social-viewer/ en 1440 0 leaks
+/projects/social-viewer/ en 390 0 leaks
+/projects/social-viewer/test/ it 1440 0 leaks
+/projects/social-viewer/test/ it 390 0 leaks
+/projects/social-viewer/test/ en 1440 0 leaks
+/projects/social-viewer/test/ en 390 0 leaks
+/projects/social-viewer/privacy/ it 1440 0 leaks
+/projects/social-viewer/privacy/ it 390 0 leaks
+/projects/social-viewer/privacy/ en 1440 0 leaks
+/projects/social-viewer/privacy/ en 390 0 leaks
+/Nexus-portfolio/ it 1440 0 leaks
+/Nexus-portfolio/ it 390 0 leaks
+/Nexus-portfolio/ en 1440 0 leaks
+/Nexus-portfolio/ en 390 0 leaks
+/Nexus-portfolio/index.html it 1440 0 leaks
+/Nexus-portfolio/index.html it 390 0 leaks
+/Nexus-portfolio/index.html en 1440 0 leaks
+/Nexus-portfolio/index.html en 390 0 leaks
+/Nexus-portfolio/research.html it 1440 0 leaks
+/Nexus-portfolio/research.html it 390 0 leaks
+/Nexus-portfolio/research.html en 1440 0 leaks
+/Nexus-portfolio/research.html en 390 0 leaks
+/Nexus-portfolio/prof-gecko.html it 1440 0 leaks
+/Nexus-portfolio/prof-gecko.html it 390 0 leaks
+/Nexus-portfolio/prof-gecko.html en 1440 0 leaks
+/Nexus-portfolio/prof-gecko.html en 390 0 leaks
+/Nexus-portfolio/consigli.html it 1440 0 leaks
+/Nexus-portfolio/consigli.html it 390 0 leaks
+/Nexus-portfolio/consigli.html en 1440 0 leaks
+/Nexus-portfolio/consigli.html en 390 0 leaks
+/Nexus-portfolio/testers.html it 1440 0 leaks
+/Nexus-portfolio/testers.html it 390 0 leaks
+/Nexus-portfolio/testers.html en 1440 0 leaks
+/Nexus-portfolio/testers.html en 390 0 leaks
+/Nexus-portfolio/socialviewer-privacy.html it 1440 0 leaks
+/Nexus-portfolio/socialviewer-privacy.html it 390 0 leaks
+/Nexus-portfolio/socialviewer-privacy.html en 1440 0 leaks
+/Nexus-portfolio/socialviewer-privacy.html en 390 0 leaks
+/projects/ it 1440 0 leaks
+/projects/ it 390 0 leaks
+/projects/ en 1440 0 leaks
+/projects/ en 390 0 leaks
+### exit 0
+### node scripts/qa/interactions.mjs --task V4/after-qa --pages /,/research/,/uses/,/projects/prof-gecko/,/projects/camaleonte/,/projects/social-viewer/,/projects/social-viewer/test/,/404.html
+/ it 1440 passed
+/ it 390 passed
+/ en 1440 passed
+/ en 390 passed
+/research/ it 1440 passed
+/research/ it 390 passed
+/research/ en 1440 passed
+/research/ en 390 passed
+/uses/ it 1440 passed
+/uses/ it 390 passed
+/uses/ en 1440 passed
+/uses/ en 390 passed
+/projects/prof-gecko/ it 1440 passed
+/projects/prof-gecko/ it 390 passed
+/projects/prof-gecko/ en 1440 passed
+/projects/prof-gecko/ en 390 passed
+/projects/camaleonte/ it 1440 passed
+/projects/camaleonte/ it 390 passed
+/projects/camaleonte/ en 1440 passed
+/projects/camaleonte/ en 390 passed
+/projects/social-viewer/ it 1440 passed
+/projects/social-viewer/ it 390 passed
+/projects/social-viewer/ en 1440 passed
+/projects/social-viewer/ en 390 passed
+/projects/social-viewer/test/ it 1440 passed
+/projects/social-viewer/test/ it 390 passed
+/projects/social-viewer/test/ en 1440 passed
+/projects/social-viewer/test/ en 390 passed
+/404.html it 1440 passed
+/404.html it 390 passed
+/404.html en 1440 passed
+/404.html en 390 passed
+### exit 0
+### node scripts/qa/interactions.mjs --task V4/after-qa-privacy --pages /projects/social-viewer/privacy/
+/projects/social-viewer/privacy/ it 1440 passed
+/projects/social-viewer/privacy/ it 390 passed
+/projects/social-viewer/privacy/ en 1440 passed
+/projects/social-viewer/privacy/ en 390 passed
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: /projects/social-viewer/privacy/ it 320 {"small":["Falker Studio · Social Viewer","falker.dev@gmail.com"],"overflow":false,"running":0}
++ actual - expected
+
+  {
+    overflow: false,
+    running: 0,
++   small: [
++     'Falker Studio · Social Viewer',
++     'falker.dev@gmail.com'
++   ]
+-   small: []
+  }
+
+    at file:///C:/Users/Falker/code/falker47-wt/V4/scripts/qa/shared-a11y.mjs:37:18
+    at async withBrowser (file:///C:/Users/Falker/code/falker47-wt/V4/scripts/qa/browser.mjs:36:18)
+    at async runReflow (file:///C:/Users/Falker/code/falker47-wt/V4/scripts/qa/shared-a11y.mjs:10:3)
+    at async file:///C:/Users/Falker/code/falker47-wt/V4/scripts/qa/interactions.mjs:416:16 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: {
+    small: [ 'Falker Studio · Social Viewer', 'falker.dev@gmail.com' ],
+    overflow: false,
+    running: 0
+  },
+  expected: { small: [], overflow: false, running: 0 },
+  operator: 'deepStrictEqual'
+}
+
+Node.js v22.16.0
+### exit 1
+### node scripts/qa/social-viewer.mjs --task V4/after-qa
+Passed 19 Social Viewer interaction checks.
+### exit 0
+### node scripts/qa/release-layout.mjs --task V4/after-qa
+92 page and panel layouts, 47 distinct image files, 0 failures.
+### exit 0
+### node scripts/qa/overflow.mjs --task V4/after-qa
+150 layouts at 360, 390, 768, 1024, 1440 px, 0 with horizontal overflow.
+### exit 0
+### node scripts/qa/cert-loading.mjs --task V4/measurements --label after
+after 1440 after 3 s: 19 ms (runs 19, 18, 19), 15 thumbnails, first starts -2019 ms after the click
+after 1440 at load: 779 ms (runs 779, 794, 763), 15 thumbnails, first starts 151 ms after the click
+after 1440 hover, then 300 ms: 334 ms (runs 321, 335, 334), 15 thumbnails, first starts -315 ms after the click
+after 390 after 3 s: 30 ms (runs 30, 31, 30), 15 thumbnails, first starts -1995 ms after the click
+after 390 at load: 1723 ms (runs 1744, 1709, 1723), 15 thumbnails, first starts 997 ms after the click
+after 390 hover, then 300 ms: 386 ms (runs 386, 410, 375), 15 thumbnails, first starts -316 ms after the click
+### exit 0

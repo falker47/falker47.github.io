@@ -94,7 +94,7 @@
 
   // Certificates. The thumbnails sit inside the closed "Chi sono", where lazy images wait
   // until it opens. Start them once the page has loaded and the browser is idle, or as soon
-  // as the reader points at or focuses the summary. A card under the pointer or the focus
+  // as the reader points at, focuses or opens the summary. A card under the pointer or the focus
   // also fetches its full image for the viewer.
   const thumbnails = Array.from(document.querySelectorAll('.deck-card img'));
   let warmed = false;
@@ -106,7 +106,7 @@
   const about = thumbnails.length ? thumbnails[0].closest('details') : null;
   if (about) {
     const summary = about.querySelector(':scope > summary');
-    ['pointerenter', 'focus', 'touchstart'].forEach(type => summary.addEventListener(type, warm, { once: true, passive: true }));
+    ['pointerenter', 'focus', 'touchstart', 'click'].forEach(type => summary.addEventListener(type, warm, { once: true, passive: true }));
     const saveData = navigator.connection && navigator.connection.saveData;
     // A second after the load event, when the browser is idle: the first screen is settled by then.
     const idle = () => setTimeout(() => { if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout: 3000 }); else warm(); }, 1000);

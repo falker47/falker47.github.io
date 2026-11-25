@@ -221,7 +221,7 @@ function checkLessons(source) {
   const markup = panel(source, 'teaching');
   assert.ok(!markup.includes('card lesson-card') && !markup.includes('class="category-intro"'), 'The text replaces the separate lessons box');
   assert.equal(text(markup.match(/<h4 class="lessons-title">([^]*?)<\/h4>/)[1]), 'Lezioni di matematica e fisica');
-  assert.match(text(markup.match(/<p class="lessons-body">([^]*?)<\/p>/)[1]), /^Sono laureato in fisica e dal 2023 seguo studenti/);
+  assert.match(text(markup.match(/<p class="lessons-body">([^]*?)<\/p>/)[1]), /^La passione per la scienza mi ha portato a volerla anche insegnare, e dal 2023 seguo studenti/);
   assert.match(markup, new RegExp('<a class="lessons-cta" href="' + tutoring.portal + '"><span data-i18n="lessonsCta">Scopri le lezioni</span><svg class="icon"[^>]*><use href="#icon-arrow-right"/>'), 'CTA');
   assert.equal(text(markup.match(/<p class="lessons-lead">([^]*?)<\/p>/)[1]), 'Vuoi sapere cosa ne pensano i miei studenti? Ecco i portali dove insegno.');
   const order = ['lessons-title', 'lessons-body', 'lessons-cta', 'lessons-lead', 'card feedback-result'].map(name => markup.indexOf('class="' + name));
