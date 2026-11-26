@@ -43,7 +43,7 @@ export function detailPage(ctx, { kicker, media, altKey, spec, actions, body, ba
   <article class="detail-top" aria-labelledby="page-title">
     ${raw(cover(image, { sizes }))}
     <div class="detail-text"><p class="detail-kicker">${label(t, kicker)}</p>
-      <h1 id="page-title">${label(t, route.titleKey)}</h1>
+      <h1 id="page-title">${label(t, route.headingKey ?? route.titleKey)}</h1>
       <p class="detail-lead">${label(t, route.descriptionKey)}</p>
       ${raw(spec)}
       <div class="detail-links">${raw(actions.join(''))}</div>

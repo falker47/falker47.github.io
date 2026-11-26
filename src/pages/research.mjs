@@ -5,15 +5,23 @@ import { label } from '../partials/components.mjs';
 import { action, detailPage, projectFacts, section } from '../partials/detail-page.mjs';
 
 const project = projects.find(item => item.id === research.id);
+const repository = research.repositories.find(item => item.project === research.id).url;
 
 export const page = {
   path: project.page, titleKey: 'researchPageTitle', descriptionKey: 'researchPageLead',
   image: project.cover.variants.at(-1).src, type: 'CollectionPage', render,
-  entities: (_url, author) => research.papers.map(paper => ({
-    '@type': 'ScholarlyArticle', '@id': paper.url + '#article',
-    headline: paper.title, identifier: 'arXiv:' + paper.arxiv,
-    datePublished: '20' + paper.arxiv.slice(0, 2), url: paper.url, sameAs: paper.url, author,
-  })),
+  entities: (_url, author) => [
+    ...research.papers.map(paper => ({
+      '@type': 'ScholarlyArticle', '@id': paper.url + '#article',
+      headline: paper.title, identifier: 'arXiv:' + paper.arxiv,
+      datePublished: '20' + paper.arxiv.slice(0, 2), url: paper.url, sameAs: paper.url, author,
+    })),
+    // The code and its archived release, both linked on the page.
+    {
+      '@type': 'SoftwareSourceCode', '@id': repository + '#code', name: research.title, codeRepository: repository,
+      programmingLanguage: project.stack, identifier: research.zenodo.url, sameAs: research.zenodo.url, author,
+    },
+  ],
 };
 
 // The same texts as the Research tab of the home, followed by the arXiv title and a longer summary.
