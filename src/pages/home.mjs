@@ -48,11 +48,12 @@ export const graph = [
       "https://oeis.org/wiki/User:Maurizio_Falconi"
     ],
     "knowsAbout": [
-      "Data Engineering",
       "Applied AI",
+      "AI in Business Processes",
       "Automation",
       "Algorithms",
-      "Computational Research"
+      "Computational Research",
+      "Data Engineering"
     ]
   },
   {
