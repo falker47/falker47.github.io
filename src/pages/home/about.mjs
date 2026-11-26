@@ -76,15 +76,16 @@ ${raw(certificateDeck(ctx, credentials, 'home-certificate'))}</section>`;
 }
 
 // V5: under the tutoring figures, a card of the students' reviews: the portal with its five stars,
-// then one short excerpt at a time, quoted in Italian as written on Letuelezioni, with the
-// student's initial, name and month, and a bar that marks the open one. The script advances them,
-// a reader can swipe.
+// then one short excerpt at a time, quoted in Italian as written on Letuelezioni and signed with the
+// student's name, month and year (in the reader's language), and a bar that marks the open one. The
+// script advances them, a reader can swipe.
+const month = (date, lang) => new Intl.DateTimeFormat(lang, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(date + '-15'));
 function reviewStrip(copy) {
   const portal = tutoring.reviews[0].source;
-  const items = tutoring.reviews.map(review => html`<li class="review"><blockquote><p>${review.text}</p></blockquote><p class="review-by"><span class="review-initial" aria-hidden="true">${review.name[0]}</span>${review.name} · ${review.date.split('-').reverse().join('/')}</p></li>`);
+  const items = tutoring.reviews.map(review => html`<li class="review"><blockquote lang="it"><p>${review.text}</p></blockquote><p class="review-by"><strong>${review.name}</strong> · ${localized({ it: month(review.date, 'it'), en: month(review.date, 'en') })}</p></li>`);
   const bar = tutoring.reviews.map((review, index) => index ? '<i></i>' : '<i class="on"></i>').join('');
   const stars = html`${icon('star')}`.repeat(5);
-  return html`<div class="reviews" role="group" aria-label="${copy.it.reviewsLabel}" data-label="reviewsLabel"><p class="reviews-head"><img src="/assets/images/letuelezioni.png" width="20" height="20" alt="" loading="lazy">${portal}<span class="reviews-stars" aria-hidden="true">${raw(stars)}</span></p><ul class="reviews-track" lang="it" tabindex="0">${raw(items.join(''))}</ul><span class="reviews-bar" aria-hidden="true">${raw(bar)}</span></div>`;
+  return html`<div class="reviews" role="group" aria-label="${copy.it.reviewsLabel}" data-label="reviewsLabel"><p class="reviews-head"><img src="/assets/images/letuelezioni.png" width="20" height="20" alt="" loading="lazy">${portal}<span class="reviews-stars" aria-hidden="true">${raw(stars)}</span></p><ul class="reviews-track" tabindex="0">${raw(items.join(''))}</ul><span class="reviews-bar" aria-hidden="true">${raw(bar)}</span></div>`;
 }
 
 function aboutRow(ctx, row) {

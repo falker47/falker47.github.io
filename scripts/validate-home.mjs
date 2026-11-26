@@ -276,7 +276,7 @@ function checkAbout(source) {
   assert.ok(Number.isInteger(identity.githubRepositories.count) && identity.githubRepositories.count > 0, 'GitHub repository count');
   assert.deepEqual(facts, [
     [identity.links.github, italian(identity.githubRepositories.count), 'repository su GitHub', 'github', 'brand-github'],
-    ['#panel-modding', italian(snapshot.uniqueModDownloads), 'download unici su Nexus Mods', 'modding', 'brand-nexusmods'],
+    ['#panel-modding', italian(snapshot.uniqueModDownloads), 'download unici', 'modding', 'brand-nexusmods'],
     ...[['app', 'web app e app'], ['tool', 'strumenti'], ['game', 'giochi']].map(([id, word]) => ['#progetti', italian(visible.filter(item => item.category === id).length), word, 'software', 'drawing']),
     // The score says it is out of five for screen readers (the star is decorative).
     ['#panel-teaching', formatScore(rating.score, 'it') + ' ' + italianCopy.ratingOutOf, italianCopy[rating.count === 1 ? 'ratingReviewsOne' : 'ratingReviewsOther'].replace('{count}', rating.count), 'tutoring', 'icon-star'],
@@ -285,11 +285,16 @@ function checkAbout(source) {
   // The certificate fan is the figure of the work paragraph.
   assert.match(about, /<figure class="about-figure figure-work"><section class="credentials" id="certificazioni"/, 'The certificate fan sits beside the work paragraph');
   // Under the tutoring figures, a card of the students' reviews from the data, quoted in Italian: the
-  // portal with five stars, each excerpt with the student's initial, name and month, one bar segment each.
-  const strip = about.match(/<div class="reviews" role="group" aria-label="([^"]+)" data-label="reviewsLabel"><p class="reviews-head"><img src="\/assets\/images\/letuelezioni\.png"[^>]*>([^<]+)<span class="reviews-stars" aria-hidden="true">((?:<svg class="icon"[^>]*><use href="#icon-star"\/><\/svg>){5})<\/span><\/p><ul class="reviews-track" lang="it" tabindex="0">([^]*?)<\/ul><span class="reviews-bar" aria-hidden="true">([^]*?)<\/span><\/div>/);
+  // portal with five stars, each excerpt signed with the student's name, month and year in the
+  // reader's language, one bar segment each.
+  const strip = about.match(/<div class="reviews" role="group" aria-label="([^"]+)" data-label="reviewsLabel"><p class="reviews-head"><img src="\/assets\/images\/letuelezioni\.png"[^>]*>([^<]+)<span class="reviews-stars" aria-hidden="true">((?:<svg class="icon"[^>]*><use href="#icon-star"\/><\/svg>){5})<\/span><\/p><ul class="reviews-track" tabindex="0">([^]*?)<\/ul><span class="reviews-bar" aria-hidden="true">([^]*?)<\/span><\/div>/);
   assert.ok(strip && decode(strip[1]) === italianCopy.reviewsLabel && strip[2] === tutoring.reviews[0].source, 'The reviews card follows the tutoring figures');
-  assert.deepEqual([...strip[4].matchAll(/<li class="review"><blockquote><p>([^<]+)<\/p><\/blockquote><p class="review-by"><span class="review-initial" aria-hidden="true">(\w)<\/span>([^<]+)<\/p><\/li>/g)].map(match => [decode(match[1]), match[2], decode(match[3])]),
-    tutoring.reviews.map(review => [review.text, review.name[0], `${review.name} · ${review.date.slice(5)}/${review.date.slice(0, 4)}`]), 'Reviews from data');
+  const monthYear = (date, lang) => new Intl.DateTimeFormat(lang, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(date + '-15'));
+  // The build moves the English month into the page catalogue (data-text-key).
+  const english = JSON.parse(source.match(/<script type="application\/json" id="catalogue-en">([^]*?)<\/script>/)[1]);
+  assert.deepEqual([...strip[4].matchAll(/<li class="review"><blockquote lang="it"><p>([^<]+)<\/p><\/blockquote><p class="review-by"><strong>([^<]+)<\/strong> · <span data-text-key="(\d+)">([^<]+)<\/span><\/p><\/li>/g)]
+    .map(([, quote, name, key, when]) => [decode(quote), decode(name), decode(when), english[key] ?? english.text?.[key] ?? null]),
+    tutoring.reviews.map(review => [review.text, review.name, monthYear(review.date, 'it'), monthYear(review.date, 'en')]), 'Reviews from data');
   assert.equal(strip[5], '<i class="on"></i>' + '<i></i>'.repeat(tutoring.reviews.length - 1), 'One bar segment per review');
   const order = ['data-i18n="aboutStudies"', 'figure-studies', 'data-i18n="aboutWork"', 'class="credentials"', 'data-i18n="aboutMethod"', 'figure-method', 'data-i18n="aboutApproach"', 'fact-github', 'fact-modding', 'fact-software',
     'data-i18n="aboutSpare"', 'fact-tutoring', 'fact-research', 'class="reviews"', 'class="about-nav"', 'class="research-links about-actions"'].map(part => about.indexOf(part));
