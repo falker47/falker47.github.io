@@ -13,11 +13,10 @@ import { chart, configurations, constantRange } from '../../partials/ringmin.mjs
 // "I miei progetti": every project lives here. All groups are rendered at build
 // time; the client only shows one tab and one category at a time.
 const visible = projects.filter(item => !item.hidden).sort((a, b) => a.order - b.order);
-// The Modding toggles and the research count keep a line drawing; the software categories have emblems.
+// The Modding toggles keep a line drawing; the software categories have emblems, the paper count the arXiv logomark.
 const glyphs = {
   mod: '<path d="M4 4h6v2.5a2 2 0 1 0 4 0V4h6v6h-2.5a2 2 0 1 0 0 4H20v6h-6v-2.5a2 2 0 1 0-4 0V20H4v-6h2.5a2 2 0 1 0 0-4H4Z"/>',
   translation: '<path d="M3 5h9M7.5 3v2m3 0c-.8 4-3.4 7-7.5 9m2.5-6c1.2 2.3 3 4 5.5 5"/><path d="m12.5 21 4-10 4 10m-6.6-3.2h5.2"/>',
-  paper: '<path d="M5 3h10l4 4v14H5ZM15 3v5h4M9 12h6m-6 4h6"/>',
 };
 const glyph = name => raw(html`<svg class="result-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">${raw(glyphs[name])}</svg>`);
 // V5: the software categories as emblems, solid like the GitHub and Nexus marks: a phone with its
@@ -170,7 +169,7 @@ ${raw(body)}
 <div class="work-panels">
 ${raw(panel('software', 'softwareTitle', 'softwareIntro', picker(ctx, 'software', categories, 'softwareCategories', projectCard, softwareNote(t))))}
 ${raw(panel('modding', 'moddingTitle', 'moddingIntro', picker(ctx, 'modding', modGroups, 'moddingCategories', modCard, '', ' rail-mods', nexusTotal(t))))}
-${raw(panel('research', 'researchTitle', 'researchIntro', html`<div class="results-row"><a class="result" href="/research/">${glyph('paper')}<span class="result-body"><strong class="result-value">${research.papers.length}</strong><span class="result-label">${label(t, 'papersLabel')}</span></span><span class="result-arrow" aria-hidden="true">→</span></a></div>
+${raw(panel('research', 'researchTitle', 'researchIntro', html`<div class="results-row"><a class="result" href="/research/">${brand('arxivmark')}<span class="result-body"><strong class="result-value">${research.papers.length}</strong><span class="result-label">${label(t, 'papersLabel')}</span></span><span class="result-arrow" aria-hidden="true">→</span></a></div>
 <div class="rail rail-papers"><ul class="rail-track">${raw(paperCard(t, research.papers[0], configurations(ctx), repo))}
 ${raw(paperCard(t, research.papers[1], chart(ctx), repo, constantLine()))}</ul></div>
 <p class="research-foot">${label(t, 'researchAlso')} ${raw(actionLink(power, 'Power-Ringmin'))} <span aria-hidden="true">·</span> ${raw(actionLink(research.zenodo.url, 'Zenodo'))}</p>`))}

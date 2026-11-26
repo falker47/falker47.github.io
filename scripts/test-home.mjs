@@ -76,7 +76,7 @@ test('external actions show their platform mark; other actions keep an arrow', (
 });
 
 test('every count is the same tile: drawing or mark, number, label, and an arrow only on links', () => {
-  assert.throws(() => validateHomeCatalogue(home.replace(/(<a class="result" href="\/research\/">)<svg class="result-icon"[^]*?<\/svg>/, '$1')), /tile parts/);
+  assert.throws(() => validateHomeCatalogue(home.replace(/(<a class="result" href="\/research\/">)<svg class="brand brand-arxivmark"[^]*?<\/svg>/, '$1')), /tile parts/);
   assert.throws(() => validateHomeCatalogue(home.replace(/(<button type="button" class="picker-toggle result cat-mod"[^>]*>[^]*?)(<\/button>)/, '$1<span class="result-arrow" aria-hidden="true">→</span>$2')), /tile arrow/);
   assert.throws(() => validateHomeCatalogue(home.replace(/<span class="result-arrow" aria-hidden="true">↗<\/span>(<\/a>)/, '$1')), /tile arrow/);
 });

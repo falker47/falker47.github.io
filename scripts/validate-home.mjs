@@ -222,6 +222,8 @@ function checkResearch(source) {
   checkButtons(foot, 'Research foot');
   const tile = markup.match(/<a class="result" href="\/research\/">([^]*?)<\/a>/);
   assert.ok(tile, 'The paper count opens the research page');
+  // V5: with the arXiv logomark, as the paper figure of "Su di me".
+  assert.match(tile[1], /^<svg class="brand brand-arxivmark"/, 'The paper count shows the arXiv logomark');
   assert.equal(text(tile[1]).replace(/\s*→$/, ''), `${research.papers.length} articoli su arXiv`);
 }
 

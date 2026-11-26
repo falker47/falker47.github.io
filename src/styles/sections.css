@@ -197,6 +197,8 @@ a.result:hover .result-label {color:var(--paper)}
    "Su di me" figures, in the same square as the other drawings; a toggle not pressed dims it. */
 .result .result-icon.emblem {background:linear-gradient(150deg,var(--badge),var(--badge-end));box-shadow:inset 0 1px #ffffff45,0 2px 6px #0000004d;stroke:none;opacity:.6;transition:opacity .16s}
 .picker-toggle:is([aria-pressed=true],:hover,:focus-visible) .result-icon.emblem {opacity:1}
+/* V5: the paper count shows the arXiv logomark in its colours on a light square, as in "Su di me". */
+.result .brand.brand-arxivmark {padding:6px;background:#f6f3ee;box-shadow:inset 0 1px #ffffff45,0 2px 6px #0000004d}
 .nexus-total .result-value {color:var(--nexus-light)}
 /* V5: the Nexus total and the two Modding toggles share one row, the total as wide as both toggles
    together. On a phone the toggles show their number and label only, so each fits a quarter row. */
