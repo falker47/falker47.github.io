@@ -13,16 +13,22 @@ import { chart, configurations, constantRange } from '../../partials/ringmin.mjs
 // "I miei progetti": every project lives here. All groups are rendered at build
 // time; the client only shows one tab and one category at a time.
 const visible = projects.filter(item => !item.hidden).sort((a, b) => a.order - b.order);
-// Each count has its drawing: the category toggles and the research count are tiles.
+// The Modding toggles and the research count keep a line drawing; the software categories have emblems.
 const glyphs = {
-  app: '<rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 5h4m-3 14h2M9 9h6v6H9Z"/>',
-  game: '<path d="M7 7h10c3 0 5 9 3 11-1 1-3-1-5-3H9c-2 2-4 4-5 3-2-2 0-11 3-11ZM7 10v4m-2-2h4"/><circle cx="16" cy="11" r=".7"/><circle cx="18" cy="13" r=".7"/>',
-  tool: '<path d="m14 7 3 3 4-4c1 6-3 9-7 7L6 21l-3-3 8-8c-2-4 1-8 7-7Z"/>',
   mod: '<path d="M4 4h6v2.5a2 2 0 1 0 4 0V4h6v6h-2.5a2 2 0 1 0 0 4H20v6h-6v-2.5a2 2 0 1 0-4 0V20H4v-6h2.5a2 2 0 1 0 0-4H4Z"/>',
   translation: '<path d="M3 5h9M7.5 3v2m3 0c-.8 4-3.4 7-7.5 9m2.5-6c1.2 2.3 3 4 5.5 5"/><path d="m12.5 21 4-10 4 10m-6.6-3.2h5.2"/>',
   paper: '<path d="M5 3h10l4 4v14H5ZM15 3v5h4M9 12h6m-6 4h6"/>',
 };
 const glyph = name => raw(html`<svg class="result-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">${raw(glyphs[name])}</svg>`);
+// V5: the software categories as emblems, solid like the GitHub and Nexus marks: a phone with its
+// apps, a wrench over a screwdriver, a gamepad. White on the category's colour (the one its cards
+// wear), in the category toggles and in the "Su di me" figures; the second plane is translucent.
+const emblems = {
+  app: '<path fill-rule="evenodd" d="M8.5 1.5h7A3.5 3.5 0 0 1 19 5v14a3.5 3.5 0 0 1-3.5 3.5h-7A3.5 3.5 0 0 1 5 19V5a3.5 3.5 0 0 1 3.5-3.5ZM7 4.5V18h10V4.5Zm3.4 15.4h3.2a.7.7 0 0 1 0 1.4h-3.2a.7.7 0 0 1 0-1.4Z"/><path d="M9 5.6h1.6a1 1 0 0 1 1 1v1.6a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V6.6a1 1 0 0 1 1-1Zm4.4 0H15a1 1 0 0 1 1 1v1.6a1 1 0 0 1-1 1h-1.6a1 1 0 0 1-1-1V6.6a1 1 0 0 1 1-1ZM9 10h1.6a1 1 0 0 1 1 1v1.6a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1Z"/><path opacity=".55" d="M13.4 10H15a1 1 0 0 1 1 1v1.6a1 1 0 0 1-1 1h-1.6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1Z"/>',
+  tool: '<g transform="rotate(-45 12 12)" opacity=".62"><path d="M11.3 3.4 12 2l.7 1.4V12h-1.4Zm-1 8.6h3.4v1.5h-3.4Zm1.3 1.9h.8a1.9 1.9 0 0 1 1.9 1.9v4.3a1.9 1.9 0 0 1-1.9 1.9h-.8a1.9 1.9 0 0 1-1.9-1.9v-4.3a1.9 1.9 0 0 1 1.9-1.9Z"/></g><path transform="rotate(45 12 12)" d="M10.6 1.22v4.58h2.8V1.22A4.5 4.5 0 1 1 10.6 1.22ZM10.75 9h2.5v11.25a1.25 1.25 0 0 1-2.5 0Z"/>',
+  game: '<path fill-rule="evenodd" d="M7.2 6h9.6c2.6 0 4.6 1.8 5 4.4l.9 6c.3 2.2-2.4 3.6-4 2l-2.6-2.6H7.9l-2.6 2.6c-1.6 1.6-4.3.2-4-2l.9-6C2.6 7.8 4.6 6 7.2 6ZM6.2 8.7v1.5H4.7v1.6h1.5v1.5h1.6v-1.5h1.5v-1.6H7.8V8.7ZM17.35 10a1.05 1.05 0 1 0-2.1 0 1.05 1.05 0 1 0 2.1 0Zm1.9 2.3a1.05 1.05 0 1 0-2.1 0 1.05 1.05 0 1 0 2.1 0Z"/>',
+};
+export const emblem = (id, kind = '') => raw(`<svg class="${kind}emblem emblem-${id}" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${emblems[id]}</svg>`);
 export const categories = [
   { id: 'app', key: 'appsCount', name: 'apps' },
   { id: 'game', key: 'gamesCount', name: 'games' },
@@ -77,7 +83,7 @@ ${join(cards)}
 // The counts are the category toggles, tiles like the research count; one is pressed at a time.
 // A lead tile (the Nexus total) may precede them. Without scripts every group is listed under its own label.
 function picker({ t, copy }, name, groups, labelKey, card, note, modifier = '', lead = '') {
-  const toggles = groups.map((group, index) => html`<button type="button" class="picker-toggle result cat-${group.id}" data-group="${group.id}" aria-pressed="${index === 0}">${glyph(group.id)}<span class="result-body"><strong class="result-value">${group.items.length}</strong><span class="result-label">${label(t, group.key)}</span></span></button>`);
+  const toggles = groups.map((group, index) => html`<button type="button" class="picker-toggle result cat-${group.id}" data-group="${group.id}" aria-pressed="${index === 0}">${group.id in emblems ? emblem(group.id, 'result-icon ') : glyph(group.id)}<span class="result-body"><strong class="result-value">${group.items.length}</strong><span class="result-label">${label(t, group.key)}</span></span></button>`);
   const sections = groups.map(group => html`<section class="picker-group cat-${group.id}" data-group="${group.id}" aria-labelledby="${name}-${group.id}">
 <p class="picker-heading" id="${name}-${group.id}">${group.items.length} ${label(t, group.key)}</p>
 ${raw(rail(copy, group.items.map(item => card(t, item)), modifier))}

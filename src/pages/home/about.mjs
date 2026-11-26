@@ -8,7 +8,7 @@ import { methodDrawing } from '../../partials/about-method.mjs';
 import { studiesDrawing } from '../../partials/about-studies.mjs';
 import { certificateDeck, label, localized } from '../../partials/components.mjs';
 import { brand, brandFor, brandInk, icon } from '../../partials/icons.mjs';
-import { categories } from './work.mjs';
+import { categories, emblem } from './work.mjs';
 
 const arrow = '<svg class="about-action-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M6 18 18 6M7 6h11v11"/></svg>';
 // V5: every profile link shows the mark of the place it opens. LinkedIn, GitHub, OEIS and ORCID
@@ -36,15 +36,6 @@ const integer = value => new Intl.NumberFormat('it-IT').format(value);
 const rating = aggregateRating(tutoring.ratings);
 const reviews = (copy, lang) => copy[lang][rating.count === 1 ? 'ratingReviewsOne' : 'ratingReviewsOther'].replace('{count}', rating.count);
 const category = id => categories.find(item => item.id === id);
-// The software categories as emblems, solid like the GitHub and Nexus marks beside them: a phone with
-// its apps, a wrench over a screwdriver, a gamepad. White on the category's colour, the one its cards
-// wear in "I miei progetti"; the second plane is translucent.
-const emblems = {
-  app: '<path fill-rule="evenodd" d="M8.5 1.5h7A3.5 3.5 0 0 1 19 5v14a3.5 3.5 0 0 1-3.5 3.5h-7A3.5 3.5 0 0 1 5 19V5a3.5 3.5 0 0 1 3.5-3.5ZM7 4.5V18h10V4.5Zm3.4 15.4h3.2a.7.7 0 0 1 0 1.4h-3.2a.7.7 0 0 1 0-1.4Z"/><path d="M9 5.6h1.6a1 1 0 0 1 1 1v1.6a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V6.6a1 1 0 0 1 1-1Zm4.4 0H15a1 1 0 0 1 1 1v1.6a1 1 0 0 1-1 1h-1.6a1 1 0 0 1-1-1V6.6a1 1 0 0 1 1-1ZM9 10h1.6a1 1 0 0 1 1 1v1.6a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1Z"/><path opacity=".55" d="M13.4 10H15a1 1 0 0 1 1 1v1.6a1 1 0 0 1-1 1h-1.6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1Z"/>',
-  tool: '<g transform="rotate(-45 12 12)" opacity=".62"><path d="M11.3 3.4 12 2l.7 1.4V12h-1.4Zm-1 8.6h3.4v1.5h-3.4Zm1.3 1.9h.8a1.9 1.9 0 0 1 1.9 1.9v4.3a1.9 1.9 0 0 1-1.9 1.9h-.8a1.9 1.9 0 0 1-1.9-1.9v-4.3a1.9 1.9 0 0 1 1.9-1.9Z"/></g><path transform="rotate(45 12 12)" d="M10.6 1.22v4.58h2.8V1.22A4.5 4.5 0 1 1 10.6 1.22ZM10.75 9h2.5v11.25a1.25 1.25 0 0 1-2.5 0Z"/>',
-  game: '<path fill-rule="evenodd" d="M7.2 6h9.6c2.6 0 4.6 1.8 5 4.4l.9 6c.3 2.2-2.4 3.6-4 2l-2.6-2.6H7.9l-2.6 2.6c-1.6 1.6-4.3.2-4-2l.9-6C2.6 7.8 4.6 6 7.2 6ZM6.2 8.7v1.5H4.7v1.6h1.5v1.5h1.6v-1.5h1.5v-1.6H7.8V8.7ZM17.35 10a1.05 1.05 0 1 0-2.1 0 1.05 1.05 0 1 0 2.1 0Zm1.9 2.3a1.05 1.05 0 1 0-2.1 0 1.05 1.05 0 1 0 2.1 0Z"/>',
-};
-const emblem = id => raw(`<svg class="emblem emblem-${id}" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${emblems[id]}</svg>`);
 // Each figure wears the colour of the section it opens, and its mark or emblem: V5, a badge like the
 // Nexus emblem (the category emblems and the star white on a solid square, the GitHub mark on
 // GitHub's dark, the Nexus emblem, the official arXiv logomark). The public repositories are the

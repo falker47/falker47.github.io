@@ -84,9 +84,11 @@
    square of their colour, the Nexus emblem filling its square, the arXiv logomark in its colours on
    a light one. */
 .fact-glyph {grid-row:1/3;display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:linear-gradient(150deg,var(--badge,var(--tone)),var(--badge-end,color-mix(in srgb,var(--tone) 50%,#000)));box-shadow:inset 0 1px #ffffff45,0 2px 6px #0000004d;color:#fff}
-.fact-app {--badge:#60a5fa;--badge-end:#1d4ed8}
-.fact-tool {--badge:#4fd1a5;--badge-end:#0b7a5a}
-.fact-game {--badge:#f0a35e;--badge-end:#b4470e}
+/* The category badges: here and on the software toggles of "I miei progetti". */
+:is(.fact-app,.cat-app) {--badge:#60a5fa;--badge-end:#1d4ed8}
+:is(.fact-tool,.cat-tool) {--badge:#4fd1a5;--badge-end:#0b7a5a}
+:is(.fact-game,.cat-game) {--badge:#f0a35e;--badge-end:#b4470e}
+.emblem {display:block;fill:#fff}
 .fact-tutoring {--badge:#fbbf24;--badge-end:#d97706}
 .fact-github {--tone:#8b949e;--badge:#3d444d;--badge-end:#151b23}
 /* The way of working: GitHub and Nexus Mods share the first row, the three categories the second. */
@@ -94,7 +96,7 @@
 .figure-approach .facts-list li {grid-column:span 2}
 .figure-approach .facts-list li:nth-child(-n+2) {grid-column:span 3}
 .fact-glyph .icon {width:20px;height:20px;stroke-width:1.9}
-.fact-glyph .emblem {display:block;width:22px;height:22px;fill:#fff}
+.fact-glyph .emblem {width:22px;height:22px}
 .fact-github .fact-glyph .brand {width:20px;height:20px}
 .fact-tutoring .fact-glyph .icon {fill:currentColor;stroke-width:1.2}
 .fact-modding .fact-glyph {background:none;box-shadow:none}
@@ -191,6 +193,10 @@ a.result:hover .result-label {color:var(--paper)}
 .picker-toggle[aria-pressed=true] {border-color:var(--tone)}
 .picker-toggle[aria-pressed=true] :is(.result-value,.result-label) {color:var(--tone)}
 .picker-toggle[aria-pressed=true] .result-icon {stroke:var(--tone)}
+/* V5: the software toggles wear their category emblem, white on the category's colour like the
+   "Su di me" figures, in the same square as the other drawings; a toggle not pressed dims it. */
+.result .result-icon.emblem {background:linear-gradient(150deg,var(--badge),var(--badge-end));box-shadow:inset 0 1px #ffffff45,0 2px 6px #0000004d;stroke:none;opacity:.6;transition:opacity .16s}
+.picker-toggle:is([aria-pressed=true],:hover,:focus-visible) .result-icon.emblem {opacity:1}
 .nexus-total .result-value {color:var(--nexus-light)}
 /* V5: the Nexus total and the two Modding toggles share one row, the total as wide as both toggles
    together. On a phone the toggles show their number and label only, so each fits a quarter row. */
@@ -367,4 +373,6 @@ a.result:hover .result-label {color:var(--paper)}
 .rm-centre,.rm-circle,.rm-tip,.rm-hub {fill:Canvas}
 .rm-label {fill:CanvasText}
 .platform-logo {filter:none}
+.emblem {fill:CanvasText}
+.picker-toggle[aria-pressed=true] .emblem {fill:HighlightText}
 }

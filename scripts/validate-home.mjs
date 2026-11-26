@@ -53,13 +53,13 @@ export function checkButtons(markup, label) {
   }
 }
 
-// V4: every count tile has the same parts in the same order: its drawing or mark, the number and
-// the label; a linked tile ends with its arrow, a toggle has none.
+// V4: every count tile has the same parts in the same order: its drawing, emblem or mark, the number
+// and the label; a linked tile ends with its arrow, a toggle has none.
 function checkTiles(markup, label, expected) {
   const tiles = [...markup.matchAll(/<(a|button) [^>]*class="(?:picker-toggle )?result\b[^"]*"[^>]*>([^]*?)<\/\1>/g)];
   assert.equal(tiles.length, expected, label + ' tiles');
   for (const [, tag, body] of tiles) {
-    assert.match(body, /^<svg class="(?:result-icon|brand [\w-]+)"[^]*?<\/svg><span class="result-body"><strong class="result-value"[^>]*>[^]*?<\/strong><span class="result-label">/, label + ' tile parts');
+    assert.match(body, /^<svg class="(?:result-icon(?: emblem emblem-[\w-]+)?|brand [\w-]+)"[^]*?<\/svg><span class="result-body"><strong class="result-value"[^>]*>[^]*?<\/strong><span class="result-label">/, label + ' tile parts');
     assert.equal(body.endsWith('<span class="result-arrow" aria-hidden="true">→</span>') || body.endsWith('<span class="result-arrow" aria-hidden="true">↗</span>'), tag === 'a', label + ' tile arrow');
   }
 }
@@ -93,7 +93,9 @@ function checkSoftware(source) {
   const expected = [['app', 'app'], ['game', 'giochi'], ['tool', 'strumenti']].map(([id, word]) => ({ id, word, items: visible.filter(item => item.category === id) }));
   assert.deepEqual(toggles(markup), expected.map((group, index) => ({ colour: group.id, id: group.id, pressed: String(index === 0), label: `${group.items.length} ${group.word}` })),
     'Software tiles: counts from data, App selected, no "All"');
-  assert.equal([...markup.match(/<div class="picker-bar"[^]*?<\/div>/)[0].matchAll(/<svg class="result-icon"/g)].length, 3, 'Each tile has its drawing');
+  // V5: each software toggle wears its category emblem, as the "Su di me" figures do.
+  assert.deepEqual([...markup.match(/<div class="picker-bar"[^]*?<\/div>/)[0].matchAll(/<svg class="result-icon emblem emblem-([\w-]+)"/g)].map(match => match[1]),
+    expected.map(group => group.id), 'Each tile has its emblem');
   const listed = groups(markup);
   assert.deepEqual(listed.map(group => group.id), expected.map(group => group.id));
   for (const [index, group] of listed.entries()) {
