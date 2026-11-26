@@ -1,6 +1,6 @@
 {
   "username": "falker47",
-  "checkedOn": "2026-11-24",
+  "checkedOn": "2026-11-26",
   "source": "Nexus Mods GraphQL mods(filter: uploaderId)",
   "totalCount": 27,
   "mods": [
@@ -10,8 +10,8 @@
       "kind": "mod",
       "game": "Hogwarts Legacy",
       "category": "Tools and Utilities",
-      "downloads": 10382,
-      "endorsements": 153,
+      "downloads": 10424,
+      "endorsements": 155,
       "url": "https://www.nexusmods.com/hogwartslegacy/mods/2414",
       "image": null
     },
@@ -21,7 +21,7 @@
       "kind": "mod",
       "game": "Skyrim Special Edition",
       "category": "Immersion",
-      "downloads": 413,
+      "downloads": 417,
       "endorsements": 8,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192394",
       "image": {
@@ -37,8 +37,8 @@
       "kind": "mod",
       "game": "Skyrim Special Edition",
       "category": "Magic - Gameplay",
-      "downloads": 394,
-      "endorsements": 11,
+      "downloads": 402,
+      "endorsements": 12,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/197092",
       "image": {
         "src": "/assets/nexus/197092.webp",
@@ -53,7 +53,7 @@
       "kind": "mod",
       "game": "Skyrim Special Edition",
       "category": "Patches",
-      "downloads": 367,
+      "downloads": 370,
       "endorsements": 6,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192204",
       "image": {
@@ -80,7 +80,7 @@
       "kind": "mod",
       "game": "Skyrim Special Edition",
       "category": "Magic - Gameplay",
-      "downloads": 217,
+      "downloads": 224,
       "endorsements": 6,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/197145",
       "image": {
@@ -96,7 +96,7 @@
       "kind": "mod",
       "game": "Skyrim Special Edition",
       "category": "Magic - Spells & Enchantments",
-      "downloads": 203,
+      "downloads": 208,
       "endorsements": 6,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/198756",
       "image": null
@@ -107,7 +107,7 @@
       "kind": "mod",
       "game": "Skyrim Special Edition",
       "category": "Magic - Gameplay",
-      "downloads": 138,
+      "downloads": 143,
       "endorsements": 6,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/196979",
       "image": {
@@ -123,7 +123,7 @@
       "kind": "translation",
       "game": "Skyrim Special Edition",
       "category": "Immersion",
-      "downloads": 78,
+      "downloads": 81,
       "endorsements": 3,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192424",
       "image": {
@@ -139,7 +139,7 @@
       "kind": "mod",
       "game": "Skyrim Special Edition",
       "category": "Magic - Spells & Enchantments",
-      "downloads": 72,
+      "downloads": 74,
       "endorsements": 1,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/196616",
       "image": {
@@ -155,7 +155,7 @@
       "kind": "translation",
       "game": "Skyrim Special Edition",
       "category": "Player homes",
-      "downloads": 49,
+      "downloads": 50,
       "endorsements": 1,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192171",
       "image": {
@@ -171,7 +171,7 @@
       "kind": "translation",
       "game": "Skyrim Special Edition",
       "category": "Quests and Adventures",
-      "downloads": 36,
+      "downloads": 37,
       "endorsements": 1,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192318",
       "image": {
@@ -187,7 +187,7 @@
       "kind": "translation",
       "game": "Skyrim Special Edition",
       "category": "Weapons",
-      "downloads": 30,
+      "downloads": 31,
       "endorsements": 0,
       "url": "https://www.nexusmods.com/skyrimspecialedition/mods/192150",
       "image": {
