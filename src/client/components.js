@@ -92,31 +92,23 @@
     update();
   }
 
-  // "Su di me": one paragraph at a time. The arrows move by one slide, touch scrolls natively;
-  // the track takes the height of the open slide, so a short paragraph leaves no gap.
+  // "Su di me": one paragraph at a time. "Indietro" and "Avanti" move by one slide, touch scrolls
+  // natively. Every slide is as tall as the tallest (CSS), so the controls never move.
   for (const carousel of document.querySelectorAll('.about-carousel')) {
     const track = carousel.firstElementChild, rows = Array.from(track.children), nav = track.nextElementSibling;
-    const steps = nav.querySelectorAll('button'), dots = nav.querySelectorAll('i');
+    const steps = nav.querySelectorAll('button'), bars = nav.querySelectorAll('i');
     let index = 0, width = 0;
     const left = i => rows[i].offsetLeft - rows[0].offsetLeft;
-    // Focus and the opening animation read the layout at once: their height skips the transition,
-    // or the browser would scroll the track to a focused card and the animation would end short.
-    function sync(next, now) {
+    // The bar fills up to the open paragraph. At the ends a step stays focusable and does nothing.
+    function sync(next) {
       index = Math.max(0, Math.min(rows.length - 1, next));
-      dots.forEach((dot, i) => dot.classList.toggle('on', i === index));
-      steps[0].disabled = !index;
-      steps[1].disabled = index === rows.length - 1;
+      bars.forEach((bar, i) => bar.classList.toggle('on', i <= index));
+      steps[0].setAttribute('aria-disabled', String(!index));
+      steps[1].setAttribute('aria-disabled', String(index === rows.length - 1));
       nav.querySelector('.about-index').textContent = index + 1;
-      // Where a closed "Su di me" has nothing to measure, keep the last height.
-      if (rows[index].offsetHeight) {
-        track.style.transition = now ? 'none' : '';
-        track.style.height = rows[index].offsetHeight + 'px';
-        if (now && track.offsetHeight) track.style.transition = '';
-      }
-      track.scrollTop = 0;
     }
-    function go(next, smooth, now) {
-      sync(next, now);
+    function go(next, smooth) {
+      sync(next);
       track.scrollTo({ left: left(index), behavior: smooth && !reduced.matches ? 'smooth' : 'auto' });
     }
     track.addEventListener('scroll', () => {
@@ -127,25 +119,16 @@
     // Focus on a link of another slide brings that slide in. The browser has already scrolled the
     // track to the link; once the track is realigned, the page scrolls to it instead.
     track.addEventListener('focusin', event => {
-      go(rows.indexOf(event.target.closest('.about-row')), false, true);
+      go(rows.indexOf(event.target.closest('.about-row')), false);
+      track.scrollTop = 0;
       event.target.scrollIntoView({ block: 'nearest' });
     });
-    // A new width (a resize, the section opening) realigns the open slide; new heights resize the track.
+    // A new width (a resize, the section opening) realigns the open slide.
     if ('ResizeObserver' in window) {
-      const observer = new ResizeObserver(() => {
+      new ResizeObserver(() => {
         if (track.clientWidth !== width && (width = track.clientWidth)) track.scrollLeft = left(index);
-        sync(index);
-      });
-      [track].concat(rows).forEach(node => observer.observe(node));
+      }).observe(track);
     }
-    // Measure the open slide before "Su di me" opens, so that its animation ends at that height.
-    const details = carousel.closest('details');
-    details.querySelector(':scope > summary').addEventListener('click', () => {
-      if (details.open) return;
-      details.open = true;
-      sync(index, true);
-      details.open = false;
-    });
     carousel.aboutGo = go;
     carousel.classList.add('about-enhanced');
     nav.hidden = false;

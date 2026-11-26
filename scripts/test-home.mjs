@@ -111,12 +111,13 @@ test('Su di me shows each paragraph beside its figure, the facts from data and o
   assert.throws(() => validateHomeCatalogue(home.replace('<a class="fact fact-research" href="#ricerca">', '<a class="fact fact-research" href="/research/">')), /Facts/);
   assert.throws(() => validateHomeCatalogue(home.replace(/<li><a class="fact fact-tutoring"[^]*?<\/li>/, '')), /Facts/);
   assert.throws(() => validateHomeCatalogue(home.replace('<a class="fact fact-tutoring" href="#panel-teaching">', '<a class="fact fact-tutoring" href="/lessons/">')), /Facts/);
-  const work = home.match(/<div class="about-row"><p data-i18n="aboutWork">[^]*?<\/figure><\/div>/)[0];
-  const approach = home.match(/<div class="about-row"><p data-i18n="aboutApproach">[^]*?<\/figure><\/div>/)[0];
-  assert.throws(() => validateHomeCatalogue(home.replace(work + approach, approach + work)), /order/);
+  const work = home.match(/<div class="about-row"><p data-i18n="aboutWork">[^]*?<\/section><\/figure><\/div>/)[0];
+  const method = home.match(/<div class="about-row"><p data-i18n="aboutMethod">[^]*?<\/figure><\/div>/)[0];
+  assert.throws(() => validateHomeCatalogue(home.replace(work + method, method + work)), /order/);
   // V5: the carousel controls wait for the script, and the closing quote is gone.
   assert.throws(() => validateHomeCatalogue(home.replace('<div class="about-nav" hidden>', '<div class="about-nav">')), /hidden until the script/);
-  assert.throws(() => validateHomeCatalogue(home.replace('<span class="about-dots" aria-hidden="true"><i class="on"></i><i></i>', '<span class="about-dots" aria-hidden="true"><i class="on"></i>')), /One dot per paragraph/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<span class="about-progress" aria-hidden="true"><i class="on"></i><i></i>', '<span class="about-progress" aria-hidden="true"><i class="on"></i>')), /One segment per paragraph/);
+  assert.throws(() => validateHomeCatalogue(home.replace('>y = a x + b</text>', '>y = f(x)</text>')), /straight line/);
   assert.throws(() => validateHomeCatalogue(home.replace('<nav class="research-links about-actions"', '<p class="philosophy">Il mio obiettivo</p><nav class="research-links about-actions"')), /quote/);
   assert.throws(() => validateHomeCatalogue(home.replace('<div class="about-rows">', '<div class="about-rows journey">')), /Percorso/);
   assert.throws(() => validateHomeCatalogue(home.replace(/(<img src="\/assets\/certifications\/[^"]+-thumb-300\.webp" srcset=")[^"]+/, '$1x.webp 300w')), /./);

@@ -244,23 +244,26 @@ function checkAbout(source) {
   assert.ok(!/journey|jr-/.test(about), 'The "Percorso" drawing is gone');
   // The rows: each paragraph, then its figure. The figures are counted from the data and link
   // to their section; the first row is a drawing (studies have no number). V5: the rows are the
-  // slides of a carousel, one per paragraph.
+  // slides of a carousel, one per paragraph; the work paragraph is split in two (path, then work
+  // and method), the second beside a drawing of a problem reduced to its model.
   assert.match(about, /<div class="about-carousel"><div class="about-rows"><div class="about-row">/, 'The rows are the slides of the carousel');
   const rows = [...about.matchAll(/<div class="about-row"><p data-i18n="(\w+)">([^<]*)<\/p><figure class="about-figure figure-(\w+)"/g)]
     .map(([, key, value, figure]) => [key, decode(value), figure]);
-  assert.deepEqual(rows, [['aboutStudies', 'studies'], ['aboutWork', 'work'], ['aboutApproach', 'approach'], ['aboutSpare', 'spare']]
+  assert.deepEqual(rows, [['aboutStudies', 'studies'], ['aboutWork', 'work'], ['aboutMethod', 'method'], ['aboutApproach', 'approach'], ['aboutSpare', 'spare']]
     .map(([key, figure]) => [key, italianCopy[key], figure]), 'About rows in order');
-  // The carousel controls wait for the script: without it the four rows stay in a column.
+  const method = about.match(/<figure class="about-figure figure-method" aria-hidden="true"><svg class="studies-drawing"[^>]*>([^]*?)<\/svg><\/figure>/);
+  assert.ok(method, 'The method drawing is decorative, in the pendulum language');
+  assert.deepEqual([...method[1].matchAll(/data-i18n="(\w+)">([^<]+)</g)].map(match => [match[1], match[2]]), [['figureProblem', italianCopy.figureProblem], ['figureModel', italianCopy.figureModel]], 'Method labels');
+  assert.match(method[1], /<text class="studies-eq"[^>]*>y = a x \+ b<\/text>/, 'The model is a straight line');
+  assert.equal([...method[1].matchAll(/<circle class="st-pt(?: quiet)?" cx="\d+" cy="\d+" r="2.2"\/>/g)].length, 16, 'The same eight points on both panels');
+  // The carousel controls wait for the script: without it the five rows stay in a column.
   const nav = about.match(/<div class="about-nav" hidden>([^]*?)<\/div>/);
   assert.ok(nav, 'The carousel controls are hidden until the script runs');
-  const controls = tags(nav[1]).filter(node => node.name === 'button');
-  assert.deepEqual(controls.map(node => [node.attrs.class, node.attrs['data-step'], node.attrs['data-label'], node.attrs['aria-label']]), [
-    ['about-step', '-1', 'aboutPrevious', italianCopy.aboutPrevious],
-    ['about-step', '1', 'aboutNext', italianCopy.aboutNext],
-  ], 'The two arrows');
-  // One decorative dot per paragraph, the first lit; the counter is announced when an arrow moves.
-  assert.match(nav[1], /<span class="about-dots" aria-hidden="true"><i class="on"><\/i><i><\/i><i><\/i><i><\/i><\/span>/, 'One dot per paragraph');
-  assert.equal(text(nav[1].match(/<p class="about-count" aria-live="polite">([^]*?)<\/p>/)[1]), '1 / 4', 'Slide counter');
+  const controls = [...nav[1].matchAll(/<button type="button" class="about-step" data-step="(-?1)">([^]*?)<\/button>/g)].map(([, step, body]) => [step, text(body), /#icon-(chevron-\w+)/.exec(body)?.[1]]);
+  assert.deepEqual(controls, [['-1', italianCopy.aboutPrevious, 'chevron-left'], ['1', italianCopy.aboutNext, 'chevron-right']], '"Indietro" and "Avanti" with their chevrons');
+  // A progress bar, one segment per paragraph, the first filled; the counter is announced on a step.
+  assert.match(nav[1], /^<span class="about-progress" aria-hidden="true"><i class="on"><\/i>(?:<i><\/i>){4}<\/span>/, 'One segment per paragraph');
+  assert.equal(text(nav[1].match(/<p class="about-count" aria-live="polite">([^]*?)<\/p>/)[1]), '1 / 5', 'Slide counter');
   assert.ok(!about.includes('class="philosophy"') && !('philosophy' in italianCopy), 'The closing quote is gone (V5)');
   assert.ok(!/about-facts|facts-grid/.test(about), 'The "In breve" card is gone');
   const facts = [...about.matchAll(/<li><a class="fact fact-([\w-]+)" href="([^"]+)"><span class="fact-glyph" aria-hidden="true">([^]*?)<\/span><strong class="fact-value"[^>]*>((?:<span[^>]*>[^<]*<\/span>)(?:<span class="sr-only"> <span data-i18n="\w+">[^<]*<\/span><\/span>)?|[^<]+)<\/strong><span class="fact-label">(<span[^>]*>[^<]*<\/span>)<\/span><\/a><\/li>/g)]
@@ -277,7 +280,7 @@ function checkAbout(source) {
   ], 'Facts from data');
   // The certificate fan is the figure of the work paragraph.
   assert.match(about, /<figure class="about-figure figure-work"><section class="credentials" id="certificazioni"/, 'The certificate fan sits beside the work paragraph');
-  const order = ['data-i18n="aboutStudies"', 'figure-studies', 'data-i18n="aboutWork"', 'class="credentials"', 'data-i18n="aboutApproach"', 'fact-software', 'fact-modding',
+  const order = ['data-i18n="aboutStudies"', 'figure-studies', 'data-i18n="aboutWork"', 'class="credentials"', 'data-i18n="aboutMethod"', 'figure-method', 'data-i18n="aboutApproach"', 'fact-software', 'fact-modding',
     'data-i18n="aboutSpare"', 'fact-tutoring', 'fact-research', 'class="about-nav"', 'class="research-links about-actions"'].map(part => about.indexOf(part));
   assert.ok(order.every(index => index >= 0) && order.every((index, i) => !i || index > order[i - 1]), 'About order: each figure after its paragraph, then the controls and links');
   // The profile row keeps its arrow on every link. V5: each shows the mark of the place it opens:

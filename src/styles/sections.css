@@ -17,24 +17,32 @@
 /* Chi sono */
 .about-content {padding:0 0 24px}
 .about-rows {margin:4px 0 22px}
-/* Each paragraph, then its figure; from 900 px they alternate sides (P1 G1 / G2 P2 ...). */
+/* Each paragraph, then its figure (on its right from 900 px). */
 .about-row {display:grid;gap:14px;padding:18px 0;border-top:1px solid var(--rule-soft)}
 .about-row:first-child {border-top:0}
 .about-row p {font-size:16px;line-height:1.65;color:var(--secondary);margin:0}
-/* V5: with the script the rows are the slides of a carousel, one paragraph at a time; the track
-   takes the height of the open slide. Without it they stay in a column. */
-.about-enhanced .about-rows {position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:100%;column-gap:24px;align-items:start;margin:4px 0 6px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;transition:height .3s cubic-bezier(.22,.7,.28,1)}
+/* V5: with the script the rows are the slides of a carousel, one paragraph at a time, all in one
+   grid row: every slide is as tall as the tallest, so the controls under them never move. On a
+   phone the content starts at the top of the slide. Without the script the rows stay in a column. */
+.about-enhanced .about-rows {position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:100%;column-gap:24px;margin:4px 0 10px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none}
 .about-enhanced .about-rows::-webkit-scrollbar {display:none}
-.about-enhanced .about-row {scroll-snap-align:start;scroll-snap-stop:always;border-top:0;padding-bottom:8px}
-.about-nav {display:flex;align-items:center;justify-content:center;gap:6px;margin:0 0 22px}
+.about-enhanced .about-row {scroll-snap-align:start;scroll-snap-stop:always;border-top:0;align-content:start}
+/* The progress bar, one segment per paragraph, filled up to the open one; under it "Indietro" and
+   "Avanti" at the two ends and the counter between them. */
+.about-nav {display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px 8px;margin:0 0 22px}
 .about-nav[hidden] {display:none}
-.about-dots {display:flex;align-items:center;gap:8px;padding:0 8px}
-.about-dots i {width:8px;height:8px;border-radius:4px;background:#ffffff38;transition:width .2s,background-color .2s}
-.about-dots i.on {width:20px;background:var(--blue)}
-.about-count {margin:0 0 0 10px;font:12px/1 var(--mono);color:var(--muted)}
+.about-progress {grid-column:1/-1;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px}
+.about-progress i {height:3px;border-radius:2px;background:#ffffff1f;transition:background-color .25s}
+.about-progress i.on {background:var(--blue)}
+.about-step {display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 14px;border:1px solid var(--rule);border-radius:10px;background:var(--surface);color:var(--paper);font:600 13px/1 var(--name);cursor:pointer;transition:border-color .16s,background-color .16s,opacity .16s}
+.about-step .icon {width:18px;height:18px;color:var(--blue);stroke-width:2}
+.about-step:hover {border-color:#60a5fa88;background:#ffffff08}
+.about-step[aria-disabled=true] {opacity:.4;cursor:default;border-color:var(--rule);background:var(--surface)}
+.about-count {justify-self:center;margin:0;font:12px/1 var(--mono);color:var(--muted)}
 .about-figure {margin:0;padding:14px;border:1px solid var(--rule);border-radius:14px;background:var(--surface)}
-/* The pendulum and its simulation, in the line language of the hero. */
-.figure-studies {padding:10px 8px;background:radial-gradient(ellipse at 50% 46%,#25608c6b,transparent 70%) var(--surface)}
+/* The pendulum and its simulation, and the problem reduced to its model (V5), in the line language
+   of the hero. */
+:is(.figure-studies,.figure-method) {padding:10px 8px;background:radial-gradient(ellipse at 50% 46%,#25608c6b,transparent 70%) var(--surface)}
 .studies-drawing {display:block;width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round}
 .st-ln {stroke:var(--stroke);stroke-width:1.25}
 .st-ln.trace {opacity:.55}
@@ -149,6 +157,19 @@ a.result:hover .result-label {color:var(--paper)}
 .picker-toggle[aria-pressed=true] :is(.result-value,.result-label) {color:var(--tone)}
 .picker-toggle[aria-pressed=true] .result-icon {stroke:var(--tone)}
 .nexus-total .result-value {color:var(--nexus-light)}
+/* V5: the Nexus total and the two Modding toggles share one row, the total as wide as both toggles
+   together. On a phone the toggles show their number and label only, so each fits a quarter row. */
+#panel-modding .picker-head {display:grid;grid-template-columns:repeat(2,minmax(0,362px));gap:10px}
+#panel-modding .picker-bar {display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#panel-modding .result {min-width:0}
+@media(max-width:699px) {
+#panel-modding .picker-head {grid-template-columns:1fr 1fr;gap:8px}
+#panel-modding .picker-bar {gap:8px}
+#panel-modding .result-label {white-space:normal}
+#panel-modding .picker-toggle {justify-content:center;text-align:center}
+#panel-modding .picker-toggle .result-icon {display:none}
+#panel-modding .picker-toggle .result-body {align-items:center}
+}
 .picker-heading {font:11px/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--cat);margin:18px 0 8px}
 .sample-count {flex:1 1 100%;font:11px/1.6 var(--mono);color:#a9b2c0;margin:0}
 .sample-count strong {font-weight:400}
@@ -158,9 +179,9 @@ a.result:hover .result-label {color:var(--paper)}
 /* Nexus pictures are 385 px wide: their cards never grow past them. */
 .rail-mods .rail-track {grid-auto-columns:min(78%,386px)}
 .rail-steps {display:none;gap:8px;justify-content:flex-end;margin:4px 0 0}
-.rail-step,.about-step {width:44px;height:44px;padding:0;border:1px solid var(--rule);border-radius:50%;background:#ffffff08;color:#d8dee9;font-size:18px}
-:is(.rail-step,.about-step):hover {border-color:#60a5fa88}
-:is(.rail-step,.about-step):disabled {opacity:.35}
+.rail-step {width:44px;height:44px;padding:0;border:1px solid var(--rule);border-radius:50%;background:#ffffff08;color:#d8dee9;font-size:18px}
+.rail-step:hover {border-color:#60a5fa88}
+.rail-step:disabled {opacity:.35}
 
 .card {position:relative;display:flex;flex-direction:column;min-width:0;border:1px solid var(--rule);border-radius:12px;background:var(--surface);overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}
 .rail-track>.card {scroll-snap-align:start}
@@ -279,8 +300,10 @@ a.result:hover .result-label {color:var(--paper)}
 /* Paragraph and figure side by side, the figure on the right of every slide (V5); the lessons
    text beside the two portals. */
 .about-row {grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);column-gap:40px;align-items:center}
-/* The pendulum keeps a legible 400 px beside the short first paragraph. */
-.about-row:first-child {grid-template-columns:minmax(0,1fr) minmax(0,400px)}
+/* The pendulum and the problem-to-model drawing keep a legible 400 px beside their paragraphs; in
+   the carousel each slide's content sits in the middle of its fixed height. */
+:is(.about-row:first-child,.about-row:has(.figure-method)) {grid-template-columns:minmax(0,1fr) minmax(0,400px)}
+.about-enhanced .about-row {align-content:center}
 .lessons {grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:48px;align-items:start}
 /* V5: the two portals side by side, so the column is as tall as the text beside it. */
 .lesson-cards {grid-template-columns:1fr 1fr}

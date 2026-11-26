@@ -60,16 +60,20 @@ async function checkTiles(scope, name) {
   const tiles = await scope.locator('.results-row .result:visible').evaluateAll(nodes => nodes.map(node => {
     const style = getComputedStyle(node);
     const glyph = node.firstElementChild;
+    // V5: on a phone the two Modding toggles share half a row and show no drawing; every other
+    // tile keeps the same drawing width.
+    const width = glyph.getBoundingClientRect().width;
     return {
-      measure: [node.getBoundingClientRect().height, style.borderTopLeftRadius, style.borderTopWidth, glyph.getBoundingClientRect().width,
+      measure: [node.getBoundingClientRect().height, style.borderTopLeftRadius, style.borderTopWidth, width || 'none',
         getComputedStyle(node.querySelector('.result-value')).fontSize].join(' '),
+      bare: !width && node.matches('#panel-modding .picker-toggle') && innerWidth < 700,
       glyph: glyph.matches('svg.result-icon, svg.brand'), link: node.matches('a'), arrow: node.lastElementChild.matches('.result-arrow'),
     };
   }));
   assert.ok(tiles.length, name + ' has count tiles');
-  tileMeasure ??= tiles[0].measure;
+  tileMeasure ??= tiles.find(tile => !tile.bare).measure;
   for (const tile of tiles) {
-    assert.equal(tile.measure, tileMeasure, name + ' tiles share one size');
+    assert.equal(tile.bare ? tile.measure.replace(' none ', ' ' + tileMeasure.split(' ')[3] + ' ') : tile.measure, tileMeasure, name + ' tiles share one size');
     assert.ok(tile.glyph, name + ' tiles open with their drawing or mark');
     assert.equal(tile.arrow, tile.link, name + ' only linked tiles end with an arrow');
   }
@@ -400,8 +404,8 @@ async function checkNoScript(browser, origin, viewport) {
     assert.equal(await page.locator('.card:visible').count(), await page.locator('.card').count());
     await page.locator('#chi-sono > summary').click();
     assert.equal(await page.locator('.deck-card:visible').count(), certificates.length);
-    // V5: without scripts the four paragraphs stay in a column and the carousel controls stay hidden.
-    assert.equal(await page.locator('.about-row:visible').count(), 4, 'Every paragraph is readable without scripts');
+    // V5: without scripts the five paragraphs stay in a column and the carousel controls stay hidden.
+    assert.equal(await page.locator('.about-row:visible').count(), 5, 'Every paragraph is readable without scripts');
     assert.equal(await page.locator('.about-nav:visible').count(), 0);
     const tops = await page.locator('.about-row').evaluateAll(rows => rows.map(row => row.getBoundingClientRect().top));
     assert.ok(tops.every((top, i) => !i || top > tops[i - 1]), 'The paragraphs follow one another down the page');
@@ -424,8 +428,8 @@ async function home(page, origin, lang) {
   assert.equal(await page.locator('.about-actions a[href="/research/"]').count(), 1);
   // V5: the rows of "Su di me" are the slides of a carousel, each paragraph with its figure. From
   // 900 px the figure sits right of its paragraph on every slide; below, it follows the paragraph.
-  // The arrows move one slide, the counter and the lit dot follow, and the track takes the height
-  // of the open slide.
+  // "Indietro" and "Avanti" move one slide, the counter and the progress bar follow. Every slide is
+  // as tall as the tallest, so the controls stay where they are: the reader never moves the pointer.
   const track = page.locator('.about-rows');
   const nav = page.locator('.about-nav');
   assert.ok(await nav.isVisible(), 'The carousel controls show with the script');
@@ -434,22 +438,30 @@ async function home(page, origin, lang) {
   const fitted = index => page.waitForFunction(i => {
     const rows = document.querySelector('.about-rows');
     const row = rows.children[i];
-    return Math.abs(rows.getBoundingClientRect().height - row.offsetHeight) <= 1 && Math.abs(rows.scrollLeft - (row.offsetLeft - rows.children[0].offsetLeft)) <= 2;
+    return Math.abs(rows.scrollLeft - (row.offsetLeft - rows.children[0].offsetLeft)) <= 2;
   }, index, { timeout: 5000 });
+  const heights = await track.evaluate(node => [node.clientHeight, ...[...node.children].map(row => row.offsetHeight)]);
+  assert.ok(heights.every(height => Math.abs(height - heights[0]) <= 1), 'Every slide is as tall as the track: ' + heights.join(', '));
+  const back = nav.locator('.about-step[data-step="-1"]'), next = nav.locator('.about-step[data-step="1"]');
   assert.equal(await slide(), '1', 'The carousel opens on the first paragraph');
-  assert.ok(await nav.locator('.about-step[data-step="-1"]').isDisabled(), 'No step back from the first paragraph');
-  const rows = [];
-  for (let index = 0; index < 4; index++) {
-    if (index) await nav.locator('.about-step[data-step="1"]').click();
+  assert.equal(await back.getAttribute('aria-disabled'), 'true', 'No step back from the first paragraph');
+  const rows = [], places = [];
+  for (let index = 0; index < 5; index++) {
+    if (index) await next.click();
     await fitted(index);
-    assert.equal(await slide(), String(index + 1), 'The counter follows the arrows');
-    assert.equal(await nav.locator('.about-dots i').evaluateAll(dots => dots.findIndex(dot => dot.classList.contains('on'))), index, 'The lit dot follows the arrows');
+    assert.equal(await slide(), String(index + 1), 'The counter follows the steps');
+    assert.equal(await nav.locator('.about-progress i.on').count(), index + 1, 'The bar fills up to the open paragraph');
+    // Measured on the page, not the window: the click may scroll the window to the button.
+    places.push(await next.evaluate(button => { const box = button.getBoundingClientRect(); return [Math.round(box.top + scrollY), Math.round(box.left), Math.round(box.width)].join(' '); }));
     rows.push(await page.locator('.about-row').nth(index).evaluate(row => {
       const text = row.querySelector('p').getBoundingClientRect(), figure = row.querySelector('.about-figure').getBoundingClientRect();
       return { text: { left: text.left, right: text.right, bottom: text.bottom }, figure: { left: figure.left, right: figure.right, top: figure.top, width: figure.width, height: figure.height } };
     }));
   }
-  assert.ok(await nav.locator('.about-step[data-step="1"]').isDisabled(), 'No step past the last paragraph');
+  assert.equal(new Set(places).size, 1, '"Avanti" stays in the same place on every paragraph');
+  assert.equal(await next.getAttribute('aria-disabled'), 'true', 'No step past the last paragraph');
+  await next.click({ force: true });
+  assert.equal(await slide(), '5', 'A step at the end does nothing');
   for (const [index, { text, figure }] of rows.entries()) {
     if (page.viewportSize().width < 900) assert.ok(figure.top >= text.bottom - 1, `Row ${index + 1}: the figure follows its paragraph`);
     else {
@@ -458,11 +470,12 @@ async function home(page, origin, lang) {
       assert.ok(figure.left - text.right <= 48, `Row ${index + 1}: ${Math.round(figure.left - text.right)} px between the paragraph and its figure`);
     }
   }
-  // A swipe (a native scroll of the track) also moves the counter; the arrow goes back.
+  // A swipe (a native scroll of the track) also moves the counter; "Indietro" goes back.
   await track.evaluate(node => node.scrollTo({ left: node.children[1].offsetLeft - node.children[0].offsetLeft }));
   await fitted(1);
+  await page.waitForFunction(() => document.querySelector('.about-index').textContent === '2', null, { timeout: 5000 }).catch(() => {});
   assert.equal(await slide(), '2', 'A swipe moves the counter');
-  await nav.locator('.about-step[data-step="-1"]').click();
+  await back.click();
   await fitted(0);
   // The pendulum stays about 400 px wide beside the short first paragraph, cropped to its panels.
   if (page.viewportSize().width >= 900) {
