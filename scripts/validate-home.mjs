@@ -89,8 +89,8 @@ function checkStructure(source) {
 function checkSoftware(source) {
   const markup = panel(source, 'software');
   checkTiles(markup, 'Software', 3);
-  // V5: the first category is "Web app e app", for both the web apps and the Android app.
-  const expected = [['app', 'web app e app'], ['game', 'giochi'], ['tool', 'strumenti']].map(([id, word]) => ({ id, word, items: visible.filter(item => item.category === id) }));
+  // V5: the first category is "App", for both the web apps and the Android app.
+  const expected = [['app', 'app'], ['game', 'giochi'], ['tool', 'strumenti']].map(([id, word]) => ({ id, word, items: visible.filter(item => item.category === id) }));
   assert.deepEqual(toggles(markup), expected.map((group, index) => ({ colour: group.id, id: group.id, pressed: String(index === 0), label: `${group.items.length} ${group.word}` })),
     'Software tiles: counts from data, App selected, no "All"');
   assert.equal([...markup.match(/<div class="picker-bar"[^]*?<\/div>/)[0].matchAll(/<svg class="result-icon"/g)].length, 3, 'Each tile has its drawing');
@@ -126,7 +126,7 @@ function checkSoftware(source) {
   }
   assert.ok(markup.includes('<span class="card-stack">Python · PySide6 · Qt Quick</span>'), 'Panacea is a PySide6 application');
   const notes = [...markup.matchAll(/<p class="sample-count picker-count" data-group="([\w-]+)" hidden>([^]*?)<\/p>/g)].map(match => [match[1], text(match[2])]);
-  assert.deepEqual(notes, expected.map((group, index) => [group.id, `${['Web app e app', 'Giochi', 'Strumenti'][index]} · ${group.items.length} progetti · scorri per vederli tutti`]), 'One count line per category');
+  assert.deepEqual(notes, expected.map((group, index) => [group.id, `${['App', 'Giochi', 'Strumenti'][index]} · ${group.items.length} progetti · scorri per vederli tutti`]), 'One count line per category');
 }
 
 // Modding: every published mod, with its downloads, endorsements and bar.
@@ -269,18 +269,19 @@ function checkAbout(source) {
   assert.ok(!about.includes('class="philosophy"') && !('philosophy' in italianCopy), 'The closing quote is gone (V5)');
   assert.ok(!/about-facts|facts-grid/.test(about), 'The "In breve" card is gone');
   const facts = [...about.matchAll(/<li><a class="fact fact-([\w-]+)" href="([^"]+)"><span class="fact-glyph" aria-hidden="true">([^]*?)<\/span><strong class="fact-value"[^>]*>((?:<span[^>]*>[^<]*<\/span>)(?:<span class="sr-only"> <span data-i18n="\w+">[^<]*<\/span><\/span>)?|[^<]+)<\/strong><span class="fact-label">(<span[^>]*>[^<]*<\/span>)<\/span><\/a><\/li>/g)]
-    .map(([, tone, href, glyph, number, name]) => [href, text(number), text(name), tone, /href="#((?:icon|brand)-[\w-]+)"/.exec(glyph)?.[1] ?? (glyph.startsWith('<svg class="icon" viewBox="0 0 24 24"') ? 'drawing' : null)]);
+    .map(([, tone, href, glyph, number, name]) => [href, text(number), text(name), tone, /href="#((?:icon|brand)-[\w-]+)"/.exec(glyph)?.[1] ?? /^<svg class="emblem (emblem-\w+)" viewBox="0 0 24 24" aria-hidden="true" focusable="false">/.exec(glyph)?.[1] ?? null]);
   const rating = aggregateRating(tutoring.ratings);
   // V5: the public GitHub repositories (the count GitHub shows, in data/profile.json) beside the Nexus
-  // total, then the three software categories. Each glyph is a badge like the Nexus emblem.
+  // total, then the three software categories, each with its emblem in its colour. Then the papers
+  // before the rating. Each glyph is a badge like the Nexus emblem.
   assert.ok(Number.isInteger(identity.githubRepositories.count) && identity.githubRepositories.count > 0, 'GitHub repository count');
   assert.deepEqual(facts, [
     [identity.links.github, italian(identity.githubRepositories.count), 'repository su GitHub', 'github', 'brand-github'],
     ['#panel-modding', italian(snapshot.uniqueModDownloads), 'download unici', 'modding', 'brand-nexusmods'],
-    ...[['app', 'web app e app'], ['tool', 'strumenti'], ['game', 'giochi']].map(([id, word]) => ['#progetti', italian(visible.filter(item => item.category === id).length), word, 'software', 'drawing']),
+    ...[['app', 'app'], ['tool', 'strumenti'], ['game', 'giochi']].map(([id, word]) => ['#progetti', italian(visible.filter(item => item.category === id).length), word, id, 'emblem-' + id]),
+    ['#ricerca', italian(research.papers.length), 'articoli su arXiv', 'research', 'brand-arxivmark'],
     // The score says it is out of five for screen readers (the star is decorative).
     ['#panel-teaching', formatScore(rating.score, 'it') + ' ' + italianCopy.ratingOutOf, italianCopy[rating.count === 1 ? 'ratingReviewsOne' : 'ratingReviewsOther'].replace('{count}', rating.count), 'tutoring', 'icon-star'],
-    ['#ricerca', italian(research.papers.length), 'articoli su arXiv', 'research', 'brand-arxivmark'],
   ], 'Facts from data');
   // The certificate fan is the figure of the work paragraph.
   assert.match(about, /<figure class="about-figure figure-work"><section class="credentials" id="certificazioni"/, 'The certificate fan sits beside the work paragraph');
@@ -296,8 +297,8 @@ function checkAbout(source) {
     .map(([, quote, name, key, when]) => [decode(quote), decode(name), decode(when), english[key] ?? english.text?.[key] ?? null]),
     tutoring.reviews.map(review => [review.text, review.name, monthYear(review.date, 'it'), monthYear(review.date, 'en')]), 'Reviews from data');
   assert.equal(strip[5], '<i class="on"></i>' + '<i></i>'.repeat(tutoring.reviews.length - 1), 'One bar segment per review');
-  const order = ['data-i18n="aboutStudies"', 'figure-studies', 'data-i18n="aboutWork"', 'class="credentials"', 'data-i18n="aboutMethod"', 'figure-method', 'data-i18n="aboutApproach"', 'fact-github', 'fact-modding', 'fact-software',
-    'data-i18n="aboutSpare"', 'fact-tutoring', 'fact-research', 'class="reviews"', 'class="about-nav"', 'class="research-links about-actions"'].map(part => about.indexOf(part));
+  const order = ['data-i18n="aboutStudies"', 'figure-studies', 'data-i18n="aboutWork"', 'class="credentials"', 'data-i18n="aboutMethod"', 'figure-method', 'data-i18n="aboutApproach"', 'fact-github', 'fact-modding', 'fact-app', 'fact-tool', 'fact-game',
+    'data-i18n="aboutSpare"', 'fact-research', 'fact-tutoring', 'class="reviews"', 'class="about-nav"', 'class="research-links about-actions"'].map(part => about.indexOf(part));
   assert.ok(order.every(index => index >= 0) && order.every((index, i) => !i || index > order[i - 1]), 'About order: each figure after its paragraph, then the controls and links');
   // The profile row keeps its arrow on every link. V5: each shows the mark of the place it opens:
   // LinkedIn, GitHub, OEIS and ORCID their own, the lessons the Letuelezioni logo, the research the

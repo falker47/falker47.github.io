@@ -23,8 +23,6 @@ const glyphs = {
   paper: '<path d="M5 3h10l4 4v14H5ZM15 3v5h4M9 12h6m-6 4h6"/>',
 };
 const glyph = name => raw(html`<svg class="result-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">${raw(glyphs[name])}</svg>`);
-// V5: the same drawings in the "Su di me" figures, as icons.
-export const categoryIcon = name => raw(html`<svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">${raw(glyphs[name])}</svg>`);
 export const categories = [
   { id: 'app', key: 'appsCount', name: 'apps' },
   { id: 'game', key: 'gamesCount', name: 'games' },
