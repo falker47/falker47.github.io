@@ -62,7 +62,8 @@ test('home links reach existing pages, never the legacy portfolio or the old pro
 });
 
 test('external actions show their platform mark; other actions keep an arrow', () => {
-  assert.throws(() => validateHomeCatalogue(home.replace(/<svg class="brand brand-github"[^>]*><use href="#brand-github"\/><\/svg>/, '')), /mark/);
+  // V5: the first GitHub mark of a card button (the "Su di me" repositories tile has one too).
+  assert.throws(() => validateHomeCatalogue(home.replace(/(<p class="card-links">[^]*?)<svg class="brand brand-github"[^>]*><use href="#brand-github"\/><\/svg>/, '$1')), /mark/);
   assert.throws(() => validateHomeCatalogue(home.replace(/<a href="(https:\/\/www\.nexusmods\.com[^"]+)" style="--brand:#[0-9a-f]+" data-brand="nexusmods">/, '<a href="$1">')), /brand/);
   assert.throws(() => validateHomeCatalogue(home.replace('<use href="#icon-arrow-ne"/>', '<use href="#icon-arrow-right"/>')), /arrow/);
   // V4: the mark leads the label, the arrow ends it, and a card has at most three buttons.

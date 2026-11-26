@@ -6,6 +6,7 @@ import research from '../data/research.json' with { type: 'json' };
 import ringmin from '../data/ringmin.json' with { type: 'json' };
 import tutoring from '../data/tutoring.json' with { type: 'json' };
 import certificates from '../data/certifications.json' with { type: 'json' };
+import identity from '../data/profile.json' with { type: 'json' };
 import snapshot from '../data/nexus-downloads.json' with { type: 'json' };
 import italianCopy from '../data/i18n/it.json' with { type: 'json' };
 import { decode, tags } from './qa/site.mjs';
@@ -88,7 +89,8 @@ function checkStructure(source) {
 function checkSoftware(source) {
   const markup = panel(source, 'software');
   checkTiles(markup, 'Software', 3);
-  const expected = [['app', 'app'], ['game', 'giochi'], ['tool', 'strumenti']].map(([id, word]) => ({ id, word, items: visible.filter(item => item.category === id) }));
+  // V5: the first category is "Web app e app", for both the web apps and the Android app.
+  const expected = [['app', 'web app e app'], ['game', 'giochi'], ['tool', 'strumenti']].map(([id, word]) => ({ id, word, items: visible.filter(item => item.category === id) }));
   assert.deepEqual(toggles(markup), expected.map((group, index) => ({ colour: group.id, id: group.id, pressed: String(index === 0), label: `${group.items.length} ${group.word}` })),
     'Software tiles: counts from data, App selected, no "All"');
   assert.equal([...markup.match(/<div class="picker-bar"[^]*?<\/div>/)[0].matchAll(/<svg class="result-icon"/g)].length, 3, 'Each tile has its drawing');
@@ -124,7 +126,7 @@ function checkSoftware(source) {
   }
   assert.ok(markup.includes('<span class="card-stack">Python · PySide6 · Qt Quick</span>'), 'Panacea is a PySide6 application');
   const notes = [...markup.matchAll(/<p class="sample-count picker-count" data-group="([\w-]+)" hidden>([^]*?)<\/p>/g)].map(match => [match[1], text(match[2])]);
-  assert.deepEqual(notes, expected.map((group, index) => [group.id, `${['App', 'Giochi', 'Strumenti'][index]} · ${group.items.length} progetti · scorri per vederli tutti`]), 'One count line per category');
+  assert.deepEqual(notes, expected.map((group, index) => [group.id, `${['Web app e app', 'Giochi', 'Strumenti'][index]} · ${group.items.length} progetti · scorri per vederli tutti`]), 'One count line per category');
 }
 
 // Modding: every published mod, with its downloads, endorsements and bar.
@@ -267,21 +269,32 @@ function checkAbout(source) {
   assert.ok(!about.includes('class="philosophy"') && !('philosophy' in italianCopy), 'The closing quote is gone (V5)');
   assert.ok(!/about-facts|facts-grid/.test(about), 'The "In breve" card is gone');
   const facts = [...about.matchAll(/<li><a class="fact fact-([\w-]+)" href="([^"]+)"><span class="fact-glyph" aria-hidden="true">([^]*?)<\/span><strong class="fact-value"[^>]*>((?:<span[^>]*>[^<]*<\/span>)(?:<span class="sr-only"> <span data-i18n="\w+">[^<]*<\/span><\/span>)?|[^<]+)<\/strong><span class="fact-label">(<span[^>]*>[^<]*<\/span>)<\/span><\/a><\/li>/g)]
-    .map(([, tone, href, glyph, number, name]) => [href, text(number), text(name), tone, /href="#((?:icon|brand)-[\w-]+)"/.exec(glyph)?.[1]]);
+    .map(([, tone, href, glyph, number, name]) => [href, text(number), text(name), tone, /href="#((?:icon|brand)-[\w-]+)"/.exec(glyph)?.[1] ?? (glyph.startsWith('<svg class="icon" viewBox="0 0 24 24"') ? 'drawing' : null)]);
   const rating = aggregateRating(tutoring.ratings);
+  // V5: the GitHub repositories the site links, the three software categories, the Nexus total and
+  // the published mods beside their translations. Each glyph is a badge like the Nexus emblem.
+  const github = url => /^https:\/\/github\.com\/[^/]+\/[^/]+/.exec(url)?.[0].toLowerCase();
+  const repositories = new Set([...visible.flatMap(item => item.links.map(link => link.url)), ...research.repositories.map(item => item.url),
+    ...featured.items.map(item => item.repo)].map(url => url && github(url)).filter(Boolean));
+  const kind = name => nexus.mods.filter(mod => mod.kind === name).length;
   assert.deepEqual(facts, [
-    // V5: each glyph is a badge like the Nexus emblem: the terminal and the star in their section's
-    // colour, the Nexus emblem, the official arXiv logomark.
-    ['#progetti', italian(visible.filter(item => ['app', 'game', 'tool'].includes(item.category)).length), 'progetti software', 'software', 'icon-terminal'],
+    [identity.links.github, italian(repositories.size), 'repository su GitHub', 'github', 'brand-github'],
+    ...[['app', 'web app e app'], ['tool', 'strumenti'], ['game', 'giochi']].map(([id, word]) => ['#progetti', italian(visible.filter(item => item.category === id).length), word, 'software', 'drawing']),
     ['#panel-modding', italian(snapshot.uniqueModDownloads), 'download unici su Nexus Mods', 'modding', 'brand-nexusmods'],
+    ['#panel-modding', italian(kind('mod')), `mod · ${kind('translation')} traduzioni`, 'mods', 'drawing'],
     // The score says it is out of five for screen readers (the star is decorative).
     ['#panel-teaching', formatScore(rating.score, 'it') + ' ' + italianCopy.ratingOutOf, italianCopy[rating.count === 1 ? 'ratingReviewsOne' : 'ratingReviewsOther'].replace('{count}', rating.count), 'tutoring', 'icon-star'],
     ['#ricerca', italian(research.papers.length), 'articoli su arXiv', 'research', 'brand-arxivmark'],
   ], 'Facts from data');
   // The certificate fan is the figure of the work paragraph.
   assert.match(about, /<figure class="about-figure figure-work"><section class="credentials" id="certificazioni"/, 'The certificate fan sits beside the work paragraph');
-  const order = ['data-i18n="aboutStudies"', 'figure-studies', 'data-i18n="aboutWork"', 'class="credentials"', 'data-i18n="aboutMethod"', 'figure-method', 'data-i18n="aboutApproach"', 'fact-software', 'fact-modding',
-    'data-i18n="aboutSpare"', 'fact-tutoring', 'fact-research', 'class="about-nav"', 'class="research-links about-actions"'].map(part => about.indexOf(part));
+  // Under the tutoring figures, the students' reviews from the data, quoted in Italian.
+  const strip = about.match(/<div class="reviews" role="group" aria-label="([^"]+)" data-label="reviewsLabel"><ul class="reviews-track" lang="it" tabindex="0">([^]*?)<\/ul><\/div>/);
+  assert.ok(strip && decode(strip[1]) === italianCopy.reviewsLabel, 'The reviews follow the tutoring figures');
+  assert.deepEqual([...strip[2].matchAll(/<li class="review"><blockquote><p>“([^<]+)”<\/p><\/blockquote><p class="review-by">([^<]+)<\/p><\/li>/g)].map(match => [decode(match[1]), decode(match[2])]),
+    tutoring.reviews.map(review => [review.text, `${review.name} · ${review.source} · ${review.date.slice(5)}/${review.date.slice(0, 4)}`]), 'Reviews from data');
+  const order = ['data-i18n="aboutStudies"', 'figure-studies', 'data-i18n="aboutWork"', 'class="credentials"', 'data-i18n="aboutMethod"', 'figure-method', 'data-i18n="aboutApproach"', 'fact-github', 'fact-mods',
+    'data-i18n="aboutSpare"', 'fact-tutoring', 'fact-research', 'class="reviews"', 'class="about-nav"', 'class="research-links about-actions"'].map(part => about.indexOf(part));
   assert.ok(order.every(index => index >= 0) && order.every((index, i) => !i || index > order[i - 1]), 'About order: each figure after its paragraph, then the controls and links');
   // The profile row keeps its arrow on every link. V5: each shows the mark of the place it opens:
   // LinkedIn, GitHub, OEIS and ORCID their own, the lessons the Letuelezioni logo, the research the

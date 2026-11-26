@@ -135,6 +135,19 @@
     sync(0);
   }
 
+  // The students' reviews under the tutoring figures move on every six seconds, one at a time, and
+  // stop while the pointer or the focus is on them; with reduced motion they wait for a swipe.
+  for (const track of document.querySelectorAll('.reviews-track')) {
+    let paused = false;
+    ['pointerenter', 'focusin'].forEach(type => track.addEventListener(type, () => { paused = true; }));
+    ['pointerleave', 'focusout'].forEach(type => track.addEventListener(type, () => { paused = false; }));
+    setInterval(() => {
+      if (paused || reduced.matches || !track.clientWidth) return;
+      const next = track.scrollLeft + track.clientWidth;
+      track.scrollTo({ left: next > track.scrollWidth - track.clientWidth + 2 ? 0 : next, behavior: 'smooth' });
+    }, 6000);
+  }
+
   // Certificates. The thumbnails sit inside the closed "Chi sono", where lazy images wait
   // until it opens. Start them once the page has loaded and the browser is idle, or as soon
   // as the reader points at, focuses or opens the summary. A card under the pointer or the focus
