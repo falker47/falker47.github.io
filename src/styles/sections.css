@@ -9,7 +9,6 @@
 :is(.about,.work)>summary::after {content:'+';font:24px var(--serif);color:var(--blue);flex-shrink:0}
 :is(.about,.work)[open]>summary::after {content:'−'}
 :is(.about,.work)>summary h2 {font:inherit;letter-spacing:0;margin:0}
-.section-label {font:15px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:12px 0 20px}
 .footer {display:flex;justify-content:center;align-items:center;padding-block:16px 24px;color:var(--muted);font-size:13px}
 .footer p {display:flex;align-items:center;gap:9px;margin:0;min-height:32px;white-space:nowrap}
 .footer-home {display:inline-flex;align-items:center;gap:9px;min-height:44px;color:var(--muted);text-decoration:underline 1px transparent;text-underline-offset:4px;transition:color .16s,text-decoration-color .16s}
@@ -18,17 +17,38 @@
 /* Chi sono */
 .about-content {padding:0 0 24px}
 .about-rows {margin:4px 0 22px}
-/* Each paragraph, then its figure; from 900 px they alternate sides (P1 G1 / G2 P2 ...). */
-.about-row {display:grid;gap:14px;padding:18px 0;border-top:1px solid var(--rule-soft)}
+/* Each paragraph, then its figure (on its right from 900 px). The column never grows past the row,
+   so a wide figure (the reviews) cannot push the slide out of the carousel. */
+.about-row {display:grid;grid-template-columns:minmax(0,1fr);gap:14px;padding:18px 0;border-top:1px solid var(--rule-soft)}
 .about-row:first-child {border-top:0}
 .about-row p {font-size:16px;line-height:1.65;color:var(--secondary);margin:0}
+/* V5: with the script the rows are the slides of a carousel, one paragraph at a time, all in one
+   grid row: every slide is as tall as the tallest, so the controls under them never move. On a
+   phone the content starts at the top of the slide. Without the script the rows stay in a column. */
+.about-enhanced .about-rows {position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:100%;column-gap:24px;margin:4px 0 10px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none}
+.about-enhanced .about-rows::-webkit-scrollbar {display:none}
+.about-enhanced .about-row {scroll-snap-align:start;scroll-snap-stop:always;border-top:0;align-content:start}
+/* The progress bar, one segment per paragraph, filled up to the open one; under it "Indietro" and
+   "Avanti" at the two ends and the counter between them. */
+.about-nav {display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px 8px;margin:0 0 22px}
+.about-nav[hidden] {display:none}
+.about-progress {grid-column:1/-1;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px}
+.about-progress i {height:3px;border-radius:2px;background:#ffffff1f;transition:background-color .25s}
+.about-progress i.on {background:var(--blue)}
+.about-step {display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 14px;border:1px solid var(--rule);border-radius:10px;background:var(--surface);color:var(--paper);font:600 13px/1 var(--name);cursor:pointer;transition:border-color .16s,background-color .16s,opacity .16s}
+.about-step .icon {width:18px;height:18px;color:var(--blue);stroke-width:2}
+.about-step:hover {border-color:#60a5fa88;background:#ffffff08}
+.about-step[aria-disabled=true] {opacity:.4;cursor:default;border-color:var(--rule);background:var(--surface)}
+.about-count {justify-self:center;margin:0;font:12px/1 var(--mono);color:var(--muted)}
 .about-figure {margin:0;padding:14px;border:1px solid var(--rule);border-radius:14px;background:var(--surface)}
-/* The pendulum and its simulation, in the line language of the hero. */
-.figure-studies {padding:10px 8px;background:radial-gradient(ellipse at 50% 46%,#25608c6b,transparent 70%) var(--surface)}
+/* The pendulum and its simulation, and the problem reduced to its model (V5), in the line language
+   of the hero. */
+:is(.figure-studies,.figure-method) {padding:10px 8px;background:radial-gradient(ellipse at 50% 46%,#25608c6b,transparent 70%) var(--surface)}
 .studies-drawing {display:block;width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round}
 .st-ln {stroke:var(--stroke);stroke-width:1.25}
 .st-ln.trace {opacity:.55}
 .st-br {stroke:#ade3ff;stroke-width:1.55}
+.st-br.glow {stroke-width:7;opacity:.16}
 .st-qt {stroke:#6792ae;stroke-width:1}
 .st-gh {stroke:#577f9e;stroke-width:1.1;stroke-dasharray:4 4}
 .st-dt,.studies-axis {stroke:#446c89;stroke-width:.75;stroke-dasharray:2 5}
@@ -52,19 +72,71 @@
 .figure-work .deck {grid-template-columns:minmax(0,1fr)}
 /* The figures: counted from the data at build time, each a tile in the colour of the section it
    opens, with that section's mark or icon. */
-.facts-list {display:grid;gap:8px;margin:0;padding:0;list-style:none}
-.fact-software {--tone:#60a5fa}
+.facts-list {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0;padding:0;list-style:none}
+.fact-app {--tone:var(--cat-app)}
+.fact-tool {--tone:var(--cat-tool)}
+.fact-game {--tone:var(--cat-game)}
 .fact-modding {--tone:#f97316}
 .fact-research {--tone:#a78bfa}
 .fact-tutoring {--tone:var(--star)}
 .fact {display:grid;grid-template-columns:36px minmax(0,1fr);grid-template-rows:auto auto;column-gap:12px;align-items:center;height:100%;min-height:44px;padding:12px;border:1px solid color-mix(in srgb,var(--tone) 28%,transparent);border-radius:12px;background:linear-gradient(135deg,color-mix(in srgb,var(--tone) 12%,var(--surface)),var(--surface) 70%);color:var(--paper);transition:border-color .16s,transform .16s}
-.fact-glyph {grid-row:1/3;display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:color-mix(in srgb,var(--tone) 18%,transparent);color:var(--tone)}
-.fact-glyph :is(.icon,.brand) {width:20px;height:20px}
+/* V5: each glyph is a badge like the Nexus emblem: the category emblems and the star white on a
+   square of their colour, the Nexus emblem filling its square, the arXiv logomark in its colours on
+   a light one. */
+.fact-glyph {grid-row:1/3;display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:linear-gradient(150deg,var(--badge,var(--tone)),var(--badge-end,color-mix(in srgb,var(--tone) 50%,#000)));box-shadow:inset 0 1px #ffffff45,0 2px 6px #0000004d;color:#fff}
+/* The category badges: here and on the software toggles of "I miei progetti". */
+:is(.fact-app,.cat-app) {--badge:#60a5fa;--badge-end:#1d4ed8}
+:is(.fact-tool,.cat-tool) {--badge:#4fd1a5;--badge-end:#0b7a5a}
+:is(.fact-game,.cat-game) {--badge:#f0a35e;--badge-end:#b4470e}
+.emblem {display:block;fill:#fff}
+.fact-tutoring {--badge:#fbbf24;--badge-end:#d97706}
+.fact-github {--tone:#8b949e;--badge:#3d444d;--badge-end:#151b23}
+/* The way of working: GitHub and Nexus Mods share the first row, the three categories the second. */
+.figure-approach .facts-list {grid-template-columns:repeat(6,minmax(0,1fr))}
+.figure-approach .facts-list li {grid-column:span 2}
+.figure-approach .facts-list li:nth-child(-n+2) {grid-column:span 3}
+.fact-glyph .icon {width:20px;height:20px;stroke-width:1.9}
+.fact-glyph .emblem {width:22px;height:22px}
+.fact-github .fact-glyph .brand {width:20px;height:20px}
+.fact-tutoring .fact-glyph .icon {fill:currentColor;stroke-width:1.2}
+.fact-modding .fact-glyph {background:none;box-shadow:none}
+.fact-modding .fact-glyph .brand {width:100%;height:100%}
+.fact-research .fact-glyph {background:#f6f3ee}
+.fact-research .fact-glyph .brand {width:24px;height:24px}
 .fact-value {font:400 26px/1 var(--serif);letter-spacing:-.02em;color:var(--paper);white-space:nowrap}
 .fact-label {font:11.5px/1.35 var(--sans);color:var(--muted)}
 .fact:is(:hover,:focus-visible) {border-color:color-mix(in srgb,var(--tone) 70%,transparent)}
 .fact:is(:hover,:focus-visible) .fact-label {color:var(--paper)}
-.about-content .philosophy {font:italic 18px/1.55 var(--serif);color:var(--paper);max-width:800px;margin:0 0 20px}
+/* V5: under the tutoring figures, a card of the students' reviews in the tutoring amber: the portal
+   and its stars, one excerpt at a time under a large quote mark (the script advances them), the
+   student's name, month and year, and a bar that marks the open one. */
+.reviews {margin-top:8px;padding:14px 16px 12px;border:1px solid color-mix(in srgb,var(--star) 24%,transparent);border-radius:12px;background:linear-gradient(160deg,color-mix(in srgb,var(--star) 8%,var(--surface)),var(--surface) 65%)}
+.reviews .reviews-head {display:flex;align-items:center;gap:8px;margin:0 0 20px;font:600 12.5px/1 var(--name);color:var(--paper)}
+.reviews-head img {border-radius:5px}
+.reviews-stars {display:flex;gap:2px;margin-left:auto;color:var(--star)}
+.reviews-stars .icon {width:13px;height:13px;fill:currentColor;stroke:none}
+.reviews-track {display:grid;grid-auto-flow:column;grid-auto-columns:100%;margin:0;padding:0;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none}
+.reviews-track::-webkit-scrollbar {display:none}
+.reviews-track:focus-visible {outline-offset:4px}
+.review {scroll-snap-align:start;min-width:0}
+.review blockquote {position:relative;margin:0;padding-left:32px}
+.review blockquote::before {content:'“';position:absolute;left:0;top:-8px;font:700 54px/1 Georgia,serif;color:var(--star);opacity:.55}
+.review blockquote p {margin:0;font:italic 15.5px/1.5 var(--serif);color:var(--paper)}
+.review .review-by {margin:10px 0 0 32px;font:12.5px/1.4 var(--sans);color:var(--muted)}
+.review-by strong {font:600 12.5px/1.4 var(--name);color:var(--paper)}
+.reviews-bar {display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;margin-top:12px}
+.reviews-bar i {height:2px;border-radius:1px;background:#ffffff1f;transition:background-color .25s}
+.reviews-bar i.on {background:var(--star)}
+/* Two tiles share a phone's row: the mark beside the number, the label under both. */
+@media(max-width:599px) {
+.fact {grid-template-columns:30px minmax(0,1fr);row-gap:8px;column-gap:10px;padding:10px}
+.fact-glyph {grid-row:auto;width:30px;height:30px;border-radius:8px}
+.fact-glyph .icon {width:17px;height:17px}
+.fact-glyph .emblem {width:19px;height:19px}
+.fact-research .fact-glyph .brand {width:20px;height:20px}
+.fact-value {font-size:22px}
+.fact-label {grid-column:1/-1}
+}
 .about-actions {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px;width:100%}
 .about-actions .about-action {min-width:0;min-height:44px;display:grid;grid-template-columns:18px minmax(0,1fr) 12px;align-items:center;gap:6px;padding:8px 2px;border-bottom:1px solid #304d65;color:var(--blue);transition:color .16s ease,border-color .16s ease,background-color .16s ease}
 .about-actions .about-action-title {min-width:0;font:12px/1.35 var(--sans)}
@@ -73,6 +145,12 @@
 .about-actions .about-action:hover {color:var(--paper);border-color:var(--blue);background:#9bdcff08}
 .about-actions .about-action .brand {width:18px;height:18px}
 .about-actions .about-action[data-brand]:hover {border-color:var(--brand)}
+/* V5: the marks in their own colours; the white behind LinkedIn's letters and ORCID's iD. */
+.about-actions [data-brand=linkedin] .brand {color:#0a66c2;background:linear-gradient(#fff,#fff) 50%/76% 76% no-repeat}
+.about-actions [data-brand=github] .brand {color:#f1f4f5}
+.about-actions [data-brand=orcid] .brand {color:#a6ce39;border-radius:50%;background:radial-gradient(circle,#fff 62%,transparent 64%)}
+.about-actions a[href="/research/"] .about-action-icon {color:#a78bfa;stroke-width:1.4}
+.about-actions img.about-action-icon {border-radius:4px}
 .credentials {margin-top:22px}
 
 /* I miei progetti */
@@ -115,7 +193,26 @@ a.result:hover .result-label {color:var(--paper)}
 .picker-toggle[aria-pressed=true] {border-color:var(--tone)}
 .picker-toggle[aria-pressed=true] :is(.result-value,.result-label) {color:var(--tone)}
 .picker-toggle[aria-pressed=true] .result-icon {stroke:var(--tone)}
+/* V5: the software toggles wear their category emblem, white on the category's colour like the
+   "Su di me" figures, in the same square as the other drawings; a toggle not pressed dims it. */
+.result .result-icon.emblem {background:linear-gradient(150deg,var(--badge),var(--badge-end));box-shadow:inset 0 1px #ffffff45,0 2px 6px #0000004d;stroke:none;opacity:.6;transition:opacity .16s}
+.picker-toggle:is([aria-pressed=true],:hover,:focus-visible) .result-icon.emblem {opacity:1}
+/* V5: the paper count shows the arXiv logomark in its colours on a light square, as in "Su di me". */
+.result .brand.brand-arxivmark {padding:6px;background:#f6f3ee;box-shadow:inset 0 1px #ffffff45,0 2px 6px #0000004d}
 .nexus-total .result-value {color:var(--nexus-light)}
+/* V5: the Nexus total and the two Modding toggles share one row, the total as wide as both toggles
+   together. On a phone the toggles show their number and label only, so each fits a quarter row. */
+#panel-modding .picker-head {display:grid;grid-template-columns:repeat(2,minmax(0,362px));gap:10px}
+#panel-modding .picker-bar {display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#panel-modding .result {min-width:0}
+@media(max-width:699px) {
+#panel-modding .picker-head {grid-template-columns:1fr 1fr;gap:8px}
+#panel-modding .picker-bar {gap:8px}
+#panel-modding .result-label {white-space:normal}
+#panel-modding .picker-toggle {justify-content:center;text-align:center}
+#panel-modding .picker-toggle .result-icon {display:none}
+#panel-modding .picker-toggle .result-body {align-items:center}
+}
 .picker-heading {font:11px/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--cat);margin:18px 0 8px}
 .sample-count {flex:1 1 100%;font:11px/1.6 var(--mono);color:#a9b2c0;margin:0}
 .sample-count strong {font-weight:400}
@@ -139,6 +236,12 @@ a.result:hover .result-label {color:var(--paper)}
 .card h4 {font:600 15px/1.3 var(--name);color:#f7f8fc;margin:0;overflow-wrap:anywhere}
 .card h4 a {display:inline-flex;align-items:center;min-height:44px;margin-block:-11px}
 .card h4 a:hover {text-decoration:underline;text-underline-offset:4px}
+/* V5: a project with its own page: the title link spreads over the cover (the 16:9 top of the
+   card), labelled "Scheda →" in its corner. */
+.card h4 a::before {content:'';position:absolute;top:0;left:0;right:0;aspect-ratio:16/9}
+.cover-chip {position:absolute;top:8px;right:8px;font:600 11px/1 var(--name);color:#fff;background:#0f1014d9;border:1px solid color-mix(in srgb,var(--cat) 60%,transparent);border-radius:999px;padding:6px 10px;transition:background-color .16s,color .16s}
+.cover-chip::after {content:' →';content:' →'/''}
+.card h4 a:is(:hover,:focus-visible) .cover-chip {background:var(--cat);color:var(--bg)}
 .card-meta {display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0;font:11px/1.4 var(--mono);color:#a9b2c0}
 .pill {font:600 10.5px/1 var(--name);color:var(--cat);border:1px solid color-mix(in srgb,var(--cat) 45%,transparent);border-radius:999px;padding:4px 8px}
 .card-summary {font-size:13px;line-height:1.5;color:#d8dee9;margin:0}
@@ -164,9 +267,10 @@ a.result:hover .result-label {color:var(--paper)}
 .mod-bar {height:4px;border-radius:4px;background:#ffffff10;overflow:hidden}
 .mod-bar span {display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--nexus),var(--nexus-amber))}
 
-.paper-cards {display:grid;gap:12px}
+/* V5: the papers are project cards in a rail; the drawing is the cover. On a phone the card is 78%
+   of the row: a thin padding keeps the chart labels at 11 px or more. */
 .paper-card {--cat:var(--blue)}
-.paper-figure {display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;min-height:0;padding:12px;background:radial-gradient(90% 100% at 50% 0%,color-mix(in srgb,var(--stroke) 16%,transparent),transparent 70%),#0d1017;border-bottom:1px solid var(--rule)}
+.paper-figure {display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;min-height:0;padding:8px;background:radial-gradient(90% 100% at 50% 0%,color-mix(in srgb,var(--stroke) 16%,transparent),transparent 70%),#0d1017;border-bottom:1px solid var(--rule)}
 .rm-grid {display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px 4px;width:100%}
 .rm-cell {display:flex;flex-direction:column;align-items:center;gap:2px;font:9px/1 var(--mono);color:#8b95a5;white-space:nowrap}
 .rm-cell svg {display:block;width:100%;height:auto;aspect-ratio:1}
@@ -176,7 +280,7 @@ a.result:hover .result-label {color:var(--paper)}
 .rm-chart {display:block;width:auto;height:100%;max-width:100%}
 .rm-label {font:500 15px var(--sans);fill:#a9b2c0}
 .rm-key {font-weight:600;font-size:16px;fill:var(--blue)}
-.paper-bound {font:12px/1.4 var(--mono);color:var(--blue);margin:0}
+.paper-bound {color:var(--blue)}
 .rm-arc {fill:none;stroke:var(--blue);filter:drop-shadow(0 0 3px color-mix(in srgb,var(--blue) 65%,transparent))}
 .rm-base {stroke:var(--rule);stroke-width:1}
 .rm-spoke {stroke:var(--stroke);stroke-width:1}
@@ -184,10 +288,6 @@ a.result:hover .result-label {color:var(--paper)}
 .rm-hub {stroke:var(--blue)}
 .rm-spoke.rm-open {stroke-dasharray:2.5 2;opacity:.75}
 .rm-tip.rm-open {opacity:.75}
-.card-label {font:11px/1.4 var(--mono);color:var(--blue);margin:0}
-.paper-card h4 {font:400 19px/1.25 var(--serif);color:var(--paper)}
-.paper-highlight {font:italic 14px/1.45 var(--serif);color:var(--blue);margin:0}
-.paper-card .card-summary {font-size:13px;color:var(--secondary);margin-bottom:4px}
 .research-foot {font:12px/1.6 var(--mono);color:#a9b2c0;margin:12px 0 0}
 .research-foot a {display:inline-block;min-width:44px;padding-block:12px;margin-block:-12px;color:var(--blue)}
 .research-foot a:hover {text-decoration:underline;text-underline-offset:4px}
@@ -217,7 +317,6 @@ a.result:hover .result-label {color:var(--paper)}
 
 @media(min-width:600px) {
 .figure-work .deck-fan {--step:min(46px,(100% - var(--w) - 24px) / (var(--n) - 1));width:100%}
-.paper-cards {grid-template-columns:repeat(2,calc((100% - 24px)/2.25))}
 .footer {padding-block:20px 28px}
 .about-actions {grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 24px}
 .rail-track {grid-auto-columns:calc((100% - 24px)/2.25);gap:12px}
@@ -241,13 +340,16 @@ a.result:hover .result-label {color:var(--paper)}
 .sample-count {flex:0 1 auto;margin-left:auto}
 }
 @media(min-width:900px) {
-/* Paragraph and figure side by side, alternating; the lessons text beside the two portals. */
+/* Paragraph and figure side by side, the figure on the right of every slide (V5); the lessons
+   text beside the two portals. */
 .about-row {grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);column-gap:40px;align-items:center}
-.about-row:nth-child(even) {grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}
-.about-row:nth-child(even) .about-figure {order:-1}
-/* The pendulum keeps a legible 400 px beside the short first paragraph. */
-.about-row:first-child {grid-template-columns:minmax(0,1fr) minmax(0,400px)}
+/* The pendulum and the problem-to-model drawing keep a legible 400 px beside their paragraphs; in
+   the carousel each slide's content sits in the middle of its fixed height. */
+:is(.about-row:first-child,.about-row:has(.figure-method)) {grid-template-columns:minmax(0,1fr) minmax(0,400px)}
+.about-enhanced .about-row {align-content:center}
 .lessons {grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:48px;align-items:start}
+/* V5: the two portals side by side, so the column is as tall as the text beside it. */
+.lesson-cards {grid-template-columns:1fr 1fr}
 }
 @media(min-width:1000px) {
 .about,.work {margin:0;padding:0}
@@ -257,7 +359,6 @@ a.result:hover .result-label {color:var(--paper)}
 .work-content {padding:8px 24px 20px}
 .rail-track {grid-auto-columns:calc((100% - 48px)/4.2)}
 .rail-mods .rail-track {grid-auto-columns:min(calc((100% - 48px)/4.2),386px)}
-.paper-cards {grid-template-columns:repeat(2,calc((100% - 48px)/4.2));gap:12px}
 }
 @media(min-width:1000px) and (max-height:740px) {
 :is(.about,.work)>summary {min-height:46px}
@@ -274,4 +375,6 @@ a.result:hover .result-label {color:var(--paper)}
 .rm-centre,.rm-circle,.rm-tip,.rm-hub {fill:Canvas}
 .rm-label {fill:CanvasText}
 .platform-logo {filter:none}
+.emblem {fill:CanvasText}
+.picker-toggle[aria-pressed=true] .emblem {fill:HighlightText}
 }

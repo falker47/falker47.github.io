@@ -42,6 +42,19 @@ const official = {
     source: 'https://oeis.org/favicon.svg', colour: '#ffffff',
     licence: 'Mark of The OEIS Foundation Inc.; used unaltered to identify links to oeis.org (site content CC BY-SA 4.0).',
   },
+  // V5: Simple Icons dropped LinkedIn after 10.x; its last CC0 drawing is kept as a one-colour mark.
+  linkedin: {
+    title: 'LinkedIn', file: 'linkedin-simple-icons-10.4.0.svg', sha256: '2687ac468d96bd03e748dc8646ef6465cb4cc7f34b96e1d0bc86fcb3dd79121a',
+    source: 'https://unpkg.com/simple-icons@10.4.0/icons/linkedin.svg', colour: '#0a66c2', mono: true,
+    licence: 'CC0-1.0 (Simple Icons 10.4.0); LinkedIn brand guidelines apply. Used to identify links to linkedin.com.',
+  },
+  // V5: the arXiv logomark, the three strokes of the X taken unaltered from the official primary logo.
+  arxivmark: {
+    title: 'arXiv', file: 'arxiv-logo.svg', sha256: 'ce0353650c0d4c1af4e2a777dfd0b64e7079a42d16dbb2aa4fe3d924975d9000',
+    source: 'https://static.arxiv.org/static/design-system/latest/logos/arxiv-logo.svg', colour: '#aa142d',
+    paths: [3, 4, 5], viewBox: '70.44 0 111.12 111.12',
+    licence: 'Registered trademark of arXiv (Cornell University); shown unaltered, in its colours on a light ground, only to identify links to arXiv.',
+  },
 };
 
 /** The inner markup of an SVG file, with comments and the <title> removed and whitespace collapsed. */
@@ -71,9 +84,11 @@ export function makeBrands() {
     const bytes = readFileSync(join(brandDir, entry.file));
     const sha256 = createHash('sha256').update(bytes).digest('hex');
     if (sha256 !== entry.sha256) throw Error(`${entry.file}: expected SHA-256 ${entry.sha256}, found ${sha256}`);
-    const { viewBox, body } = svgBody(bytes.toString('utf8'));
+    const svg = svgBody(bytes.toString('utf8'));
+    // A mark may be some of the file's paths (the logomark inside a logo), framed by its own viewBox.
+    const body = entry.paths ? entry.paths.map(index => svg.body.match(/<path\b[^>]*\/>/g)[index]).join('') : svg.body;
     marks[id] = { title: entry.title, origin: entry.source, licence: entry.licence, source: entry.source, sha256,
-      colour: entry.colour, hover: hover(entry.colour), viewBox, body, mono: false };
+      colour: entry.colour, hover: hover(entry.colour), viewBox: entry.viewBox ?? svg.viewBox, body, mono: Boolean(entry.mono) };
   }
   return { simpleIcons: { version, licence: 'CC0-1.0', url: 'https://github.com/simple-icons/simple-icons' }, surface, marks };
 }

@@ -60,16 +60,20 @@ async function checkTiles(scope, name) {
   const tiles = await scope.locator('.results-row .result:visible').evaluateAll(nodes => nodes.map(node => {
     const style = getComputedStyle(node);
     const glyph = node.firstElementChild;
+    // V5: on a phone the two Modding toggles share half a row and show no drawing; every other
+    // tile keeps the same drawing width.
+    const width = glyph.getBoundingClientRect().width;
     return {
-      measure: [node.getBoundingClientRect().height, style.borderTopLeftRadius, style.borderTopWidth, glyph.getBoundingClientRect().width,
+      measure: [node.getBoundingClientRect().height, style.borderTopLeftRadius, style.borderTopWidth, width || 'none',
         getComputedStyle(node.querySelector('.result-value')).fontSize].join(' '),
+      bare: !width && node.matches('#panel-modding .picker-toggle') && innerWidth < 700,
       glyph: glyph.matches('svg.result-icon, svg.brand'), link: node.matches('a'), arrow: node.lastElementChild.matches('.result-arrow'),
     };
   }));
   assert.ok(tiles.length, name + ' has count tiles');
-  tileMeasure ??= tiles[0].measure;
+  tileMeasure ??= tiles.find(tile => !tile.bare).measure;
   for (const tile of tiles) {
-    assert.equal(tile.measure, tileMeasure, name + ' tiles share one size');
+    assert.equal(tile.bare ? tile.measure.replace(' none ', ' ' + tileMeasure.split(' ')[3] + ' ') : tile.measure, tileMeasure, name + ' tiles share one size');
     assert.ok(tile.glyph, name + ' tiles open with their drawing or mark');
     assert.equal(tile.arrow, tile.link, name + ' only linked tiles end with an arrow');
   }
@@ -151,12 +155,41 @@ async function checkPickers(page) {
     if (page.viewportSize().width < 600) assert.ok(card / row <= .8 && card / row > .7, panel + ' phone card ' + card / row);
     else if (panel === 'software') assert.ok(Math.abs(card - (row - 48) / 4.2) < 2, 'software card width ' + card);
     // The count line beside the toggles follows the category.
-    if (panel === 'software') assert.deepEqual(await picker.locator('.picker-count:visible').evaluateAll(nodes => nodes.map(node => node.dataset.group)), [groups[0]]);
+    if (panel === 'software') {
+      assert.deepEqual(await picker.locator('.picker-count:visible').evaluateAll(nodes => nodes.map(node => node.dataset.group)), [groups[0]]);
+      // V5: a project with its own page shows "Scheda" on its cover, and the cover opens that page.
+      await picker.locator('.picker-toggle[data-group="app"]').click();
+      const covers = await picker.locator('.picker-group:visible .card').evaluateAll(cards => cards.map(card => {
+        const cover = card.querySelector('.card-cover').getBoundingClientRect();
+        card.scrollIntoView({ block: 'center', inline: 'nearest' });
+        const box = card.querySelector('.card-cover').getBoundingClientRect();
+        const hit = document.elementFromPoint(box.left + box.width / 2, box.top + box.height / 2)?.closest('a');
+        const chip = card.querySelector('.cover-chip')?.getBoundingClientRect();
+        return { page: card.querySelector('h4 a')?.getAttribute('href') ?? null, hit: hit ? hit.getAttribute('href') : null,
+          chip: chip ? chip.top >= box.top && chip.right <= box.right + 1 && chip.bottom <= box.bottom && cover.width > 0 : null };
+      }));
+      for (const cover of covers) {
+        assert.equal(cover.hit, cover.page, 'The cover opens ' + (cover.page ?? 'nothing'));
+        assert.equal(cover.chip, cover.page ? true : null, 'The "Scheda" label sits on the cover of ' + cover.page);
+      }
+    }
   }
-  // Research: the paper count is the same tile, the two papers end with the same buttons.
+  // Research (V5): the paper count is the same tile; the two papers are project cards in a rail,
+  // side by side on a phone like the other tabs, ending with the same buttons.
   await page.locator('#tab-research').click();
   await checkTiles(page.locator('#panel-research'), 'research');
-  await checkCardButtons(page.locator('#panel-research .paper-cards'), 'research');
+  await checkCardButtons(page.locator('#panel-research .rail-papers'), 'research');
+  const papers = await page.locator('#panel-research .rail-papers .card').evaluateAll(cards => cards.map(card => card.getBoundingClientRect()).map(box => ({ top: box.top, width: box.width })));
+  assert.equal(papers.length, 2);
+  assert.ok(Math.abs(papers[0].top - papers[1].top) < 1, 'The papers sit side by side');
+  const row = await page.locator('#panel-research .rail-track').evaluate(node => node.clientWidth);
+  if (page.viewportSize().width < 600) assert.ok(papers[0].width / row <= .8 && papers[0].width / row > .7, 'phone paper card ' + papers[0].width / row);
+  else if (page.viewportSize().width >= 1000) assert.ok(Math.abs(papers[0].width - (row - 48) / 4.2) < 2, 'paper card width ' + papers[0].width);
+  // Lessons (V5): from 900 px the two portals sit side by side.
+  await page.locator('#tab-teaching').click();
+  const portals = await page.locator('#panel-teaching .feedback-result').evaluateAll(cards => cards.map(card => card.getBoundingClientRect().top));
+  if (page.viewportSize().width >= 900) assert.ok(Math.abs(portals[0] - portals[1]) < 1, 'The two portals sit side by side');
+  else assert.ok(portals[1] > portals[0], 'On a phone the portals stack');
   await page.locator('#tab-software').click();
 }
 
@@ -235,6 +268,8 @@ async function checkFragments(page, origin, lang) {
     await visit(page, origin, '/#' + id, lang);
     assert.ok(await page.locator('#chi-sono').evaluate(el => el.open), '#' + id + ' opens Chi sono');
     await arrived('#' + id, '/#' + id);
+    // V5: the certificates are on the second slide of the carousel, which the link brings in.
+    assert.equal(await page.locator('.about-index').innerText(), id === 'certificazioni' ? '2' : '1', '/#' + id + ' slide');
   }
   await checkCertificates(page);
   for (const [id, tab] of [['progetti', 'software'], ['ricerca', 'research']]) {
@@ -315,6 +350,45 @@ async function checkLiveNexus(page, origin, lang) {
   }
 }
 
+// V5: the carousel's height transition runs only with motion, and the main pass reduces motion.
+// Tab into the certificates of slide 2: the focused card stays in view and the track keeps its
+// scroll at 0. Open "Su di me" after switching language while it was closed: the opening ends at
+// the height the section settles at, with no snap.
+async function checkCarouselMotion(browser, origin, viewport) {
+  const context = await browser.newContext({ viewport, locale: 'it', reducedMotion: 'no-preference', serviceWorkers: 'block' });
+  try {
+    const page = await context.newPage();
+    await visit(page, origin, '/', 'it');
+    const toggle = () => page.evaluate(async () => {
+      const details = document.querySelector('#chi-sono');
+      details.querySelector(':scope > summary').click();
+      const animation = details.getAnimations()[0];
+      const end = animation ? parseFloat(animation.effect.getKeyframes().at(-1).height) : null;
+      if (animation) await animation.finished;
+      await new Promise(resolve => setTimeout(resolve, 600));
+      return { open: details.open, end, final: details.getBoundingClientRect().height };
+    });
+    let state = await toggle();
+    assert.ok(state.open && (state.end === null || Math.abs(state.end - state.final) <= 1), `Opening ends at ${state.end} px and settles at ${state.final} px`);
+    await page.locator('#chi-sono > summary').focus();
+    await page.keyboard.press('Tab');
+    await page.waitForTimeout(600);
+    const focus = await page.evaluate(() => {
+      const box = document.activeElement.getBoundingClientRect();
+      return { card: document.activeElement.matches('.deck-card'), slide: document.querySelector('.about-index').textContent,
+        top: box.top, bottom: box.bottom, view: innerHeight, scroll: document.querySelector('.about-rows').scrollTop };
+    });
+    assert.ok(focus.card && focus.slide === '2', 'Tab from the summary reaches the certificates on slide 2');
+    assert.ok(focus.top >= 0 && focus.bottom <= focus.view, `The focused card is in view (${Math.round(focus.top)}–${Math.round(focus.bottom)} of ${focus.view} px)`);
+    assert.equal(focus.scroll, 0, 'The track keeps its scroll at 0');
+    state = await toggle();
+    assert.equal(state.open, false);
+    await page.locator('button[data-lang="en"]').click();
+    state = await toggle();
+    assert.ok(state.open && (state.end === null || Math.abs(state.end - state.final) <= 1), `After a language switch the opening ends at ${state.end} px and settles at ${state.final} px`);
+  } finally { await context.close(); }
+}
+
 async function checkNoScript(browser, origin, viewport) {
   const context = await browser.newContext({ viewport, javaScriptEnabled: false, locale: 'it' });
   try {
@@ -330,6 +404,11 @@ async function checkNoScript(browser, origin, viewport) {
     assert.equal(await page.locator('.card:visible').count(), await page.locator('.card').count());
     await page.locator('#chi-sono > summary').click();
     assert.equal(await page.locator('.deck-card:visible').count(), certificates.length);
+    // V5: without scripts the five paragraphs stay in a column and the carousel controls stay hidden.
+    assert.equal(await page.locator('.about-row:visible').count(), 5, 'Every paragraph is readable without scripts');
+    assert.equal(await page.locator('.about-nav:visible').count(), 0);
+    const tops = await page.locator('.about-row').evaluateAll(rows => rows.map(row => row.getBoundingClientRect().top));
+    assert.ok(tops.every((top, i) => !i || top > tops[i - 1]), 'The paragraphs follow one another down the page');
     verify();
   } finally { await context.close(); }
 }
@@ -347,23 +426,57 @@ async function home(page, origin, lang) {
   await page.locator('#chi-sono > summary').click();
   await settled(page, '#chi-sono');
   assert.equal(await page.locator('.about-actions a[href="/research/"]').count(), 1);
-  // The rows of "Su di me": each paragraph with its figure. From 900 px they alternate sides
-  // (figure right on odd rows, left on even rows); below, the figure follows its paragraph.
-  const rows = await page.locator('.about-row').evaluateAll(nodes => nodes.map(row => {
-    const text = row.querySelector('p').getBoundingClientRect(), figure = row.querySelector('.about-figure').getBoundingClientRect();
-    return { text: { left: text.left, right: text.right, bottom: text.bottom }, figure: { left: figure.left, right: figure.right, top: figure.top, width: figure.width, height: figure.height } };
-  }));
-  assert.equal(rows.length, 4, 'Four paragraph rows');
+  // V5: the rows of "Su di me" are the slides of a carousel, each paragraph with its figure. From
+  // 900 px the figure sits right of its paragraph on every slide; below, it follows the paragraph.
+  // "Indietro" and "Avanti" move one slide, the counter and the progress bar follow. Every slide is
+  // as tall as the tallest, so the controls stay where they are: the reader never moves the pointer.
+  const track = page.locator('.about-rows');
+  const nav = page.locator('.about-nav');
+  assert.ok(await nav.isVisible(), 'The carousel controls show with the script');
+  assert.equal(await track.evaluate(node => getComputedStyle(node).scrollSnapType), 'x mandatory');
+  const slide = () => page.locator('.about-index').innerText();
+  const fitted = index => page.waitForFunction(i => {
+    const rows = document.querySelector('.about-rows');
+    const row = rows.children[i];
+    return Math.abs(rows.scrollLeft - (row.offsetLeft - rows.children[0].offsetLeft)) <= 2;
+  }, index, { timeout: 5000 });
+  const heights = await track.evaluate(node => [node.clientHeight, ...[...node.children].map(row => row.offsetHeight)]);
+  assert.ok(heights.every(height => Math.abs(height - heights[0]) <= 1), 'Every slide is as tall as the track: ' + heights.join(', '));
+  const back = nav.locator('.about-step[data-step="-1"]'), next = nav.locator('.about-step[data-step="1"]');
+  assert.equal(await slide(), '1', 'The carousel opens on the first paragraph');
+  assert.equal(await back.getAttribute('aria-disabled'), 'true', 'No step back from the first paragraph');
+  const rows = [], places = [];
+  for (let index = 0; index < 5; index++) {
+    if (index) await next.click();
+    await fitted(index);
+    assert.equal(await slide(), String(index + 1), 'The counter follows the steps');
+    assert.equal(await nav.locator('.about-progress i.on').count(), index + 1, 'The bar fills up to the open paragraph');
+    // Measured on the page, not the window: the click may scroll the window to the button.
+    places.push(await next.evaluate(button => { const box = button.getBoundingClientRect(); return [Math.round(box.top + scrollY), Math.round(box.left), Math.round(box.width)].join(' '); }));
+    rows.push(await page.locator('.about-row').nth(index).evaluate(row => {
+      const text = row.querySelector('p').getBoundingClientRect(), figure = row.querySelector('.about-figure').getBoundingClientRect();
+      return { text: { left: text.left, right: text.right, bottom: text.bottom }, figure: { left: figure.left, right: figure.right, top: figure.top, width: figure.width, height: figure.height } };
+    }));
+  }
+  assert.equal(new Set(places).size, 1, '"Avanti" stays in the same place on every paragraph');
+  assert.equal(await next.getAttribute('aria-disabled'), 'true', 'No step past the last paragraph');
+  await next.click({ force: true });
+  assert.equal(await slide(), '5', 'A step at the end does nothing');
   for (const [index, { text, figure }] of rows.entries()) {
     if (page.viewportSize().width < 900) assert.ok(figure.top >= text.bottom - 1, `Row ${index + 1}: the figure follows its paragraph`);
-    else if (index % 2 === 0) assert.ok(figure.left >= text.right - 1, `Row ${index + 1}: the figure sits right of its paragraph`);
-    else assert.ok(figure.right <= text.left + 1, `Row ${index + 1}: the figure sits left of its paragraph`);
-    // The text fills its column: no empty band between a paragraph and its figure.
-    if (page.viewportSize().width >= 900) {
-      const gap = index % 2 === 0 ? figure.left - text.right : text.left - figure.right;
-      assert.ok(gap <= 48, `Row ${index + 1}: ${Math.round(gap)} px between the paragraph and its figure`);
+    else {
+      assert.ok(figure.left >= text.right - 1, `Row ${index + 1}: the figure sits right of its paragraph`);
+      // The text fills its column: no empty band between a paragraph and its figure.
+      assert.ok(figure.left - text.right <= 48, `Row ${index + 1}: ${Math.round(figure.left - text.right)} px between the paragraph and its figure`);
     }
   }
+  // A swipe (a native scroll of the track) also moves the counter; "Indietro" goes back.
+  await track.evaluate(node => node.scrollTo({ left: node.children[1].offsetLeft - node.children[0].offsetLeft }));
+  await fitted(1);
+  await page.waitForFunction(() => document.querySelector('.about-index').textContent === '2', null, { timeout: 5000 }).catch(() => {});
+  assert.equal(await slide(), '2', 'A swipe moves the counter');
+  await back.click();
+  await fitted(0);
   // The pendulum stays about 400 px wide beside the short first paragraph, cropped to its panels.
   if (page.viewportSize().width >= 900) {
     const { width, height } = rows[0].figure;
@@ -426,7 +539,10 @@ await withBrowser(async (browser, origin) => {
       await page.locator('button[data-lang="' + lang + '"]').click();
       if (route === '/') {
         await home(page, origin, lang);
-        if (lang === 'it') await checkNoScript(browser, origin, viewport);
+        if (lang === 'it') {
+          await checkNoScript(browser, origin, viewport);
+          await checkCarouselMotion(browser, origin, viewport);
+        }
       } else if (route === '/styleguide/') await guide(page);
       verifyNetwork();
       assert.deepEqual(errors, []);

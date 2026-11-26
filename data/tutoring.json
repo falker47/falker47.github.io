@@ -51,5 +51,49 @@
       "url": "https://www.superprof.it/studente-fisica-propone-lezioni-matematica-fisica-per-scuola-media-liceo-parma-presenza-remoto.html"
     }
   ],
-  "portal": "https://falker47.github.io/mauriziofalconi-ripetizioni/"
+  "portal": "https://falker47.github.io/mauriziofalconi-ripetizioni/",
+  "reviews": [
+    {
+      "name": "Lorenzo",
+      "date": "2023-05",
+      "source": "Letuelezioni",
+      "url": "https://www.letuelezioni.it/insegnanti/maurizio-falconi.htm",
+      "text": "…spiega in maniera chiara e precisa e anche divertente, lo consiglio fortemente"
+    },
+    {
+      "name": "Mattia",
+      "date": "2023-05",
+      "source": "Letuelezioni",
+      "url": "https://www.letuelezioni.it/insegnanti/maurizio-falconi.htm",
+      "text": "…me l’ha spiegata in modo semplice e facendomi ragionare"
+    },
+    {
+      "name": "Paolo",
+      "date": "2023-02",
+      "source": "Letuelezioni",
+      "url": "https://www.letuelezioni.it/insegnanti/maurizio-falconi.htm",
+      "text": "…è molto paziente e organizzato oltre che simpatico, spiega davvero benissimo"
+    },
+    {
+      "name": "Gaia",
+      "date": "2023-05",
+      "source": "Letuelezioni",
+      "url": "https://www.letuelezioni.it/insegnanti/maurizio-falconi.htm",
+      "text": "…mi ha aiutato tantissimo, oltre ad avermi spiegato molto bene gli argomenti"
+    },
+    {
+      "name": "Maria",
+      "date": "2023-05",
+      "source": "Letuelezioni",
+      "url": "https://www.letuelezioni.it/insegnanti/maurizio-falconi.htm",
+      "text": "Ragazzo con uno splendido modo di porsi, molto preparato…"
+    },
+    {
+      "name": "Francesco",
+      "date": "2023-02",
+      "source": "Letuelezioni",
+      "url": "https://www.letuelezioni.it/insegnanti/maurizio-falconi.htm",
+      "text": "…spiega tutto in maniera molto chiara, letteralmente la mia salvezza"
+    }
+  ]
 }

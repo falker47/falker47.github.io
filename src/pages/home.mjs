@@ -38,7 +38,7 @@ export const graph = [
       "@id": "https://falker47.github.io/#profile-image"
     },
     "jobTitle": jobTitle,
-    "description": "Porto l'AI nei processi aziendali partendo dai dati, sviluppo applicazioni e strumenti, creo mod per videogiochi e faccio ricerca matematica indipendente.",
+    "description": "Porto l'AI in due aziende, dalla chimica agli investimenti. Sviluppo applicazioni e strumenti, creo mod per videogiochi e faccio ricerca matematica indipendente.",
     "sameAs": [
       "https://github.com/falker47",
       "https://www.linkedin.com/in/mauriziofalconi/",

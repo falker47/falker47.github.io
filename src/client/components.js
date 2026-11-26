@@ -92,6 +92,68 @@
     update();
   }
 
+  // "Su di me": one paragraph at a time. "Indietro" and "Avanti" move by one slide, touch scrolls
+  // natively. Every slide is as tall as the tallest (CSS), so the controls never move.
+  for (const carousel of document.querySelectorAll('.about-carousel')) {
+    const track = carousel.firstElementChild, rows = Array.from(track.children), nav = track.nextElementSibling;
+    const steps = nav.querySelectorAll('button'), bars = nav.querySelectorAll('i');
+    let index = 0, width = 0;
+    const left = i => rows[i].offsetLeft - rows[0].offsetLeft;
+    // The bar fills up to the open paragraph. At the ends a step stays focusable and does nothing.
+    function sync(next) {
+      index = Math.max(0, Math.min(rows.length - 1, next));
+      bars.forEach((bar, i) => bar.classList.toggle('on', i <= index));
+      steps[0].setAttribute('aria-disabled', String(!index));
+      steps[1].setAttribute('aria-disabled', String(index === rows.length - 1));
+      nav.querySelector('.about-index').textContent = index + 1;
+    }
+    function go(next, smooth) {
+      sync(next);
+      track.scrollTo({ left: left(index), behavior: smooth && !reduced.matches ? 'smooth' : 'auto' });
+    }
+    track.addEventListener('scroll', () => {
+      const next = left(1) && Math.round(track.scrollLeft / left(1));
+      if (left(1) && next !== index) sync(next);
+    }, { passive: true });
+    steps.forEach(step => step.addEventListener('click', () => go(index + Number(step.dataset.step), true)));
+    // Focus on a link of another slide brings that slide in. The browser has already scrolled the
+    // track to the link; once the track is realigned, the page scrolls to it instead.
+    track.addEventListener('focusin', event => {
+      go(rows.indexOf(event.target.closest('.about-row')), false);
+      track.scrollTop = 0;
+      event.target.scrollIntoView({ block: 'nearest' });
+    });
+    // A new width (a resize, the section opening) realigns the open slide.
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(() => {
+        if (track.clientWidth !== width && (width = track.clientWidth)) track.scrollLeft = left(index);
+      }).observe(track);
+    }
+    carousel.aboutGo = go;
+    carousel.classList.add('about-enhanced');
+    nav.hidden = false;
+    sync(0);
+  }
+
+  // The students' reviews under the tutoring figures move on every six seconds, one at a time, and
+  // stop while the pointer or the focus is on them; with reduced motion they wait for a swipe. The
+  // bar under them marks the open one.
+  for (const track of document.querySelectorAll('.reviews-track')) {
+    const bars = track.parentNode.querySelectorAll('.reviews-bar i');
+    track.addEventListener('scroll', () => {
+      const open = Math.round(track.scrollLeft / (track.clientWidth || 1));
+      bars.forEach((bar, i) => bar.classList.toggle('on', i === open));
+    }, { passive: true });
+    let paused = false;
+    ['pointerenter', 'focusin'].forEach(type => track.addEventListener(type, () => { paused = true; }));
+    ['pointerleave', 'focusout'].forEach(type => track.addEventListener(type, () => { paused = false; }));
+    setInterval(() => {
+      if (paused || reduced.matches || !track.clientWidth) return;
+      const next = track.scrollLeft + track.clientWidth;
+      track.scrollTo({ left: next > track.scrollWidth - track.clientWidth + 2 ? 0 : next, behavior: 'smooth' });
+    }, 6000);
+  }
+
   // Certificates. The thumbnails sit inside the closed "Chi sono", where lazy images wait
   // until it opens. Start them once the page has loaded and the browser is idle, or as soon
   // as the reader points at, focuses or opens the summary. A card under the pointer or the focus
@@ -233,6 +295,10 @@
     const details = target.matches('details') ? target : target.closest('details');
     if (!details) return false;
     if (tab) tab.click();
+    // A target in "Su di me" (the certificates) brings its slide in first.
+    const slide = target.closest('.about-row');
+    const carousel = slide && slide.closest('.about-carousel');
+    if (carousel && carousel.aboutGo) carousel.aboutGo(Array.from(slide.parentNode.children).indexOf(slide), false);
     const anchor = panel ? details : target;
     function arrive() {
       const top = anchor.getBoundingClientRect().top + scrollY - offset;

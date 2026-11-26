@@ -62,7 +62,8 @@ test('home links reach existing pages, never the legacy portfolio or the old pro
 });
 
 test('external actions show their platform mark; other actions keep an arrow', () => {
-  assert.throws(() => validateHomeCatalogue(home.replace(/<svg class="brand brand-github"[^>]*><use href="#brand-github"\/><\/svg>/, '')), /mark/);
+  // V5: the first GitHub mark of a card button (the "Su di me" repositories tile has one too).
+  assert.throws(() => validateHomeCatalogue(home.replace(/(<p class="card-links">[^]*?)<svg class="brand brand-github"[^>]*><use href="#brand-github"\/><\/svg>/, '$1')), /mark/);
   assert.throws(() => validateHomeCatalogue(home.replace(/<a href="(https:\/\/www\.nexusmods\.com[^"]+)" style="--brand:#[0-9a-f]+" data-brand="nexusmods">/, '<a href="$1">')), /brand/);
   assert.throws(() => validateHomeCatalogue(home.replace('<use href="#icon-arrow-ne"/>', '<use href="#icon-arrow-right"/>')), /arrow/);
   // V4: the mark leads the label, the arrow ends it, and a card has at most three buttons.
@@ -75,7 +76,7 @@ test('external actions show their platform mark; other actions keep an arrow', (
 });
 
 test('every count is the same tile: drawing or mark, number, label, and an arrow only on links', () => {
-  assert.throws(() => validateHomeCatalogue(home.replace(/(<a class="result" href="\/research\/">)<svg class="result-icon"[^]*?<\/svg>/, '$1')), /tile parts/);
+  assert.throws(() => validateHomeCatalogue(home.replace(/(<a class="result" href="\/research\/">)<svg class="brand brand-arxivmark"[^]*?<\/svg>/, '$1')), /tile parts/);
   assert.throws(() => validateHomeCatalogue(home.replace(/(<button type="button" class="picker-toggle result cat-mod"[^>]*>[^]*?)(<\/button>)/, '$1<span class="result-arrow" aria-hidden="true">→</span>$2')), /tile arrow/);
   assert.throws(() => validateHomeCatalogue(home.replace(/<span class="result-arrow" aria-hidden="true">↗<\/span>(<\/a>)/, '$1')), /tile arrow/);
 });
@@ -98,7 +99,10 @@ test('the Research tab draws the certified configurations and both kinds of dots
   assert.throws(() => validateHomeCatalogue(home.replace(/(<path class="rm-arc" d="M[\d.]+ [\d.]+ A)[\d.]+/, '$1' + '90')), /C\*/);
   assert.throws(() => validateHomeCatalogue(home.replace('<svg class="rm-chart" viewBox="0 0 320 180"', '<svg class="rm-chart" viewBox="0 0 288 162"')), /16:9/);
   assert.throws(() => validateHomeCatalogue(home.replace('>C*</text>', '>1/8</text>')), /labels/);
-  assert.throws(() => validateHomeCatalogue(home.replace(/(<p class="paper-bound">C\* ∈ \[<span[^>]*>)[^<]+/, '$1' + '0,1300')), /C\* interval/);
+  assert.throws(() => validateHomeCatalogue(home.replace(/(<span class="paper-bound">C\* ∈ \[<span[^>]*>)[^<]+/, '$1' + '0,1300')), /C\* interval/);
+  // V5: the papers are project cards in a rail.
+  assert.throws(() => validateHomeCatalogue(home.replace('<div class="rail rail-papers">', '<div class="paper-cards">')), /rail/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<span class="pill">Paper II</span>', '<span class="pill">Paper 2</span>')), /Paper/);
   assert.throws(() => validateHomeCatalogue(home.replace(/(<line class="rm-spoke" x1="[\d.]+" y1="[\d.]+" x2=")[\d.]+/, '$1' + '5')), /scale/);
   assert.throws(() => validateHomeCatalogue(home.replace('<a class="result" href="/research/">', '<a class="result" href="https://arxiv.org/">')), /paper count/);
 });
@@ -108,9 +112,14 @@ test('Su di me shows each paragraph beside its figure, the facts from data and o
   assert.throws(() => validateHomeCatalogue(home.replace('<a class="fact fact-research" href="#ricerca">', '<a class="fact fact-research" href="/research/">')), /Facts/);
   assert.throws(() => validateHomeCatalogue(home.replace(/<li><a class="fact fact-tutoring"[^]*?<\/li>/, '')), /Facts/);
   assert.throws(() => validateHomeCatalogue(home.replace('<a class="fact fact-tutoring" href="#panel-teaching">', '<a class="fact fact-tutoring" href="/lessons/">')), /Facts/);
-  const work = home.match(/<div class="about-row"><p data-i18n="aboutWork">[^]*?<\/figure><\/div>/)[0];
-  const approach = home.match(/<div class="about-row"><p data-i18n="aboutApproach">[^]*?<\/figure><\/div>/)[0];
-  assert.throws(() => validateHomeCatalogue(home.replace(work + approach, approach + work)), /order/);
+  const work = home.match(/<div class="about-row"><p data-i18n="aboutWork">[^]*?<\/section><\/figure><\/div>/)[0];
+  const method = home.match(/<div class="about-row"><p data-i18n="aboutMethod">[^]*?<\/figure><\/div>/)[0];
+  assert.throws(() => validateHomeCatalogue(home.replace(work + method, method + work)), /order/);
+  // V5: the carousel controls wait for the script, and the closing quote is gone.
+  assert.throws(() => validateHomeCatalogue(home.replace('<div class="about-nav" hidden>', '<div class="about-nav">')), /hidden until the script/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<span class="about-progress" aria-hidden="true"><i class="on"></i><i></i>', '<span class="about-progress" aria-hidden="true"><i class="on"></i>')), /One segment per paragraph/);
+  assert.throws(() => validateHomeCatalogue(home.replace('>y = a x + b</text>', '>y = f(x)</text>')), /straight line/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<nav class="research-links about-actions"', '<p class="philosophy">Il mio obiettivo</p><nav class="research-links about-actions"')), /quote/);
   assert.throws(() => validateHomeCatalogue(home.replace('<div class="about-rows">', '<div class="about-rows journey">')), /Percorso/);
   assert.throws(() => validateHomeCatalogue(home.replace(/(<img src="\/assets\/certifications\/[^"]+-thumb-300\.webp" srcset=")[^"]+/, '$1x.webp 300w')), /./);
   assert.throws(() => validateHomeCatalogue(home.replace(/<button type="button" class="deck-card" style="--r:9\.0deg[^]*?<\/button>/, '')), /One card per certificate/);

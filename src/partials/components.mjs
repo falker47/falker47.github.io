@@ -38,7 +38,7 @@ export function certificateDeck({ t, copy }, entries, id) {
   ${group(cards)}
   </div>
   <div class="deck-caption">
-    <div class="deck-default"><p class="deck-meta">${label(t, 'deckIssuers')}</p><p class="deck-title">${entries.length} ${label(t, 'deckCount')}</p></div>
+    <div class="deck-default"><p class="deck-meta">${label(t, 'deckIssuers')}</p><p class="deck-title"><strong class="deck-count">${entries.length}</strong> ${label(t, 'deckCount')}</p></div>
     <div class="deck-current" aria-hidden="true" hidden><p class="deck-meta"></p><p class="deck-title"></p></div>
     <p class="deck-hint"><span class="hint-hover">${label(t, 'deckHintHover')}</span><span class="hint-touch">${label(t, 'deckHintTouch')}</span></p>
   </div>

@@ -6,6 +6,7 @@ import research from '../data/research.json' with { type: 'json' };
 import ringmin from '../data/ringmin.json' with { type: 'json' };
 import tutoring from '../data/tutoring.json' with { type: 'json' };
 import certificates from '../data/certifications.json' with { type: 'json' };
+import identity from '../data/profile.json' with { type: 'json' };
 import snapshot from '../data/nexus-downloads.json' with { type: 'json' };
 import italianCopy from '../data/i18n/it.json' with { type: 'json' };
 import { decode, tags } from './qa/site.mjs';
@@ -37,7 +38,7 @@ const buttons = markup => [...markup.matchAll(/<a href="([^"]+)"([^>]*)>([^]*?)<
 const expectedBrand = href => {
   const host = /^https:\/\/([^/]+)/.exec(href)?.[1] ?? '';
   return [['github.com', 'github'], ['play.google.com', 'googleplay'], ['nexusmods.com', 'nexusmods'], ['arxiv.org', 'arxiv'],
-    ['zenodo.org', 'zenodo'], ['orcid.org', 'orcid'], ['oeis.org', 'oeis']].find(([name]) => host === name || host.endsWith('.' + name))?.[1] ?? null;
+    ['zenodo.org', 'zenodo'], ['orcid.org', 'orcid'], ['oeis.org', 'oeis'], ['linkedin.com', 'linkedin']].find(([name]) => host === name || host.endsWith('.' + name))?.[1] ?? null;
 };
 // V4: one to three buttons; the platform mark leads the label, the arrow of any other link ends it.
 export function checkButtons(markup, label) {
@@ -52,13 +53,13 @@ export function checkButtons(markup, label) {
   }
 }
 
-// V4: every count tile has the same parts in the same order: its drawing or mark, the number and
-// the label; a linked tile ends with its arrow, a toggle has none.
+// V4: every count tile has the same parts in the same order: its drawing, emblem or mark, the number
+// and the label; a linked tile ends with its arrow, a toggle has none.
 function checkTiles(markup, label, expected) {
   const tiles = [...markup.matchAll(/<(a|button) [^>]*class="(?:picker-toggle )?result\b[^"]*"[^>]*>([^]*?)<\/\1>/g)];
   assert.equal(tiles.length, expected, label + ' tiles');
   for (const [, tag, body] of tiles) {
-    assert.match(body, /^<svg class="(?:result-icon|brand [\w-]+)"[^]*?<\/svg><span class="result-body"><strong class="result-value"[^>]*>[^]*?<\/strong><span class="result-label">/, label + ' tile parts');
+    assert.match(body, /^<svg class="(?:result-icon(?: emblem emblem-[\w-]+)?|brand [\w-]+)"[^]*?<\/svg><span class="result-body"><strong class="result-value"[^>]*>[^]*?<\/strong><span class="result-label">/, label + ' tile parts');
     assert.equal(body.endsWith('<span class="result-arrow" aria-hidden="true">→</span>') || body.endsWith('<span class="result-arrow" aria-hidden="true">↗</span>'), tag === 'a', label + ' tile arrow');
   }
 }
@@ -88,10 +89,13 @@ function checkStructure(source) {
 function checkSoftware(source) {
   const markup = panel(source, 'software');
   checkTiles(markup, 'Software', 3);
+  // V5: the first category is "App", for both the web apps and the Android app.
   const expected = [['app', 'app'], ['game', 'giochi'], ['tool', 'strumenti']].map(([id, word]) => ({ id, word, items: visible.filter(item => item.category === id) }));
   assert.deepEqual(toggles(markup), expected.map((group, index) => ({ colour: group.id, id: group.id, pressed: String(index === 0), label: `${group.items.length} ${group.word}` })),
     'Software tiles: counts from data, App selected, no "All"');
-  assert.equal([...markup.match(/<div class="picker-bar"[^]*?<\/div>/)[0].matchAll(/<svg class="result-icon"/g)].length, 3, 'Each tile has its drawing');
+  // V5: each software toggle wears its category emblem, as the "Su di me" figures do.
+  assert.deepEqual([...markup.match(/<div class="picker-bar"[^]*?<\/div>/)[0].matchAll(/<svg class="result-icon emblem emblem-([\w-]+)"/g)].map(match => match[1]),
+    expected.map(group => group.id), 'Each tile has its emblem');
   const listed = groups(markup);
   assert.deepEqual(listed.map(group => group.id), expected.map(group => group.id));
   for (const [index, group] of listed.entries()) {
@@ -100,7 +104,12 @@ function checkSoftware(source) {
     assert.equal(rendered.length, expected[index].items.length, group.id + ' cards');
     for (const [position, card] of rendered.entries()) {
       const project = expected[index].items[position];
-      assert.equal(text(card.match(/<h4>([^]*?)<\/h4>/)[1]), project.title, project.id + ' title');
+      // V5: a project with its own page says so on the cover: the title link carries a "Scheda"
+      // label (part of its name) and spreads over the cover, so the cover opens the page too.
+      const chip = ' <span class="cover-chip" data-i18n="projectPage">' + italianCopy.projectPage + '</span>';
+      const title = card.match(/<h4>([^]*?)<\/h4>/)[1];
+      assert.equal(text(title.replace(chip, '')), project.title, project.id + ' title');
+      assert.equal(title, project.page ? `<a href="${project.page}">${project.title}${chip}</a>` : project.title.replace(/'/g, '&#39;'), project.id + ' page label');
       const image = tags(card).find(node => node.name === 'img');
       assert.equal(image.attrs.src, project.cover.src, project.id + ' cover');
       assert.equal(text(card.match(/<span class="pill">([^]*?)<\/span>(?=<span class="card-stack">)/)[1]), project.kind.it, project.id + ' kind');
@@ -168,15 +177,20 @@ function checkModding(source) {
 function checkResearch(source) {
   const markup = panel(source, 'research');
   checkTiles(markup, 'Research', 1);
-  const papers = [...markup.matchAll(/<article class="card paper-card"[^>]*>([^]*?)<\/article>/g)].map(match => match[1]);
+  // V5: the papers are project cards in a rail, like Software and Modding: the drawing as the cover,
+  // the title, "Paper I" and the arXiv number in the card's meta line, the result as the summary.
+  assert.match(markup, /<div class="rail rail-papers"><ul class="rail-track"><li class="card paper-card">/, 'The papers sit in a rail');
+  assert.ok(!/paper-cards|paper-highlight|card-label|<article/.test(markup), 'No separate paper layout');
+  const papers = [...markup.matchAll(/<li class="card paper-card">([^]*?)<\/li>/g)].map(match => match[1]);
   assert.equal(papers.length, research.papers.length);
   const repo = research.repositories.find(item => item.project === research.id).url;
   for (const [index, card] of papers.entries()) {
     const paper = research.papers[index];
-    assert.equal(text(card.match(/<p class="card-label">([^]*?)<\/p>/)[1]), `Paper ${paper.number} · arXiv ${paper.arxiv}`);
-    assert.equal(text(card.match(/<h4 [^>]*>([^]*?)<\/h4>/)[1]), paper.heading.it);
-    assert.equal(text(card.match(/<p class="paper-highlight">([^]*?)<\/p>/)[1]), paper.highlight.it);
-    assert.equal(text(card.match(/<p class="card-summary">([^]*?)<\/p>/)[1]), paper.line.it);
+    assert.match(card, /^<div class="card-cover paper-figure">/, 'Paper ' + paper.number + ' drawing as the cover');
+    assert.equal(text(card.match(/<span class="pill">([^]*?)<\/span>(?=<span class="card-stack">)/)[1]), `Paper ${paper.number}`);
+    assert.equal(text(card.match(/<span class="card-stack">([^]*?)<\/span>(?:<\/span>)?<\/p>/)[1]).split(' · ')[0], `arXiv ${paper.arxiv}`);
+    assert.equal(text(card.match(/<h4>([^]*?)<\/h4>/)[1]), paper.heading.it);
+    assert.equal(text(card.match(/<p class="card-summary">([^]*?)<\/p>/)[1]), paper.highlight.it);
     assert.deepEqual(hrefs(card), [paper.url, repo]);
     checkButtons(card.match(/<p class="card-links">([^]*?)<\/p>/)[1], 'Paper ' + paper.number);
   }
@@ -202,12 +216,14 @@ function checkResearch(source) {
     ['n = ' + ringmin.asymptotic[0].n, String(ringmin.asymptotic.at(-1).n), 'C*'], 'Three labels on the drawing');
   const it = value => new Intl.NumberFormat('it-IT', { minimumFractionDigits: 4, maximumFractionDigits: 4 }).format(value);
   const [low, high] = [Math.floor(ringmin.constant.lower * 1e4) / 1e4, Math.ceil(ringmin.constant.upper * 1e4) / 1e4];
-  assert.equal(text(papers[1].match(/<p class="paper-bound">([^]*?)<\/p>/)[1]).replace(/\s+(?=[;\]])|(?<=\[)\s+/g, ''), `C* ∈ [${it(low)}; ${it(high)}]`, 'The C* interval from data/ringmin.json');
+  assert.equal(text(papers[1].match(/<span class="paper-bound">([^]*?)<\/span><\/span><\/p>/)[1]).replace(/\s+(?=[;\]])|(?<=\[)\s+/g, ''), `C* ∈ [${it(low)}; ${it(high)}]`, 'The C* interval from data/ringmin.json');
   const foot = markup.match(/<p class="research-foot">[^]*?<\/p>/)[0];
   assert.deepEqual(hrefs(foot), [research.repositories.find(item => item.project === 'power-ringmin').url, research.zenodo.url]);
   checkButtons(foot, 'Research foot');
   const tile = markup.match(/<a class="result" href="\/research\/">([^]*?)<\/a>/);
   assert.ok(tile, 'The paper count opens the research page');
+  // V5: with the arXiv logomark, as the paper figure of "Su di me".
+  assert.match(tile[1], /^<svg class="brand brand-arxivmark"/, 'The paper count shows the arXiv logomark');
   assert.equal(text(tile[1]).replace(/\s*→$/, ''), `${research.papers.length} articoli su arXiv`);
 }
 
@@ -233,32 +249,73 @@ function checkAbout(source) {
   const about = source.match(/<details class="about" id="chi-sono"[^]*?<\/details>/)[0];
   assert.ok(!/journey|jr-/.test(about), 'The "Percorso" drawing is gone');
   // The rows: each paragraph, then its figure. The figures are counted from the data and link
-  // to their section; the first row is a drawing (studies have no number).
+  // to their section; the first row is a drawing (studies have no number). V5: the rows are the
+  // slides of a carousel, one per paragraph; the work paragraph is split in two (path, then work
+  // and method), the second beside a drawing of a problem reduced to its model.
+  assert.match(about, /<div class="about-carousel"><div class="about-rows"><div class="about-row">/, 'The rows are the slides of the carousel');
   const rows = [...about.matchAll(/<div class="about-row"><p data-i18n="(\w+)">([^<]*)<\/p><figure class="about-figure figure-(\w+)"/g)]
     .map(([, key, value, figure]) => [key, decode(value), figure]);
-  assert.deepEqual(rows, [['aboutStudies', 'studies'], ['aboutWork', 'work'], ['aboutApproach', 'approach'], ['aboutSpare', 'spare']]
+  assert.deepEqual(rows, [['aboutStudies', 'studies'], ['aboutWork', 'work'], ['aboutMethod', 'method'], ['aboutApproach', 'approach'], ['aboutSpare', 'spare']]
     .map(([key, figure]) => [key, italianCopy[key], figure]), 'About rows in order');
+  const method = about.match(/<figure class="about-figure figure-method" aria-hidden="true"><svg class="studies-drawing"[^>]*>([^]*?)<\/svg><\/figure>/);
+  assert.ok(method, 'The method drawing is decorative, in the pendulum language');
+  assert.deepEqual([...method[1].matchAll(/data-i18n="(\w+)">([^<]+)</g)].map(match => [match[1], match[2]]), [['figureProblem', italianCopy.figureProblem], ['figureModel', italianCopy.figureModel]], 'Method labels');
+  assert.match(method[1], /<text class="studies-eq"[^>]*>y = a x \+ b<\/text>/, 'The model is a straight line');
+  assert.equal([...method[1].matchAll(/<circle class="st-pt(?: quiet)?" cx="\d+" cy="\d+" r="2.2"\/>/g)].length, 16, 'The same eight points on both panels');
+  // The carousel controls wait for the script: without it the five rows stay in a column.
+  const nav = about.match(/<div class="about-nav" hidden>([^]*?)<\/div>/);
+  assert.ok(nav, 'The carousel controls are hidden until the script runs');
+  const controls = [...nav[1].matchAll(/<button type="button" class="about-step" data-step="(-?1)">([^]*?)<\/button>/g)].map(([, step, body]) => [step, text(body), /#icon-(chevron-\w+)/.exec(body)?.[1]]);
+  assert.deepEqual(controls, [['-1', italianCopy.aboutPrevious, 'chevron-left'], ['1', italianCopy.aboutNext, 'chevron-right']], '"Indietro" and "Avanti" with their chevrons');
+  // A progress bar, one segment per paragraph, the first filled; the counter is announced on a step.
+  assert.match(nav[1], /^<span class="about-progress" aria-hidden="true"><i class="on"><\/i>(?:<i><\/i>){4}<\/span>/, 'One segment per paragraph');
+  assert.equal(text(nav[1].match(/<p class="about-count" aria-live="polite">([^]*?)<\/p>/)[1]), '1 / 5', 'Slide counter');
+  assert.ok(!about.includes('class="philosophy"') && !('philosophy' in italianCopy), 'The closing quote is gone (V5)');
   assert.ok(!/about-facts|facts-grid/.test(about), 'The "In breve" card is gone');
   const facts = [...about.matchAll(/<li><a class="fact fact-([\w-]+)" href="([^"]+)"><span class="fact-glyph" aria-hidden="true">([^]*?)<\/span><strong class="fact-value"[^>]*>((?:<span[^>]*>[^<]*<\/span>)(?:<span class="sr-only"> <span data-i18n="\w+">[^<]*<\/span><\/span>)?|[^<]+)<\/strong><span class="fact-label">(<span[^>]*>[^<]*<\/span>)<\/span><\/a><\/li>/g)]
-    .map(([, tone, href, glyph, number, name]) => [href, text(number), text(name), tone, /href="#((?:icon|brand)-[\w-]+)"/.exec(glyph)?.[1]]);
+    .map(([, tone, href, glyph, number, name]) => [href, text(number), text(name), tone, /href="#((?:icon|brand)-[\w-]+)"/.exec(glyph)?.[1] ?? /^<svg class="emblem (emblem-\w+)" viewBox="0 0 24 24" aria-hidden="true" focusable="false">/.exec(glyph)?.[1] ?? null]);
   const rating = aggregateRating(tutoring.ratings);
+  // V5: the public GitHub repositories (the count GitHub shows, in data/profile.json) beside the Nexus
+  // total, then the three software categories, each with its emblem in its colour. Then the papers
+  // before the rating. Each glyph is a badge like the Nexus emblem.
+  assert.ok(Number.isInteger(identity.githubRepositories.count) && identity.githubRepositories.count > 0, 'GitHub repository count');
   assert.deepEqual(facts, [
-    ['#progetti', italian(visible.filter(item => ['app', 'game', 'tool'].includes(item.category)).length), 'progetti software', 'software', 'icon-code'],
-    ['#panel-modding', italian(snapshot.uniqueModDownloads), 'download unici su Nexus Mods', 'modding', 'brand-nexusmods'],
+    [identity.links.github, italian(identity.githubRepositories.count), 'repository su GitHub', 'github', 'brand-github'],
+    ['#panel-modding', italian(snapshot.uniqueModDownloads), 'download unici', 'modding', 'brand-nexusmods'],
+    ...[['app', 'app'], ['tool', 'strumenti'], ['game', 'giochi']].map(([id, word]) => ['#progetti', italian(visible.filter(item => item.category === id).length), word, id, 'emblem-' + id]),
+    ['#ricerca', italian(research.papers.length), 'articoli su arXiv', 'research', 'brand-arxivmark'],
     // The score says it is out of five for screen readers (the star is decorative).
     ['#panel-teaching', formatScore(rating.score, 'it') + ' ' + italianCopy.ratingOutOf, italianCopy[rating.count === 1 ? 'ratingReviewsOne' : 'ratingReviewsOther'].replace('{count}', rating.count), 'tutoring', 'icon-star'],
-    ['#ricerca', italian(research.papers.length), 'articoli su arXiv', 'research', 'brand-arxiv'],
   ], 'Facts from data');
   // The certificate fan is the figure of the work paragraph.
   assert.match(about, /<figure class="about-figure figure-work"><section class="credentials" id="certificazioni"/, 'The certificate fan sits beside the work paragraph');
-  const order = ['data-i18n="aboutStudies"', 'figure-studies', 'data-i18n="aboutWork"', 'class="credentials"', 'data-i18n="aboutApproach"', 'fact-software', 'fact-modding',
-    'data-i18n="aboutSpare"', 'fact-tutoring', 'fact-research', 'class="philosophy"', 'class="research-links about-actions"'].map(part => about.indexOf(part));
-  assert.ok(order.every(index => index >= 0) && order.every((index, i) => !i || index > order[i - 1]), 'About order: each figure after its paragraph, then quote and links');
-  // The profile row keeps its arrow on every link; GitHub, OEIS and ORCID show their marks.
-  for (const button of buttons(about.match(/<nav class="research-links about-actions"[^]*?<\/nav>/)[0].replace(/<a href="([^"]+)" class="about-action about-action-profile"/g, '<a href="$1"'))) {
+  // Under the tutoring figures, a card of the students' reviews from the data, quoted in Italian: the
+  // portal with five stars, each excerpt signed with the student's name, month and year in the
+  // reader's language, one bar segment each.
+  const strip = about.match(/<div class="reviews" role="group" aria-label="([^"]+)" data-label="reviewsLabel"><p class="reviews-head"><img src="\/assets\/images\/letuelezioni\.png"[^>]*>([^<]+)<span class="reviews-stars" aria-hidden="true">((?:<svg class="icon"[^>]*><use href="#icon-star"\/><\/svg>){5})<\/span><\/p><ul class="reviews-track" tabindex="0">([^]*?)<\/ul><span class="reviews-bar" aria-hidden="true">([^]*?)<\/span><\/div>/);
+  assert.ok(strip && decode(strip[1]) === italianCopy.reviewsLabel && strip[2] === tutoring.reviews[0].source, 'The reviews card follows the tutoring figures');
+  const monthYear = (date, lang) => new Intl.DateTimeFormat(lang, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(date + '-15'));
+  // The build moves the English month into the page catalogue (data-text-key).
+  const english = JSON.parse(source.match(/<script type="application\/json" id="catalogue-en">([^]*?)<\/script>/)[1]);
+  assert.deepEqual([...strip[4].matchAll(/<li class="review"><blockquote lang="it"><p>([^<]+)<\/p><\/blockquote><p class="review-by"><strong>([^<]+)<\/strong> · <span data-text-key="(\d+)">([^<]+)<\/span><\/p><\/li>/g)]
+    .map(([, quote, name, key, when]) => [decode(quote), decode(name), decode(when), english[key] ?? english.text?.[key] ?? null]),
+    tutoring.reviews.map(review => [review.text, review.name, monthYear(review.date, 'it'), monthYear(review.date, 'en')]), 'Reviews from data');
+  assert.equal(strip[5], '<i class="on"></i>' + '<i></i>'.repeat(tutoring.reviews.length - 1), 'One bar segment per review');
+  const order = ['data-i18n="aboutStudies"', 'figure-studies', 'data-i18n="aboutWork"', 'class="credentials"', 'data-i18n="aboutMethod"', 'figure-method', 'data-i18n="aboutApproach"', 'fact-github', 'fact-modding', 'fact-app', 'fact-tool', 'fact-game',
+    'data-i18n="aboutSpare"', 'fact-research', 'fact-tutoring', 'class="reviews"', 'class="about-nav"', 'class="research-links about-actions"'].map(part => about.indexOf(part));
+  assert.ok(order.every(index => index >= 0) && order.every((index, i) => !i || index > order[i - 1]), 'About order: each figure after its paragraph, then the controls and links');
+  // The profile row keeps its arrow on every link. V5: each shows the mark of the place it opens:
+  // LinkedIn, GitHub, OEIS and ORCID their own, the lessons the Letuelezioni logo, the research the
+  // circles of Ringmin.
+  const profile = about.match(/<nav class="research-links about-actions"[^]*?<\/nav>/)[0];
+  const profileLinks = buttons(profile.replace(/<a href="([^"]+)" class="about-action about-action-profile"/g, '<a href="$1"'));
+  for (const button of profileLinks) {
     assert.equal(button.brand, expectedBrand(button.href), 'About link ' + button.href);
     assert.equal(button.mark, expectedBrand(button.href), 'About link mark ' + button.href);
   }
+  assert.deepEqual(profileLinks.map(button => button.mark).filter(Boolean), ['linkedin', 'github', 'oeis', 'orcid'], 'Profile marks');
+  assert.match(profile, /<a href="\/research\/" class="about-action about-action-profile"><svg class="about-action-icon"[^>]*><use href="#icon-ringmin"\/><\/svg>/, 'The research link shows the Ringmin circles');
+  assert.match(profile, /<a href="https:\/\/www\.letuelezioni\.it\/[^"]+" class="about-action about-action-profile"><img class="about-action-icon" src="\/assets\/images\/letuelezioni\.png" width="18" height="18" alt="" loading="lazy">/, 'The lessons link shows the Letuelezioni logo');
   const deck = tags(about).filter(node => node.name === 'button' && node.attrs.class === 'deck-card');
   assert.equal(deck.length, certificates.length, 'One card per certificate');
   for (const [index, card] of deck.entries()) {
