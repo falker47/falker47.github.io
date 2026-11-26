@@ -25,7 +25,6 @@ function renderProduct(ctx) {
       ${raw(projectFacts(t, project))}
       <div class="detail-links sv-actions">
         ${raw(primaryCta(t, 'svInstall', link('store')))}
-        ${raw(actionLink('./test/', label(t, 'svBecomeTester'), { className: 'detail-link' }))}
         ${raw(actionLink('./privacy/', 'Privacy', { className: 'detail-link' }))}
         ${raw(actionLink(link('repo'), 'GitHub', { className: 'detail-link' }))}
       </div>

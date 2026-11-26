@@ -90,7 +90,9 @@ await withBrowser(async (browser, origin) => {
       assert.equal(cover.alt, cover.expectedAlt);
       assert.equal(await page.locator('main a.primary-cta').getAttribute('href'), store);
       results.push({ page: product, lang, width: viewport.width, cover: cover.file, displayedWidth: cover.rendered });
-      await page.locator('a[href="./test/"]').click();
+      // The app is on Google Play: the product page no longer links the tester programme, which stays reachable.
+      assert.equal(await page.locator('main a[href="./test/"]').count(), 0);
+      await visit(page, origin, tester, lang);
       await checkPaths(page, lang, true);
       await checkPrivacy(page, origin, lang);
       verifyNetwork();
