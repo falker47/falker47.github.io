@@ -17,8 +17,9 @@
 /* Chi sono */
 .about-content {padding:0 0 24px}
 .about-rows {margin:4px 0 22px}
-/* Each paragraph, then its figure (on its right from 900 px). */
-.about-row {display:grid;gap:14px;padding:18px 0;border-top:1px solid var(--rule-soft)}
+/* Each paragraph, then its figure (on its right from 900 px). The column never grows past the row,
+   so a wide figure (the reviews) cannot push the slide out of the carousel. */
+.about-row {display:grid;grid-template-columns:minmax(0,1fr);gap:14px;padding:18px 0;border-top:1px solid var(--rule-soft)}
 .about-row:first-child {border-top:0}
 .about-row p {font-size:16px;line-height:1.65;color:var(--secondary);margin:0}
 /* V5: with the script the rows are the slides of a carousel, one paragraph at a time, all in one
@@ -83,7 +84,10 @@
 .fact-software {--badge:#3b82f6;--badge-end:#1d4ed8}
 .fact-tutoring {--badge:#fbbf24;--badge-end:#d97706}
 .fact-github {--tone:#8b949e;--badge:#3d444d;--badge-end:#151b23}
-.fact-mods {--tone:#f97316;--badge:#fb923c;--badge-end:#c2410c}
+/* The way of working: GitHub and Nexus Mods share the first row, the three categories the second. */
+.figure-approach .facts-list {grid-template-columns:repeat(6,minmax(0,1fr))}
+.figure-approach .facts-list li {grid-column:span 2}
+.figure-approach .facts-list li:nth-child(-n+2) {grid-column:span 3}
 .fact-glyph .icon {width:20px;height:20px;stroke-width:1.9}
 .fact-github .fact-glyph .brand {width:20px;height:20px}
 .fact-tutoring .fact-glyph .icon {fill:currentColor;stroke-width:1.2}
@@ -95,15 +99,26 @@
 .fact-label {font:11.5px/1.35 var(--sans);color:var(--muted)}
 .fact:is(:hover,:focus-visible) {border-color:color-mix(in srgb,var(--tone) 70%,transparent)}
 .fact:is(:hover,:focus-visible) .fact-label {color:var(--paper)}
-/* V5: under the tutoring figures, the students' reviews, one at a time (the script advances them). */
-.reviews {margin-top:12px;padding-top:12px;border-top:1px solid var(--rule)}
+/* V5: under the tutoring figures, a card of the students' reviews in the tutoring amber: the portal
+   and its stars, one excerpt at a time under a large quote mark (the script advances them), the
+   student's initial, name and month, and a bar that marks the open one. */
+.reviews {margin-top:8px;padding:14px 16px 12px;border:1px solid color-mix(in srgb,var(--star) 24%,transparent);border-radius:12px;background:linear-gradient(160deg,color-mix(in srgb,var(--star) 8%,var(--surface)),var(--surface) 65%)}
+.reviews-head {display:flex;align-items:center;gap:8px;margin:0 0 10px;font:600 12.5px/1 var(--name);color:var(--paper)}
+.reviews-head img {border-radius:5px}
+.reviews-stars {display:flex;gap:2px;margin-left:auto;color:var(--star)}
+.reviews-stars .icon {width:13px;height:13px;fill:currentColor;stroke:none}
 .reviews-track {display:grid;grid-auto-flow:column;grid-auto-columns:100%;margin:0;padding:0;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none}
 .reviews-track::-webkit-scrollbar {display:none}
 .reviews-track:focus-visible {outline-offset:4px}
-.review {scroll-snap-align:start}
-.review blockquote {margin:0}
-.review blockquote p {margin:0;font:italic 15px/1.5 var(--serif);color:var(--paper)}
-.review .review-by {margin:6px 0 0;font:11px/1.4 var(--mono);color:var(--muted)}
+.review {scroll-snap-align:start;min-width:0}
+.review blockquote {position:relative;margin:0;padding-left:32px}
+.review blockquote::before {content:'“';position:absolute;left:-2px;top:-8px;font:700 54px/1 Georgia,serif;color:var(--star);opacity:.55}
+.review blockquote p {margin:0;font:italic 15.5px/1.5 var(--serif);color:var(--paper)}
+.review .review-by {display:flex;align-items:center;gap:8px;margin:10px 0 0 32px;font:11px/1.4 var(--mono);color:var(--muted)}
+.review-initial {display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:color-mix(in srgb,var(--star) 22%,var(--surface));color:var(--star);font:600 11px/1 var(--name)}
+.reviews-bar {display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;margin-top:12px}
+.reviews-bar i {height:2px;border-radius:1px;background:#ffffff1f;transition:background-color .25s}
+.reviews-bar i.on {background:var(--star)}
 /* Two tiles share a phone's row: the mark beside the number, the label under both. */
 @media(max-width:599px) {
 .fact {grid-template-columns:30px minmax(0,1fr);row-gap:8px;column-gap:10px;padding:10px}

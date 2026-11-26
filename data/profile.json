@@ -10,6 +10,11 @@
     "oeis": "https://oeis.org/wiki/User:Maurizio_Falconi",
     "scholar": "https://scholar.google.com/citations?user=5xHRNvoAAAAJ"
   },
+  "githubRepositories": {
+    "count": 37,
+    "checkedOn": "2026-11-26",
+    "source": "https://api.github.com/users/falker47 public_repos"
+  },
   "photo": {
     "src": "/assets/profile/maurizio-falconi-256.webp",
     "width": 256,

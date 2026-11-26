@@ -136,8 +136,14 @@
   }
 
   // The students' reviews under the tutoring figures move on every six seconds, one at a time, and
-  // stop while the pointer or the focus is on them; with reduced motion they wait for a swipe.
+  // stop while the pointer or the focus is on them; with reduced motion they wait for a swipe. The
+  // bar under them marks the open one.
   for (const track of document.querySelectorAll('.reviews-track')) {
+    const bars = track.parentNode.querySelectorAll('.reviews-bar i');
+    track.addEventListener('scroll', () => {
+      const open = Math.round(track.scrollLeft / (track.clientWidth || 1));
+      bars.forEach((bar, i) => bar.classList.toggle('on', i === open));
+    }, { passive: true });
     let paused = false;
     ['pointerenter', 'focusin'].forEach(type => track.addEventListener(type, () => { paused = true; }));
     ['pointerleave', 'focusout'].forEach(type => track.addEventListener(type, () => { paused = false; }));

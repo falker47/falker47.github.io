@@ -271,29 +271,27 @@ function checkAbout(source) {
   const facts = [...about.matchAll(/<li><a class="fact fact-([\w-]+)" href="([^"]+)"><span class="fact-glyph" aria-hidden="true">([^]*?)<\/span><strong class="fact-value"[^>]*>((?:<span[^>]*>[^<]*<\/span>)(?:<span class="sr-only"> <span data-i18n="\w+">[^<]*<\/span><\/span>)?|[^<]+)<\/strong><span class="fact-label">(<span[^>]*>[^<]*<\/span>)<\/span><\/a><\/li>/g)]
     .map(([, tone, href, glyph, number, name]) => [href, text(number), text(name), tone, /href="#((?:icon|brand)-[\w-]+)"/.exec(glyph)?.[1] ?? (glyph.startsWith('<svg class="icon" viewBox="0 0 24 24"') ? 'drawing' : null)]);
   const rating = aggregateRating(tutoring.ratings);
-  // V5: the GitHub repositories the site links, the three software categories, the Nexus total and
-  // the published mods beside their translations. Each glyph is a badge like the Nexus emblem.
-  const github = url => /^https:\/\/github\.com\/[^/]+\/[^/]+/.exec(url)?.[0].toLowerCase();
-  const repositories = new Set([...visible.flatMap(item => item.links.map(link => link.url)), ...research.repositories.map(item => item.url),
-    ...featured.items.map(item => item.repo)].map(url => url && github(url)).filter(Boolean));
-  const kind = name => nexus.mods.filter(mod => mod.kind === name).length;
+  // V5: the public GitHub repositories (the count GitHub shows, in data/profile.json) beside the Nexus
+  // total, then the three software categories. Each glyph is a badge like the Nexus emblem.
+  assert.ok(Number.isInteger(identity.githubRepositories.count) && identity.githubRepositories.count > 0, 'GitHub repository count');
   assert.deepEqual(facts, [
-    [identity.links.github, italian(repositories.size), 'repository su GitHub', 'github', 'brand-github'],
-    ...[['app', 'web app e app'], ['tool', 'strumenti'], ['game', 'giochi']].map(([id, word]) => ['#progetti', italian(visible.filter(item => item.category === id).length), word, 'software', 'drawing']),
+    [identity.links.github, italian(identity.githubRepositories.count), 'repository su GitHub', 'github', 'brand-github'],
     ['#panel-modding', italian(snapshot.uniqueModDownloads), 'download unici su Nexus Mods', 'modding', 'brand-nexusmods'],
-    ['#panel-modding', italian(kind('mod')), `mod · ${kind('translation')} traduzioni`, 'mods', 'drawing'],
+    ...[['app', 'web app e app'], ['tool', 'strumenti'], ['game', 'giochi']].map(([id, word]) => ['#progetti', italian(visible.filter(item => item.category === id).length), word, 'software', 'drawing']),
     // The score says it is out of five for screen readers (the star is decorative).
     ['#panel-teaching', formatScore(rating.score, 'it') + ' ' + italianCopy.ratingOutOf, italianCopy[rating.count === 1 ? 'ratingReviewsOne' : 'ratingReviewsOther'].replace('{count}', rating.count), 'tutoring', 'icon-star'],
     ['#ricerca', italian(research.papers.length), 'articoli su arXiv', 'research', 'brand-arxivmark'],
   ], 'Facts from data');
   // The certificate fan is the figure of the work paragraph.
   assert.match(about, /<figure class="about-figure figure-work"><section class="credentials" id="certificazioni"/, 'The certificate fan sits beside the work paragraph');
-  // Under the tutoring figures, the students' reviews from the data, quoted in Italian.
-  const strip = about.match(/<div class="reviews" role="group" aria-label="([^"]+)" data-label="reviewsLabel"><ul class="reviews-track" lang="it" tabindex="0">([^]*?)<\/ul><\/div>/);
-  assert.ok(strip && decode(strip[1]) === italianCopy.reviewsLabel, 'The reviews follow the tutoring figures');
-  assert.deepEqual([...strip[2].matchAll(/<li class="review"><blockquote><p>“([^<]+)”<\/p><\/blockquote><p class="review-by">([^<]+)<\/p><\/li>/g)].map(match => [decode(match[1]), decode(match[2])]),
-    tutoring.reviews.map(review => [review.text, `${review.name} · ${review.source} · ${review.date.slice(5)}/${review.date.slice(0, 4)}`]), 'Reviews from data');
-  const order = ['data-i18n="aboutStudies"', 'figure-studies', 'data-i18n="aboutWork"', 'class="credentials"', 'data-i18n="aboutMethod"', 'figure-method', 'data-i18n="aboutApproach"', 'fact-github', 'fact-mods',
+  // Under the tutoring figures, a card of the students' reviews from the data, quoted in Italian: the
+  // portal with five stars, each excerpt with the student's initial, name and month, one bar segment each.
+  const strip = about.match(/<div class="reviews" role="group" aria-label="([^"]+)" data-label="reviewsLabel"><p class="reviews-head"><img src="\/assets\/images\/letuelezioni\.png"[^>]*>([^<]+)<span class="reviews-stars" aria-hidden="true">((?:<svg class="icon"[^>]*><use href="#icon-star"\/><\/svg>){5})<\/span><\/p><ul class="reviews-track" lang="it" tabindex="0">([^]*?)<\/ul><span class="reviews-bar" aria-hidden="true">([^]*?)<\/span><\/div>/);
+  assert.ok(strip && decode(strip[1]) === italianCopy.reviewsLabel && strip[2] === tutoring.reviews[0].source, 'The reviews card follows the tutoring figures');
+  assert.deepEqual([...strip[4].matchAll(/<li class="review"><blockquote><p>([^<]+)<\/p><\/blockquote><p class="review-by"><span class="review-initial" aria-hidden="true">(\w)<\/span>([^<]+)<\/p><\/li>/g)].map(match => [decode(match[1]), match[2], decode(match[3])]),
+    tutoring.reviews.map(review => [review.text, review.name[0], `${review.name} · ${review.date.slice(5)}/${review.date.slice(0, 4)}`]), 'Reviews from data');
+  assert.equal(strip[5], '<i class="on"></i>' + '<i></i>'.repeat(tutoring.reviews.length - 1), 'One bar segment per review');
+  const order = ['data-i18n="aboutStudies"', 'figure-studies', 'data-i18n="aboutWork"', 'class="credentials"', 'data-i18n="aboutMethod"', 'figure-method', 'data-i18n="aboutApproach"', 'fact-github', 'fact-modding', 'fact-software',
     'data-i18n="aboutSpare"', 'fact-tutoring', 'fact-research', 'class="reviews"', 'class="about-nav"', 'class="research-links about-actions"'].map(part => about.indexOf(part));
   assert.ok(order.every(index => index >= 0) && order.every((index, i) => !i || index > order[i - 1]), 'About order: each figure after its paragraph, then the controls and links');
   // The profile row keeps its arrow on every link. V5: each shows the mark of the place it opens:

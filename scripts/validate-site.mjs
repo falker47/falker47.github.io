@@ -128,9 +128,9 @@ const i18n = await readFile(join(siteRoot, 'scripts/i18n.js'), 'utf8');
 // V3 renders every project, mod and paper inside the home (V2: 120 KB with three examples per tab).
 // V4: 170 KB, for the four certificates added to the fan (about 850 bytes each) and room for new mods;
 // 180 KB for the four paragraphs of "Chi sono" (about 4 KB in both languages) and about ten more mods.
-// V5: 190 KB (approved by Maurizio), for the "Su di me" carousel, the original marks, the fifth slide,
-// the extra figures and the reviews, with room for about four more mods (about 1,050 bytes each).
-assert.ok(Buffer.byteLength(html) <= 190000, 'Home exceeds 190 KB');
+// V5: 195 KB (approved by Maurizio), for the "Su di me" carousel, the original marks, the fifth slide,
+// the extra figures, the reviews and three more certificates, with room for about four more mods (about 1,050 bytes each).
+assert.ok(Buffer.byteLength(html) <= 195000, 'Home exceeds 195 KB');
 assert.ok(!/<meta\b[^>]*name="robots"[^>]*content="[^"]*no(?:index|follow)/i.test(html), 'Production must be indexable');
 assert.match(html, /<link rel="canonical" href="https:\/\/falker47\.github\.io\/"/);
 assert.match(html, /<meta name="google-site-verification" content="[^"]+"/);

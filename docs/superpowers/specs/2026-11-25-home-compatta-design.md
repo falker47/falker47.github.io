@@ -28,7 +28,7 @@ Il pregio del sito è che all'inizio è compatto: in "I miei progetti" le rail o
 - Testo nascosto senza JavaScript: senza script i quattro paragrafi restano in colonna, leggibili in italiano (regola del sito).
 - Un carosello alto quanto la slide più lunga, con spazi vuoti sotto quelle corte.
 - Perdere i link profondi: `#certificazioni` deve portare alla slide del lavoro e aprire il visore come oggi.
-- Superare i limiti di peso della home (235.000 byte tra HTML, CSS e JS, di cui 180.000 di HTML) o abbassare i punteggi Lighthouse e axe sotto i minimi del sito. Aggiornamento del 2026-11-26: il lavoro ci stava, ma con circa 300 byte di margine, meno di una mod Nexus (circa 1.050 byte); Maurizio ha approvato di alzare i limiti a 240.000 e 185.000 byte, poi a 245.000 e 190.000 per la quinta slide, i riquadri in più e le recensioni.
+- Superare i limiti di peso della home (235.000 byte tra HTML, CSS e JS, di cui 180.000 di HTML) o abbassare i punteggi Lighthouse e axe sotto i minimi del sito. Aggiornamento del 2026-11-26: il lavoro ci stava, ma con circa 300 byte di margine, meno di una mod Nexus (circa 1.050 byte); Maurizio ha approvato di alzare i limiti a 240.000 e 185.000 byte, poi a 245.000 e 190.000 per la quinta slide, i riquadri in più e le recensioni, poi a 252.000 e 195.000 per tre nuovi certificati.
 
 ## Approcci
 
