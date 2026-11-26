@@ -42,7 +42,12 @@ test('Ringmin articles preserve their identifiers, summaries and authorship', ()
   const copy = JSON.parse(elements.find(el => el.attrs.id === 'page-i18n').body);
   const articles = graph.filter(item => item['@type'] === 'ScholarlyArticle');
   const collection = graph.find(item => item['@type'] === 'CollectionPage');
-  assert.deepEqual(collection.hasPart.map(item => item['@id']), articles.map(item => item['@id']));
+  const code = graph.find(item => item['@type'] === 'SoftwareSourceCode');
+  assert.deepEqual(collection.hasPart.map(item => item['@id']), [...articles, code].map(item => item['@id']));
+  // The Ringmin code and its archived release, as the page links them.
+  assert.equal(code.codeRepository, research.repositories.find(repo => repo.project === 'ringmin').url);
+  assert.equal(code.identifier, research.zenodo.url);
+  assert.equal(code.author['@id'], origin + '/#person');
   assert.deepEqual(articles.map(item => item.identifier), research.papers.map(paper => 'arXiv:' + paper.arxiv));
   assert.equal(articles[0].headline, 'Minimum central circles: chain order, seam obstructions, and exact finite certification');
   for (const [index, article] of articles.entries()) {
@@ -74,6 +79,42 @@ test('project covers and public app links match the source catalogue', () => {
     for (const link of project.links) assert.ok(external.includes(link.url), link.url);
     if (id === 'prof-gecko') assert.ok(!external.some(href => /github\.com\/[^/]+\/prof-gecko/i.test(href)));
   }
+});
+
+test('indexable subpages name the author in the document title, not in the heading', () => {
+  for (const path of ['/research/', '/projects/prof-gecko/', '/projects/camaleonte/', '/uses/', '/projects/social-viewer/', '/projects/social-viewer/privacy/']) {
+    const { source, elements } = pageAt(path);
+    const title = source.match(/<title[^>]*>([^<]*)<\/title>/)[1];
+    assert.match(title, / · Maurizio Falconi$/, path + ' title');
+    assert.equal(elements.find(el => el.attrs.property === 'og:title').attrs.content, title, path + ' og:title');
+    const language = elements.find(el => el.attrs.id === 'site-language').attrs;
+    for (const lang of ['it', 'en']) assert.match(language['data-title-' + lang], / · Maurizio Falconi$/, path + ' ' + lang);
+    assert.doesNotMatch(source.match(/<h1\b[^>]*>([^]*?)<\/h1>/)[1], /Maurizio Falconi/, path + ' heading');
+  }
+});
+
+test('app pages describe their application for the same author', () => {
+  const author = origin + '/#person';
+  const camaleonte = projects.find(item => item.id === 'camaleonte');
+  const game = pageAt('/projects/camaleonte/').graph;
+  const app = game.find(item => item['@type'] === 'SoftwareApplication');
+  assert.equal(game.find(item => item['@type'] === 'WebPage').mainEntity['@id'], app['@id']);
+  assert.equal(app.applicationCategory, 'GameApplication');
+  assert.equal(app.url, camaleonte.links.find(link => link.type === 'demo').url);
+  assert.deepEqual(app.sameAs, [camaleonte.links.find(link => link.type === 'store').url]);
+  assert.equal(app.author['@id'], author);
+
+  const viewer = projects.find(item => item.id === 'social-viewer');
+  const product = pageAt('/projects/social-viewer/').graph;
+  const mobile = product.find(item => item['@type'] === 'MobileApplication');
+  assert.equal(product.find(item => item['@type'] === 'Person')['@id'], author);
+  assert.equal(product.find(item => item['@type'] === 'WebPage').mainEntity['@id'], mobile['@id']);
+  assert.equal(mobile.operatingSystem, 'Android');
+  assert.equal(mobile.applicationCategory, 'UtilitiesApplication');
+  assert.equal(mobile.url, viewer.links.find(link => link.type === 'store').url);
+  assert.equal(mobile.author['@id'], author);
+  const policy = pageAt('/projects/social-viewer/privacy/').graph;
+  assert.equal(policy.find(item => item['@type'] === 'WebPage').author['@id'], author);
 });
 
 test('recommendations preserve the approved affiliate URLs and both original disclosures', () => {

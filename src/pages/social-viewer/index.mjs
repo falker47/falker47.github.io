@@ -38,10 +38,18 @@ function renderProduct(ctx) {
 }
 
 const shared = { styles: ['/styles/detail.css', '/styles/social-viewer.css'], image: cover.src };
+// `title` names the document, `name` the page in its structured data.
 export const socialViewerRoutes = [
-  { ...shared, path: project.page, title: 'Social Viewer · Android', descriptionKey: 'svDescription', render: renderProduct },
-  { ...shared, path: link('test'), title: 'Social Viewer · Falker Studio Testers', descriptionKey: 'svTestDescription',
-    robots: 'noindex,follow', render: ctx => renderTest(ctx, link('store')) },
-  { ...shared, path: project.page + 'privacy/', title: 'Social Viewer · Informativa sulla privacy', descriptionKey: 'svPolicyDescription',
+  { ...shared, path: project.page, title: 'Social Viewer · Android · Maurizio Falconi', name: 'Social Viewer · Android',
+    descriptionKey: 'svDescription', render: renderProduct,
+    entities: (url, author) => [{
+      '@type': 'MobileApplication', '@id': url + '#app', name: project.title, url: link('store'),
+      applicationCategory: 'UtilitiesApplication', operatingSystem: 'Android',
+      image: new URL(cover.src, url).href, description: project.description.en, author,
+    }] },
+  { ...shared, path: link('test'), title: 'Social Viewer · Falker Studio Testers', name: 'Social Viewer · Falker Studio Testers',
+    descriptionKey: 'svTestDescription', robots: 'noindex,follow', render: ctx => renderTest(ctx, link('store')) },
+  { ...shared, path: project.page + 'privacy/', title: 'Social Viewer · Informativa sulla privacy · Maurizio Falconi',
+    name: 'Social Viewer · Informativa sulla privacy', descriptionKey: 'svPolicyDescription',
     render: ctx => crumb(ctx, { href: '../', text: 'Social Viewer' }) + privacy },
 ];

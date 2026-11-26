@@ -15,19 +15,25 @@ const person = {
   name: profile.name, alternateName: profile.handle, jobTitle: profile.role, url: origin + '/',
 };
 
+const author = { '@id': person['@id'] };
+
+// The page by its author, with the entities it describes.
+function pageGraph(path, { type = 'WebPage', name, descriptionKey, entities }) {
+  const url = new URL(path, origin).href;
+  const parts = entities?.(url, author) ?? [];
+  const document = { '@type': type, '@id': url + '#page', url, name, description: it[descriptionKey], author };
+  if (type === 'CollectionPage' && parts.length) document.hasPart = parts.map(item => ({ '@id': item['@id'] }));
+  else if (parts.length) document.mainEntity = { '@id': parts[0]['@id'] };
+  return [person, document, ...parts];
+}
+
+// The document title adds the author's name; the heading keeps the page's own.
 function detailRoute(page) {
-  const url = new URL(page.path, origin).href;
-  const author = { '@id': person['@id'] };
-  const entities = page.entities?.(url, author) ?? [];
-  const document = {
-    '@type': page.type ?? 'WebPage', '@id': url + '#page', url,
-    name: it[page.titleKey], description: it[page.descriptionKey], author,
-  };
-  if (page.type === 'CollectionPage' && entities.length) document.hasPart = entities.map(item => ({ '@id': item['@id'] }));
-  else if (entities.length) document.mainEntity = { '@id': entities[0]['@id'] };
+  const titleKey = 'title.' + page.path;
   return {
-    path: page.path, titleKey: page.titleKey, title: it[page.titleKey], descriptionKey: page.descriptionKey,
-    styles: page.styles ?? ['/styles/detail.css'], image: page.image, graph: [person, document, ...entities], render: page.render,
+    path: page.path, titleKey, title: it[titleKey], headingKey: page.titleKey, descriptionKey: page.descriptionKey,
+    styles: page.styles ?? ['/styles/detail.css'], image: page.image, render: page.render,
+    graph: pageGraph(page.path, { type: page.type, name: it[page.titleKey], descriptionKey: page.descriptionKey, entities: page.entities }),
   };
 }
 
@@ -47,5 +53,5 @@ export const routes = [
     image: profile.photo.src, render: notFound,
   },
   ...[research, gecko, camaleonte, uses].map(detailRoute),
-  ...socialViewerRoutes,
+  ...socialViewerRoutes.map(route => ({ ...route, graph: pageGraph(route.path, route) })),
 ];
