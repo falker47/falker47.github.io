@@ -8,17 +8,17 @@ import { renderTest } from './test.mjs';
 const project = projects.find(item => item.id === 'social-viewer');
 const link = type => project.links.find(item => item.type === type).url;
 const privacy = readFileSync(new URL('./privacy.html', import.meta.url), 'utf8');
-// The product page is designed for the 480 px cover. Honour smaller originals too.
-const native = project.cover.variants.filter(v => v.width <= Math.min(480, project.cover.nativeWidth)).at(-1);
-if (!native) throw Error('No native-resolution Social Viewer cover in the catalogue');
-const cover = { ...project.cover, ...native, variants: [native] };
+// Every rendition up to the original, so the cover fills its column (5 of 12 parts from 900 px).
+const cover = project.cover;
+const max = Math.max(...cover.variants.filter(v => v.width <= cover.nativeWidth).map(v => v.width));
+const coverSizes = `(min-width: 900px) min(${max}px, calc((min(100vw, 1504px) - 170px) * 0.42)), min(${max}px, calc(100vw - 32px))`;
 
 function renderProduct(ctx) {
   const { t } = ctx;
   return html`<main id="main" tabindex="-1" class="sv sv-product detail-page">
   ${raw(crumb(ctx))}
   <article class="detail-top detail-narrow" aria-labelledby="page-title">
-    ${raw(coverFigure(cover, { sizes: `(max-width: 540px) calc(100vw - 32px), ${native.width}px` }))}
+    ${raw(coverFigure(cover, { sizes: coverSizes }))}
     <div class="detail-text"><p class="detail-kicker">${label(t, 'apps')}</p>
       <h1 id="page-title">${project.title}</h1>
       <p class="detail-lead">${localized(project.summary)}</p>
