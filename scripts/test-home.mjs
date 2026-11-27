@@ -94,16 +94,16 @@ test('the Modding tab lists every published mod with its own numbers and picture
 });
 
 test('the Research tab draws the certified configurations and both kinds of dots', () => {
-  assert.throws(() => validateHomeCatalogue(home.replace('<line class="rm-spoke rm-open"', '<line class="rm-spoke"')), /dashed/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<circle class="rm-dot rm-open"', '<circle class="rm-dot"')), /hollow/);
   assert.throws(() => validateHomeCatalogue(home.replace('<circle class="rm-floating"', '<circle class="rm-circle"')));
-  assert.throws(() => validateHomeCatalogue(home.replace(/(<path class="rm-arc" d="M[\d.]+ [\d.]+ A)[\d.]+/, '$1' + '90')), /C\*/);
-  assert.throws(() => validateHomeCatalogue(home.replace('<svg class="rm-chart" viewBox="0 0 320 180"', '<svg class="rm-chart" viewBox="0 0 288 162"')), /16:9/);
+  assert.throws(() => validateHomeCatalogue(home.replace(/(<line class="rm-arc" x1="[\d.]+" y1=")[\d.]+(" x2="[\d.]+" y2=")[\d.]+/, '$1' + '90$2' + '90')), /C\*/);
+  assert.throws(() => validateHomeCatalogue(home.replace('<svg class="rm-chart" viewBox="0 0 272 153"', '<svg class="rm-chart" viewBox="0 0 288 162"')), /16:9/);
   assert.throws(() => validateHomeCatalogue(home.replace('>C*</text>', '>1/8</text>')), /labels/);
   assert.throws(() => validateHomeCatalogue(home.replace(/(<span class="paper-bound">C\* ∈ \[<span[^>]*>)[^<]+/, '$1' + '0,1300')), /C\* interval/);
   // V5: the papers are project cards in a rail.
   assert.throws(() => validateHomeCatalogue(home.replace('<div class="rail rail-papers">', '<div class="paper-cards">')), /rail/);
   assert.throws(() => validateHomeCatalogue(home.replace('<span class="pill">Paper II</span>', '<span class="pill">Paper 2</span>')), /Paper/);
-  assert.throws(() => validateHomeCatalogue(home.replace(/(<line class="rm-spoke" x1="[\d.]+" y1="[\d.]+" x2=")[\d.]+/, '$1' + '5')), /scale/);
+  assert.throws(() => validateHomeCatalogue(home.replace(/(<circle class="rm-dot" cx="[\d.]+" cy=")[\d.]+/, '$1' + '5')), /scale/);
   assert.throws(() => validateHomeCatalogue(home.replace('<a class="result" href="/research/">', '<a class="result" href="https://arxiv.org/">')), /paper count/);
 });
 
