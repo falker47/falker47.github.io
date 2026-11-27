@@ -450,26 +450,42 @@ async function home(page, origin, lang) {
     if (index) await next.click();
     await fitted(index);
     assert.equal(await slide(), String(index + 1), 'The counter follows the steps');
-    assert.equal(await nav.locator('.about-progress i.on').count(), index + 1, 'The bar fills up to the open paragraph');
-    // Measured on the page, not the window: the click may scroll the window to the button.
-    places.push(await next.evaluate(button => { const box = button.getBoundingClientRect(); return [Math.round(box.top + scrollY), Math.round(box.left), Math.round(box.width)].join(' '); }));
+    assert.equal(await nav.locator('.about-chapter.on').count(), index + 1, 'The chapters fill up to the open paragraph');
+    assert.equal(await nav.locator('.about-chapter').nth(index).getAttribute('aria-current'), 'step', 'The open chapter is the current one');
+    // Measured on the page, not the window: the click may scroll the window to the button. Its right
+    // edge stays put: on the last paragraph its label grows to "I miei progetti".
+    places.push(await next.evaluate(button => { const box = button.getBoundingClientRect(); return [Math.round(box.top + scrollY), Math.round(box.right)].join(' '); }));
     rows.push(await page.locator('.about-row').nth(index).evaluate(row => {
       const text = row.querySelector('p').getBoundingClientRect(), figure = row.querySelector('.about-figure').getBoundingClientRect();
-      return { text: { left: text.left, right: text.right, bottom: text.bottom }, figure: { left: figure.left, right: figure.right, top: figure.top, width: figure.width, height: figure.height } };
+      return { text: { left: text.left, right: text.right, bottom: text.bottom, width: text.width }, figure: { left: figure.left, right: figure.right, top: figure.top, width: figure.width, height: figure.height } };
     }));
   }
   assert.equal(new Set(places).size, 1, '"Avanti" stays in the same place on every paragraph');
-  assert.equal(await next.getAttribute('aria-disabled'), 'true', 'No step past the last paragraph');
-  await next.click({ force: true });
-  assert.equal(await slide(), '5', 'A step at the end does nothing');
+  assert.equal(await next.getAttribute('aria-disabled'), null, 'The last step is never disabled');
+  assert.equal(await next.innerText(), (lang === 'en' ? englishCopy : italianCopy).myProjects, 'On the last paragraph "Avanti" becomes "I miei progetti"');
+  const wide = page.viewportSize().width >= 1200;
   for (const [index, { text, figure }] of rows.entries()) {
     if (page.viewportSize().width < 900) assert.ok(figure.top >= text.bottom - 1, `Row ${index + 1}: the figure follows its paragraph`);
     else {
       assert.ok(figure.left >= text.right - 1, `Row ${index + 1}: the figure sits right of its paragraph`);
-      // The text fills its column: no empty band between a paragraph and its figure.
-      assert.ok(figure.left - text.right <= 48, `Row ${index + 1}: ${Math.round(figure.left - text.right)} px between the paragraph and its figure`);
+      // Below 1200 px the text fills its column: no empty band between a paragraph and its figure.
+      // From 1200 px every paragraph keeps one column of about 60 characters.
+      if (wide) assert.ok(text.width <= 577, `Row ${index + 1}: the paragraph is ${Math.round(text.width)} px wide`);
+      else assert.ok(figure.left - text.right <= 48, `Row ${index + 1}: ${Math.round(figure.left - text.right)} px between the paragraph and its figure`);
     }
   }
+  if (wide) assert.equal(new Set(rows.map(row => Math.round(row.text.width))).size, 1, 'The text column is as wide on every paragraph');
+  // A chapter opens its paragraph; the arrow keys step while the focus is on the controls.
+  await nav.locator('.about-chapter').nth(2).click();
+  await fitted(2);
+  assert.equal(await slide(), '3', 'A chapter opens its paragraph');
+  await page.keyboard.press('ArrowLeft');
+  await fitted(1);
+  assert.equal(await slide(), '2', 'The left arrow steps back');
+  assert.equal(await page.evaluate(() => document.activeElement.getAttribute('aria-current')), 'step', 'The focus follows the open chapter');
+  await page.keyboard.press('ArrowRight');
+  await fitted(2);
+  assert.equal(await slide(), '3', 'The right arrow steps on');
   // A swipe (a native scroll of the track) also moves the counter; "Indietro" goes back.
   await track.evaluate(node => node.scrollTo({ left: node.children[1].offsetLeft - node.children[0].offsetLeft }));
   await fitted(1);

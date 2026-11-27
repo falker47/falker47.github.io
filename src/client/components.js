@@ -92,19 +92,27 @@
     update();
   }
 
-  // "Su di me": one paragraph at a time. "Indietro" and "Avanti" move by one slide, touch scrolls
-  // natively. Every slide is as tall as the tallest (CSS), so the controls never move.
+  // "Su di me": one paragraph at a time. "Indietro" and "Avanti" move by one slide, a chapter opens
+  // its paragraph, the arrow keys step while the focus is on the controls, touch scrolls natively.
+  // Every slide is as tall as the tallest (CSS), so the controls never move.
   for (const carousel of document.querySelectorAll('.about-carousel')) {
     const track = carousel.firstElementChild, rows = Array.from(track.children), nav = track.nextElementSibling;
-    const steps = nav.querySelectorAll('button'), bars = nav.querySelectorAll('i');
+    const steps = nav.querySelectorAll('.about-step'), bars = Array.from(nav.querySelectorAll('.about-chapter'));
+    const next = steps[1], last = rows.length - 1;
     let index = 0, width = 0;
     const left = i => rows[i].offsetLeft - rows[0].offsetLeft;
-    // The bar fills up to the open paragraph. At the ends a step stays focusable and does nothing.
-    function sync(next) {
-      index = Math.max(0, Math.min(rows.length - 1, next));
-      bars.forEach((bar, i) => bar.classList.toggle('on', i <= index));
+    // The chapters fill up to the open paragraph. "Indietro" stays focusable on the first one and does
+    // nothing; on the last, "Avanti" becomes "I miei progetti".
+    function sync(target) {
+      index = Math.max(0, Math.min(last, target));
+      bars.forEach((bar, i) => {
+        bar.classList.toggle('on', i <= index);
+        if (i === index) bar.setAttribute('aria-current', 'step'); else bar.removeAttribute('aria-current');
+      });
       steps[0].setAttribute('aria-disabled', String(!index));
-      steps[1].setAttribute('aria-disabled', String(index === rows.length - 1));
+      next.querySelector('.about-step-next').hidden = index === last;
+      next.querySelector('.about-step-end').hidden = index !== last;
+      next.classList.toggle('about-step-out', index === last);
       nav.querySelector('.about-index').textContent = index + 1;
     }
     function go(next, smooth) {
@@ -115,7 +123,19 @@
       const next = left(1) && Math.round(track.scrollLeft / left(1));
       if (left(1) && next !== index) sync(next);
     }, { passive: true });
-    steps.forEach(step => step.addEventListener('click', () => go(index + Number(step.dataset.step), true)));
+    steps[0].addEventListener('click', () => go(index - 1, true));
+    next.addEventListener('click', () => {
+      if (index < last) return go(index + 1, true);
+      if (reveal('#progetti', true) && location.hash !== '#progetti') history.pushState(history.state, '', '#progetti');
+    });
+    bars.forEach((bar, i) => bar.addEventListener('click', () => go(i, true)));
+    nav.addEventListener('keydown', event => {
+      const step = { ArrowLeft: -1, ArrowRight: 1 }[event.key];
+      if (!step || event.altKey || event.ctrlKey || event.metaKey) return;
+      event.preventDefault();
+      go(index + step, true);
+      if (bars.includes(document.activeElement)) bars[index].focus();
+    });
     // Focus on a link of another slide brings that slide in. The browser has already scrolled the
     // track to the link; once the track is realigned, the page scrolls to it instead.
     track.addEventListener('focusin', event => {

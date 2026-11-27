@@ -6,6 +6,7 @@ import research from '../../../data/research.json' with { type: 'json' };
 import tutoring from '../../../data/tutoring.json' with { type: 'json' };
 import { html, raw } from '../../lib/html.mjs';
 import { img } from '../../lib/media.mjs';
+import { aggregateRating, formatScore } from '../../lib/rating.mjs';
 import { actionLink, label, localized } from '../../partials/components.mjs';
 import { brand, icon } from '../../partials/icons.mjs';
 import { chart, configurations, constantRange } from '../../partials/ringmin.mjs';
@@ -154,6 +155,20 @@ function ratingCard(copy, rating, logo) {
   return html`<a class="card feedback-result" href="${rating.url}"><span class="feedback-source"><img class="platform-logo" src="/assets/images/${logo}.png" alt="" width="24" height="24" loading="lazy">${rating.source} <span aria-hidden="true">↗</span></span><span class="rating-line"><strong class="result-value">${rating.score}<span class="rating-scale">/${rating.scale}</span></strong><span class="rating-stars" aria-hidden="true">${raw(star.repeat(rating.scale))}</span></span><span class="result-label">${detail}</span></a>`;
 }
 
+// Under the closed title, what the section holds, counted from the data: the software, every
+// published mod, the papers and the lessons' rating (the weighted mean of the portals).
+function workTeaser() {
+  const rating = aggregateRating(tutoring.ratings);
+  const text = (lang, words) => {
+    const number = value => new Intl.NumberFormat(lang === 'it' ? 'it-IT' : 'en-US').format(value);
+    const software = categories.reduce((sum, category) => sum + category.items.length, 0);
+    const parts = [`${number(software)} software`, `${number(nexus.mods.length)} ${words.mods}`, `${number(research.papers.length)} ${words.papers}`];
+    if (rating) parts.push(`${words.lessons} ${formatScore(rating.score, lang)}/5`);
+    return parts.join(' · ');
+  };
+  return { it: text('it', { mods: 'mod', papers: 'paper', lessons: 'lezioni' }), en: text('en', { mods: 'mods', papers: 'papers', lessons: 'lessons' }) };
+}
+
 export function workSection(ctx) {
   const { t, copy } = ctx;
   const tabs = [['software', 'softwareTitle'], ['modding', 'moddingTitle'], ['research', 'researchTitle'], ['teaching', 'teachingTitle']];
@@ -164,7 +179,7 @@ ${raw(body)}
 </section>`;
   const repo = research.repositories.find(item => item.project === research.id).url;
   const power = research.repositories.find(item => item.project === 'power-ringmin').url;
-  return html`<details class="work" id="progetti"><summary><h2 id="work-title">${label(t, 'myProjects')}</h2></summary>
+  return html`<details class="work" id="progetti"><summary><h2 id="work-title">${label(t, 'myProjects')}</h2><span class="section-teaser">${localized(workTeaser())}</span></summary>
 <div class="work-content"><div class="work-tabs" role="tablist" aria-label="${copy.it.workAreas}" data-label="workAreas" hidden>${join(tabs.map(tab))}</div>
 <div class="work-panels">
 ${raw(panel('software', 'softwareTitle', 'softwareIntro', picker(ctx, 'software', categories, 'softwareCategories', projectCard, softwareNote(t))))}
