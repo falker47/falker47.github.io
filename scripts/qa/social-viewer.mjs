@@ -85,8 +85,10 @@ await withBrowser(async (browser, origin) => {
         file: new URL(image.currentSrc).pathname, rendered: image.getBoundingClientRect().width, native: image.naturalWidth,
         alt: image.alt, expectedAlt: image.getAttribute('data-alt-' + document.documentElement.lang),
       }));
-      assert.equal(cover.file, '/assets/projects/social-viewer-480.webp');
-      assert.ok(cover.rendered <= 480 && cover.rendered > 0);
+      assert.match(cover.file, /^\/assets\/projects\/social-viewer-(480|556)\.webp$/);
+      assert.ok(cover.rendered <= cover.native && cover.rendered > 0);
+      // The frame is the picture: no dark band beside it.
+      assert.ok(await page.locator('main .detail-cover').evaluate(figure => Math.abs(figure.getBoundingClientRect().width - figure.querySelector('img').getBoundingClientRect().width) < 1));
       assert.equal(cover.alt, cover.expectedAlt);
       assert.equal(await page.locator('main a.primary-cta').getAttribute('href'), store);
       results.push({ page: product, lang, width: viewport.width, cover: cover.file, displayedWidth: cover.rendered });

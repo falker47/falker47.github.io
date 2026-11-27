@@ -12,8 +12,9 @@
   display: grid; gap: 20px; margin-top: 8px; padding: 16px;
   border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface);
 }
-.detail-cover { display: grid; place-items: center; min-width: 0; margin: 0; overflow: hidden; border-radius: 10px; background: #0c0d11; }
-.detail-cover picture { display: block; width: 100%; max-width: var(--image-max); }
+/* The frame never outgrows its picture, so no dark band shows beside a small original. */
+.detail-cover { display: grid; place-items: center; min-width: 0; max-width: var(--image-max); margin: 0; overflow: hidden; border-radius: 10px; background: #0c0d11; }
+.detail-cover picture { display: block; width: 100%; }
 .detail-cover img { display: block; width: 100%; height: auto; }
 .detail-text { min-width: 0; }
 .detail-kicker { color: var(--accent); font: var(--label)/1.5 var(--mono); letter-spacing: var(--tracking); text-transform: uppercase; }
