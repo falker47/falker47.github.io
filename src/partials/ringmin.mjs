@@ -45,29 +45,44 @@ const bound = (value, round, lang) => new Intl.NumberFormat(lang === 'it' ? 'it-
   { minimumFractionDigits: 4, maximumFractionDigits: 4 }).format(round(value * 1e4) / 1e4);
 export const constantRange = lang => [bound(data.constant.lower, Math.floor, lang), bound(data.constant.upper, Math.ceil, lang)];
 
+// A decimal tick in both number formats; the page starts in Italian and swaps on a language change.
+const decimal = value => {
+  const [it, en] = ['it-IT', 'en-GB'].map(locale => new Intl.NumberFormat(locale, { minimumFractionDigits: 2 }).format(value));
+  return { it, en };
+};
+
 /**
- * Paper II, drawn like Paper I: a fan of thin spokes from a common hub, one per n from left
- * to right, each as long as R(n)/n² on a common scale and capped by a small circle. Certified
- * values are solid, non-exhaustive ones dashed. Above them glows the semicircle of radius C*,
- * as thick as the certified interval (data.constant) allows on this scale.
+ * Paper II as a plain chart, on true scales: R(n)/n² upwards from zero, n to the right on a 1/n
+ * scale, so that n = ∞ is a point on the axis. One dot per n from the table, filled when certified
+ * and hollow when the search was not exhaustive. The dashed line is C*, the limit Paper II proves,
+ * as thick as its certified interval (data.constant) on this scale and never thinner than a hairline;
+ * the dot at ∞ marks where the points are heading. Nothing is fitted or extrapolated between 18 and ∞.
  */
-export function chart({ copy }) {
-  const W = 320, H = 180, cx = 160, cy = 158, reach = 124;
-  const rows = data.asymptotic, { lower, upper } = data.constant;
-  const scale = reach / ((lower + upper) / 2);
-  const [from, to] = [Math.PI * 1.04, Math.PI * 1.96];
-  const spoke = (row, i) => {
-    const angle = from + (to - from) * i / (rows.length - 1), length = row.ratio * scale;
-    const [x, y] = [fixed(cx + length * Math.cos(angle)), fixed(cy + length * Math.sin(angle))];
-    const open = row.certified ? '' : ' rm-open';
-    return html`<line class="rm-spoke${open}" x1="${cx}" y1="${cy}" x2="${x}" y2="${y}"/><circle class="rm-tip${open}" cx="${x}" cy="${y}" r="2.2"/>`;
-  };
-  const label = (x, y, text, className = 'rm-label') => html`<text class="${className}" x="${x}" y="${y}" text-anchor="middle">${text}</text>`;
+export const chartFrame = { W: 272, H: 153, x0: 38, x1: 258, yBottom: 122, yTop: 18, yMax: .15 };
+export const chartX = n => chartFrame.x0 + (1 - (Number.isFinite(n) ? data.asymptotic[0].n / n : 0)) * (chartFrame.x1 - chartFrame.x0);
+export const chartY = value => chartFrame.yBottom - value / chartFrame.yMax * (chartFrame.yBottom - chartFrame.yTop);
+
+export function chart({ t, copy }) {
+  const { W, H, x0, x1, yBottom, yTop } = chartFrame;
+  const rows = data.asymptotic, { lower, upper } = data.constant, cStar = chartY((lower + upper) / 2);
+  const text = (x, y, value, anchor = 'middle', className = 'rm-label') => html`<text class="${className}" x="${x}" y="${y}" text-anchor="${anchor}">${value}</text>`;
+  const localized = (x, y, { it, en }, anchor) => html`<text class="rm-label rm-tick" x="${x}" y="${y}" text-anchor="${anchor}" data-text-it="${it}" data-text-en="${en}">${it}</text>`;
+  const word = (x, y, key) => html`<text class="rm-label rm-legend" x="${x}" y="${y}" text-anchor="end" data-i18n="${key}">${t(key)}</text>`;
+  const dot = row => html`<circle class="rm-dot${row.certified ? '' : ' rm-open'}" cx="${fixed(chartX(row.n))}" cy="${fixed(chartY(row.ratio))}" r="3"/>`;
+  const yTicks = [.05, .1].map(value => html`<line class="rm-grid-line" x1="${x0}" y1="${fixed(chartY(value))}" x2="${x1}" y2="${fixed(chartY(value))}"/>${raw(localized(x0 - 6, fixed(chartY(value) + 4.5), decimal(value), 'end'))}`);
+  const xTicks = [3, 4, 6, 10, 18, Infinity].map(n => html`<line class="rm-axis" x1="${fixed(chartX(n))}" y1="${yBottom}" x2="${fixed(chartX(n))}" y2="${yBottom + 4}"/>${raw(text(fixed(chartX(n)), yBottom + 17, n === 3 ? 'n = 3' : Number.isFinite(n) ? String(n) : '∞', 'middle', 'rm-label rm-tick'))}`);
+  const trend = rows.map((row, i) => (i ? 'L' : 'M') + fixed(chartX(row.n)) + ' ' + fixed(chartY(row.ratio))).join('');
+  // The legend sits in the empty lower right, its dots in one column under the limit dot at ∞.
+  const [legendX, legendY] = [x1, 99];
   return html`<svg class="rm-chart" viewBox="0 0 ${W} ${H}" role="img" data-label="ringminChartLabel" aria-label="${copy.it.ringminChartLabel}">
-<path class="rm-arc" d="M${cx - reach} ${cy} A${reach} ${reach} 0 0 1 ${cx + reach} ${cy}" stroke-width="${fixed(Math.max(1.6, (upper - lower) * scale))}"/>
-<line class="rm-base" x1="${cx - reach - 10}" y1="${cy}" x2="${cx + reach + 10}" y2="${cy}"/>
-${raw(rows.map(spoke).join(''))}<circle class="rm-hub" cx="${cx}" cy="${cy}" r="3"/>
-${raw(label(cx - reach, cy + 17, 'n = ' + rows[0].n))}${raw(label(cx + reach, cy + 17, String(rows.at(-1).n)))}
-${raw(label(cx, cy - reach - 9, 'C*', 'rm-label rm-key'))}
+${raw(yTicks.join(''))}
+<line class="rm-arc" x1="${x0}" y1="${fixed(cStar)}" x2="${x1}" y2="${fixed(cStar)}" stroke-width="${fixed(Math.max(1.2, (chartY(lower) - chartY(upper))))}"/>
+<path class="rm-trend" d="${trend}"/>
+${raw(rows.map(dot).join(''))}<circle class="rm-limit" cx="${x1}" cy="${fixed(cStar)}" r="3.5"/>
+<line class="rm-axis" x1="${x0}" y1="${yTop - 6}" x2="${x0}" y2="${yBottom}"/><line class="rm-axis" x1="${x0}" y1="${yBottom}" x2="${x1 + 8}" y2="${yBottom}"/>
+${raw(xTicks.join(''))}${raw(text(x0 - 6, yBottom + 4.5, '0', 'end', 'rm-label rm-tick'))}
+${raw(text(x0 - 6, fixed(cStar + 5), 'C*', 'end', 'rm-label rm-key'))}${raw(text(x0 + 6, yTop - 4, 'R(n)/n²', 'start'))}
+<circle class="rm-dot" cx="${legendX}" cy="${legendY}" r="2.4"/>${raw(word(legendX - 6, legendY + 4, 'ringminCertified'))}
+<circle class="rm-dot rm-open" cx="${legendX}" cy="${legendY + 12}" r="2.4"/>${raw(word(legendX - 6, legendY + 16, 'ringminBestFound'))}
 </svg>`;
 }

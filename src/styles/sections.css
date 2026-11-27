@@ -281,13 +281,15 @@ a.result:hover .result-label {color:var(--paper)}
 .rm-label {font:500 15px var(--sans);fill:#a9b2c0}
 .rm-key {font-weight:600;font-size:16px;fill:var(--blue)}
 .paper-bound {color:var(--blue)}
-.rm-arc {fill:none;stroke:var(--blue);filter:drop-shadow(0 0 3px color-mix(in srgb,var(--blue) 65%,transparent))}
-.rm-base {stroke:var(--rule);stroke-width:1}
-.rm-spoke {stroke:var(--stroke);stroke-width:1}
-.rm-tip,.rm-hub {fill:#0d1017;stroke:var(--stroke);stroke-width:1}
-.rm-hub {stroke:var(--blue)}
-.rm-spoke.rm-open {stroke-dasharray:2.5 2;opacity:.75}
-.rm-tip.rm-open {opacity:.75}
+.rm-tick {font-size:13px}
+.rm-legend {font-size:12.4px}
+.rm-arc {fill:none;stroke:var(--blue);stroke-dasharray:6 4;filter:drop-shadow(0 0 3px color-mix(in srgb,var(--blue) 65%,transparent))}
+.rm-limit {fill:var(--blue);filter:drop-shadow(0 0 4px color-mix(in srgb,var(--blue) 70%,transparent))}
+.rm-axis {stroke:#6b7584;stroke-width:1}
+.rm-grid-line {stroke:var(--rule);stroke-width:1}
+.rm-trend {fill:none;stroke:var(--stroke);stroke-width:1;opacity:.45}
+.rm-dot {fill:var(--stroke);stroke:var(--stroke);stroke-width:1.2}
+.rm-dot.rm-open {fill:#0d1017}
 .research-foot {font:12px/1.6 var(--mono);color:#a9b2c0;margin:12px 0 0}
 .research-foot a {display:inline-block;min-width:44px;padding-block:12px;margin-block:-12px;color:var(--blue)}
 .research-foot a:hover {text-decoration:underline;text-underline-offset:4px}
@@ -371,8 +373,9 @@ a.result:hover .result-label {color:var(--paper)}
 .work-tabs button[aria-selected=true] {border-color:Highlight}
 .picker-toggle[aria-pressed=true] {border-color:Highlight;background:Highlight;color:HighlightText}
 .card-links a {box-shadow:none;border-left:1px solid CanvasText}
-.rm-circle,.rm-floating,.rm-centre,.rm-arc,.rm-base,.rm-spoke,.rm-tip,.rm-hub {stroke:CanvasText}
-.rm-centre,.rm-circle,.rm-tip,.rm-hub {fill:Canvas}
+.rm-circle,.rm-floating,.rm-centre,.rm-arc,.rm-axis,.rm-grid-line,.rm-trend,.rm-dot {stroke:CanvasText}
+.rm-centre,.rm-circle,.rm-dot.rm-open {fill:Canvas}
+.rm-dot,.rm-limit {fill:CanvasText}
 .rm-label {fill:CanvasText}
 .platform-logo {filter:none}
 .emblem {fill:CanvasText}

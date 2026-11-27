@@ -198,22 +198,29 @@ function checkResearch(source) {
   assert.equal([...papers[0].matchAll(/<circle class="rm-centre"/g)].length, ringmin.optima.length);
   assert.equal([...papers[0].matchAll(/<circle class="rm-(?:circle|floating)"/g)].length, ringmin.optima.reduce((sum, item) => sum + item.n, 0));
   assert.equal([...papers[0].matchAll(/<circle class="rm-floating"/g)].length, ringmin.optima.reduce((sum, item) => sum + item.floating_circles.length, 0));
-  // Paper II (V4): a 16:9 fan, one spoke per n from left to right, as long as R(n)/n² on one
-  // scale, solid when certified and dashed otherwise, under the semicircle of radius C*.
-  assert.match(papers[1], /<svg class="rm-chart" viewBox="0 0 320 180"/, 'Paper II is drawn at 16:9');
-  const spokes = [...papers[1].matchAll(/<line class="rm-spoke( rm-open)?" x1="([\d.]+)" y1="([\d.]+)" x2="([\d.-]+)" y2="([\d.-]+)"\/>/g)]
-    .map(([, open, ...xy]) => { const [x1, y1, x2, y2] = xy.map(Number); return { open: Boolean(open), length: Math.hypot(x2 - x1, y2 - y1), angle: Math.atan2(y2 - y1, x2 - x1) }; });
-  assert.deepEqual(spokes.map(item => item.open), ringmin.asymptotic.map(row => !row.certified), 'Solid spokes are certified values, dashed ones non-exhaustive');
-  const scales = spokes.map((item, i) => item.length / ringmin.asymptotic[i].ratio);
-  assert.ok(Math.max(...scales) - Math.min(...scales) < .02 * scales[0], 'Each spoke is R(n)/n² on one scale');
-  assert.ok(spokes.every((item, i) => i === 0 || (item.angle + 2 * Math.PI) % (2 * Math.PI) > (spokes[i - 1].angle + 2 * Math.PI) % (2 * Math.PI)), 'The spokes run from n = 3 on the left to the last n on the right');
-  assert.equal([...papers[1].matchAll(/<circle class="rm-tip(?: rm-open)?"/g)].length, spokes.length, 'A small circle caps each spoke');
-  const arc = papers[1].match(/<path class="rm-arc" d="M[\d.]+ [\d.]+ A([\d.]+) [\d.]+ 0 0 1 [\d.]+ [\d.]+" stroke-width="([\d.]+)"\/>/);
-  assert.ok(arc && Math.abs(Number(arc[1]) - scales[0] * (ringmin.constant.lower + ringmin.constant.upper) / 2) < .2, 'The semicircle is C* on the same scale');
-  assert.ok(Number(arc[2]) >= scales[0] * (ringmin.constant.upper - ringmin.constant.lower) - .01, 'The semicircle is as thick as the certified interval');
-  assert.ok(Math.max(...spokes.map(item => item.length)) < Number(arc[1]), 'Every spoke stays under C*');
+  // Paper II: a 16:9 chart on true scales. R(n)/n² rises from the zero line on one scale, n runs
+  // to the right on a 1/n scale ending at n = ∞, filled dots are certified and hollow ones not, and
+  // the C* line sits on the same vertical scale, at least as thick as the certified interval.
+  assert.match(papers[1], /<svg class="rm-chart" viewBox="0 0 272 153"/, 'Paper II is drawn at 16:9');
+  const dots = [...papers[1].matchAll(/<circle class="rm-dot( rm-open)?" cx="([\d.]+)" cy="([\d.]+)" r="3"\/>/g)]
+    .map(([, open, x, y]) => ({ open: Boolean(open), x: Number(x), y: Number(y) }));
+  const points = dots;
+  assert.equal(dots.length, ringmin.asymptotic.length, 'One dot per n');
+  assert.equal([...papers[1].matchAll(/<circle class="rm-dot(?: rm-open)?" cx="[\d.]+" cy="[\d.]+" r="2.4"\/>/g)].length, 2, 'Two smaller dots in the legend');
+  assert.deepEqual(points.map(item => item.open), ringmin.asymptotic.map(row => !row.certified), 'Filled dots are certified values, hollow ones non-exhaustive');
+  const zero = Number(papers[1].match(/<line class="rm-axis" x1="[\d.]+" y1="([\d.]+)" x2="[\d.]+" y2="\1"\/>/)[1]);
+  const scales = points.map((item, i) => (zero - item.y) / ringmin.asymptotic[i].ratio);
+  assert.ok(Math.max(...scales) - Math.min(...scales) < .02 * scales[0], 'Each dot is R(n)/n² on one scale from zero');
+  const first = ringmin.asymptotic[0].n, slope = (points[1].x - points[0].x) / (1 / first - 1 / ringmin.asymptotic[1].n);
+  assert.ok(points.every((item, i) => Math.abs(item.x - points[0].x - slope * (1 / first - 1 / ringmin.asymptotic[i].n)) < .05), 'n runs on a 1/n scale');
+  const line = papers[1].match(/<line class="rm-arc" x1="[\d.]+" y1="([\d.]+)" x2="[\d.]+" y2="\1" stroke-width="([\d.]+)"\/>/);
+  assert.ok(line && Math.abs(zero - Number(line[1]) - scales[0] * (ringmin.constant.lower + ringmin.constant.upper) / 2) < .2, 'The C* line is on the same scale');
+  assert.ok(Number(line[2]) >= scales[0] * (ringmin.constant.upper - ringmin.constant.lower) - .01, 'The C* line is as thick as the certified interval');
+  const infinity = Number(papers[1].match(/<circle class="rm-limit" cx="([\d.]+)"/)[1]);
+  assert.ok(Math.abs(infinity - points[0].x - slope / first) < .05, 'The limit dot sits at n = ∞ on the 1/n scale');
+  assert.ok(points.every(item => item.y > Number(line[1])), 'Every dot stays under C*');
   assert.deepEqual([...papers[1].matchAll(/<text class="rm-label[^"]*"[^>]*>([^<]+)<\/text>/g)].map(match => decode(match[1])),
-    ['n = ' + ringmin.asymptotic[0].n, String(ringmin.asymptotic.at(-1).n), 'C*'], 'Three labels on the drawing');
+    ['0,05', '0,10', 'n = 3', '4', '6', '10', '18', '∞', '0', 'C*', 'R(n)/n²', italianCopy.ringminCertified, italianCopy.ringminBestFound], 'The labels of the chart');
   const it = value => new Intl.NumberFormat('it-IT', { minimumFractionDigits: 4, maximumFractionDigits: 4 }).format(value);
   const [low, high] = [Math.floor(ringmin.constant.lower * 1e4) / 1e4, Math.ceil(ringmin.constant.upper * 1e4) / 1e4];
   assert.equal(text(papers[1].match(/<span class="paper-bound">([^]*?)<\/span><\/span><\/p>/)[1]).replace(/\s+(?=[;\]])|(?<=\[)\s+/g, ''), `C* ∈ [${it(low)}; ${it(high)}]`, 'The C* interval from data/ringmin.json');
