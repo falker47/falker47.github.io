@@ -58,7 +58,7 @@ export const aboutRows = [
   { text: 'aboutStudies', chapter: 'chapterStudies', figure: 'studies', art: ctx => studiesDrawing(ctx) },
   { text: 'aboutWork', chapter: 'chapterPath', figure: 'work', art: ctx => certificates(ctx) },
   { text: 'aboutMethod', chapter: 'chapterWork', figure: 'method', art: ctx => methodDrawing(ctx) },
-  { text: 'aboutApproach', chapter: 'chapterMethod', figure: 'approach', facts: ['repos', 'downloads', 'app', 'tool', 'game'] },
+  { text: 'aboutApproach', chapter: 'chapterProjects', figure: 'approach', facts: ['repos', 'downloads', 'app', 'tool', 'game'] },
   { text: 'aboutSpare', chapter: 'chapterSpare', figure: 'spare', facts: ['papers', 'rating'], reviews: true },
 ];
 

@@ -261,7 +261,7 @@ function checkAbout(source) {
   // and method), the second beside a drawing of a problem reduced to its model.
   assert.match(about, /<div class="about-carousel"><div class="about-rows"><div class="about-row">/, 'The rows are the slides of the carousel');
   // Each paragraph opens under the name of its chapter (a heading), the name its segment wears below.
-  const chapters = ['chapterStudies', 'chapterPath', 'chapterWork', 'chapterMethod', 'chapterSpare'];
+  const chapters = ['chapterStudies', 'chapterPath', 'chapterWork', 'chapterProjects', 'chapterSpare'];
   const rows = [...about.matchAll(/<div class="about-row"><div class="about-text"><h3 class="about-chapter-title"><span data-i18n="(\w+)">([^<]*)<\/span><\/h3><p data-i18n="(\w+)">([^<]*)<\/p><\/div><figure class="about-figure figure-(\w+)"/g)]
     .map(([, chapter, name, key, value, figure]) => [chapter, decode(name), key, decode(value), figure]);
   assert.deepEqual(rows, [['aboutStudies', 'studies'], ['aboutWork', 'work'], ['aboutMethod', 'method'], ['aboutApproach', 'approach'], ['aboutSpare', 'spare']]
