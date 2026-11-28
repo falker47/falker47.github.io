@@ -260,22 +260,29 @@ function checkAbout(source) {
   // slides of a carousel, one per paragraph; the work paragraph is split in two (path, then work
   // and method), the second beside a drawing of a problem reduced to its model.
   assert.match(about, /<div class="about-carousel"><div class="about-rows"><div class="about-row">/, 'The rows are the slides of the carousel');
-  const rows = [...about.matchAll(/<div class="about-row"><p data-i18n="(\w+)">([^<]*)<\/p><figure class="about-figure figure-(\w+)"/g)]
-    .map(([, key, value, figure]) => [key, decode(value), figure]);
+  // Each paragraph opens under the name of its chapter (a heading), the name its segment wears below.
+  const chapters = ['chapterStudies', 'chapterPath', 'chapterWork', 'chapterProjects', 'chapterSpare'];
+  const rows = [...about.matchAll(/<div class="about-row"><div class="about-text"><h3 class="about-chapter-title"><span data-i18n="(\w+)">([^<]*)<\/span><\/h3><p data-i18n="(\w+)">([^<]*)<\/p><\/div><figure class="about-figure figure-(\w+)"/g)]
+    .map(([, chapter, name, key, value, figure]) => [chapter, decode(name), key, decode(value), figure]);
   assert.deepEqual(rows, [['aboutStudies', 'studies'], ['aboutWork', 'work'], ['aboutMethod', 'method'], ['aboutApproach', 'approach'], ['aboutSpare', 'spare']]
-    .map(([key, figure]) => [key, italianCopy[key], figure]), 'About rows in order');
+    .map(([key, figure], index) => [chapters[index], italianCopy[chapters[index]], key, italianCopy[key], figure]), 'About rows in order');
   const method = about.match(/<figure class="about-figure figure-method" aria-hidden="true"><svg class="studies-drawing"[^>]*>([^]*?)<\/svg><\/figure>/);
   assert.ok(method, 'The method drawing is decorative, in the pendulum language');
   assert.deepEqual([...method[1].matchAll(/data-i18n="(\w+)">([^<]+)</g)].map(match => [match[1], match[2]]), [['figureProblem', italianCopy.figureProblem], ['figureModel', italianCopy.figureModel]], 'Method labels');
   assert.match(method[1], /<text class="studies-eq"[^>]*>y = a x \+ b<\/text>/, 'The model is a straight line');
   assert.equal([...method[1].matchAll(/<circle class="st-pt(?: quiet)?" cx="\d+" cy="\d+" r="2.2"\/>/g)].length, 16, 'The same eight points on both panels');
   // The carousel controls wait for the script: without it the five rows stay in a column.
-  const nav = about.match(/<div class="about-nav" hidden>([^]*?)<\/div>/);
+  const nav = about.match(/<div class="about-nav" hidden>([^]*?<\/button>)<\/div><\/div>/);
   assert.ok(nav, 'The carousel controls are hidden until the script runs');
   const controls = [...nav[1].matchAll(/<button type="button" class="about-step" data-step="(-?1)">([^]*?)<\/button>/g)].map(([, step, body]) => [step, text(body), /#icon-(chevron-\w+)/.exec(body)?.[1]]);
-  assert.deepEqual(controls, [['-1', italianCopy.aboutPrevious, 'chevron-left'], ['1', italianCopy.aboutNext, 'chevron-right']], '"Indietro" and "Avanti" with their chevrons');
-  // A progress bar, one segment per paragraph, the first filled; the counter is announced on a step.
-  assert.match(nav[1], /^<span class="about-progress" aria-hidden="true"><i class="on"><\/i>(?:<i><\/i>){4}<\/span>/, 'One segment per paragraph');
+  assert.deepEqual(controls, [['-1', italianCopy.aboutPrevious, 'chevron-left'], ['1', italianCopy.aboutNext + ' ' + italianCopy.myProjects, 'chevron-right']], '"Indietro" and "Avanti" with their chevrons');
+  // On the last paragraph "Avanti" becomes "I miei progetti": both labels are in the button, the second hidden.
+  assert.match(nav[1], /<span class="about-step-next"><span data-i18n="aboutNext">[^<]+<\/span><\/span><span class="about-step-end" hidden><span data-i18n="myProjects">[^<]+<\/span><\/span>/, '"Avanti" and its last label');
+  // The chapters, one named button per paragraph, the first filled and current; the counter is announced on a step.
+  const chapterBar = nav[1].match(/^<div class="about-progress" role="group" aria-label="([^"]+)" data-label="aboutChapters">((?:<button type="button" class="about-chapter(?: on)?"(?: aria-current="step")?><span data-i18n="\w+">[^<]+<\/span><\/button>)+)<\/div>/);
+  assert.ok(chapterBar && decode(chapterBar[1]) === italianCopy.aboutChapters, 'One segment per paragraph');
+  assert.deepEqual([...chapterBar[2].matchAll(/<button type="button" class="about-chapter( on)?"( aria-current="step")?><span data-i18n="(\w+)">/g)].map(([, on, current, key]) => [Boolean(on), Boolean(current), key]),
+    chapters.map((key, index) => [!index, !index, key]), 'One segment per paragraph, named after its chapter');
   assert.equal(text(nav[1].match(/<p class="about-count" aria-live="polite">([^]*?)<\/p>/)[1]), '1 / 5', 'Slide counter');
   assert.ok(!about.includes('class="philosophy"') && !('philosophy' in italianCopy), 'The closing quote is gone (V5)');
   assert.ok(!/about-facts|facts-grid/.test(about), 'The "In breve" card is gone');

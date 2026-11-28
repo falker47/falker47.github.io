@@ -52,13 +52,14 @@ const figures = {
 // Each paragraph and, after it, its figure: who I am (the pendulum and its simulation), the path
 // (the certificate fan), the work and the method (a problem reduced to its general form), the way
 // I work outside it, the rest of the time. V5: the work paragraph is split in two, so the slides
-// have similar lengths.
+// have similar lengths. Each paragraph opens under the name of its chapter, the same name the
+// chapter's segment wears in the carousel controls.
 export const aboutRows = [
-  { text: 'aboutStudies', figure: 'studies', art: ctx => studiesDrawing(ctx) },
-  { text: 'aboutWork', figure: 'work', art: ctx => certificates(ctx) },
-  { text: 'aboutMethod', figure: 'method', art: ctx => methodDrawing(ctx) },
-  { text: 'aboutApproach', figure: 'approach', facts: ['repos', 'downloads', 'app', 'tool', 'game'] },
-  { text: 'aboutSpare', figure: 'spare', facts: ['papers', 'rating'], reviews: true },
+  { text: 'aboutStudies', chapter: 'chapterStudies', figure: 'studies', art: ctx => studiesDrawing(ctx) },
+  { text: 'aboutWork', chapter: 'chapterPath', figure: 'work', art: ctx => certificates(ctx) },
+  { text: 'aboutMethod', chapter: 'chapterWork', figure: 'method', art: ctx => methodDrawing(ctx) },
+  { text: 'aboutApproach', chapter: 'chapterProjects', figure: 'approach', facts: ['repos', 'downloads', 'app', 'tool', 'game'] },
+  { text: 'aboutSpare', chapter: 'chapterSpare', figure: 'spare', facts: ['papers', 'rating'], reviews: true },
 ];
 
 function fact({ t, copy }, item) {
@@ -92,17 +93,25 @@ function aboutRow(ctx, row) {
   const figure = row.facts
     ? html`<figure class="about-figure figure-${row.figure}"><ul class="facts-list">${raw(row.facts.map(name => figures[name]).filter(Boolean).map(item => fact(ctx, item)).join(''))}</ul>${raw(row.reviews ? reviewStrip(ctx.copy) : '')}</figure>`
     : html`<figure class="about-figure figure-${row.figure}"${raw(row.figure === 'work' ? '' : ' aria-hidden="true"')}>${raw(row.art(ctx))}</figure>`;
-  return html`<div class="about-row"><p data-i18n="${row.text}">${ctx.t(row.text)}</p>${raw(figure)}</div>`;
+  return html`<div class="about-row"><div class="about-text"><h3 class="about-chapter-title">${label(ctx.t, row.chapter)}</h3><p data-i18n="${row.text}">${ctx.t(row.text)}</p></div>${raw(figure)}</div>`;
 }
 
 // V5: the rows are the slides of a carousel, one paragraph at a time, in reading order, all as tall
-// as the tallest so the controls never move. Above the controls a progress bar, one segment per
-// paragraph; "Indietro" and "Avanti" sit at the two ends, the counter between them tells screen
-// readers that the paragraph changed. They wait for the script; without it the rows stay in a column.
-function carouselNav(t) {
-  const step = (direction, key) => html`<button type="button" class="about-step" data-step="${direction}">${direction < 0 ? icon('chevron-left') : ''}${label(t, key)}${direction > 0 ? icon('chevron-right') : ''}</button>`;
-  return html`<div class="about-nav" hidden><span class="about-progress" aria-hidden="true">${raw(aboutRows.map((row, index) => index ? '<i></i>' : '<i class="on"></i>').join(''))}</span>${raw(step(-1, 'aboutPrevious'))}<p class="about-count" aria-live="polite"><span class="about-index">1</span> / ${aboutRows.length}</p>${raw(step(1, 'aboutNext'))}</div>`;
+// as the tallest so the controls never move. Above the controls the chapters, one segment per
+// paragraph, each named and a button to its paragraph; "Indietro" and "Avanti" sit under them, the
+// counter between them tells screen readers that the paragraph changed. On the last paragraph
+// "Avanti" becomes "I miei progetti" and opens that section. They wait for the script; without it
+// the rows stay in a column.
+function carouselNav(t, copy) {
+  const chapters = aboutRows.map((row, index) => html`<button type="button" class="about-chapter${index ? '' : ' on'}"${raw(index ? '' : ' aria-current="step"')}>${label(t, row.chapter)}</button>`).join('');
+  const back = html`<button type="button" class="about-step" data-step="-1">${icon('chevron-left')}${label(t, 'aboutPrevious')}</button>`;
+  const next = html`<button type="button" class="about-step" data-step="1"><span class="about-step-next">${label(t, 'aboutNext')}</span><span class="about-step-end" hidden>${label(t, 'myProjects')}</span>${icon('chevron-right')}</button>`;
+  return html`<div class="about-nav" hidden><div class="about-progress" role="group" aria-label="${copy.it.aboutChapters}" data-label="aboutChapters">${raw(chapters)}</div>${raw(back)}<p class="about-count" aria-live="polite"><span class="about-index">1</span> / ${aboutRows.length}</p>${raw(next)}</div>`;
 }
+
+// Under the closed title, what the section holds: the path in three words and the certificates.
+const certificateCount = { it: integer(credentials.length), en: new Intl.NumberFormat('en-US').format(credentials.length) };
+const aboutTeaser = { it: `Fisica, dati e AI · ${certificateCount.it} certificazioni`, en: `Physics, data and AI · ${certificateCount.en} certificates` };
 
 export function aboutSection(ctx) {
   const { t, copy } = ctx;
@@ -116,6 +125,6 @@ export function aboutSection(ctx) {
     const style = mark ? html` style="--brand:${brandInk(mark)}" data-brand="${mark}"` : '';
     return html`<a href="${href}" class="about-action about-action-profile"${raw(style)}>${mark ? brand(mark) : raw(icons[glyph])}${raw(title)}${raw(arrow)}</a>`;
   }).join('');
-  return html`<details class="about" id="chi-sono"><summary><h2>${label(t, 'about')}</h2></summary><div class="about-content"><div class="about-carousel"><div class="about-rows">${raw(rows)}</div>${raw(carouselNav(t))}</div>
+  return html`<details class="about" id="chi-sono"><summary><h2>${label(t, 'about')}</h2><span class="section-teaser">${localized(aboutTeaser)}</span></summary><div class="about-content"><div class="about-carousel"><div class="about-rows">${raw(rows)}</div>${raw(carouselNav(t, copy))}</div>
 <nav class="research-links about-actions" aria-label="${copy.it.researchProfiles}" data-label="researchProfiles">${raw(links)}</nav></div></details>`;
 }

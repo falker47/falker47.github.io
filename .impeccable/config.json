@@ -1,0 +1,59 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "_site/**",
+          "src/styles/components.css",
+          "src/styles/home.css"
+        ],
+        "createdAt": "2026-11-27T15:40:44.375Z",
+        "reason": "V3 brief (docs/unify/BRIEF.md, Glow and gradients): the brand name and the italic half of the hero title carry the text gradient. User confirmed 27/11/2026."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "_site/**",
+          "src/styles/components.css",
+          "src/styles/home.css"
+        ],
+        "createdAt": "2026-11-27T15:40:44.522Z",
+        "reason": "V3 brief, Glow and gradients: the primary CTA shadow and the identity card shadow are allowed. User confirmed 27/11/2026."
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "_site/**",
+          "src/styles/home.css"
+        ],
+        "createdAt": "2026-11-27T15:40:44.650Z",
+        "reason": "V3 brief: the 34 px grid lives only inside the hero band. User confirmed 27/11/2026."
+      },
+      {
+        "rule": "kicker-above-heading",
+        "value": "*",
+        "files": [
+          "_site/**",
+          "src/partials/detail-page.mjs"
+        ],
+        "createdAt": "2026-11-27T15:40:44.828Z",
+        "reason": "V3 brief, project pages: one card with the cover, a label, h1 and lead. User confirmed 27/11/2026."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "_site/**"
+        ],
+        "createdAt": "2026-11-27T15:40:44.954Z",
+        "reason": "False positive: the flush edges are the rules between detail blocks and full-bleed card buttons, not boxed content. User confirmed 27/11/2026."
+      }
+    ]
+  }
+}

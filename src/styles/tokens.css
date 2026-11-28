@@ -50,6 +50,8 @@
   --stroke: #81bfe5;
   --rule: #ffffff14;
   --control-line: #7b8799;
+  /* The track of the "Su di me" chapters: 3.5:1 on the page, a visible shape, quieter than a control line. */
+  --track: #626a78;
   --rule-soft: #ffffff0d;
   --header-bg: #0c0d11ed;
   --social-accent: #49c7bb;

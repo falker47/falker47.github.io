@@ -4,11 +4,19 @@
    and the signature. */
 .about,.work {border-bottom:1px solid var(--rule);padding:4px 0}
 .work {margin:0 0 8px}
-:is(.about,.work)>summary {list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:56px;cursor:pointer;color:var(--paper);font:15px/1.6 var(--sans)}
+/* The two section titles in the serif of the tabs and the hero, then what the section holds, then the
+   open/close mark: a plus drawn in a circle like the site's round controls, its upright stroke folding
+   away when open. The whole row reacts to the pointer and the focus. Below 700 px the line of
+   contents goes under the title. */
+:is(.about,.work)>summary {list-style:none;display:flex;flex-wrap:wrap;align-items:center;column-gap:16px;row-gap:2px;min-height:56px;margin-inline:-12px;padding:4px 12px;border-radius:12px;cursor:pointer;color:var(--paper);transition:background-color .16s}
 :is(.about,.work)>summary::-webkit-details-marker {display:none}
-:is(.about,.work)>summary::after {content:'+';font:24px var(--serif);color:var(--blue);flex-shrink:0}
-:is(.about,.work)[open]>summary::after {content:'−'}
-:is(.about,.work)>summary h2 {font:inherit;letter-spacing:0;margin:0}
+:is(.about,.work)>summary::after {content:'';order:3;flex:none;box-sizing:border-box;width:32px;height:32px;border:1px solid var(--control-line);border-radius:50%;background:linear-gradient(var(--blue),var(--blue)) center/12px 2px no-repeat,linear-gradient(var(--blue),var(--blue)) center/2px 12px no-repeat;transition:background-size .2s,border-color .16s}
+:is(.about,.work)[open]>summary::after {background-size:12px 2px,2px 0}
+:is(.about,.work)>summary h2 {order:1;margin:0;font:400 24px/1.2 var(--serif);letter-spacing:-.01em;transition:color .16s}
+.section-teaser {order:2;margin-left:auto;font:12px/1.4 var(--mono);color:var(--muted)}
+:is(.about,.work)>summary:is(:hover,:focus-visible) {background:color-mix(in srgb,var(--paper) 4%,transparent)}
+:is(.about,.work)>summary:is(:hover,:focus-visible) h2 {color:var(--blue)}
+:is(.about,.work)>summary:is(:hover,:focus-visible)::after {border-color:var(--blue)}
 .footer {display:flex;justify-content:center;align-items:center;padding-block:16px 24px;color:var(--muted);font-size:13px}
 .footer p {display:flex;align-items:center;gap:9px;margin:0;min-height:32px;white-space:nowrap}
 .footer-home {display:inline-flex;align-items:center;gap:9px;min-height:44px;color:var(--muted);text-decoration:underline 1px transparent;text-underline-offset:4px;transition:color .16s,text-decoration-color .16s}
@@ -22,24 +30,36 @@
 .about-row {display:grid;grid-template-columns:minmax(0,1fr);gap:14px;padding:18px 0;border-top:1px solid var(--rule-soft)}
 .about-row:first-child {border-top:0}
 .about-row p {font-size:16px;line-height:1.65;color:var(--secondary);margin:0}
+/* Each paragraph under the name of its chapter, in the serif of the hero: the voice of the section. */
+.about-text {display:grid;align-content:start;gap:12px;min-width:0}
+.about-chapter-title {margin:0;font:11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.about-text>p {font:400 18px/1.55 var(--serif);color:var(--paper);text-wrap:pretty}
 /* V5: with the script the rows are the slides of a carousel, one paragraph at a time, all in one
    grid row: every slide is as tall as the tallest, so the controls under them never move. On a
    phone the content starts at the top of the slide. Without the script the rows stay in a column. */
 .about-enhanced .about-rows {position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:100%;column-gap:24px;margin:4px 0 10px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none}
 .about-enhanced .about-rows::-webkit-scrollbar {display:none}
 .about-enhanced .about-row {scroll-snap-align:start;scroll-snap-stop:always;border-top:0;align-content:start}
-/* The progress bar, one segment per paragraph, filled up to the open one; under it "Indietro" and
-   "Avanti" at the two ends and the counter between them. */
-.about-nav {display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px 8px;margin:0 0 22px}
+/* The chapters, one segment per paragraph, filled up to the open one and named under it (the names
+   only for screen readers below 700 px); under them "Indietro" and "Avanti" at the two ends and the
+   counter between them. "Avanti" wears the accent: it is the way on, and on the last paragraph it
+   opens "I miei progetti". */
+.about-nav {display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:4px 8px;margin:0 0 22px}
 .about-nav[hidden] {display:none}
 .about-progress {grid-column:1/-1;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px}
-.about-progress i {height:3px;border-radius:2px;background:#ffffff1f;transition:background-color .25s}
-.about-progress i.on {background:var(--blue)}
-.about-step {display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 14px;border:1px solid var(--rule);border-radius:10px;background:var(--surface);color:var(--paper);font:600 13px/1 var(--name);cursor:pointer;transition:border-color .16s,background-color .16s,opacity .16s}
+/* The segment is the top 4 px of the button's own background: the target is the whole 44 px button. */
+.about-chapter {--segment:var(--track);position:relative;display:block;min-width:0;min-height:44px;margin:0;padding:12px 0 0;border:0;background:linear-gradient(var(--segment),var(--segment)) 0 0/100% 4px no-repeat;color:var(--muted);font:11px/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;transition:color .16s}
+.about-chapter.on {--segment:var(--blue)}
+.about-chapter:not(.on):hover {--segment:var(--muted)}
+.about-chapter:hover,.about-chapter[aria-current] {color:var(--blue)}
+.about-step {display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 14px;border:1px solid var(--control-line);border-radius:10px;background:var(--surface);color:var(--paper);font:600 13px/1 var(--name);cursor:pointer;transition:border-color .16s,background-color .16s,opacity .16s}
 .about-step .icon {width:18px;height:18px;color:var(--blue);stroke-width:2}
-.about-step:hover {border-color:#60a5fa88;background:#ffffff08}
+.about-step:hover {border-color:var(--blue);background:var(--surface-raised)}
+.about-step[data-step="1"] {border-color:var(--blue);background:color-mix(in srgb,var(--blue) 12%,var(--surface))}
+.about-step[data-step="1"]:hover {background:color-mix(in srgb,var(--blue) 20%,var(--surface))}
+.about-step [hidden] {display:none}
 .about-step[aria-disabled=true] {opacity:.4;cursor:default;border-color:var(--rule);background:var(--surface)}
-.about-count {justify-self:center;margin:0;font:12px/1 var(--mono);color:var(--muted)}
+.about-count {justify-self:center;margin:0;font:14px/1 var(--mono);color:var(--secondary)}
 .about-figure {margin:0;padding:14px;border:1px solid var(--rule);border-radius:14px;background:var(--surface)}
 /* The pendulum and its simulation, and the problem reduced to its model (V5), in the line language
    of the hero. */
@@ -124,8 +144,9 @@
 .review blockquote p {margin:0;font:italic 15.5px/1.5 var(--serif);color:var(--paper)}
 .review .review-by {margin:10px 0 0 32px;font:12.5px/1.4 var(--sans);color:var(--muted)}
 .review-by strong {font:600 12.5px/1.4 var(--name);color:var(--paper)}
-.reviews-bar {display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;margin-top:12px}
-.reviews-bar i {height:2px;border-radius:1px;background:#ffffff1f;transition:background-color .25s}
+/* Dots, not segments: the segmented bar belongs to the chapters of the carousel. */
+.reviews-bar {display:flex;justify-content:center;gap:7px;margin-top:12px}
+.reviews-bar i {flex:none;width:6px;height:6px;border-radius:50%;background:var(--track);transition:background-color .25s}
 .reviews-bar i.on {background:var(--star)}
 /* Two tiles share a phone's row: the mark beside the number, the label under both. */
 @media(max-width:599px) {
@@ -243,7 +264,7 @@ a.result:hover .result-label {color:var(--paper)}
 .cover-chip::after {content:' →';content:' →'/''}
 .card h4 a:is(:hover,:focus-visible) .cover-chip {background:var(--cat);color:var(--bg)}
 .card-meta {display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0;font:11px/1.4 var(--mono);color:#a9b2c0}
-.pill {font:600 10.5px/1 var(--name);color:var(--cat);border:1px solid color-mix(in srgb,var(--cat) 45%,transparent);border-radius:999px;padding:4px 8px}
+.pill {font:600 11px/1 var(--name);color:var(--cat);border:1px solid color-mix(in srgb,var(--cat) 45%,transparent);border-radius:999px;padding:4px 8px}
 .card-summary {font-size:13px;line-height:1.5;color:#d8dee9;margin:0}
 /* The buttons are the foot of the card: up to three in a row, sharing it and split by rules, the
    platform mark left of the label. Each keeps at least its text width; a card too narrow for three
@@ -272,7 +293,7 @@ a.result:hover .result-label {color:var(--paper)}
 .paper-card {--cat:var(--blue)}
 .paper-figure {display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;min-height:0;padding:8px;background:radial-gradient(90% 100% at 50% 0%,color-mix(in srgb,var(--stroke) 16%,transparent),transparent 70%),#0d1017;border-bottom:1px solid var(--rule)}
 .rm-grid {display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px 4px;width:100%}
-.rm-cell {display:flex;flex-direction:column;align-items:center;gap:2px;font:9px/1 var(--mono);color:#8b95a5;white-space:nowrap}
+.rm-cell {display:flex;flex-direction:column;align-items:center;gap:2px;font:11px/1 var(--mono);color:#8b95a5;white-space:nowrap}
 .rm-cell svg {display:block;width:100%;height:auto;aspect-ratio:1}
 .rm-centre {fill:color-mix(in srgb,var(--stroke) 18%,#0d1017);stroke:var(--blue);stroke-width:1}
 .rm-circle {fill:#12151c;stroke:var(--stroke);stroke-width:.9}
@@ -344,11 +365,14 @@ a.result:hover .result-label {color:var(--paper)}
 @media(min-width:900px) {
 /* Paragraph and figure side by side, the figure on the right of every slide (V5); the lessons
    text beside the two portals. */
-.about-row {grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);column-gap:40px;align-items:center}
+.about-row {grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);column-gap:40px;align-items:start}
 /* The pendulum and the problem-to-model drawing keep a legible 400 px beside their paragraphs; in
-   the carousel each slide's content sits in the middle of its fixed height. */
+   the carousel each slide's content starts at the top, the chapter name level with the figure. */
 :is(.about-row:first-child,.about-row:has(.figure-method)) {grid-template-columns:minmax(0,1fr) minmax(0,400px)}
-.about-enhanced .about-row {align-content:center}
+.about-enhanced .about-row {align-content:start}
+.about-text>p {font-size:19px}
+/* The controls stay under the column of the text. */
+.about-nav {max-width:36rem}
 .lessons {grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:48px;align-items:start}
 /* V5: the two portals side by side, so the column is as tall as the text beside it. */
 .lesson-cards {grid-template-columns:1fr 1fr}
@@ -362,9 +386,25 @@ a.result:hover .result-label {color:var(--paper)}
 .rail-track {grid-auto-columns:calc((100% - 48px)/4.2)}
 .rail-mods .rail-track {grid-auto-columns:min(calc((100% - 48px)/4.2),386px)}
 }
+@media(min-width:1200px) {
+/* The text keeps one column of about 60 characters on every slide; the figure takes the rest, the
+   two drawings at their 400 px against the right edge. */
+.about-row,:is(.about-row:first-child,.about-row:has(.figure-method)) {grid-template-columns:minmax(0,36rem) minmax(0,1fr)}
+:is(.figure-studies,.figure-method) {justify-self:end;width:100%;max-width:400px}
+}
 @media(min-width:1000px) and (max-height:740px) {
 :is(.about,.work)>summary {min-height:46px}
 .footer {padding-block:4px}
+}
+/* Phones: the line of contents under the title, the plus on the title's line; the chapter names
+   only for screen readers, the segment in the middle of its 44 px target. */
+@media(max-width:699px) {
+:is(.about,.work)>summary {padding-block:8px}
+:is(.about,.work)>summary h2 {font-size:22px}
+:is(.about,.work)>summary::after {order:2;margin-left:auto}
+.section-teaser {order:3;flex-basis:100%;margin-left:0}
+.about-chapter {background-position:0 20px}
+.about-chapter>span {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 }
 @media(prefers-reduced-motion:reduce) {
 .picker-group .card:hover {transform:none}

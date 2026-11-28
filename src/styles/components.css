@@ -15,7 +15,7 @@
   font: 600 18px/1.08 var(--name); letter-spacing: .02em;
   background: linear-gradient(90deg, #f1f4f5, var(--blue)); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.brand-type > span { font: 10px/1.2 var(--mono); color: var(--paper); letter-spacing: .01em; }
+.brand-type > span { font: 11px/1.2 var(--mono); color: var(--paper); letter-spacing: .01em; }
 .site-nav { display: flex; align-items: center; gap: 28px; margin-right: 24px; }
 .site-nav a {
   position: relative; display: inline-flex; align-items: center; justify-content: center; min-width: var(--target);
@@ -48,7 +48,7 @@
   .site-brand { gap: 8px; }
   .brand-gecko { width: 32px; height: 32px; }
   .brand-type strong { font-size: 16px; }
-  .brand-type > span { font-size: 9px; }
+  .brand-type > span { font-size: 11px; }
   .site-nav { order: 5; width: 100%; margin: 0; gap: 20px; border-top: 1px solid var(--rule); }
   @media (scripting: enabled) {
     /* With scripts the same links open from the menu button, over the page. */
@@ -130,7 +130,7 @@ a[data-brand]:is(:hover, :focus-visible, [data-preview="hover"]) .brand { color:
 .deck-caption { min-height: 72px; }
 .deck-meta { margin: 0 0 4px; color: var(--blue); font: 12px/1.5 var(--mono); }
 /* V5: the issuers stay on one line, even on a phone. */
-.deck-default .deck-meta { font-size: 10.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.deck-default .deck-meta { font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .deck-title { margin: 0; color: var(--paper); font: 600 17px/1.35 var(--name); }
 /* V5: the number of certificates stands out, like the figures of "Su di me". */
 .deck-default .deck-title { display: flex; align-items: baseline; gap: 8px; }
