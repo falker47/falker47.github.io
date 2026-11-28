@@ -365,11 +365,13 @@ a.result:hover .result-label {color:var(--paper)}
 }
 @media(min-width:900px) {
 /* Paragraph and figure side by side in two equal columns, the figure on the right of every slide: one
-   gap between them on every slide, the figure filling its column up to the right edge. Each slide's
-   content starts at the top, the chapter name level with the figure. The lessons text beside the two
-   portals. */
-.about-row {grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:40px;align-items:start}
-.about-enhanced .about-row {align-content:start}
+   gap between them on every slide, the figure filling its column up to the right edge. In the
+   carousel the panel of the figure is as tall as the slide on every slide, its content centred in it,
+   and the paragraph sits in the middle of that height, never stuck at the top over an empty band.
+   The lessons text beside the two portals. */
+.about-row {grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:40px;align-items:center}
+.about-enhanced .about-row {align-content:stretch}
+.about-enhanced .about-figure {align-self:stretch;display:grid;align-content:center}
 .about-text>p {font-size:19px}
 /* The pendulum and the problem-to-model drawing grow with their column up to 520 px, centred in their
    panel, so their labels stay legible and the panel meets the paragraph. */
