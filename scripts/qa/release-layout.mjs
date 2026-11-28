@@ -108,6 +108,20 @@ await withBrowser(async (browser, origin) => {
       } finally { await page.close(); }
     }
   }
+  // First screen: with both sections closed, the home shows the title, the action, the identity card
+  // and the two section rows without scrolling, on an iPhone under Safari's bars (390×664) as on the desktop.
+  for (const lang of langs) for (const viewport of [{ width: 390, height: 664 }, viewports[0]]) {
+    const page = await browser.newPage({ viewport, locale: lang, reducedMotion: 'reduce', deviceScaleFactor: 1, serviceWorkers: 'block' });
+    try {
+      const network = await isolateNetwork(page.context(), origin);
+      await visitReviewState(page, origin, '/', lang);
+      const bottom = Math.round(await page.locator('#progetti > summary').evaluate(node => node.getBoundingClientRect().bottom));
+      const row = { path: '/ first screen', lang, width: viewport.width, height: viewport.height, projectsRowBottom: bottom };
+      if (bottom > viewport.height) row.error = 'The projects row ends at ' + bottom + ' px, below the first screen';
+      rows.push(row);
+      network();
+    } finally { await page.close(); }
+  }
 }, { holdRedirects: held, auditScripts: true });
 await writeFile(join(out, 'layout.json'), JSON.stringify(rows, null, 2) + '\n');
 for (const row of rows.filter(row => row.error)) console.error(row.path, row.lang, row.width, row.error);

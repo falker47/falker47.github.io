@@ -145,7 +145,7 @@ h1 {font-size:clamp(46px,4.05vw,61px);margin:32px 0;line-height:1.06}
 .cta:hover .cta-icon {transform:translateX(2px)}
 .cta:active {transform:scale(.98)}
 .identity {padding:1px;border:0;border-radius:18px;background:linear-gradient(135deg,#345a78,#102d46 68%);box-shadow:inset 0 1px #9bdcff28}
-.identity-core {padding:21px;border-radius:17px;background:linear-gradient(125deg,#102b42,#0b1d30 80%);box-shadow:inset 0 1px #abcde51a}
+.identity-core {padding:18px;border-radius:17px;background:linear-gradient(125deg,#102b42,#0b1d30 80%);box-shadow:inset 0 1px #abcde51a}
 .person {gap:16px}
 .portrait {width:64px;height:64px;border-radius:14px;border-color:#94cdeb55}
 .person>div {display:flex;flex-direction:column;min-width:0}
@@ -431,4 +431,17 @@ h1 {font-size:clamp(46px,4.05vw,61px);margin:32px 0;line-height:1.06}
 }
 @media(min-width:1000px) and (max-height:740px) {
 .hero-lead h1 {font-size:34px}
+}
+/* Phones (review of 28/11): the first screen holds the title, the action, the identity card and
+   both section rows, as on the desktop. The diagram needs more height than a phone has, so it
+   stays from 600 px; the title takes two lines and the card a little less air. */
+@media(max-width:599px) {
+.engine-figure {display:none}
+.hero {gap:20px}
+.hero-lead h1 {margin-bottom:16px}
+.hero-lead h1>span {text-wrap:balance}
+.hero-lead h1>span>br {display:none}
+.identity-intro {line-height:1.55;margin-top:14px}
+.contacts {margin-top:12px;padding-top:4px}
+.hero-band>.wrap {padding-bottom:16px}
 }

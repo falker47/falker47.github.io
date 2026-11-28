@@ -412,7 +412,7 @@ a.result:hover .result-label {color:var(--paper)}
 /* Phones: the line of contents under the title, the plus on the title's line; the chapter names
    only for screen readers, the segment in the middle of its 44 px target. */
 @media(max-width:699px) {
-:is(.about,.work)>summary {padding-block:8px}
+:is(.about,.work)>summary {padding-block:6px}
 :is(.about,.work)>summary h2 {font-size:22px}
 :is(.about,.work)>summary::after {order:2;margin-left:auto}
 .section-teaser {order:3;flex-basis:100%;margin-left:0}
