@@ -43,10 +43,11 @@
 /* The chapters, one segment per paragraph, filled up to the open one and named under it (the names
    only for screen readers below 700 px); under them "Indietro" and "Avanti" at the two ends and the
    counter between them. "Avanti" wears the accent: it is the way on, and on the last paragraph it
-   opens "I miei progetti". */
+   opens "I miei progetti". The chapters come second in the source, after "Indietro", for the
+   one-row layout from 900 px; here they take the first row. */
 .about-nav {display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:4px 8px;margin:0 0 22px}
 .about-nav[hidden] {display:none}
-.about-progress {grid-column:1/-1;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px}
+.about-progress {grid-row:1;grid-column:1/-1;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px}
 /* The segment is the top 4 px of the button's own background: the target is the whole 44 px button. */
 .about-chapter {--segment:var(--track);position:relative;display:block;min-width:0;min-height:44px;margin:0;padding:12px 0 0;border:0;background:linear-gradient(var(--segment),var(--segment)) 0 0/100% 4px no-repeat;color:var(--muted);font:11px/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;transition:color .16s}
 .about-chapter.on {--segment:var(--blue)}
@@ -363,16 +364,25 @@ a.result:hover .result-label {color:var(--paper)}
 .sample-count {flex:0 1 auto;margin-left:auto}
 }
 @media(min-width:900px) {
-/* Paragraph and figure side by side, the figure on the right of every slide (V5); the lessons
-   text beside the two portals. */
-.about-row {grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);column-gap:40px;align-items:start}
-/* The pendulum and the problem-to-model drawing keep a legible 400 px beside their paragraphs; in
-   the carousel each slide's content starts at the top, the chapter name level with the figure. */
-:is(.about-row:first-child,.about-row:has(.figure-method)) {grid-template-columns:minmax(0,1fr) minmax(0,400px)}
+/* Paragraph and figure side by side in two equal columns, the figure on the right of every slide: one
+   gap between them on every slide, the figure filling its column up to the right edge. Each slide's
+   content starts at the top, the chapter name level with the figure. The lessons text beside the two
+   portals. */
+.about-row {grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:40px;align-items:start}
 .about-enhanced .about-row {align-content:start}
 .about-text>p {font-size:19px}
-/* The controls stay under the column of the text. */
-.about-nav {max-width:36rem}
+/* The pendulum and the problem-to-model drawing grow with their column up to 520 px, centred in their
+   panel, so their labels stay legible and the panel meets the paragraph. */
+:is(.figure-studies,.figure-method) .studies-drawing {max-width:520px;margin-inline:auto}
+/* The controls run under the whole slide in one row: "Indietro" and "Avanti" at the two ends, as wide
+   as each other and as the longest label, so nothing moves when "Avanti" becomes "I miei progetti";
+   the chapters between them, the segment over the name, both centred on the buttons. The names and
+   the filled segments say where the reader is: the counter speaks to screen readers only. */
+.about-nav {grid-template-columns:minmax(max-content,10.5rem) minmax(0,1fr) minmax(max-content,10.5rem);column-gap:24px;margin-top:14px}
+.about-progress {grid-row:auto;grid-column:auto}
+.about-step {justify-content:center}
+.about-chapter {padding-top:22px;background-position:0 10px;white-space:normal}
+.about-count {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .lessons {grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:48px;align-items:start}
 /* V5: the two portals side by side, so the column is as tall as the text beside it. */
 .lesson-cards {grid-template-columns:1fr 1fr}
@@ -387,10 +397,11 @@ a.result:hover .result-label {color:var(--paper)}
 .rail-mods .rail-track {grid-auto-columns:min(calc((100% - 48px)/4.2),386px)}
 }
 @media(min-width:1200px) {
-/* The text keeps one column of about 60 characters on every slide; the figure takes the rest, the
-   two drawings at their 400 px against the right edge. */
-.about-row,:is(.about-row:first-child,.about-row:has(.figure-method)) {grid-template-columns:minmax(0,36rem) minmax(0,1fr)}
-:is(.figure-studies,.figure-method) {justify-self:end;width:100%;max-width:400px}
+/* A wider gap and the steps' gap to the chapters; the paragraph a step larger, about 65 characters
+   to the line. */
+.about-row {column-gap:56px}
+.about-text>p {font-size:20px}
+.about-nav {column-gap:32px}
 }
 @media(min-width:1000px) and (max-height:740px) {
 :is(.about,.work)>summary {min-height:46px}

@@ -97,16 +97,17 @@ function aboutRow(ctx, row) {
 }
 
 // V5: the rows are the slides of a carousel, one paragraph at a time, in reading order, all as tall
-// as the tallest so the controls never move. Above the controls the chapters, one segment per
-// paragraph, each named and a button to its paragraph; "Indietro" and "Avanti" sit under them, the
-// counter between them tells screen readers that the paragraph changed. On the last paragraph
-// "Avanti" becomes "I miei progetti" and opens that section. They wait for the script; without it
-// the rows stay in a column.
+// as the tallest so the controls never move. The controls in reading order: "Indietro", the chapters
+// (one segment per paragraph, each named and a button to its paragraph), the counter that tells screen
+// readers the paragraph changed, "Avanti". On a phone the chapters take a row of their own above the
+// two steps; from 900 px the row runs under the whole slide, the steps at its two ends. On the last
+// paragraph "Avanti" becomes "I miei progetti" and opens that section. They wait for the script;
+// without it the rows stay in a column.
 function carouselNav(t, copy) {
   const chapters = aboutRows.map((row, index) => html`<button type="button" class="about-chapter${index ? '' : ' on'}"${raw(index ? '' : ' aria-current="step"')}>${label(t, row.chapter)}</button>`).join('');
   const back = html`<button type="button" class="about-step" data-step="-1">${icon('chevron-left')}${label(t, 'aboutPrevious')}</button>`;
   const next = html`<button type="button" class="about-step" data-step="1"><span class="about-step-next">${label(t, 'aboutNext')}</span><span class="about-step-end" hidden>${label(t, 'myProjects')}</span>${icon('chevron-right')}</button>`;
-  return html`<div class="about-nav" hidden><div class="about-progress" role="group" aria-label="${copy.it.aboutChapters}" data-label="aboutChapters">${raw(chapters)}</div>${raw(back)}<p class="about-count" aria-live="polite"><span class="about-index">1</span> / ${aboutRows.length}</p>${raw(next)}</div>`;
+  return html`<div class="about-nav" hidden>${raw(back)}<div class="about-progress" role="group" aria-label="${copy.it.aboutChapters}" data-label="aboutChapters">${raw(chapters)}</div><p class="about-count" aria-live="polite"><span class="about-index">1</span> / ${aboutRows.length}</p>${raw(next)}</div>`;
 }
 
 // Under the closed title, what the section holds: the path in three words and the certificates.

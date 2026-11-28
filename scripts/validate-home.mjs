@@ -278,8 +278,11 @@ function checkAbout(source) {
   assert.deepEqual(controls, [['-1', italianCopy.aboutPrevious, 'chevron-left'], ['1', italianCopy.aboutNext + ' ' + italianCopy.myProjects, 'chevron-right']], '"Indietro" and "Avanti" with their chevrons');
   // On the last paragraph "Avanti" becomes "I miei progetti": both labels are in the button, the second hidden.
   assert.match(nav[1], /<span class="about-step-next"><span data-i18n="aboutNext">[^<]+<\/span><\/span><span class="about-step-end" hidden><span data-i18n="myProjects">[^<]+<\/span><\/span>/, '"Avanti" and its last label');
+  // The controls in reading order: "Indietro", the chapters, the counter, "Avanti" (one row from 900 px).
+  const parts = ['data-step="-1"', 'class="about-progress"', 'class="about-count"', 'data-step="1"'].map(part => nav[1].indexOf(part));
+  assert.ok(parts.every((index, i) => index >= 0 && (!i || index > parts[i - 1])), 'Carousel controls in reading order');
   // The chapters, one named button per paragraph, the first filled and current; the counter is announced on a step.
-  const chapterBar = nav[1].match(/^<div class="about-progress" role="group" aria-label="([^"]+)" data-label="aboutChapters">((?:<button type="button" class="about-chapter(?: on)?"(?: aria-current="step")?><span data-i18n="\w+">[^<]+<\/span><\/button>)+)<\/div>/);
+  const chapterBar = nav[1].match(/<div class="about-progress" role="group" aria-label="([^"]+)" data-label="aboutChapters">((?:<button type="button" class="about-chapter(?: on)?"(?: aria-current="step")?><span data-i18n="\w+">[^<]+<\/span><\/button>)+)<\/div>/);
   assert.ok(chapterBar && decode(chapterBar[1]) === italianCopy.aboutChapters, 'One segment per paragraph');
   assert.deepEqual([...chapterBar[2].matchAll(/<button type="button" class="about-chapter( on)?"( aria-current="step")?><span data-i18n="(\w+)">/g)].map(([, on, current, key]) => [Boolean(on), Boolean(current), key]),
     chapters.map((key, index) => [!index, !index, key]), 'One segment per paragraph, named after its chapter');

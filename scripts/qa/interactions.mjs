@@ -457,24 +457,36 @@ async function home(page, origin, lang) {
     places.push(await next.evaluate(button => { const box = button.getBoundingClientRect(); return [Math.round(box.top + scrollY), Math.round(box.right)].join(' '); }));
     rows.push(await page.locator('.about-row').nth(index).evaluate(row => {
       const text = row.querySelector('p').getBoundingClientRect(), figure = row.querySelector('.about-figure').getBoundingClientRect();
-      return { text: { left: text.left, right: text.right, bottom: text.bottom, width: text.width }, figure: { left: figure.left, right: figure.right, top: figure.top, width: figure.width, height: figure.height } };
+      const art = row.querySelector('.studies-drawing')?.getBoundingClientRect();
+      return { text: { left: text.left, right: text.right, bottom: text.bottom, width: text.width }, figure: { left: figure.left, right: figure.right, top: figure.top, width: figure.width, height: figure.height },
+        drawing: art && { left: art.left, right: art.right, width: art.width, height: art.height } };
     }));
   }
   assert.equal(new Set(places).size, 1, '"Avanti" stays in the same place on every paragraph');
   assert.equal(await next.getAttribute('aria-disabled'), null, 'The last step is never disabled');
   assert.equal(await next.innerText(), (lang === 'en' ? englishCopy : italianCopy).myProjects, 'On the last paragraph "Avanti" becomes "I miei progetti"');
-  const wide = page.viewportSize().width >= 1200;
+  const desktop = page.viewportSize().width >= 900;
   for (const [index, { text, figure }] of rows.entries()) {
-    if (page.viewportSize().width < 900) assert.ok(figure.top >= text.bottom - 1, `Row ${index + 1}: the figure follows its paragraph`);
+    if (!desktop) assert.ok(figure.top >= text.bottom - 1, `Row ${index + 1}: the figure follows its paragraph`);
     else {
+      // Two equal columns: the paragraph fills the first, the figure the second, one gap between them.
       assert.ok(figure.left >= text.right - 1, `Row ${index + 1}: the figure sits right of its paragraph`);
-      // Below 1200 px the text fills its column: no empty band between a paragraph and its figure.
-      // From 1200 px every paragraph keeps one column of about 60 characters.
-      if (wide) assert.ok(text.width <= 577, `Row ${index + 1}: the paragraph is ${Math.round(text.width)} px wide`);
-      else assert.ok(figure.left - text.right <= 48, `Row ${index + 1}: ${Math.round(figure.left - text.right)} px between the paragraph and its figure`);
+      assert.ok(figure.left - text.right <= 57, `Row ${index + 1}: ${Math.round(figure.left - text.right)} px between the paragraph and its figure`);
+      assert.ok(Math.abs(figure.width - text.width) <= 1, `Row ${index + 1}: the paragraph (${Math.round(text.width)} px) and its figure (${Math.round(figure.width)} px) share the row`);
     }
   }
-  if (wide) assert.equal(new Set(rows.map(row => Math.round(row.text.width))).size, 1, 'The text column is as wide on every paragraph');
+  if (desktop) {
+    assert.equal(new Set(rows.map(row => Math.round(row.text.left) + ' ' + Math.round(row.figure.right))).size, 1, 'Every slide starts and ends at the same edges');
+    // The controls run under the whole slide in one row: "Indietro" under the paragraph's left edge,
+    // "Avanti" under the figure's right edge, the chapters between them.
+    const boxes = await nav.evaluate(node => ['[data-step="-1"]', '.about-progress', '[data-step="1"]'].map(selector => {
+      const box = node.querySelector(selector).getBoundingClientRect();
+      return { left: box.left, right: box.right, middle: box.top + box.height / 2 };
+    }));
+    assert.ok(Math.abs(boxes[0].left - rows[4].text.left) <= 1 && Math.abs(boxes[2].right - rows[4].figure.right) <= 1, 'The controls span the slide');
+    assert.ok(boxes[0].right < boxes[1].left && boxes[1].right < boxes[2].left, 'Indietro, the chapters, Avanti');
+    assert.ok(boxes.every(box => Math.abs(box.middle - boxes[0].middle) <= 3), 'The controls share one row');
+  }
   // A chapter opens its paragraph; the arrow keys step while the focus is on the controls.
   await nav.locator('.about-chapter').nth(2).click();
   await fitted(2);
@@ -493,10 +505,12 @@ async function home(page, origin, lang) {
   assert.equal(await slide(), '2', 'A swipe moves the counter');
   await back.click();
   await fitted(0);
-  // The pendulum stays about 400 px wide beside the short first paragraph, cropped to its panels.
-  if (page.viewportSize().width >= 900) {
-    const { width, height } = rows[0].figure;
-    assert.ok(width <= 402 && height <= 225, `Row 1: the drawing is ${Math.round(width)}×${Math.round(height)} px`);
+  // The pendulum and the problem-to-model drawing grow with their panel up to 520 px, centred in it.
+  if (desktop) {
+    for (const { figure, drawing } of [rows[0], rows[2]]) {
+      assert.ok(drawing.width <= 521, `The drawing is ${Math.round(drawing.width)} px wide`);
+      assert.ok(Math.abs((drawing.left - figure.left) - (figure.right - drawing.right)) <= 2, 'The drawing is centred in its panel');
+    }
   }
   assert.equal(await page.locator('.journey, .about-journey').count(), 0, 'No "Percorso" drawing');
   // Once the page has loaded and gone idle, the certificate thumbnails have started loading.
